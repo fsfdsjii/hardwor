@@ -1,27 +1,8 @@
-										LH.DesiredAngle = -0.5
-										RH.DesiredAngle = 0
-									end
-								elseif AnimFrame == 3 then
-									if ToolAnim ~= "Lunge" or workspace.DistributedGameTime > LastToolAnim + 0.25 then
-										if not Look then
-											N.DesiredAngle = 0
-											RJ.DesiredAngle = 0
-										end
-										LS.DesiredAngle = -2.8
-										if not Tool then
-											RS.DesiredAngle = 0.8
-										end
-										LH.DesiredAngle = 0.3
-	local owner = game:GetService("Players"):FindFirstChild(script.Name)
-if not (owner and owner:IsA("Player")) then
-	script:Destroy()
-	return
-end
 local Wands = 0
 local Shields = 0
 local Slows = 0
 function Leave(plr)
-	if plr == owner then
+	if plr == User then
 		local Count = 50
 		repeat 
 			Count = Count - 1
@@ -885,7 +866,7 @@ function ApplyShield(Character,Humanoid,Size,StoredPower,Timer,Color)
 end
 function Ready()
 	if Displaying then
-		game:GetService("Debris"):AddItem(owner.Character,0)
+		game:GetService("Debris"):AddItem(User.Character,0)
 		Unavailable = true
 		return
 	else
@@ -955,7 +936,7 @@ Wizards spawned: ]]..Spawned
 		LMinionsSpawned = 0
 		LRejected = 0
 		delay(0.25,function()
-			ScreenGui.Parent = owner:FindFirstChild("PlayerGui")
+			ScreenGui.Parent = User:FindFirstChild("PlayerGui")
 			game:GetService("Debris"):AddItem(ScreenGui,60)
 		end)
 	end
@@ -1820,7 +1801,21 @@ Click   Action     Mana Dmg/Dur    Special            Detail
 										if not Tool then
 											RS.DesiredAngle = 1.6
 										end
-									RH.DesiredAngle = 0.7
+										LH.DesiredAngle = -0.5
+										RH.DesiredAngle = 0
+									end
+								elseif AnimFrame == 3 then
+									if ToolAnim ~= "Lunge" or workspace.DistributedGameTime > LastToolAnim + 0.25 then
+										if not Look then
+											N.DesiredAngle = 0
+											RJ.DesiredAngle = 0
+										end
+										LS.DesiredAngle = -2.8
+										if not Tool then
+											RS.DesiredAngle = 0.8
+										end
+										LH.DesiredAngle = 0.3
+										RH.DesiredAngle = 0.7
 									end
 								else
 									if ToolAnim ~= "Lunge" or workspace.DistributedGameTime > LastToolAnim + 0.25 then
@@ -2542,7 +2537,7 @@ Click   Action     Mana Dmg/Dur    Special            Detail
 		end)
 		return Model
 	end
-	local Ch = owner.Character
+	local Ch = User.Character
 	if Ch then
 		local Hu = Ch:FindFirstChildWhichIsA("Humanoid")
 		if Hu and Hu.RootPart and Hu:GetState() ~= Enum.HumanoidStateType.Dead then
@@ -2563,10 +2558,10 @@ Click   Action     Mana Dmg/Dur    Special            Detail
 				Allowed = true
 			end)
 			local function Gone()
-				if not Triggered and owner.Parent and not Displaying then
+				if not Triggered and User.Parent and not Displaying then
 					Triggered = true
 					Displaying = true
-					local ScreenGui = Instance.new("ScreenGui",owner:FindFirstChild("PlayerGui"))
+					local ScreenGui = Instance.new("ScreenGui",User:FindFirstChild("PlayerGui"))
 					ScreenGui.Name = "Goodbye"
 					local Btn = Instance.new("TextButton",ScreenGui)
 					Btn.Size = UDim2.new(0.075,0,0.1,0)
@@ -2586,7 +2581,7 @@ Click   Action     Mana Dmg/Dur    Special            Detail
 						if C[i].Name == "creator" and C[i]:IsA("ObjectValue") then
 							if C[i].Value ~= nil then
 								Found = C[i].Value
-								if C[i].Value ~= owner then
+								if C[i].Value ~= User then
 									First = C[i].Value.Name.." was after you. "
 									if C[i].Value:IsA("Player") and C[i].Value.Name ~= C[i].Value.DisplayName then
 										First = "("..C[i].Value.Name..") "..C[i].Value.DisplayName.." was after you. "
@@ -2616,7 +2611,7 @@ Click   Action     Mana Dmg/Dur    Special            Detail
 							end
 							wait(0.2)
 						end
-						if owner.Parent and Skip then
+						if User.Parent and Skip then
 							if Pass then
 								game:GetService("Debris"):AddItem(Ch,0)
 							end
@@ -2624,15 +2619,15 @@ Click   Action     Mana Dmg/Dur    Special            Detail
 							if Hu.Jump then
 								LastCF = LastCF + Vector3.new(0,4,0)
 							end
-							local MM = Make(owner.Name,owner.DisplayName,LastCF+Vector3.new(0,2,0),Color,owner,nil,nil,owner,nil,fc,HM,HT,acc,Hu.Jump)
+							local MM = Make(User.Name,User.DisplayName,LastCF+Vector3.new(0,2,0),Color,User,nil,nil,User,nil,fc,HM,HT,acc,Hu.Jump)
 							table.insert(DontChase,MM:FindFirstChildWhichIsA("Humanoid"))
 							Rejected = Rejected + 1
 							LRejected = LRejected + 1
 						else
 							Displaying = false
 						end
-						if owner.Parent and Unavailable then
-							owner:LoadCharacter()
+						if User.Parent and Unavailable then
+							User:LoadCharacter()
 						end
 						ScreenGui:Destroy()
 					end)
@@ -2652,9 +2647,9 @@ Click   Action     Mana Dmg/Dur    Special            Detail
 						Btn2.TextStrokeColor3 = Color3.new(0,0,0)
 						Btn2.BackgroundColor3 = Color.Color
 						Btn2.BackgroundTransparency = 0.5
-						local Name = owner.Name
-						if owner.Name ~= owner.DisplayName then
-							Name = "("..owner.Name..") "..owner.DisplayName
+						local Name = User.Name
+						if User.Name ~= User.DisplayName then
+							Name = "("..User.Name..") "..User.DisplayName
 						end
 						local AddOn2 = "Does "..Name.." really know what's going on?"
 						if Choices == 1 then
@@ -3272,7 +3267,7 @@ Click   Action     Mana Dmg/Dur    Special            Detail
 			local Speak = false
 			local function Chatted(msg)
 				if string.sub(msg,1,3) ~= "/e " then
-					msg = game:GetService("Chat"):FilterStringAsync(msg,owner,owner)
+					msg = game:GetService("Chat"):FilterStringAsync(msg,User,User)
 					local Current = 0
 					local Times = 0
 					local MultType = 0
@@ -3366,7 +3361,7 @@ Click   Action     Mana Dmg/Dur    Special            Detail
 					end
 				end
 			end
-			local Connect = owner.Chatted:Connect(Chatted)
+			local Connect = User.Chatted:Connect(Chatted)
 			spawn(function()
 				while In and Hu:GetState() ~= Enum.HumanoidStateType.Dead do
 					if Hu.RootPart and not Displaying then
@@ -3489,18 +3484,18 @@ Click   Action     Mana Dmg/Dur    Special            Detail
 			end)
 		end
 	end
-	T.Parent = owner.Backpack
+	T.Parent = User.Backpack
 	T.Grip = CFrame.new(0,-0.75,0)
-	I.Parent = owner.Backpack
+	I.Parent = User.Backpack
 	I.Grip = CFrame.new(1.65,-0.25,0)
 	Update()
 	local PL = Instance.new("PointLight",H)
 	PL.Range = 3
 	PL.Shadows = true
-	local Neutral = owner.Neutral
+	local Neutral = User.Neutral
 	spawn(function()
 		if not Pass then
-			local App = game:GetService("Players"):GetCharacterAppearanceAsync(owner.UserId)
+			local App = game:GetService("Players"):GetCharacterAppearanceAsync(User.UserId)
 			fc = "rbxasset://textures/face.png"
 			acc = {}
 			HM = nil
@@ -3539,10 +3534,10 @@ Click   Action     Mana Dmg/Dur    Special            Detail
 		end
 	end)
 	if not Neutral then
-		Color = owner.TeamColor
+		Color = User.TeamColor
 		clr = Color
 		H.BrickColor = Color
-		PE2.Color = ColorSequence.new(owner.TeamColor.Color,Color3.new(1,1,1))
+		PE2.Color = ColorSequence.new(User.TeamColor.Color,Color3.new(1,1,1))
 		TL.TextStrokeColor3 = Color.Color
 		if TextB then
 			TextB.TextColor3 = Color.Color
@@ -5041,7 +5036,7 @@ P: ]]..Power
 	end
 	Wands = Wands - 1
 end
-owner.CharacterAdded:Connect(Ready)
-if owner.Character then
+User.CharacterAdded:Connect(Ready)
+if User.Character then
 	Ready()
 end
