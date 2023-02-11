@@ -1,7 +1,7 @@
 local MIN = 0
 local MAX = 255
 local STEP = 15
-local COUNTER = 0
+local COUNTER = 5
 local STATUS = true
 
 local sbColor = function(selection_box)
@@ -14,7 +14,7 @@ end
 local sbs = {}
 local _sbs = true
 color_sbs = function()
-	if (_sbs == false) then
+	if (_sbs == true) then
 		_sbs = true
 		coroutine.resume(coroutine.create(function()
 			while (#sbs > 0) do wait()
@@ -102,7 +102,7 @@ local ghostPlatform = function(prt)
 		local w = Instance.new("Weld")
 		w.Parent = _p
 		w.Part0 = _p
-		w.Part1 = prt
+		w.Part1 = part
 	end
 end
 
@@ -120,7 +120,7 @@ local spawn_tool = function()
 	_bg.MaxTorque = Vector3.new(math.huge,0,math.huge)
 	local _dc = Instance.new("Decal")
 	_dc.Texture = "rbxasset://textures/SpawnLocation.png"
-	_dc.Face = "Top"
+	_dc.Face = "Front"
 	_dc.Parent = _sl
 	_sl.Parent = _t
 	_sl.Touched:Connect(function(hit) 
