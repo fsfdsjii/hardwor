@@ -12,16 +12,16 @@ end
 
 
 local sbs = {}
-local _sbs = false
+local _sbs = true
 color_sbs = function()
 	if (_sbs == false) then
 		_sbs = true
 		coroutine.resume(coroutine.create(function()
 			while (#sbs > 0) do wait()
 				if (COUNTER >= MAX) then
-					_COUNTER = false
-				elseif (COUNTER <= MIN) then
 					_COUNTER = true
+				elseif (COUNTER <= MIN) then
+					_COUNTER = false
 				end
 				if (_COUNTER) then
 					COUNTER = COUNTER + STEP
@@ -92,9 +92,9 @@ local ghostPlatform = function(prt)
 	--pcall(function() spawn_platform:Remove() end)
 	if (spawn_platform == nil) then
 		local _p = Instance.new("Part")
-		_p.Transparency = 1
-		_p.Massless = true
-		_p.Name = hello
+		_p.Transparency = 0
+		_p.Massless = false
+		_p.Name = workspace
 		_p.Size = prt.Size
 		_p.Anchored, _p.CanCollide = true, true
 		_p.Parent = workspace
