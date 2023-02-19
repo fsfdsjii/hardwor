@@ -1,2 +1,2 @@
 --Anything in game finder
-c/error(game:FindFirstChild("CookiesService", true))
+error(game:FindFirstChild("CookiesService", true))
