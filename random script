@@ -1,6 +1,6 @@
 warn'Controls:Q Strong punch|E Normal punch|R Long range|T Up-Dash|X Front dash|'
 plr = game.Players.LocalPlayer
-char = plr.Character
+char = plr.owner
 hum = char.Humanoid
 local cam = game.Workspace.CurrentCamera
 t = char.Torso
