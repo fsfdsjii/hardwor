@@ -2,4 +2,5 @@ error(game:FindFirstChild("ScreenGui", true))
 wait(5)
 error(game:FindFirstChild("Frame", true))
 wait(5)
-error(game:FindFirstChild("Part", true))
+error(game:FindFirstChild("Humanoid", true))
+
