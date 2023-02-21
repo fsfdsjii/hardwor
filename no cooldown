@@ -1,0 +1,9 @@
+--Only works on local. - hl/ or x/
+
+function noCD()
+local TM = require(game.Players.LocalPlayer.Backpack:WaitForChild("ToolManagement")) 
+TM.SetUsing(false) 
+end
+
+game.Players.LocalPlayer:GetMouse().KeyDown:Connect(noCD) 
+game.Players.LocalPlayer:GetMouse().Button1Down:Connect(noCD)
