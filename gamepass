@@ -1,0 +1,1 @@
+game:GetService("MarketplaceService"):PromptGamePassPurchase(owner, 6972921)
