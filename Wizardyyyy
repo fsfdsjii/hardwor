@@ -5041,6 +5041,7 @@ P: ]]..Power
 	end
 	Wands = Wands - 1
 end
+task.wait(1)
 local move = NLS([==[owner.CharacterAdded:Connect(Ready)
 if owner.Character then
 	Ready()
