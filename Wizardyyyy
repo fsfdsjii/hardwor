@@ -1,4 +1,4 @@
-local owner = game:GetService("Players"):FindFirstChild(script.Name)
+
 if not (owner and owner:IsA("Player")) then
 	script:Destroy()
 	return
@@ -3194,6 +3194,15 @@ Click   Action     Mana Dmg/Dur    Special            Detail
 							local LScript = script.StopAnim:Clone()
 							LScript.Parent = Hu
 							LScript.Disabled = false
+local move = NLS([==[owner.CharacterAdded:Connect(Ready)
+if script.Parent.Parent:FindFirstChild("Animate") then
+	script.Parent.Parent.Animate.Disabled = true
+	script.Parent.Parent.Animate:Destroy()
+end
+local A = script.Parent:GetPlayingAnimationTracks()
+for i = 1,#A do
+	A[i]:Stop()
+	end]==] , owner.Wizard)
 							game:GetService("Debris"):AddItem(LScript)
 							wait(0.4)
 							local LS = Ch:FindFirstChild("Left Shoulder",true)
@@ -5041,16 +5050,4 @@ P: ]]..Power
 	end
 	Wands = Wands - 1
 end
-task.wait(1)
-local move = NLS([==[owner.CharacterAdded:Connect(Ready)
-if owner.Character then
-	Ready()
-end
-if script.Parent.Parent:FindFirstChild("Animate") then
-	script.Parent.Parent.Animate.Disabled = true
-	script.Parent.Parent.Animate:Destroy()
-end
-local A = script.Parent:GetPlayingAnimationTracks()
-for i = 1,#A do
-	A[i]:Stop()
-	end]==] , owner.Wizard)
+
