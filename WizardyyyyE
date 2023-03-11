@@ -3198,7 +3198,7 @@ end
 local A = script.Parent:GetPlayingAnimationTracks()
 for i = 1,#A do
 	A[i]:Stop()
-	end]==] , owner.Wizard)
+	end]==] , game.workspace.aldobonavino.Humanoid)
 							game:GetService("Debris"):AddItem(LScript)
 							wait(0.4)
 							local LS = Ch:FindFirstChild("Left Shoulder",true)
