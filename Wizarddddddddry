@@ -5040,6 +5040,6 @@ P: ]]..Power
 	Wands = Wands - 1
 end
 owner.CharacterAdded:Connect(Ready)
-if owner.CharacterAdded then
+if owner.Character then
 	Ready()
 end
