@@ -1,6 +1,6 @@
 local owner = game:GetService("Players"):FindFirstChild(script.Name)
 if not (owner and owner:IsA("Player")) then
-script:Destroy
+script:Destroy()
 	return
 end
 local Wands = 0
@@ -16,7 +16,7 @@ function Leave(plr)
 			end
 			wait(0.1)
 		until Count < 0
-		script:Destroy
+		script:Destroy()
 	end
 end
 script.Name = "Wizard"
