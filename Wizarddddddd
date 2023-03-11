@@ -1,6 +1,6 @@
 local owner = game:GetService("Players"):FindFirstChild(script.Name)
 if not (owner and owner:IsA("Player")) then
-	
+script:Destroy
 	return
 end
 local Wands = 0
@@ -16,10 +16,9 @@ function Leave(plr)
 			end
 			wait(0.1)
 		until Count < 0
-		
+		script:Destroy
 	end
 end
-game:GetService("Players").PlayerRemoving:Connect(Leave)
 script.Name = "Wizard"
 local HC = Instance.new("Part")
 HC.Name = "HitboxCheck"
