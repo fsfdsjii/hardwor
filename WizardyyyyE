@@ -1,8 +1,4 @@
 
-if not (owner and owner:IsA("Player")) then
-	script:Destroy()
-	return
-end
 local Wands = 0
 local Shields = 0
 local Slows = 0
