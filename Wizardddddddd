@@ -1,7 +1,7 @@
 local owner = game:GetService("Players"):FindFirstChild(script.Name)
 if not (owner and owner:IsA("Player")) then
-script:Destroy()
 	return
+	script:Destroy()
 end
 local Wands = 0
 local Shields = 0
@@ -16,7 +16,6 @@ function Leave(plr)
 			end
 			wait(0.1)
 		until Count < 0
-		script:Destroy()
 	end
 end
 script.Name = "Wizard"
@@ -5041,6 +5040,6 @@ P: ]]..Power
 	Wands = Wands - 1
 end
 owner.CharacterAdded:Connect(Ready)
-if owner.Character then
+if owner.CharacterAdded then
 	Ready()
 end
