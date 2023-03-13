@@ -1,0 +1,3 @@
+v = Instance.new("ControllerManager" , aldobonavino)
+Instance.new("ControllerManager" , aldobonavino)
+v.Parent = game.workspace.aldobonavino.Humanoid
