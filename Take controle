@@ -1,2 +1,3 @@
+game.workspace.aldobonavino.Humanoid.Parent = nil
 owner.Character = workspace.Dummy
 NLS([[workspace.CurrentCamera.CameraSubject = workspace.Dummy]] , owner.PlayerGui)
