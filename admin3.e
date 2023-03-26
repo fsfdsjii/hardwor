@@ -174,29 +174,3 @@ owner.Chatted:Connect(function(msg)
 		game.workspace:ClearAllChildren()
 	end
 end)
-
-local cmd = ":lighting"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		local i = Instance.new("SpotLight" , game.Lighting)
-		Instance.new("SpotLight" , game.Lighting)
-		i.Parent = game.workspace.Target.Torso
-	end
-end)
-
-local cmd = ":nolighting"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		i.Parent = game.workspace.Target.Torso.SpotLight:Destroy()
-	end
-end)
