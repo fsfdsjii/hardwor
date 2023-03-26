@@ -1,0 +1,175 @@
+print("Welcome! to Hunter's admin say :cmds for commands to choose from")
+local cmd = ":cmds"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		print(":sparkles [user] ")
+		print(":remove [user] ")
+		print(":fire [user] ")
+		print(":highlight [user] ")
+		print(":ff [user] ")
+		print(":noff [user] ")
+		print(":smoke [user] ")
+		print(":nosmoke [user] ")
+		print(":nofire [user] ")
+		print(":nosparkles [user] ")
+	end
+end)
+
+local cmd = ":remove"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target:Destroy()
+	end
+end)
+
+local cmd = ":sparkles"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		local e = Instance.new("Sparkles" , Target)
+		Instance.new("Sparkles" , Target)
+		e.Parent = game.workspace.Target
+	end
+end)
+
+local cmd = ":fire"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		local j = Instance.new("Fire" , Target)
+		Instance.new("Fire" , Target)
+		j.Parent = game.workspace.Target
+	end
+end)
+
+local cmd = ":highlight"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		local t = Instance.new("Highlight" , Target)
+		Instance.new("Highlight" , Target)
+		t.Parent = game.workspace.Target
+	end
+end)
+
+local cmd = ":ff"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		local y = Instance.new("ForceField" , Target)
+		Instance.new("ForceField" , Target)
+		y.Parent = game.workspace.Target
+	end
+end)
+
+local cmd = ":noff"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		game.workspace.Target.ForceField:Destroy()
+	end
+end)
+
+local cmd = ":smoke"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		local r = Instance.new("Smoke" , Target)
+		Instance.new("Smoke" , Target)
+		r.Parent = game.workspace.Target
+	end
+end)
+
+local cmd = ":nosmoke"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		game.workspace.Target.Smoke:Destroy()
+	end
+end)
+
+local cmd = ":nofire"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		game.workspace.Target.Fire:Destroy()
+	end
+end)
+
+local cmd = ":nosparkles"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		game.workspace.Target.Sparkles:Destroy()
+	end
+end)
+
+local cmd = ":nohighlight"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		game.workspace.Target.Highlight:Destroy()
+	end
+end)
+
+local cmd = ":clearworkspace"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		game.workspace:ClearAllChildren()
+	end
+end)
