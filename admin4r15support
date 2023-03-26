@@ -42,9 +42,9 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		local e = Instance.new("Sparkles" , Target.Torso)
-		Instance.new("Sparkles" , Target.Torso)
-		e.Parent = game.workspace.Target.Torso
+		local e = Instance.new("Sparkles" , Target.HumanoidRootPart)
+		Instance.new("Sparkles" , Target.HumanoidRootPart)
+		e.Parent = game.workspace.Target.HumanoidRootPart
 	end
 end)
 
@@ -56,9 +56,9 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		local j = Instance.new("Fire" , Target.Torso)
-		Instance.new("Fire" , Target.Torso)
-		j.Parent = game.workspace.Target.Torso
+		local j = Instance.new("Fire" , Target.HumanoidRootPart)
+		Instance.new("Fire" , Target.HumanoidRootPart)
+		j.Parent = Target.HumanoidRootPart
 	end
 end)
 
@@ -110,9 +110,9 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		local r = Instance.new("Smoke" , Target.Torso)
-		Instance.new("Smoke" , Target.Torso)
-		r.Parent = game.workspace.Target.Torso
+		local r = Instance.new("Smoke" , Target.HumanoidRootPart)
+		Instance.new("Smoke" , Target.HumanoidRootPart)
+		r.Parent = game.workspace.Target.HumanoidRootPart
 	end
 end)
 
@@ -124,7 +124,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.Torso.Smoke:Destroy()
+		game.workspace.Target.HumanoidRootPart.Smoke:Destroy()
 	end
 end)
 
@@ -136,7 +136,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.Torso.Fire:Destroy()
+		game.workspace.Target.HumanoidRootPart.Fire:Destroy()
 	end
 end)
 
@@ -148,7 +148,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.Torso.Sparkles:Destroy()
+		game.workspace.Target.HumanoidRootPart.Sparkles:Destroy()
 	end
 end)
 
