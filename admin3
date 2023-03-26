@@ -174,7 +174,7 @@ owner.Chatted:Connect(function(msg)
 		game.workspace:ClearAllChildren()
 	end
 end)
-print(":lighting is broken for now")
+
 local cmd = ":lighting"
 local seperator = " "
 
@@ -183,8 +183,20 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		i = Instance.new("SpotLight" , Target)
-		Instance.new("SpotLight" , Lighting)
-		i.Parent = game.workspace.Target
+		local i = Instance.new("SpotLight" , Target.Torso)
+		Instance.new("SpotLight" , Target.Torso)
+		i.Parent = game.Lighting
+	end
+end)
+
+local cmd = ":nolighting"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		i.Parent = game.Lighting.SpotLight:Destroy()
 	end
 end)
