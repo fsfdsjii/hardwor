@@ -183,9 +183,9 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		local i = Instance.new("SpotLight" , Target.Torso)
-		Instance.new("SpotLight" , Target.Torso)
-		i.Parent = game.Lighting
+		local i = Instance.new("SpotLight" , game.Lighting)
+		Instance.new("SpotLight" , game.Lighting)
+		i.Parent = game.Target.Torso
 	end
 end)
 
@@ -197,6 +197,6 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		i.Parent = game.Lighting.SpotLight:Destroy()
+		i.Parent = game.Target.Torso.SpotLight:Destroy()
 	end
 end)
