@@ -17,6 +17,7 @@ owner.Chatted:Connect(function(msg)
 		print(":nosmoke [user] ")
 		print(":nofire [user] ")
 		print(":nosparkles [user] ")
+		print(":clearworkspace")
 	end
 end)
 
@@ -40,9 +41,9 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		local e = Instance.new("Sparkles" , Target)
-		Instance.new("Sparkles" , Target)
-		e.Parent = game.workspace.Target
+		local e = Instance.new("Sparkles" , Target.Torso)
+		Instance.new("Sparkles" , Target.Torso)
+		e.Parent = game.workspace.Target.Torso
 	end
 end)
 
@@ -54,9 +55,9 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		local j = Instance.new("Fire" , Target)
-		Instance.new("Fire" , Target)
-		j.Parent = game.workspace.Target
+		local j = Instance.new("Fire" , Target.Torso)
+		Instance.new("Fire" , Target.Torso)
+		j.Parent = game.workspace.Target.Torso
 	end
 end)
 
@@ -108,9 +109,9 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		local r = Instance.new("Smoke" , Target)
-		Instance.new("Smoke" , Target)
-		r.Parent = game.workspace.Target
+		local r = Instance.new("Smoke" , Target.Torso)
+		Instance.new("Smoke" , Target.Torso)
+		r.Parent = game.workspace.Target.Torso
 	end
 end)
 
@@ -122,7 +123,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.Smoke:Destroy()
+		game.workspace.Target.Torso.Smoke:Destroy()
 	end
 end)
 
@@ -134,7 +135,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.Fire:Destroy()
+		game.workspace.Target.Torso.Fire:Destroy()
 	end
 end)
 
@@ -146,7 +147,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.Sparkles:Destroy()
+		game.workspace.Target.Torso.Sparkles:Destroy()
 	end
 end)
 
@@ -171,5 +172,19 @@ owner.Chatted:Connect(function(msg)
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		game.workspace:ClearAllChildren()
+	end
+end)
+print(":lighting is broken for now")
+local cmd = ":lighting"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		i = Instance.new("SpotLight" , Target)
+		Instance.new("SpotLight" , Lighting)
+		i.Parent = game.workspace.Target
 	end
 end)
