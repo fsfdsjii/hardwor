@@ -19,6 +19,7 @@ owner.Chatted:Connect(function(msg)
 		print(":sword [user] [ONLY WORKS ON Void, Los angeles] ")
 		print(":gun [user] [ONLY WORKS ON Void, Los angeles] ")
 		print(":bomb [user] [ONLY WORKS ON Void, Los angeles] ")
+		print(":jump [user] ")
 	end
 end)
 
@@ -209,5 +210,17 @@ owner.Chatted:Connect(function(msg)
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		f = game:GetService("InsertService") :LoadAsset(11563251) f.Parent = game.Workspace f:MoveTo(game.Workspace.Target.Torso.Position)
+	end
+end)
+
+local cmd = ":jump"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target.Humanoid.Jump = true
 	end
 end)
