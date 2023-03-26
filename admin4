@@ -5,8 +5,6 @@ local seperator = " "
 owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
 		print(":sparkles [user] ")
 		print(":remove [user] ")
 		print(":fire [user] ")
@@ -18,6 +16,9 @@ owner.Chatted:Connect(function(msg)
 		print(":nofire [user] ")
 		print(":nosparkles [user] ")
 		print(":clearworkspace")
+		print(":sword [user] [ONLY WORKS ON Void, Los angeles] ")
+		print(":gun [user] [ONLY WORKS ON Void, Los angeles] ")
+		print(":bomb [user] [ONLY WORKS ON Void, Los angeles] ")
 	end
 end)
 
@@ -172,5 +173,41 @@ owner.Chatted:Connect(function(msg)
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		game.workspace:ClearAllChildren()
+	end
+end)
+
+local cmd = ":sword"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		f = game:GetService("InsertService") :LoadAsset(125013769) f.Parent = game.Workspace f:MoveTo(game.Workspace.Target.Torso.Position)
+	end
+end)
+
+local cmd = ":gun"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		f = game:GetService("InsertService") :LoadAsset(97885508) f.Parent = game.Workspace f:MoveTo(game.Workspace.Target.Torso.Position)
+	end
+end)
+
+local cmd = ":bomb"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		f = game:GetService("InsertService") :LoadAsset(11563251) f.Parent = game.Workspace f:MoveTo(game.Workspace.Target.Torso.Position)
 	end
 end)
