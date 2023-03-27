@@ -22,6 +22,8 @@ owner.Chatted:Connect(function(msg)
 		print(":jump [user] ")
 		print(":spin [user] ")
 		print(":stun [user] ")
+		print(":particle [user] ")
+		print(":noparticle [user] ")
 	end
 end)
 
