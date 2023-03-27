@@ -257,8 +257,7 @@ local function spin(input, gpe)
 		BV.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
 		BV.Velocity = hmrp.CFrame.lookVector * 120
 		hum.PlatformStand = true
-		--end
-		]]
+		
 	end
 end
 	end
