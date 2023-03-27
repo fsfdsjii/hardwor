@@ -24,6 +24,8 @@ owner.Chatted:Connect(function(msg)
 		print(":stun [user] ")
 		print(":particle [user] ")
 		print(":noparticle [user] ")
+		print(":kill [user] ")
+		print(":god [user] ")
 	end
 end)
 
