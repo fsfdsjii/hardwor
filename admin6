@@ -20,6 +20,8 @@ owner.Chatted:Connect(function(msg)
 		print(":gun [user] [ONLY WORKS ON Void, Los angeles] ")
 		print(":bomb [user] [ONLY WORKS ON Void, Los angeles] ")
 		print(":jump [user] ")
+		print(":spin [user] ")
+		print(":stun [user] ")
 	end
 end)
 
@@ -222,5 +224,54 @@ owner.Chatted:Connect(function(msg)
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		Target.Humanoid.Jump = true
+	end
+end)
+
+local cmd = ":spin"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		local UIS = game:GetService("UserInputService")
+local player = game.Players.LocalPlayer
+local character = player.Character
+local hmrp = character:WaitForChild("HumanoidRootPart")
+local hum = character:WaitForChild("Humanoid")
+
+local function spin(input, gpe)
+	if gpe then
+		return
+	end
+	if input.KeyCode == Enum.KeyCode.E then
+		--while wait() do
+		--hmrp.CFrame = hmrp.CFrame * CFrame.Angles(0,.5,0)
+		--hmrp.Orientation = hmrp.Orientation + Vector3.new(90,0,0)
+		hmrp.CFrame = hmrp.CFrame*CFrame.new(0, 0, -3) * CFrame.Angles(90,0,0)
+		local BodyAngularVelocity = Instance.new("BodyAngularVelocity", hmrp)
+		BodyAngularVelocity.AngularVelocity = Vector3.new(0,10,0)
+		
+		local BV = Instance.new("BodyVelocity", hmrp)
+		BV.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+		BV.Velocity = hmrp.CFrame.lookVector * 120
+		hum.PlatformStand = true
+		--end
+		]]
+	end
+end
+	end
+end)
+
+local cmd = ":stun"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		game.workspace.Target.HumanoidRootPart:Destroy()
 	end
 end)
