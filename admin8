@@ -302,3 +302,28 @@ owner.Chatted:Connect(function(msg)
 		game.workspace.Target.HumanoidRootPart.ParticleEmitter:Destroy()
 	end
 end)
+
+local cmd = ":kill"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		game.workspace.Target.Humanoid.Health = 0
+	end
+end)
+
+local cmd = ":god"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		game.workspace.Target.Humanoid.Health = math.huge
+		game.workspace.Target.Humanoid.Health = math.huge
+	end
+end)
