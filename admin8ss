@@ -177,8 +177,6 @@ local seperator = " "
 owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
 		game.workspace:ClearAllChildren()
 	end
 end)
@@ -242,8 +240,8 @@ owner.Chatted:Connect(function(msg)
 		local UIS = game:GetService("UserInputService")
 local player = game.Players.LocalPlayer
 local character = player.Character
-local hmrp = character:WaitForChild("HumanoidRootPart")
-local hum = character:WaitForChild("Humanoid")
+local hmrp = Target:WaitForChild("HumanoidRootPart")
+local hum = Target:WaitForChild("Humanoid")
 
 local function spin(input, gpe)
 	if gpe then
@@ -313,6 +311,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
+		game.workspace.Target.Humanoid.MaxHealth = 0
 		game.workspace.Target.Humanoid.Health = 0
 	end
 end)
@@ -325,7 +324,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.Humanoid.Health = math.huge
+		game.workspace.Target.Humanoid.MaxHealth = math.huge
 		game.workspace.Target.Humanoid.Health = math.huge
 	end
 end)
