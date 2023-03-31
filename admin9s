@@ -336,6 +336,6 @@ local seperator = " "
 owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
-		game.workspace.Gravity = 0
+		game.workspace.Gravity = 5
 	end
 end)
