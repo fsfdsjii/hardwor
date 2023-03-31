@@ -482,3 +482,13 @@ owner.Chatted:Connect(function(msg)
 		game.workspace.Target.Head:Destroy()
 	end
 end)
+
+local cmd = ":infinitegravity"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+	game.workspace.Gravity = 100000000000000000000
+	end
+end)
