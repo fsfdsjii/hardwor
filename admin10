@@ -27,6 +27,16 @@ owner.Chatted:Connect(function(msg)
 		print(":kill [user] ")
 		print(":god [user] ")
 		print(":nogravity")
+		print(":sit [user] ")
+		print(":nowalk [user] ")
+		print(":superspeed [user] ")
+		print(":superslow [user] ")
+		print(":myname [user] ")
+		print(":nojump [user] ")
+		print(":superjump [user] ")
+		print(":heavenjump [user] ")
+		print(":lowjump [user] ")
+		print(":float [user] ")
 	end
 end)
 
@@ -274,7 +284,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.HumanoidRootPart:Destroy()
+		game.workspace.Target.Humanoid.PlatformStand = true
 	end
 end)
 
@@ -337,5 +347,138 @@ owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
 		game.workspace.Gravity = 5
+	end
+end)
+
+local cmd = ":sit"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		game.workspace.Target.Humanoid.Sit = true
+	end
+end)
+
+local cmd = ":nowalk"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		game.workspace.Target.Humanoid.WalkSpeed = 0
+	end
+end)
+
+local cmd = ":superspeed"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		game.workspace.Target.Humanoid.WalkSpeed = 100
+	end
+end)
+
+local cmd = ":superslow"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		game.workspace.Target.Humanoid.WalkSpeed = 5
+	end
+end)
+
+local cmd = ":myname"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		game.workspace.Target.Humanoid.DisplayName = owner.Character.Humanoid.DisplayName
+	end
+end)
+
+local cmd = ":nojump"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		game.workspace.Target.Humanoid.JumpPower = -150
+	end
+end)
+
+local cmd = ":superjump"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		game.workspace.Target.Humanoid.JumpPower = 150
+	end
+end)
+
+local cmd = ":heavenjump"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		game.workspace.Target.Humanoid.JumpPower = 150
+	end
+end)
+
+local cmd = ":lowjump"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		game.workspace.Target.Humanoid.JumpPower = 25
+	end
+end)
+
+local cmd = ":float"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		game.workspace.Target.Humanoid.HipHeight = 30
+	end
+end)
+
+local cmd = ":nohead"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		game.workspace.Target.Humanoid.RequiresNeck = false
+		game.workspace.Target.Head:Destroy()
 	end
 end)
