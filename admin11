@@ -37,6 +37,10 @@ owner.Chatted:Connect(function(msg)
 		print(":heavenjump [user] ")
 		print(":lowjump [user] ")
 		print(":float [user] ")
+		print(":infinitegravity [user] ")
+		print(":nobrkjtsondeath [user] ")
+		print(":freeze [user] ")
+		print(":nofreeze [user] ")
 	end
 end)
 
@@ -492,3 +496,47 @@ owner.Chatted:Connect(function(msg)
 	game.workspace.Gravity = 100000000000000000000
 	end
 end)
+
+local cmd = ":nobrkjtsondeath"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+	print("nobreakjointsondeath")
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target.Humanoid.BreakJointsOnDeath = true
+	end
+end)
+
+local cmd = ":freeze"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+	print("nobreakjointsondeath")
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target.Head.Anchored = true
+		Target.HumanoidRootPart.Anchored = true
+		Target.Torso.Anchored = true
+	end
+end)
+
+local cmd = ":nofreeze"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+	print("nobreakjointsondeath")
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target.Head.Anchored = false
+		Target.HumanoidRootPart.Anchored = false
+		Target.Torso.Anchored = false
+	end
+end)
+
