@@ -116,7 +116,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.ForceField:Destroy()
+		Target.ForceField:Destroy()
 	end
 end)
 
@@ -142,7 +142,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.HumanoidRootPart.Smoke:Destroy()
+		Target.HumanoidRootPart.Smoke:Destroy()
 	end
 end)
 
@@ -154,7 +154,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.HumanoidRootPart.Fire:Destroy()
+		Target.HumanoidRootPart.Fire:Destroy()
 	end
 end)
 
@@ -178,7 +178,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.Highlight:Destroy()
+		Target.Highlight:Destroy()
 	end
 end)
 
@@ -284,7 +284,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.Humanoid.PlatformStand = true
+		Target.Humanoid.PlatformStand = true
 	end
 end)
 
@@ -310,7 +310,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.HumanoidRootPart.ParticleEmitter:Destroy()
+		Target.HumanoidRootPart.ParticleEmitter:Destroy()
 	end
 end)
 
@@ -322,8 +322,8 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.Humanoid.MaxHealth = 0
-		game.workspace.Target.Humanoid.Health = 0
+		Target.Humanoid.MaxHealth = 0
+		Target.Humanoid.Health = 0
 	end
 end)
 
@@ -358,7 +358,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.Humanoid.Sit = true
+		Target.Humanoid.Sit = true
 	end
 end)
 
@@ -370,7 +370,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.Humanoid.WalkSpeed = 0
+		Target.Humanoid.WalkSpeed = 0
 	end
 end)
 
@@ -382,7 +382,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.Humanoid.WalkSpeed = 100
+		Target.Humanoid.WalkSpeed = 100
 	end
 end)
 
@@ -394,7 +394,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.Humanoid.WalkSpeed = 5
+		Target.Humanoid.WalkSpeed = 5
 	end
 end)
 
@@ -406,7 +406,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.Humanoid.DisplayName = owner.Character.Humanoid.DisplayName
+		Target.Humanoid.DisplayName = owner.Character.Humanoid.DisplayName
 	end
 end)
 
@@ -418,7 +418,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.Humanoid.JumpPower = -150
+		Target.Humanoid.JumpPower = -150
 	end
 end)
 
@@ -430,7 +430,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.Humanoid.JumpPower = 150
+		Target.Humanoid.JumpPower = 150
 	end
 end)
 
@@ -442,7 +442,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.Humanoid.JumpPower = 150
+		Target.Humanoid.JumpPower = 150
 	end
 end)
 
@@ -454,7 +454,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.Humanoid.JumpPower = 25
+		Target.Humanoid.JumpPower = 25
 	end
 end)
 
@@ -466,7 +466,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.Humanoid.HipHeight = 30
+		Target.Humanoid.HipHeight = 30
 	end
 end)
 
@@ -478,8 +478,8 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.Humanoid.RequiresNeck = false
-		game.workspace.Target.Head:Destroy()
+		Target.Humanoid.RequiresNeck = false
+		Target.Head:Destroy()
 	end
 end)
 
