@@ -200,7 +200,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		f = game:GetService("InsertService") :LoadAsset(125013769) f.Parent = game.Workspace f:MoveTo(game.Workspace.Target.Torso.Position)
+		f = game:GetService("InsertService") :LoadAsset(125013769) f.Parent = game.Workspace f:MoveTo(Target.HumanoidRootPart.Position)
 	end
 end)
 
@@ -212,7 +212,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		f = game:GetService("InsertService") :LoadAsset(97885508) f.Parent = game.Workspace f:MoveTo(game.Workspace.Target.Torso.Position)
+		f = game:GetService("InsertService") :LoadAsset(97885508) f.Parent = game.Workspace f:MoveTo(Target.HumanoidRootPart.Position)
 	end
 end)
 
@@ -224,7 +224,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		f = game:GetService("InsertService") :LoadAsset(11563251) f.Parent = game.Workspace f:MoveTo(game.Workspace.Target.Torso.Position)
+		f = game:GetService("InsertService") :LoadAsset(11563251) f.Parent = game.Workspace f:MoveTo(Target.HumanoidRootPart.Position)
 	end
 end)
 
