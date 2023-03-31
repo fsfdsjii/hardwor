@@ -26,6 +26,7 @@ owner.Chatted:Connect(function(msg)
 		print(":noparticle [user] ")
 		print(":kill [user] ")
 		print(":god [user] ")
+		print(":nogravity")
 	end
 end)
 
@@ -326,5 +327,15 @@ owner.Chatted:Connect(function(msg)
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		game.workspace.Target.Humanoid.MaxHealth = math.huge
 		game.workspace.Target.Humanoid.Health = math.huge
+	end
+end)
+
+local cmd = ":nogravity"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		game.workspace.Gravity = 0
 	end
 end)
