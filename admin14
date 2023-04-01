@@ -45,6 +45,7 @@ owner.Chatted:Connect(function(msg)
 		print(":nofog")
 		print(":nofloat [user] ")
 		print(":control [user] ")
+		print(":clearlighting")
 	end
 end)
 
@@ -584,6 +585,17 @@ owner.Chatted:Connect(function(msg)
 		game.workspace.aldobonavino.Humanoid.Parent = nil
 owner.Character = Target
 NLS([[workspace.CurrentCamera.CameraSubject = Target]] , owner.PlayerGui)
+
+	end
+end)
+
+local cmd = ":clearlighting"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		game.Lighting:ClearAllChildren()
 
 	end
 end)
