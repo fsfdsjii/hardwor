@@ -42,6 +42,7 @@ owner.Chatted:Connect(function(msg)
 		print(":freeze [user] ")
 		print(":nofreeze [user] ")
 		print(":fog [user] ")
+		print(":nofog [user] ")
 	end
 end)
 
@@ -547,5 +548,15 @@ owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
 		game.Lighting.FogEnd = 100
+	end
+end)
+
+local cmd = ":nofog"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		game.Lighting.FogEnd = 100000
 	end
 end)
