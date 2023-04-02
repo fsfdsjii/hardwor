@@ -54,6 +54,9 @@ owner.Chatted:Connect(function(msg)
 		print(":paintbucket [user] [ONLY WORKS ON Void, Los angeles] ")
 		print(":flamethrower [user] [ONLY WORKS ON Void, Los angeles] ")
 		print(":cars [user] [ONLY WORKS ON Void, Los angeles] ")
+		print(":newteam")
+		print(":clearteams")
+		print(":newyournameteam")
 	end
 end)
 
@@ -435,7 +438,8 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		Target.Humanoid.JumpPower = -150
+		Target.Humanoid.UseJumpPower = true
+		Target.Humanoid.JumpPower = 0
 	end
 end)
 
@@ -701,5 +705,41 @@ owner.Chatted:Connect(function(msg)
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		f = game:GetService("InsertService") :LoadAsset(6418221666) f.Parent = game.Workspace f:MoveTo(Target.HumanoidRootPart.Position)
+	end
+end)
+
+local cmd = ":newteam"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		e = Instance.new("Team" , Teams)
+		Instance.new("Team" , Teams)
+		e.Parent = game.Teams
+		e.Name = "New Team"
+	end
+end)
+
+local cmd = ":clearteams"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		game.Teams:ClearAllChildren()
+	end
+end)
+
+local cmd = ":newyournameteam"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		e = Instance.new("Team" , Teams)
+		Instance.new("Team" , Teams)
+		e.Parent = game.Teams
+		e.Name = owner.Character.Name
 	end
 end)
