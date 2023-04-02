@@ -57,6 +57,10 @@ owner.Chatted:Connect(function(msg)
 		print(":newteam")
 		print(":clearteams")
 		print(":newyournameteam")
+		print(":newtool")
+		print(":newspawntool")
+		print(":message")
+		print(":nomessage")
 	end
 end)
 
@@ -741,5 +745,59 @@ owner.Chatted:Connect(function(msg)
 		Instance.new("Team" , Teams)
 		e.Parent = game.Teams
 		e.Name = owner.Character.Name
+	end
+end)
+
+local cmd = ":newtool"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+f = Instance.new("Part" , workspace)
+f.Name = "Handle"
+local e = Instance.new("Tool" , workspace)
+Instance.new("Tool" , workspace)
+e.Parent = game.workspace
+f.Parent = e
+f.Size = Vector3.new(1, 1, 1)
+	end
+end)
+
+local cmd = ":newspawntool"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+f = Instance.new("SpawnLocation" , workspace)
+f.Name = "Handle"
+local e = Instance.new("Tool" , workspace)
+Instance.new("Tool" , workspace)
+e.Parent = game.workspace
+f.Parent = e
+f.Size = Vector3.new(1, 1, 1)
+	end
+end)
+
+local cmd = ":message"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+e = Instance.new("Message" , workspace)
+e.Parent = game.workspace
+e.Text = "New Message New Message New Message New Message From User: Admin, owner: Hello guys"
+	end
+end)
+
+local cmd = ":nomessage"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+game.workspace.Message:Destroy()
 	end
 end)
