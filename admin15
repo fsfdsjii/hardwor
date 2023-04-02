@@ -609,7 +609,7 @@ owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
 		e = Instance.new("Explosion" , workspace)
-e.Position = Target.Position
+e.Position = Target.HumanoidRootPart.Position
 
 	end
 end)
