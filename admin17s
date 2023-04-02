@@ -183,7 +183,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.HumanoidRootPart.Sparkles:Destroy()
+		Target.HumanoidRootPart.Sparkles:Destroy()
 	end
 end)
 
