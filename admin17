@@ -51,6 +51,9 @@ owner.Chatted:Connect(function(msg)
 		print(":bow [user] [ONLY WORKS ON Void, Los angeles] ")
 		print(":rainbowcarpet [user] [ONLY WORKS ON Void, Los angeles] ")
 		print(":blowdryer [user] [ONLY WORKS ON Void, Los angeles] ")
+		print(":paintbucket [user] [ONLY WORKS ON Void, Los angeles] ")
+		print(":flamethrower [user] [ONLY WORKS ON Void, Los angeles] ")
+		print(":cars [user] [ONLY WORKS ON Void, Los angeles] ")
 	end
 end)
 
@@ -662,5 +665,41 @@ owner.Chatted:Connect(function(msg)
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		f = game:GetService("InsertService") :LoadAsset(11719016) f.Parent = game.Workspace f:MoveTo(Target.HumanoidRootPart.Position)
+	end
+end)
+
+local cmd = ":paintbucket"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		f = game:GetService("InsertService") :LoadAsset(18474459) f.Parent = game.Workspace f:MoveTo(Target.HumanoidRootPart.Position)
+	end
+end)
+
+local cmd = ":flamethrower"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		f = game:GetService("InsertService") :LoadAsset(33879504) f.Parent = game.Workspace f:MoveTo(Target.HumanoidRootPart.Position)
+	end
+end)
+
+local cmd = ":cars"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		f = game:GetService("InsertService") :LoadAsset(6418221666) f.Parent = game.Workspace f:MoveTo(Target.HumanoidRootPart.Position)
 	end
 end)
