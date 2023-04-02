@@ -48,6 +48,9 @@ owner.Chatted:Connect(function(msg)
 		print(":clearlighting")
 		print(":explode [user] ")
 		print(":tictactoe [user] [ONLY WORKS ON Void, Los angeles] ")
+		print(":bow [user] [ONLY WORKS ON Void, Los angeles] ")
+		print(":rainbowcarpet [user] [ONLY WORKS ON Void, Los angeles] ")
+		print(":blowdryer [user] [ONLY WORKS ON Void, Los angeles] ")
 	end
 end)
 
@@ -609,7 +612,7 @@ owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
 		e = Instance.new("Explosion" , workspace)
-e.Position = Target.HumanoidRootPart.Position
+e.Position = workspace.Target.HumanoidRootPart.Position
 
 	end
 end)
@@ -623,5 +626,41 @@ owner.Chatted:Connect(function(msg)
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		f = game:GetService("InsertService") :LoadAsset(16924676) f.Parent = game.Workspace f:MoveTo(Target.HumanoidRootPart.Position)
+	end
+end)
+
+local cmd = ":bow"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		f = game:GetService("InsertService") :LoadAsset(2136389582) f.Parent = game.Workspace f:MoveTo(Target.HumanoidRootPart.Position)
+	end
+end)
+
+local cmd = ":rainbowcarpet"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		f = game:GetService("InsertService") :LoadAsset(225921000) f.Parent = game.Workspace f:MoveTo(Target.HumanoidRootPart.Position)
+	end
+end)
+
+local cmd = ":blowdryer"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		f = game:GetService("InsertService") :LoadAsset(11719016) f.Parent = game.Workspace f:MoveTo(Target.HumanoidRootPart.Position)
 	end
 end)
