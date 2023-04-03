@@ -66,6 +66,7 @@ owner.Chatted:Connect(function(msg)
 		print(":visible [user] ")
 		print(":mirror [user] ")
 		print(":nomirror [user] ")
+		print(":black [user] ")
 	end
 end)
 
@@ -543,6 +544,14 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
+		local RightArm = Character["Right Arm"]
+local LeftArm = Character["Left Arm"]
+local RightLeg = Character["Right Leg"]
+local LeftLeg = Character["Left Leg"]
+                Target.LeftLeg.Anchored = true
+		Target.RightLeg.Anchored = true
+                Target.RightArm.Anchored = true
+                Target.LeftArm.Anchored = true
 		Target.Head.Anchored = true
 		Target.HumanoidRootPart.Anchored = true
 		Target.Torso.Anchored = true
@@ -557,6 +566,14 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
+				local RightArm = Character["Right Arm"]
+local LeftArm = Character["Left Arm"]
+local RightLeg = Character["Right Leg"]
+local LeftLeg = Character["Left Leg"]
+                Target.LeftLeg.Anchored = false
+		Target.RightLeg.Anchored = false
+                Target.RightArm.Anchored = false
+                Target.LeftArm.Anchored = false
 		Target.Head.Anchored = false
 		Target.HumanoidRootPart.Anchored = false
 		Target.Torso.Anchored = false
@@ -827,10 +844,10 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		local RightArm = Target["Right Arm"]
-local LeftArm = Target["Left Arm"]
-local RightLeg = Target["Right Leg"]
-local LeftLeg = Target["Left Leg"]
+		local RightArm = Character["Right Arm"]
+local LeftArm = Character["Left Arm"]
+local RightLeg = Character["Right Leg"]
+local LeftLeg = Character["Left Leg"]
 Target.RightArm.Transparency = 1
 Target.LeftLeg.Transparency = 1
 Target.LeftArm.Transparency = 1
@@ -849,10 +866,10 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-local RightArm = Target["Right Arm"]
-local LeftArm = Target["Left Arm"]
-local RightLeg = Target["Right Leg"]
-local LeftLeg = Target["Left Leg"]
+local RightArm = Character["Right Arm"]
+local LeftArm = Character["Left Arm"]
+local RightLeg = Character["Right Leg"]
+local LeftLeg = Character["Left Leg"]
 Target.RightArm.Transparency = 0
 Target.LeftLeg.Transparency = 0
 Target.LeftArm.Transparency = 0
@@ -870,10 +887,10 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-local RightArm = Target["Right Arm"]
-local LeftArm = Target["Left Arm"]
-local RightLeg = Target["Right Leg"]
-local LeftLeg = Target["Left Leg"]
+local RightArm = Character["Right Arm"]
+local LeftArm = Character["Left Arm"]
+local RightLeg = Character["Right Leg"]
+local LeftLeg = Character["Left Leg"]
 Target.RightArm.Reflection = 1
 Target.LeftLeg.Reflection = 1
 Target.LeftArm.Reflection = 1
@@ -891,10 +908,10 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-local RightArm = Target["Right Arm"]
-local LeftArm = Target["Left Arm"]
-local RightLeg = Target["Right Leg"]
-local LeftLeg = Target["Left Leg"]
+local RightArm = Character["Right Arm"]
+local LeftArm = Character["Left Arm"]
+local RightLeg = Character["Right Leg"]
+local LeftLeg = Character["Left Leg"]
 Target.RightArm.Reflection = 0
 Target.LeftLeg.Reflection = 0
 Target.LeftArm.Reflection = 0
@@ -904,23 +921,3 @@ Target.Torso.Reflection = 0
 	end
 end)
 
-local cmd = ":black"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-local RightArm = Target["Right Arm"]
-local LeftArm = Target["Left Arm"]
-local RightLeg = Target["Right Leg"]
-local LeftLeg = Target["Left Leg"]
-Target.RightArm.Color = Color3.new(0, 0, 0)
-Target.LeftLeg.Color = Color3.new(0, 0, 0)
-Target.LeftArm.Color = Color3.new(0, 0, 0)
-Target.RightLeg.Color = Color3.new(0, 0, 0)
-Target.Head.Color = Color3.new(0, 0, 0)
-Target.Torso.Color = Color3.new(0, 0, 0)
-	end
-end)
