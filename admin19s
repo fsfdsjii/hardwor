@@ -61,6 +61,7 @@ owner.Chatted:Connect(function(msg)
 		print(":newspawntool")
 		print(":message")
 		print(":nomessage")
+		print(":missile [user] ")
 	end
 end)
 
@@ -799,5 +800,17 @@ owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
 game.workspace.Message:Destroy()
+	end
+end)
+
+local cmd = ":missile"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		f = game:GetService("InsertService") :LoadAsset(67747912) f.Parent = game.Workspace f:MoveTo(Target.HumanoidRootPart.Position)
 	end
 end)
