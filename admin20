@@ -61,7 +61,11 @@ owner.Chatted:Connect(function(msg)
 		print(":newspawntool")
 		print(":message")
 		print(":nomessage")
-		print(":missile [user] ")
+		print(":missile [user] [ONLY WORKS ON Void, Los angeles] ")
+		print(":invisible [user] ")
+		print(":visible [user] ")
+		print(":mirror [user] ")
+		print(":nomirror [user] ")
 	end
 end)
 
@@ -812,5 +816,111 @@ owner.Chatted:Connect(function(msg)
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		f = game:GetService("InsertService") :LoadAsset(67747912) f.Parent = game.Workspace f:MoveTo(Target.HumanoidRootPart.Position)
+	end
+end)
+
+local cmd = ":invisible"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		local RightArm = Target["Right Arm"]
+local LeftArm = Target["Left Arm"]
+local RightLeg = Target["Right Leg"]
+local LeftLeg = Target["Left Leg"]
+Target.RightArm.Transparency = 1
+Target.LeftLeg.Transparency = 1
+Target.LeftArm.Transparency = 1
+Target.RightLeg.Transparency = 1
+Target.Head.Transparency = 1
+Target.Torso.Transparency = 1
+Target.Head.Face.Texture:Destroy()
+	end
+end)
+
+local cmd = ":visible"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+local RightArm = Target["Right Arm"]
+local LeftArm = Target["Left Arm"]
+local RightLeg = Target["Right Leg"]
+local LeftLeg = Target["Left Leg"]
+Target.RightArm.Transparency = 0
+Target.LeftLeg.Transparency = 0
+Target.LeftArm.Transparency = 0
+Target.RightLeg.Transparency = 0
+Target.Head.Transparency = 0
+Target.Torso.Transparency = 0
+	end
+end)
+
+local cmd = ":mirror"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+local RightArm = Target["Right Arm"]
+local LeftArm = Target["Left Arm"]
+local RightLeg = Target["Right Leg"]
+local LeftLeg = Target["Left Leg"]
+Target.RightArm.Reflection = 1
+Target.LeftLeg.Reflection = 1
+Target.LeftArm.Reflection = 1
+Target.RightLeg.Reflection = 1
+Target.Head.Reflection = 1
+Target.Torso.Reflection = 1
+	end
+end)
+
+local cmd = ":nomirror"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+local RightArm = Target["Right Arm"]
+local LeftArm = Target["Left Arm"]
+local RightLeg = Target["Right Leg"]
+local LeftLeg = Target["Left Leg"]
+Target.RightArm.Reflection = 0
+Target.LeftLeg.Reflection = 0
+Target.LeftArm.Reflection = 0
+Target.RightLeg.Reflection = 0
+Target.Head.Reflection = 0
+Target.Torso.Reflection = 0
+	end
+end)
+
+local cmd = ":black"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+local RightArm = Target["Right Arm"]
+local LeftArm = Target["Left Arm"]
+local RightLeg = Target["Right Leg"]
+local LeftLeg = Target["Left Leg"]
+Target.RightArm.Color = Color3.new(0, 0, 0)
+Target.LeftLeg.Color = Color3.new(0, 0, 0)
+Target.LeftArm.Color = Color3.new(0, 0, 0)
+Target.RightLeg.Color = Color3.new(0, 0, 0)
+Target.Head.Color = Color3.new(0, 0, 0)
+Target.Torso.Color = Color3.new(0, 0, 0)
 	end
 end)
