@@ -65,6 +65,9 @@ owner.Chatted:Connect(function(msg)
                 print(":flingglove [user] [ONLY WORKS ON Void, Los angeles] ")
 		print(":drone [user] [ONLY WORKS ON Void, Los angeles] ")
 		print(":picnic [user] [ONLY WORKS ON Void, Los angeles] ")
+		print(":noshirtrpants [user] ")
+		print(":nopants [user] ")
+		print(":noshirt [user] ")
 	end
 end)
 
@@ -851,5 +854,40 @@ owner.Chatted:Connect(function(msg)
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		f = game:GetService("InsertService") :LoadAsset(52625744) f.Parent = game.Workspace f:MoveTo(Target.HumanoidRootPart.Position)
+	end
+end)
+
+local cmd = ":noshirtrpants"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target.Shirt:Destroy()
+		Target.Pants:Destroy()
+	end
+end)
+local cmd = ":noshirt"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target.Shirt:Destroy()
+	end
+end)
+local cmd = ":nopants"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target.Pants:Destroy()
 	end
 end)
