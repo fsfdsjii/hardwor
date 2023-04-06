@@ -62,8 +62,9 @@ owner.Chatted:Connect(function(msg)
 		print(":message")
 		print(":nomessage")
 		print(":missile [user] [ONLY WORKS ON Void, Los angeles] ")
-		print(":view [user] ")
-		print(":noview [user] ")
+                print(":flingglove [user] [ONLY WORKS ON Void, Los angeles] ")
+		print(":drone [user] [ONLY WORKS ON Void, Los angeles] ")
+		print(":picnic [user] [ONLY WORKS ON Void, Los angeles] ")
 	end
 end)
 
@@ -817,7 +818,7 @@ owner.Chatted:Connect(function(msg)
 	end
 end)
 
-local cmd = ":view"
+local cmd = ":flingglove"
 local seperator = " "
 
 owner.Chatted:Connect(function(msg)
@@ -825,11 +826,11 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		NLS([[workspace.CurrentCamera.CameraSubject = workspace.Target]] , owner.PlayerGui)
+		f = game:GetService("InsertService") :LoadAsset(243790334) f.Parent = game.Workspace f:MoveTo(Target.HumanoidRootPart.Position)
 	end
 end)
 
-local cmd = ":noview"
+local cmd = ":drone"
 local seperator = " "
 
 owner.Chatted:Connect(function(msg)
@@ -837,6 +838,18 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		NLS([[workspace.CurrentCamera.CameraSubject = owner.Character]] , owner.PlayerGui)
+		f = game:GetService("InsertService") :LoadAsset(243790334) f.Parent = game.Workspace f:MoveTo(Target.HumanoidRootPart.Position)
+	end
+end)
+
+local cmd = ":picnic"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		f = game:GetService("InsertService") :LoadAsset(52625744) f.Parent = game.Workspace f:MoveTo(Target.HumanoidRootPart.Position)
 	end
 end)
