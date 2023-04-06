@@ -825,7 +825,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		NLS([[workspace.CurrentCamera.CameraSubject = Target]] , owner.PlayerGui)
+		NLS([[workspace.CurrentCamera.CameraSubject = workspace.Target]] , owner.PlayerGui)
 	end
 end)
 
