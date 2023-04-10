@@ -927,7 +927,6 @@ owner.Chatted:Connect(function(msg)
 		Target["Left Arm"].Transparency = 1
 		Target["Right Leg"].Transparency = 1
 		Target["Left Leg"].Transparency = 1
-		Target.Head.face:Destroy()
 	end
 end)
 
@@ -956,12 +955,12 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		Target.Head.Reflection = 1
-		Target.Torso.Reflection = 1
-		Target["Right Arm"].Reflection = 1
-		Target["Left Arm"].Reflection = 1
-		Target["Right Leg"].Reflection = 1
-		Target["Left Leg"].Reflection = 1
+		Target.Head.Reflectance  = 1
+		Target.Torso.Reflectance  = 1
+		Target["Right Arm"].Reflectance  = 1
+		Target["Left Arm"].Reflectance  = 1
+		Target["Right Leg"].Reflectance  = 1
+		Target["Left Leg"].Reflectance = 1
 	end
 end)
 
@@ -973,12 +972,12 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		Target.Head.Reflection = 0
-		Target.Torso.Reflection = 0
-		Target["Right Arm"].Reflection = 0
-		Target["Left Arm"].Reflection = 0
-		Target["Right Leg"].Reflection = 0
-		Target["Left Leg"].Reflection = 0
+		Target.Head.Reflectance = 0
+		Target.Torso.Reflectance = 0
+		Target["Right Arm"].Reflectance = 0
+		Target["Left Arm"].Reflectance = 0
+		Target["Right Leg"].Reflectance = 0
+		Target["Left Leg"].Reflectance = 0
 	end
 end)
 
