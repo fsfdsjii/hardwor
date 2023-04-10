@@ -927,6 +927,7 @@ owner.Chatted:Connect(function(msg)
 		Target["Left Arm"].Transparency = 1
 		Target["Right Leg"].Transparency = 1
 		Target["Left Leg"].Transparency = 1
+		Target.Head.face:Destroy()
 	end
 end)
 
