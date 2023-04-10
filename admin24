@@ -1,4 +1,4 @@
-print("Welcome! to Hunter's admin say :cmds for commands to choose from")
+print("Welcome! to Huntmin say :cmds for commands to choose from")
 local cmd = ":cmds"
 local seperator = " "
 
@@ -62,12 +62,20 @@ owner.Chatted:Connect(function(msg)
 		print(":message")
 		print(":nomessage")
 		print(":missile [user] [ONLY WORKS ON Void, Los angeles] ")
-                print(":flingglove [user] [ONLY WORKS ON Void, Los angeles] ")
+		print(":flingglove [user] [ONLY WORKS ON Void, Los angeles] ")
 		print(":drone [user] [ONLY WORKS ON Void, Los angeles] ")
 		print(":picnic [user] [ONLY WORKS ON Void, Los angeles] ")
 		print(":noshirtrpants [user] ")
 		print(":nopants [user] ")
 		print(":noshirt [user] ")
+		print(":notshirt [user] ")
+		print(":invisible [user] ")
+		print(":visible [user] ")
+		print(":mirror [user] ")
+		print(":nomirror [user] ")
+		print(":white [user] ")
+		print(":black [user] ")
+		print(":wobbly [user] ")
 	end
 end)
 
@@ -280,30 +288,30 @@ owner.Chatted:Connect(function(msg)
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		local UIS = game:GetService("UserInputService")
-local player = game.Players.LocalPlayer
-local character = player.Character
-local hmrp = Target:WaitForChild("HumanoidRootPart")
-local hum = Target:WaitForChild("Humanoid")
+		local player = game.Players.LocalPlayer
+		local character = player.Character
+		local hmrp = Target:WaitForChild("HumanoidRootPart")
+		local hum = Target:WaitForChild("Humanoid")
 
-local function spin(input, gpe)
-	if gpe then
-		return
-	end
-	if input.KeyCode == Enum.KeyCode.E then
-		--while wait() do
-		--hmrp.CFrame = hmrp.CFrame * CFrame.Angles(0,.5,0)
-		--hmrp.Orientation = hmrp.Orientation + Vector3.new(90,0,0)
-		hmrp.CFrame = hmrp.CFrame*CFrame.new(0, 0, -3) * CFrame.Angles(90,0,0)
-		local BodyAngularVelocity = Instance.new("BodyAngularVelocity", hmrp)
-		BodyAngularVelocity.AngularVelocity = Vector3.new(0,10,0)
-		
-		local BV = Instance.new("BodyVelocity", hmrp)
-		BV.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
-		BV.Velocity = hmrp.CFrame.lookVector * 120
-		hum.PlatformStand = true
-		
-	end
-end
+		local function spin(input, gpe)
+			if gpe then
+				return
+			end
+			if input.KeyCode == Enum.KeyCode.E then
+				--while wait() do
+				--hmrp.CFrame = hmrp.CFrame * CFrame.Angles(0,.5,0)
+				--hmrp.Orientation = hmrp.Orientation + Vector3.new(90,0,0)
+				hmrp.CFrame = hmrp.CFrame*CFrame.new(0, 0, -3) * CFrame.Angles(90,0,0)
+				local BodyAngularVelocity = Instance.new("BodyAngularVelocity", hmrp)
+				BodyAngularVelocity.AngularVelocity = Vector3.new(0,10,0)
+
+				local BV = Instance.new("BodyVelocity", hmrp)
+				BV.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+				BV.Velocity = hmrp.CFrame.lookVector * 120
+				hum.PlatformStand = true
+
+			end
+		end
 	end
 end)
 
@@ -521,7 +529,7 @@ local seperator = " "
 owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
-	game.workspace.Gravity = 100000000000000000000
+		game.workspace.Gravity = 100000000000000000000
 	end
 end)
 
@@ -606,8 +614,8 @@ owner.Chatted:Connect(function(msg)
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		game.workspace.aldobonavino.Humanoid.Parent = nil
-owner.Character = Target
-NLS([[workspace.CurrentCamera.CameraSubject = Target]] , owner.PlayerGui)
+		owner.Character = Target
+		NLS([[workspace.CurrentCamera.CameraSubject = Target]] , owner.PlayerGui)
 
 	end
 end)
@@ -630,7 +638,7 @@ owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
 		e = Instance.new("Explosion" , workspace)
-e.Position = workspace.Target.HumanoidRootPart.Position
+		e.Position = workspace.Target.HumanoidRootPart.Position
 
 	end
 end)
@@ -761,13 +769,13 @@ local seperator = " "
 owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
-f = Instance.new("Part" , workspace)
-f.Name = "Handle"
-local e = Instance.new("Tool" , workspace)
-Instance.new("Tool" , workspace)
-e.Parent = game.workspace
-f.Parent = e
-f.Size = Vector3.new(1, 1, 1)
+		f = Instance.new("Part" , workspace)
+		f.Name = "Handle"
+		local e = Instance.new("Tool" , workspace)
+		Instance.new("Tool" , workspace)
+		e.Parent = game.workspace
+		f.Parent = e
+		f.Size = Vector3.new(1, 1, 1)
 	end
 end)
 
@@ -777,13 +785,13 @@ local seperator = " "
 owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
-f = Instance.new("SpawnLocation" , workspace)
-f.Name = "Handle"
-local e = Instance.new("Tool" , workspace)
-Instance.new("Tool" , workspace)
-e.Parent = game.workspace
-f.Parent = e
-f.Size = Vector3.new(1, 1, 1)
+		f = Instance.new("SpawnLocation" , workspace)
+		f.Name = "Handle"
+		local e = Instance.new("Tool" , workspace)
+		Instance.new("Tool" , workspace)
+		e.Parent = game.workspace
+		f.Parent = e
+		f.Size = Vector3.new(1, 1, 1)
 	end
 end)
 
@@ -793,9 +801,9 @@ local seperator = " "
 owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
-e = Instance.new("Message" , workspace)
-e.Parent = game.workspace
-e.Text = "New_Message"
+		e = Instance.new("Message" , workspace)
+		e.Parent = game.workspace
+		e.Text = "New_Message"
 	end
 end)
 
@@ -805,7 +813,7 @@ local seperator = " "
 owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
-game.workspace.Message:Destroy()
+		game.workspace.Message:Destroy()
 	end
 end)
 
@@ -889,5 +897,152 @@ owner.Chatted:Connect(function(msg)
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		Target.Pants:Destroy()
+	end
+end)
+
+local cmd = ":notshirt"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target["Shirt Graphic"]:Destroy()
+	end
+end)
+
+
+local cmd = ":invisible"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target.Head.Transparency = 1
+		Target.Torso.Transparency = 1
+		Target["Right Arm"].Transparency = 1
+		Target["Left Arm"].Transparency = 1
+		Target["Right Leg"].Transparency = 1
+		Target["Left Leg"].Transparency = 1
+	end
+end)
+
+local cmd = ":visible"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target.Head.Transparency = 0
+		Target.Torso.Transparency = 0
+		Target["Right Arm"].Transparency = 0
+		Target["Left Arm"].Transparency = 0
+		Target["Right Leg"].Transparency = 0
+		Target["Left Leg"].Transparency = 0
+	end
+end)
+
+local cmd = ":mirror"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target.Head.Reflection = 1
+		Target.Torso.Reflection = 1
+		Target["Right Arm"].Reflection = 1
+		Target["Left Arm"].Reflection = 1
+		Target["Right Leg"].Reflection = 1
+		Target["Left Leg"].Reflection = 1
+	end
+end)
+
+local cmd = ":nomirror"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target.Head.Reflection = 0
+		Target.Torso.Reflection = 0
+		Target["Right Arm"].Reflection = 0
+		Target["Left Arm"].Reflection = 0
+		Target["Right Leg"].Reflection = 0
+		Target["Left Leg"].Reflection = 0
+	end
+end)
+
+local cmd = ":nolimbs"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target["Right Arm"]:Destroy()
+		Target["Left Arm"]:Destroy()
+		Target["Right Leg"]:Destroy()
+		Target["Left Leg"]:Destroy()
+	end
+end)
+
+local cmd = ":white"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target.Head.BrickColor = BrickColor.new('White')
+		Target.Torso.BrickColor = BrickColor.new('White')
+		Target["Right Arm"].BrickColor = BrickColor.new('White')
+		Target["Left Arm"].BrickColor = BrickColor.new('White')
+		Target["Right Leg"].BrickColor = BrickColor.new('White')
+		Target["Left Leg"].BrickColor = BrickColor.new('White')
+	end
+end)
+
+local cmd = ":black"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target.Head.BrickColor = BrickColor.new('Black')
+		Target.Torso.BrickColor = BrickColor.new('Black')
+		Target["Right Arm"].BrickColor = BrickColor.new('Black')
+		Target["Left Arm"].BrickColor = BrickColor.new('Black')
+		Target["Right Leg"].BrickColor = BrickColor.new('Black')
+		Target["Left Leg"].BrickColor = BrickColor.new('Black')
+	end
+end)
+
+local cmd = ":wobbly"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target.Head.BrickColor = BrickColor.new('Black')
+		Target.Torso.BrickColor = BrickColor.new('Black')
+		Target["Right Arm"].BodyPosition.Position = Target["Right Arm"].Position
+		Target["Left Arm"].BodyPosition.Position = Target["Left Arm"].Position
+		Target["Right Leg"].BodyPosition.Position = Target["Right Leg"].Position
+		Target["Left Leg"].BodyPosition.Position = Target["Left Leg"].Position
 	end
 end)
