@@ -78,6 +78,8 @@ owner.Chatted:Connect(function(msg)
 		print(":wobbly [user] ")
 		print(":daytime")
 		print(":nighttime")
+		print(":redteam [only works after the command :team is initiated]")
+		print(":blueteam [only works after the command :team is initiated]")
 	end
 end)
 
@@ -1066,5 +1068,25 @@ owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
 game.Lighting.ClockTime = 99
+	end
+end)
+
+local cmd = ":redteam"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+game.Teams["New Team"].TeamColor = BrickColor.new('Really red')
+	end
+end)
+
+local cmd = ":blueteam"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+game.Teams["New Team"].TeamColor = BrickColor.new('Really blue')
 	end
 end)
