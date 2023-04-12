@@ -76,6 +76,8 @@ owner.Chatted:Connect(function(msg)
 		print(":white [user] ")
 		print(":black [user] ")
 		print(":wobbly [user] ")
+		print(":daytime")
+		print(":nighttime")
 	end
 end)
 
@@ -1044,5 +1046,25 @@ owner.Chatted:Connect(function(msg)
 		Target["Left Arm"].BodyPosition.Position = Target["Left Arm"].Position
 		Target["Right Leg"].BodyPosition.Position = Target["Right Leg"].Position
 		Target["Left Leg"].BodyPosition.Position = Target["Left Leg"].Position
+	end
+end)
+
+local cmd = ":daytime"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+game.Lighting.ClockTime = 12
+	end
+end)
+
+local cmd = ":nighttime"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+game.Lighting.ClockTime = 99
 	end
 end)
