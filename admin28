@@ -82,8 +82,10 @@ owner.Chatted:Connect(function(msg)
 		print(":blueteam [only works after the command :team is initiated]")
 		print(":r15invisible [user] ")
 		print(":r15visible [user] ")
-		print(":r15mirror [user] ")
-		print(":r15nomirror [user] ")
+		print(":r15freeze [user] ")
+		print(":r15nofreeze [user] ")
+		print(":r15white [user] ")
+		print(":r15black [user] ")
 	end
 end)
 
@@ -1107,6 +1109,7 @@ owner.Chatted:Connect(function(msg)
 		Target.LeftFoot.Transparency = 1
 		Target.LeftHand.Transparency = 1
 		Target.LeftLowerArm.Transparency = 1
+		Target.LeftLowerLeg.Transparency = 1
 		Target.RightLowerArm.Transparency = 1
 		Target.LeftUpperLeg.Transparency = 1
 		Target.LeftUpperArm.Transparency = 1
@@ -1118,10 +1121,11 @@ owner.Chatted:Connect(function(msg)
 		Target.RightUpperArm.Transparency = 1
 		Target.RightUpperLeg.Transparency = 1
 		Target.UpperTorso.Transparency = 1
+		owner.Character.Head.face:Destroy()
 	end
 end)
 
-local cmd = ":r15visible"
+local cmd = ":r15freeze"
 local seperator = " "
 
 owner.Chatted:Connect(function(msg)
@@ -1129,25 +1133,26 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		Target.Head.Transparency = 0
-		Target.LeftFoot.Transparency = 0
-		Target.LeftHand.Transparency = 0
-		Target.LeftLowerArm.Transparency = 0
-		Target.RightLowerArm.Transparency = 0
-		Target.LeftUpperLeg.Transparency = 0
-		Target.LeftUpperArm.Transparency = 0
-		Target.LowerTorso.Transparency = 0
-		Target.RightFoot.Transparency = 0
-		Target.RightHand.Transparency = 0
-		Target.RightLowerArm.Transparency = 0
-		Target.RightLowerLeg.Transparency = 0
-		Target.RightUpperArm.Transparency = 0
-		Target.RightUpperLeg.Transparency = 0
-		Target.UpperTorso.Transparency = 0
+		Target.Head.Anchored = true
+		Target.LeftFoot.Anchored = true
+		Target.LeftHand.Anchored = true
+		Target.LeftLowerArm.Anchored = true
+		Target.RightLowerArm.Anchored = true
+		Target.LeftLowerLeg.Anchored = true
+		Target.LeftUpperLeg.Anchored = true
+		Target.LeftUpperArm.Anchored = true
+		Target.LowerTorso.Anchored = true
+		Target.RightFoot.Anchored = true
+		Target.RightHand.Anchored = true
+		Target.RightLowerArm.Anchored = true
+		Target.RightLowerLeg.Anchored = true
+		Target.RightUpperArm.Anchored = true
+		Target.RightUpperLeg.Anchored = true
+		Target.UpperTorso.Anchored = true
 	end
 end)
 
-local cmd = ":r15mirror"
+local cmd = ":r15nofreeze"
 local seperator = " "
 
 owner.Chatted:Connect(function(msg)
@@ -1155,25 +1160,26 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		Target.Head.Reflection = 1
-		Target.LeftFoot.Reflection = 1
-		Target.LeftHand.Reflection = 1
-		Target.LeftLowerArm.Reflection = 1
-		Target.RightLowerArm.Reflection = 1
-		Target.LeftUpperLeg.Reflection = 1
-		Target.LeftUpperArm.Reflection = 1
-		Target.LowerTorso.Reflection = 1
-		Target.RightFoot.Reflection = 1
-		Target.RightHand.Reflection = 1
-		Target.RightLowerArm.Reflection = 1
-		Target.RightLowerLeg.Reflection = 1
-		Target.RightUpperArm.Reflection = 1
-		Target.RightUpperLeg.Reflection = 1
-		Target.UpperTorso.Reflection = 1
+		Target.Head.Anchored = false
+		Target.LeftFoot.Anchored = false
+		Target.LeftHand.Anchored = false
+		Target.LeftLowerArm.Anchored = false
+		Target.RightLowerArm.Anchored = false
+		Target.LeftLowerLeg.Anchored = false
+		Target.LeftUpperLeg.Anchored = false
+		Target.LeftUpperArm.Anchored = false
+		Target.LowerTorso.Anchored = false
+		Target.RightFoot.Anchored = false
+		Target.RightHand.Anchored = false
+		Target.RightLowerArm.Anchored = false
+		Target.RightLowerLeg.Anchored = false
+		Target.RightUpperArm.Anchored = false
+		Target.RightUpperLeg.Anchored = false
+		Target.UpperTorso.Anchored = false
 	end
 end)
 
-local cmd = ":r15nomirror"
+local cmd = ":r15white"
 local seperator = " "
 
 owner.Chatted:Connect(function(msg)
@@ -1181,20 +1187,48 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		Target.Head.Reflection = 0
-		Target.LeftFoot.Reflection = 0
-		Target.LeftHand.Reflection = 0
-		Target.LeftLowerArm.Reflection = 0
-		Target.RightLowerArm.Reflection = 0
-		Target.LeftUpperLeg.Reflection = 0
-		Target.LeftUpperArm.Reflection = 0
-		Target.LowerTorso.Reflection = 0
-		Target.RightFoot.Reflection = 0
-		Target.RightHand.Reflection = 0
-		Target.RightLowerArm.Reflection = 0
-		Target.RightLowerLeg.Reflection = 0
-		Target.RightUpperArm.Reflection = 0
-		Target.RightUpperLeg.Reflection = 0
-		Target.UpperTorso.Reflection = 0
+		Target.Head.BrickColor = BrickColor.new('White')
+		Target.LeftFoot.BrickColor = BrickColor.new('White')
+		Target.LeftHand.BrickColor = BrickColor.new('White')
+		Target.LeftLowerArm.BrickColor = BrickColor.new('White')
+		Target.RightLowerArm.BrickColor = BrickColor.new('White')
+		Target.LeftLowerLeg.BrickColor = BrickColor.new('White')
+		Target.LeftUpperLeg.BrickColor = BrickColor.new('White')
+		Target.LeftUpperArm.BrickColor = BrickColor.new('White')
+		Target.LowerTorso.BrickColor = BrickColor.new('White')
+		Target.RightFoot.BrickColor = BrickColor.new('White')
+		Target.RightHand.BrickColor = BrickColor.new('White')
+		Target.RightLowerArm.BrickColor = BrickColor.new('White')
+		Target.RightLowerLeg.BrickColor = BrickColor.new('White')
+		Target.RightUpperArm.BrickColor = BrickColor.new('White')
+		Target.RightUpperLeg.BrickColor = BrickColor.new('White')
+		Target.UpperTorso.BrickColor = BrickColor.new('White')
+	end
+end)
+
+local cmd = ":r15black"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target.Head.BrickColor = BrickColor.new('Really black')
+		Target.LeftFoot.BrickColor = BrickColor.new('Really black')
+		Target.LeftHand.BrickColor = BrickColor.new('Really black')
+		Target.LeftLowerArm.BrickColor = BrickColor.new('Really black')
+		Target.RightLowerArm.BrickColor = BrickColor.new('Really black')
+		Target.LeftLowerLeg.BrickColor = BrickColor.new('Really black')
+		Target.LeftUpperLeg.BrickColor = BrickColor.new('Really black')
+		Target.LeftUpperArm.BrickColor = BrickColor.new('Really black')
+		Target.LowerTorso.BrickColor = BrickColor.new('Really black')
+		Target.RightFoot.BrickColor = BrickColor.new('Really black')
+		Target.RightHand.BrickColor = BrickColor.new('Really black')
+		Target.RightLowerArm.BrickColor = BrickColor.new('Really black')
+		Target.RightLowerLeg.BrickColor = BrickColor.new('Really black')
+		Target.RightUpperArm.BrickColor = BrickColor.new('Really black')
+		Target.RightUpperLeg.BrickColor = BrickColor.new('Really black')
+		Target.UpperTorso.BrickColor = BrickColor.new('Really black')
 	end
 end)
