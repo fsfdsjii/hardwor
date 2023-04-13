@@ -80,6 +80,10 @@ owner.Chatted:Connect(function(msg)
 		print(":nighttime")
 		print(":redteam [only works after the command :team is initiated]")
 		print(":blueteam [only works after the command :team is initiated]")
+		print(":r15invisible [user] ")
+		print(":r15visible [user] ")
+		print(":r15mirror [user] ")
+		print(":r15nomirror [user] ")
 	end
 end)
 
@@ -1088,5 +1092,109 @@ owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
 game.Teams["New Team"].TeamColor = BrickColor.new('Really blue')
+	end
+end)
+
+local cmd = ":r15invisible"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target.Head.Transparency = 1
+		Target.LeftFoot.Transparency = 1
+		Target.LeftHand.Transparency = 1
+		Target.LeftLowerArm.Transparency = 1
+		Target.RightLowerArm.Transparency = 1
+		Target.LeftUpperLeg.Transparency = 1
+		Target.LeftUpperArm.Transparency = 1
+		Target.LowerTorso.Transparency = 1
+		Target.RightFoot.Transparency = 1
+		Target.RightHand.Transparency = 1
+		Target.RightLowerArm.Transparency = 1
+		Target.RightLowerLeg.Transparency = 1
+		Target.RightUpperArm.Transparency = 1
+		Target.RightUpperLeg.Transparency = 1
+		Target.UpperTorso.Transparency = 1
+	end
+end)
+
+local cmd = ":r15visible"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target.Head.Transparency = 0
+		Target.LeftFoot.Transparency = 0
+		Target.LeftHand.Transparency = 0
+		Target.LeftLowerArm.Transparency = 0
+		Target.RightLowerArm.Transparency = 0
+		Target.LeftUpperLeg.Transparency = 0
+		Target.LeftUpperArm.Transparency = 0
+		Target.LowerTorso.Transparency = 0
+		Target.RightFoot.Transparency = 0
+		Target.RightHand.Transparency = 0
+		Target.RightLowerArm.Transparency = 0
+		Target.RightLowerLeg.Transparency = 0
+		Target.RightUpperArm.Transparency = 0
+		Target.RightUpperLeg.Transparency = 0
+		Target.UpperTorso.Transparency = 0
+	end
+end)
+
+local cmd = ":r15mirror"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target.Head.Reflection = 1
+		Target.LeftFoot.Reflection = 1
+		Target.LeftHand.Reflection = 1
+		Target.LeftLowerArm.Reflection = 1
+		Target.RightLowerArm.Reflection = 1
+		Target.LeftUpperLeg.Reflection = 1
+		Target.LeftUpperArm.Reflection = 1
+		Target.LowerTorso.Reflection = 1
+		Target.RightFoot.Reflection = 1
+		Target.RightHand.Reflection = 1
+		Target.RightLowerArm.Reflection = 1
+		Target.RightLowerLeg.Reflection = 1
+		Target.RightUpperArm.Reflection = 1
+		Target.RightUpperLeg.Reflection = 1
+		Target.UpperTorso.Reflection = 1
+	end
+end)
+
+local cmd = ":r15nomirror"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target.Head.Reflection = 0
+		Target.LeftFoot.Reflection = 0
+		Target.LeftHand.Reflection = 0
+		Target.LeftLowerArm.Reflection = 0
+		Target.RightLowerArm.Reflection = 0
+		Target.LeftUpperLeg.Reflection = 0
+		Target.LeftUpperArm.Reflection = 0
+		Target.LowerTorso.Reflection = 0
+		Target.RightFoot.Reflection = 0
+		Target.RightHand.Reflection = 0
+		Target.RightLowerArm.Reflection = 0
+		Target.RightLowerLeg.Reflection = 0
+		Target.RightUpperArm.Reflection = 0
+		Target.RightUpperLeg.Reflection = 0
+		Target.UpperTorso.Reflection = 0
 	end
 end)
