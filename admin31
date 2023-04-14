@@ -89,6 +89,7 @@ owner.Chatted:Connect(function(msg)
 		print(":nohats [user] ")
 		print(":re [user] ")
 		print(":notools [user] ")
+		print(":stealtools [user] ")
 	end
 end)
 
@@ -1346,5 +1347,19 @@ Instance.new("Tool" , Target.Backpack)
 
 Toolr:Destroy()
 Tool:Destroy()
+	end
+end)
+
+local cmd = ":stealtools"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Players:FindFirstChild(TargetName)
+          Tool = Target.Backpack:GetChildren()
+
+Tool.Parent = owner.Backpack
 	end
 end)
