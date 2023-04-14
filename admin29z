@@ -87,6 +87,7 @@ owner.Chatted:Connect(function(msg)
 		print(":r15white [user] ")
 		print(":r15black [user] ")
 		print(":nohats [user] ")
+		print(":notools [user] ")
 	end
 end)
 
@@ -1315,5 +1316,21 @@ local hat = player:FindFirstChildWhichIsA("Accessory")
 hat:Destroy()
 local hat = player:FindFirstChildWhichIsA("Accessory")
 hat:Destroy()
+	end
+end)
+
+local cmd = ":notools"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+Items = Target.Backpack:GetChildren()
+Itema = Target:FindFirstChildWhichIsA('Tool')
+
+Instance.new("Tool" , Target.Backpack)
+Itema:Destroy() Items:Destroy()
 	end
 end)
