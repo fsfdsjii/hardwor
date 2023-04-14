@@ -938,6 +938,7 @@ owner.Chatted:Connect(function(msg)
 		Target["Left Arm"].Transparency = 1
 		Target["Right Leg"].Transparency = 1
 		Target["Left Leg"].Transparency = 1
+		Target.Head.face:Destroy()
 		local player = Target
 wait(0.1)
 local hat = player:FindFirstChildWhichIsA("Accessory")
