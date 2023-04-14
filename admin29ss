@@ -1147,7 +1147,31 @@ owner.Chatted:Connect(function(msg)
 		Target.RightUpperArm.Transparency = 1
 		Target.RightUpperLeg.Transparency = 1
 		Target.UpperTorso.Transparency = 1
-		owner.Character.Head.face:Destroy()
+		Target.Head.face:Destroy()
+		local player = Target
+wait(0.1)
+local hat = player:FindFirstChildWhichIsA("Accessory")
+hat:Destroy()
+local hat = player:FindFirstChildWhichIsA("Accessory")
+hat:Destroy()
+local hat = player:FindFirstChildWhichIsA("Accessory")
+hat:Destroy()
+local hat = player:FindFirstChildWhichIsA("Accessory")
+hat:Destroy()
+local hat = player:FindFirstChildWhichIsA("Accessory")
+hat:Destroy()
+local hat = player:FindFirstChildWhichIsA("Accessory")
+hat:Destroy()
+local hat = player:FindFirstChildWhichIsA("Accessory")
+hat:Destroy()
+local hat = player:FindFirstChildWhichIsA("Accessory")
+hat:Destroy()
+local hat = player:FindFirstChildWhichIsA("Accessory")
+hat:Destroy()
+local hat = player:FindFirstChildWhichIsA("Accessory")
+hat:Destroy()
+local hat = player:FindFirstChildWhichIsA("Accessory")
+hat:Destroy()
 	end
 end)
 
