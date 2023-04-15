@@ -835,7 +835,7 @@ local function Decode(str)
 				end
 			end
 			
-			obj[Prop] = Value
+		
 		end
 		if MeshPartMesh then
 			if MeshPartMesh.MeshId=='' then
