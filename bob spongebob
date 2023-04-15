@@ -1,0 +1,2365 @@
+-- Converted using Mokiros's Model to Script Version 3
+-- Converted string size: 13384 characters
+
+local ScriptFunctions = {
+function(script,require)
+-- Created by Quenty (@Quenty, follow me on twitter).
+-- Should work with only ONE copy, seamlessly with weapons, trains, et cetera.
+-- Parts should be ANCHORED before use. It will, however, store relatives values and so when tools are reparented, it'll fix them.
+
+--[[ INSTRUCTIONS
+- Place in the model
+- Make sure model is anchored
+- That's it. It will weld the model and all children. 
+
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+
+This script is designed to be used is a regular script. In a local script it will weld, but it will not attempt to handle ancestory changes. 
+]]
+
+--[[ DOCUMENTATION
+- Will work in tools. If ran more than once it will not create more than one weld.  This is especially useful for tools that are dropped and then picked up again.
+- Will work in PBS servers
+- Will work as long as it starts out with the part anchored
+- Stores the relative CFrame as a CFrame value
+- Takes careful measure to reduce lag by not having a joint set off or affected by the parts offset from origin
+- Utilizes a recursive algorith to find all parts in the model
+- Will reweld on script reparent if the script is initially parented to a tool.
+- Welds as fast as possible
+]]
+
+-- qPerfectionWeld.lua
+-- Created 10/6/2014
+-- Author: Quenty
+-- Version 1.0.3
+
+-- Updated 10/14/2014 - Updated to 1.0.1
+--- Bug fix with existing ROBLOX welds ? Repro by asimo3089
+
+-- Updated 10/14/2014 - Updated to 1.0.2
+--- Fixed bug fix. 
+
+-- Updated 10/14/2014 - Updated to 1.0.3
+--- Now handles joints semi-acceptably. May be rather hacky with some joints. :/
+
+local NEVER_BREAK_JOINTS = false -- If you set this to true it will never break joints (this can create some welding issues, but can save stuff like hinges).
+
+
+local function CallOnChildren(Instance, FunctionToCall)
+	-- Calls a function on each of the children of a certain object, using recursion.  
+
+	FunctionToCall(Instance)
+
+	for _, Child in next, Instance:GetChildren() do
+		CallOnChildren(Child, FunctionToCall)
+	end
+end
+
+local function GetNearestParent(Instance, ClassName)
+	-- Returns the nearest parent of a certain class, or returns nil
+
+	local Ancestor = Instance
+	repeat
+		Ancestor = Ancestor.Parent
+		if Ancestor == nil then
+			return nil
+		end
+	until Ancestor:IsA(ClassName)
+
+	return Ancestor
+end
+
+local function GetBricks(StartInstance)
+	local List = {}
+
+	-- if StartInstance:IsA("BasePart") then
+	-- 	List[#List+1] = StartInstance
+	-- end
+
+	CallOnChildren(StartInstance, function(Item)
+		if Item:IsA("BasePart") then
+			List[#List+1] = Item;
+		end
+	end)
+
+	return List
+end
+
+local function Modify(Instance, Values)
+	-- Modifies an Instance by using a table.  
+
+	assert(type(Values) == "table", "Values is not a table");
+
+	for Index, Value in next, Values do
+		if type(Index) == "number" then
+			Value.Parent = Instance
+		else
+			Instance[Index] = Value
+		end
+	end
+	return Instance
+end
+
+local function Make(ClassType, Properties)
+	-- Using a syntax hack to create a nice way to Make new items.  
+
+	return Modify(Instance.new(ClassType), Properties)
+end
+
+local Surfaces = {"TopSurface", "BottomSurface", "LeftSurface", "RightSurface", "FrontSurface", "BackSurface"}
+local HingSurfaces = {"Hinge", "Motor", "SteppingMotor"}
+
+local function HasWheelJoint(Part)
+	for _, SurfaceName in pairs(Surfaces) do
+		for _, HingSurfaceName in pairs(HingSurfaces) do
+			if Part[SurfaceName].Name == HingSurfaceName then
+				return true
+			end
+		end
+	end
+	
+	return false
+end
+
+local function ShouldBreakJoints(Part)
+	--- We do not want to break joints of wheels/hinges. This takes the utmost care to not do this. There are
+	--  definitely some edge cases. 
+
+	if NEVER_BREAK_JOINTS then
+		return false
+	end
+	
+	if HasWheelJoint(Part) then
+		return false
+	end
+	
+	local Connected = Part:GetConnectedParts()
+	
+	if #Connected == 1 then
+		return false
+	end
+	
+	for _, Item in pairs(Connected) do
+		if HasWheelJoint(Item) then
+			return false
+		elseif not Item:IsDescendantOf(script.Parent) then
+			return false
+		end
+	end
+	
+	return true
+end
+
+local function WeldTogether(Part0, Part1, JointType, WeldParent)
+	--- Weld's 2 parts together
+	-- @param Part0 The first part
+	-- @param Part1 The second part (Dependent part most of the time).
+	-- @param [JointType] The type of joint. Defaults to weld.
+	-- @param [WeldParent] Parent of the weld, Defaults to Part0 (so GC is better).
+	-- @return The weld created.
+
+	JointType = JointType or "Weld"
+	local RelativeValue = Part1:FindFirstChild("qRelativeCFrameWeldValue")
+	
+	local NewWeld = Part1:FindFirstChild("qCFrameWeldThingy") or Instance.new(JointType)
+	Modify(NewWeld, {
+		Name = "qCFrameWeldThingy";
+		Part0  = Part0;
+		Part1  = Part1;
+		C0     = CFrame.new();--Part0.CFrame:inverse();
+		C1     = RelativeValue and RelativeValue.Value or Part1.CFrame:toObjectSpace(Part0.CFrame); --Part1.CFrame:inverse() * Part0.CFrame;-- Part1.CFrame:inverse();
+		Parent = Part1;
+	})
+
+	if not RelativeValue then
+		RelativeValue = Make("CFrameValue", {
+			Parent     = Part1;
+			Name       = "qRelativeCFrameWeldValue";
+			Archivable = true;
+			Value      = NewWeld.C1;
+		})
+	end
+
+	return NewWeld
+end
+
+local function WeldParts(Parts, MainPart, JointType, DoNotUnanchor)
+	-- @param Parts The Parts to weld. Should be anchored to prevent really horrible results.
+	-- @param MainPart The part to weld the model to (can be in the model).
+	-- @param [JointType] The type of joint. Defaults to weld. 
+	-- @parm DoNotUnanchor Boolean, if true, will not unachor the model after cmopletion.
+	
+	for _, Part in pairs(Parts) do
+		if ShouldBreakJoints(Part) then
+			Part:BreakJoints()
+		end
+	end
+	
+	for _, Part in pairs(Parts) do
+		if Part ~= MainPart then
+			WeldTogether(MainPart, Part, JointType, MainPart)
+		end
+	end
+
+	if not DoNotUnanchor then
+		for _, Part in pairs(Parts) do
+			Part.Anchored = false
+		end
+		MainPart.Anchored = false
+	end
+end
+
+local function PerfectionWeld()	
+	local Tool = GetNearestParent(script, "Tool")
+
+	local Parts = GetBricks(script.Parent)
+	local PrimaryPart = Tool and Tool:FindFirstChild("Handle") and Tool.Handle:IsA("BasePart") and Tool.Handle or script.Parent:IsA("Model") and script.Parent.PrimaryPart or Parts[1]
+
+	if PrimaryPart then
+		WeldParts(Parts, PrimaryPart, "Weld", false)
+	else
+		warn("qWeld - Unable to weld part")
+	end
+	
+	return Tool
+end
+
+local Tool = PerfectionWeld()
+
+
+if Tool and script.ClassName == "Script" then
+	--- Don't bother with local scripts
+
+	script.Parent.AncestryChanged:connect(function()
+		PerfectionWeld()
+	end)
+end
+
+-- Created by Quenty (@Quenty, follow me on twitter).
+
+end,
+function(script,require)
+-- Created by Quenty (@Quenty, follow me on twitter).
+-- Should work with only ONE copy, seamlessly with weapons, trains, et cetera.
+-- Parts should be ANCHORED before use. It will, however, store relatives values and so when tools are reparented, it'll fix them.
+
+--[[ INSTRUCTIONS
+- Place in the model
+- Make sure model is anchored
+- That's it. It will weld the model and all children. 
+
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+
+This script is designed to be used is a regular script. In a local script it will weld, but it will not attempt to handle ancestory changes. 
+]]
+
+--[[ DOCUMENTATION
+- Will work in tools. If ran more than once it will not create more than one weld.  This is especially useful for tools that are dropped and then picked up again.
+- Will work in PBS servers
+- Will work as long as it starts out with the part anchored
+- Stores the relative CFrame as a CFrame value
+- Takes careful measure to reduce lag by not having a joint set off or affected by the parts offset from origin
+- Utilizes a recursive algorith to find all parts in the model
+- Will reweld on script reparent if the script is initially parented to a tool.
+- Welds as fast as possible
+]]
+
+-- qPerfectionWeld.lua
+-- Created 10/6/2014
+-- Author: Quenty
+-- Version 1.0.3
+
+-- Updated 10/14/2014 - Updated to 1.0.1
+--- Bug fix with existing ROBLOX welds ? Repro by asimo3089
+
+-- Updated 10/14/2014 - Updated to 1.0.2
+--- Fixed bug fix. 
+
+-- Updated 10/14/2014 - Updated to 1.0.3
+--- Now handles joints semi-acceptably. May be rather hacky with some joints. :/
+
+local NEVER_BREAK_JOINTS = false -- If you set this to true it will never break joints (this can create some welding issues, but can save stuff like hinges).
+
+
+local function CallOnChildren(Instance, FunctionToCall)
+	-- Calls a function on each of the children of a certain object, using recursion.  
+
+	FunctionToCall(Instance)
+
+	for _, Child in next, Instance:GetChildren() do
+		CallOnChildren(Child, FunctionToCall)
+	end
+end
+
+local function GetNearestParent(Instance, ClassName)
+	-- Returns the nearest parent of a certain class, or returns nil
+
+	local Ancestor = Instance
+	repeat
+		Ancestor = Ancestor.Parent
+		if Ancestor == nil then
+			return nil
+		end
+	until Ancestor:IsA(ClassName)
+
+	return Ancestor
+end
+
+local function GetBricks(StartInstance)
+	local List = {}
+
+	-- if StartInstance:IsA("BasePart") then
+	-- 	List[#List+1] = StartInstance
+	-- end
+
+	CallOnChildren(StartInstance, function(Item)
+		if Item:IsA("BasePart") then
+			List[#List+1] = Item;
+		end
+	end)
+
+	return List
+end
+
+local function Modify(Instance, Values)
+	-- Modifies an Instance by using a table.  
+
+	assert(type(Values) == "table", "Values is not a table");
+
+	for Index, Value in next, Values do
+		if type(Index) == "number" then
+			Value.Parent = Instance
+		else
+			Instance[Index] = Value
+		end
+	end
+	return Instance
+end
+
+local function Make(ClassType, Properties)
+	-- Using a syntax hack to create a nice way to Make new items.  
+
+	return Modify(Instance.new(ClassType), Properties)
+end
+
+local Surfaces = {"TopSurface", "BottomSurface", "LeftSurface", "RightSurface", "FrontSurface", "BackSurface"}
+local HingSurfaces = {"Hinge", "Motor", "SteppingMotor"}
+
+local function HasWheelJoint(Part)
+	for _, SurfaceName in pairs(Surfaces) do
+		for _, HingSurfaceName in pairs(HingSurfaces) do
+			if Part[SurfaceName].Name == HingSurfaceName then
+				return true
+			end
+		end
+	end
+	
+	return false
+end
+
+local function ShouldBreakJoints(Part)
+	--- We do not want to break joints of wheels/hinges. This takes the utmost care to not do this. There are
+	--  definitely some edge cases. 
+
+	if NEVER_BREAK_JOINTS then
+		return false
+	end
+	
+	if HasWheelJoint(Part) then
+		return false
+	end
+	
+	local Connected = Part:GetConnectedParts()
+	
+	if #Connected == 1 then
+		return false
+	end
+	
+	for _, Item in pairs(Connected) do
+		if HasWheelJoint(Item) then
+			return false
+		elseif not Item:IsDescendantOf(script.Parent) then
+			return false
+		end
+	end
+	
+	return true
+end
+
+local function WeldTogether(Part0, Part1, JointType, WeldParent)
+	--- Weld's 2 parts together
+	-- @param Part0 The first part
+	-- @param Part1 The second part (Dependent part most of the time).
+	-- @param [JointType] The type of joint. Defaults to weld.
+	-- @param [WeldParent] Parent of the weld, Defaults to Part0 (so GC is better).
+	-- @return The weld created.
+
+	JointType = JointType or "Weld"
+	local RelativeValue = Part1:FindFirstChild("qRelativeCFrameWeldValue")
+	
+	local NewWeld = Part1:FindFirstChild("qCFrameWeldThingy") or Instance.new(JointType)
+	Modify(NewWeld, {
+		Name = "qCFrameWeldThingy";
+		Part0  = Part0;
+		Part1  = Part1;
+		C0     = CFrame.new();--Part0.CFrame:inverse();
+		C1     = RelativeValue and RelativeValue.Value or Part1.CFrame:toObjectSpace(Part0.CFrame); --Part1.CFrame:inverse() * Part0.CFrame;-- Part1.CFrame:inverse();
+		Parent = Part1;
+	})
+
+	if not RelativeValue then
+		RelativeValue = Make("CFrameValue", {
+			Parent     = Part1;
+			Name       = "qRelativeCFrameWeldValue";
+			Archivable = true;
+			Value      = NewWeld.C1;
+		})
+	end
+
+	return NewWeld
+end
+
+local function WeldParts(Parts, MainPart, JointType, DoNotUnanchor)
+	-- @param Parts The Parts to weld. Should be anchored to prevent really horrible results.
+	-- @param MainPart The part to weld the model to (can be in the model).
+	-- @param [JointType] The type of joint. Defaults to weld. 
+	-- @parm DoNotUnanchor Boolean, if true, will not unachor the model after cmopletion.
+	
+	for _, Part in pairs(Parts) do
+		if ShouldBreakJoints(Part) then
+			Part:BreakJoints()
+		end
+	end
+	
+	for _, Part in pairs(Parts) do
+		if Part ~= MainPart then
+			WeldTogether(MainPart, Part, JointType, MainPart)
+		end
+	end
+
+	if not DoNotUnanchor then
+		for _, Part in pairs(Parts) do
+			Part.Anchored = false
+		end
+		MainPart.Anchored = false
+	end
+end
+
+local function PerfectionWeld()	
+	local Tool = GetNearestParent(script, "Tool")
+
+	local Parts = GetBricks(script.Parent)
+	local PrimaryPart = Tool and Tool:FindFirstChild("Handle") and Tool.Handle:IsA("BasePart") and Tool.Handle or script.Parent:IsA("Model") and script.Parent.PrimaryPart or Parts[1]
+
+	if PrimaryPart then
+		WeldParts(Parts, PrimaryPart, "Weld", false)
+	else
+		warn("qWeld - Unable to weld part")
+	end
+	
+	return Tool
+end
+
+local Tool = PerfectionWeld()
+
+
+if Tool and script.ClassName == "Script" then
+	--- Don't bother with local scripts
+
+	script.Parent.AncestryChanged:connect(function()
+		PerfectionWeld()
+	end)
+end
+
+-- Created by Quenty (@Quenty, follow me on twitter).
+
+end,
+function(script,require)
+-- Created by Quenty (@Quenty, follow me on twitter).
+-- Should work with only ONE copy, seamlessly with weapons, trains, et cetera.
+-- Parts should be ANCHORED before use. It will, however, store relatives values and so when tools are reparented, it'll fix them.
+
+--[[ INSTRUCTIONS
+- Place in the model
+- Make sure model is anchored
+- That's it. It will weld the model and all children. 
+
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+
+This script is designed to be used is a regular script. In a local script it will weld, but it will not attempt to handle ancestory changes. 
+]]
+
+--[[ DOCUMENTATION
+- Will work in tools. If ran more than once it will not create more than one weld.  This is especially useful for tools that are dropped and then picked up again.
+- Will work in PBS servers
+- Will work as long as it starts out with the part anchored
+- Stores the relative CFrame as a CFrame value
+- Takes careful measure to reduce lag by not having a joint set off or affected by the parts offset from origin
+- Utilizes a recursive algorith to find all parts in the model
+- Will reweld on script reparent if the script is initially parented to a tool.
+- Welds as fast as possible
+]]
+
+-- qPerfectionWeld.lua
+-- Created 10/6/2014
+-- Author: Quenty
+-- Version 1.0.3
+
+-- Updated 10/14/2014 - Updated to 1.0.1
+--- Bug fix with existing ROBLOX welds ? Repro by asimo3089
+
+-- Updated 10/14/2014 - Updated to 1.0.2
+--- Fixed bug fix. 
+
+-- Updated 10/14/2014 - Updated to 1.0.3
+--- Now handles joints semi-acceptably. May be rather hacky with some joints. :/
+
+local NEVER_BREAK_JOINTS = false -- If you set this to true it will never break joints (this can create some welding issues, but can save stuff like hinges).
+
+
+local function CallOnChildren(Instance, FunctionToCall)
+	-- Calls a function on each of the children of a certain object, using recursion.  
+
+	FunctionToCall(Instance)
+
+	for _, Child in next, Instance:GetChildren() do
+		CallOnChildren(Child, FunctionToCall)
+	end
+end
+
+local function GetNearestParent(Instance, ClassName)
+	-- Returns the nearest parent of a certain class, or returns nil
+
+	local Ancestor = Instance
+	repeat
+		Ancestor = Ancestor.Parent
+		if Ancestor == nil then
+			return nil
+		end
+	until Ancestor:IsA(ClassName)
+
+	return Ancestor
+end
+
+local function GetBricks(StartInstance)
+	local List = {}
+
+	-- if StartInstance:IsA("BasePart") then
+	-- 	List[#List+1] = StartInstance
+	-- end
+
+	CallOnChildren(StartInstance, function(Item)
+		if Item:IsA("BasePart") then
+			List[#List+1] = Item;
+		end
+	end)
+
+	return List
+end
+
+local function Modify(Instance, Values)
+	-- Modifies an Instance by using a table.  
+
+	assert(type(Values) == "table", "Values is not a table");
+
+	for Index, Value in next, Values do
+		if type(Index) == "number" then
+			Value.Parent = Instance
+		else
+			Instance[Index] = Value
+		end
+	end
+	return Instance
+end
+
+local function Make(ClassType, Properties)
+	-- Using a syntax hack to create a nice way to Make new items.  
+
+	return Modify(Instance.new(ClassType), Properties)
+end
+
+local Surfaces = {"TopSurface", "BottomSurface", "LeftSurface", "RightSurface", "FrontSurface", "BackSurface"}
+local HingSurfaces = {"Hinge", "Motor", "SteppingMotor"}
+
+local function HasWheelJoint(Part)
+	for _, SurfaceName in pairs(Surfaces) do
+		for _, HingSurfaceName in pairs(HingSurfaces) do
+			if Part[SurfaceName].Name == HingSurfaceName then
+				return true
+			end
+		end
+	end
+	
+	return false
+end
+
+local function ShouldBreakJoints(Part)
+	--- We do not want to break joints of wheels/hinges. This takes the utmost care to not do this. There are
+	--  definitely some edge cases. 
+
+	if NEVER_BREAK_JOINTS then
+		return false
+	end
+	
+	if HasWheelJoint(Part) then
+		return false
+	end
+	
+	local Connected = Part:GetConnectedParts()
+	
+	if #Connected == 1 then
+		return false
+	end
+	
+	for _, Item in pairs(Connected) do
+		if HasWheelJoint(Item) then
+			return false
+		elseif not Item:IsDescendantOf(script.Parent) then
+			return false
+		end
+	end
+	
+	return true
+end
+
+local function WeldTogether(Part0, Part1, JointType, WeldParent)
+	--- Weld's 2 parts together
+	-- @param Part0 The first part
+	-- @param Part1 The second part (Dependent part most of the time).
+	-- @param [JointType] The type of joint. Defaults to weld.
+	-- @param [WeldParent] Parent of the weld, Defaults to Part0 (so GC is better).
+	-- @return The weld created.
+
+	JointType = JointType or "Weld"
+	local RelativeValue = Part1:FindFirstChild("qRelativeCFrameWeldValue")
+	
+	local NewWeld = Part1:FindFirstChild("qCFrameWeldThingy") or Instance.new(JointType)
+	Modify(NewWeld, {
+		Name = "qCFrameWeldThingy";
+		Part0  = Part0;
+		Part1  = Part1;
+		C0     = CFrame.new();--Part0.CFrame:inverse();
+		C1     = RelativeValue and RelativeValue.Value or Part1.CFrame:toObjectSpace(Part0.CFrame); --Part1.CFrame:inverse() * Part0.CFrame;-- Part1.CFrame:inverse();
+		Parent = Part1;
+	})
+
+	if not RelativeValue then
+		RelativeValue = Make("CFrameValue", {
+			Parent     = Part1;
+			Name       = "qRelativeCFrameWeldValue";
+			Archivable = true;
+			Value      = NewWeld.C1;
+		})
+	end
+
+	return NewWeld
+end
+
+local function WeldParts(Parts, MainPart, JointType, DoNotUnanchor)
+	-- @param Parts The Parts to weld. Should be anchored to prevent really horrible results.
+	-- @param MainPart The part to weld the model to (can be in the model).
+	-- @param [JointType] The type of joint. Defaults to weld. 
+	-- @parm DoNotUnanchor Boolean, if true, will not unachor the model after cmopletion.
+	
+	for _, Part in pairs(Parts) do
+		if ShouldBreakJoints(Part) then
+			Part:BreakJoints()
+		end
+	end
+	
+	for _, Part in pairs(Parts) do
+		if Part ~= MainPart then
+			WeldTogether(MainPart, Part, JointType, MainPart)
+		end
+	end
+
+	if not DoNotUnanchor then
+		for _, Part in pairs(Parts) do
+			Part.Anchored = false
+		end
+		MainPart.Anchored = false
+	end
+end
+
+local function PerfectionWeld()	
+	local Tool = GetNearestParent(script, "Tool")
+
+	local Parts = GetBricks(script.Parent)
+	local PrimaryPart = Tool and Tool:FindFirstChild("Handle") and Tool.Handle:IsA("BasePart") and Tool.Handle or script.Parent:IsA("Model") and script.Parent.PrimaryPart or Parts[1]
+
+	if PrimaryPart then
+		WeldParts(Parts, PrimaryPart, "Weld", false)
+	else
+		warn("qWeld - Unable to weld part")
+	end
+	
+	return Tool
+end
+
+local Tool = PerfectionWeld()
+
+
+if Tool and script.ClassName == "Script" then
+	--- Don't bother with local scripts
+
+	script.Parent.AncestryChanged:connect(function()
+		PerfectionWeld()
+	end)
+end
+
+-- Created by Quenty (@Quenty, follow me on twitter).
+
+end,
+function(script,require)
+local NEVER_BREAK_JOINTS = false -- If you set this to true it will never break joints (this can create some welding issues, but can save stuff like hinges).
+
+
+local function CallOnChildren(Instance, FunctionToCall)
+	-- Calls a function on each of the children of a certain object, using recursion.  
+
+	FunctionToCall(Instance)
+
+	for _, Child in next, Instance:GetChildren() do
+		CallOnChildren(Child, FunctionToCall)
+	end
+end
+
+local function GetNearestParent(Instance, ClassName)
+	-- Returns the nearest parent of a certain class, or returns nil
+
+	local Ancestor = Instance
+	repeat
+		Ancestor = Ancestor.Parent
+		if Ancestor == nil then
+			return nil
+		end
+	until Ancestor:IsA(ClassName)
+
+	return Ancestor
+end
+
+local function GetBricks(StartInstance)
+	local List = {}
+
+	-- if StartInstance:IsA("BasePart") then
+	-- 	List[#List+1] = StartInstance
+	-- end
+
+	CallOnChildren(StartInstance, function(Item)
+		if Item:IsA("BasePart") then
+			List[#List+1] = Item;
+		end
+	end)
+
+	return List
+end
+
+local function Modify(Instance, Values)
+	-- Modifies an Instance by using a table.  
+
+	assert(type(Values) == "table", "Values is not a table");
+
+	for Index, Value in next, Values do
+		if type(Index) == "number" then
+			Value.Parent = Instance
+		else
+			Instance[Index] = Value
+		end
+	end
+	return Instance
+end
+
+local function Make(ClassType, Properties)
+	-- Using a syntax hack to create a nice way to Make new items.  
+
+	return Modify(Instance.new(ClassType), Properties)
+end
+
+local Surfaces = {"TopSurface", "BottomSurface", "LeftSurface", "RightSurface", "FrontSurface", "BackSurface"}
+local HingSurfaces = {"Hinge", "Motor", "SteppingMotor"}
+
+local function HasWheelJoint(Part)
+	for _, SurfaceName in pairs(Surfaces) do
+		for _, HingSurfaceName in pairs(HingSurfaces) do
+			if Part[SurfaceName].Name == HingSurfaceName then
+				return true
+			end
+		end
+	end
+	
+	return false
+end
+
+local function ShouldBreakJoints(Part)
+
+
+	if NEVER_BREAK_JOINTS then
+		return false
+	end
+	
+	if HasWheelJoint(Part) then
+		return false
+	end
+	
+	local Connected = Part:GetConnectedParts()
+	
+	if #Connected == 1 then
+		return false
+	end
+	
+	for _, Item in pairs(Connected) do
+		if HasWheelJoint(Item) then
+			return false
+		elseif not Item:IsDescendantOf(script.Parent) then
+			return false
+		end
+	end
+	
+	return true
+end
+
+local function WeldTogether(Part0, Part1, JointType, WeldParent)
+
+
+	JointType = JointType or "Weld"
+	local RelativeValue = Part1:FindFirstChild("qRelativeCFrameWeldValue")
+	
+	local NewWeld = Part1:FindFirstChild("qCFrameWeldThingy") or Instance.new(JointType)
+	Modify(NewWeld, {
+		Name = "qCFrameWeldThingy";
+		Part0  = Part0;
+		Part1  = Part1;
+		C0     = CFrame.new();
+		C1     = RelativeValue and RelativeValue.Value or Part1.CFrame:toObjectSpace(Part0.CFrame);
+		Parent = Part1;
+	})
+
+	if not RelativeValue then
+		RelativeValue = Make("CFrameValue", {
+			Parent     = Part1;
+			Name       = "qRelativeCFrameWeldValue";
+			Archivable = true;
+			Value      = NewWeld.C1;
+		})
+	end
+
+	return NewWeld
+end
+
+local function WeldParts(Parts, MainPart, JointType, DoNotUnanchor)
+
+	for _, Part in pairs(Parts) do
+		if ShouldBreakJoints(Part) then
+			Part:BreakJoints()
+		end
+	end
+	
+	for _, Part in pairs(Parts) do
+		if Part ~= MainPart then
+			WeldTogether(MainPart, Part, JointType, MainPart)
+		end
+	end
+
+	if not DoNotUnanchor then
+		for _, Part in pairs(Parts) do
+			Part.Anchored = false
+		end
+		MainPart.Anchored = false
+	end
+end
+
+local function PerfectionWeld()	
+	local Tool = GetNearestParent(script, "Tool")
+
+	local Parts = GetBricks(script.Parent)
+	local PrimaryPart = Tool and Tool:FindFirstChild("Handle") and Tool.Handle:IsA("BasePart") and Tool.Handle or script.Parent:IsA("Model") and script.Parent.PrimaryPart or Parts[1]
+
+	if PrimaryPart then
+		WeldParts(Parts, PrimaryPart, "Weld", false)
+	else
+		warn("qWeld - Unable to weld part")
+	end
+	
+	return Tool
+end
+
+local Tool = PerfectionWeld()
+
+
+if Tool and script.ClassName == "Script" then
+	--- Don't bother with local scripts
+
+	script.Parent.AncestryChanged:connect(function()
+		PerfectionWeld()
+	end)
+end
+
+-- Created by Quenty (@Quenty, follow me on twitter).
+
+end,
+function(script,require)
+-- Created by Quenty (@Quenty, follow me on twitter).
+-- Should work with only ONE copy, seamlessly with weapons, trains, et cetera.
+-- Parts should be ANCHORED before use. It will, however, store relatives values and so when tools are reparented, it'll fix them.
+
+--[[ INSTRUCTIONS
+- Place in the model
+- Make sure model is anchored
+- That's it. It will weld the model and all children. 
+
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+
+This script is designed to be used is a regular script. In a local script it will weld, but it will not attempt to handle ancestory changes. 
+]]
+
+--[[ DOCUMENTATION
+- Will work in tools. If ran more than once it will not create more than one weld.  This is especially useful for tools that are dropped and then picked up again.
+- Will work in PBS servers
+- Will work as long as it starts out with the part anchored
+- Stores the relative CFrame as a CFrame value
+- Takes careful measure to reduce lag by not having a joint set off or affected by the parts offset from origin
+- Utilizes a recursive algorith to find all parts in the model
+- Will reweld on script reparent if the script is initially parented to a tool.
+- Welds as fast as possible
+]]
+
+-- qPerfectionWeld.lua
+-- Created 10/6/2014
+-- Author: Quenty
+-- Version 1.0.3
+
+-- Updated 10/14/2014 - Updated to 1.0.1
+--- Bug fix with existing ROBLOX welds ? Repro by asimo3089
+
+-- Updated 10/14/2014 - Updated to 1.0.2
+--- Fixed bug fix. 
+
+-- Updated 10/14/2014 - Updated to 1.0.3
+--- Now handles joints semi-acceptably. May be rather hacky with some joints. :/
+
+local NEVER_BREAK_JOINTS = false -- If you set this to true it will never break joints (this can create some welding issues, but can save stuff like hinges).
+
+
+local function CallOnChildren(Instance, FunctionToCall)
+	-- Calls a function on each of the children of a certain object, using recursion.  
+
+	FunctionToCall(Instance)
+
+	for _, Child in next, Instance:GetChildren() do
+		CallOnChildren(Child, FunctionToCall)
+	end
+end
+
+local function GetNearestParent(Instance, ClassName)
+	-- Returns the nearest parent of a certain class, or returns nil
+
+	local Ancestor = Instance
+	repeat
+		Ancestor = Ancestor.Parent
+		if Ancestor == nil then
+			return nil
+		end
+	until Ancestor:IsA(ClassName)
+
+	return Ancestor
+end
+
+local function GetBricks(StartInstance)
+	local List = {}
+
+	-- if StartInstance:IsA("BasePart") then
+	-- 	List[#List+1] = StartInstance
+	-- end
+
+	CallOnChildren(StartInstance, function(Item)
+		if Item:IsA("BasePart") then
+			List[#List+1] = Item;
+		end
+	end)
+
+	return List
+end
+
+local function Modify(Instance, Values)
+	-- Modifies an Instance by using a table.  
+
+	assert(type(Values) == "table", "Values is not a table");
+
+	for Index, Value in next, Values do
+		if type(Index) == "number" then
+			Value.Parent = Instance
+		else
+			Instance[Index] = Value
+		end
+	end
+	return Instance
+end
+
+local function Make(ClassType, Properties)
+	-- Using a syntax hack to create a nice way to Make new items.  
+
+	return Modify(Instance.new(ClassType), Properties)
+end
+
+local Surfaces = {"TopSurface", "BottomSurface", "LeftSurface", "RightSurface", "FrontSurface", "BackSurface"}
+local HingSurfaces = {"Hinge", "Motor", "SteppingMotor"}
+
+local function HasWheelJoint(Part)
+	for _, SurfaceName in pairs(Surfaces) do
+		for _, HingSurfaceName in pairs(HingSurfaces) do
+			if Part[SurfaceName].Name == HingSurfaceName then
+				return true
+			end
+		end
+	end
+	
+	return false
+end
+
+local function ShouldBreakJoints(Part)
+	--- We do not want to break joints of wheels/hinges. This takes the utmost care to not do this. There are
+	--  definitely some edge cases. 
+
+	if NEVER_BREAK_JOINTS then
+		return false
+	end
+	
+	if HasWheelJoint(Part) then
+		return false
+	end
+	
+	local Connected = Part:GetConnectedParts()
+	
+	if #Connected == 1 then
+		return false
+	end
+	
+	for _, Item in pairs(Connected) do
+		if HasWheelJoint(Item) then
+			return false
+		elseif not Item:IsDescendantOf(script.Parent) then
+			return false
+		end
+	end
+	
+	return true
+end
+
+local function WeldTogether(Part0, Part1, JointType, WeldParent)
+	--- Weld's 2 parts together
+	-- @param Part0 The first part
+	-- @param Part1 The second part (Dependent part most of the time).
+	-- @param [JointType] The type of joint. Defaults to weld.
+	-- @param [WeldParent] Parent of the weld, Defaults to Part0 (so GC is better).
+	-- @return The weld created.
+
+	JointType = JointType or "Weld"
+	local RelativeValue = Part1:FindFirstChild("qRelativeCFrameWeldValue")
+	
+	local NewWeld = Part1:FindFirstChild("qCFrameWeldThingy") or Instance.new(JointType)
+	Modify(NewWeld, {
+		Name = "qCFrameWeldThingy";
+		Part0  = Part0;
+		Part1  = Part1;
+		C0     = CFrame.new();--Part0.CFrame:inverse();
+		C1     = RelativeValue and RelativeValue.Value or Part1.CFrame:toObjectSpace(Part0.CFrame); --Part1.CFrame:inverse() * Part0.CFrame;-- Part1.CFrame:inverse();
+		Parent = Part1;
+	})
+
+	if not RelativeValue then
+		RelativeValue = Make("CFrameValue", {
+			Parent     = Part1;
+			Name       = "qRelativeCFrameWeldValue";
+			Archivable = true;
+			Value      = NewWeld.C1;
+		})
+	end
+
+	return NewWeld
+end
+
+local function WeldParts(Parts, MainPart, JointType, DoNotUnanchor)
+	-- @param Parts The Parts to weld. Should be anchored to prevent really horrible results.
+	-- @param MainPart The part to weld the model to (can be in the model).
+	-- @param [JointType] The type of joint. Defaults to weld. 
+	-- @parm DoNotUnanchor Boolean, if true, will not unachor the model after cmopletion.
+	
+	for _, Part in pairs(Parts) do
+		if ShouldBreakJoints(Part) then
+			Part:BreakJoints()
+		end
+	end
+	
+	for _, Part in pairs(Parts) do
+		if Part ~= MainPart then
+			WeldTogether(MainPart, Part, JointType, MainPart)
+		end
+	end
+
+	if not DoNotUnanchor then
+		for _, Part in pairs(Parts) do
+			Part.Anchored = false
+		end
+		MainPart.Anchored = false
+	end
+end
+
+local function PerfectionWeld()	
+	local Tool = GetNearestParent(script, "Tool")
+
+	local Parts = GetBricks(script.Parent)
+	local PrimaryPart = Tool and Tool:FindFirstChild("Handle") and Tool.Handle:IsA("BasePart") and Tool.Handle or script.Parent:IsA("Model") and script.Parent.PrimaryPart or Parts[1]
+
+	if PrimaryPart then
+		WeldParts(Parts, PrimaryPart, "Weld", false)
+	else
+		warn("qWeld - Unable to weld part")
+	end
+	
+	return Tool
+end
+
+local Tool = PerfectionWeld()
+
+
+if Tool and script.ClassName == "Script" then
+	--- Don't bother with local scripts
+
+	script.Parent.AncestryChanged:connect(function()
+		PerfectionWeld()
+	end)
+end
+
+-- Created by Quenty (@Quenty, follow me on twitter).
+
+end,
+function(script,require)
+function   waitForChild(parent, childName)
+	local child = parent:findFirstChild(childName)
+	if child then return child end
+	while true do
+		child = parent.ChildAdded:wait()
+		if child.Name==childName then return child end
+	end
+end
+local Figure = script.Parent
+local Torso = waitForChild(Figure, "Torso")
+local RightShoulder = waitForChild(Torso, "Right Shoulder")
+local LeftShoulder = waitForChild(Torso, "Left Shoulder")
+local RightHip = waitForChild(Torso, "Right Hip")
+local LeftHip = waitForChild(Torso, "Left Hip")
+local Neck = waitForChild(Torso, "Neck")
+local Humanoid;
+for _,Child in pairs(Figure:GetChildren())do
+	if Child and Child.ClassName=="Humanoid"then
+		Humanoid=Child;
+	end;
+end;
+local pose = "Standing"
+local currentAnim = ""
+local currentAnimInstance = nil
+local currentAnimTrack = nil
+local currentAnimKeyframeHandler = nil
+local currentAnimSpeed = 1.0
+local animTable = {}
+local animNames = { 
+	idle = {
+		{ id = "http://www.roblox.com/asset/?id=180435571", weight = 9 },
+		{ id = "http://www.roblox.com/asset/?id=180435792", weight = 1 }
+	},
+	walk = { 
+		{ id = "http://www.roblox.com/asset/?id=180426354", weight = 10 } 
+	}, 
+	run = {
+		{ id = "http://www.roblox.com/asset/?id=252557606", weight = 20 } 
+	}, 
+	jump = {
+		{ id = "http://www.roblox.com/asset/?id=125750702", weight = 10 } 
+	}, 
+	fall = {
+		{ id = "http://www.roblox.com/asset/?id=180436148", weight = 10 } 
+	}, 
+	climb = {
+		{ id = "http://www.roblox.com/asset/?id=180436334", weight = 10 } 
+	}, 
+	sit = {
+		{ id = "http://www.roblox.com/asset/?id=178130996", weight = 10 } 
+	},
+	toolnone = {
+		{ id = "http://www.roblox.com/asset/?id=182393478", weight = 10 } 
+	},
+	toolslash = {
+		{ id = "http://www.roblox.com/asset/?id=129967390", weight = 10 } 
+		--{ id = "slash.xml", weight = 10 } 
+	},
+	toollunge = {
+		{ id = "http://www.roblox.com/asset/?id=129967478", weight = 10 } 
+	},
+	wave = {
+		{ id = "http://www.roblox.com/asset/?id=128777973", weight = 10 } 
+	},
+	point = {
+		{ id = "http://www.roblox.com/asset/?id=128853357", weight = 10 } 
+	},
+	dance1 = {
+		{ id = "http://www.roblox.com/asset/?id=182435998", weight = 10 }, 
+		{ id = "http://www.roblox.com/asset/?id=182491037", weight = 10 }, 
+		{ id = "http://www.roblox.com/asset/?id=182491065", weight = 10 } 
+	},
+	dance2 = {
+		{ id = "http://www.roblox.com/asset/?id=182436842", weight = 10 }, 
+		{ id = "http://www.roblox.com/asset/?id=182491248", weight = 10 }, 
+		{ id = "http://www.roblox.com/asset/?id=182491277", weight = 10 } 
+	},
+	dance3 = {
+		{ id = "http://www.roblox.com/asset/?id=182436935", weight = 10 }, 
+		{ id = "http://www.roblox.com/asset/?id=182491368", weight = 10 }, 
+		{ id = "http://www.roblox.com/asset/?id=182491423", weight = 10 } 
+	},
+	laugh = {
+		{ id = "http://www.roblox.com/asset/?id=129423131", weight = 10 } 
+	},
+	cheer = {
+		{ id = "http://www.roblox.com/asset/?id=129423030", weight = 10 } 
+	},
+}
+local dances = {"dance1", "dance2", "dance3"}
+
+-- Existance in this list signifies that it is an emote, the value indicates if it is a looping emote
+local emoteNames = { wave = false, point = false, dance1 = true, dance2 = true, dance3 = true, laugh = false, cheer = false}
+
+function configureAnimationSet(name, fileList)
+	if (animTable[name] ~= nil) then
+		for _, connection in pairs(animTable[name].connections) do
+			connection:disconnect()
+		end
+	end
+	animTable[name] = {}
+	animTable[name].count = 0
+	animTable[name].totalWeight = 0
+	animTable[name].connections = {}
+
+	-- check for config values
+	local config = script:FindFirstChild(name)
+	if (config ~= nil) then
+		--print("Loading anims " .. name)
+		table.insert(animTable[name].connections, config.ChildAdded:connect(function(child) configureAnimationSet(name, fileList) end))
+		table.insert(animTable[name].connections, config.ChildRemoved:connect(function(child) configureAnimationSet(name, fileList) end))
+		local idx = 1
+		for _, childPart in pairs(config:GetChildren()) do
+			if (childPart:IsA("Animation")) then
+				table.insert(animTable[name].connections, childPart.Changed:connect(function(property) configureAnimationSet(name, fileList) end))
+				animTable[name][idx] = {}
+				animTable[name][idx].anim = childPart
+				local weightObject = childPart:FindFirstChild("Weight")
+				if (weightObject == nil) then
+					animTable[name][idx].weight = 1
+				else
+					animTable[name][idx].weight = weightObject.Value
+				end
+				animTable[name].count = animTable[name].count + 1
+				animTable[name].totalWeight = animTable[name].totalWeight + animTable[name][idx].weight
+				--print(name .. " [" .. idx .. "] " .. animTable[name][idx].anim.AnimationId .. " (" .. animTable[name][idx].weight .. ")")
+				idx = idx + 1
+			end
+		end
+	end
+
+	-- fallback to defaults
+	if (animTable[name].count <= 0) then
+		for idx, anim in pairs(fileList) do
+			animTable[name][idx] = {}
+			animTable[name][idx].anim = Instance.new("Animation")
+			animTable[name][idx].anim.Name = name
+			animTable[name][idx].anim.AnimationId = anim.id
+			animTable[name][idx].weight = anim.weight
+			animTable[name].count = animTable[name].count + 1
+			animTable[name].totalWeight = animTable[name].totalWeight + anim.weight
+			--print(name .. " [" .. idx .. "] " .. anim.id .. " (" .. anim.weight .. ")")
+		end
+	end
+end
+
+-- Setup animation objects
+function scriptChildModified(child)
+	local fileList = animNames[child.Name]
+	if (fileList ~= nil) then
+		configureAnimationSet(child.Name, fileList)
+	end
+end
+
+script.ChildAdded:connect(scriptChildModified)
+script.ChildRemoved:connect(scriptChildModified)
+
+
+for name, fileList in pairs(animNames) do 
+	configureAnimationSet(name, fileList)
+end
+
+-- ANIMATION
+
+-- declarations
+local toolAnim = "None"
+local toolAnimTime = 0
+
+local jumpAnimTime = 0
+local jumpAnimDuration = 0.3
+
+local toolTransitionTime = 0.1
+local fallTransitionTime = 0.3
+local jumpMaxLimbVelocity = 0.75
+
+-- functions
+
+function stopAllAnimations()
+	local oldAnim = currentAnim
+
+	-- return to idle if finishing an emote
+	if (emoteNames[oldAnim] ~= nil and emoteNames[oldAnim] == false) then
+		oldAnim = "idle"
+	end
+
+	currentAnim = ""
+	currentAnimInstance = nil
+	if (currentAnimKeyframeHandler ~= nil) then
+		currentAnimKeyframeHandler:disconnect()
+	end
+
+	if (currentAnimTrack ~= nil) then
+		currentAnimTrack:Stop()
+		currentAnimTrack:Destroy()
+		currentAnimTrack = nil
+	end
+	return oldAnim
+end
+
+function setAnimationSpeed(speed)
+	if speed ~= currentAnimSpeed then
+		currentAnimSpeed = speed
+		currentAnimTrack:AdjustSpeed(currentAnimSpeed)
+	end
+end
+
+function keyFrameReachedFunc(frameName)
+	if (frameName == "End") then
+
+		local repeatAnim = currentAnim
+		-- return to idle if finishing an emote
+		if (emoteNames[repeatAnim] ~= nil and emoteNames[repeatAnim] == false) then
+			repeatAnim = "idle"
+		end
+
+		local animSpeed = currentAnimSpeed
+		playAnimation(repeatAnim, 0.0, Humanoid)
+		setAnimationSpeed(animSpeed)
+	end
+end
+
+-- Preload animations
+function playAnimation(animName, transitionTime, humanoid) 
+
+	local roll = math.random(1, animTable[animName].totalWeight) 
+	local origRoll = roll
+	local idx = 1
+	while (roll > animTable[animName][idx].weight) do
+		roll = roll - animTable[animName][idx].weight
+		idx = idx + 1
+	end
+	--print(animName .. " " .. idx .. " [" .. origRoll .. "]")
+	local anim = animTable[animName][idx].anim
+	-- switch animation
+	if (anim ~= currentAnimInstance) then
+		if (currentAnimTrack ~= nil) then
+			currentAnimTrack:Stop(transitionTime)
+			currentAnimTrack:Destroy()
+		end
+		currentAnimSpeed = 1.0
+		-- load it to the humanoid; get AnimationTrack
+		currentAnimTrack = humanoid:LoadAnimation(anim)
+		-- play the animation
+		currentAnimTrack:Play(transitionTime)
+		currentAnim = animName
+		currentAnimInstance = anim
+		-- set up keyframe name triggers
+		if (currentAnimKeyframeHandler ~= nil) then
+			currentAnimKeyframeHandler:disconnect()
+		end
+		currentAnimKeyframeHandler = currentAnimTrack.KeyframeReached:connect(keyFrameReachedFunc)
+	end
+end
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+local toolAnimName = ""
+local toolAnimTrack = nil
+local toolAnimInstance = nil
+local currentToolAnimKeyframeHandler = nil
+function toolKeyFrameReachedFunc(frameName)
+	if (frameName == "End") then
+		--print("Keyframe : ".. frameName)
+		playToolAnimation(toolAnimName, 0.0, Humanoid)
+	end
+end
+function playToolAnimation(animName, transitionTime, humanoid) 
+	local roll = math.random(1, animTable[animName].totalWeight) 
+	local origRoll = roll
+	local idx = 1
+	while (roll > animTable[animName][idx].weight) do
+		roll = roll - animTable[animName][idx].weight
+		idx = idx + 1
+	end
+	--print(animName .. " * " .. idx .. " [" .. origRoll .. "]")
+	local anim = animTable[animName][idx].anim
+	if (toolAnimInstance ~= anim) then
+		if (toolAnimTrack ~= nil) then
+			toolAnimTrack:Stop()
+			toolAnimTrack:Destroy()
+			transitionTime = 0
+		end
+		-- load it to the humanoid; get AnimationTrack
+		toolAnimTrack = humanoid:LoadAnimation(anim)
+		-- play the animation
+		toolAnimTrack:Play(transitionTime)
+		toolAnimName = animName
+		toolAnimInstance = anim
+		currentToolAnimKeyframeHandler = toolAnimTrack.KeyframeReached:connect(toolKeyFrameReachedFunc)
+	end
+end
+function stopToolAnimations()
+	local oldAnim = toolAnimName
+	if (currentToolAnimKeyframeHandler ~= nil) then
+		currentToolAnimKeyframeHandler:disconnect()
+	end
+	toolAnimName = ""
+	toolAnimInstance = nil
+	if (toolAnimTrack ~= nil) then
+		toolAnimTrack:Stop()
+		toolAnimTrack:Destroy()
+		toolAnimTrack = nil
+	end
+	return oldAnim
+end
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+function onRunning(speed)
+	if speed>0.01 then
+		if Figure and Humanoid and Humanoid.WalkSpeed<17 then
+			playAnimation("walk", 0.1, Humanoid);
+		elseif Figure and Humanoid and Humanoid.WalkSpeed>17 then
+			playAnimation("run", 0.1, Humanoid);
+		end;
+		if currentAnimInstance and currentAnimInstance.AnimationId == "http://www.roblox.com/asset/?id=180426354" then
+			setAnimationSpeed(speed / 14.5)
+		end
+		pose = "Running"
+	else
+		playAnimation("idle", 0.1, Humanoid)
+		pose = "Standing"
+	end
+end
+function onDied()
+	pose = "Dead"
+end
+function onJumping()
+	playAnimation("jump", 0.1, Humanoid)
+	jumpAnimTime = jumpAnimDuration
+	pose = "Jumping"
+end
+function onClimbing(speed)
+	playAnimation("climb", 0.1, Humanoid)
+	setAnimationSpeed(speed / 12.0)
+	pose = "Climbing"
+end
+function onGettingUp()
+	pose = "GettingUp"
+end
+function onFreeFall()
+	if (jumpAnimTime <= 0) then
+		playAnimation("fall", fallTransitionTime, Humanoid)
+	end
+	pose = "FreeFall"
+end
+function onFallingDown()
+	pose = "FallingDown"
+end
+function onSeated()
+	pose = "Seated"
+end
+function onPlatformStanding()
+	pose = "PlatformStanding"
+end
+function onSwimming(speed)
+	if speed>0 then
+		pose = "Running"
+	else
+		pose = "Standing"
+	end
+end
+
+function getTool()
+	for _, kid in ipairs(Figure:GetChildren()) do
+		if kid.className == "Tool" then return kid end
+	end
+	return nil
+end
+
+function getToolAnim(tool)
+	for _, c in ipairs(tool:GetChildren()) do
+		if c.Name == "toolanim" and c.className == "StringValue" then
+			return c
+		end
+	end
+	return nil
+end
+
+function animateTool()
+
+	if (toolAnim == "None") then
+		playToolAnimation("toolnone", toolTransitionTime, Humanoid)
+		return
+	end
+
+	if (toolAnim == "Slash") then
+		playToolAnimation("toolslash", 0, Humanoid)
+		return
+	end
+
+	if (toolAnim == "Lunge") then
+		playToolAnimation("toollunge", 0, Humanoid)
+		return
+	end
+end
+
+function moveSit()
+	RightShoulder.MaxVelocity = 0.15
+	LeftShoulder.MaxVelocity = 0.15
+	RightShoulder:SetDesiredAngle(3.14 /2)
+	LeftShoulder:SetDesiredAngle(-3.14 /2)
+	RightHip:SetDesiredAngle(3.14 /2)
+	LeftHip:SetDesiredAngle(-3.14 /2)
+end
+
+local lastTick = 0
+
+function move(time)
+	local amplitude = 1
+	local frequency = 1
+	local deltaTime = time - lastTick
+	lastTick = time
+
+	local climbFudge = 0
+	local setAngles = false
+
+	if (jumpAnimTime > 0) then
+		jumpAnimTime = jumpAnimTime - deltaTime
+	end
+
+	if (pose == "FreeFall" and jumpAnimTime <= 0) then
+		playAnimation("fall", fallTransitionTime, Humanoid)
+	elseif (pose == "Seated") then
+		playAnimation("sit", 0.5, Humanoid)
+		return
+	elseif (pose == "Running") then
+		if Figure and Humanoid and Humanoid.WalkSpeed<17 then
+			playAnimation("walk", 0.1, Humanoid);
+		elseif Figure and Humanoid and Humanoid.WalkSpeed>17 then
+			playAnimation("run", 0.1, Humanoid);
+		end;
+	elseif (pose == "Dead" or pose == "GettingUp" or pose == "FallingDown" or pose == "Seated" or pose == "PlatformStanding") then
+		stopAllAnimations()
+		amplitude = 0.1
+		frequency = 1
+		setAngles = true
+	end
+	if (setAngles) then
+		local desiredAngle = amplitude * math.sin(time * frequency)
+		RightShoulder:SetDesiredAngle(desiredAngle + climbFudge)
+		LeftShoulder:SetDesiredAngle(desiredAngle - climbFudge)
+		RightHip:SetDesiredAngle(-desiredAngle)
+		LeftHip:SetDesiredAngle(-desiredAngle)
+	end
+	-- Tool Animation handling
+	local tool = getTool()
+	if tool and tool:FindFirstChild("Handle") then
+		local animStringValueObject = getToolAnim(tool)
+		if animStringValueObject then
+			toolAnim = animStringValueObject.Value
+			-- message recieved, delete StringValue
+			animStringValueObject.Parent = nil
+			toolAnimTime = time + .3
+		end
+		if time > toolAnimTime then
+			toolAnimTime = 0
+			toolAnim = "None"
+		end
+		animateTool()
+	else
+		stopToolAnimations()
+		toolAnim = "None"
+		toolAnimInstance = nil
+		toolAnimTime = 0
+	end
+end
+-- connect events
+Humanoid.Died:connect(onDied)
+Humanoid.Running:connect(onRunning)
+Humanoid.Jumping:connect(onJumping)
+Humanoid.Climbing:connect(onClimbing)
+Humanoid.GettingUp:connect(onGettingUp)
+Humanoid.FreeFalling:connect(onFreeFall)
+Humanoid.FallingDown:connect(onFallingDown)
+Humanoid.Seated:connect(onSeated)
+Humanoid.PlatformStanding:connect(onPlatformStanding)
+Humanoid.Swimming:connect(onSwimming)
+local runService = game:GetService("RunService");
+playAnimation("idle", 0.1, Humanoid)
+pose = "Standing"
+while wait(0)do
+	local _,time=wait(0)
+	move(time)
+end
+
+end,
+function(script,require)
+local Figure = script.Parent
+local Head = Figure:WaitForChild("Head")
+local Humanoid;
+for _,Child in pairs(Figure:GetChildren())do
+	if Child and Child.ClassName=="Humanoid"then
+		Humanoid=Child;
+	end;
+end;
+local regening = false
+
+
+function regenHealth()
+	if regening then return end
+	regening = true
+
+	while Humanoid.Health < Humanoid.MaxHealth do
+		local s = wait(1)
+		local health = Humanoid.Health
+		if health~=0 and health < Humanoid.MaxHealth then
+			local newHealthDelta = 0.01 * s * Humanoid.MaxHealth
+			health = health + newHealthDelta
+			Humanoid.Health = math.min(health,Humanoid.MaxHealth)
+		end
+	end
+
+	if Humanoid.Health > Humanoid.MaxHealth then
+		Humanoid.Health = Humanoid.MaxHealth
+	end
+
+	regening = false
+end
+
+Humanoid.HealthChanged:Connect(regenHealth)
+
+end,
+function(script,require)
+local JeffTheKillerScript=script;
+repeat wait(0)until JeffTheKillerScript and JeffTheKillerScript.Parent and JeffTheKillerScript.Parent.ClassName=="Model"and JeffTheKillerScript.Parent:FindFirstChild("Head")and JeffTheKillerScript.Parent:FindFirstChild("Torso");
+local JeffTheKiller=JeffTheKillerScript.Parent;
+function raycast(Spos,vec,currentdist)
+	local hit2,pos2=game.Workspace:FindPartOnRay(Ray.new(Spos+(vec*.05),vec*currentdist),JeffTheKiller);
+	if hit2~=nil and pos2 then
+		if hit2.Name=="Handle" and not hit2.CanCollide or string.sub(hit2.Name,1,6)=="Effect"and not hit2.CanCollide then
+			local currentdist=currentdist-(pos2-Spos).magnitude;
+			return raycast(pos2,vec,currentdist);
+		end;
+	end;
+	return hit2,pos2;
+end;
+function RayCast(Position,Direction,MaxDistance,IgnoreList)
+	return game:GetService("Workspace"):FindPartOnRayWithIgnoreList(Ray.new(Position,Direction.unit*(MaxDistance or 999.999)),IgnoreList);
+end;
+
+local JeffTheKillerHumanoid;
+for _,Child in pairs(JeffTheKiller:GetChildren())do
+	if Child and Child.ClassName=="Humanoid"and Child.Health~=0 then
+		JeffTheKillerHumanoid=Child;
+	end;
+end;
+local AttackDebounce=false;
+local JeffTheKillerKnife=JeffTheKiller:FindFirstChild("Knife");
+local JeffTheKillerHead=JeffTheKiller:FindFirstChild("Head");
+local JeffTheKillerHumanoidRootPart=JeffTheKiller:FindFirstChild("HumanoidRootPart");
+local WalkDebounce=false;
+local Notice=false;
+local JeffLaughDebounce=false;
+local MusicDebounce=false;
+local NoticeDebounce=false;
+local ChosenMusic;
+function FindNearestBae()
+	local NoticeDistance=100;
+	local TargetMain;
+	for _,TargetModel in pairs(game:GetService("Workspace"):GetChildren())do
+		if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Health~=0 and TargetModel.className=="Model"and TargetModel~=JeffTheKiller and TargetModel.Name~=JeffTheKiller.Name and TargetModel:FindFirstChild("Torso")and TargetModel:FindFirstChild("Head")then
+			local TargetPart=TargetModel:FindFirstChild("Torso");
+			local FoundHumanoid;
+			for _,Child in pairs(TargetModel:GetChildren())do
+				if Child and Child.ClassName=="Humanoid"and Child.Health~=0 then
+					FoundHumanoid=Child;
+				end;
+			end;
+			if TargetModel and TargetPart and FoundHumanoid and FoundHumanoid.Health~=0 and(TargetPart.Position-JeffTheKillerHumanoidRootPart.Position).magnitude<NoticeDistance then
+				TargetMain=TargetPart;
+				NoticeDistance=(TargetPart.Position-JeffTheKillerHumanoidRootPart.Position).magnitude;
+				local hit,pos=raycast(JeffTheKillerHumanoidRootPart.Position,(TargetPart.Position-JeffTheKillerHumanoidRootPart.Position).unit,500)
+				if hit and hit.Parent and hit.Parent.ClassName=="Model"and hit.Parent:FindFirstChild("Torso")and hit.Parent:FindFirstChild("Head")then
+					if TargetModel and TargetPart and FoundHumanoid and FoundHumanoid.Health~=0 and(TargetPart.Position-JeffTheKillerHumanoidRootPart.Position).magnitude<9 and not AttackDebounce then
+						spawn(function()
+							AttackDebounce=true;
+							local SwingAnimation=JeffTheKillerHumanoid:LoadAnimation(JeffTheKiller:FindFirstChild("Swing"));
+							local SwingChoice=math.random(1,2);
+							local HitChoice=math.random(1,3);
+							SwingAnimation:Play();
+							SwingAnimation:AdjustSpeed(1.5+(math.random()*0.1));
+							if JeffTheKillerScript and JeffTheKiller and JeffTheKillerKnife and JeffTheKillerKnife:FindFirstChild("Swing")then
+								local SwingSound=JeffTheKillerKnife:FindFirstChild("Swing");
+								SwingSound.Pitch=1+(math.random()*0.04);
+								SwingSound:Play();
+							end;
+							wait(0.3);
+							if TargetModel and TargetPart and FoundHumanoid and FoundHumanoid.Health~=0 and(TargetPart.Position-JeffTheKillerHumanoidRootPart.Position).magnitude<8 then
+								FoundHumanoid:TakeDamage(30);
+								if HitChoice==1 and JeffTheKillerScript and JeffTheKiller and JeffTheKillerKnife and JeffTheKillerKnife:FindFirstChild("Hit1")then
+									local HitSound=JeffTheKillerKnife:FindFirstChild("Hit1");
+									HitSound.Pitch=1+(math.random()*0.04);
+									HitSound:Play();
+								elseif HitChoice==2 and JeffTheKillerScript and JeffTheKiller and JeffTheKillerKnife and JeffTheKillerKnife:FindFirstChild("Hit2")then
+									local HitSound=JeffTheKillerKnife:FindFirstChild("Hit2");
+									HitSound.Pitch=1+(math.random()*0.04);
+									HitSound:Play();
+								elseif HitChoice==3 and JeffTheKillerScript and JeffTheKiller and JeffTheKillerKnife and JeffTheKillerKnife:FindFirstChild("Hit3")then
+									local HitSound=JeffTheKillerKnife:FindFirstChild("Hit3");
+									HitSound.Pitch=1+(math.random()*0.04);
+									HitSound:Play();
+								end;
+							end;
+							wait(0.1);
+							AttackDebounce=false;
+						end);
+					end;
+				end;
+			end;
+		end;
+	end;
+	return TargetMain;
+end;
+while wait(0)do
+	local TargetPoint=JeffTheKillerHumanoid.TargetPoint;
+	local Blockage,BlockagePos=RayCast((JeffTheKillerHumanoidRootPart.CFrame+CFrame.new(JeffTheKillerHumanoidRootPart.Position,Vector3.new(TargetPoint.X,JeffTheKillerHumanoidRootPart.Position.Y,TargetPoint.Z)).LookVector*(JeffTheKillerHumanoidRootPart.Size.Z/2)).p,JeffTheKillerHumanoidRootPart.CFrame.lookVector,(JeffTheKillerHumanoidRootPart.Size.Z*2.5),{JeffTheKiller,JeffTheKiller})
+	local Jumpable=false;
+	if Blockage then
+		Jumpable=true;
+		if Blockage and Blockage.Parent and Blockage.Parent.ClassName~="Workspace"then
+			local BlockageHumanoid;
+			for _,Child in pairs(Blockage.Parent:GetChildren())do
+				if Child and Child.ClassName=="Humanoid"and Child.Health~=0 then
+					BlockageHumanoid=Child;
+				end;
+			end;
+			if Blockage and Blockage:IsA("Terrain")then
+				local CellPos=Blockage:WorldToCellPreferSolid((BlockagePos-Vector3.new(0,2,0)));
+				local CellMaterial,CellShape,CellOrientation=Blockage:GetCell(CellPos.X,CellPos.Y,CellPos.Z);
+				if CellMaterial==Enum.CellMaterial.Water then
+					Jumpable=false;
+				end;
+			elseif BlockageHumanoid or Blockage.ClassName=="TrussPart"or Blockage.ClassName=="WedgePart"or Blockage.Name=="Handle"and Blockage.Parent.ClassName=="Hat"or Blockage.Name=="Handle"and Blockage.Parent.ClassName=="Tool"then
+				Jumpable=false;
+			end;
+		end;
+		if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Health~=0 and not JeffTheKillerHumanoid.Sit and Jumpable then
+			JeffTheKillerHumanoid.Jump=true;
+		end;
+	end;
+	if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHead and JeffTheKillerHumanoidRootPart and JeffTheKillerHead:FindFirstChild("Jeff_Step")and (JeffTheKillerHumanoidRootPart.Velocity-Vector3.new(0,JeffTheKillerHumanoidRootPart.Velocity.y,0)).magnitude>=5 and not WalkDebounce and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Health~=0 then
+		spawn(function()
+			WalkDebounce=true;
+			local FiredRay=Ray.new(JeffTheKillerHumanoidRootPart.Position,Vector3.new(0,-4,0));
+			local RayTarget,endPoint=game:GetService("Workspace"):FindPartOnRay(FiredRay,JeffTheKiller);
+			if RayTarget then
+				local JeffTheKillerHeadFootStepClone=JeffTheKillerHead:FindFirstChild("Jeff_Step"):Clone();
+				JeffTheKillerHeadFootStepClone.Parent=JeffTheKillerHead;
+				JeffTheKillerHeadFootStepClone:Play();
+				JeffTheKillerHeadFootStepClone:Destroy();
+				if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Health~=0 and JeffTheKillerHumanoid.WalkSpeed<17 then
+					wait(0.5);
+				elseif JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Health~=0 and JeffTheKillerHumanoid.WalkSpeed>17 then
+					wait(0.2);
+				end
+			end;
+			WalkDebounce=false;
+		end);
+	end;
+	local MainTarget=FindNearestBae();
+	local FoundHumanoid;
+	if MainTarget then
+		for _,Child in pairs(MainTarget.Parent:GetChildren())do
+			if Child and Child.ClassName=="Humanoid"and Child.Health~=0 then
+				FoundHumanoid=Child;
+			end;
+		end;
+	end;
+	if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Health~=0 and MainTarget and MainTarget.Parent and FoundHumanoid and FoundHumanoid.Jump then
+		JeffTheKillerHumanoid.Jump=true;
+	end;
+	if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Health~=0 and MainTarget and FoundHumanoid and FoundHumanoid.Health~=0 and(MainTarget.Position-JeffTheKillerHumanoidRootPart.Position).magnitude<25 then
+		if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHead and JeffTheKillerHead:FindFirstChild("Jeff_Laugh")and not JeffTheKillerHead:FindFirstChild("Jeff_Laugh").IsPlaying then
+			JeffTheKillerHead:FindFirstChild("Jeff_Laugh").Volume=1;
+			JeffTheKillerHead:FindFirstChild("Jeff_Laugh"):Play();
+		end;
+	elseif JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Health~=0 and MainTarget and FoundHumanoid and FoundHumanoid.Health~=0 and(MainTarget.Position-JeffTheKillerHumanoidRootPart.Position).magnitude>25 then
+		if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHead and JeffTheKillerHead:FindFirstChild("Jeff_Laugh")and JeffTheKillerHead:FindFirstChild("Jeff_Laugh").IsPlaying then
+			if not JeffLaughDebounce then
+				spawn(function()
+					JeffLaughDebounce=true;
+					repeat wait(0);if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHead and JeffTheKillerHead:FindFirstChild("Jeff_Laugh")then JeffTheKillerHead:FindFirstChild("Jeff_Laugh").Volume=JeffTheKillerHead:FindFirstChild("Jeff_Laugh").Volume-0.1;else break;end;until JeffTheKillerHead:FindFirstChild("Jeff_Laugh").Volume==0 or JeffTheKillerHead:FindFirstChild("Jeff_Laugh").Volume<0;
+					JeffTheKillerHead:FindFirstChild("Jeff_Laugh").Volume=0;
+					JeffTheKillerHead:FindFirstChild("Jeff_Laugh"):Stop();
+					JeffLaughDebounce=false;
+				end);
+			end;
+		end;
+	end;
+	if not ChosenMusic and JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Health~=0 and MainTarget and FoundHumanoid and FoundHumanoid.Health~=0 and(MainTarget.Position-JeffTheKillerHumanoidRootPart.Position).magnitude<50 then
+		local MusicChoice=math.random(1,2);
+		if MusicChoice==1 and JeffTheKillerScript and JeffTheKiller and JeffTheKiller:FindFirstChild("Jeff_Scene_Sound1")then
+			ChosenMusic=JeffTheKiller:FindFirstChild("Jeff_Scene_Sound1");
+		elseif MusicChoice==2 and JeffTheKillerScript and JeffTheKiller and JeffTheKiller:FindFirstChild("Jeff_Scene_Sound2")then
+			ChosenMusic=JeffTheKiller:FindFirstChild("Jeff_Scene_Sound2");
+		end;
+		if JeffTheKillerScript and JeffTheKiller and ChosenMusic and not ChosenMusic.IsPlaying then
+			ChosenMusic.Volume=0.5;
+			ChosenMusic:Play();
+		end;
+	elseif JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Health~=0 and MainTarget and FoundHumanoid and FoundHumanoid.Health~=0 and(MainTarget.Position-JeffTheKillerHumanoidRootPart.Position).magnitude>50 then
+		if JeffTheKillerScript and JeffTheKiller and ChosenMusic and ChosenMusic.IsPlaying then
+			if not MusicDebounce then
+				spawn(function()
+					MusicDebounce=true;
+					repeat wait(0);if JeffTheKillerScript and JeffTheKiller and ChosenMusic then ChosenMusic.Volume=ChosenMusic.Volume-0.01;else break;end;until ChosenMusic.Volume==0 or ChosenMusic.Volume<0;
+					if ChosenMusic then
+						ChosenMusic.Volume=0;
+						ChosenMusic:Stop();
+					end;
+					ChosenMusic=nil;
+					MusicDebounce=false;
+				end);
+			end;
+		end;
+	end;
+	if not MainTarget and not JeffLaughDebounce then
+		spawn(function()
+			JeffLaughDebounce=true;
+			repeat wait(0);if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHead and JeffTheKillerHead:FindFirstChild("Jeff_Laugh")then JeffTheKillerHead:FindFirstChild("Jeff_Laugh").Volume=JeffTheKillerHead:FindFirstChild("Jeff_Laugh").Volume-0.1;else break;end;until JeffTheKillerHead:FindFirstChild("Jeff_Laugh").Volume==0 or JeffTheKillerHead:FindFirstChild("Jeff_Laugh").Volume<0;
+			JeffTheKillerHead:FindFirstChild("Jeff_Laugh").Volume=0;
+			JeffTheKillerHead:FindFirstChild("Jeff_Laugh"):Stop();
+			JeffLaughDebounce=false;
+		end);
+	end;
+	if not MainTarget and not MusicDebounce then
+		spawn(function()
+			MusicDebounce=true;
+			repeat wait(0);if JeffTheKillerScript and JeffTheKiller and ChosenMusic then ChosenMusic.Volume=ChosenMusic.Volume-0.01;else break;end;until ChosenMusic.Volume==0 or ChosenMusic.Volume<0;
+			if ChosenMusic then
+				ChosenMusic.Volume=0;
+				ChosenMusic:Stop();
+			end;
+			ChosenMusic=nil;
+			MusicDebounce=false;
+		end);
+	end;
+	if MainTarget then
+		Notice=true;
+		if Notice and not NoticeDebounce and JeffTheKillerScript and JeffTheKiller and JeffTheKillerHead and JeffTheKillerHead:FindFirstChild("Jeff_Susto2")then
+			JeffTheKillerHead:FindFirstChild("Jeff_Susto2"):Play();
+			NoticeDebounce=true;
+		end
+		if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Health~=0 then
+			if MainTarget and FoundHumanoid and FoundHumanoid.Health~=0 and(MainTarget.Position-JeffTheKillerHumanoidRootPart.Position).magnitude>5 then
+				JeffTheKillerHumanoid.WalkSpeed=30;
+			elseif MainTarget and FoundHumanoid and FoundHumanoid.Health~=0 and(MainTarget.Position-JeffTheKillerHumanoidRootPart.Position).magnitude<5 then
+				JeffTheKillerHumanoid.WalkSpeed=0.004;
+			end;
+			JeffTheKillerHumanoid:MoveTo(MainTarget.Position+(MainTarget.Position-JeffTheKillerHumanoidRootPart.Position).unit*2,game:GetService("Workspace"):FindFirstChild("Terrain"));
+		end;
+	else
+		Notice=false;
+		NoticeDebounce=false;
+		local RandomWalk=math.random(1,150);
+		if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Health~=0 then
+			JeffTheKillerHumanoid.WalkSpeed=12;
+			if RandomWalk==1 then
+				JeffTheKillerHumanoid:MoveTo(game:GetService("Workspace"):FindFirstChild("Terrain").Position+Vector3.new(math.random(-2048,2048),0,math.random(-2048,2048)),game:GetService("Workspace"):FindFirstChild("Terrain"));
+			end;
+		end;
+	end;
+	if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid then
+		JeffTheKillerHumanoid.DisplayDistanceType="None";
+		JeffTheKillerHumanoid.HealthDisplayDistance=0;
+		JeffTheKillerHumanoid.Name="ColdBloodedKiller";
+		JeffTheKillerHumanoid.NameDisplayDistance=0;
+		JeffTheKillerHumanoid.NameOcclusion="EnemyOcclusion";
+		JeffTheKillerHumanoid.AutoJumpEnabled=true;
+		JeffTheKillerHumanoid.AutoRotate=true;
+		JeffTheKillerHumanoid.MaxHealth=500;
+		JeffTheKillerHumanoid.JumpPower=60;
+		JeffTheKillerHumanoid.MaxSlopeAngle=89.9;
+	end;
+	if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and not JeffTheKillerHumanoid.AutoJumpEnabled then
+		JeffTheKillerHumanoid.AutoJumpEnabled=true;
+	end;
+	if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and not JeffTheKillerHumanoid.AutoRotate then
+		JeffTheKillerHumanoid.AutoRotate=true;
+	end;
+	if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.PlatformStand then
+		JeffTheKillerHumanoid.PlatformStand=false;
+	end;
+	if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Sit then
+		JeffTheKillerHumanoid.Sit=false;
+	end;
+end;
+
+end,
+function(script,require)
+local PlayerSpawning=false;
+local AdvancedRespawnScript=script;
+repeat wait(0)until script and script.Parent and script.Parent.ClassName=="Model";
+local JeffTheKiller=AdvancedRespawnScript.Parent;
+if AdvancedRespawnScript and JeffTheKiller and JeffTheKiller:FindFirstChild("Thumbnail")then
+	JeffTheKiller:FindFirstChild("Thumbnail"):Destroy();
+end;
+local GameDerbis = game:GetService("Debris");
+local JeffTheKillerHumanoid;
+for _,Child in pairs(JeffTheKiller:GetChildren())do
+	if Child and Child.ClassName=="Humanoid"and Child.Health~=0 then
+		JeffTheKillerHumanoid=Child;
+	end;
+end;
+local Respawndant=JeffTheKiller:Clone();
+local SpawnModel = nil
+
+function FindSpawn(SearchValue)
+	local PartsArchivable=SearchValue:GetChildren();
+	for AreaSearch=1,#PartsArchivable do
+		if PartsArchivable[AreaSearch].className=="SpawnLocation"then
+			local PositionValue=Instance.new("Vector3Value",SpawnModel);
+			PositionValue.Value=PartsArchivable[AreaSearch].Position;
+			PositionValue.Name=PartsArchivable[AreaSearch].Duration;
+		end;
+		FindSpawn(PartsArchivable[AreaSearch]);
+	end;
+end;
+
+if PlayerSpawning then 
+	coroutine.resume(coroutine.create(function()
+		if JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid:FindFirstChild("Status")and not JeffTheKillerHumanoid:FindFirstChild("Status"):FindFirstChild("AvalibleSpawns")then
+			SpawnModel=Instance.new("Model");
+			SpawnModel.Parent=JeffTheKillerHumanoid.Status;
+			SpawnModel.Name="AvalibleSpawns";
+		else
+			SpawnModel=JeffTheKillerHumanoid:FindFirstChild("Status"):FindFirstChild("AvalibleSpawns");
+		end;
+		FindSpawn(game:GetService("Workspace"));
+		local SpawnChilden=SpawnModel:GetChildren();
+		if#SpawnChilden>0 then
+			local SpawnItself=SpawnChilden[math.random(1,#SpawnChilden)];
+			local RespawningForceField=Instance.new("ForceField");
+			RespawningForceField.Parent=JeffTheKiller;
+			RespawningForceField.Name="SpawnForceField";
+			GameDerbis:AddItem(RespawningForceField,SpawnItself.Name);
+			JeffTheKiller:MoveTo(SpawnItself.Value+Vector3.new(0,3.5,0));
+		else
+			if JeffTheKiller:FindFirstChild("SpawnForceField")then
+				JeffTheKiller:FindFirstChild("SpawnForceField"):Destroy();
+			end;
+			JeffTheKiller:MoveTo(Vector3.new(0,115,0));
+		end;
+	end));
+end;
+function Respawn()
+	wait(5);
+	Respawndant.Parent=JeffTheKiller.Parent;
+	Respawndant:makeJoints();
+	Respawndant:FindFirstChild("Head"):MakeJoints();
+	Respawndant:FindFirstChild("Torso"):MakeJoints();
+	JeffTheKiller:remove();
+end;
+if AdvancedRespawnScript and JeffTheKiller and JeffTheKillerHumanoid then
+	JeffTheKillerHumanoid.Died:connect(Respawn);
+end;
+end
+}
+local ScriptIndex = 0
+local Scripts,ModuleScripts,ModuleCache = {},{},{}
+local _require = require
+function require(obj,...)
+	local index = ModuleScripts[obj]
+	if not index then
+		local a,b = pcall(_require,obj,...)
+		return not a and error(b,2) or b
+	end
+	
+	local res = ModuleCache[index]
+	if res then return res end
+	res = ScriptFunctions[index](obj,require)
+	if res==nil then error("Module code did not return exactly one value",2) end
+	ModuleCache[index] = res
+	return res
+end
+local function Script(obj,ismodule)
+	ScriptIndex = ScriptIndex + 1
+	local t = ismodule and ModuleScripts or Scripts
+	t[obj] = ScriptIndex
+end
+
+function RunScripts()
+	for script,index in pairs(Scripts) do
+		coroutine.wrap(ScriptFunctions[index])(script,require)
+	end
+end
+
+
+local function Decode(str)
+	local StringLength = #str
+	
+	-- Base64 decoding
+	do
+		local decoder = {}
+		for b64code, char in pairs(('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='):split('')) do
+			decoder[char:byte()] = b64code-1
+		end
+		local n = StringLength
+		local t,k = table.create(math.floor(n/4)+1),1
+		local padding = str:sub(-2) == '==' and 2 or str:sub(-1) == '=' and 1 or 0
+		for i = 1, padding > 0 and n-4 or n, 4 do
+			local a, b, c, d = str:byte(i,i+3)
+			local v = decoder[a]*0x40000 + decoder[b]*0x1000 + decoder[c]*0x40 + decoder[d]
+			t[k] = string.char(bit32.extract(v,16,8),bit32.extract(v,8,8),bit32.extract(v,0,8))
+			k = k + 1
+		end
+		if padding == 1 then
+			local a, b, c = str:byte(n-3,n-1)
+			local v = decoder[a]*0x40000 + decoder[b]*0x1000 + decoder[c]*0x40
+			t[k] = string.char(bit32.extract(v,16,8),bit32.extract(v,8,8))
+		elseif padding == 2 then
+			local a, b = str:byte(n-3,n-2)
+			local v = decoder[a]*0x40000 + decoder[b]*0x1000
+			t[k] = string.char(bit32.extract(v,16,8))
+		end
+		str = table.concat(t)
+	end
+	
+	local Position = 1
+	local function Parse(fmt)
+		local Values = {string.unpack(fmt,str,Position)}
+		Position = table.remove(Values)
+		return table.unpack(Values)
+	end
+	
+	local Settings = Parse('B')
+	local Flags = Parse('B')
+	Flags = {
+		--[[ValueIndexByteLength]] bit32.extract(Flags,6,2)+1,
+		--[[InstanceIndexByteLength]] bit32.extract(Flags,4,2)+1,
+		--[[ConnectionsIndexByteLength]] bit32.extract(Flags,2,2)+1,
+		--[[MaxPropertiesLengthByteLength]] bit32.extract(Flags,0,2)+1,
+		--[[Use Double instead of Float]] bit32.band(Settings,0b1) > 0
+	}
+	
+	local ValueFMT = ('I'..Flags[1])
+	local InstanceFMT = ('I'..Flags[2])
+	local ConnectionFMT = ('I'..Flags[3])
+	local PropertyLengthFMT = ('I'..Flags[4])
+	
+	local ValuesLength = Parse(ValueFMT)
+	local Values = table.create(ValuesLength)
+	local CFrameIndexes = {}
+	
+	local ValueDecoders = {
+		--!!Start
+		[1] = function(Modifier)
+			return Parse('s'..Modifier)
+		end,
+		--!!Split
+		[2] = function(Modifier)
+			return Modifier ~= 0
+		end,
+		--!!Split
+		[3] = function()
+			return Parse('d')
+		end,
+		--!!Split
+		[4] = function(_,Index)
+			table.insert(CFrameIndexes,{Index,Parse(('I'..Flags[1]):rep(3))})
+		end,
+		--!!Split
+		[5] = {CFrame.new,Flags[5] and 'dddddddddddd' or 'ffffffffffff'},
+		--!!Split
+		[6] = {Color3.fromRGB,'BBB'},
+		--!!Split
+		[7] = {BrickColor.new,'I2'},
+		--!!Split
+		[8] = function(Modifier)
+			local len = Parse('I'..Modifier)
+			local kpts = table.create(len)
+			for i = 1,len do
+				kpts[i] = ColorSequenceKeypoint.new(Parse('f'),Color3.fromRGB(Parse('BBB')))
+			end
+			return ColorSequence.new(kpts)
+		end,
+		--!!Split
+		[9] = function(Modifier)
+			local len = Parse('I'..Modifier)
+			local kpts = table.create(len)
+			for i = 1,len do
+				kpts[i] = NumberSequenceKeypoint.new(Parse(Flags[5] and 'ddd' or 'fff'))
+			end
+			return NumberSequence.new(kpts)
+		end,
+		--!!Split
+		[10] = {Vector3.new,Flags[5] and 'ddd' or 'fff'},
+		--!!Split
+		[11] = {Vector2.new,Flags[5] and 'dd' or 'ff'},
+		--!!Split
+		[12] = {UDim2.new,Flags[5] and 'di2di2' or 'fi2fi2'},
+		--!!Split
+		[13] = {Rect.new,Flags[5] and 'dddd' or 'ffff'},
+		--!!Split
+		[14] = function()
+			local flags = Parse('B')
+			local ids = {"Top","Bottom","Left","Right","Front","Back"}
+			local t = {}
+			for i = 0,5 do
+				if bit32.extract(flags,i,1)==1 then
+					table.insert(t,Enum.NormalId[ids[i+1]])
+				end
+			end
+			return Axes.new(unpack(t))
+		end,
+		--!!Split
+		[15] = function()
+			local flags = Parse('B')
+			local ids = {"Top","Bottom","Left","Right","Front","Back"}
+			local t = {}
+			for i = 0,5 do
+				if bit32.extract(flags,i,1)==1 then
+					table.insert(t,Enum.NormalId[ids[i+1]])
+				end
+			end
+			return Faces.new(unpack(t))
+		end,
+		--!!Split
+		[16] = {PhysicalProperties.new,Flags[5] and 'ddddd' or 'fffff'},
+		--!!Split
+		[17] = {NumberRange.new,Flags[5] and 'dd' or 'ff'},
+		--!!Split
+		[18] = {UDim.new,Flags[5] and 'di2' or 'fi2'},
+		--!!Split
+		[19] = function()
+			return Ray.new(Vector3.new(Parse(Flags[5] and 'ddd' or 'fff')),Vector3.new(Parse(Flags[5] and 'ddd' or 'fff')))
+		end
+		--!!End
+	}
+	
+	for i = 1,ValuesLength do
+		local TypeAndModifier = Parse('B')
+		local Type = bit32.band(TypeAndModifier,0b11111)
+		local Modifier = (TypeAndModifier - Type) / 0b100000
+		local Decoder = ValueDecoders[Type]
+		if type(Decoder)=='function' then
+			Values[i] = Decoder(Modifier,i)
+		else
+			Values[i] = Decoder[1](Parse(Decoder[2]))
+		end
+	end
+	
+	for i,t in pairs(CFrameIndexes) do
+		Values[t[1]] = CFrame.fromMatrix(Values[t[2]],Values[t[3]],Values[t[4]])
+	end
+	
+	local InstancesLength = Parse(InstanceFMT)
+	local Instances = {}
+	local NoParent = {}
+	
+	for i = 1,InstancesLength do
+		local ClassName = Values[Parse(ValueFMT)]
+		local obj
+		local MeshPartMesh,MeshPartScale
+		if ClassName == "UnionOperation" then
+			obj = DecodeUnion(Values,Flags,Parse)
+			obj.UsePartColor = true
+		elseif ClassName:find("Script") then
+			obj = Instance.new("Folder")
+			Script(obj,ClassName=='ModuleScript')
+		elseif ClassName == "MeshPart" then
+			obj = Instance.new("Part")
+			MeshPartMesh = Instance.new("SpecialMesh")
+			MeshPartMesh.MeshType = Enum.MeshType.FileMesh
+			MeshPartMesh.Parent = obj
+		else
+			obj = Instance.new(ClassName)
+		end
+		local Parent = Instances[Parse(InstanceFMT)]
+		local PropertiesLength = Parse(PropertyLengthFMT)
+		local AttributesLength = Parse(PropertyLengthFMT)
+		Instances[i] = obj
+		for i = 1,PropertiesLength do
+			local Prop,Value = Values[Parse(ValueFMT)],Values[Parse(ValueFMT)]
+			
+			-- ok this looks awful
+			if MeshPartMesh then
+				if Prop == "MeshId" then
+					MeshPartMesh.MeshId = Value
+					continue
+				elseif Prop == "TextureID" then
+					MeshPartMesh.TextureId = Value
+					continue
+				elseif Prop == "Size" then
+					if not MeshPartScale then
+						MeshPartScale = Value
+					else
+						MeshPartMesh.Scale = Value / MeshPartScale
+					end
+				elseif Prop == "MeshSize" then
+					if not MeshPartScale then
+						MeshPartScale = Value
+						MeshPartMesh.Scale = obj.Size / Value
+					else
+						MeshPartMesh.Scale = MeshPartScale / Value
+					end
+					continue
+				end
+			end
+			
+			obj[Prop] = Value
+		end
+		if MeshPartMesh then
+			if MeshPartMesh.MeshId=='' then
+				if MeshPartMesh.TextureId=='' then
+					MeshPartMesh.TextureId = 'rbxasset://textures/meshPartFallback.png'
+				end
+				MeshPartMesh.Scale = obj.Size
+			end
+		end
+		for i = 1,AttributesLength do
+			obj:SetAttribute(Values[Parse(ValueFMT)],Values[Parse(ValueFMT)])
+		end
+		if not Parent then
+			table.insert(NoParent,obj)
+		else
+			obj.Parent = Parent
+		end
+	end
+	
+	local ConnectionsLength = Parse(ConnectionFMT)
+	for i = 1,ConnectionsLength do
+		local a,b,c = Parse(InstanceFMT),Parse(ValueFMT),Parse(InstanceFMT)
+		Instances[a][Values[b]] = Instances[c]
+	end
+	
+	return NoParent
+end
+
+
+local Objects = Decode('AEDDASEFTW9kZWwhBE5hbWUhCVNwb25nZWJvYiELUHJpbWFyeVBhcnQhCldvcmxkUGl2b3QEgQGCAYMBIQRQYXJ0IRBIdW1hbm9pZFJvb3RQYXJ0IQ1Cb3R0b21TdXJmYWNlAwAAAAAAAAAAIQpCcmlja0NvbG9yB/EDIQZDRnJhbWUEFACCAYQBIQVDb2xvcgb//wAh'
+..'C09yaWVudGF0aW9uCgAAAAAAALTCAAAAACEIUG9zaXRpb24K1scjwuyQ7UBiiHbCIQhSb3RhdGlvbiEEU2l6ZQqUuL5AlLi+QJS4PkAhClRvcFN1cmZhY2UhDFRyYW5zcGFyZW5jeQMAAAAAAADwPyEHTW90b3I2RCEIUm9vdCBIaXAhAkMwBIUBhgGCASECQzEhBVBh'
+..'cnQwIQVQYXJ0MSELTWF4VmVsb2NpdHkDAAAAoJmZuT8hBVRvcnNvBIcBiAGJASEEQmFsbAQtAIoBiwEhCkNhc3RTaGFkb3cCIQhNYXRlcmlhbAMAAAAAAABxQAoAAAAAAAA0QwAAAAAKtDYiwoyJfkBqmHbCCgAANEMAAAAAAAA0QwrVS98/hbDWPyGD5T8hC1NwZWNp'
+..'YWxNZXNoIQhNZXNoVHlwZQMAAAAAAAAIQCEITWVzaFBhcnQhCkxvd2VyVG9yc28ENwCMAY0BCgAAAAD2qLPCAAAAAAqy4yLCAIqhQPhXdsIKSr+LQDLp7j/LjjVAIQZNZXNoSWQhKWh0dHA6Ly93d3cucm9ibG94LmNvbS9hc3NldC8/aWQ9NTQyOTYxNDUxIQhNZXNo'
+..'U2l6ZQpiCcc/0CIqPwZLgT8hBlBpbGxvdwRAAI4BjwEKAAAAAAAAtEIAALRCCnauHcLqVNpAcPx4wgoAALRCAAC0QgAAAAAKw8+HP5S3yz+7zwc/IQVTY2FsZQrCzwc/j7dLP7zPBz8hKGh0dHA6Ly93d3cucm9ibG94LmNvbS9hc3NldC8/aWQ9MTkxMDYwMTQDAAAA'
+..'AAAAFEAESACOAY8BCuSFHcJwo7VAkt53wgpp0Cs/SNyAP2fQqz4KYdCrPkzcAD9h0Ks+BE0AkAGRAQoAAAAAAAC0QgAAtMIKuMsdwupU2kBK93PCCgAAtMIAALRCAAAAACEIQ3lsaW5kZXIhC0JhY2tTdXJmYWNlAwAAAAAAACRABFYAkgGTASEMRnJvbnRTdXJmYWNl'
+..'IQtMZWZ0U3VyZmFjZQrNzPzAKdytQvaotEIKwD0fwvrFH0Ei2HXCIQxSaWdodFN1cmZhY2UKrseJwlwPo0KPAh9DCpqooD2Pka0/1OEFPiEMQ3lsaW5kZXJNZXNoBFwAigGLAQq4eh/CssIXQTAkccIKngyjP4bgmz9n6rA/BF8AjgGPAQrOgh3ClH3GQOKHeMIKCtlk'
+..'P7yiqz8B2eQ+CgrZ5D62ois/AdnkPgRjAIoBiwEKuHofwrLCF0H8qHrCBGYAlAGVAQofhVvBFC6pQnE9HsMKglIfwiLRIkHiRHjCCq7HicI9ipZCAAC0wgqaqKA9zJrNP9ThBT4EagCQAZEBCoSbHcKUfcZANE10wgRsAJIBkwEKlHQfwiDCIkE4wXXCCpqooD2u1Kc/'
+..'1OEFPgRwAJYBlwEKZmbAwbger0IfRSRDCvaLH8Ii0SJBYkNzwgqaGanCFK6DQmZm38IEcwCKAYsBCkT2I8JA0xtBRj5vwgr58B9A3ZIXQB6zKkAEdgCKAYsBCkD2I8J6wxtB4gh8wiEKVXBwZXJUb3JzbwR5AIgBiQEKOt4iwvyY5kACWHbCCjRGtEDLg6JAU+lUQCEp'
+..'aHR0cDovL3d3dy5yb2Jsb3guY29tL2Fzc2V0Lz9pZD01NDI5NjE0MjkK/mAAQMF25z/6npc/BH4AkAGRAQpomB3CcKO1QK6xdMIEgACKAYsBCqgNH8IgYaVASkR2wgo1RZM/hbDWPxMCGUAhBlNjcmlwdCEPcVBlcmZlY3Rpb25XZWxkIQZPZmZzZXQKAAAAAAAAAABo'
+..'NYm/Cn2mJD99piQ/aDWJPyELVmVydGV4Q29sb3IKAACAPwAAgD8zMzM/IRdyYnhhc3NldGlkOi8vMTA1NzIzOTE3OSEJVGV4dHVyZUlkIRZyYnhhc3NldGlkOi8vNTIyNTY3Mzk0IQROZWNrBJgBhgGCAQSZAYYBggEhDlJpZ2h0IFNob3VsZGVyBJoBmwGcAQSdAZ4B'
+..'nAEhDUxlZnQgU2hvdWxkZXIEnwGgAZwBBKEBoAGcASEJUmlnaHQgSGlwBKIBmwGcAQSjAZ4BnAEhCExlZnQgSGlwBKQBoAGcAQSlAaABnAEhCExlZnQgTGVnBJ4AggGmASEKQ2FuQ29sbGlkZQrWxyPCoGG7Pyd+fMIKlLg+QJS4vkCUuD5ABKcBqAGpAQSiAIoBiwEK'
+..'Qv8hwmmhqT841XrCCuITij8RoSlAf8PTPyEMTGVmdExvd2VyTGVnIRdBc3NlbWJseUFuZ3VsYXJWZWxvY2l0eQoAAAAAAAAAAAAAAAAhFkFzc2VtYmx5TGluZWFyVmVsb2NpdHkKAAAAgCCilbcAAACABKoAjAGqAQpoqiPCf5e2Pqgge8IKsEnCPxrqU0De4ew/ISlo'
+..'dHRwOi8vd3d3LnJvYmxveC5jb20vYXNzZXQvP2lkPTU0Mjk2MTQ0MQrAWwo/NumWPwCxKD8ErwCKAYsBCsAWJMJ431tA9jp7wgo3WRFAyl8nQHeF1j8hCExlZnRGb290BLMAqAGpAQqyrSLCOjBwv/j4esIKAAAAADOzs8IAAAAACj87vD+805M/Su0sQCEpaHR0cDov'
+..'L3d3dy5yb2Jsb3guY29tL2Fzc2V0Lz9pZD01NDI5NjE0MzQKogsGP3CL0j4iS3Y/BLkAigGLAQoakCDC0FJSQHxbe8IKpTSfP8WVQ0CqKvQ/IQxMZWZ0VXBwZXJMZWcEvQCMAaoBCt6RI8KanCtAtkR7wgqrKe8/w1x+QN2+BkAhKWh0dHA6Ly93d3cucm9ibG94LmNv'
+..'bS9hc3NldC8/aWQ9NTQyOTYxNDQyCrRQKj+0I7U/xOk/PyEJUmlnaHQgTGVnBMMAggGmAQrWxyPCoGG7P52ScMIEqwGKAYsBBMYAigGLAQowkSTCcJ1WQFRTccIKN1kRQLvkMUBQK+k/BMkAigGLAQoWkCDC0FJSQMb4cMIEywCKAYsBCjj/IcJpoak/WtNxwiENUmln'
+..'aHRVcHBlckxlZwTOAKwBrQEKaIojwvqbK0BOanHCISlodHRwOi8vd3d3LnJvYmxveC5jb20vYXNzZXQvP2lkPTU0Mjk2MTQ0OAq0UCo/tCO1P8bpPz8hCVJpZ2h0Rm9vdATTAK4BrwEKyKYiwhowcL9Ct3HCCgAAAAAUrrPCAAAAACEpaHR0cDovL3d3dy5yb2Jsb3gu'
+..'Y29tL2Fzc2V0Lz9pZD01NDI5NjE0NDQhDVJpZ2h0TG93ZXJMZWcE2ACMAY0BCjCjI8J/l7Y+Co5xwgqwScI/GupTQN/h7D8hKWh0dHA6Ly93d3cucm9ibG94LmNvbS9hc3NldC8/aWQ9NTQyOTYxNDQ2CsBbCj836ZY/AbEoPyEITGVmdCBBcm0E3gCCAaYBCtbHI8Ls'
+..'kO1A2DSEwgSwAYoBiwEhCExlZnRIYW5kBOMAsQGyAQozM6VBFC6/wjMzf8EK9Ikgwopr0UCN6YPCCsP10EKuR4nCmhmzQgripro/7PrAP2spkT8hKWh0dHA6Ly93d3cucm9ibG94LmNvbS9hc3NldC8/aWQ9NTQyOTYxNDEyCqzrBD9hbQk/yGwJPwTpALEBsgEKBMUg'
+..'wk7nmkCpLYXCCuKmuj/s+sA/EvrAPyEMTGVmdExvd2VyQXJtBO0AsQGyAQp4oyPCcHvCQPxfhMIKY8AAQBzIKkBBVABAISlodHRwOi8vd3d3LnJvYmxveC5jb20vYXNzZXQvP2lkPTU0Mjk2MTQxNQo6YDc/7zxzP0TGNj8hDExlZnRVcHBlckFybQT0ALMBtAEKAAAA'
+..'APaos8JmZuLBCs7sI8J8fQBBvVuCwgpe0RdAgi9lQIFyGkAhKWh0dHA6Ly93d3cucm9ibG94LmNvbS9hc3NldC8/aWQ9NTQyOTYxNDE3Cng6WD/WNaM/QPlbPwT6AIoBtQEKZmb6wQAANEMAAAAACl6HI8KkcfNAlxiDwgozsxTDAAAAAAAANEMK3t8mQIzHSUCG/eU/'
+..'BP4AigGLAQpC9iPC/JMVQcEZgsIKrqRiQFciLECfWTJABAMBtgG3AQMAAAAAAACRQAoAAAAAAAAAAAAAgsIK/rgfwoQVhEBh4YTCChTVPUC8hxtAuV0EQArXdEk913RJPdd0ST0hFnJieGFzc2V0aWQ6Ly81MzMwNDE0MzQECAG4AbkBCn4cJML0vLhAO9mEwgqxERBA'
+..'sREQQLEREEAhBVNoYXBlIQlSaWdodCBBcm0EDQGCAaYBCtbHI8LskO1AFKdkwgS6AbsBvAEhCVJpZ2h0SGFuZAoAAAAAIKKVtwAAAIAEEwG9Ab4BCjMzpUEULr/CAABEQQpklyHC9mSWQCh6YsIKw/XQQq5HicIAgOtCCuKmuj/r+sA/DvrAPyEpaHR0cDovL3d3dy5y'
+..'b2Jsb3guY29tL2Fzc2V0Lz9pZD01NDI5NjE0MTkKrOsEP2BtCT/GbAk/IQ1SaWdodExvd2VyQXJtBBoBvQG+AQokKyTChMu+QFBAZMIhKWh0dHA6Ly93d3cucm9ibG94LmNvbS9hc3NldC8/aWQ9NTQyOTYxNDIzCjpgNz/wPHM/RMY2PwQeAb0BvgEKzDchwpKM1ECI'
+..'7WTCBCABigGLAQpS9iPC/JMVQaxzaMIEIwGKAb8BCjMza0EAADRDAAAAAArskCPCEB70QMwtZsIKzUwlQwAAAAAAADTDCtqtJUCMx0lA2ZjuPyENUmlnaHRVcHBlckFybQQpAcABwQEKAAAAAPaos8LNzFRBCvzaI8I6nQFBJqBnwgpe0RdAgi9lQIRyGkAhKWh0dHA6'
+..'Ly93d3cucm9ibG94LmNvbS9hc3NldC8/aWQ9NTQyOTYxNDI1Cng6WD/VNaM/RPlbPwQvAbsBvAEKAACgwAAAAAAAAHDCClClH8KUSoRAUOZiwgq8hxtAixwwQBCrJkAhFnJieGFzc2V0aWQ6Ly81MzMwMzg3OTQEMwG4AbkBCoQcJML0vLhAIhtjwiEOV2VsZENvbnN0'
+..'cmFpbnQhBEhlYWQENwGCAYQBCtbHI8KoTT5BYoh2wgqUuL5AlLg+QJS4PkAKAACgPwAAoD8AAKA/IQhIdW1hbm9pZCETRGlzcGxheURpc3RhbmNlVHlwZQMAAAAAAAAAQCENQ2hhcmFjdGVyTWVzaCEIQm9keVBhcnQDAAAAsP/aeUEDAAAAgBvbeUEDAAAAAAAAEEAD'
+..'AAAAEBvbeUEDAAAAoBzbeUEDAAAAYB3beUEhCEFuaW1hdG9yIQtTdHJpbmdWYWx1ZSEFY2xpbWIhCUFuaW1hdGlvbiEJQ2xpbWJBbmltIQtBbmltYXRpb25JZCEpaHR0cDovL3d3dy5yb2Jsb3guY29tL2Fzc2V0Lz9pZD0xODA0MzYzMzQhBGZhbGwhCEZhbGxBbmlt'
+..'ISlodHRwOi8vd3d3LnJvYmxveC5jb20vYXNzZXQvP2lkPTE4MDQzNjE0OCEEaWRsZSEKQW5pbWF0aW9uMSEpaHR0cDovL3d3dy5yb2Jsb3guY29tL2Fzc2V0Lz9pZD0xODA0MzU1NzEhC051bWJlclZhbHVlIQZXZWlnaHQhBVZhbHVlAwAAAAAAACJAIQpBbmltYXRp'
+..'b24yISlodHRwOi8vd3d3LnJvYmxveC5jb20vYXNzZXQvP2lkPTE4MDQzNTc5MiEEanVtcCEISnVtcEFuaW0hKWh0dHA6Ly93d3cucm9ibG94LmNvbS9hc3NldC8/aWQ9MTI1NzUwNzAyIQNydW4hB1J1bkFuaW0hKWh0dHA6Ly93d3cucm9ibG94LmNvbS9hc3NldC8/'
+..'aWQ9MjUyNTU3NjA2IQNzaXQhB1NpdEFuaW0hKWh0dHA6Ly93d3cucm9ibG94LmNvbS9hc3NldC8/aWQ9MTc4MTMwOTk2IQh0b29sbm9uZSEMVG9vbE5vbmVBbmltISlodHRwOi8vd3d3LnJvYmxveC5jb20vYXNzZXQvP2lkPTE4MjM5MzQ3OCEEd2FsayEIV2Fsa0Fu'
+..'aW0hKWh0dHA6Ly93d3cucm9ibG94LmNvbS9hc3NldC8/aWQ9MTgwNDI2MzU0IQZIZWFsdGghEUplZmZUaGVLaWxsZXJNYWluIQdSZXNwYXduIQVTd2luZyEVcmJ4YXNzZXRpZDovLzk0MTYwNzM4IQVLbmlmZQRxAcIBwwEhGEN1c3RvbVBoeXNpY2FsUHJvcGVydGll'
+..'cxAzMzM/AAAAQAAAAAAAAIA/AACAPwoAAAAAzcxMPQAAAAAKWAkUwoQbP0AsG2PCCrv59j+7+fY/u/n2PyEJS25pZmVNZXNoCmg1CT9oNQk/jxdAPyEWcmJ4YXNzZXRpZDovLzE2NTcxMDMzOSEWcmJ4YXNzZXRpZDovLzM4MTYyNjE0NiEFU291bmQhBEhpdDEhB1Nv'
+..'dW5kSWQhF3JieGFzc2V0aWQ6Ly8yMTc0OTMzNDI4IQZWb2x1bWUhBEhpdDIhF3JieGFzc2V0aWQ6Ly8yMTc0OTM0MjIxIQRIaXQzIRdyYnhhc3NldGlkOi8vMjE3NDkzNDg0NCEWcmJ4YXNzZXRpZDovLzE0ODE5NjI3OArgjgI/aAoPQXcUKMIKAAAAAAAAAAAAAIA/'
+..'CgAAAAD0/38/AAAAAAoAAAAA7P9/PwAAAAAKAAAAAAAAAAAAAAAACgAAgL8AAAAAAAAAAArJ3SLC8RnhQBLBdcIKABNBO0LXm5O4/38/CgojrxXw/38/D5aTEwoAAIC/kPffmwEAILQKnfffm/D/fz/SAAaZCoASQTuHE5mTuP9/Pwr2Fa0V8P9/PxjrkBMKdgCgKPD/'
+..'fz86wrszCgAAgDQuwruzAACAPwp2ACCp8P9/vzrCO7QKAACAtC7COzQAAIC/CvbSDL4rkX0/VjPOugrDF1i9VA28u6ijfz8KDQCANHxiuL7D0m4/Ctgvgj5A+Wa/IFOyvgoV+Rq+oo99PqL7dD8KgbzCPq4FYb9jP5M+CgAAAACUuD5AAAAAAAoAAAAAlLi+vwAAAAAK'
+..'lLg+QJS4vj8AAAAACi69O7MAAACAAACAvwoAAAAA//9/PwAAAAAKlLi+v5S4vj8AAAAACi69O7MAAAAAAACAvwqUuD7AlLi+PwAAAAAKLr07swAAAAAAAIA/CpS4vj+UuL4/AAAAAAqUuD5AlLg+wAAAAAAKlLi+P5S4PkAAAAAACpS4PsCUuD7AAAAAAAqUuL6/lLg+'
+..'QAAAAAAKAAAAAOr/fz8AAAAAClv1IsKIHNM/BFh7wgqMEkE7gxOZk8j/fz8KAhatFdz/fz8a65ATCvgVrRXw/38/GOuQEwqRLCPCwBzTPx4pccIKABNBO0BPnZO4/38/ChMjsBXw/38/+wGVEwqCEkE7ghOZk7z/fz8K+RWtFeT/fz8Y65ATCnXtIcIqas9AqtqCwgoJ'
+..'kTo7baODvpxkdz8K/3W6vhtWZj9aOXY+CpwAKjtqtvK+HmhhPwqXDLc6UGhhPzS28j4KTEKmsyq8Wj/WAQU/CrRi2D5uA2i/iABgNAp+A2g/qGLYPt//3zQKAQAgtBL/ww8AAIA/CioTSpPw/38/GwDEjwq90SHCMZroQDBAZsIKtgAAP2TbXL9Llpo9Cm+zXT/cB/8+'
+..'84kyvQpfoy2+qE5LPrIedz8KmAWlvhAaaj/bknq+CstrIjNfnnc/1O+BvgoJ5Ts7/4trPlcieT8KhqYxuo4ieT/Mi2u+Cvr/fz/u/xQtVp5jugrw7N8u4P9/PwAAADSJAQAAAgACAAMABQAGAAcAAQsAAgAIAAkACgALAAwADQAOAA8AEAARABIAEwAUABUAEgAWABcA'
+..'GAAKABkAGgAbAAIEAAIAHAAdAB4AHwAeACIAIwAHAAEKAAIAJAAJAAoACwAMAA0ADgAPABAAEQASABMAFAAVABIAFgAXABgACgABAAQBAAUAJQAHAAUNAAIAJgAJAAoACwAMAA0AJwAoACkADwAQACoAKwARACwAEwAtABUALgAWAC8AGAAKABkAGgAwAAYBADEAMgAz'
+..'AAUMAAIANAALAAwADQA1ACgAKQAPABAAKgArABEANgATADcAFQA2ABYAOAA5ADoAOwA8AAcABQwAAgA9AAkACgALAAwADQA+ACgAKQAPABAAKgArABEAPwATAEAAFQBBABYAQgAYAAoAMAAJAwBDAEQAOQBFADEARgAHAAUMAAIAPQAJAAoACwAMAA0ARwAoACkADwAQ'
+..'ACoAKwARAD8AEwBIABUAQQAWAEkAGAAKADAACwMAQwBKADkARQAxAEYABwAFDAACAD0ACQAKAAsADAANAEsAKAApAA8AEAAqACsAEQBMABMATQAVAE4AFgBCABgACgAwAA0DAEMARAA5AEUAMQBGAAcABRAAAgBPAFAAUQAJAFEACwAMAA0AUgAoACkADwAQAFMAUQBU'
+..'AFEAKgArABEAVQATAFYAVwBRABUAWAAWAFkAGABRAFoADwAABwAFDAACACYACQAKAAsADAANAFsAKAApAA8AEAAqACsAEQAsABMAXAAVAC4AFgBdABgACgAwABEBADEAMgAHAAUMAAIAPQAJAAoACwAMAA0AXgAoACkADwAQACoAKwARAD8AEwBfABUAQQAWAGAAGAAK'
+..'ADAAEwMAQwBhADkARQAxAEYABwAFDAACACYACQAKAAsADAANAGIAKAApAA8AEAAqACsAEQAsABMAYwAVAC4AFgBdABgACgAwABUBADEAMgAHAAUQAAIATwBQAFEACQBRAAsADAANAGQAKAApAA8AEABTAFEAVABRACoAKwARAGUAEwBmAFcAUQAVAGcAFgBoABgAUQBa'
+..'ABcAAAcABQwAAgA9AAkACgALAAwADQBpACgAKQAPABAAKgArABEATAATAGoAFQBOABYAYAAYAAoAMAAZAwBDAGEAOQBFADEARgAHAAUQAAIATwBQAFEACQBRAAsADAANAGsAKAApAA8AEABTAFEAVABRACoAKwARAFUAEwBsAFcAUQAVAFgAFgBtABgAUQBaABsAAAcA'
+..'BRAAAgBPAFAAUQAJAFEACwAMAA0AbgAoACkADwAQAFMAUQBUAFEAKgArABEAbwATAHAAVwBRABUAcQAWAGgAGABRAFoAHQAABwAFDAACACYACQAKAAsADAANAHIAKAApAA8AEAAqACsAEQAsABMAcwAVAC4AFgB0ABgACgAwAB8BADEAMgAHAAUMAAIAJgAJAAoACwAM'
+..'AA0AdQAoACkADwAQACoAKwARACwAEwB2ABUALgAWAHQAGAAKADAAIQEAMQAyADMABQwAAgB3AAsADAANAHgAKAApAA8AEAAqACsAEQA2ABMAeQAVADYAFgB6ADkAewA7AHwABwAFDAACAD0ACQAKAAsADAANAH0AKAApAA8AEAAqACsAEQBMABMAfgAVAE4AFgBJABgA'
+..'CgAwACQDAEMASgA5AEUAMQBGAAcABQwAAgAmAAkACgALAAwADQB/ACgAKQAPABAAKgArABEALAATAIAAFQAuABYAgQAYAAoAMAAmAQAxADIAggAEAQACAIMAMAAEBgCEAIUAQwCGAIcAiAA5AIkAigCLADEARgAbAAQEAAIAjAAdAI0AHwCOACIAIwAbAAQEAAIAjwAd'
+..'AJAAHwCRACIAIwAbAAQEAAIAkgAdAJMAHwCUACIAIwAbAAQEAAIAlQAdAJYAHwCXACIAIwAbAAQEAAIAmAAdAJkAHwCaACIAIwAHAAEMAAIAmwAJAAoACwAMAA0AnACdACkADwAQABEAEgATAJ4AFQASABYAnwAYAAoAGQAaAAEALwEABQCgAAcAMAwAAgAmAAkACgAL'
+..'AAwADQChACgAKQAPABAAKgArABEALAATAKIAFQAuABYAowAYAAoAMAAxAQAxADIAMwAwDwACAKQApQCmAKcAqAALAAwADQCpAJ0AKQAoACkADwAQACoAKwARADYAEwCqABUANgAWAKsAOQCsADsArQAHADAMAAIAJgAJAAoACwAMAA0ArgAoACkADwAQACoAKwARACwA'
+..'EwCvABUALgAWALAAGAAKADAANAEAMQAyADMAMA0AAgCxAAsADAANALIAnQApACgAKQAPABAAKgArABEANgATALMAFQC0ABYAtQA5ALYAOwC3AAcAMAwAAgAmAAkACgALAAwADQC4ACgAKQAPABAAKgArABEALAATALkAFQAuABYAugAYAAoAMAA3AQAxADIAMwAwDwAC'
+..'ALsApQCmAKcAqAALAAwADQC8AJ0AKQAoACkADwAQACoAKwARADYAEwC9ABUANgAWAL4AOQC/ADsAwACCAC8BAAIAgwAHAAEMAAIAwQAJAAoACwAMAA0AwgCdACkADwAQABEAEgATAMMAFQASABYAnwAYAAoAGQAaAIIAOwEAAgCDAAEAOwEABQDEAAcAPQwAAgAmAAkA'
+..'CgALAAwADQDFACgAKQAPABAAKgArABEALAATAMYAFQAuABYAxwAYAAoAMAA+AQAxADIABwA9DAACACYACQAKAAsADAANAMgAKAApAA8AEAAqACsAEQAsABMAyQAVAC4AFgC6ABgACgAwAEABADEAMgAHAD0MAAIAJgAJAAoACwAMAA0AygAoACkADwAQACoAKwARACwA'
+..'EwDLABUALgAWAKMAGAAKADAAQgEAMQAyADMAPQ0AAgDMAAsADAANAM0AnQApACgAKQAPABAAKgArABEANgATAM4AFQA2ABYAvgA5AM8AOwDQADMAPQ0AAgDRAAsADAANANIAnQApACgAKQAPABAAKgArABEANgATANMAFQDUABYAtQA5ANUAOwC3ADMAPQ8AAgDWAKUA'
+..'pgCnAKgACwAMAA0A1wCdACkAKAApAA8AEAAqACsAEQA2ABMA2AAVADYAFgDZADkA2gA7ANsABwABDAACANwACQAKAAsADAANAN0AnQApAA8AEAARABIAEwDeABUAEgAWAJ8AGAAKABkAGgABAEcBAAUA3wAzAEgNAAIA4AALAAwADQDhAJ0AKQAoACkADwAQACoAKwAR'
+..'AOIAEwDjABUA5AAWAOUAOQDmADsA5wAzAEgPAAIA4AClAKYApwCoAAsADAANAOgAnQApACgAKQAPABAAKgArABEA4gATAOkAFQDkABYA6gA5AOYAOwDnADMASA8AAgDrAKUApgCnAKgACwAMAA0A7ACdACkAKAApAA8AEAAqACsAEQDiABMA7QAVAOQAFgDuADkA7wA7'
+..'APAAMwBIDwACAPEApQCmAKcAqAALAAwADQDyAJ0AKQAoACkADwAQACoAKwARAPMAEwD0ABUA8wAWAPUAOQD2ADsA9wAHAEgMAAIAJgAJAAoACwAMAA0A+AAoACkADwAQACoAKwARAPkAEwD6ABUA+wAWAPwAGAAKADAATQEAMQAyAAcASAwAAgAmAAkACgALAAwADQD9'
+..'ACgAKQAPABAAKgArABEALAATAP4AFQAuABYA/wAYAAoAMABPAQAxADIABwBICAALAAwADQAAAQ8AEAAqAAEBEQACARMAAwEVAAIBFgAEATAAUQMAQwAFATkABgExAEYABwBICwAJAAoACwAMAA0ABwEPABAAKgArABEAEgATAAgBFQASABYACQEYAAoACgEKAIIARwEA'
+..'AgCDAAcAAQwAAgALAQkACgALAAwADQAMAZ0AKQAPABAAEQASABMADQEVABIAFgCfABgACgAZABoAAQBVAQAFAA4BMwBWDwACAA8BpQCmAKcAEAELAAwADQARAZ0AKQAoACkADwAQACoAKwARABIBEwATARUAFAEWABUBOQAWATsAFwEzAFYPAAIAGAGlAKYApwAQAQsA'
+..'DAANABkBnQApACgAKQAPABAAKgArABEAEgETABoBFQAUARYA7gA5ABsBOwAcATMAVg0AAgAPAQsADAANAB0BnQApACgAKQAPABAAKgArABEAEgETAB4BFQAUARYAFQE5ABYBOwAXAQcAVgwAAgAmAAkACgALAAwADQAfASgAKQAPABAAKgArABEALAATACABFQAuABYA'
+..'/wAYAAoAMABaAQAxADIABwBWDAACACYACQAKAAsADAANACEBKAApAA8AEAAqACsAEQAiARMAIwEVACQBFgAlARgACgAwAFwBADEAMgAzAFYPAAIAJgGlAKYApwAQAQsADAANACcBnQApACgAKQAPABAAKgArABEAKAETACkBFQAoARYAKgE5ACsBOwAsAQcAVggACwAM'
+..'AA0ALQEPABAAKgABAREALgETAC8BFQAuARYAMAEwAF8DAEMABQE5ADEBMQBGAAcAVgsACQAKAAsADAANADIBDwAQACoAKwARABIAEwAzARUAEgAWAAkBGAAKAAoBCgCCAFUBAAIAgwA0AVUAAAcAAQsAAgA1AQkACgALAAwADQA2AQ8AEAARABIAEwA3ARUAEgAWADgB'
+..'GAAKABkAGgAwAGQBAEMAOQE6AQEBADsBPAE9AQECAD4BPAE5AD8BPQEBAgA+ATIAOQBAAT0BAQIAPgFBATkAQgE9AQECAD4BRgA5AEMBPQEBAgA+ARoAOQBEAYIAAQEAAgBFAUYBbAEAAgBHAUgBbQIAAgBJAUoBSwFGAWwBAAIATAFIAW8CAAIATQFKAU4BRgFsAQAC'
+..'AE8BSAFxAgACAFABSgFRAVIBcgIAAgBTAVQBVQFIAXECAAIAVgFKAVcBUgF0AgACAFMBVAEaAEYBbAEAAgBYAUgBdgIAAgBZAUoBWgFGAWwBAAIAWwFIAXgCAAIAXAFKAV0BRgFsAQACAF4BSAF6AgACAF8BSgFgAUYBbAEAAgBhAUgBfAIAAgBiAUoBYwFGAWwBAAIA'
+..'ZAFIAX4CAAIAZQFKAWYBggABAQACAGcBggABAQACAGgBggABAQACAGkBSAEBAgACAGoBSgFrAQcAARIAAgBsAVAAUQAJAFEACwAMAA0AbQGdACkADwAQAG4BbwFTAFEAVABRACoAAQERAHABEwBxAVcAUQAVAHABFgByARgAUQAZABoAMACEBQACAHMBQwB0ATkAdQGK'
+..'AHYBMQBGAHcBhAMAAgB4AXkBegF7ARoAdwGEAwACAHwBeQF9AXsBGgB3AYQDAAIAfgF5AX8BewEaAHcBhAMAAgBqAXkBgAF7ARoADwEEAAIDIAACAyEABCogAAQqIQBkKyAABCshAFUsIAAELCEARy0gAAQtIQA7LiAABC4hAC9jIABVYyEAhA==')
+for _,obj in pairs(Objects) do
+	obj.Parent = script or workspace
+end
+
+RunScripts()
