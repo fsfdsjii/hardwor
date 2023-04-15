@@ -1,0 +1,785 @@
+-- Converted using Mokiros's Model to Script Version 3
+-- Converted string size: 2984 characters
+
+local ScriptFunctions = {
+function(script,require)
+while true do
+	game:GetService("Chat"):Chat(script.Parent.Head, "Hi!", Enum.ChatColor.White)
+wait(3)
+	game:GetService("Chat"):Chat(script.Parent.Head, "Im am a noob.", Enum.ChatColor.White)
+wait(3)
+	game:GetService("Chat"):Chat(script.Parent.Head, "Wana Be Friends?", Enum.ChatColor.White)
+wait(3)
+	game:GetService("Chat"):Chat(script.Parent.Head, "This is a Awesome Game!", Enum.ChatColor.White)
+wait(3)
+	game:GetService("Chat"):Chat(script.Parent.Head, "I like Roblox!", Enum.ChatColor.White)
+wait(3)
+	game:GetService("Chat"):Chat(script.Parent.Head, "Well I Going to have fun.", Enum.ChatColor.White)
+end
+
+end,
+function(script,require)
+local CurrentPart = nil
+local MaxInc = 16
+
+function onTouched(hit)
+	if hit.Parent == nil then
+		return
+	end
+
+	local humanoid = hit.Parent:findFirstChild("Humanoid")
+
+	if humanoid == nil then
+		CurrentPart = hit
+	end
+end
+
+function waitForChild(parent, childName)
+	local child = parent:findFirstChild(childName)
+
+	if child then
+		return child
+	end
+
+	while true do
+		print(childName)
+
+		child = parent.ChildAdded:wait()
+
+		if child.Name==childName then
+			return child
+		end
+	end
+end
+
+local Figure = script.Parent
+local Humanoid = waitForChild(Figure, "Humanoid")
+local Torso = waitForChild(Figure, "Torso")
+local Left = waitForChild(Figure, "Left Leg")
+local Right = waitForChild(Figure, "Right Leg")
+
+Humanoid.Jump = true
+
+Left.Touched:connect(onTouched)
+Right.Touched:connect(onTouched)
+
+while true do
+	wait(math.random(0.001, 3))
+
+	if CurrentPart ~= nil then
+		if math.random(1, 2) == 1 then
+			Humanoid.Jump = true
+		end
+
+		Humanoid:MoveTo(Torso.Position + Vector3.new(math.random(-MaxInc, MaxInc), 0, math.random(-MaxInc, MaxInc)), CurrentPart)
+	end
+end
+end,
+function(script,require)
+local Model = script.Parent
+local Backup = Model:clone()
+
+function Respawn()
+	Model:breakJoints()
+
+	wait(5)
+
+	script.Parent = Model.Parent
+
+	Model:remove()
+	Model = Backup:clone()
+	Model.Parent = script.Parent
+	Model:makeJoints()
+
+	script:remove()
+end
+
+Model.Humanoid.Died:connect(Respawn)
+
+function waitForChild(parent, childName)
+	local child = parent:findFirstChild(childName)
+
+	if child then
+		return child
+	end
+
+	while true do
+		print(childName)
+
+		child = parent.ChildAdded:wait()
+
+		if child.Name==childName then
+			return child
+		end
+	end
+end
+
+-- declarations
+
+local Figure = script.Parent
+local Head = waitForChild(Figure, "Head")
+local Humanoid = waitForChild(Figure, "Humanoid")
+
+Figure.PrimaryPart = Head
+
+-- ANIMATION
+
+function Joint(Name, Part0, Part1, C0, C1, MaxVelocity)
+	local Motor = Instance.new("Motor")
+
+	Motor.C0 = C0
+	Motor.C1 = C1
+	Motor.MaxVelocity = MaxVelocity
+	Motor.Name = Name
+	Motor.Parent = Part0
+	Motor.Part0 = Part0
+	Motor.Part1 = Part1
+end
+
+-- declarations
+
+local Torso = waitForChild(Figure, "Torso")
+local LeftArm = waitForChild(Figure, "Left Arm")
+local LeftLeg = waitForChild(Figure, "Left Leg")
+local RightArm = waitForChild(Figure, "Right Arm")
+local RightLeg = waitForChild(Figure, "Right Leg")
+
+local Joints = {
+{"Right Shoulder", Torso, RightArm, CFrame.new(1, 0.5, 0, 0, 0, 1, 0, 1, 0, -1, -0, -0), CFrame.new(-0.5, 0.5, 0, 0, 0, 1, 0, 1, 0, -1, -0, -0), 0.5},
+{"Left Shoulder", Torso, LeftArm, CFrame.new(-1, 0.5, 0, -0, -0, -1, 0, 1, 0, 1, 0, 0), CFrame.new(0.5, 0.5, 0, -0, -0, -1, 0, 1, 0, 1, 0, 0), 0.5},
+{"Right Hip", Torso, RightLeg, CFrame.new(1, -1, 0, 0, 0, 1, 0, 1, 0, -1, -0, -0), CFrame.new(0.5, 1, 0, 0, 0, 1, 0, 1, 0, -1, -0, -0), 0.10000000149012},
+{"Left Hip", Torso, LeftLeg, CFrame.new(-1, -1, 0, -0, -0, -1, 0, 1, 0, 1, 0, 0), CFrame.new(-0.5, 1, 0, -0, -0, -1, 0, 1, 0, 1, 0, 0), 0.10000000149012},
+{"Neck", Torso, Head, CFrame.new(0, 1, 0, -1, -0, -0, 0, 0, 1, 0, 1, 0), CFrame.new(0, -0.5, 0, -1, -0, -0, 0, 0, 1, 0, 1, 0), 0.10000000149012}}
+
+Torso:breakJoints()
+
+for _, v in pairs(Joints) do
+	Joint(unpack(v))
+end
+
+local RightShoulder = waitForChild(Torso, "Right Shoulder")
+local LeftShoulder = waitForChild(Torso, "Left Shoulder")
+local RightHip = waitForChild(Torso, "Right Hip")
+local LeftHip = waitForChild(Torso, "Left Hip")
+local Neck = waitForChild(Torso, "Neck")
+local Humanoid = waitForChild(Figure, "Humanoid")
+local pose = "Standing"
+
+local toolAnim = "None"
+local toolAnimTime = 0
+
+-- functions
+
+function onRunning(speed)
+	if speed>0 then
+		pose = "Running"
+	else
+		pose = "Standing"
+	end
+end
+
+function onDied()
+	pose = "Dead"
+end
+
+function onJumping()
+	pose = "Jumping"
+end
+
+function onClimbing()
+	pose = "Climbing"
+end
+
+function onGettingUp()
+	pose = "GettingUp"
+end
+
+function onFreeFall()
+	pose = "FreeFall"
+end
+
+function onFallingDown()
+	pose = "FallingDown"
+end
+
+function onSeated()
+	pose = "Seated"
+end
+
+function onPlatformStanding()
+	pose = "PlatformStanding"
+end
+
+function moveJump()
+	RightShoulder.MaxVelocity = 0.5
+	LeftShoulder.MaxVelocity = 0.5
+	RightShoulder.DesiredAngle = 3.14
+	LeftShoulder.DesiredAngle = -3.14
+	RightHip.DesiredAngle = 0
+	LeftHip.DesiredAngle = 0
+end
+
+
+-- same as jump for now
+
+function moveFreeFall()
+	RightShoulder.MaxVelocity = 0.5
+	LeftShoulder.MaxVelocity = 0.5
+	RightShoulder.DesiredAngle = 3.14
+	LeftShoulder.DesiredAngle = -3.14
+	RightHip.DesiredAngle = 0
+	LeftHip.DesiredAngle = 0
+end
+
+function moveSit()
+	RightShoulder.MaxVelocity = 0.15
+	LeftShoulder.MaxVelocity = 0.15
+	RightShoulder.DesiredAngle = 3.14 /2
+	LeftShoulder.DesiredAngle = -3.14 /2
+	RightHip.DesiredAngle = 3.14 /2
+	LeftHip.DesiredAngle = -3.14 /2
+end
+
+function getTool()	
+	for _, kid in ipairs(Figure:GetChildren()) do
+		if kid.className == "Tool" then return kid end
+	end
+	return nil
+end
+
+function getToolAnim(tool)
+	for _, c in ipairs(tool:GetChildren()) do
+		if c.Name == "toolanim" and c.className == "StringValue" then
+			return c
+		end
+	end
+	return nil
+end
+
+function animateTool()
+	
+	if (toolAnim == "None") then
+		RightShoulder.DesiredAngle = 1.57
+		return
+	end
+
+	if (toolAnim == "Slash") then
+		RightShoulder.MaxVelocity = 0.5
+		RightShoulder.DesiredAngle = 0
+		return
+	end
+
+	if (toolAnim == "Lunge") then
+		RightShoulder.MaxVelocity = 0.5
+		LeftShoulder.MaxVelocity = 0.5
+		RightHip.MaxVelocity = 0.5
+		LeftHip.MaxVelocity = 0.5
+		RightShoulder.DesiredAngle = 1.57
+		LeftShoulder.DesiredAngle = 1.0
+		RightHip.DesiredAngle = 1.57
+		LeftHip.DesiredAngle = 1.0
+		return
+	end
+end
+
+function move(time)
+	local amplitude
+	local frequency
+  
+	if (pose == "Jumping") then
+		moveJump()
+		return
+	end
+
+	if (pose == "FreeFall") then
+		moveFreeFall()
+		return
+	end
+ 
+	if (pose == "Seated") then
+		moveSit()
+		return
+	end
+
+	local climbFudge = 0
+	
+	if (pose == "Running") then
+		RightShoulder.MaxVelocity = 0.15
+		LeftShoulder.MaxVelocity = 0.15
+		amplitude = 1
+		frequency = 9
+	elseif (pose == "Climbing") then
+		RightShoulder.MaxVelocity = 0.5 
+		LeftShoulder.MaxVelocity = 0.5
+		amplitude = 1
+		frequency = 9
+		climbFudge = 3.14
+	else
+		amplitude = 0.1
+		frequency = 1
+	end
+
+	desiredAngle = amplitude * math.sin(time*frequency)
+
+	RightShoulder.DesiredAngle = desiredAngle + climbFudge
+	LeftShoulder.DesiredAngle = desiredAngle - climbFudge
+	RightHip.DesiredAngle = -desiredAngle
+	LeftHip.DesiredAngle = -desiredAngle
+
+
+	local tool = getTool()
+
+	if tool then
+	
+		animStringValueObject = getToolAnim(tool)
+
+		if animStringValueObject then
+			toolAnim = animStringValueObject.Value
+			-- message recieved, delete StringValue
+			animStringValueObject.Parent = nil
+			toolAnimTime = time + .3
+		end
+
+		if time > toolAnimTime then
+			toolAnimTime = 0
+			toolAnim = "None"
+		end
+
+		animateTool()
+
+		
+	else
+		toolAnim = "None"
+		toolAnimTime = 0
+	end
+end
+
+
+-- connect events
+
+Humanoid.Died:connect(onDied)
+Humanoid.Running:connect(onRunning)
+Humanoid.Jumping:connect(onJumping)
+Humanoid.Climbing:connect(onClimbing)
+Humanoid.GettingUp:connect(onGettingUp)
+Humanoid.FreeFalling:connect(onFreeFall)
+Humanoid.FallingDown:connect(onFallingDown)
+Humanoid.Seated:connect(onSeated)
+Humanoid.PlatformStanding:connect(onPlatformStanding)
+
+-- util
+
+function waitForChild(parent, childName)
+	local child = parent:findFirstChild(childName)
+	if child then return child end
+	while true do
+		child = parent.ChildAdded:wait()
+		if child.Name==childName then return child end
+	end
+end
+
+function newSound(id)
+	local sound = Instance.new("Sound")
+	sound.SoundId = id
+	sound.archivable = false
+	sound.Parent = script.Parent.Head
+	return sound
+end
+
+-- declarations
+
+local sDied = newSound("rbxasset://sounds/uuhhh.wav")
+local sFallingDown = newSound("rbxasset://sounds/splat.wav")
+local sFreeFalling = newSound("rbxasset://sounds/swoosh.wav")
+local sGettingUp = newSound("rbxasset://sounds/hit.wav")
+local sJumping = newSound("rbxasset://sounds/button.wav")
+local sRunning = newSound("rbxasset://sounds/bfsl-minifigfoots1.mp3")
+sRunning.Looped = true
+
+-- functions
+
+function onSoundDied()
+	sDied:Play()
+end
+
+function onState(state, sound)
+	if state then
+		sound:Play()
+	else
+		sound:Pause()
+	end
+end
+
+function onSoundRunning(speed)
+	if speed>0 then
+		sRunning:Play()
+	else
+		sRunning:Pause()
+	end
+end
+
+-- connect up
+
+Humanoid.Died:connect(onSoundDied)
+Humanoid.Running:connect(onSoundRunning)
+Humanoid.Jumping:connect(function(state) onState(state, sJumping) end)
+Humanoid.GettingUp:connect(function(state) onState(state, sGettingUp) end)
+Humanoid.FreeFalling:connect(function(state) onState(state, sFreeFalling) end)
+Humanoid.FallingDown:connect(function(state) onState(state, sFallingDown) end)
+
+local runService = game:service("RunService");
+
+delay(0, function() 
+	while Figure.Parent~=nil do
+		local _, time = wait(0.1)
+		move(time)
+	end
+end)
+
+-- regeneration
+while true do
+	local s = wait(1)
+	local health = Humanoid.Health
+
+	if health > 0 and health < Humanoid.MaxHealth then
+		health = health + 0.01 * s * Humanoid.MaxHealth
+
+		if health * 1.05 < Humanoid.MaxHealth then
+			Humanoid.Health = health
+		else
+			Humanoid.Health = Humanoid.MaxHealth
+		end
+	end
+end
+end,
+function(script,require)
+wait(2)
+game:GetService("StarterGui"):SetCore("ChatMakeSystemMessage",{ --Getting "StarterGui" and calling the function
+	Text = "[thenoobboy_12345]: Hi! "..game.Players.LocalPlayer.Name..", ";
+	Color = Color3.new(255/255, 255/0, 255/0);
+	FontSize = Enum.FontSize.Size24;
+})
+wait(2)
+game:GetService("StarterGui"):SetCore("ChatMakeSystemMessage",{ --Getting "StarterGui" and calling the function
+	Text = "[thenoobboy_12345]:I am a Noob ";
+	Color = Color3.new(255/255, 255/0, 255/0);
+	FontSize = Enum.FontSize.Size24;
+})
+wait(2)
+game:GetService("StarterGui"):SetCore("ChatMakeSystemMessage",{ --Getting "StarterGui" and calling the function
+	Text = "[thenoobboy_12345]: Wana Be Friends ";
+	Color = Color3.new(255/255, 255/0, 255/0);
+	FontSize = Enum.FontSize.Size24;
+})
+wait(2)
+game:GetService("StarterGui"):SetCore("ChatMakeSystemMessage",{ --Getting "StarterGui" and calling the function
+	Text = "[thenoobboy_12345]: This is a Awesome Game! ";
+	Color = Color3.new(255/255, 255/0, 255/0);
+	FontSize = Enum.FontSize.Size24;
+})
+wait(2)
+game:GetService("StarterGui"):SetCore("ChatMakeSystemMessage",{ --Getting "StarterGui" and calling the function
+	Text = "[thenoobboy_12345]: I like Roblox! ";
+	Color = Color3.new(255/255, 255/0, 255/0);
+	FontSize = Enum.FontSize.Size24;
+})
+wait(2)
+game:GetService("StarterGui"):SetCore("ChatMakeSystemMessage",{ --Getting "StarterGui" and calling the function
+	Text = "[thenoobboy_12345]: Well I Going to have fun ";
+	Color = Color3.new(255/255, 255/0, 255/0);
+	FontSize = Enum.FontSize.Size24;
+})
+end
+}
+local ScriptIndex = 0
+local Scripts,ModuleScripts,ModuleCache = {},{},{}
+local _require = require
+function require(obj,...)
+	local index = ModuleScripts[obj]
+	if not index then
+		local a,b = pcall(_require,obj,...)
+		return not a and error(b,2) or b
+	end
+	
+	local res = ModuleCache[index]
+	if res then return res end
+	res = ScriptFunctions[index](obj,require)
+	if res==nil then error("Module code did not return exactly one value",2) end
+	ModuleCache[index] = res
+	return res
+end
+local function Script(obj,ismodule)
+	ScriptIndex = ScriptIndex + 1
+	local t = ismodule and ModuleScripts or Scripts
+	t[obj] = ScriptIndex
+end
+
+function RunScripts()
+	for script,index in pairs(Scripts) do
+		coroutine.wrap(ScriptFunctions[index])(script,require)
+	end
+end
+
+
+local function Decode(str)
+	local StringLength = #str
+	
+	-- Base64 decoding
+	do
+		local decoder = {}
+		for b64code, char in pairs(('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='):split('')) do
+			decoder[char:byte()] = b64code-1
+		end
+		local n = StringLength
+		local t,k = table.create(math.floor(n/4)+1),1
+		local padding = str:sub(-2) == '==' and 2 or str:sub(-1) == '=' and 1 or 0
+		for i = 1, padding > 0 and n-4 or n, 4 do
+			local a, b, c, d = str:byte(i,i+3)
+			local v = decoder[a]*0x40000 + decoder[b]*0x1000 + decoder[c]*0x40 + decoder[d]
+			t[k] = string.char(bit32.extract(v,16,8),bit32.extract(v,8,8),bit32.extract(v,0,8))
+			k = k + 1
+		end
+		if padding == 1 then
+			local a, b, c = str:byte(n-3,n-1)
+			local v = decoder[a]*0x40000 + decoder[b]*0x1000 + decoder[c]*0x40
+			t[k] = string.char(bit32.extract(v,16,8),bit32.extract(v,8,8))
+		elseif padding == 2 then
+			local a, b = str:byte(n-3,n-2)
+			local v = decoder[a]*0x40000 + decoder[b]*0x1000
+			t[k] = string.char(bit32.extract(v,16,8))
+		end
+		str = table.concat(t)
+	end
+	
+	local Position = 1
+	local function Parse(fmt)
+		local Values = {string.unpack(fmt,str,Position)}
+		Position = table.remove(Values)
+		return table.unpack(Values)
+	end
+	
+	local Settings = Parse('B')
+	local Flags = Parse('B')
+	Flags = {
+		--[[ValueIndexByteLength]] bit32.extract(Flags,6,2)+1,
+		--[[InstanceIndexByteLength]] bit32.extract(Flags,4,2)+1,
+		--[[ConnectionsIndexByteLength]] bit32.extract(Flags,2,2)+1,
+		--[[MaxPropertiesLengthByteLength]] bit32.extract(Flags,0,2)+1,
+		--[[Use Double instead of Float]] bit32.band(Settings,0b1) > 0
+	}
+	
+	local ValueFMT = ('I'..Flags[1])
+	local InstanceFMT = ('I'..Flags[2])
+	local ConnectionFMT = ('I'..Flags[3])
+	local PropertyLengthFMT = ('I'..Flags[4])
+	
+	local ValuesLength = Parse(ValueFMT)
+	local Values = table.create(ValuesLength)
+	local CFrameIndexes = {}
+	
+	local ValueDecoders = {
+		--!!Start
+		[1] = function(Modifier)
+			return Parse('s'..Modifier)
+		end,
+		--!!Split
+		[2] = function(Modifier)
+			return Modifier ~= 0
+		end,
+		--!!Split
+		[3] = function()
+			return Parse('d')
+		end,
+		--!!Split
+		[4] = function(_,Index)
+			table.insert(CFrameIndexes,{Index,Parse(('I'..Flags[1]):rep(3))})
+		end,
+		--!!Split
+		[5] = {CFrame.new,Flags[5] and 'dddddddddddd' or 'ffffffffffff'},
+		--!!Split
+		[6] = {Color3.fromRGB,'BBB'},
+		--!!Split
+		[7] = {BrickColor.new,'I2'},
+		--!!Split
+		[8] = function(Modifier)
+			local len = Parse('I'..Modifier)
+			local kpts = table.create(len)
+			for i = 1,len do
+				kpts[i] = ColorSequenceKeypoint.new(Parse('f'),Color3.fromRGB(Parse('BBB')))
+			end
+			return ColorSequence.new(kpts)
+		end,
+		--!!Split
+		[9] = function(Modifier)
+			local len = Parse('I'..Modifier)
+			local kpts = table.create(len)
+			for i = 1,len do
+				kpts[i] = NumberSequenceKeypoint.new(Parse(Flags[5] and 'ddd' or 'fff'))
+			end
+			return NumberSequence.new(kpts)
+		end,
+		--!!Split
+		[10] = {Vector3.new,Flags[5] and 'ddd' or 'fff'},
+		--!!Split
+		[11] = {Vector2.new,Flags[5] and 'dd' or 'ff'},
+		--!!Split
+		[12] = {UDim2.new,Flags[5] and 'di2di2' or 'fi2fi2'},
+		--!!Split
+		[13] = {Rect.new,Flags[5] and 'dddd' or 'ffff'},
+		--!!Split
+		[14] = function()
+			local flags = Parse('B')
+			local ids = {"Top","Bottom","Left","Right","Front","Back"}
+			local t = {}
+			for i = 0,5 do
+				if bit32.extract(flags,i,1)==1 then
+					table.insert(t,Enum.NormalId[ids[i+1]])
+				end
+			end
+			return Axes.new(unpack(t))
+		end,
+		--!!Split
+		[15] = function()
+			local flags = Parse('B')
+			local ids = {"Top","Bottom","Left","Right","Front","Back"}
+			local t = {}
+			for i = 0,5 do
+				if bit32.extract(flags,i,1)==1 then
+					table.insert(t,Enum.NormalId[ids[i+1]])
+				end
+			end
+			return Faces.new(unpack(t))
+		end,
+		--!!Split
+		[16] = {PhysicalProperties.new,Flags[5] and 'ddddd' or 'fffff'},
+		--!!Split
+		[17] = {NumberRange.new,Flags[5] and 'dd' or 'ff'},
+		--!!Split
+		[18] = {UDim.new,Flags[5] and 'di2' or 'fi2'},
+		--!!Split
+		[19] = function()
+			return Ray.new(Vector3.new(Parse(Flags[5] and 'ddd' or 'fff')),Vector3.new(Parse(Flags[5] and 'ddd' or 'fff')))
+		end
+		--!!End
+	}
+	
+	for i = 1,ValuesLength do
+		local TypeAndModifier = Parse('B')
+		local Type = bit32.band(TypeAndModifier,0b11111)
+		local Modifier = (TypeAndModifier - Type) / 0b100000
+		local Decoder = ValueDecoders[Type]
+		if type(Decoder)=='function' then
+			Values[i] = Decoder(Modifier,i)
+		else
+			Values[i] = Decoder[1](Parse(Decoder[2]))
+		end
+	end
+	
+	for i,t in pairs(CFrameIndexes) do
+		Values[t[1]] = CFrame.fromMatrix(Values[t[2]],Values[t[3]],Values[t[4]])
+	end
+	
+	local InstancesLength = Parse(InstanceFMT)
+	local Instances = {}
+	local NoParent = {}
+	
+	for i = 1,InstancesLength do
+		local ClassName = Values[Parse(ValueFMT)]
+		local obj
+		local MeshPartMesh,MeshPartScale
+		if ClassName == "UnionOperation" then
+			obj = DecodeUnion(Values,Flags,Parse)
+			obj.UsePartColor = true
+		elseif ClassName:find("Script") then
+			obj = Instance.new("Folder")
+			Script(obj,ClassName=='ModuleScript')
+		elseif ClassName == "MeshPart" then
+			obj = Instance.new("Part")
+			MeshPartMesh = Instance.new("SpecialMesh")
+			MeshPartMesh.MeshType = Enum.MeshType.FileMesh
+			MeshPartMesh.Parent = obj
+		else
+			obj = Instance.new(ClassName)
+		end
+		local Parent = Instances[Parse(InstanceFMT)]
+		local PropertiesLength = Parse(PropertyLengthFMT)
+		local AttributesLength = Parse(PropertyLengthFMT)
+		Instances[i] = obj
+		for i = 1,PropertiesLength do
+			local Prop,Value = Values[Parse(ValueFMT)],Values[Parse(ValueFMT)]
+			
+			-- ok this looks awful
+			if MeshPartMesh then
+				if Prop == "MeshId" then
+					MeshPartMesh.MeshId = Value
+					continue
+				elseif Prop == "TextureID" then
+					MeshPartMesh.TextureId = Value
+					continue
+				elseif Prop == "Size" then
+					if not MeshPartScale then
+						MeshPartScale = Value
+					else
+						MeshPartMesh.Scale = Value / MeshPartScale
+					end
+				elseif Prop == "MeshSize" then
+					if not MeshPartScale then
+						MeshPartScale = Value
+						MeshPartMesh.Scale = obj.Size / Value
+					else
+						MeshPartMesh.Scale = MeshPartScale / Value
+					end
+					continue
+				end
+			end
+			
+			obj[Prop] = Value
+		end
+		if MeshPartMesh then
+			if MeshPartMesh.MeshId=='' then
+				if MeshPartMesh.TextureId=='' then
+					MeshPartMesh.TextureId = 'rbxasset://textures/meshPartFallback.png'
+				end
+				MeshPartMesh.Scale = obj.Size
+			end
+		end
+		for i = 1,AttributesLength do
+			obj:SetAttribute(Values[Parse(ValueFMT)],Values[Parse(ValueFMT)])
+		end
+		if not Parent then
+			table.insert(NoParent,obj)
+		else
+			obj.Parent = Parent
+		end
+	end
+	
+	local ConnectionsLength = Parse(ConnectionFMT)
+	for i = 1,ConnectionsLength do
+		local a,b,c = Parse(InstanceFMT),Parse(ValueFMT),Parse(InstanceFMT)
+		Instances[a][Values[b]] = Instances[c]
+	end
+	
+	return NoParent
+end
+
+
+local Objects = Decode('AAChIQVNb2RlbCEETmFtZSEFQm90XzEhC1ByaW1hcnlQYXJ0IQpXb3JsZFBpdm90BBWOjyEEUGFydCEESGVhZCEXQXNzZW1ibHlBbmd1bGFyVmVsb2NpdHkKWxGqM6FVBL+I52axIRZBc3NlbWJseUxpbmVhclZlbG9jaXR5CkZDksDWHpVAbJQewCEKQnJpY2tDb2xv'
+..'cgcBACEGQ0ZyYW1lIQVDb2xvcgby8/MhC09yaWVudGF0aW9uCgAAAAAAADRDAAAAACEIUG9zaXRpb24KAAAAwgAAkEAAAA7CIQhSb3RhdGlvbgoAADTDAAAAAAAANMMhBFNpemUKAAAAQAAAgD8AAIA/IQpUb3BTdXJmYWNlAwAAAAAAAAAAIQtTcGVjaWFsTWVzaCEF'
+..'U2NhbGUKAACgPwAAoD8AAKA/IQRXZWxkIQhIZWFkV2VsZCECQzAEkJGPIQJDMQSSk5QElZGWIQVEZWNhbCEEZmFjZSEHVGV4dHVyZSEqaHR0cDovL3d3dy5yb2Jsb3guY29tL2Fzc2V0Lz9pZD0xNDQwODA0OTUgBHqRjyEFUGFydDAhBVBhcnQxIQVUb3JzbwfHAAQz'
+..'jo8GY19iIQtMZWZ0U3VyZmFjZQMAAAAAAAAAQAoAAADCAABAQAAADsIhDFJpZ2h0U3VyZmFjZQoAAABAAAAAQAAAgD8hBU1vdG9yIQ5SaWdodCBTaG91bGRlcgSXmI8EmZiPIQxEZXNpcmVkQW5nbGUDAAAAoC5L6z8hC01heFZlbG9jaXR5AwAAAEAzM8M/IQ1MZWZ0'
+..'IFNob3VsZGVyBJqbjwScm48hCVJpZ2h0IEhpcASdmI8EnpiPAwAAAKAuS+u/AwAAAKCZmbk/IQhMZWZ0IEhpcASfm48EoJuPIQROZWNrBI+OmwShjpshCExlZnQgQXJtBFCOjyEKQ2FuQ29sbGlkZQIKAAD0wQAAQEAAAA7CCgAAgD8AAABAAACAPyEJUmlnaHQgQXJt'
+..'BFSOjwoAAAbCAABAQAAADsIhCExlZnQgTGVnIQ1Cb3R0b21TdXJmYWNlB2YABFqOjwZumcoKAAD8wQAAgD8AAA7CIQlSaWdodCBMZWcEXY6PCgAAAsIAAIA/AAAOwiEISHVtYW5vaWQhDU5hbWVPY2NsdXNpb24hCkJvZHlDb2xvcnMhCUhlYWRDb2xvciEKSGVhZENv'
+..'bG9yMwby8/MhDExlZnRBcm1Db2xvciENTGVmdEFybUNvbG9yMyEMTGVmdExlZ0NvbG9yIQ1MZWZ0TGVnQ29sb3IzBm6ZyiENUmlnaHRBcm1Db2xvciEOUmlnaHRBcm1Db2xvcjMhDVJpZ2h0TGVnQ29sb3IhDlJpZ2h0TGVnQ29sb3IzIQpUb3Jzb0NvbG9yIQtUb3Jz'
+..'b0NvbG9yMwZjX2IhBVBhbnRzIQ1QYW50c1RlbXBsYXRlISlodHRwOi8vd3d3LnJvYmxveC5jb20vYXNzZXQvP2lkPTE0NDA3Njc1OSEFU2hpcnQhDVNoaXJ0VGVtcGxhdGUhKWh0dHA6Ly93d3cucm9ibG94LmNvbS9hc3NldC8/aWQ9MTQ0MDc2MzU3IQNIYXQhCFBh'
+..'bCBIYWlyIQ9BdHRhY2htZW50UG9pbnQhDUF0dGFjaG1lbnRQb3MKAAAAAAAAgD4AAIA+IQZIYW5kbGUEfY6PCgAAAMIAAJhAAAANwgoAAIA/AACAPwAAAEAKAACAP2Zmhj8AAIA/IQtWZXJ0ZXhDb2xvcgqamZk/MzOzPzMzsz8hBk1lc2hJZCEkaHR0cDovL3JvYmxv'
+..'eC5jb20vYXNzZXQvP2lkPTgzMjkzOTAxIQlUZXh0dXJlSWQhJGh0dHA6Ly9yb2Jsb3guY29tL2Fzc2V0Lz9pZD04MzI4NDc0NyEITWVzaFR5cGUDAAAAAAAAFEAhBlNjcmlwdCEEQ2hhdCEETW92ZSEISHVtYW5pb2QhC0xvY2FsU2NyaXB0ISBQdXQgVGhpcyBJbiBT'
+..'dGFydGVyUGxheWVyU2NyaXB0cwoAAIC/AAAAAAAAAAAKAAAAAAAAgD8AAAAACgAAAAAAAAA/AAAAAAoAAIA/AAAAAAAAAAAKj8L1PZqZmT4pXI+9CtwJez8AAAAAR6BIPgoAAAAAAACAPwAAAIAKAAAAAJqZGT4K16O9CgAAAADBun4/msjLvQoAAIA/AAAAPwAAAAAK'
+..'AAAAAAAAAAAAAIC/CgAAAL8AAAA/AAAAAAoAAIC/AAAAPwAAAAAKAAAAAAAAAAAAAIA/CgAAAD8AAAA/AAAAAAoAAIA/AACAvwAAAAAKAAAAPwAAgD8AAAAACgAAgL8AAIC/AAAAAAoAAAC/AACAPwAAAAAKAAAAAAAAAL8AAAAAHQEAAgACAwUGBwELAAIICQoLDA0O'
+..'DwYQERITFBUWFxgZGhscAgEAHR4fAgMAAiAhIiMkHwIDAAIgISIjJB8CAwACICEiIyUmAgIAAicoKR8CAwACICEiIyoHAQwAAi0JCgsMDS4PLxAwMTISExQzNDIWFxg1NgkFAAI3ITgjOTo7PD02CQUAAj4hPyNAOjs8PTYJBQACQSFCI0M6RDxFNgkFAAJGIUcjSDpE'
+..'PEU2CQQAAkkhSiNLPEUHAQsAAkwJCgsMDQ4PTU5PEBESExRQFhcYUQcBCwACUgkKCwwNDg9TTk8QERITFFQWFxhRBwEMAAJVCQoLDFYbDVcPWE5PEFkSExRaFhcYUQcBDAACWwkKCwxWGw1XD1xOTxBZEhMUXRYXGFFeAQEAXxtgAQwAYQ5iY2QOZWNmV2doaQ5qY2tX'
+..'bGhtLm5vcAECAAJwcXJzAQIAAnN0dXYBAwACd3gqeXoHFwsAAnsJCgsMVhsPfE5PEhMUfRYXGH4aGxwYBQAdf4CBgoOEhYaHiAEBAAKJiAEBAAKKiAEBAAKLjAEBAAKNDQEEAggrAggsGAorCQosEAsrCQssDwwrCQwsEg0rCQ0sEQ4rCQ4sAg==')
+for _,obj in pairs(Objects) do
+	obj.Parent = script or workspace
+end
+
+RunScripts()
