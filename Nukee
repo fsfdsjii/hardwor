@@ -1,0 +1,974 @@
+-- Converted using Mokiros's Model to Script Version 3
+-- Converted string size: 20232 characters
+
+local ScriptFunctions = {
+function(script,require)
+print("Nuke Em' All")
+
+local CloudID= "http://www.roblox.com/asset/?id=1095708"
+local ColorTexture = "http://www.roblox.com/asset/?ID=1361097"
+local RingID = "http://www.roblox.com/asset/?id=3270017"
+local SphereID = "http://www.roblox.com/asset/?id=1185246"
+
+local BasePosition = script.Parent.Position
+
+local Size = 1000
+
+local Exp = Instance.new("Model")
+Exp.Name = "ATOMICEXPLOSION"
+Exp.Parent = game.Workspace
+
+local BasePart = Instance.new("Part")
+BasePart.formFactor = 0
+BasePart.TopSurface = 0
+BasePart.BottomSurface = 0
+BasePart.Anchored = true
+BasePart.Locked = true
+BasePart.CanCollide = false
+
+local BaseMesh = Instance.new("SpecialMesh")
+BaseMesh.MeshType = "FileMesh"
+
+local CloudMesh = BaseMesh:clone()
+CloudMesh.MeshId = CloudID
+CloudMesh.TextureId = ColorTexture
+CloudMesh.VertexColor = Vector3.new(0.9,0.6,0)
+
+local RingMesh = BaseMesh:clone()
+RingMesh.MeshId = RingID
+
+local SphereMesh = BaseMesh:clone()
+SphereMesh.MeshId = SphereID
+
+local Clouds = {}
+local ShockWave = {}
+local Sky = script.Sky
+
+
+function Effects()
+	script.Explode:Play()
+	delay(0,function() 
+		for i = 5, 1,-0.01 do
+			wait()
+			game.Lighting.Brightness = i
+		end
+	end)
+end
+
+function Destruction(Pos,Radius)
+	local function Destroy(Model)
+		for i ,v in ipairs(Model:getChildren()) do
+			if v:isA("BasePart") then
+				if (v.Position-Pos).magnitude < Radius then
+					if v.Anchored == false then
+						v:BreakJoints()
+						v.Velocity = CFrame.new(v.Position,Pos):vectorToWorldSpace(Vector3.new(math.random(-5,5),5,1000))
+						v.Material = "CorrodedMetal"
+					end	
+				end
+			end
+			if #v:getChildren() > 0 then
+				Destroy(v)
+			end
+		end
+	end
+	Destroy(game.Workspace)
+end
+function Explode(Pos)
+
+local Base = BasePart:clone()
+Base.Position = Pos
+	
+local Mesh = CloudMesh:clone()
+Mesh.Parent = Base 
+Mesh.Scale = Vector3.new(2.5,1,4.5)
+
+local PoleBase = BasePart:clone()
+PoleBase.Position = Pos+Vector3.new(0,0.1,0)
+
+local PoleBaseMesh = CloudMesh:clone()
+PoleBaseMesh.Scale = Vector3.new(1.25,2,2.5)
+PoleBaseMesh.Parent = PoleBase
+
+local Cloud1 = BasePart:clone()
+Cloud1.Position = Pos+Vector3.new(0,0.75,0)
+
+local Cloud1Mesh = CloudMesh:clone()
+Cloud1Mesh.Scale = Vector3.new(0.5,3,1)
+Cloud1Mesh.Parent = Cloud1
+	
+local Cloud2 = BasePart:clone()
+Cloud2.Position = Pos+Vector3.new(0,1.25,0)
+	
+local Cloud2Mesh = CloudMesh:clone()
+Cloud2Mesh.Scale = Vector3.new(0.5,1.5,1)
+Cloud2Mesh.Parent = Cloud2
+
+local Cloud3 = BasePart:clone()
+Cloud3.Position = Pos+Vector3.new(0,1.7,0)
+	
+local Cloud3Mesh = CloudMesh:clone()
+Cloud3Mesh.Scale = Vector3.new(0.5,1.5,1)
+Cloud3Mesh.Parent = Cloud3
+
+local PoleRing = BasePart:clone()
+PoleRing.Position = Pos+Vector3.new(0,1.3,0)
+PoleRing.Transparency = 0.2
+PoleRing.BrickColor = BrickColor.new("Dark stone grey")
+PoleRing.CFrame = PoleRing.CFrame*CFrame.Angles(math.rad(90),0,0)
+
+local Mesh = RingMesh:clone()
+Mesh.Scale = Vector3.new(1.2,1.2,1.2)
+Mesh.Parent = PoleRing
+
+local MushCloud = BasePart:clone()
+MushCloud.Position = Pos+Vector3.new(0,2.3,0)
+	
+local MushMesh = CloudMesh:clone() -- lol
+MushMesh.Scale = Vector3.new(2.5,1.75,3.5)
+MushMesh.Parent = MushCloud
+
+local TopCloud = BasePart:clone()
+TopCloud.Position = Pos+Vector3.new(0,2.7,0)
+	
+local TopMesh = CloudMesh:clone()
+TopMesh.Scale = Vector3.new(7.5,1.5,1.5)
+TopMesh.Parent = TopCloud
+
+table.insert(Clouds,Base)
+table.insert(Clouds,TopCloud)
+table.insert(Clouds,MushCloud)
+table.insert(Clouds,Cloud1)
+table.insert(Clouds,Cloud2)
+table.insert(Clouds,Cloud3)
+table.insert(Clouds,PoleBase)
+table.insert(Clouds,PoleRing)
+
+
+local BigRing = BasePart:clone()
+BigRing.Position = Pos
+BigRing.CFrame = BigRing.CFrame*CFrame.Angles(math.rad(90),0,0)
+	
+local BigMesh = RingMesh:clone()
+BigMesh.Scale = Vector3.new(5,5,1)
+BigMesh.Parent = BigRing
+	
+local SmallRing = BasePart:clone()
+SmallRing.Position = Pos
+SmallRing.BrickColor = BrickColor.new("Dark stone grey")
+SmallRing.CFrame = SmallRing.CFrame*CFrame.Angles(math.rad(90),0,0)
+
+local SmallMesh = RingMesh:clone()
+SmallMesh.Scale = Vector3.new(4.6,4.6,1.5)
+SmallMesh.Parent = SmallRing
+
+local InnerSphere = BasePart:clone()
+InnerSphere.Position = Pos
+InnerSphere.BrickColor = BrickColor.new("Bright orange")
+InnerSphere.Transparency = 0.5
+
+local InnerSphereMesh = SphereMesh:clone()	
+InnerSphereMesh.Scale = Vector3.new(-6.5,-6.5,-6.5)
+InnerSphereMesh.Parent = InnerSphere
+	
+local OutterSphere = BasePart:clone()
+OutterSphere.Position = Pos
+OutterSphere.BrickColor = BrickColor.new("Bright orange")
+OutterSphere.Transparency = 0.5
+
+local OutterSphereMesh = SphereMesh:clone()
+OutterSphereMesh.Scale = Vector3.new(6.5,6.5,6.5)
+OutterSphereMesh.Parent = OutterSphere
+
+table.insert(ShockWave,BigRing)	
+table.insert(ShockWave,SmallRing)
+table.insert(ShockWave,OutterSphere)
+table.insert(ShockWave,InnerSphere)
+	Sky.Parent = game.Lighting
+	for i , v in ipairs(ShockWave) do
+		v.Parent = Exp
+	end
+	for i , v in ipairs(Clouds) do
+		v.Parent = Exp
+	end
+	Effects()
+	delay(0,function()
+		for resize = Size/2.5, Size*3, 2 do
+			wait()
+			BigRing.Mesh.Scale = Vector3.new(5*resize,5*resize,1*resize)
+			SmallRing.Mesh.Scale = Vector3.new(4.6*resize,4.6*resize,1.5*resize)
+			InnerSphere.Mesh.Scale = Vector3.new(-6.5*resize,-6.5*resize,-6.5*resize)
+			OutterSphere.Mesh.Scale = Vector3.new(6.5*resize,6.5*resize,6.5*resize)
+			Destruction(Pos,3*resize)
+		end
+		for fade = 0, 1, 0.01 do
+			wait()
+			pcall(function()
+				for i ,v in ipairs(ShockWave) do
+					v.Transparency = fade
+				end
+			end)
+		end
+		for i ,v in ipairs(ShockWave) do
+			v:Remove()
+		end
+		done1 = true
+	end)
+	delay(0,function()
+		for resize = Size/5, Size, 1 do
+			wait()
+			pcall(function()
+				Base.Mesh.Scale = Vector3.new(2.5*resize,1*resize,4.5*resize)
+				TopCloud.Mesh.Scale = Vector3.new(0.75*resize,1.5*resize,1.5*resize)
+				MushCloud.Mesh.Scale = Vector3.new(2.5*resize,1.75*resize,3.5*resize)
+				Cloud1.Mesh.Scale = Vector3.new(0.5*resize,3*resize,1*resize)
+				Cloud2.Mesh.Scale = Vector3.new(0.5*resize,1.5*resize,1*resize)
+				Cloud3.Mesh.Scale = Vector3.new(0.5*resize,1.5*resize,1*resize)
+				PoleBase.Mesh.Scale = Vector3.new(1*resize,2*resize,2.5*resize)
+				PoleRing.Mesh.Scale = Vector3.new(1.2*resize,1.2*resize,1.2*resize)
+
+				Base.Position = Pos+Vector3.new(0,0.05*resize,0)
+				TopCloud.Position = Pos+Vector3.new(0,2.7*resize,0)
+				MushCloud.Position = Pos+Vector3.new(0,2.3*resize,0)
+				Cloud1.Position = Pos+Vector3.new(0,0.75*resize,0)
+				Cloud2.Position = Pos+Vector3.new(0,1.25*resize,0)
+				Cloud3.Position = Pos+Vector3.new(0,1.7*resize,0)
+				PoleBase.Position = Pos+Vector3.new(0,0.1*resize,0)
+				PoleRing.Position = Pos+Vector3.new(0,1.3*resize,0)
+			end)
+		end
+		done2 = true
+	end)
+	wait(2)
+	for y = 0.6,0,-0.0025 do
+		wait()
+		for i , v in ipairs(Clouds) do
+			v.Mesh.VertexColor = Vector3.new(0.9,y,0)
+		end
+	end
+	for r = 0.9,0.5,-0.01 do
+		wait()
+		for i , v in ipairs(Clouds) do
+			v.Mesh.VertexColor = Vector3.new(r,0,0)
+		end
+	end
+	for by = 0,0.5,0.005 do
+		wait()
+		for i , v in ipairs(Clouds) do
+			v.Mesh.VertexColor = Vector3.new(0.5,by,by)
+			v.Transparency = by*2
+		end
+		Base.Mesh.Scale = Base.Mesh.Scale+Vector3.new(0.1,0.1,0.1)
+		TopCloud.Mesh.Scale = TopCloud.Mesh.Scale+Vector3.new(0.1,0.1,0.1)
+		MushCloud.Mesh.Scale = MushCloud.Mesh.Scale+Vector3.new(0.1,0.1,0.1)
+		Cloud1.Mesh.Scale = Cloud1.Mesh.Scale+Vector3.new(0.1,0.1,0.1)
+		Cloud2.Mesh.Scale = Cloud2.Mesh.Scale+Vector3.new(0.1,0.1,0.1)
+		Cloud3.Mesh.Scale = Cloud3.Mesh.Scale+Vector3.new(0.1,0.1,0.1)
+		PoleBase.Mesh.Scale = PoleBase.Mesh.Scale+Vector3.new(0.1,0.1,0.1)
+		PoleRing.Mesh.Scale = PoleRing.Mesh.Scale+Vector3.new(0.1,0.1,0.1)
+	end
+	done3 = true
+	while true do wait(1) if done1 and done2 and done3 then break end end
+	Exp:remove()
+	wait(20)
+	Sky:remove()
+end
+
+
+	
+
+Explode(BasePosition)
+
+script.Parent:remove()
+
+
+
+	
+	
+
+
+
+
+end,
+function(script,require)
+function onClicked(mouse)
+script.Parent.Anchored = true
+script.Parent.Parent = Workspace
+script.Parent.Transparency = 1
+wait()
+script.Parent.Atom.Disabled = false
+end
+
+script.Parent.Parent.Parent.Parent.CLICK.Head.ClickDetector.MouseClick:connect(onClicked)
+end,
+function(script,require)
+-- Created by Quenty (@Quenty, follow me on twitter).
+-- Should work with only ONE copy, seamlessly with weapons, trains, et cetera.
+-- Parts should be ANCHORED before use. It will, however, store relatives values and so when tools are reparented, it'll fix them.
+
+--[[ INSTRUCTIONS
+- Place in the model
+- Make sure model is anchored
+- That's it. It will weld the model and all children. 
+
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+
+This script is designed to be used is a regular script. In a local script it will weld, but it will not attempt to handle ancestory changes. 
+]]
+
+--[[ DOCUMENTATION
+- Will work in tools. If ran more than once it will not create more than one weld.  This is especially useful for tools that are dropped and then picked up again.
+- Will work in PBS servers
+- Will work as long as it starts out with the part anchored
+- Stores the relative CFrame as a CFrame value
+- Takes careful measure to reduce lag by not having a joint set off or affected by the parts offset from origin
+- Utilizes a recursive algorith to find all parts in the model
+- Will reweld on script reparent if the script is initially parented to a tool.
+- Welds as fast as possible
+]]
+
+-- qPerfectionWeld.lua
+-- Created 10/6/2014
+-- Author: Quenty
+-- Version 1.0.3
+
+-- Updated 10/14/2014 - Updated to 1.0.1
+--- Bug fix with existing ROBLOX welds ? Repro by asimo3089
+
+-- Updated 10/14/2014 - Updated to 1.0.2
+--- Fixed bug fix. 
+
+-- Updated 10/14/2014 - Updated to 1.0.3
+--- Now handles joints semi-acceptably. May be rather hacky with some joints. :/
+
+local NEVER_BREAK_JOINTS = false -- If you set this to true it will never break joints (this can create some welding issues, but can save stuff like hinges).
+
+
+local function CallOnChildren(Instance, FunctionToCall)
+	-- Calls a function on each of the children of a certain object, using recursion.  
+
+	FunctionToCall(Instance)
+
+	for _, Child in next, Instance:GetChildren() do
+		CallOnChildren(Child, FunctionToCall)
+	end
+end
+
+local function GetNearestParent(Instance, ClassName)
+	-- Returns the nearest parent of a certain class, or returns nil
+
+	local Ancestor = Instance
+	repeat
+		Ancestor = Ancestor.Parent
+		if Ancestor == nil then
+			return nil
+		end
+	until Ancestor:IsA(ClassName)
+
+	return Ancestor
+end
+
+local function GetBricks(StartInstance)
+	local List = {}
+
+	-- if StartInstance:IsA("BasePart") then
+	-- 	List[#List+1] = StartInstance
+	-- end
+
+	CallOnChildren(StartInstance, function(Item)
+		if Item:IsA("BasePart") then
+			List[#List+1] = Item;
+		end
+	end)
+
+	return List
+end
+
+local function Modify(Instance, Values)
+	-- Modifies an Instance by using a table.  
+
+	assert(type(Values) == "table", "Values is not a table");
+
+	for Index, Value in next, Values do
+		if type(Index) == "number" then
+			Value.Parent = Instance
+		else
+			Instance[Index] = Value
+		end
+	end
+	return Instance
+end
+
+local function Make(ClassType, Properties)
+	-- Using a syntax hack to create a nice way to Make new items.  
+
+	return Modify(Instance.new(ClassType), Properties)
+end
+
+local Surfaces = {"TopSurface", "BottomSurface", "LeftSurface", "RightSurface", "FrontSurface", "BackSurface"}
+local HingSurfaces = {"Hinge", "Motor", "SteppingMotor"}
+
+local function HasWheelJoint(Part)
+	for _, SurfaceName in pairs(Surfaces) do
+		for _, HingSurfaceName in pairs(HingSurfaces) do
+			if Part[SurfaceName].Name == HingSurfaceName then
+				return true
+			end
+		end
+	end
+	
+	return false
+end
+
+local function ShouldBreakJoints(Part)
+	--- We do not want to break joints of wheels/hinges. This takes the utmost care to not do this. There are
+	--  definitely some edge cases. 
+
+	if NEVER_BREAK_JOINTS then
+		return false
+	end
+	
+	if HasWheelJoint(Part) then
+		return false
+	end
+	
+	local Connected = Part:GetConnectedParts()
+	
+	if #Connected == 1 then
+		return false
+	end
+	
+	for _, Item in pairs(Connected) do
+		if HasWheelJoint(Item) then
+			return false
+		elseif not Item:IsDescendantOf(script.Parent) then
+			return false
+		end
+	end
+	
+	return true
+end
+
+local function WeldTogether(Part0, Part1, JointType, WeldParent)
+	--- Weld's 2 parts together
+	-- @param Part0 The first part
+	-- @param Part1 The second part (Dependent part most of the time).
+	-- @param [JointType] The type of joint. Defaults to weld.
+	-- @param [WeldParent] Parent of the weld, Defaults to Part0 (so GC is better).
+	-- @return The weld created.
+
+	JointType = JointType or "Weld"
+	local RelativeValue = Part1:FindFirstChild("qRelativeCFrameWeldValue")
+	
+	local NewWeld = Part1:FindFirstChild("qCFrameWeldThingy") or Instance.new(JointType)
+	Modify(NewWeld, {
+		Name = "qCFrameWeldThingy";
+		Part0  = Part0;
+		Part1  = Part1;
+		C0     = CFrame.new();--Part0.CFrame:inverse();
+		C1     = RelativeValue and RelativeValue.Value or Part1.CFrame:toObjectSpace(Part0.CFrame); --Part1.CFrame:inverse() * Part0.CFrame;-- Part1.CFrame:inverse();
+		Parent = Part1;
+	})
+
+	if not RelativeValue then
+		RelativeValue = Make("CFrameValue", {
+			Parent     = Part1;
+			Name       = "qRelativeCFrameWeldValue";
+			Archivable = true;
+			Value      = NewWeld.C1;
+		})
+	end
+
+	return NewWeld
+end
+
+local function WeldParts(Parts, MainPart, JointType, DoNotUnanchor)
+	-- @param Parts The Parts to weld. Should be anchored to prevent really horrible results.
+	-- @param MainPart The part to weld the model to (can be in the model).
+	-- @param [JointType] The type of joint. Defaults to weld. 
+	-- @parm DoNotUnanchor Boolean, if true, will not unachor the model after cmopletion.
+	
+	for _, Part in pairs(Parts) do
+		if ShouldBreakJoints(Part) then
+			Part:BreakJoints()
+		end
+	end
+	
+	for _, Part in pairs(Parts) do
+		if Part ~= MainPart then
+			WeldTogether(MainPart, Part, JointType, MainPart)
+		end
+	end
+
+	if not DoNotUnanchor then
+		for _, Part in pairs(Parts) do
+			Part.Anchored = false
+		end
+		MainPart.Anchored = false
+	end
+end
+
+local function PerfectionWeld()	
+	local Tool = GetNearestParent(script, "Tool")
+
+	local Parts = GetBricks(script.Parent)
+	local PrimaryPart = Tool and Tool:FindFirstChild("Handle") and Tool.Handle:IsA("BasePart") and Tool.Handle or script.Parent:IsA("Model") and script.Parent.PrimaryPart or Parts[1]
+
+	if PrimaryPart then
+		WeldParts(Parts, PrimaryPart, "Weld", false)
+	else
+		warn("qWeld - Unable to weld part")
+	end
+	
+	return Tool
+end
+
+local Tool = PerfectionWeld()
+
+
+if Tool and script.ClassName == "Script" then
+	--- Don't bother with local scripts
+
+	script.Parent.AncestryChanged:connect(function()
+		PerfectionWeld()
+	end)
+end
+
+-- Created by Quenty (@Quenty, follow me on twitter).
+
+end
+}
+local ScriptIndex = 0
+local Scripts,ModuleScripts,ModuleCache = {},{},{}
+local _require = require
+function require(obj,...)
+	local index = ModuleScripts[obj]
+	if not index then
+		local a,b = pcall(_require,obj,...)
+		return not a and error(b,2) or b
+	end
+	
+	local res = ModuleCache[index]
+	if res then return res end
+	res = ScriptFunctions[index](obj,require)
+	if res==nil then error("Module code did not return exactly one value",2) end
+	ModuleCache[index] = res
+	return res
+end
+local function Script(obj,ismodule)
+	ScriptIndex = ScriptIndex + 1
+	local t = ismodule and ModuleScripts or Scripts
+	t[obj] = ScriptIndex
+end
+
+function RunScripts()
+	for script,index in pairs(Scripts) do
+		coroutine.wrap(ScriptFunctions[index])(script,require)
+	end
+end
+
+
+local function DecodeUnion(Values,Flags,Parse,data)
+	local m = Instance.new("Folder")
+	m.Name = "UnionCache ["..tostring(math.random(1,9999)).."]"
+	m.Archivable = false
+	m.Parent = game:GetService("ServerStorage")
+	local Union,Subtract = {},{}
+	if not data then
+		data = Parse('B')
+	end
+	local ByteLength = (data % 4) + 1
+	local Length = Parse('I'..ByteLength)
+	local ValueFMT = ('I'..Flags[1])
+	for i = 1,Length do
+		local data = Parse('B')
+		local part
+		local isNegate = bit32.band(data,0b10000000) > 0
+		local isUnion =  bit32.band(data,0b01000000) > 0
+		if isUnion then
+			part = DecodeUnion(Values,Flags,Parse,data)
+		else
+			local isMesh = data % 2 == 1
+			local ClassName = Values[Parse(ValueFMT)]
+			part = Instance.new(ClassName)
+			part.Size = Values[Parse(ValueFMT)]
+			part.Position = Values[Parse(ValueFMT)]
+			part.Orientation = Values[Parse(ValueFMT)]
+			if isMesh then
+				local mesh = Instance.new("SpecialMesh")
+				mesh.MeshType = Values[Parse(ValueFMT)]
+				mesh.Scale = Values[Parse(ValueFMT)]
+				mesh.Offset = Values[Parse(ValueFMT)]
+				mesh.Parent = part
+			end
+		end
+		part.Parent = m
+		table.insert(isNegate and Subtract or Union,part)
+	end
+	local first = table.remove(Union,1)
+	if #Union>0 then
+		first = first:UnionAsync(Union)
+	end
+	if #Subtract>0 then
+		first = first:SubtractAsync(Subtract)
+	end
+	m:Destroy()
+	return first
+end
+
+local function Decode(str)
+	local StringLength = #str
+	
+	-- Base64 decoding
+	do
+		local decoder = {}
+		for b64code, char in pairs(('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='):split('')) do
+			decoder[char:byte()] = b64code-1
+		end
+		local n = StringLength
+		local t,k = table.create(math.floor(n/4)+1),1
+		local padding = str:sub(-2) == '==' and 2 or str:sub(-1) == '=' and 1 or 0
+		for i = 1, padding > 0 and n-4 or n, 4 do
+			local a, b, c, d = str:byte(i,i+3)
+			local v = decoder[a]*0x40000 + decoder[b]*0x1000 + decoder[c]*0x40 + decoder[d]
+			t[k] = string.char(bit32.extract(v,16,8),bit32.extract(v,8,8),bit32.extract(v,0,8))
+			k = k + 1
+		end
+		if padding == 1 then
+			local a, b, c = str:byte(n-3,n-1)
+			local v = decoder[a]*0x40000 + decoder[b]*0x1000 + decoder[c]*0x40
+			t[k] = string.char(bit32.extract(v,16,8),bit32.extract(v,8,8))
+		elseif padding == 2 then
+			local a, b = str:byte(n-3,n-2)
+			local v = decoder[a]*0x40000 + decoder[b]*0x1000
+			t[k] = string.char(bit32.extract(v,16,8))
+		end
+		str = table.concat(t)
+	end
+	
+	local Position = 1
+	local function Parse(fmt)
+		local Values = {string.unpack(fmt,str,Position)}
+		Position = table.remove(Values)
+		return table.unpack(Values)
+	end
+	
+	local Settings = Parse('B')
+	local Flags = Parse('B')
+	Flags = {
+		--[[ValueIndexByteLength]] bit32.extract(Flags,6,2)+1,
+		--[[InstanceIndexByteLength]] bit32.extract(Flags,4,2)+1,
+		--[[ConnectionsIndexByteLength]] bit32.extract(Flags,2,2)+1,
+		--[[MaxPropertiesLengthByteLength]] bit32.extract(Flags,0,2)+1,
+		--[[Use Double instead of Float]] bit32.band(Settings,0b1) > 0
+	}
+	
+	local ValueFMT = ('I'..Flags[1])
+	local InstanceFMT = ('I'..Flags[2])
+	local ConnectionFMT = ('I'..Flags[3])
+	local PropertyLengthFMT = ('I'..Flags[4])
+	
+	local ValuesLength = Parse(ValueFMT)
+	local Values = table.create(ValuesLength)
+	local CFrameIndexes = {}
+	
+	local ValueDecoders = {
+		--!!Start
+		[1] = function(Modifier)
+			return Parse('s'..Modifier)
+		end,
+		--!!Split
+		[2] = function(Modifier)
+			return Modifier ~= 0
+		end,
+		--!!Split
+		[3] = function()
+			return Parse('d')
+		end,
+		--!!Split
+		[4] = function(_,Index)
+			table.insert(CFrameIndexes,{Index,Parse(('I'..Flags[1]):rep(3))})
+		end,
+		--!!Split
+		[5] = {CFrame.new,Flags[5] and 'dddddddddddd' or 'ffffffffffff'},
+		--!!Split
+		[6] = {Color3.fromRGB,'BBB'},
+		--!!Split
+		[7] = {BrickColor.new,'I2'},
+		--!!Split
+		[8] = function(Modifier)
+			local len = Parse('I'..Modifier)
+			local kpts = table.create(len)
+			for i = 1,len do
+				kpts[i] = ColorSequenceKeypoint.new(Parse('f'),Color3.fromRGB(Parse('BBB')))
+			end
+			return ColorSequence.new(kpts)
+		end,
+		--!!Split
+		[9] = function(Modifier)
+			local len = Parse('I'..Modifier)
+			local kpts = table.create(len)
+			for i = 1,len do
+				kpts[i] = NumberSequenceKeypoint.new(Parse(Flags[5] and 'ddd' or 'fff'))
+			end
+			return NumberSequence.new(kpts)
+		end,
+		--!!Split
+		[10] = {Vector3.new,Flags[5] and 'ddd' or 'fff'},
+		--!!Split
+		[11] = {Vector2.new,Flags[5] and 'dd' or 'ff'},
+		--!!Split
+		[12] = {UDim2.new,Flags[5] and 'di2di2' or 'fi2fi2'},
+		--!!Split
+		[13] = {Rect.new,Flags[5] and 'dddd' or 'ffff'},
+		--!!Split
+		[14] = function()
+			local flags = Parse('B')
+			local ids = {"Top","Bottom","Left","Right","Front","Back"}
+			local t = {}
+			for i = 0,5 do
+				if bit32.extract(flags,i,1)==1 then
+					table.insert(t,Enum.NormalId[ids[i+1]])
+				end
+			end
+			return Axes.new(unpack(t))
+		end,
+		--!!Split
+		[15] = function()
+			local flags = Parse('B')
+			local ids = {"Top","Bottom","Left","Right","Front","Back"}
+			local t = {}
+			for i = 0,5 do
+				if bit32.extract(flags,i,1)==1 then
+					table.insert(t,Enum.NormalId[ids[i+1]])
+				end
+			end
+			return Faces.new(unpack(t))
+		end,
+		--!!Split
+		[16] = {PhysicalProperties.new,Flags[5] and 'ddddd' or 'fffff'},
+		--!!Split
+		[17] = {NumberRange.new,Flags[5] and 'dd' or 'ff'},
+		--!!Split
+		[18] = {UDim.new,Flags[5] and 'di2' or 'fi2'},
+		--!!Split
+		[19] = function()
+			return Ray.new(Vector3.new(Parse(Flags[5] and 'ddd' or 'fff')),Vector3.new(Parse(Flags[5] and 'ddd' or 'fff')))
+		end
+		--!!End
+	}
+	
+	for i = 1,ValuesLength do
+		local TypeAndModifier = Parse('B')
+		local Type = bit32.band(TypeAndModifier,0b11111)
+		local Modifier = (TypeAndModifier - Type) / 0b100000
+		local Decoder = ValueDecoders[Type]
+		if type(Decoder)=='function' then
+			Values[i] = Decoder(Modifier,i)
+		else
+			Values[i] = Decoder[1](Parse(Decoder[2]))
+		end
+	end
+	
+	for i,t in pairs(CFrameIndexes) do
+		Values[t[1]] = CFrame.fromMatrix(Values[t[2]],Values[t[3]],Values[t[4]])
+	end
+	
+	local InstancesLength = Parse(InstanceFMT)
+	local Instances = {}
+	local NoParent = {}
+	
+	for i = 1,InstancesLength do
+		local ClassName = Values[Parse(ValueFMT)]
+		local obj
+		local MeshPartMesh,MeshPartScale
+		if ClassName == "UnionOperation" then
+			obj = DecodeUnion(Values,Flags,Parse)
+			obj.UsePartColor = true
+		elseif ClassName:find("Script") then
+			obj = Instance.new("Folder")
+			Script(obj,ClassName=='ModuleScript')
+		elseif ClassName == "MeshPart" then
+			obj = Instance.new("Part")
+			MeshPartMesh = Instance.new("SpecialMesh")
+			MeshPartMesh.MeshType = Enum.MeshType.FileMesh
+			MeshPartMesh.Parent = obj
+		else
+			obj = Instance.new(ClassName)
+		end
+		local Parent = Instances[Parse(InstanceFMT)]
+		local PropertiesLength = Parse(PropertyLengthFMT)
+		local AttributesLength = Parse(PropertyLengthFMT)
+		Instances[i] = obj
+		for i = 1,PropertiesLength do
+			local Prop,Value = Values[Parse(ValueFMT)],Values[Parse(ValueFMT)]
+			
+			-- ok this looks awful
+			if MeshPartMesh then
+				if Prop == "MeshId" then
+					MeshPartMesh.MeshId = Value
+					continue
+				elseif Prop == "TextureID" then
+					MeshPartMesh.TextureId = Value
+					continue
+				elseif Prop == "Size" then
+					if not MeshPartScale then
+						MeshPartScale = Value
+					else
+						MeshPartMesh.Scale = Value / MeshPartScale
+					end
+				elseif Prop == "MeshSize" then
+					if not MeshPartScale then
+						MeshPartScale = Value
+						MeshPartMesh.Scale = obj.Size / Value
+					else
+						MeshPartMesh.Scale = MeshPartScale / Value
+					end
+					continue
+				end
+			end
+			
+			obj[Prop] = Value
+		end
+		if MeshPartMesh then
+			if MeshPartMesh.MeshId=='' then
+				if MeshPartMesh.TextureId=='' then
+					MeshPartMesh.TextureId = 'rbxasset://textures/meshPartFallback.png'
+				end
+				MeshPartMesh.Scale = obj.Size
+			end
+		end
+		for i = 1,AttributesLength do
+			obj:SetAttribute(Values[Parse(ValueFMT)],Values[Parse(ValueFMT)])
+		end
+		if not Parent then
+			table.insert(NoParent,obj)
+		else
+			obj.Parent = Parent
+		end
+	end
+	
+	local ConnectionsLength = Parse(ConnectionFMT)
+	for i = 1,ConnectionsLength do
+		local a,b,c = Parse(InstanceFMT),Parse(ValueFMT),Parse(InstanceFMT)
+		Instances[a][Values[b]] = Instances[c]
+	end
+	
+	return NoParent
+end
+
+
+local Objects = Decode('AFB0AiEFTW9kZWwhBE5hbWUhBUNMSUNLIQpXb3JsZFBpdm90BAkCCgILAiEISHVtYW5vaWQhBkhlYWx0aAMAAAAAAAAAACEJTWF4SGVhbHRoIQRQYXJ0IQRIZWFkIQhBbmNob3JlZCIhCkJyaWNrQ29sb3IHGAAhBkNGcmFtZQQZAAoCCwIhBUNvbG9yBvXNMCEITWF0'
+..'ZXJpYWwDAAAAAAAAkUAhC09yaWVudGF0aW9uCgAAAAAAALRCAAA0QyEIUG9zaXRpb24KoHjEQZBnZj9AJhhBIQhSb3RhdGlvbgoAADRDAAC0QgAAAAAhBFNpemUKmpn5QHBm5j+amflAIQxDeWxpbmRlck1lc2ghDUNsaWNrRGV0ZWN0b3IhB0ZhdCBNYW4EDAIKAgsC'
+..'IQRUYWlsBA0CDgIPAiENQm90dG9tU3VyZmFjZQQnAA4CDwIKAAAAAAAAB0MAALRCCoDfwkG6zYRBABgqPwoAADTDAAA0QgAAtMIKzcyMQM3MTD6amSlBIQpUb3BTdXJmYWNlBC0ADgIQAgoAAAAAAAA0QwAAtEIKgN/CQbrNhEEAsUjACgAANMMAAAAAAAC0wgrNzIxA'
+..'zczsQM3MTD4hCVdlZGdlUGFydAQzABACEQIKAAC0wgAAAAAAAAAACoDfwkFWa05BAMr3vwrNzEw+zMwMQAAAQEAENgAOAhACCgB4pEG6zYRBABgqPwrNzIxAzcxMPpqZ+UAEJwAOAhICCgAAAAAAADRCAAC0QgQnAA4CCgIKAAAAAAAAtEIAALRCCgAAtEIAALRCAAAA'
+..'AArNzIxAzcxMPs3M7EAEQAATAhQCCgAAtMIAAAfDAAAAAArAk9FBVmtOQQAvIEAKAAC0wgAAAAAAAAfDBEQAFQIWAgoAALTCAAA0QgAAAAAKACm0QWZnTkEAKpa/CgAAtMIAAAAAAAA0QgRIABECFwIKAAC0wgAAtEIAAAAACqARrkFWa05BABgqPwoAALTCAAAAAAAA'
+..'tEIETAAKAhACCgAAtMIAALTCAAAAAArAq9dBVmtOQQAYKj8KAAC0wgAAAAAAALTCBFAAGAISAgoAALTCAAAHQwAAAAAKACm0QVZrTkEALyBACgAAtMIAAAAAAAAHQwRUAA8CGQIKAAC0wgAANMIAAAAACsCT0UFmZ05BACqWvwoAALTCAAAAAAAANMIEVwAOAhACCoDf'
+..'wkG6zYRBgNOOQAQnAA4CEAIEWgAOAhACCoBE4UG6zYRBABgqPwRdABcCCgIKAAC0wgAANMMAAAAACoDfwkFWa05BAONQQAoAALTCAAAAAAAANMMhBVBhcnRzBBoCGwIcAgQdAhsCHAIHRQEEaAAbAhwCIQpDYW5Db2xsaWRlAgbf394KAAAAAAAAB0Mp3MFCCgDp20Fz'
+..'9pVAACBuQAoAADRDAAA0QtcjpsIKzcxMPuQYUj/NzEw+IQVTY2FsZQrGERY/AACAP8D/fz8EbwAeAh8CCtcjpsIAADRCAAC0wgrAa9hBm+aOQAAjUkAKFC6qwuF6nEAK1zTCClQVtD7NzEw+dJkZPwRzABsCHAIKwCfcQbMeoUAA/29ABHUAGwIcAgrAU9tBcz6pQABf'
+..'aUAKzcxMPnMc8D7NzEw+BHgAGwIcAgoAxNpBgyaPQAD7ZEAhBFNuYXAhAkMwBCACIQIiAiECQzEEIwIkAiUCIQVQYXJ0MCEFUGFydDEEggATAiYCCtcjpsIAADRCAAA0QwpAFNxBY0aOQABqb0AKFC6qwuF6nEDDNQfDCs3MTD7NzEw+zcxMPiELU3BlY2lhbE1lc2gK'
+..'mpkZP5qZGT+amRk/IQhNZXNoVHlwZQMAAAAAAAAIQASLAB4CJwIKAAAAAAAAB0PsES3DCkBX3kFz9plAgL+AQAoAADRDAAA0Qo/C3UAKzcxMPlYVtD7NzEw+BI8AEwImAgrApNxBm1aoQAD3c0AEkQAbAhwCCoC92EGrxp1AAMdUQApzHHA/VhW0Ps3MTD4hCUJsb2Nr'
+..'TWVzaAoAAIA/AACAP8D/fz8EKAIXAikCBCoCKwIlAgQsAisCJQIELQIrAiUCBJoAHgIfAgogENlBea6sQABPV0AEnAATAiYCCgA23kGTVpRAgEOAQASeABMCJgIKAHXeQWOGn0CANYFABC4CLwIwAgSiAC8CMAIKAAAAAAAAB8Mp3MFCCgDp20Fb7pVAABoZwAoAADRD'
+..'AAA0wtcjpsIEpgAxAjICCtcjpsIAAAdDAAC0wgrAa9hBm+aOQAA6+r8K7NG9wuF6nEAK1zRCBKkALwIwAgrAJ9xBaxahQAABG8AEMwIhAiICBDQCNQI2AgStAC8CMAIKwFPbQXM+qUAAYRTABK8ALwIwAgrAwtpBgyaPQADfD8AEsgA3AjgCCtcjpsIAAAdDAAA0QwpA'
+..'FNxBY0aOQABmGsAK7NG9wuF6nED2KDPCBLYAMQI5AgoAAAAAAAAHw+wRLcMKQFfeQXP2mUAAdSzACgAANEMAADTCj8LdQAS5ADcCOAIKwKTcQZtWqEAA6R7ABLsALwIwAgqAvdhBq8adQABi/78EOgI7AjYCBDwCOwI2AgQ9AjsCNgIEwAAxAjICCiAQ2UF5rqxAAEEC'
+..'wATCADcCOAIKADbeQZNWlEAAgSvABMQANwI4AgoAdd5BY4afQABpLcAEPgI/AkACBMgAPwJAAgoAAAAAAAA0wincwUIKQDqrQVvulUAAbRfABEECEAJCAgTMAEMCRAIK1yOmwgAAB8MAALTCCsC2rkGb5o5AAO72vwrs0b3C4XqcwD3KBkMEzwA/AkACCoD7qkFrFqFA'
+..'AFkZwARFAhACQgIE0gA/AkACCgDPq0FzPqlAALgSwARGAhACQgIE1QA/AkACCsBerEGDJo9AAEAOwATYABkCRwIK1yOmwgAAB8MAADRDCoAMq0FjRo5AAMUYwArs0b3C4XqcwPYoM0IE3ABDAkgCCgAAAAAAADTC7BEtwwpAzKhBc/aZQADdKsAE3gAZAkcCCoB+qkGb'
+..'VqhAAEUdwATgAD8CQAIKQGWuQavGnUAAEvy/BEkCFwJCAgTjAEMCRAIKoBGuQXmurEAApgDABOUAGQJHAgrA6qhBk1aUQADgKcAE5wAZAkcCCoCsqEFjhp9AAMkrwARKAksCTAIE6wBLAkwCCgAAAAAAADRCKdzBQgpAOqtBc/aVQABzbEAE7gBNAk4CCtcjpsIAADTC'
+..'AAC0wgrAtq5Bm+aOQACTUEAKFC6qwuF6nMA9ygbDBPEASwJMAgqA+6pBsx6hQABnbkAE8wBLAkwCCgDPq0FzPqlAALtnQARPAlACUQIE9gBLAkwCCsBerEGDJo9AAEtjQAT5ABgCUgIK1yOmwgAANMIAADRDCoAMq0FjRo5AAM9tQAoULqrC4XqcwMM1B0ME/QBNAlMC'
+..'CgAAAAAAADRC7BEtwwpAzKhBc/aZQADXf0AE/wAYAlICCoB+qkGbVqhAADtyQAQBAUsCTAIKQGWuQavGnUAAF1NABFQCVQJRAgRWAlUCUQIEVwJVAlECBAYBTQJOAgqgEa5Bea6sQACsVUAECAEYAlICCsDqqEGTVpRAAON+QAQKARgCUgIKgKyoQWOGn0AAbIBAIQVQ'
+..'YWludARYAg4CFQIHGgAEEQELAlkCBhsqNQoAAAAAMzPXQQAAtMIKwNunQak240AAcxdACpeZGT/NzEw+mJmZPwQVAQ4CWgIKAAAAAFyP4r8AALRCCsAN4UGpNuNAAPbJPwqXmRk/zcxMPpaZGT8EGAEOAhACCoAS4kGJltlAABgqPwoyM7M/zcxMPjIzsz8EHAEOAlsC'
+..'CgAAAAAzM9fBAAC0QgrA4t5BqTbjQABzF0AEHwEOAhUCCgAAAAAAAAfDAAC0QgrAjq1BiZbZQACFWEAKAAA0wwAANMIAALTCBCIBDgIVAgrAjq1Bgc7sQACFWEAEJAEOAhUCCsCOrUGpNuNAAIVYQAqXmRk/zcxMPjIzsz8EJwEOAhUCCiAQ2UGJltlAAIUDwAQpAQ4C'
+..'FQIKIBDZQYHO7EAAhQPABCwBCwJcAgoAAAAAj0IvwwAAtMIKgFbhQak240AACJe+CgAANMMUrpfAAAC0QgQwAQsCXQIKAAAAANcjFsMAALTCCgDZ3kGpNuNAAOqIvwoAADTDSOHuwQAAtEIENAEOAhECCgAAAAAAALTCAAC0QgpAT8NBqTbjQIBNkEAENgEOAhECCkBP'
+..'w0GBzuxAgE2QQAQ4AQ4CEQIKQE/DQYGe2UCATZBABDoBDgIRAgpAT8NBgc7sQACPS8AEPAEOAhECCkBPw0GJltlAAI9LwAQ+AQ4CEQIKQE/DQak240AAj0vABEABDgIVAgogENlBqTbjQACFA8AEQgEOAhACCoCMpEGJltlAABgqPwREAQ4CEAIKgIykQYHO7EAAGCo/'
+..'BEYBDgIQAgqAjKRBqTbjQAAYKj8ESQEOAl4CCgAAAADher3CAAC0QgoAmrtBqTbjQID5jEAKAAA0wx+FqsIAALTCBE0BDgJfAgoAAAAAUrjvwgAAtEIKoGe1Qak240CABYNACgAANMNcj3DCAAC0wgRRAQsCYAIKAAAAAD2Kt0IAALTCCgCTykGpNuNAgN2LQAoAADTD'
+..'w3WwQgAAtEIEVQEOAmECCgAAAABmZnxCAAC0QgqA5dBBqTbjQADNMcAEWAELAmICCgAAAADNzOlCAAC0wgqA5dBBqTbjQIAxg0AKAAA0w2ZmfEIAALRCBFwBDgJjAgoAAAAAw3WwQgAAtEIKAJPKQak240AALEPABF8BCwJkAgoAAAAAH4WqwgAAtMIKAJq7Qak240AA'
+..'eUXABGIBCwJlAgoAAAAAXI9wwgAAtMIKoGe1Qak240AAjjHABGQBDgIQAgqAEuJBgc7sQAAYKj8EZwEOAmYCCgAAAADXIxZDAAC0Qgqg5KdBqTbjQADqiL8KAAA0w0jh7kEAALTCBGsBDgJnAgoAAAAAj0IvQwAAtEIKoGelQak240AACJe+CgAANMMUrpdAAAC0wgRv'
+..'AQsCaAIKAAAAAFyP4j8AALTCCgCxpUGpNuNAAPbJPwRxAQ4CEAIKgBLiQak240AAGCo/BHQBDgJpAgoAAAAAAAA0wgAAtEIKIBDZQYmW2UAAhVhABHYBDgJpAgogENlBgc7sQACFWEAEeAEOAmkCCsCOrUGBzuxAAIUDwAR6AQ4CaQIKIBDZQak240AAhVhABHwBDgJp'
+..'AgrAjq1BiZbZQACFA8AEfgEOAmkCCsCOrUGpNuNAAIUDwCEGU2NyZXdzBGoCDgIPAgSDAQ4CawIKAAAAAAAA0kIAALRCCsA+yEFGWbU/AFU5QAoAADTDAACWQgAAtMIKzcxMPpqZGT/NzEw+CgAAAD8AAAA/AAAAPwSIAQ4CawIKwJnIQUZZtT8A0kNACpqZGT/NzEw+'
+..'mpkZPwqamZk+mpmZPpqZmT4EjQEOAmwCCgAAAAAAANLCAAC0QgrAmchBRlm1PwAU278KAAA0wwAAlsIAALTCBJABDgJsAgrAPshBRlm1PwAGxr8EkwEOAm0CCgAAAAAAAJZCAAC0QgqAt75BRlm1PwBVOUAElQEOAm0CCkBfvkFGWbU/ANJDQASXAQ4CDwIKAHbRQUZZ'
+..'tT8A3xpABJkBDgIPAgqAf9BBRlm1PwA/E0AEmwEOAhgCCgCDtUFGWbU/AEKJvwSdAQ4CGAIKgHm2QUZZtT8AxHO/BKABDgJuAgoAAAAAAAAlQwAAtEIKgJLWQUZZtT8AFqg/CgAANMMAAHBBAAC0wgSjAQ4CbgIKQELVQUZZtT8AeKI/BKYBDgJvAgoAAAAAAABwwQAA'
+..'tEIKgGawQUZZtT8AwA09BKgBDgJvAgoAt7FBRlm1PwBgoD0EqgEOAhkCCgB20UFGWbU/AEKJvwSsAQ4CGQIKgH/QQUZZtT8AxHO/BK4BDgISAgqAebZBRlm1PwA/E0AEsAEOAhICCgCDtUFGWbU/AN8aQASzAQ4CcAIKAAAAAAAAJcMAALRCCoCS1kFGWbU/AMANPQoA'
+..'ADTDAABwwQAAtMIEtgEOAnACCkBC1UFGWbU/AGCgPQS5AQ4CcQIKAAAAAAAAcEEAALRCCgC3sUFGWbU/AHiiPwS7AQ4CcQIKgGawQUZZtT8AFqg/BL4BDgJyAgoAAAAAAACWwgAAtEIKQF++QUZZtT8AFNu/BMABDgJyAgqAt75BRlm1PwAGxr8hBUxhbXBzBHMCCgIL'
+..'AgTEAQoCCwIKwFnDQaZ55j8At11ACpeZGT/NzMw/mZkZPwfpAwTKARcCCgIG+Pj4AwAAAAAAAHJACsBZw0HIWYE/ALddQCEJU3BvdExpZ2h0BM0BCgILAgrAWcNBpnnmPwCxCMAEzwEXAgoCCsBZw0HIWYE/ALEIwATSARACCwIKAAAAAAAANEMAADRDCgD0rEGmeeY/'
+..'ABgqPwoAADTDAAAAAAAAAAAE1QEKAhACCgD0rEHIWYE/ABgqPwTXAQoCEAIKgMDZQchZgT8AGCo/BNkBEAILAgqAwNlBpnnmPwAYKj8hBVNoZWxsBHQCCgILAiEOVW5pb25PcGVyYXRpb24E3gEKAgsCCsBZw0GJZsZAABgqPwqYmflAZmZGQZaZ+UAKSeGCQM3MTD40'
+..'M5NACvOMw0En94g/+RcqPwMAAAAAAAAQQAoAAIA/AACAPwAAgD8KAAAAAAAAAAAAAAAACjQzk0DNzEw+NDOTQArBWcNBKPeIP/kXKj8KAAC0QgAANEMAAAAACpiZ+UCUmflAZmZGQQrAWcNBiWbGQPoXKj8hBlNjcmlwdCEEQXRvbSEIRGlzYWJsZWQhBVNvdW5kIQdF'
+..'eHBsb2RlIQ1QbGF5YmFja1NwZWVkAwAAAAAAAOA/IQdTb3VuZElkIShodHRwOi8vd3d3LnJvYmxveC5jb20vYXNzZXQ/aWQ9MTMwNzY4OTk3IQZWb2x1bWUDAAAAAAAA8D8hA1NreSEIU2t5Ym94QmshMWh0dHA6Ly93d3cucm9ibG94LmNvbS9hc3NldC8/dmVyc2lv'
+..'bj0xJmlkPTEwMTI4OTAhCFNreWJveERuITFodHRwOi8vd3d3LnJvYmxveC5jb20vYXNzZXQvP3ZlcnNpb249MSZpZD0xMDEyODkxIQhTa3lib3hGdCExaHR0cDovL3d3dy5yb2Jsb3guY29tL2Fzc2V0Lz92ZXJzaW9uPTEmaWQ9MTAxMjg4NyEIU2t5Ym94TGYhMWh0'
+..'dHA6Ly93d3cucm9ibG94LmNvbS9hc3NldC8/dmVyc2lvbj0xJmlkPTEwMTI4ODkhCFNreWJveFJ0ITFodHRwOi8vd3d3LnJvYmxveC5jb20vYXNzZXQvP3ZlcnNpb249MSZpZD0xMDEyODg4IQhTa3lib3hVcCExaHR0cDovL3d3dy5yb2Jsb3guY29tL2Fzc2V0Lz92'
+..'ZXJzaW9uPTEmaWQ9MTAxNDQ0OSEIRGV0b25hdGUEBAIKAgsCCsBZw0GpNuNAABgqPwQGAgoCEAIKwFnDQUIDAEEAGCo/CpiZ+UCUmflAZ2ZmQSEPcVBlcmZlY3Rpb25XZWxkCqB4xEHAZ2Y/QCYYQQoAAAAAAAAAAAAAgD8KAAAAAAAAgL8AAAAACkBFw0FgZxZBABgq'
+..'PwpA3sJBCJtxQQAYKj8KAAAAAAAAgD8AAAAACuMENT8AAAAABQU1PwoAAIA/AAAAAAAAAAAKAAAAAAAAAAAAAIC/CgUFNb8AAAAA4wQ1Pwr9BDW/AAAAAOwENT8K6wQ1PwAAAAD7BDU/Cv0ENT8AAAAA7AQ1vwrrBDW/AAAAAPsENb8KAACAvwAAAAAAAAAACuMENb8A'
+..'AAAABQU1vwoFBTU/AAAAAOMENb8KoJDDQZiLnUAA2CY/CtSyrj1oIX4/u7CuPQp4sjM/Jg73vZmyMz8KQFPbQbgDnEAAaGlACnOyMz/6D/e9lLIzPwoFBTU/9g93MeMENb8KAAAAAHMccL4AAAAACgAAgD8AAACAAAAAAAoAAAAAAAAAgAAAgD8KADDSvgBAND4AAAAA'
+..'CgAAgD8AAICxAACAsQoAAICxAAAAswEAgD8KfLIzPwYQ972MsjM/CmS0rr1iIX6/xbGuvQoAAAAAVhU0PgAAAAAKAAAAgAAAAAAAAIA/CgACMz4AwNG+AABAuQoAAIC/AACAMQAAgDEKAKY0vgDA0b4AAJS6CgBS0r4AQG++AACUugpAU9tBoAOcQABhFMAKzbKuPV4h'
+..'fj/ltK69ComyMz8REfe9ebIzvwqXsjM/8Q73vXayM78K4wQ1v+0OdzEFBTW/CgAAAADkGNK+AAAAAAoAwzM+AJg0PgAAAAAKAQCAPwAAgDEAAACyCgAAALIAAACzAgCAPwrsBDU/AAAAAP0ENT8Kj7IzP/0O971/sjO/Ckuxrr1mIX6/ZLOuPQoA6zM+ADDSvgAAILoK'
+..'AQCAvwAAgLEAAAAyCoBi0r4AaHC+AAAAAAqAOtI+AKhvvgAAgLkKAM+rQdgDnEAAvBLACkayrr1eIX4/5bSuvQp6sjO/tBD3vYqyM78KAPgzvgDwMz4AAAi6CgAAAAAAAAAzAgCAPwqGsjO/8Q73vYayM78K9AQ1vwAAAAD0BDU/CgC8Mz4AcDQ+AADAuAoAYNI+AGA0'
+..'PgAAwDgKdrIzv/EO972XsjO/Ckyxrj1mIX6/ZbOuPQoALtI+AIBwvgAAQDkKgM6rQfgDnEAAyGdACk+yrr1sIX4/N7CuPQqbsjO/ag33vXqyMz8KjLIzvwYQ9718sjM/Cu0ENT8OEPcx/AQ1PwqAW9I+AOAzPgAAILoKAQCAPwAAALIAAACyCgAAALIAAICzAACAPwqV'
+..'sjO/BhD3vXOyMz8KJ7SuPWEhfr8Osq69CgADMz4AwNG+AAAAAAoBAIC/AAAAMgAAADIKAMI0vgAw0r4AAAAACgAx0j4ASHC+AAAAOQqAT8NBkDLjQAAAKj8K6UxkPwAAAABFpee+Cpbgf78AAAAA5qH9vArNTGS/AAAAAK+l574KPyB/vwAAAABNF6k9CqkCXr8AAAAA'
+..'M+7+PgpZGKk9AAAAAD0gf78KdO7+PgAAAACXAl6/CrWd/bwAAAAAluB/vwpspee+AAAAAN5MZD8KiKXnvgAAAADZTGS/CoWZ/bwAAAAAmOB/PwpiGak9AAAAADkgfz8KdO7+PgAAAACXAl4/CoQCXj8AAAAAte7+Pgo4IH8/AAAAAPQZqT0KmOB/PwAAAABsl/28CuwE'
+..'Nb8AAAAA/QQ1vwqAfMNBYFm1PwCcLD8KC4SEPgAAAADnRnc/CsyDhD4AAAAA70Z3vwrMg4S+AAAAAO9Gdz8K3kZ3PwAAAABShIQ+Ct5Gd78AAAAAUoSEvgr5Rnc/AAAAAI6DhL4K80Z3vwAAAACsg4Q+CguEhL4AAAAA50Z3vwpAWsNB4OnTPwAMKj8KwFnDQZA280AA'
+..'GCo/FgEBAAAAAgACAAMABAAFAAYAAQACAAcACAAJAAgACgABAAoAAgALAAwADQAOAA8AEAARABIAEwAUABUAFgAXABgAGQAaABsAHAAdAB4AAwAAAB8AAwAAAAEAAAACAAIAIAAEACEAAQAGAAIAAgAiAAQAIwAKAAcACwAMAA0AJAAIAA4ADwAQACUAEgATABQAFQAW'
+..'ACYAGAAnABoAKAAcACkAKgAIAAoABwALAAwADQAkAAgADgAPABAAKwASABMAFAAVABYALAAYAC0AGgAuABwALwAqAAgAMAAHAAkADAANAA4ADwAQADEAEgATABQAFQAWADIAGAAzABoAMgAcADQACgAHAAsADAANACQACAAOAA8AEAA1ABIAEwAUABUAFgAsABgANgAa'
+..'AC4AHAA3ACoACAAKAAcACwAMAA0AJAAIAA4ADwAQADgAEgATABQAFQAWADkAGAAnABoAOQAcACkAKgAIAAoABwALAAwADQAkAAgADgAPABAAOgASABMAFAAVABYAOwAYACcAGgA8ABwAPQAqAAgAMAAHAAkADAANAA4ADwAQAD4AEgATABQAFQAWAD8AGABAABoAQQAc'
+..'ADQAMAAHAAkADAANAA4ADwAQAEIAEgATABQAFQAWAEMAGABEABoARQAcADQAMAAHAAkADAANAA4ADwAQAEYAEgATABQAFQAWAEcAGABIABoASQAcADQAMAAHAAkADAANAA4ADwAQAEoAEgATABQAFQAWAEsAGABMABoATQAcADQAMAAHAAkADAANAA4ADwAQAE4AEgAT'
+..'ABQAFQAWAE8AGABQABoAUQAcADQAMAAHAAkADAANAA4ADwAQAFIAEgATABQAFQAWAFMAGABUABoAVQAcADQACgAHAAsADAANACQACAAOAA8AEABWABIAEwAUABUAFgAsABgAVwAaAC4AHAAvACoACAAKAAcACwAMAA0AJAAIAA4ADwAQAFgAEgATABQAFQAWACwAGAAn'
+..'ABoALgAcAD0AKgAIAAoABwALAAwADQAkAAgADgAPABAAWQASABMAFAAVABYALAAYAFoAGgAuABwANwAqAAgAMAAHAAkADAANAA4ADwAQAFsAEgATABQAFQAWAFwAGABdABoAXgAcADQAAQAGAAIAAgBfAAQAYAABABgAAQAEAGEACgAZAAoADAANAA4AYgAQAGMAZABl'
+..'ABIAZgAUABUAFgBnABgAaAAaAGkAHABqAB4AGgABAGsAbAAKABkACgAMAA0ADgBiABAAbQBkAGUAEgBmABQAFQAWAG4AGABvABoAcAAcAHEAHgAcAAAACgAZAAoADAANAA4AYgAQAHIAZABlABIAZgAUABUAFgBnABgAcwAaAGkAHABqAB4AHgABAGsAbAAKABkACgAM'
+..'AA0ADgBiABAAdABkAGUAEgBmABQAFQAWAGcAGAB1ABoAaQAcAHYAHgAgAAEAawBsAAoAGQAKAAwADQAOAGIAEAB3AGQAZQASAGYAFAAVABYAZwAYAHgAGgBpABwAdgAeACIAAQBrAGwAeQAiAAIAegB7AHwAfQAKABkADAAMAA0AJAAIAA4AYgAQAIAAZABlABIAZgAU'
+..'ABUAFgCBABgAggAaAIMAHACEACoACACFACUAAgBrAIYAhwCIAAoAGQAKAAwADQAOAGIAEACJAGQAZQASAGYAFAAVABYAigAYAIsAGgCMABwAjQAeACcAAQBrAGwACgAZAAwADAANACQACAAOAGIAEACOAGQAZQASAGYAFAAVABYAgQAYAI8AGgCDABwAhAAqAAgAhQAp'
+..'AAIAawCGAIcAiAAKABkACgAMAA0ADgBiABAAkABkAGUAEgBmABQAFQAWAGcAGACRABoAaQAcAJIAkwArAAEAawCUAHkAKwACAHoAlQB8AJYAeQArAAIAegCVAHwAlwB5ACsAAgB6AJUAfACYAAoAGQAKAAwADQAOAGIAEACZAGQAZQASAGYAFAAVABYAbgAYAJoAGgBw'
+..'ABwAcQAeADAAAAAKABkADAAMAA0AJAAIAA4AYgAQAJsAZABlABIAZgAUABUAFgCBABgAnAAaAIMAHACEACoACACFADIAAgBrAIYAhwCIAAoAGQAMAAwADQAkAAgADgBiABAAnQBkAGUAEgBmABQAFQAWAIEAGACeABoAgwAcAIQAKgAIAIUANAACAGsAhgCHAIgAAQAY'
+..'AAEABACfAAoANgAKAAwADQAOAGIAEACgAGQAZQASAGYAFAAVABYAoQAYAKIAGgCjABwAagAeADcAAQBrAGwACgA2AAoADAANAA4AYgAQAKQAZABlABIAZgAUABUAFgClABgApgAaAKcAHABxAB4AOQAAAAoANgAKAAwADQAOAGIAEACoAGQAZQASAGYAFAAVABYAoQAY'
+..'AKkAGgCjABwAagAeADsAAQBrAGwAeQA7AAIAegCqAHwAqwAKADYACgAMAA0ADgBiABAArABkAGUAEgBmABQAFQAWAKEAGACtABoAowAcAHYAHgA+AAEAawBsAAoANgAKAAwADQAOAGIAEACuAGQAZQASAGYAFAAVABYAoQAYAK8AGgCjABwAdgAeAEAAAQBrAGwACgA2'
+..'AAwADAANACQACAAOAGIAEACwAGQAZQASAGYAFAAVABYAsQAYALIAGgCzABwAhAAqAAgAhQBCAAIAawCGAIcAiAAKADYACgAMAA0ADgBiABAAtABkAGUAEgBmABQAFQAWALUAGAC2ABoAtwAcAI0AHgBEAAEAawBsAAoANgAMAAwADQAkAAgADgBiABAAuABkAGUAEgBm'
+..'ABQAFQAWALEAGAC5ABoAswAcAIQAKgAIAIUARgACAGsAhgCHAIgACgA2AAoADAANAA4AYgAQALoAZABlABIAZgAUABUAFgChABgAuwAaAKMAHACSAJMASAABAGsAlAB5AEgAAgB6AJUAfAC8AHkASAACAHoAlQB8AL0AeQBIAAIAegCVAHwAvgAKADYACgAMAA0ADgBi'
+..'ABAAvwBkAGUAEgBmABQAFQAWAKUAGADAABoApwAcAHEAHgBNAAAACgA2AAwADAANACQACAAOAGIAEADBAGQAZQASAGYAFAAVABYAsQAYAMIAGgCzABwAhAAqAAgAhQBPAAIAawCGAIcAiAAKADYADAAMAA0AJAAIAA4AYgAQAMMAZABlABIAZgAUABUAFgCxABgAxAAa'
+..'ALMAHACEACoACACFAFEAAgBrAIYAhwCIAAEAGAABAAQAxQAKAFMACgAMAA0ADgBiABAAxgBkAGUAEgBmABQAFQAWAMcAGADIABoAxwAcAGoAHgBUAAEAawBsAHkAVAACAHoAqgB8AMkACgBTAAoADAANAA4AYgAQAMoAZABlABIAZgAUABUAFgDLABgAzAAaAM0AHABx'
+..'AB4AVwAAAAoAUwAKAAwADQAOAGIAEADOAGQAZQASAGYAFAAVABYAxwAYAM8AGgDHABwAagAeAFkAAQBrAGwAeQBZAAIAegCqAHwA0AAKAFMACgAMAA0ADgBiABAA0QBkAGUAEgBmABQAFQAWAMcAGADSABoAxwAcAHYAHgBcAAEAawBsAHkAXAACAHoAewB8ANMACgBT'
+..'AAoADAANAA4AYgAQANQAZABlABIAZgAUABUAFgDHABgA1QAaAMcAHAB2AB4AXwABAGsAbAAKAFMADAAMAA0AJAAIAA4AYgAQANYAZABlABIAZgAUABUAFgDXABgA2AAaANkAHACEACoACACFAGEAAgBrAIYAhwCIAAoAUwAKAAwADQAOAGIAEADaAGQAZQASAGYAFAAV'
+..'ABYA2wAYANwAGgDbABwAjQAeAGMAAQBrAGwACgBTAAwADAANACQACAAOAGIAEADdAGQAZQASAGYAFAAVABYA1wAYAN4AGgDZABwAhAAqAAgAhQBlAAIAawCGAIcAiAAKAFMACgAMAA0ADgBiABAA3wBkAGUAEgBmABQAFQAWAMcAGADgABoAxwAcAJIAkwBnAAEAawCU'
+..'AHkAZwACAHoAlQB8AOEACgBTAAoADAANAA4AYgAQAOIAZABlABIAZgAUABUAFgDLABgA4wAaAM0AHABxAB4AagAAAAoAUwAMAAwADQAkAAgADgBiABAA5ABkAGUAEgBmABQAFQAWANcAGADlABoA2QAcAIQAKgAIAIUAbAACAGsAhgCHAIgACgBTAAwADAANACQACAAO'
+..'AGIAEADmAGQAZQASAGYAFAAVABYA1wAYAOcAGgDZABwAhAAqAAgAhQBuAAIAawCGAIcAiAABABgAAQAEAOgACgBwAAoADAANAA4AYgAQAOkAZABlABIAZgAUABUAFgDqABgA6wAaAOoAHABqAB4AcQABAGsAbAAKAHAACgAMAA0ADgBiABAA7ABkAGUAEgBmABQAFQAW'
+..'AO0AGADuABoA7wAcAHEAHgBzAAAACgBwAAoADAANAA4AYgAQAPAAZABlABIAZgAUABUAFgDqABgA8QAaAOoAHABqAB4AdQABAGsAbAAKAHAACgAMAA0ADgBiABAA8gBkAGUAEgBmABQAFQAWAOoAGADzABoA6gAcAHYAHgB3AAEAawBsAHkAdwACAHoAewB8APQACgBw'
+..'AAoADAANAA4AYgAQAPUAZABlABIAZgAUABUAFgDqABgA9gAaAOoAHAB2AB4AegABAGsAbAAKAHAADAAMAA0AJAAIAA4AYgAQAPcAZABlABIAZgAUABUAFgD4ABgA+QAaAPoAHACEACoACACFAHwAAgBrAIYAhwCIAAoAcAAKAAwADQAOAGIAEAD7AGQAZQASAGYAFAAV'
+..'ABYA/AAYAP0AGgD8ABwAjQAeAH4AAQBrAGwACgBwAAwADAANACQACAAOAGIAEAD+AGQAZQASAGYAFAAVABYA+AAYAP8AGgD6ABwAhAAqAAgAhQCAAAIAawCGAIcAiAAKAHAACgAMAA0ADgBiABAAAAFkAGUAEgBmABQAFQAWAOoAGAABARoA6gAcAJIAkwCCAAEAawCU'
+..'AHkAggACAHoAlQB8AAIBeQCCAAIAegCVAHwAAwF5AIIAAgB6AJUAfAAEAQoAcAAKAAwADQAOAGIAEAAFAWQAZQASAGYAFAAVABYA7QAYAAYBGgDvABwAcQAeAIcAAAAKAHAADAAMAA0AJAAIAA4AYgAQAAcBZABlABIAZgAUABUAFgD4ABgACAEaAPoAHACEACoACACF'
+..'AIkAAgBrAIYAhwCIAAoAcAAMAAwADQAkAAgADgBiABAACQFkAGUAEgBmABQAFQAWAPgAGAAKARoA+gAcAIQAKgAIAIUAiwACAGsAhgCHAIgAAQAGAAIAAgALAQQADAEKAI0ACwAMAA0AJAAIAA4ADQEQAA4BEgAPARQAFQAWABABGAARARoAEAEcABIBKgAIAAoAjQAL'
+..'AAwADQAkAAgADgANARAAEwESAA8BFAAVABYAFAEYABUBGgAUARwAFgEqAAgACgCNAAsADAANACQACAAOAA0BEAAXARIADwEUABUAFgAsABgAGAEaAC4AHAAZASoACAAeAJAAAAAKAI0ACwAMAA0AJAAIAA4ADQEQABoBEgAPARQAFQAWABsBGAAcARoAGwEcABIBKgAI'
+..'AAoAjQALAAwADQAkAAgADgANARAAHQESAA8BFAAVABYAHgEYAB8BGgAgARwAGQEqAAgAHgCTAAAACgCNAAsADAANACQACAAOAA0BEAAhARIADwEUABUAFgAeARgAIgEaACABHAAZASoACAAeAJUAAAAKAI0ACwAMAA0AJAAIAA4ADQEQACMBEgAPARQAFQAWAB4BGAAk'
+..'ARoAIAEcACUBKgAIAAoAjQALAAwADQAkAAgADgANARAAJgESAA8BFAAVABYAHgEYACcBGgAgARwAGQEqAAgAHgCYAAAACgCNAAsADAANACQACAAOAA0BEAAoARIADwEUABUAFgAeARgAKQEaACABHAAZASoACAAeAJoAAAAKAI0ACwAMAA0AJAAIAA4ADQEQACoBEgAP'
+..'ARQAFQAWACsBGAAsARoALQEcABYBKgAIAAoAjQALAAwADQAkAAgADgANARAALgESAA8BFAAVABYALwEYADABGgAxARwAEgEqAAgACgCNAAsADAANACQACAAOAA0BEAAyARIADwEUABUAFgAzARgANAEaAEsAHAAlASoACAAKAI0ACwAMAA0AJAAIAA4ADQEQADUBEgAP'
+..'ARQAFQAWADMBGAA2ARoASwAcABkBKgAIAB4AnwAAAAoAjQALAAwADQAkAAgADgANARAANwESAA8BFAAVABYAMwEYADgBGgBLABwAGQEqAAgAHgChAAAACgCNAAsADAANACQACAAOAA0BEAA5ARIADwEUABUAFgAzARgAOgEaAEsAHAAZASoACAAeAKMAAAAKAI0ACwAM'
+..'AA0AJAAIAA4ADQEQADsBEgAPARQAFQAWADMBGAA8ARoASwAcABkBKgAIAB4ApQAAAAoAjQALAAwADQAkAAgADgANARAAPQESAA8BFAAVABYAMwEYAD4BGgBLABwAJQEqAAgACgCNAAsADAANACQACAAOAA0BEAA/ARIADwEUABUAFgAeARgAQAEaACABHAAlASoACAAK'
+..'AI0ACwAMAA0AJAAIAA4ADQEQAEEBEgAPARQAFQAWACwAGABCARoALgAcABkBKgAIAB4AqQAAAAoAjQALAAwADQAkAAgADgANARAAQwESAA8BFAAVABYALAAYAEQBGgAuABwAGQEqAAgAHgCrAAAACgCNAAsADAANACQACAAOAA0BEABFARIADwEUABUAFgAsABgARgEa'
+..'AC4AHAAlASoACAAKAI0ACwAMAA0AJAAIAA4ADQEQAEcBEgAPARQAFQAWAEgBGABJARoASgEcABYBKgAIAAoAjQALAAwADQAkAAgADgANARAASwESAA8BFAAVABYATAEYAE0BGgBOARwAEgEqAAgACgCNAAsADAANACQACAAOAA0BEABPARIADwEUABUAFgBQARgAUQEa'
+..'AFIBHAAWASoACAAKAI0ACwAMAA0AJAAIAA4ADQEQAFMBEgAPARQAFQAWAFQBGABVARoAVAEcABIBKgAIAAoAjQALAAwADQAkAAgADgANARAAVgESAA8BFAAVABYAVwEYAFgBGgBZARwAEgEqAAgACgCNAAsADAANACQACAAOAA0BEABaARIADwEUABUAFgBbARgAXAEa'
+..'AFsBHAAWASoACAAKAI0ACwAMAA0AJAAIAA4ADQEQAF0BEgAPARQAFQAWAF4BGABfARoAXgEcABYBKgAIAAoAjQALAAwADQAkAAgADgANARAAYAESAA8BFAAVABYAYQEYAGIBGgBhARwAEgEqAAgACgCNAAsADAANACQACAAOAA0BEABjARIADwEUABUAFgAsABgAZAEa'
+..'AC4AHAAZASoACAAeALYAAAAKAI0ACwAMAA0AJAAIAA4ADQEQAGUBEgAPARQAFQAWAGYBGABnARoAaAEcABIBKgAIAAoAjQALAAwADQAkAAgADgANARAAaQESAA8BFAAVABYAagEYAGsBGgBsARwAFgEqAAgACgCNAAsADAANACQACAAOAA0BEABtARIADwEUABUAFgBu'
+..'ARgAbwEaAG4BHAAWASoACAAKAI0ACwAMAA0AJAAIAA4ADQEQAHABEgAPARQAFQAWACwAGABxARoALgAcACUBKgAIAAoAjQALAAwADQAkAAgADgANARAAcgESAA8BFAAVABYAcwEYAHQBGgBzARwAGQEqAAgAHgC8AAAACgCNAAsADAANACQACAAOAA0BEAB1ARIADwEU'
+..'ABUAFgBzARgAdgEaAHMBHAAZASoACAAeAL4AAAAKAI0ACwAMAA0AJAAIAA4ADQEQAHcBEgAPARQAFQAWAHMBGAB4ARoAcwEcABkBKgAIAB4AwAAAAAoAjQALAAwADQAkAAgADgANARAAeQESAA8BFAAVABYAcwEYAHoBGgBzARwAJQEqAAgACgCNAAsADAANACQACAAO'
+..'AA0BEAB7ARIADwEUABUAFgBzARgAfAEaAHMBHAAZASoACAAeAMMAAAAKAI0ACwAMAA0AJAAIAA4ADQEQAH0BEgAPARQAFQAWAHMBGAB+ARoAcwEcACUBKgAIAAEABgACAAIAfwEEAIABCgDGAAcADAANABAAgQEUABUAFgCCARgAgwEaAIQBHACFAR4AxwABAGsAhgEK'
+..'AMYABwAMAA0AEACHARQAFQAWAIIBGACIARoAhAEcAIkBHgDJAAEAawCKAQoAxgAHAAwADQAQAIsBFAAVABYAjAEYAI0BGgCOARwAiQEeAMsAAQBrAIoBCgDGAAcADAANABAAjwEUABUAFgCMARgAkAEaAI4BHACFAR4AzQABAGsAhgEKAMYABwAMAA0AEACRARQAFQAW'
+..'AJIBGACTARoAkgEcAIUBHgDPAAEAawCGAQoAxgAHAAwADQAQAJQBFAAVABYAkgEYAJUBGgCSARwAiQEeANEAAQBrAIoBCgDGAAcADAANABAAlgEUABUAFgAmABgAlwEaACgAHACJAR4A0wABAGsAigEKAMYABwAMAA0AEACYARQAFQAWACYAGACZARoAKAAcAIUBHgDV'
+..'AAEAawCGAQoAxgAHAAwADQAQAJoBFAAVABYAcwEYAJsBGgBzARwAiQEeANcAAQBrAIoBCgDGAAcADAANABAAnAEUABUAFgBzARgAnQEaAHMBHACFAR4A2QABAGsAhgEKAMYABwAMAA0AEACeARQAFQAWAJ8BGACgARoAoQEcAIkBHgDbAAEAawCKAQoAxgAHAAwADQAQ'
+..'AKIBFAAVABYAnwEYAKMBGgChARwAhQEeAN0AAQBrAIYBCgDGAAcADAANABAApAEUABUAFgClARgApgEaAKUBHACJAR4A3wABAGsAigEKAMYABwAMAA0AEACnARQAFQAWAKUBGACoARoApQEcAIUBHgDhAAEAawCGAQoAxgAHAAwADQAQAKkBFAAVABYAHgEYAKoBGgAg'
+..'ARwAiQEeAOMAAQBrAIoBCgDGAAcADAANABAAqwEUABUAFgAeARgArAEaACABHACFAR4A5QABAGsAhgEKAMYABwAMAA0AEACtARQAFQAWADkAGACuARoAOQAcAIUBHgDnAAEAawCGAQoAxgAHAAwADQAQAK8BFAAVABYAOQAYALABGgA5ABwAiQEeAOkAAQBrAIoBCgDG'
+..'AAcADAANABAAsQEUABUAFgCyARgAswEaALQBHACJAR4A6wABAGsAigEKAMYABwAMAA0AEAC1ARQAFQAWALIBGAC2ARoAtAEcAIUBHgDtAAEAawCGAQoAxgAHAAwADQAQALcBFAAVABYAuAEYALkBGgC4ARwAhQEeAO8AAQBrAIYBCgDGAAcADAANABAAugEUABUAFgC4'
+..'ARgAuwEaALgBHACJAR4A8QABAGsAigEKAMYABwAMAA0AEAC8ARQAFQAWAL0BGAC+ARoAvQEcAIkBHgDzAAEAawCKAQoAxgAHAAwADQAQAL8BFAAVABYAvQEYAMABGgC9ARwAhQEeAPUAAQBrAIYBAQAGAAIAAgDBAQQAwgEKAPcACQAMAA0ADgAPABAAwwESABMAFAAV'
+..'ABYAFwAYAMQBGgAbABwAxQEeAPgAAAAKAPcACwAMAA0AJAAIAA4AxgEQAMcBEgDIARQAyQEWAFwAGADKARoAXgAcAIYAKgAIAIUA+gABAIcAiADLAfoAAAAKAPcACQAMAA0ADgAPABAAzAESABMAFAAVABYAFwAYAM0BGgAbABwAxQEeAP0AAAAKAPcACwAMAA0AJAAI'
+..'AA4AxgEQAM4BEgDIARQAyQEWAFwAGADPARoAXgAcAIYAKgAIAIUA/wABAIcAiADLAf8AAAAKAPcACQAMAA0ADgAPABAA0AESABMAFAAVABYA0QEYANIBGgDTARwAxQEeAAIBAAAKAPcACwAMAA0AJAAIAA4AxgEQANQBEgDIARQAyQEWAEsAGADVARoATQAcAIYAKgAI'
+..'AIUABAEBAIcAiADLAQQBAAAKAPcACwAMAA0AJAAIAA4AxgEQANYBEgDIARQAyQEWAEsAGADXARoATQAcAIYAKgAIAIUABwEBAIcAiADLAQcBAAAKAPcACQAMAA0ADgAPABAA2AESABMAFAAVABYA0QEYANkBGgDTARwAxQEeAAoBAAABAAYAAgACANoBBADbAdwBQALA'
+..'AoEKAOAB4QEsAOIB4wHkAQEKAOUB5gHnAeIB4wHkAQEKAOgB6QFLAIgA4wHkAQwBCQAMAA0ADgAPABAA3QESABMAFAAVABYAFwAYAN4BGgAbABwA3wHqAQ0BAgACAOsB7AENAO0BDgEEAAIA7gHvAfAB8QHyAfMB9AH1AQ4BBgD2AfcB+AH5AfoB+wH8Af0B/gH/AQAC'
+..'AQLqAQ0BAQACAAICCgAMAQkADAANAA4ADwAQAAMCEgATABQAFQAWABcAGAAEAhoAGwAcAB0AHgASAQAACgAMAQsADAANACQACAAOAA8AEAAFAhIAEwAUABUAFgBLABgABgIaAE0AHAAHAioACACFABQBAQCHAIgA6gEGAAEAAgAIAiAkAH4AIgAkAH8AKwAtAH4AKwAt'
+..'AH8AGgAuAH4AKwAuAH8AHgAvAH4AKwAvAH8AIAA9AH4AOwA9AH8ASABKAH4ASABKAH8ANwBLAH4ASABLAH8APgBMAH4ASABMAH8AQABWAH4AVABWAH8AZwBbAH4AWQBbAH8AZwBeAH4AXABeAH8AZwBpAH4AZwBpAH8AXwB5AH4AdwB5AH8AggCEAH4AggCEAH8AcQCF'
+..'AH4AggCFAH8AdQCGAH4AggCGAH8AegA=')
+for _,obj in pairs(Objects) do
+	obj.Parent = script or workspace
+end
+
+RunScripts()
