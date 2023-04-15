@@ -1,0 +1,603 @@
+-- Converted using Mokiros's Model to Script Version 3
+-- Converted string size: 4912 characters
+
+local ScriptFunctions = {
+function(script,require)
+function onTouched(hit)
+        local human = hit.Parent:findFirstChild("Humanoid")
+        if (human ~= nil) then
+                human.Health = human.Health - 100 -- Change the amount to change the damage.
+        end
+end
+script.Parent.Touched:connect(onTouched)
+end,
+function(script,require)
+local Backup = script.Parent:Clone()
+script.Parent.Humanoid.Died:connect(function()
+wait(5)
+Backup.Parent = script.Parent.Parent
+Backup:MakeJoints()
+script.Parent:Remove()
+end)
+end,
+function(script,require)
+--DuruTeru
+wait(1)
+--[[
+
+____________________________________________________________________________________________________________________
+																					i smell leik beef
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-	
+____________________________________________________________________________________________________________________
+                      ___       ___                                            
+                     (   )     (   )      .-.                                  
+    .--.      .--.    | |_      | |_     ( __)  ___ .-.     .--.       .--.    
+  /  _  \    /    \  (   __)   (   __)   (''") (   )   \   /    \    /  _  \   
+ . .' `. ;  |  .-. ;  | |       | |       | |   |  .-. .  ;  ,-. '  . .' `. ;  
+ | '   | |  |  | | |  | | ___   | | ___   | |   | |  | |  | |  | |  | '   | |  
+ _\_`.(___) |  |/  |  | |(   )  | |(   )  | |   | |  | |  | |  | |  _\_`.(___) 
+(   ). '.   |  ' _.'  | | | |   | | | |   | |   | |  | |  | |  | | (   ). '.   
+ | |  `\ |  |  .'.-.  | ' | |   | ' | |   | |   | |  | |  | '  | |  | |  `\ |  
+ ; '._,' '  '  `-' /  ' `-' ;   ' `-' ;   | |   | |  | |  '  `-' |  ; '._,' '  
+  '.___.'    `.__.'    `.__.     `.__.   (___) (___)(___)  `.__. |   '.___.'   
+                                                           ( `-' ;             
+                                                            `.__.              
+____________________________________________________________________________________________________________________
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-	
+____________________________________________________________________________________________________________________
+
+--]]	
+	
+	
+local SearchDistance = 	1000 	-- How far a player can be before it detects you
+
+local ZombieDamage = 	25		-- How much damage the Zombie inficts towards the player
+local DamageWait = 		2		-- How many seconds to wait before it can damage the player again
+
+local WanderX, WanderZ = 30, 30
+-- 	How many studs the zombie can wander on the x and z axis in studs ; 0, 0 to stay still
+
+--[[	
+____________________________________________________________________________________________________________________
+ 
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-	
+____________________________________________________________________________________________________________________
+
+--]]
+
+
+function getHumanoid(model)
+	for _, v in pairs(model:GetChildren())do
+		if v:IsA'Humanoid' then
+			return v
+		end
+	end
+end
+
+
+local zombie = script.Parent
+local human = getHumanoid(zombie)
+local hroot = zombie.HumanoidRootPart
+local zspeed = hroot.Velocity.magnitude
+local head = zombie:FindFirstChild'Head'
+local vars = script.vars
+
+local pfs = game:GetService("PathfindingService")
+local players = game:GetService('Players')
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+local path
+local waypoint
+
+local chaseName = nil
+
+function GetTorso(part)
+	local chars = game.Workspace:GetChildren()
+	local chaseRoot = nil
+	local chaseTorso = nil
+	local chasePlr = nil
+	local chaseHuman = nil
+	local mag = SearchDistance
+	for i = 1, #chars do
+		chasePlr = chars[i]
+		if chasePlr:IsA'Model' and chasePlr ~= zombie then
+			chaseHuman = getHumanoid(chasePlr)
+			chaseRoot = chasePlr:FindFirstChild'HumanoidRootPart'
+			if chaseRoot ~= nil and chaseHuman ~= nil and chaseHuman.Health > 0 and chaseHuman.Name ~= "Zombie" then
+				if (chaseRoot.Position - part).magnitude < mag then
+					chaseName = chasePlr.Name
+					chaseTorso = chaseRoot
+					mag = (chaseRoot.Position - part).magnitude
+				end
+			end
+		end
+	end
+	return chaseTorso
+end
+
+function GetPlayersBodyParts(t)
+	local torso = t
+	if torso then
+		local figure = torso.Parent
+		for _, v in pairs(figure:GetChildren())do
+			if v:IsA'Part' then
+				return v.Name
+			end
+		end
+	else
+		return "HumanoidRootPart"
+	end
+end
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+local damagetime
+local damagedb = false
+
+for _, zambieparts in pairs(zombie:GetChildren())do
+	if zambieparts:IsA'Part' and human.Health > 0 then
+		zambieparts.Touched:connect(function(p)
+			if p.Parent.Name == chaseName and p.Parent.Name ~= zombie.Name and not damagedb then -- damage
+				damagedb = true
+				damagetime = time()
+				local enemy = p.Parent
+				local enemyhuman = getHumanoid(enemy)
+				vars.Attacking.Value = true
+				enemyhuman:TakeDamage(ZombieDamage)
+				vars.Attacking.Value = false
+				while wait() do
+					if damagetime ~= nil and time() >= (damagetime + DamageWait) then
+						damagedb = false
+						damagetime = nil
+					end
+				end
+			end
+		end)
+	end
+end
+
+-- wandering 
+spawn(function()
+	while vars.Wandering.Value == false and human.Health > 0 do	
+		vars.Chasing.Value = false	
+		vars.Wandering.Value = true
+		local desgx, desgz = hroot.Position.x+math.random(-WanderX,WanderX), hroot.Position.z+math.random(-WanderZ,WanderZ)
+		local function checkw(t)
+			local ci = 3
+			if ci > #t then
+				ci = 3
+			end
+			if t[ci] == nil and ci < #t then
+				repeat ci = ci + 1 wait() until t[ci] ~= nil
+				return Vector3.new(1,0,0) + t[ci]
+			else
+				ci = 3
+				return t[ci]
+			end
+		end
+		
+		path = pfs:FindPathAsync(hroot.Position, Vector3.new(desgx, 0, desgz))
+		waypoint = path:GetWaypoints()
+		local connection;
+		
+		local direct = Vector3.FromNormalId(Enum.NormalId.Front)
+		local ncf = hroot.CFrame * CFrame.new(direct)
+		direct = ncf.p.unit
+		local rootr = Ray.new(hroot.Position, direct)
+		local phit, ppos = game.Workspace:FindPartOnRay(rootr, hroot)
+		
+		if path and waypoint or checkw(waypoint) then
+			if checkw(waypoint) ~= nil and checkw(waypoint).Action == Enum.PathWaypointAction.Walk then
+				human:MoveTo( checkw(waypoint).Position )
+				human.Jump = false
+			end
+			
+			if checkw(waypoint) ~= nil and checkw(waypoint).Action == Enum.PathWaypointAction.Jump then
+				connection = human.Changed:connect(function()
+					human.Jump = true
+				end)
+				human:MoveTo( waypoint[4].Position )
+			else
+				human.Jump = false
+			end
+			
+			if connection then
+				connection:Disconnect()
+			end
+			
+		else
+			for i = 3, #waypoint do
+				human:MoveTo( waypoint[i].Position )	
+			end
+		end
+		wait(math.random(4,6))
+		vars.Wandering.Value = false
+	end
+end)
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+while wait() do
+	local nrstt = GetTorso(hroot.Position)
+	if nrstt ~= nil and human.Health > 0 then -- if player detected	
+		vars.Wandering.Value = false
+		vars.Chasing.Value = true
+		local function checkw(t)
+			local ci = 3
+			if ci > #t then
+				ci = 3
+			end
+			if t[ci] == nil and ci < #t then
+				repeat ci = ci + 1 wait() until t[ci] ~= nil
+				return Vector3.new(1,0,0) + t[ci]
+			else
+				ci = 3
+				return t[ci]
+			end
+		end
+		
+		path = pfs:FindPathAsync(hroot.Position, nrstt.Position)
+		waypoint = path:GetWaypoints()
+		local connection;
+		
+		local direct = Vector3.FromNormalId(Enum.NormalId.Front)
+		local ncf = hroot.CFrame * CFrame.new(direct)
+		direct = ncf.p.unit
+		local rootr = Ray.new(hroot.Position, direct)
+		local phit, ppos = game.Workspace:FindPartOnRay(rootr, hroot)
+		
+		if path and waypoint or checkw(waypoint) then
+			if checkw(waypoint) ~= nil and checkw(waypoint).Action == Enum.PathWaypointAction.Walk then
+				human:MoveTo( checkw(waypoint).Position )
+				human.Jump = false
+			end
+			
+			if checkw(waypoint) ~= nil and checkw(waypoint).Action == Enum.PathWaypointAction.Jump then
+				connection = human.Changed:connect(function()
+					human.Jump = true
+				end)
+				human:MoveTo( waypoint[4].Position )
+			else
+				human.Jump = false
+			end
+			
+			hroot.Touched:connect(function(p)
+				local bodypartnames = GetPlayersBodyParts(nrstt)
+				if p:IsA'Part' and not p.Name == bodypartnames and phit and phit.Name ~= bodypartnames and phit:IsA'Part' and rootr:Distance(phit.Position) < 5 then
+					connection = human.Changed:connect(function()
+						human.Jump = true
+					end)
+				else
+					human.Jump = false
+				end
+			end)
+			
+			if connection then
+				connection:Disconnect()
+			end
+			
+		else
+			for i = 3, #waypoint do
+				human:MoveTo( waypoint[i].Position )	
+			end
+		end
+		path = nil
+		waypoint = nil
+	elseif nrstt == nil then -- if player not detected
+		vars.Wandering.Value = false
+		vars.Chasing.Value = false
+		CchaseName = nil
+		path = nil
+		waypoint = nil
+		human.MoveToFinished:Wait()
+	end
+end
+
+-- Base script for NPC enemy movement,
+-- still a work in progress
+end
+}
+local ScriptIndex = 0
+local Scripts,ModuleScripts,ModuleCache = {},{},{}
+local _require = require
+function require(obj,...)
+	local index = ModuleScripts[obj]
+	if not index then
+		local a,b = pcall(_require,obj,...)
+		return not a and error(b,2) or b
+	end
+	
+	local res = ModuleCache[index]
+	if res then return res end
+	res = ScriptFunctions[index](obj,require)
+	if res==nil then error("Module code did not return exactly one value",2) end
+	ModuleCache[index] = res
+	return res
+end
+local function Script(obj,ismodule)
+	ScriptIndex = ScriptIndex + 1
+	local t = ismodule and ModuleScripts or Scripts
+	t[obj] = ScriptIndex
+end
+
+function RunScripts()
+	for script,index in pairs(Scripts) do
+		coroutine.wrap(ScriptFunctions[index])(script,require)
+	end
+end
+
+
+local function Decode(str)
+	local StringLength = #str
+	
+	-- Base64 decoding
+	do
+		local decoder = {}
+		for b64code, char in pairs(('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='):split('')) do
+			decoder[char:byte()] = b64code-1
+		end
+		local n = StringLength
+		local t,k = table.create(math.floor(n/4)+1),1
+		local padding = str:sub(-2) == '==' and 2 or str:sub(-1) == '=' and 1 or 0
+		for i = 1, padding > 0 and n-4 or n, 4 do
+			local a, b, c, d = str:byte(i,i+3)
+			local v = decoder[a]*0x40000 + decoder[b]*0x1000 + decoder[c]*0x40 + decoder[d]
+			t[k] = string.char(bit32.extract(v,16,8),bit32.extract(v,8,8),bit32.extract(v,0,8))
+			k = k + 1
+		end
+		if padding == 1 then
+			local a, b, c = str:byte(n-3,n-1)
+			local v = decoder[a]*0x40000 + decoder[b]*0x1000 + decoder[c]*0x40
+			t[k] = string.char(bit32.extract(v,16,8),bit32.extract(v,8,8))
+		elseif padding == 2 then
+			local a, b = str:byte(n-3,n-2)
+			local v = decoder[a]*0x40000 + decoder[b]*0x1000
+			t[k] = string.char(bit32.extract(v,16,8))
+		end
+		str = table.concat(t)
+	end
+	
+	local Position = 1
+	local function Parse(fmt)
+		local Values = {string.unpack(fmt,str,Position)}
+		Position = table.remove(Values)
+		return table.unpack(Values)
+	end
+	
+	local Settings = Parse('B')
+	local Flags = Parse('B')
+	Flags = {
+		--[[ValueIndexByteLength]] bit32.extract(Flags,6,2)+1,
+		--[[InstanceIndexByteLength]] bit32.extract(Flags,4,2)+1,
+		--[[ConnectionsIndexByteLength]] bit32.extract(Flags,2,2)+1,
+		--[[MaxPropertiesLengthByteLength]] bit32.extract(Flags,0,2)+1,
+		--[[Use Double instead of Float]] bit32.band(Settings,0b1) > 0
+	}
+	
+	local ValueFMT = ('I'..Flags[1])
+	local InstanceFMT = ('I'..Flags[2])
+	local ConnectionFMT = ('I'..Flags[3])
+	local PropertyLengthFMT = ('I'..Flags[4])
+	
+	local ValuesLength = Parse(ValueFMT)
+	local Values = table.create(ValuesLength)
+	local CFrameIndexes = {}
+	
+	local ValueDecoders = {
+		--!!Start
+		[1] = function(Modifier)
+			return Parse('s'..Modifier)
+		end,
+		--!!Split
+		[2] = function(Modifier)
+			return Modifier ~= 0
+		end,
+		--!!Split
+		[3] = function()
+			return Parse('d')
+		end,
+		--!!Split
+		[4] = function(_,Index)
+			table.insert(CFrameIndexes,{Index,Parse(('I'..Flags[1]):rep(3))})
+		end,
+		--!!Split
+		[5] = {CFrame.new,Flags[5] and 'dddddddddddd' or 'ffffffffffff'},
+		--!!Split
+		[6] = {Color3.fromRGB,'BBB'},
+		--!!Split
+		[7] = {BrickColor.new,'I2'},
+		--!!Split
+		[8] = function(Modifier)
+			local len = Parse('I'..Modifier)
+			local kpts = table.create(len)
+			for i = 1,len do
+				kpts[i] = ColorSequenceKeypoint.new(Parse('f'),Color3.fromRGB(Parse('BBB')))
+			end
+			return ColorSequence.new(kpts)
+		end,
+		--!!Split
+		[9] = function(Modifier)
+			local len = Parse('I'..Modifier)
+			local kpts = table.create(len)
+			for i = 1,len do
+				kpts[i] = NumberSequenceKeypoint.new(Parse(Flags[5] and 'ddd' or 'fff'))
+			end
+			return NumberSequence.new(kpts)
+		end,
+		--!!Split
+		[10] = {Vector3.new,Flags[5] and 'ddd' or 'fff'},
+		--!!Split
+		[11] = {Vector2.new,Flags[5] and 'dd' or 'ff'},
+		--!!Split
+		[12] = {UDim2.new,Flags[5] and 'di2di2' or 'fi2fi2'},
+		--!!Split
+		[13] = {Rect.new,Flags[5] and 'dddd' or 'ffff'},
+		--!!Split
+		[14] = function()
+			local flags = Parse('B')
+			local ids = {"Top","Bottom","Left","Right","Front","Back"}
+			local t = {}
+			for i = 0,5 do
+				if bit32.extract(flags,i,1)==1 then
+					table.insert(t,Enum.NormalId[ids[i+1]])
+				end
+			end
+			return Axes.new(unpack(t))
+		end,
+		--!!Split
+		[15] = function()
+			local flags = Parse('B')
+			local ids = {"Top","Bottom","Left","Right","Front","Back"}
+			local t = {}
+			for i = 0,5 do
+				if bit32.extract(flags,i,1)==1 then
+					table.insert(t,Enum.NormalId[ids[i+1]])
+				end
+			end
+			return Faces.new(unpack(t))
+		end,
+		--!!Split
+		[16] = {PhysicalProperties.new,Flags[5] and 'ddddd' or 'fffff'},
+		--!!Split
+		[17] = {NumberRange.new,Flags[5] and 'dd' or 'ff'},
+		--!!Split
+		[18] = {UDim.new,Flags[5] and 'di2' or 'fi2'},
+		--!!Split
+		[19] = function()
+			return Ray.new(Vector3.new(Parse(Flags[5] and 'ddd' or 'fff')),Vector3.new(Parse(Flags[5] and 'ddd' or 'fff')))
+		end
+		--!!End
+	}
+	
+	for i = 1,ValuesLength do
+		local TypeAndModifier = Parse('B')
+		local Type = bit32.band(TypeAndModifier,0b11111)
+		local Modifier = (TypeAndModifier - Type) / 0b100000
+		local Decoder = ValueDecoders[Type]
+		if type(Decoder)=='function' then
+			Values[i] = Decoder(Modifier,i)
+		else
+			Values[i] = Decoder[1](Parse(Decoder[2]))
+		end
+	end
+	
+	for i,t in pairs(CFrameIndexes) do
+		Values[t[1]] = CFrame.fromMatrix(Values[t[2]],Values[t[3]],Values[t[4]])
+	end
+	
+	local InstancesLength = Parse(InstanceFMT)
+	local Instances = {}
+	local NoParent = {}
+	
+	for i = 1,InstancesLength do
+		local ClassName = Values[Parse(ValueFMT)]
+		local obj
+		local MeshPartMesh,MeshPartScale
+		if ClassName == "UnionOperation" then
+			obj = DecodeUnion(Values,Flags,Parse)
+			obj.UsePartColor = true
+		elseif ClassName:find("Script") then
+			obj = Instance.new("Folder")
+			Script(obj,ClassName=='ModuleScript')
+		elseif ClassName == "MeshPart" then
+			obj = Instance.new("Part")
+			MeshPartMesh = Instance.new("SpecialMesh")
+			MeshPartMesh.MeshType = Enum.MeshType.FileMesh
+			MeshPartMesh.Parent = obj
+		else
+			obj = Instance.new(ClassName)
+		end
+		local Parent = Instances[Parse(InstanceFMT)]
+		local PropertiesLength = Parse(PropertyLengthFMT)
+		local AttributesLength = Parse(PropertyLengthFMT)
+		Instances[i] = obj
+		for i = 1,PropertiesLength do
+			local Prop,Value = Values[Parse(ValueFMT)],Values[Parse(ValueFMT)]
+			
+			-- ok this looks awful
+			if MeshPartMesh then
+				if Prop == "MeshId" then
+					MeshPartMesh.MeshId = Value
+					continue
+				elseif Prop == "TextureID" then
+					MeshPartMesh.TextureId = Value
+					continue
+				elseif Prop == "Size" then
+					if not MeshPartScale then
+						MeshPartScale = Value
+					else
+						MeshPartMesh.Scale = Value / MeshPartScale
+					end
+				elseif Prop == "MeshSize" then
+					if not MeshPartScale then
+						MeshPartScale = Value
+						MeshPartMesh.Scale = obj.Size / Value
+					else
+						MeshPartMesh.Scale = MeshPartScale / Value
+					end
+					continue
+				end
+			end
+			
+			obj[Prop] = Value
+		end
+		if MeshPartMesh then
+			if MeshPartMesh.MeshId=='' then
+				if MeshPartMesh.TextureId=='' then
+					MeshPartMesh.TextureId = 'rbxasset://textures/meshPartFallback.png'
+				end
+				MeshPartMesh.Scale = obj.Size
+			end
+		end
+		for i = 1,AttributesLength do
+			obj:SetAttribute(Values[Parse(ValueFMT)],Values[Parse(ValueFMT)])
+		end
+		if not Parent then
+			table.insert(NoParent,obj)
+		else
+			obj.Parent = Parent
+		end
+	end
+	
+	local ConnectionsLength = Parse(ConnectionFMT)
+	for i = 1,ConnectionsLength do
+		local a,b,c = Parse(InstanceFMT),Parse(ValueFMT),Parse(InstanceFMT)
+		Instances[a][Values[b]] = Instances[c]
+	end
+	
+	return NoParent
+end
+
+
+local Objects = Decode('AADrIQVNb2RlbCEETmFtZSEIQ2FweWJhcmEhC1ByaW1hcnlQYXJ0IQpXb3JsZFBpdm90BFHX2CEEUGFydCENQm90dG9tU3VyZmFjZQMAAAAAAAAAACEKQnJpY2tDb2xvcgfrAyEGQ0ZyYW1lBBPX2CEKQ2FuQ29sbGlkZQIhBUNvbG9yBhERESEIUG9zaXRpb24KqIAh'
+..'wsAB90Af7n/CIQRTaXplCrBpoT4UaXg+dFQZPyEKVG9wU3VyZmFjZSELU3BlY2lhbE1lc2ghCE1lc2hUeXBlAwAAAAAAAAhAIQpNYW51YWxXZWxkIQRXZWxkIQJDMQTZ19ghBVBhcnQwIQVQYXJ0MQQj19ohC09yaWVudGF0aW9uCo/CLcEAAAAAAAAAAArTFybCfNXm'
+..'QG+Zg8IhCFJvdGF0aW9uCvJDSD8EExg/sGmhPiECQzAE29fcBN3X2CEFU291bmQhBU11c2ljIQZMb29wZWQiIQdQbGF5aW5nIRJSb2xsT2ZmTWF4RGlzdGFuY2UDAAAAAAAATkAhElJvbGxPZmZNaW5EaXN0YW5jZQMAAAAAAADwPyEHU291bmRJZCEXcmJ4YXNzZXRp'
+..'ZDovLzE4NDQxOTA1NDkhBlZvbHVtZQMAAADAILDwPwQ319gKM5EqwsAB90Af7n/CBN7X2CEISHVtYW5vaWQhE0Rpc3BsYXlEaXN0YW5jZVR5cGUDAAAAAAAAAEAhCUhpcEhlaWdodAMAAACgmZnZPyETTmFtZURpc3BsYXlEaXN0YW5jZSENTmFtZU9jY2x1c2lvbiEJ'
+..'V2Fsa1NwZWVkAwAAAAAAAERAIQhBbmltYXRvciENQ29uZmlndXJhdGlvbiEKQW5pbWF0aW9ucyEJQW5pbWF0aW9uIQZBdHRhY2shC0FuaW1hdGlvbklkIRhyYnhhc3NldGlkOi8vMTAwMjg5ODUzMjkhBElkbGUhGHJieGFzc2V0aWQ6Ly8xMDAxODIwNDc1NyEITWVz'
+..'aFBhcnQhBEhlYWQHwAAGc0MmIQhNYXRlcmlhbAMAAAAAAACAQAoxBCbCxSixQBIcdcIKWLFvQD9nw0BizBVBIQZNZXNoSWQhF3JieGFzc2V0aWQ6Ly83NDkxNTUwODQyIQhNZXNoU2l6ZQoIieVAaR87QUpzj0EhCVRleHR1cmVJRCEqaHR0cDovL3d3dy5yb2Jsb3gu'
+..'Y29tL2Fzc2V0Lz9pZD03MDYyMDQ2MjM0IQpBdHRhY2htZW50IRRGYWNlQ2VudGVyQXR0YWNobWVudCETRmFjZUZyb250QXR0YWNobWVudARd19gKAAAAAAAAAAD4oNO/IQ5IYWlyQXR0YWNobWVudARg19gKAAAAAPmg0z8AAAAAIQ1IYXRBdHRhY2htZW50IQZIYW5k'
+..'bGUEZd/gCoXr8T8AAAAAAAAAAAoq/iXCfYfoQL8ngcIKvzpAQHlbMEB5WzBAIQVTY2FsZQpUPUBAelswQHlbMEAhF3JieGFzc2V0aWQ6Ly83MTg0MjgxNzk0IQlUZXh0dXJlSWQhF3JieGFzc2V0aWQ6Ly83MTg0MTg4NDc0AwAAAAAAABRAIQtTdHJpbmdWYWx1ZSET'
+..'QXZhdGFyUGFydFNjYWxlVHlwZSEFVmFsdWUhB0NsYXNzaWMEc+HiCmiYNaok46u3bCDytAoAABi6yJyxPwAwhD8hB01vdG9yNkQhBUpvaW50BOPf4CEFVG9yc28EedfYCjEEJsKuvrBAEhx1wgpqq29AZ2fDQMfQFUEhEkJvZHlCYWNrQXR0YWNobWVudAR919gKAAAA'
+..'AAAAAAB5W7A/IRNCb2R5RnJvbnRBdHRhY2htZW50BIDX2AoAAAAAAAAAAHlbsL8hFExlZnRDb2xsYXJBdHRhY2htZW50BIPX2Ap5WzDA0upVPwAAAAAhDk5lY2tBdHRhY2htZW50BIbX2AoAAAAA0upVPwAAAAAhFVJpZ2h0Q29sbGFyQXR0YWNobWVudASJ19gKeVsw'
+..'QNLqVT8AAAAAIRNXYWlzdEJhY2tBdHRhY2htZW50BIzX2AoAAAAA0upVv3lbsD8hFVdhaXN0Q2VudGVyQXR0YWNobWVudASP19gKAAAAANLqVb8AAAAAIRRXYWlzdEZyb250QXR0YWNobWVudASS19gKAAAAANLqVb95W7C/BOTX2CEGU2NyaXB0IQ1EYW1hZ2UgU2Ny'
+..'aXB0IQhSaWdodExlZwSY19gKSDIgwuYAUEAGyGjCCutziT84UaRAzgY2QCEpaHR0cDovL3d3dy5yb2Jsb3guY29tL2Fzc2V0Lz9pZD0yNTczMTcwMzUK8s8CP/5gHECOO60/IRNSaWdodEZvb3RBdHRhY2htZW50BJ7X2AoAAAAAelswwAAAAAAE5dfYIQhSaWdodEFy'
+..'bQSi19gK86MgwnxbMEDKD3rCCgKecD/7s4RA8P2zPyEpaHR0cDovL3d3dy5yb2Jsb3guY29tL2Fzc2V0Lz9pZD0yNTU0ODU2MjYK6Q8BP8BbDkCHFkE/IRdSaWdodFNob3VsZGVyQXR0YWNobWVudASo19gKAAAAAHpbMEAAAAAAIRNSaWdodEdyaXBBdHRhY2htZW50'
+..'BObX2CEHTGVmdExlZwSt19gKqY8rwuYAUEBB2GjCCuNziT84UaRAzgY2QCEpaHR0cDovL3d3dy5yb2Jsb3guY29tL2Fzc2V0Lz9pZD0yNTczMTY5NzcK6s8CP/5gHECOO60/IRJMZWZ0Rm9vdEF0dGFjaG1lbnQE59fYIQdMZWZ0QXJtBLXX2AqcnSvCjnNMQBwrdMIK'
+..'4Z1wPwkViECg+qs/ISlodHRwOi8vd3d3LnJvYmxveC5jb20vYXNzZXQvP2lkPTI1NzMwNzU1NQrYDwE/vvsRQPZ9OD8hFkxlZnRTaG91bGRlckF0dGFjaG1lbnQhEkxlZnRHcmlwQXR0YWNobWVudATo19ghEEh1bWFub2lkUm9vdFBhcnQhCVJvb3RKb2ludATb6eoh'
+..'C01heFZlbG9jaXR5AwAAAKCZmbk/IQ5Sb290QXR0YWNobWVudCEFU2hpcnQhDVNoaXJ0VGVtcGxhdGUhKmh0dHA6Ly93d3cucm9ibG94LmNvbS9hc3NldC8/aWQ9NzYwMTQ0NDgzMyEFUGFudHMhDVBhbnRzVGVtcGxhdGUhKmh0dHA6Ly93d3cucm9ibG94LmNvbS9h'
+..'c3NldC8/aWQ9NzYwMTQ0NzIzNyEJQW5pbVNhdmVzBOvX2CEQS2V5ZnJhbWVTZXF1ZW5jZSEOQXV0b21hdGljIFNhdmUhBExvb3AhCFByaW9yaXR5AwAAAAAAQI9AIQdSZXNwYXduIQJBSSEGRm9sZGVyIQR2YXJzIQlCb29sVmFsdWUhCVdhbmRlcmluZyEJQXR0YWNr'
+..'aW5nIQdDaGFzaW5nCgAAgD8AAAAAAAAAAAoAAAAAAACAPwAAAAAKK3GQP/WxC0DMIC3ACgAAAACPaXs/nf1AvgoAAAAAAAAAAAAAAAAKAAAAAI9pez+d/UA+CngRnbzcstY/Z7aQwApIoJG/9bELQMwgLcAKAACAP2AcyrFl5T80CgAAAACA3H8/lL0GPQoAAIA/ojoH'
+..'svz/vzQKojoHMgAAgD8KAPCdCgzkwDvget0/vTZTwAoAAAAADi5UvAAAAAAKGT26P6RQEsDAQEVACroHrD8O9jHAAXeevwoIb7G/pFASwAk9REAKcC2zv/zdFcB79nA+CgAAgL8AAAAAAAAAAAoAAAAAAAAAAAAAgD8K7U+TxJXcvcTE4nXDRQEAAgACAwUGBwEIAAgJ'
+..'CgsMDQ4PEBESExQVFgkXAgEAGBkaAgIAAhscHQcBCgAICQoLDCAODxARISISIyQiFCUWCRcFAQAYGRoFAwACGyYnHCgpBQcAAiorLC0sLi8wMTIzNDUHAQgACAkKCww2Dg8QERI3FBUWCRcJAQAYGRoJAgACGxw4OQEFADo7PD0+CT8JQEFCDAAAQwEBAAJERQ4CAAJG'
+..'R0hFDgIAAklHSksBCwACTApNDAYODxBOT1ASURRSU1RVVldYWREBAAJaWREDAAJbDFwSXVkRAwACXgxfEmBZEQMAAmEMXxJgBxEJAAJiCAkMYw4PIWQSZSRkFGYWCRcWBQACF2doU2lqaxhsbRYCAAJub3BZFgQAAmEMcSFyEnN0FgIAAnUmdksBCgACdwpNDHgQTk9Q'
+..'EnkUelNUVVZXWFkbAwACewx8En1ZGwMAAn4MfxKAWRsDAAKBDIISg1kbAwAChAyFEoZZGwMAAocMiBKJWRsDAAKKDIsSjFkbAwACjQyOEo9ZGwMAApAMkRKSGhsBAByTlBsBAAKVSwELAAKWCk0Mlw4PEE5PUBKYFJlTmlWbV1hZJgMAApwMnRKeGiYCAAIbHJ90JgIA'
+..'AnUmn0sBCwACoApNDKEODxBOT1ASohSjU6RVpVdYWSoDAAKmDKcSqFkqAwACqQydEp4aKgIAAhscqnQqAgACdSaqSwELAAKrCk0MrA4PEE5PUBKtFK5Tr1WwV1hZLwMAArEMnRKeGi8CAAIbHLJ0LwIAAnUmsksBCwACswpNDLQODxBOT1AStRS2U7dVuFdYWTMDAAK5'
+..'DKcSqFkzAwACugydEp4aMwIAAhscu3QzAgACdSa7SwELAAK8Ck0MBg4PEE5PUBJRFFJTVFVWV1h0OAQAAr0mvhy+v8BZOAEAAsEaOAEAAhvCAQEAw8TFAQEAxscBAQIAAsgFyco+AwACy8wPzc6UAQEAAs+UAQEAAtDRQQEAAtLTQgEAAtTTQgEAAtXTQgEAAtYdAQQ4'
+..'BB4CBB8RBx4FBx8RCx4JCx8RGh44Gh8WJB4bJB8RKB4mKB8RKR44KR8mLR4qLR8RLh44Lh8qMR4vMR8RMh44Mh8vNh4zNh8RNx44Nx8zOx44Ox8R')
+for _,obj in pairs(Objects) do
+	obj.Parent = script or workspace
+end
+
+RunScripts()
