@@ -1,0 +1,711 @@
+-- Converted using Mokiros's Model to Script Version 3
+-- Converted string size: 1396 characters
+
+local ScriptFunctions = {
+function(script,require)
+--[[
+	
+For information on how to setup and use HD Admin, visit:
+
+https://devforum.roblox.com/t/HD/216819
+
+--]]
+end,
+function(script,require)
+--[[
+
+--------------| ABOUT RANKS |--------------
+
+RANK	| DEFAULT NAME	| COMMANDS	| EXTRA DETAILS
+-------------------------------------------------------------------------------------------------------------------
+5		| Owner			| All		| Is automtically set. The Owner has full access to commands and features.
+-------------------------------------------------------------------------------------------------------------------
+4 		| HeadAdmin		| 1,2,3,4	| 
+3 		| Admin			| 1,2,3		| 
+2		| Mod			| 1,2		| Can only use commands on one person at a time. 
+1 		| VIP			| 1			| Can only use commands on theirself.
+-------------------------------------------------------------------------------------------------------------------
+0		| NonAdmin		| 0			| The default rank. Players are limited to basic features.
+
+
+
+
+--------------| SETUP RANKS |--------------																															 ]] return{
+
+-- RANK, RANK NAMES & SPECIFIC USERS
+Ranks = {
+	{5,	"Owner",		};
+	{4,	"HeadAdmin",	{"",0},	};
+	{3,	"Admin",		{"",0},	};
+	{2,	"Mod",			{"",0},	};
+	{1,	"VIP",			{"",0},	};
+	{0,	"NonAdmin",		};
+};
+
+
+
+-- GAMEPASSES
+Gamepasses = {
+	[0] = "VIP";
+};
+
+
+-- ASSETS
+Assets = {
+	[0] = "VIP";
+};
+
+
+-- GROUPS
+Groups = {
+	[0] = {
+		[254] = "Admin";
+		[1] = "VIP";
+		};
+};
+
+
+-- FRIENDS
+Friends = "NonAdmin";
+
+
+-- VIP SERVER OWNER
+VipServerOwner = "NonAdmin";
+
+
+-- FREE ADMIN
+FreeAdmin = "NonAdmin";
+
+
+
+
+
+
+
+
+--------------| BANLAND |--------------
+Banned = {"",0};
+
+
+
+
+
+
+
+
+--------------| SYSTEM SETTINGS |--------------
+Prefix				= ";";			-- The character you use before every command (e.g. ';jump me').
+SplitKey 			= " ";			-- The character inbetween command arguments (e.g. setting it to '/' would change ';jump me' to ';jump/me').
+BatchKey 			= "";			-- The character inbetween batch commands (e.g. setting it to '|' would change ';jump me ;fire me ;smoke me' to ';jump me | ;fire me | ;smoke me'
+QualifierBatchKey 	= ",";			-- The character used to split up qualifiers (e.g. ;jump player1,player2,player3)
+
+Theme				= "Blue";		-- The default UI theme.
+NoticeSoundId		= 2865227271;	-- The SoundId for notices.
+NoticeVolume		= 0.1;			-- The Volume for notices.
+NoticePitch			= 1;			-- The Pitch/PlaybackSpeed for notices.
+ErrorSoundId		= 2865228021;	-- The SoundId for error notifications.
+ErrorVolume			= 0.1;			-- The Volume for error notifications.
+ErrorPitch			= 1;			-- The Pitch/PlaybackSpeed for error notifications.
+AlertSoundId		= 9161622880;	-- The SoundId for alerts.
+AlertVolume			= 0.5;			-- The Volume for alerts.
+AlertPitch			= 1;			-- The Pitch/PlaybackSpeed for alerts.
+
+WelcomeBadgeId		= 0;			-- Award new players a badge, such as 'Welcome to the game!'. Set to 0 for no badge.
+
+CommandDebounce		= true;			-- Wait until the command effect is over to use again. Helps to limit abuse & lag. Set to 'false' to disable.
+SaveRank			= true;			-- Saves a player's rank in the server they received it. (e.g. ;rank plrName rank). Use ';permRank plrName rank' to permanently save a rank. Set to 'false' to disable.
+LoopCommands		= 3;			-- The minimum rank required to use LoopCommands.
+MusicList 			= {};	-- Songs which automatically appear in a user's radio. Type '!radio' to display the radio.
+
+ThemeColors = {						-- The colours players can set their HD Admin UI (in the 'Settings' menu). | Format: {ThemeName, ThemeColor3Value};
+	{"Red", 	Color3.fromRGB(150, 0, 0),		};
+	{"Orange", 	Color3.fromRGB(150, 75, 0),		};
+	{"Brown", 	Color3.fromRGB(120, 80, 30),	};
+	{"Yellow", 	Color3.fromRGB(130, 120, 0),	};
+	{"Green", 	Color3.fromRGB(0, 120, 0),		};
+	{"Blue", 	Color3.fromRGB(0, 100, 150),	};
+	{"Purple", 	Color3.fromRGB(100, 0, 150),	};
+	{"Pink",	Color3.fromRGB(150, 0, 100),	};
+	{"Black", 	Color3.fromRGB(60, 60, 60),		};
+};
+
+Colors = {							-- The colours for ChatColors and command arguments. | Format: {"ShortName", "FullName", Color3Value};
+	{"r", 		"Red",		 		Color3.fromRGB(255, 0, 0)		};
+	{"o", 		"Orange",	 		Color3.fromRGB(250, 100, 0)		};
+	{"y", 		"Yellow",			Color3.fromRGB(255, 255, 0)		};
+	{"g", 		"Green"	,			Color3.fromRGB(0, 255, 0)		};
+	{"dg", 		"DarkGreen"	, 		Color3.fromRGB(0, 125, 0)		};
+	{"b", 		"Blue",		 		Color3.fromRGB(0, 255, 255)		};
+	{"db", 		"DarkBlue",			Color3.fromRGB(0, 50, 255)		};
+	{"p", 		"Purple",	 		Color3.fromRGB(150, 0, 255)		};
+	{"pk",		"Pink",		 		Color3.fromRGB(255, 85, 185)	};
+	{"bk",		"Black",		 	Color3.fromRGB(0, 0, 0)			};
+	{"w",		"White",	 		Color3.fromRGB(255, 255, 255)	};
+};
+ChatColors = {						-- The colour a player's chat will appear depending on their rank. '["Owner"] = "Yellow";' makes the owner's chat yellow.
+	[5] 		= "Yellow";
+};
+
+Cmdbar						= 1;			-- The minimum rank required to use the Cmdbar.
+Cmdbar2						= 3;			-- The minimum rank required to use the Cmdbar2.
+ViewBanland					= 3;			-- The minimum rank required to view the banland.
+OnlyShowUsableCommands		= false;		-- Only display commands equal to or below the user's rank on the Commands page.
+RankRequiredToViewPage		= {				-- || The pages on the main menu ||
+	["Commands"]		= 0;
+	["Admin"]			= 0;
+	["Settings"]		= 0;
+};
+RankRequiredToViewRank		= {				-- || The rank categories on the 'Ranks' subPage under Admin ||
+	["Owner"]			= 0;
+	["HeadAdmin"]		= 0;
+	["Admin"]			= 0;
+	["Mod"]				= 0;
+	["VIP"]				= 0;
+};
+RankRequiredToViewRankType	= {				-- || The collection of loader-rank-rewarders on the 'Ranks' subPage under Admin ||
+	["Owner"]			= 0;
+	["SpecificUsers"]	= 5;
+	["Gamepasses"] 		= 0;
+	["Assets"] 			= 0;
+	["Groups"] 			= 0;
+	["Friends"] 		= 0;
+	["FreeAdmin"] 		= 0;
+	["VipServerOwner"] 	= 0;
+};
+RankRequiredToViewIcon		= 0;
+
+WelcomeRankNotice			= true;			-- The 'You're a [rankName]' notice that appears when you join the game. Set to false to disable.
+WelcomeDonorNotice			= true;			-- The 'You're a Donor' notice that appears when you join the game. Set to false to disable.
+WarnIncorrectPrefix			= true;			-- Warn the user if using the wrong prefix | "Invalid prefix! Try using [correctPrefix][commandName] instead!"
+DisableAllNotices			= false;		-- Set to true to disable all HD Admin notices.
+
+ScaleLimit					= 4;			-- The maximum size players with a rank lower than 'IgnoreScaleLimit' can scale theirself. For example, players will be limited to ;size me 4 (if limit is 4) - any number above is blocked.
+IgnoreScaleLimit			= 3;			-- Any ranks equal or above this value will ignore 'ScaleLimit'
+CommandLimits				= {				-- Enables you to set limits for commands which have a number argument. Ranks equal to or higher than 'IgnoreLimit' will not be affected by Limit.
+	["fly"]	= {
+		Limit 				= 10000;
+		IgnoreLimit 		= 3;
+	};
+	["fly2"]	= {
+		Limit 				= 10000;
+		IgnoreLimit 		= 3;
+	};
+	["noclip"]	= {
+		Limit 				= 10000;
+		IgnoreLimit 		= 3;
+	};
+	["noclip2"]	= {
+		Limit 				= 10000;
+		IgnoreLimit 		= 3;
+	};
+	["speed"]	= {
+		Limit 				= 10000;
+		IgnoreLimit 		= 3;
+	};
+	["jumpPower"]	= {
+		Limit 				= 10000;
+		IgnoreLimit 		= 3;
+	};
+};
+
+VIPServerCommandBlacklist	= {"permRank", "permBan", "globalAnnouncement"};	-- Commands players are probihited from using in VIP Servers.
+GearBlacklist				= {67798397};	-- The IDs of gear items to block when using the ;gear command.
+IgnoreGearBlacklist			= 4;			-- The minimum rank required to ignore the gear blacklist.
+
+PlayerDataStoreVersion		= "V1.0";		-- Data about the player (i.e. permRanks, custom settings, etc). Changing the Version name will reset all PlayerData.
+SystemDataStoreVersion		= "V1.0";		-- Data about the game (i.e. the banland, universal message system, etc). Changing the Version name will reset all SystemData.
+
+CoreNotices					= {				-- Modify core notices. You can find a table of all CoreNotices under [MainModule > Client > SharedModules > CoreNotices]
+	--NoticeName = NoticeDetails;
+};
+
+
+
+
+--------------| MODIFY COMMANDS |--------------
+SetCommandRankByName = {
+	--["jump"] = "VIP";
+};	
+SetCommandRankByTag = {
+	--["abusive"] = "Admin";
+};
+
+
+
+
+
+
+
+
+};
+end,
+function(script,require)
+--[[
+	This loads HD Admin into your game.
+	
+	Require the 'HD Admin MainModule' by the HD Admin group for automatic updates.
+	
+	You can view the HD Admin Main Module here:
+	https://www.roblox.com/library/3239236979/HD
+	
+--]]
+
+local loaderFolder = script.Parent.Parent
+local mainModule = require(3239236979)
+mainModule:Initialize(loaderFolder)
+loaderFolder:Destroy()
+end,
+function(script,require)
+-- << RETRIEVE FRAMEWORK >>
+local main = _G.HDAdminMain
+local settings = main.settings
+
+
+
+-- << COMMANDS >>
+local module = {
+	
+	-----------------------------------
+	{
+	Name = "";
+	Aliases	= {};
+	Prefixes = {settings.Prefix};
+	Rank = 1;
+	RankLock = false;
+	Loopable = false;
+	Tags = {};
+	Description = "";
+	Contributors = {};
+	--
+	Args = {};
+	Function = function(speaker, args)
+		
+	end;
+	UnFunction = function(speaker, args)
+		
+	end;
+	--
+	};
+	
+	
+	
+	
+	-----------------------------------
+	{
+	Name = "";
+	Aliases	= {};
+	Prefixes = {settings.Prefix};
+	Rank = 1;
+	RankLock = false;
+	Loopable = false;
+	Tags = {};
+	Description = "";
+	Contributors = {};
+	--
+	Args = {};
+	--[[
+	ClientCommand = true;
+	FireAllClients = true;
+	BlockWhenPunished = true;
+	PreFunction = function(speaker, args)
+		
+	end;
+	Function = function(speaker, args)
+		wait(1)
+	end;
+	--]]
+	--
+	};
+	
+	
+	
+	
+	-----------------------------------
+	
+};
+
+
+
+return module
+
+end,
+function(script,require)
+-- << RETRIEVE FRAMEWORK >>
+local main = _G.HDAdminMain
+
+
+
+-- << CLIENT COMMANDS >>
+local module = {
+	
+	----------------------------------------------------------------------
+	["commandName1"] = {
+		Function = function(speaker, args)
+			
+		end;
+		};
+	
+	
+	
+	
+	----------------------------------------------------------------------
+	["commandName2"] = {
+		Function = function(speaker, args)
+			
+		end;
+		};
+	
+	
+	
+	
+	----------------------------------------------------------------------
+	
+};
+
+
+
+-- << SETUP >>
+for commandName, command in pairs(module) do
+	command.Name = commandName
+end
+
+
+
+return module
+end,
+function(script,require)
+-- << RETRIEVE FRAMEWORK >>
+local main = _G.HDAdminMain
+
+
+
+-- << EVENTS >>
+local module = {
+	
+	----------------------------------------------------------------------
+	["EventName"] = function(bindable, parent, ...)
+		
+	end;
+	
+	
+	
+	
+	----------------------------------------------------------------------
+	["EventName"] = function(bindable, parent, ...)
+		
+	end;
+	
+	
+	
+	
+	----------------------------------------------------------------------
+	
+};
+
+
+
+return module
+end,
+function(script,require)
+--Feel free to delete the 'ThumbnailCamera' and 'Part'. I use this for the model's thumbnail.
+
+
+--[[
+local thumbnailCamera = workspace["HD Admin"].ThumbnailCamera
+local part = thumbnailCamera.Part
+local workspaceCamera = game.Workspace.Camera
+workspaceCamera.CameraSubject = part
+workspaceCamera.CameraType = "Fixed"
+workspaceCamera.CoordinateFrame = part.CFrame * CFrame.new(0,0,3)
+workspaceCamera.Focus = part.CFrame
+thumbnailCamera.CameraSubject = workspaceCamera.CameraSubject
+thumbnailCamera.CameraType = workspaceCamera.CameraType
+thumbnailCamera.CoordinateFrame = workspaceCamera.CoordinateFrame
+thumbnailCamera.Focus = workspaceCamera.Focus
+--]]
+end
+}
+local ScriptIndex = 0
+local Scripts,ModuleScripts,ModuleCache = {},{},{}
+local _require = require
+function require(obj,...)
+	local index = ModuleScripts[obj]
+	if not index then
+		local a,b = pcall(_require,obj,...)
+		return not a and error(b,2) or b
+	end
+	
+	local res = ModuleCache[index]
+	if res then return res end
+	res = ScriptFunctions[index](obj,require)
+	if res==nil then error("Module code did not return exactly one value",2) end
+	ModuleCache[index] = res
+	return res
+end
+local function Script(obj,ismodule)
+	ScriptIndex = ScriptIndex + 1
+	local t = ismodule and ModuleScripts or Scripts
+	t[obj] = ScriptIndex
+end
+
+function RunScripts()
+	for script,index in pairs(Scripts) do
+		coroutine.wrap(ScriptFunctions[index])(script,require)
+	end
+end
+
+
+local function Decode(str)
+	local StringLength = #str
+	
+	-- Base64 decoding
+	do
+		local decoder = {}
+		for b64code, char in pairs(('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='):split('')) do
+			decoder[char:byte()] = b64code-1
+		end
+		local n = StringLength
+		local t,k = table.create(math.floor(n/4)+1),1
+		local padding = str:sub(-2) == '==' and 2 or str:sub(-1) == '=' and 1 or 0
+		for i = 1, padding > 0 and n-4 or n, 4 do
+			local a, b, c, d = str:byte(i,i+3)
+			local v = decoder[a]*0x40000 + decoder[b]*0x1000 + decoder[c]*0x40 + decoder[d]
+			t[k] = string.char(bit32.extract(v,16,8),bit32.extract(v,8,8),bit32.extract(v,0,8))
+			k = k + 1
+		end
+		if padding == 1 then
+			local a, b, c = str:byte(n-3,n-1)
+			local v = decoder[a]*0x40000 + decoder[b]*0x1000 + decoder[c]*0x40
+			t[k] = string.char(bit32.extract(v,16,8),bit32.extract(v,8,8))
+		elseif padding == 2 then
+			local a, b = str:byte(n-3,n-2)
+			local v = decoder[a]*0x40000 + decoder[b]*0x1000
+			t[k] = string.char(bit32.extract(v,16,8))
+		end
+		str = table.concat(t)
+	end
+	
+	local Position = 1
+	local function Parse(fmt)
+		local Values = {string.unpack(fmt,str,Position)}
+		Position = table.remove(Values)
+		return table.unpack(Values)
+	end
+	
+	local Settings = Parse('B')
+	local Flags = Parse('B')
+	Flags = {
+		--[[ValueIndexByteLength]] bit32.extract(Flags,6,2)+1,
+		--[[InstanceIndexByteLength]] bit32.extract(Flags,4,2)+1,
+		--[[ConnectionsIndexByteLength]] bit32.extract(Flags,2,2)+1,
+		--[[MaxPropertiesLengthByteLength]] bit32.extract(Flags,0,2)+1,
+		--[[Use Double instead of Float]] bit32.band(Settings,0b1) > 0
+	}
+	
+	local ValueFMT = ('I'..Flags[1])
+	local InstanceFMT = ('I'..Flags[2])
+	local ConnectionFMT = ('I'..Flags[3])
+	local PropertyLengthFMT = ('I'..Flags[4])
+	
+	local ValuesLength = Parse(ValueFMT)
+	local Values = table.create(ValuesLength)
+	local CFrameIndexes = {}
+	
+	local ValueDecoders = {
+		--!!Start
+		[1] = function(Modifier)
+			return Parse('s'..Modifier)
+		end,
+		--!!Split
+		[2] = function(Modifier)
+			return Modifier ~= 0
+		end,
+		--!!Split
+		[3] = function()
+			return Parse('d')
+		end,
+		--!!Split
+		[4] = function(_,Index)
+			table.insert(CFrameIndexes,{Index,Parse(('I'..Flags[1]):rep(3))})
+		end,
+		--!!Split
+		[5] = {CFrame.new,Flags[5] and 'dddddddddddd' or 'ffffffffffff'},
+		--!!Split
+		[6] = {Color3.fromRGB,'BBB'},
+		--!!Split
+		[7] = {BrickColor.new,'I2'},
+		--!!Split
+		[8] = function(Modifier)
+			local len = Parse('I'..Modifier)
+			local kpts = table.create(len)
+			for i = 1,len do
+				kpts[i] = ColorSequenceKeypoint.new(Parse('f'),Color3.fromRGB(Parse('BBB')))
+			end
+			return ColorSequence.new(kpts)
+		end,
+		--!!Split
+		[9] = function(Modifier)
+			local len = Parse('I'..Modifier)
+			local kpts = table.create(len)
+			for i = 1,len do
+				kpts[i] = NumberSequenceKeypoint.new(Parse(Flags[5] and 'ddd' or 'fff'))
+			end
+			return NumberSequence.new(kpts)
+		end,
+		--!!Split
+		[10] = {Vector3.new,Flags[5] and 'ddd' or 'fff'},
+		--!!Split
+		[11] = {Vector2.new,Flags[5] and 'dd' or 'ff'},
+		--!!Split
+		[12] = {UDim2.new,Flags[5] and 'di2di2' or 'fi2fi2'},
+		--!!Split
+		[13] = {Rect.new,Flags[5] and 'dddd' or 'ffff'},
+		--!!Split
+		[14] = function()
+			local flags = Parse('B')
+			local ids = {"Top","Bottom","Left","Right","Front","Back"}
+			local t = {}
+			for i = 0,5 do
+				if bit32.extract(flags,i,1)==1 then
+					table.insert(t,Enum.NormalId[ids[i+1]])
+				end
+			end
+			return Axes.new(unpack(t))
+		end,
+		--!!Split
+		[15] = function()
+			local flags = Parse('B')
+			local ids = {"Top","Bottom","Left","Right","Front","Back"}
+			local t = {}
+			for i = 0,5 do
+				if bit32.extract(flags,i,1)==1 then
+					table.insert(t,Enum.NormalId[ids[i+1]])
+				end
+			end
+			return Faces.new(unpack(t))
+		end,
+		--!!Split
+		[16] = {PhysicalProperties.new,Flags[5] and 'ddddd' or 'fffff'},
+		--!!Split
+		[17] = {NumberRange.new,Flags[5] and 'dd' or 'ff'},
+		--!!Split
+		[18] = {UDim.new,Flags[5] and 'di2' or 'fi2'},
+		--!!Split
+		[19] = function()
+			return Ray.new(Vector3.new(Parse(Flags[5] and 'ddd' or 'fff')),Vector3.new(Parse(Flags[5] and 'ddd' or 'fff')))
+		end
+		--!!End
+	}
+	
+	for i = 1,ValuesLength do
+		local TypeAndModifier = Parse('B')
+		local Type = bit32.band(TypeAndModifier,0b11111)
+		local Modifier = (TypeAndModifier - Type) / 0b100000
+		local Decoder = ValueDecoders[Type]
+		if type(Decoder)=='function' then
+			Values[i] = Decoder(Modifier,i)
+		else
+			Values[i] = Decoder[1](Parse(Decoder[2]))
+		end
+	end
+	
+	for i,t in pairs(CFrameIndexes) do
+		Values[t[1]] = CFrame.fromMatrix(Values[t[2]],Values[t[3]],Values[t[4]])
+	end
+	
+	local InstancesLength = Parse(InstanceFMT)
+	local Instances = {}
+	local NoParent = {}
+	
+	for i = 1,InstancesLength do
+		local ClassName = Values[Parse(ValueFMT)]
+		local obj
+		local MeshPartMesh,MeshPartScale
+		if ClassName == "UnionOperation" then
+			obj = DecodeUnion(Values,Flags,Parse)
+			obj.UsePartColor = true
+		elseif ClassName:find("Script") then
+			obj = Instance.new("Folder")
+			Script(obj,ClassName=='ModuleScript')
+		elseif ClassName == "MeshPart" then
+			obj = Instance.new("Part")
+			MeshPartMesh = Instance.new("SpecialMesh")
+			MeshPartMesh.MeshType = Enum.MeshType.FileMesh
+			MeshPartMesh.Parent = obj
+		else
+			obj = Instance.new(ClassName)
+		end
+		local Parent = Instances[Parse(InstanceFMT)]
+		local PropertiesLength = Parse(PropertyLengthFMT)
+		local AttributesLength = Parse(PropertyLengthFMT)
+		Instances[i] = obj
+		for i = 1,PropertiesLength do
+			local Prop,Value = Values[Parse(ValueFMT)],Values[Parse(ValueFMT)]
+			
+			-- ok this looks awful
+			if MeshPartMesh then
+				if Prop == "MeshId" then
+					MeshPartMesh.MeshId = Value
+					continue
+				elseif Prop == "TextureID" then
+					MeshPartMesh.TextureId = Value
+					continue
+				elseif Prop == "Size" then
+					if not MeshPartScale then
+						MeshPartScale = Value
+					else
+						MeshPartMesh.Scale = Value / MeshPartScale
+					end
+				elseif Prop == "MeshSize" then
+					if not MeshPartScale then
+						MeshPartScale = Value
+						MeshPartMesh.Scale = obj.Size / Value
+					else
+						MeshPartMesh.Scale = MeshPartScale / Value
+					end
+					continue
+				end
+			end
+			
+			obj[Prop] = Value
+		end
+		if MeshPartMesh then
+			if MeshPartMesh.MeshId=='' then
+				if MeshPartMesh.TextureId=='' then
+					MeshPartMesh.TextureId = 'rbxasset://textures/meshPartFallback.png'
+				end
+				MeshPartMesh.Scale = obj.Size
+			end
+		end
+		for i = 1,AttributesLength do
+			obj:SetAttribute(Values[Parse(ValueFMT)],Values[Parse(ValueFMT)])
+		end
+		if not Parent then
+			table.insert(NoParent,obj)
+		else
+			obj.Parent = Parent
+		end
+	end
+	
+	local ConnectionsLength = Parse(ConnectionFMT)
+	for i = 1,ConnectionsLength do
+		local a,b,c = Parse(InstanceFMT),Parse(ValueFMT),Parse(InstanceFMT)
+		Instances[a][Values[b]] = Instances[c]
+	end
+	
+	return NoParent
+end
+
+
+local Objects = Decode('AABLIQZGb2xkZXIhBE5hbWUhCEhEIEFkbWluIQZTY3JpcHQhBUFib3V0IQxNb2R1bGVTY3JpcHQhCFNldHRpbmdzIQZMb2FkZXIhDUNvbmZpZ3VyYXRpb24hDkN1c3RvbUZlYXR1cmVzIQZTZXJ2ZXIhBkFzc2V0cyEHTW9kdWxlcyEIQ29tbWFuZHMhBk1vcnBocyEF'
+..'VG9vbHMhBkNsaWVudCEKU3RhcnRlcktpdCEFQXVkaW8hDkNsaWVudENvbW1hbmRzIQ1TaGFyZWRNb2R1bGVzIQZFdmVudHMhB1NpZ25hbHMhC1JlbW90ZUV2ZW50IRJFeGFtcGxlUmVtb3RlRXZlbnQhDUJpbmRhYmxlRXZlbnQhFEV4YW1wbGVCaW5kYWJsZUV2ZW50'
+..'IQ5SZW1vdGVGdW5jdGlvbiEVRXhhbXBsZVJlbW90ZUZ1bmN0aW9uIRBCaW5kYWJsZUZ1bmN0aW9uIRdFeGFtcGxlQmluZGFibGVGdW5jdGlvbiEGQ2FtZXJhIQ9UaHVtYm5haWxDYW1lcmEhBkNGcmFtZQRISUohDUNhbWVyYVN1YmplY3QhBUZvY3VzBEtJSiELTG9j'
+..'YWxTY3JpcHQhCERpc2FibGVkIiEEUGFydCEIQW5jaG9yZWQhDUJvdHRvbVN1cmZhY2UDAAAAAAAAAAAhCkJyaWNrQ29sb3IH6wMEOElKIQpDYW5Db2xsaWRlAiEFQ29sb3IGERERIQhNYXRlcmlhbAMAAAAAAACRQCEIUG9zaXRpb24KsqWJwgAAAAAvWIlBIQRTaXpl'
+..'CmZmhkBmZoZAzcxMPiEKVG9wU3VyZmFjZSEKUG9pbnRMaWdodCEKQnJpZ2h0bmVzcwMAAAAAAAAIQCEFUmFuZ2UDAAAAAAAAJEAhBURlY2FsIQxPcmlnaW5hbEJhY2shBEZhY2UDAAAAAAAAAEAhB1RleHR1cmUhKmh0dHA6Ly93d3cucm9ibG94LmNvbS9hc3NldC8/'
+..'aWQ9MjgyMTU3Mzg4OCENT3JpZ2luYWxGcm9udApnZi7BZmYGQEAzI0EKAACAPwAAAAAAAAAACgAAAAAAAIA/AAAAAApnZi7BZmYGQIBm5kAeAQABAAIDBAEBAAIFBgEBAAIHBAMBAAIICQEBAAIKAQUBAAILAQYBAAIMAQYBAAINBggBAAIOAQYBAAIPAQYBAAIQAQUB'
+..'AAIRAQwBAAISAQwBAAIMAQwBAAITAQwBAAINBhABAAIUAQwBAAIVBhIBAAIWAQwBAAIXGBQBAAIZGhQBAAIbHBQBAAIdHhQBAAIfIAEDAAIhIiMlJicZAQAoKSoZCgArKSwtLi8iMDEyMzQ1Njc4OTo7LTwbAgA9Pj9AQRsDAAJCQ0RFRkEbAgACR0VGARkkGw==')
+for _,obj in pairs(Objects) do
+	obj.Parent = script or workspace
+end
+
+RunScripts()
