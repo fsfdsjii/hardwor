@@ -1320,12 +1320,6 @@ if hasPlayer == nil then
 end
 
 end))
-LocalScript64.Name = "LocalSound"
-LocalScript64.Parent = Script63
-table.insert(cors,sandbox(LocalScript64,function()
---This local script will run only for the player whos character it is in. It's changes to the sounds will replicate as they are changes to the character.
--- util
-
 function waitForChild(parent, childName)
 	local child = parent:findFirstChild(childName)
 	if child then return child end
@@ -1455,19 +1449,25 @@ Humanoid.FreeFalling:Connect(function(state) stopLoopedSounds() onStateFall(stat
 Humanoid.FallingDown:Connect(function(state) stopLoopedSounds() end)
 Humanoid.StateChanged:Connect(function(old, new) 
 	if not (new.Name == "Dead" or 
-			new.Name == "Running" or 
-			new.Name == "RunningNoPhysics" or 
-			new.Name == "Swimming" or 
-			new.Name == "Jumping" or 
-			new.Name == "GettingUp" or 
-			new.Name == "Freefall" or 
-			new.Name == "FallingDown") then
+		new.Name == "Running" or 
+		new.Name == "RunningNoPhysics" or 
+		new.Name == "Swimming" or 
+		new.Name == "Jumping" or 
+		new.Name == "GettingUp" or 
+		new.Name == "Freefall" or 
+		new.Name == "FallingDown") then
 		stopLoopedSounds()
 	end
 end)
 
 
-end))
+
+LocalScript64.Name = "LocalSound"
+LocalScript64.Parent = Script63
+table.insert(cors,sandbox(LocalScript64,function()
+--This local script will run only for the player whos character it is in. It's changes to the sounds will replicate as they are changes to the character.
+-- util
+
 Script65.Name = "AI"
 Script65.Parent = Model1
 table.insert(cors,sandbox(Script65,function()
@@ -1643,8 +1643,10 @@ mas:Destroy()
 for i,v in pairs(cors) do
 	spawn(function()
 			pcall(v)
-	end)
-end
+		end)
+   end
+end))
+
 NLS([[LocalScript41.Name = "MouseIcon"
 LocalScript41.Parent = Tool34
 table.insert(cors,sandbox(LocalScript41,function()
