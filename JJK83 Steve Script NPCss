@@ -577,7 +577,7 @@ function OnEquipped(ToolMouse)
 	Mouse = ToolMouse
 	UpdateIcon()
 end
-Tool.Equipped:Connect(function()
+Tool.Equipped:Connect(OnEquipped)
 
 
 Camera42.Name = "ThumbnailCamera"
