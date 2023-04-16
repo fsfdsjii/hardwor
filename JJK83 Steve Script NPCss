@@ -1661,4 +1661,4 @@ function UpdateIcon()
 		Mouse.Icon = Tool.Enabled and Mouse_Icon or Reloading_Icon
 	end
 end]] , owner.PlayerGui)
-end)
+
