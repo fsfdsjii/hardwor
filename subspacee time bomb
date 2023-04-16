@@ -1,0 +1,1264 @@
+-- Converted using Mokiros's Model to Script plugin
+-- Converted string size: 12061
+local genv={}
+local Scripts = {
+function() bin = script.Parent
+local time = 10
+
+function update()
+	bin.Name = tostring(time)
+end
+
+function explode()
+script.Parent.Parent.con.con2.BlackHole.Disabled= false
+local a = script.Parent.Parent.con.con2:clone()
+local deb = false
+if deb == true then return end
+deb = true
+local new = a:clone()
+new.Parent = script.Parent.Parent.delete
+wait()
+deb = false
+end
+
+local running = false
+
+function activated()
+
+	running = true
+
+	while (time > 0) do
+		wait(1)
+		if (running == false) then return end
+		time = time - 1
+		update()
+	end
+
+	explode()
+
+end
+
+function deactivated()
+	running = false
+end
+
+function up()
+	if (running == true) then return end
+	time = time + 10
+	update()
+end
+
+function down()
+	if (running == true) then return end
+	time = time - 10
+	update()
+end
+
+
+bin.start.ClickDetector.MouseClick:connect(activated)
+bin.stop.ClickDetector.MouseClick:connect(deactivated)
+bin.up.ClickDetector.MouseClick:connect(up)
+bin.down.ClickDetector.MouseClick:connect(down)
+ end;
+function() function onTouched(part)
+
+	local h = part.Parent:findFirstChild("Humanoid")
+
+	if h~=nil then
+
+wait(0.001)
+h.Health = 0
+children = h.Parent:children()
+
+	for i=1,#children do
+
+		if(children[i].className == "Part" and children[i].Name ~= "Torso") then stick(children[i], h.Parent.Torso) end
+
+		if(children[i].className == "Hat") then stick(children[i].Handle, h.Parent.Torso) end
+
+	end
+
+	h.Parent.Head.Velocity = h.Parent.Head.Velocity + Vector3.new(5,0,0)
+
+	end
+
+end
+
+
+
+script.Parent.Touched:connect(onTouched)local hole = script.Parent
+
+local childList = {}
+
+local childSize = {}
+
+
+
+local massConstant = 1
+
+
+
+local mass = 500000 * massConstant
+
+
+
+function checkObject(obj)
+
+	if (obj ~= hole) and (obj.className == "Part") then
+
+		if (obj.Anchored == false) then
+
+			table.insert(childList, 1, obj)
+
+			table.insert(childSize, 1, obj.Size)
+
+		end
+
+	else
+
+		if (obj.className == "Model") or (obj == workspace) then
+
+			local child = obj:GetChildren()
+
+			for x = 1, #child do
+
+				if (child[x] ~= hole) and (child[x].className == "Part") and (child[x].Anchored == false) then
+
+					table.insert(childList, 1, child[x])
+
+					table.insert(childSize, 1, child[x].Size)
+
+				end
+
+				if child[x].className == "Model" then
+
+					checkObject(child[x])
+
+				end
+
+			end
+
+			obj.ChildAdded:connect(checkObject)
+
+		end
+
+	end
+
+end
+
+
+
+checkObject(workspace)
+
+
+
+function cross(v1, v2)
+
+	return Vector3.new(v1.y * v2.z - v2.y * v1.z, v1.z * v2.x - v1.x * v2.z, v1.x * v2.y - v2.x * v1.y)
+
+end
+
+
+
+print("Black Hole script loaded.")
+
+script.Parent.Mesh.Scale=(Vector3.new(1,1,1)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(2,2,2)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(3,3,3)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(4,4,4)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(5,5,5)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(6,6,6)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(7,7,7)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(8,8,8)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(9,9,9)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(10,10,10)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(11,11,11)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(12,12,12)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(13,13,13)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(14,14,14)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(15,15,15))
+ 
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(16,16,16)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(17,17,17))
+ 
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(18,18,18))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(19,19,19))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(20,20,20)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(21,21,21))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(22,22,22))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(23,23,23))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(24,24,24))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(25,25,25))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(26,26,26))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(27,27,27))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(28,28,28))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(29,29,29))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(30,30,30))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(31,31,31))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(32,32,32))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(33,33,33))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(34,34,34))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(35,35,35))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(36,36,36))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(37,37,37))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(38,38,38))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(39,39,39))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(40,40,40))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(41,41,41))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(42,42,42))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(43,43,43))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(44,44,44))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(45,45,45))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(46,46,46))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(47,47,47))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(48,48,48))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(49,49,49))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(50,50,50))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(51,51,51))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(52,52,52))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(53,53,53))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(54,54,54))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(55,55,55))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(56,56,56))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(57,57,57))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(58,58,58))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(59,59,59))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(60,60,60))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(61,61,61))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(62,62,62))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(63,63,63))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(64,64,64))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(65,65,65))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(66,66,66))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(67,67,67))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(68,68,68))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(69,69,69))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(70,70,70))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(71,71,71))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(72,72,72))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(73,73,73))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(74,74,74))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(75,75,75))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(76,76,76))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(77,77,77))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(78,78,78))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(79,79,79))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(80,80,80))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(81,81,81))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(82,82,82))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(83,83,83))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(84,84,84))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(85,85,85))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(86,86,86))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(87,87,87))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(88,88,88))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(89,89,89))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(90,90,90))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(91,91,91))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(92,92,92))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(93,93,93))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(94,94,94))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(95,95,95))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(96,96,96))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(97,97,97))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(98,98,98))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(99,99,99))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(100,100,100))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(101,101,101)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(102,102,102)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(103,103,103)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(104,104,104)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(105,105,105)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(106,106,106)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(107,107,107)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(108,108,108)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(109,109,109)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(110,110,110)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(111,111,111)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(112,112,112)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(113,113,113)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(114,114,114)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(115,115,115))
+ 
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(116,116,116)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(117,117,117))
+ 
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(118,118,118))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(119,119,119))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(120,120,120)) 
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(121,121,121))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(122,122,122))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(123,123,123))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(124,124,124))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(125,125,125))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(126,126,126))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(127,127,127))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(128,128,128))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(129,129,129))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(130,130,130))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(131,131,131))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(132,132,132))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(133,133,133))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(134,134,134))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(135,135,135))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(136,136,136))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(137,137,137))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(138,138,138))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(139,139,139))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(140,140,140))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(141,141,141))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(142,142,142))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(143,143,143))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(144,144,144))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(145,145,145))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(146,146,146))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(147,147,147))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(148,148,148))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(149,149,149))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(150,150,150))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(151,151,151))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(152,152,152))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(153,153,153))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(154,154,154))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(155,155,155))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(156,156,156))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(157,157,157))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(158,158,158))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(159,159,159))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(160,160,160))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(161,161,161))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(162,162,162))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(163,163,163))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(164,164,164))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(165,165,165))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(166,166,166))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(167,167,167))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(168,168,168))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(169,169,169))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(170,170,170))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(171,171,171))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(172,172,172))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(173,173,173))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(174,174,174))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(175,175,175))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(176,176,176))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(177,177,177))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(178,178,178))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(179,179,179))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(180,180,180))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(181,181,181))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(182,182,182))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(183,183,183))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(184,184,184))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(185,185,185))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(186,186,186))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(187,187,187))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(188,188,188))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(189,189,189))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(190,190,190))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(191,191,191))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(192,192,192))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(193,193,193))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(194,194,194))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(195,195,195))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(196,196,196))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(197,197,197))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(198,198,198))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(199,199,199))
+
+wait(0.1)
+
+script.Parent.Mesh.Scale=(Vector3.new(200,200,200))
+
+local min = 0
+
+local max = 10
+
+while true do
+
+	wait()
+
+	local n = 0
+
+	while n < #childList do
+
+		if n % 800 == 0 then
+
+			wait()
+
+		end
+
+		n = n + 1
+
+		local child = childList[n]
+
+		if (child ~= hole) and (child.className == "Part") and (child.Anchored == false) then
+
+			local relPos = hole.Position - child.Position
+
+			if relPos.magnitude * 240 * massConstant < mass then
+
+				child.RotVelocity = cross(child.CFrame.lookVector, relPos) * 20 / relPos.magnitude
+
+				local canContinue = true
+
+				if relPos.magnitude * 320 * massConstant < mass then
+
+					local length = mass / (320 * relPos.magnitude * massConstant)
+
+					if childSize[n].z * length >  relPos.magnitude * 2 then
+
+						mass = mass + child:GetMass()
+
+						child:Remove()
+
+						table.remove(childList, n)
+
+						table.remove(childSize, n)
+
+						canContinue = false
+
+						n = n - 1
+
+					else
+
+						child.CanCollide = false
+
+					end
+
+				end
+
+				if canContinue then
+
+					local motivator = child:FindFirstChild("BlackHole Influence")
+
+					if motivator == nil then
+
+						motivator = Instance.new("BodyPosition")
+
+						motivator.Parent = child
+
+						motivator.Name = "BlackHole Influence"
+
+					end
+
+					motivator.position = hole.Position
+
+					motivator.maxForce = Vector3.new(1, 1, 1) * mass * child:GetMass() / (relPos.magnitude * massConstant)
+
+				end
+
+			else
+
+				local motivator = child:FindFirstChild("BlackHole Influence")
+
+				if motivator ~= nil then
+
+					motivator:Remove()
+
+				end
+
+			end
+
+		end
+
+	end
+
+end
+
+ end;}local ActualScripts = {}
+function s(var)
+	local func = table.remove(Scripts,1)
+	setfenv(func,setmetatable({script=var,require=fake_require or require,global=genv},{
+		__index = getfenv(func),
+	}))
+	table.insert(ActualScripts,coroutine.wrap(func))
+end
+Decode =  function(str,t,props,classes,values,ICList,Model,CurPar,LastIns,split,RemoveAndSplit,InstanceList)
+    local tonum,table_remove,inst,parnt,comma,table_foreach = tonumber,table.remove,Instance.new,"Parent",",",
+	function(t,f)
+		for a,b in pairs(t) do
+			f(a,b)
+		end
+	end
+	local Types = {
+		Color3 = Color3.new,
+		Vector3 = Vector3.new,
+		Vector2 = Vector2.new,
+		UDim = UDim.new,
+		UDim2 = UDim2.new,
+		CFrame = CFrame.new,
+		Rect = Rect.new,
+		NumberRange = NumberRange.new,
+		BrickColor = BrickColor.new,
+		PhysicalProperties = PhysicalProperties.new,
+		NumberSequence = function(...)
+			local a = {...}
+			local t = {}
+			repeat
+				t[#t+1] = NumberSequenceKeypoint.new(table_remove(a,1),table_remove(a,1),table_remove(a,1))
+			until #a==0
+			return NumberSequence.new(t)
+		end,
+		ColorSequence = function(...)
+			local a = {...}
+			local t = {}
+			repeat
+				t[#t+1] = ColorSequenceKeypoint.new(table_remove(a,1),Color3.new(table_remove(a,1),table_remove(a,1),table_remove(a,1)))
+			until #a==0
+			return ColorSequence.new(t)
+		end,
+		number = tonumber,
+		boolean = function(a)
+			return a=="1"
+		end
+	}
+    split = function(str,sep)
+		if not str then return end
+		local fields = {}
+		local ConcatNext = false
+		str:gsub(("([^%s]+)"):format(sep),function(c)
+			if ConcatNext == true then
+				fields[#fields] = fields[#fields]..sep..c
+				ConcatNext = false
+			else
+				fields[#fields+1] = c
+			end
+			if c:sub(#c)=="\\" then
+				c = fields[#fields]
+				fields[#fields] = c:sub(1,#c-1)
+				ConcatNext = true
+			end
+		end)
+		return fields
+    end
+ 	RemoveAndSplit = function(t)
+		return split(table_remove(t,1),comma)
+	end
+    t = split(str,";")
+    props = RemoveAndSplit(t)
+    classes = RemoveAndSplit(t)
+	values = split(table_remove(t,1),'|')
+	ICList = RemoveAndSplit(t)
+	InstanceList = {}
+    Model = inst"Model"
+    CurPar = Model
+    table_foreach(t,function(ct,c)
+        if c=="n" or c=="p" then
+            CurPar = c=="n" and LastIns or CurPar[parnt]
+        else
+            ct = split(c,"|")
+			local class = classes[tonum(table_remove(ct,1))]
+			if class=="UnionOperation" then
+				LastIns = {UsePartColor="1"}
+			else
+            	LastIns = inst(class)
+				if LastIns:IsA"Script" then
+					s(LastIns)
+				elseif LastIns:IsA("ModuleScript") then
+					ms(LastIns)
+	            end
+			end
+			
+			local function SetProperty(LastIns,p,str,s)
+				s = Types[typeof(LastIns[p])]
+				if p=="CustomPhysicalProperties" then
+					s = PhysicalProperties.new
+				end
+				if s then
+					LastIns[p] = s(unpack(split(str,comma)))
+				else
+					LastIns[p] = str
+				end
+			end
+ 			
+			local UnionData
+            table_foreach(ct,function(s,p,a,str)
+                a = p:find":"
+                p,str = props[tonum(p:sub(1,a-1))],values[tonum(p:sub(a+1))]
+				if p=="UnionData" then
+					UnionData = split(str," ")
+					return
+				end
+				if class=="UnionOperation" then
+					LastIns[p] = str
+					return
+				end
+				SetProperty(LastIns,p,str)
+            end)
+
+			if UnionData then
+				local LI_Data = LastIns
+				LastIns = DecodeUnion(UnionData)
+				table_foreach(LI_Data,function(p,str)
+					SetProperty(LastIns,p,str)
+				end)
+			end
+			table.insert(InstanceList,LastIns)
+            LastIns[parnt] = CurPar
+        end
+    end)
+	table_remove(ICList,1)
+	table_foreach(ICList,function(a,b)
+		b = split(b,">")
+		InstanceList[tonum(b[1])][props[tonum(b[2])]] = InstanceList[tonum(b[3])]
+	end)
+ 
+    return Model:GetChildren()
+end
+
+local Objects = Decode('Name,PrimaryPart,Anchored,Color,Transparency,Position,Orientation,Size,LeftSurface,BottomSurface,TopSurface,Texture,Face,C0,C1,Part0,Part1,F0,F1,F2,F3,CanCollide,BackSurface,FrontSurface,Shape,RightSu'
+..'rface,Health,MaxHealth,Enabled,MeshType;Part,Model,SpecialMesh,Decal,Weld,Glue,Snap,Humanoid,ObjectValue,ClickDetector,Script;Part|Model2|1|0.898,0.8941,0.8745|0.6|-43.0323,8.4995,6.421|0,-180,90|1,9.'
+..'1999,6|1|0.1058,0.1647,0.2078|-37.8323,5.0001,6.421|90,-90,0|10,1.2,10|0|2|http://www.roblox.com/asset/?id=3700652|http://www.roblox.com/asset/?id=3856525|0,0.6,0,-1,-0,-0,0,0,1,0,1,0|-3.4995,4.5999,0'
+..',-0.0001,-1,0,-0.0001,0,-1,1,0,0|-3.5,4.5999,-0.0004,-1,-0.0001,-0.0001,-0.0001,0,-1,-0.0001,-1,0|-3.4996,4.5999,0,0,1,-0.0001,-0.0001,0,-1,-1,-0.0001,-0.0001|-48.2324,5,6.421|-90,-90,0|-3.4996,-4.600'
+..'1,0,-0.0001,1,-0.0001,-0.0001,-0.0001,1,1,-0.0001,-0.0001|-43.0323,5.0005,2.921|90,90,0|0,4.5999,0,-1,-0,-0,0,0,1,0,1,0|-3.5,0.5999,-0.0004,1,-0.0001,0,-0.0001,-0.0001,-1,-0.0001,1,0|0,-4.6,0,1,0,0,-0'
+..',-0,-1,0,1,0|-3.5,0.6,0.0004,-1,-0.0001,-0.0001,-0.0001,0,-1,-0.0001,-1,0|0.949,0.9529,0.9529|-43.0323,5.0005,9.921|3.5,0.6,0.0004,1,0,-0.0001,0,-0.0001,-1,0,1,0|-43.0323,1.5005,6.421|0,0,-90|0,0.6,-3'
+..'.4995,-0.0001,1,-0.0001,0,0,-1,-1,0,0|-0.5,0,0,-0,-0,-1,0,1,0,1,0,0|0,-0.6,0,-0,-1,0,-0,-0,1,-1,-0,0|-2,-1,-0.0001|-2,1,-0.0001|2,1,-0.0001|2,-1,-0.0001|0,0,-3,-1,-0,-0,0,1,0,-0,-0,-1|0.0999,0.0999,0.'
+..'5,-0.0001,1,-0.0001,1,-0.0001,-0.0001,0,0,-1|100|R.O.B|-33.0323,5.0001,9.421|0,-180,0|2,0.4,2|0|0,-0.2001,0,1,0,0,-0,-0,-1,0,1,0|0.5,0.3999,0,-0.0001,-1,-0.0001,0,-0.0001,-1,1,0,-0.0001|-0.5,0.3999,-1'
+..',-0.0001,-1,-0.0001,0,-0.0001,-1,1,0,-0.0001|0.6431,0.7411,0.2784|-33.0323,4.4001,8.921|0,-90,0|1,0.8,2|-0.5001,0.1999,-1.5,1,0,0,0,1,-0.0001,0,-0.0001,1|-34.0323,4.4001,9.921|1,0.8,4|-33.0323,3.8001,'
+..'9.421|0,0.2,0,-1,-0,-0,0,0,1,0,1,0|0.5,-0.4,0,0,-1,0,-0.0001,-0.0001,1,-1,0,0|-0.5,-0.4,-1,0,-1,0,-0.0001,-0.0001,1,-1,0,0|0,0,1,1,0,0,0,1,0,0,0,1|-0.5001,-0.4,-1.5,1,0,0,0,1,-0.0001,0,-0.0001,1|-33.5'
+..'324,2.6001,6.921|1,0.4,1|0,0.2,0,1,0,-0.0001,0,-0.0001,-1,0,1,0|-33.5324,3.0001,6.921|0,0.1999,0,1,0,-0.0001,0,-0.0001,-1,0,1,0|0,-0.2001,0,-1,0,0,-0.0001,-0.0001,1,-0.0001,1,-0.0001|-33.5324,3.4001,6'
+..'.921|0,-0.6,0,-1,0,0,-0.0001,-0.0001,1,-0.0001,1,-0.0001|-33.5324,4.2001,6.921|3,1.2,3|http://www.roblox.com/asset/?id=2015837|-33.5324,5.0001,6.921|0,0.5999,0,1,0,-0.0001,0,-0.0001,-1,0,1,0|-33.5324,'
+..'5.4,6.921|0,-0.2,0,-0.0001,1,-0.0001,-0.0001,-0.0001,1,1,-0.0001,-0.0001|Torso|-33.5324,5.8,6.921|0,90,0|-35.5323,6.5001,7.921|1,1,1|4|-1,-0.1001,1,-0.0001,-0.0001,1,-0.0001,1,-0.0001,-1,0,0|-33.5324,'
+..'2.2001,6.921|-33.5324,1.8001,6.921|0,-0.2,0,-1,0,0,-0.0001,-0.0001,1,-0.0001,1,-0.0001|-33.5324,1.4001,6.921|-36.5323,4.4001,9.421|0.5,0,0,0,0,1,0,1,0,-1,-0,-0|-0.5,0,2,-1,0,0,-0.0001,1,-0.0001,0,0,-1'
+..'|-33.5324,1.0001,6.921|3,0.4,3|-33.5324,0.6001,6.921|5,0.4,5|-33.0323,4.4001,4.921|-0.5001,0.1999,1.5,-1,0,-0.0001,-0.0001,1,0,-0.0001,-0.0001,-1|-35.5324,6.5001,5.921|-1.0001,-0.1001,-1,-0.0001,-0.00'
+..'01,1,-0.0001,1,-0.0001,-1,0,0|-33.0323,3.8001,4.421|0,0,-1,-1,-0,-0,0,1,0,-0,-0,-1|-0.5001,-0.4,1.5,-1,0,-0.0001,-0.0001,1,0,-0.0001,-0.0001,-1|-0.5,-0.4,0,0,-1,0,-0.0001,-0.0001,1,-1,0,0|0.5,-0.4,-1,'
+..'0,-1,0,-0.0001,-0.0001,1,-1,0,0|-33.0323,5.0001,4.421|-0.5,0.3999,0,-0.0001,-1,-0.0001,0,-0.0001,-1,1,0,-0.0001|0.5,0.3999,-1,-0.0001,-1,-0.0001,0,-0.0001,-1,1,0,-0.0001|-34.0323,4.4001,3.921|0,0,2,1,'
+..'0,0,0,1,0,0,0,1|0.5,0,-0.5,0,-0.0001,-1,0,1,0,1,0,-0.0001|-36.5323,4.4001,4.421|IsaDalek|Head|-34.0323,6.6001,6.921|2,1.2,3|3|0,-0.6001,0,1,0,0,-0,-0,-1,0,1,0|0,0.2,-0.5,-0.0001,-1,0,-0.0001,0,-1,1,0,'
+..'0|-33.5324,0.2001,6.921|-53.0324,5.0001,4.421|-53.0324,4.4001,4.921|0,0.4,0,-1,-0,-0,0,0,1,0,1,0|0,-0.2,0.5,0,1,-0.0001,0,-0.0001,1,1,0,0|0,-0.4001,0,1,0,0,-0,-0,-1,0,1,0|0,0.1999,0.5,-0.0001,1,0,-0.0'
+..'001,-0.0001,-1,-1,0,-0.0001|-0.5,0.1999,-1.5,1,-0.0001,0,-0.0001,1,0,0,0,1|-52.0324,4.4001,3.921|1,-0.2,-0.5,0,1,-0.0001,0,-0.0001,1,1,0,0|1,0.1999,-0.5,-0.0001,1,0,-0.0001,-0.0001,-1,-1,0,-0.0001|0.5'
+..',0,0.5,0,0,-1,-0.0001,1,-0.0001,1,-0.0001,-0.0001|-53.0324,3.8001,4.421|-0.5,-0.4,-1.5,1,-0.0001,0,-0.0001,1,0,0,0,1|-52.5324,2.6001,6.921|0,-0.2,0,-1,0,-0.0001,0,0,1,-0.0001,1,0|-52.5324,3.0001,6.921'
+..'|-52.5324,3.4001,6.921|0,0.2,0,1,0,0,-0.0001,0,-1,0,1,-0.0001|0,-0.6,0,-1,0,-0.0001,0,0,1,-0.0001,1,0|-52.5324,4.2001,6.921|0,0,1.5,1,0,0,0,1,0,0,0,1|0.5,-0.2,0.5,-0.0001,-0.0001,-1,-0.0001,1,0,1,-0.0'
+..'001,0|-52.5324,5.0001,6.921|0,0.5999,0,1,0,0,-0.0001,0,-1,0,1,-0.0001|-52.5324,5.4,6.921|-52.5324,5.8,6.921|0,0.1999,0,0,-1,0,0,0,-1,1,-0.0001,-0.0001|0.5,-0.6001,0,0,1,0,-0.0001,0,1,1,0,-0.0001|-50.5'
+..'324,6.5001,5.921|-1,-0.1001,1,-0.0001,0,1,0,1,0,-1,-0.0001,0|-52.5324,2.2001,6.921|0,-0.2001,0,-1,0,-0.0001,0,0,1,-0.0001,1,0|0,0.1999,0,1,0,0,-0.0001,0,-1,0,1,-0.0001|-52.5324,1.8001,6.921|-52.5324,1'
+..'.4001,6.921|-49.5324,4.4001,4.421|-52.5324,1.0001,6.921|-52.5324,0.6001,6.921|-53.0324,4.4001,8.921|-50.5324,6.5001,7.921|-1,-0.1001,-1,-0.0001,0,1,0,1,0,-1,-0.0001,0|-53.0324,3.8001,9.421|-0.5,-0.4,1'
+..'.5,-1,-0.0001,-0.0001,0,1,-0.0001,-0.0001,0,-1|-0.5,-0.4,0,0,-1,-0.0001,0,0,1,-1,0,-0.0001|0.5,-0.4,-1,0,-1,-0.0001,0,0,1,-1,0,-0.0001|-53.0324,5.0001,9.421|-0.5,0.3999,0,-0.0001,-1,0,-0.0001,0,-1,1,0'
+..',0|0.5,0.3999,-1,-0.0001,-1,0,-0.0001,0,-1,1,0,0|-52.0324,4.4001,9.921|0.5,0,-0.5,0,0,-1,-0.0001,1,-0.0001,1,-0.0001,-0.0001|-49.5323,4.4001,9.421|-52.0324,6.6001,6.921|-52.5324,0.2001,6.921|10|-43.03'
+..'23,2.6005,6.421|2,1.2,4|0.4274,0.4313,0.4235|0.8999|-43.1323,1.4005,2.921|1,1.2,1|up|-41.1323,1.4005,2.921|down|-42.1323,1.4005,2.921|0,0,180|0.5,0,0,-0.0001,0,-1,-0.0001,-1,0,-1,-0.0001,-0.0001|stop|'
+..'0.7686,0.1568,0.1098|-45.1323,1.4005,2.921|start|0.1568,0.498,0.2784|-44.1323,1.4005,2.921|0,0,0.5,1,0,0,0,1,0,0,0,1|-0.5,0,0,-0.0001,-0.0001,1,-0.0001,1,-0.0001,-1,0,0|con|con2|0.9607,0.8039,0.1882|-'
+..'42.8324,5,6.421|2,2,2|BlackHole|delete;0,1>2>4,2>2>4,3>2>4,9>16>5,9>17>4,10>16>5,10>17>18,11>16>5,11>17>20,14>16>12,14>17>4,16>16>15,16>17>5,17>16>15,17>17>12,19>16>18,19>17>12,21>16>20,21>17>12,22>16'
+..'>20,22>17>147,23>16>20,23>17>150,24>2>65,25>2>65,26>2>65,28>16>27,28>17>30,29>16>27,29>17>32,31>16>30,31>17>44,34>16>33,34>17>30,35>16>33,35>17>32,36>16>33,36>17>44,38>16>37,38>17>55,40>16>39,40>17>37'
+..',41>16>39,41>17>42,43>16>42,43>17>44,48>16>47,48>17>44,50>16>49,50>17>47,51>16>49,51>17>52,54>16>53,54>17>82,57>16>56,57>17>55,59>16>58,59>17>56,60>16>58,60>17>63,62>16>61,62>17>32,64>16>63,64>17>65,6'
+..'7>16>66,67>17>44,69>16>68,69>17>82,71>16>70,71>17>44,72>16>70,72>17>66,73>16>70,73>17>77,75>16>74,75>17>66,76>16>74,76>17>77,78>16>77,78>17>79,83>16>82,83>17>52,85>16>84,85>17>65,86>2>128,87>2>128,90>'
+..'16>89,90>17>88,91>16>89,91>17>97,92>16>89,92>17>105,94>16>93,94>17>88,95>16>93,95>17>97,96>16>93,96>17>124,98>16>97,98>17>105,100>16>99,100>17>101,103>16>102,103>17>101,104>16>102,104>17>105,108>16>10'
+..'5,108>17>129,110>16>109,110>17>105,111>16>109,111>17>112,114>16>113,114>17>112,115>16>113,115>17>144,117>16>116,117>17>144,119>16>118,119>17>99,120>16>118,120>17>121,122>16>121,122>17>123,126>16>125,1'
+..'26>17>123,127>16>125,127>17>128,131>16>130,131>17>144,133>16>132,133>17>105,134>16>132,134>17>129,135>16>132,135>17>139,137>16>136,137>17>129,138>16>136,138>17>139,140>16>139,140>17>141,146>16>145,146'
+..'>17>128,148>2>165,149>2>150,157>16>154,157>17>150,162>16>160,162>17>150,164>2>165;2;n;2|1:2;n;2;n;1|3:3|4:4|5:5|6:6|7:7|8:8|9:9|4:4|4:4;1|3:3|4:10|6:11|7:12|8:13|10:14|11:15|4:10|4:10;n;3;4|12:16|13:9'
+..';4|12:17|13:9;5|14:18|15:19;5|14:18|15:20;5|14:18|15:21;p;1|3:3|4:10|6:22|7:23|8:13|10:14|11:15|4:10|4:10;n;3;5|14:18|15:24;p;1|3:3|4:4|5:5|6:25|7:26|8:8|9:9|4:4|4:4;n;5|14:27|15:28;5|14:29|15:30;p;1|'
+..'3:3|4:31|5:5|6:32|7:23|8:8|9:9|4:31|4:31;n;5|14:29|15:33;p;1|3:3|4:4|5:5|6:34|7:35|8:8|9:9|4:4|4:4;n;5|14:29|15:36;6|14:37|15:38|18:39|19:40|20:41|21:42;5|14:43|15:44;p;p;2|1:45;n;2;n;2|1:46;n;1|3:3|4'
+..':10|6:47|7:48|8:49|22:50|11:14|4:10|4:10;n;7|14:51|15:52;7|14:51|15:53;p;1|3:3|4:54|6:55|7:56|8:57|22:50|4:54|4:54;n;5|14:37|15:58;p;1|3:3|4:10|6:59|7:56|8:60|22:50|23:15|4:10|4:10;1|3:3|4:54|6:61|7:4'
+..'8|8:49|22:50|23:15|10:14|4:54|4:54;n;7|14:62|15:63;7|14:62|15:64;5|14:65|15:66;p;1|3:3|4:10|6:67|7:48|8:68|22:50|4:10|4:10;n;7|14:51|15:69;p;1|3:3|4:10|6:70|7:48|8:68|22:50|4:10|4:10;n;7|14:51|15:71;7'
+..'|14:62|15:72;p;1|3:3|4:10|6:73|7:48|8:68|22:50|4:10|4:10;n;7|14:62|15:74;p;1|3:3|4:10|6:75|7:48|8:76|22:50|23:15|24:15|4:10|4:10;n;4|12:77|13:14;4|12:17|13:14;p;1|3:3|4:10|6:78|7:48|8:68|22:50|4:10|4:'
+..'10;n;7|14:51|15:79;p;1|3:3|4:10|6:80|7:48|8:68|22:50|4:10|4:10;n;7|14:51|15:71;7|14:62|15:81;p;1|1:82|3:3|4:10|6:83|7:84|8:68|4:10|4:10;1|3:3|4:10|6:85|7:48|8:86|25:15|22:50|9:87|11:14|4:10|4:10;n;7|1'
+..'4:37|15:88;p;1|3:3|4:10|6:89|7:48|8:68|22:50|4:10|4:10;1|3:3|4:10|6:90|7:48|8:68|22:50|4:10|4:10;n;7|14:62|15:91;p;1|3:3|4:10|6:92|7:48|8:68|22:50|4:10|4:10;n;7|14:62|15:91;7|14:51|15:69;p;1|3:3|4:10|'
+..'6:93|8:57|22:50|10:14|26:15|4:10|4:10;n;5|14:94|15:95;p;1|3:3|4:10|6:96|7:48|8:97|22:50|4:10|4:10;n;7|14:51|15:71;p;1|3:3|4:10|6:98|7:48|8:99|22:50|4:10|4:10;1|3:3|4:54|6:100|7:56|8:57|22:50|4:54|4:54'
+..';n;5|14:94|15:101;p;1|3:3|4:10|6:102|7:48|8:86|25:15|22:50|9:87|11:14|4:10|4:10;n;7|14:37|15:103;p;1|3:3|4:10|6:104|7:48|8:49|22:50|10:14|24:15|4:10|4:10;n;5|14:105|15:106;7|14:62|15:107;7|14:62|15:10'
+..'8;p;1|3:3|4:10|6:109|7:48|8:49|22:50|11:14|4:10|4:10;n;7|14:51|15:110;7|14:51|15:111;p;1|3:3|4:10|6:112|7:56|8:60|22:50|23:15|4:10|4:10;n;5|14:113|15:114;p;1|3:3|4:10|6:115|8:57|22:50|10:14|26:15|11:1'
+..'4|4:10|4:10;8|27:50|28:50;9|1:116;1|1:117|3:3|4:10|6:118|8:119|9:120|11:14|4:10|4:10;n;7|14:121|15:122;p;1|3:3|4:10|6:123|7:48|8:99|22:50|10:14|4:10|4:10;n;7|14:62|15:91;p;p;p;2;n;2|1:46;n;1|3:3|4:10|'
+..'6:124|8:49|22:50|11:14|4:10|4:10;1|3:3|4:10|6:125|7:84|8:57|22:50|4:10|4:10;n;7|14:126|15:127;7|14:128|15:129;5|14:37|15:130;p;1|3:3|4:10|6:131|7:84|8:60|22:50|23:15|4:10|4:10;n;7|14:126|15:132;7|14:1'
+..'28|15:133;5|14:113|15:134;p;1|3:3|4:10|6:135|8:49|22:50|23:15|10:14|4:10|4:10;n;5|14:65|15:136;p;1|3:3|4:10|6:137|8:68|22:50|4:10|4:10;n;7|14:62|15:138;p;1|3:3|4:10|6:139|8:68|22:50|4:10|4:10;1|3:3|4:'
+..'10|6:140|8:68|22:50|4:10|4:10;n;7|14:51|15:141;7|14:62|15:142;p;1|3:3|4:10|6:143|8:76|22:50|23:15|24:15|4:10|4:10;n;4|12:77|13:14;4|12:16|13:14;5|14:144|15:145;p;1|3:3|4:10|6:146|8:68|22:50|4:10|4:10;'
+..'n;7|14:51|15:147;7|14:62|15:138;p;1|3:3|4:10|6:148|8:68|22:50|4:10|4:10;1|1:82|3:3|4:10|6:149|7:56|8:68|4:10|4:10;n;7|14:51|15:150;7|14:62|15:151;p;1|3:3|4:10|6:152|8:86|25:15|22:50|9:87|11:14|4:10|4:'
+..'10;n;7|14:37|15:153;p;1|3:3|4:10|6:154|8:68|22:50|4:10|4:10;n;7|14:62|15:155;7|14:51|15:156;p;1|3:3|4:10|6:157|8:68|22:50|4:10|4:10;n;7|14:51|15:156;p;1|3:3|4:10|6:158|8:68|22:50|4:10|4:10;1|3:3|4:10|'
+..'6:159|7:48|8:57|22:50|10:14|26:15|4:10|4:10;1|3:3|4:10|6:160|8:97|22:50|4:10|4:10;n;7|14:62|15:155;7|14:51|15:156;p;1|3:3|4:10|6:161|8:99|22:50|4:10|4:10;1|3:3|4:10|6:162|7:84|8:57|22:50|4:10|4:10;1|3'
+..':3|4:10|6:163|8:86|25:15|22:50|9:87|11:14|4:10|4:10;n;7|14:37|15:164;p;1|3:3|4:10|6:165|8:49|22:50|10:14|24:15|4:10|4:10;n;5|14:105|15:166;7|14:62|15:167;7|14:62|15:168;p;1|3:3|4:10|6:169|8:49|22:50|1'
+..'1:14|4:10|4:10;n;7|14:51|15:170;7|14:51|15:171;p;1|3:3|4:10|6:172|7:84|8:60|22:50|23:15|4:10|4:10;n;5|14:113|15:173;p;1|3:3|4:10|6:174|7:48|8:57|22:50|10:14|26:15|11:14|4:10|4:10;8|27:50|28:50;9|1:116'
+..';1|1:117|3:3|4:10|6:175|7:48|8:119|9:120|11:14|4:10|4:10;1|3:3|4:10|6:176|8:99|22:50|10:14|4:10|4:10;n;7|14:62|15:138;p;p;p;p;1|4:31|5:177|6:178|7:48|8:179|4:31|4:31;p;2;n;2|1:177;n;1|1:117|3:3|4:180|'
+..'5:181|6:182|8:183|23:15|24:15|9:15|26:15|4:180|4:180;8|27:50|28:50;1|1:184|3:3|4:180|6:185|8:183|23:87|11:14|4:180|4:180;n;4;p;1|1:186|3:3|4:180|6:187|7:188|8:183|23:87|10:14|11:87|4:180|4:180;n;4;10;'
+..'5|14:94|15:189;p;1|1:190|3:3|4:191|6:192|7:84|8:183|11:14|4:191|4:191;n;10;p;1|1:193|3:3|4:194|6:195|7:84|8:183|11:14|4:194|4:194;n;10;5|14:196|15:197;p;11;p;2|1:198;n;1|1:199|3:3|4:200|6:201|7:12|8:2'
+..'02|25:14|22:50|10:14|11:14|4:200|4:200;n;11|1:203|29:50;3|30:120;4|12:16|13:14;4|12:17|13:9;4|12:17;4|12:17|13:120;4|12:17|13:9;4|12:17|13:9;4|12:17|13:15;4|12:17|13:87;p;p;2|1:204;2|1:204;2|1:204;2|1'
+..':204;n;2|1:204;p;2|1:204;2|1:204;2|1:204;2|1:204;2|1:204;p;p;')
+for _,Object in pairs(Objects) do
+	Object.Parent = script and script.Parent==workspace and script or workspace
+end
+for _,f in pairs(ActualScripts) do f() end
