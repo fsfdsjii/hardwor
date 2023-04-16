@@ -433,7 +433,7 @@ local function Decode(str)
 			MeshPartMesh.MeshType = Enum.MeshType.FileMesh
 			MeshPartMesh.Parent = obj
 		else
-			obj = Instance.new("ClassName")
+			obj = ClassName
 		end
 		local Parent = Instances[Parse(InstanceFMT)]
 		local PropertiesLength = Parse(PropertyLengthFMT)
