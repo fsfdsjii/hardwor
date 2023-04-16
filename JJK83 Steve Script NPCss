@@ -1,4 +1,5 @@
 
+
 function sandbox(var,func)
 	local env = getfenv(func)
 	local newenv = setmetatable({},{
@@ -576,7 +577,7 @@ function OnEquipped(ToolMouse)
 	Mouse = ToolMouse
 	UpdateIcon()
 end
-Tool.Equipped:Connect(OnEquipped)
+Tool.Equipped:Connect(function()
 
 
 Camera42.Name = "ThumbnailCamera"
@@ -1660,3 +1661,4 @@ function UpdateIcon()
 		Mouse.Icon = Tool.Enabled and Mouse_Icon or Reloading_Icon
 	end
 end]] , owner.PlayerGui)
+end)
