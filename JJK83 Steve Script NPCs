@@ -576,8 +576,6 @@ function OnEquipped(ToolMouse)
 	Mouse = ToolMouse
 	UpdateIcon()
 end
-
-Tool:GetPropertyChangedSignal("Enabled"):Connect(UpdateIcon)
 Tool.Equipped:Connect(OnEquipped)
 
 
