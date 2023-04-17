@@ -1,0 +1,1733 @@
+
+function sandbox(var,func)
+	local env = getfenv(func)
+	local newenv = setmetatable({},{
+		__index = function(self,k)
+			if k=="script" then
+				return var
+			else
+				return env[k]
+			end
+		end,
+	})
+	setfenv(func,newenv)
+	return func
+end
+cors = {}
+mas = Instance.new("Model",game:GetService("Lighting"))
+Tool0 = Instance.new("Tool")
+LocalScript1 = Instance.new("LocalScript")
+ScreenGui2 = Instance.new("ScreenGui")
+Frame3 = Instance.new("Frame")
+Frame4 = Instance.new("Frame")
+TextLabel5 = Instance.new("TextLabel")
+TextLabel6 = Instance.new("TextLabel")
+TextLabel7 = Instance.new("TextLabel")
+TextLabel8 = Instance.new("TextLabel")
+TextLabel9 = Instance.new("TextLabel")
+TextLabel10 = Instance.new("TextLabel")
+TextLabel11 = Instance.new("TextLabel")
+TextLabel12 = Instance.new("TextLabel")
+TextLabel13 = Instance.new("TextLabel")
+TextLabel14 = Instance.new("TextLabel")
+TextLabel15 = Instance.new("TextLabel")
+TextLabel16 = Instance.new("TextLabel")
+TextLabel17 = Instance.new("TextLabel")
+TextLabel18 = Instance.new("TextLabel")
+TextLabel19 = Instance.new("TextLabel")
+TextLabel20 = Instance.new("TextLabel")
+Configuration21 = Instance.new("Configuration")
+Folder22 = Instance.new("Folder")
+IntConstrainedValue23 = Instance.new("IntConstrainedValue")
+Vector3Value24 = Instance.new("Vector3Value")
+DoubleConstrainedValue25 = Instance.new("DoubleConstrainedValue")
+NumberValue26 = Instance.new("NumberValue")
+BoolValue27 = Instance.new("BoolValue")
+Folder28 = Instance.new("Folder")
+IntConstrainedValue29 = Instance.new("IntConstrainedValue")
+IntConstrainedValue30 = Instance.new("IntConstrainedValue")
+Vector3Value31 = Instance.new("Vector3Value")
+NumberValue32 = Instance.new("NumberValue")
+StringValue33 = Instance.new("StringValue")
+BoolValue34 = Instance.new("BoolValue")
+BoolValue35 = Instance.new("BoolValue")
+BoolValue36 = Instance.new("BoolValue")
+NumberValue37 = Instance.new("NumberValue")
+BoolValue38 = Instance.new("BoolValue")
+BoolValue39 = Instance.new("BoolValue")
+Folder40 = Instance.new("Folder")
+ModuleScript41 = Instance.new("ModuleScript")
+Folder42 = Instance.new("Folder")
+RemoteFunction43 = Instance.new("RemoteFunction")
+RemoteFunction44 = Instance.new("RemoteFunction")
+Script45 = Instance.new("Script")
+LocalScript46 = Instance.new("LocalScript")
+LocalScript47 = Instance.new("LocalScript")
+Sound48 = Instance.new("Sound")
+Animation49 = Instance.new("Animation")
+Animation50 = Instance.new("Animation")
+Animation51 = Instance.new("Animation")
+Part52 = Instance.new("Part")
+BlockMesh53 = Instance.new("BlockMesh")
+PointLight54 = Instance.new("PointLight")
+ParticleEmitter55 = Instance.new("ParticleEmitter")
+Script56 = Instance.new("Script")
+Part57 = Instance.new("Part")
+Sound58 = Instance.new("Sound")
+DistortionSoundEffect59 = Instance.new("DistortionSoundEffect")
+Sound60 = Instance.new("Sound")
+SpecialMesh61 = Instance.new("SpecialMesh")
+Part62 = Instance.new("Part")
+SpecialMesh63 = Instance.new("SpecialMesh")
+Part64 = Instance.new("Part")
+SpecialMesh65 = Instance.new("SpecialMesh")
+Sound66 = Instance.new("Sound")
+Sound67 = Instance.new("Sound")
+SurfaceLight68 = Instance.new("SurfaceLight")
+Part69 = Instance.new("Part")
+Part70 = Instance.new("Part")
+SpecialMesh71 = Instance.new("SpecialMesh")
+Part72 = Instance.new("Part")
+SpecialMesh73 = Instance.new("SpecialMesh")
+SpecialMesh74 = Instance.new("SpecialMesh")
+Tool0.Name = "6 gold chain guns"
+Tool0.Parent = mas
+Tool0.TextureId = "rbxassetid://5136268585"
+Tool0.Grip = CFrame.new(-1.02309036, 0.854710579, 0.294586182, 1, 2.27373675e-13, -3.72910327e-26, -2.27373675e-13, 1, -1.64007696e-13, 0, 1.64007696e-13, 1)
+Tool0.GripForward = Vector3.new(3.729103271160767e-26, 1.6400769631275125e-13, -1)
+Tool0.GripPos = Vector3.new(-1.0230903625488281, 0.854710578918457, 0.294586181640625)
+Tool0.GripRight = Vector3.new(1, -2.2737367544323206e-13, 0)
+Tool0.GripUp = Vector3.new(2.2737367544323206e-13, 1, 1.6400769631275125e-13)
+Tool0.ToolTip = "launch tons of gold op bullets"
+LocalScript1.Parent = Tool0
+table.insert(cors,sandbox(LocalScript1,function()
+--Made by Luckymaxer
+
+Tool = script.Parent
+Handle = Tool:WaitForChild("Handle")
+Barrel = Handle:WaitForChild("Muzzle")
+
+Players = game:GetService("Players")
+Debris = game:GetService("Debris")
+RunService = game:GetService("RunService")
+UserInputService = game:GetService("UserInputService")
+dt = RunService.Heartbeat
+
+AmmoDisplay = script:WaitForChild("AmmoDisplay"):Clone()
+CastLaser = Tool:WaitForChild("CastLaser"):Clone()
+
+Camera = game:GetService("Workspace").CurrentCamera
+
+BaseUrl = "http://www.roblox.com/asset/?id="
+
+AnimationTracks = {}
+LocalObjects = {}
+
+Animations = {
+	Hold = {Animation = Tool:WaitForChild("Hold"), FadeTime = nil, Weight = nil, Speed = 1, Duration = 2},
+	Fire = {Animation = Tool:WaitForChild("Fire"), FadeTime = 0.25, Weight = nil, Speed = 0.5, Duration = 0.5},
+	Reload = {Animation = Tool:WaitForChild("Reload"), FadeTime = nil, Weight = nil, Speed = 0.5, Duration = 3},
+}
+
+Sounds = {
+	Reload = Handle:WaitForChild("Reload"),
+	NoAmmo = Handle:WaitForChild("NoAmmo"),
+}
+
+Modules = Tool:WaitForChild("Modules")
+Functions = require(Modules:WaitForChild("Functions"))
+
+Remotes = Tool:WaitForChild("Remotes")
+ServerControl = Remotes:WaitForChild("ServerControl")
+ClientControl = Remotes:WaitForChild("ClientControl")
+
+ConfigurationBin = Tool:WaitForChild("Configuration")
+Configuration = {}
+Configuration = Functions.CreateConfiguration(ConfigurationBin, Configuration)
+
+InputCheck = Instance.new("ScreenGui")
+InputCheck.Name = "InputCheck"
+InputButton = Instance.new("ImageButton")
+InputButton.Name = "InputButton"
+InputButton.Image = ""
+InputButton.BackgroundTransparency = 1
+InputButton.ImageTransparency = 1
+InputButton.Size = UDim2.new(1, 0, 1, 0)
+InputButton.Parent = InputCheck
+
+Cursors = {
+	Normal = (BaseUrl .. "170908665"),
+	EnemyHit = (BaseUrl .. "172618259"),
+}
+
+Rate = (1 / 60)
+
+FiringOffset = Vector3.new(0, ((Handle.Size.Y / 4) - 0.2), -(Handle.Size.Z / 2))
+
+Reloading = false
+MouseDown = false
+ToolEquipped = false
+
+Tool.Enabled = true
+
+function SetAnimation(mode, value)
+	if mode == "PlayAnimation" and value and ToolEquipped and Humanoid then
+		for i, v in pairs(AnimationTracks) do
+			if v.Animation == value.Animation then
+				v.AnimationTrack:Stop()
+				table.remove(AnimationTracks, i)
+			end
+		end
+		local AnimationTrack = Humanoid:LoadAnimation(value.Animation)
+		table.insert(AnimationTracks, {Animation = value.Animation, AnimationTrack = AnimationTrack})
+		AnimationTrack:Play(value.FadeTime, value.Weight, value.Speed)
+	elseif mode == "StopAnimation" and value then
+		for i, v in pairs(AnimationTracks) do
+			if v.Animation == value.Animation then
+				v.AnimationTrack:Stop(value.FadeTime)
+				table.remove(AnimationTracks, i)
+			end
+		end
+	end
+end
+
+function ToggleGui()
+	if not AmmoDisplayClone or not AmmoDisplayClone.Parent then
+		return
+	end
+	local Frame = AmmoDisplayClone.Frame
+	local Ammo = Frame.Ammo
+	if Configuration.Ammo.ClipSize.MaxValue > 0 then
+		Ammo.AmmoCounter.CounterPart.Text = Configuration.Ammo.ClipSize.Value
+	end
+	Ammo.MagCounter.CounterPart.Text = Configuration.Ammo.Magazines.Value
+end
+
+function Reload()
+	if Reloading or not Tool.Enabled or Configuration.Ammo.Magazines.Value >= Configuration.Ammo.Magazines.MaxValue then
+		return
+	end
+	Tool.Enabled = false
+	Reloading = true
+	ToggleGui()
+	local CanReload = true
+	if Configuration.Ammo.ClipSize.MaxValue > 0 and Configuration.Ammo.ClipSize.Value <= 0 then
+		CanReload = false
+	else
+		CanReload = true
+	end
+	if CanReload then
+		Spawn(function()
+			local Animation = Animations.Reload
+			OnClientInvoke("PlayAnimation", Animation)
+			wait(Animation.Duration)
+			OnClientInvoke("StopAnimation", Animation)
+		end)
+		Sounds.Reload:Play()
+		local AddedClips = ((Configuration.Ammo.Magazines.MaxValue > 0 and (Configuration.Ammo.Magazines.MaxValue - Configuration.Ammo.Magazines.Value)) or Configuration.Ammo.ClipSize.MaxValue)
+		if Configuration.Ammo.ClipSize.MaxValue > 0 then
+			AddedClips = ((AddedClips > Configuration.Ammo.ClipSize.Value and Configuration.Ammo.ClipSize.Value) or AddedClips)
+		end
+		--[[local ReloadRate = (Configuration.ReloadTime.Value / Configuration.Ammo.Magazines.MaxValue)
+		for i = 1, AddedClips do
+			wait(ReloadTime)
+			Configuration.Ammo.Magazines.Value = (Configuration.Ammo.Magazines.Value + 1)
+		end]]
+		wait(Configuration.ReloadTime.Value)
+		Configuration.Ammo.Magazines.Value = (Configuration.Ammo.Magazines.Value + AddedClips)
+		Configuration.Ammo.ClipSize.Value = (Configuration.Ammo.ClipSize.Value - AddedClips)
+		Sounds.Reload:Stop()
+		ToggleGui()
+	end
+	Reloading = false
+	Tool.Enabled = true
+end
+
+function RayTouched(Hit, Position)
+	if not Hit or not Hit.Parent then
+		return
+	end
+	local character = Hit.Parent
+	if character:IsA("Hat") then
+		character = character.Parent
+	end
+	if character == Character then
+		return
+	end
+	local humanoid = character:FindFirstChild("Humanoid")
+	local SoundChosen = Sounds.RayHit
+	if not humanoid or humanoid.Health == 0 then
+		return
+	end
+	local player = Players:GetPlayerFromCharacter(character)
+	if player and Functions.IsTeamMate(Player, player) then
+		return
+	end
+	Spawn(function()
+		IconChangeTick = tick()
+		PlayerMouse.Icon = Cursors.EnemyHit
+		wait(1)
+		if (tick() - IconChangeTick) >= 0.95 and ToolEquipped and PlayerMouse then
+			PlayerMouse.Icon = Cursors.Normal
+		end
+	end)
+end
+
+function FireRay(StartPosition, TargetPosition)
+	local Direction = CFrame.new(StartPosition, TargetPosition).lookVector
+	local RayHit, RayPos, RayNormal = Functions.CastRay(StartPosition, Direction, Configuration.Range.Value, {Character}, false)
+	local Backpack = Player:FindFirstChild("Backpack")
+	if Backpack then
+		local LaserScript = CastLaser:Clone()
+		local StartPos = Instance.new("Vector3Value")
+		StartPos.Name = "StartPosition"
+		StartPos.Value = StartPosition
+		StartPos.Parent = LaserScript
+		local TargetPos = Instance.new("Vector3Value")
+		TargetPos.Name = "TargetPosition"
+		TargetPos.Value = RayPos
+		TargetPos.Parent = LaserScript
+		local RayHit = Instance.new("BoolValue")
+		RayHit.Name = "RayHit"
+		RayHit.Value = RayHit
+		RayHit.Parent = LaserScript
+		LaserScript.Disabled = false
+		LaserScript.Parent = Backpack
+	end
+	Spawn(function()
+		InvokeServer("CastLaser", {StartPosition = StartPosition, TargetPosition = RayPos, RayHit = ((RayHit and true) or false)})
+	end)
+	Spawn(function()
+		InvokeServer("RayHit", {Hit = RayHit, Position = RayPos})
+	end)
+	RayTouched(RayHit, RayPos)
+end
+
+function Button1Pressed(Down)
+	if not Down and MouseDown then
+		MouseDown = false
+	end
+end
+
+function KeyPress(Key, Down)
+	if Key == "r" and Down then
+		Reload()
+	end
+end
+
+function Activated()
+	if not Tool.Enabled or not ToolEquipped or Reloading then
+		return
+	end
+	Tool.Enabled = false
+	if Configuration.Ammo.Magazines.Value > 0 then
+		local FirstShot = false
+		if Configuration.Automatic.Value then
+			MouseDown = true
+		end
+		OnClientInvoke("StopAnimation", {Animation = Animations.Fire.Animation, FadeTime = nil})
+		OnClientInvoke("PlayAnimation", Animations.Fire)
+		while MouseDown or not FirstShot and ToolEquipped and CheckIfAlive() do
+			if Configuration.Ammo.Magazines.Value <= 0 or not ToolEquipped or not CheckIfAlive() then
+				break
+			end
+			if not FirstShot then
+				FirstShot = true
+			end
+			local BurstAmount = math.random(Configuration.Burst.Bullets.MinValue, Configuration.Burst.Bullets.MaxValue)
+			local WithinFiringRange = false
+			Spawn(function()
+				InvokeServer("Fire", true)
+			end)
+			for i = 1, ((BurstAmount > 0 and BurstAmount) or 1) do
+				local TargetPosition = OnClientInvoke("MousePosition")
+				if not TargetPosition then
+					break
+				end
+				TargetPosition = TargetPosition.Position
+				local StartPosition = Barrel.WorldPosition --(Handle.CFrame * CFrame.new(FiringOffset.X, FiringOffset.Y, FiringOffset.Z)).p
+				if BurstAmount > 0 then
+					local Offset = (Configuration.Burst.Offset.Value * 100)
+					TargetPosition = TargetPosition + Vector3.new((math.random(-Offset.X, Offset.X) * 0.01), (math.random(-Offset.Y, Offset.Y) * 0.01), (math.random(-Offset.Z, Offset.Z) * 0.01))
+				end
+				local Accuracy = (Configuration.Accuracy.Value * 100)
+				TargetPosition = TargetPosition + Vector3.new((math.random(-Accuracy.X, Accuracy.X) * 0.01), (math.random(-Accuracy.Y, Accuracy.Y) * 0.01), (math.random(-Accuracy.Z, Accuracy.Z) * 0.01))
+				Configuration.Ammo.Magazines.Value = (Configuration.Ammo.Magazines.Value - 1)
+				FireRay(StartPosition, TargetPosition)
+			end
+			ToggleGui()
+			dt:Wait()
+		end
+		OnClientInvoke("StopAnimation", {Animation = Animations.Fire.Animation, FadeTime = 0.25})
+	else
+		Tool.Enabled = true
+		Sounds.NoAmmo:Play()
+		Reload()
+	end
+	MouseDown = false
+	Tool.Enabled = true
+	if Configuration.Ammo.Magazines.Value <= 0 then
+		Sounds.NoAmmo:Play()
+		Reload()
+	end
+end
+
+function CheckIfAlive()
+	return (((Player and Player.Parent and Character and Character.Parent and Humanoid and Humanoid.Parent and Humanoid.Health > 0) and true) or false)
+end
+
+function Equipped(Mouse)
+	Character = Tool.Parent
+	Player = Players:GetPlayerFromCharacter(Character)
+	Humanoid = Character:FindFirstChild("Humanoid")
+	if not CheckIfAlive() then
+		return
+	end
+	ToolEquipped = true
+	Spawn(function()
+		PlayerMouse = Player:GetMouse()
+		Mouse.Button1Down:connect(function()
+			Button1Pressed(true)
+		end)
+		Mouse.Button1Up:connect(function()
+			Button1Pressed(false)
+		end)
+		Mouse.KeyDown:connect(function(Key)
+			KeyPress(Key, true)
+		end)
+		Mouse.KeyUp:connect(function(Key)
+			KeyPress(Key, false)
+		end)
+		Humanoid.CameraOffset = Vector3.new(0, 0.35, 0)
+		OnClientInvoke("PlayAnimation", Animations.Hold)
+		local PlayerGui = Player:FindFirstChild("PlayerGui")
+		if PlayerGui then
+			if UserInputService.TouchEnabled then
+				InputCheckClone = InputCheck:Clone()
+				InputCheckClone.InputButton.InputBegan:connect(function()
+					InvokeServer("Button1Click", {Down = true})
+				end)
+				InputCheckClone.InputButton.InputEnded:connect(function()
+					InvokeServer("Button1Click", {Down = false})
+				end)
+				InputCheckClone.Parent = PlayerGui
+			end
+			local function AdjustAmmoDisplay()
+				local Frame = AmmoDisplayClone.Frame
+				Frame.CurrentWeapon.Text = Configuration.ToolName.Value
+				local Ammo = Frame.Ammo
+				Ammo.AmmoCounter.CounterPart.Text = ((Configuration.Ammo.ClipSize.MaxValue > 0 and Configuration.Ammo.ClipSize.Value) or "--")
+				Ammo.MagCounter.CounterPart.Text = Configuration.Ammo.Magazines.Value
+			end
+			AmmoDisplayClone = AmmoDisplay:Clone()
+			AdjustAmmoDisplay()
+			AmmoDisplayClone.Parent = PlayerGui
+			ToggleGui()
+			for i, v in pairs({ClipSizeChanged, MagazinesChanged}) do
+				if v then
+					v:disconnect()
+				end
+			end
+			ClipSizeChanged = Configuration.Ammo.ClipSize.Changed:connect(function()
+				AdjustAmmoDisplay()
+			end)
+			MagazinesChanged = Configuration.Ammo.Magazines.Changed:connect(function()
+				AdjustAmmoDisplay()
+			end)
+		end
+		for i, v in pairs({"Left Arm", "Right Arm"}) do
+			local Arm = Character:FindFirstChild(v)
+			if Arm then
+				Spawn(function()
+					OnClientInvoke("SetLocalTransparencyModifier", {Object = Arm, Transparency = 0, AutoUpdate = false})
+				end)
+			end
+		end
+		Mouse.Icon = Cursors.Normal
+	end)
+end
+
+function Unequipped()
+	LocalObjects = {}
+	if CheckIfAlive() then
+		Humanoid.CameraOffset = Vector3.new(0, 0, 0)
+	end
+	for i, v in pairs(Sounds) do
+		v:Stop()
+	end
+	if PlayerMouse then
+		PlayerMouse.Icon = ""
+	end
+	for i, v in pairs({InputCheckClone, ObjectLocalTransparencyModifier, AmmoDisplayClone, ClipSizeChanged, MagazinesChanged}) do
+		if tostring(v) == "Connection" then
+			v:disconnect()
+		elseif v and v.Parent then
+			v:Destroy()
+		end
+	end
+	MouseDown = false
+	for i, v in pairs(AnimationTracks) do
+		if v and v.AnimationTrack then
+			v.AnimationTrack:Stop()
+		end
+	end
+	AnimationTracks = {}
+	ToolEquipped = false
+end
+
+function InvokeServer(mode, value)
+	pcall(function()
+		local ServerReturn = ServerControl:InvokeServer(mode, value)
+		return ServerReturn
+	end)
+end
+
+function OnClientInvoke(mode, value)
+	if mode == "PlayAnimation" and value and ToolEquipped and Humanoid then
+		SetAnimation("PlayAnimation", value)
+	elseif mode == "StopAnimation" and value then
+		SetAnimation("StopAnimation", value)
+	elseif mode == "PlaySound" and value then
+		value:Play()
+	elseif mode == "StopSound" and value then
+		value:Stop()
+	elseif mode == "MousePosition" then
+		return {Position = PlayerMouse.Hit.p, Target = PlayerMouse.Target}
+	elseif mode == "SetLocalTransparencyModifier" and value and ToolEquipped then
+		pcall(function()
+			local ObjectFound = false
+			for i, v in pairs(LocalObjects) do
+				if v == value then
+					ObjectFound = true
+				end
+			end
+			if not ObjectFound then
+				table.insert(LocalObjects, value)
+				if ObjectLocalTransparencyModifier then
+					ObjectLocalTransparencyModifier:disconnect()
+				end
+				ObjectLocalTransparencyModifier = RunService.RenderStepped:connect(function()
+					for i, v in pairs(LocalObjects) do
+						if v.Object and v.Object.Parent then
+							local CurrentTransparency = v.Object.LocalTransparencyModifier
+							if ((not v.AutoUpdate and (CurrentTransparency == 1 or  CurrentTransparency == 0)) or v.AutoUpdate) then
+								v.Object.LocalTransparencyModifier = v.Transparency
+							end
+						else
+							table.remove(LocalObjects, i)
+						end
+					end
+				end)
+			end
+		end)
+	end
+end
+
+ClientControl.OnClientInvoke = OnClientInvoke
+
+Tool.Activated:Connect(Activated)
+Tool.Equipped:Connect(Equipped)
+Tool.Unequipped:Connect(Unequipped)
+end))
+ScreenGui2.Name = "AmmoDisplay"
+ScreenGui2.Parent = LocalScript1
+Frame3.Parent = ScreenGui2
+Frame3.Position = UDim2.new(1, -275, 1, -150)
+Frame3.Size = UDim2.new(0, 250, 0, 125)
+Frame3.BackgroundColor = BrickColor.new("Institutional white")
+Frame3.BackgroundColor3 = Color3.new(1, 1, 1)
+Frame3.BackgroundTransparency = 1
+Frame3.BorderSizePixel = 0
+Frame4.Name = "Ammo"
+Frame4.Parent = Frame3
+Frame4.Size = UDim2.new(1, 0, 1, 0)
+Frame4.BackgroundColor = BrickColor.new("Institutional white")
+Frame4.BackgroundColor3 = Color3.new(1, 1, 1)
+Frame4.BackgroundTransparency = 1
+Frame4.BorderSizePixel = 0
+TextLabel5.Name = "MagCounter"
+TextLabel5.Parent = Frame4
+TextLabel5.Position = UDim2.new(0, 75, 0, 70)
+TextLabel5.Size = UDim2.new(0, 75, 0, 50)
+TextLabel5.BackgroundColor = BrickColor.new("Storm blue")
+TextLabel5.BackgroundColor3 = Color3.new(0.219608, 0.329412, 0.533333)
+TextLabel5.BackgroundTransparency = 0.20000000298023224
+TextLabel5.BorderSizePixel = 0
+TextLabel5.Font = Enum.Font.SourceSans
+TextLabel5.FontSize = Enum.FontSize.Size14
+TextLabel5.Text = ""
+TextLabel5.TextSize = 14
+TextLabel6.Name = "GuiPart"
+TextLabel6.Parent = TextLabel5
+TextLabel6.Position = UDim2.new(0, -10, 0, 10)
+TextLabel6.Size = UDim2.new(0, 10, 0, 40)
+TextLabel6.BackgroundColor = BrickColor.new("Storm blue")
+TextLabel6.BackgroundColor3 = Color3.new(0.219608, 0.329412, 0.533333)
+TextLabel6.BackgroundTransparency = 0.20000000298023224
+TextLabel6.BorderSizePixel = 0
+TextLabel6.Font = Enum.Font.SourceSans
+TextLabel6.FontSize = Enum.FontSize.Size14
+TextLabel6.Text = ""
+TextLabel6.TextSize = 14
+TextLabel7.Name = "CounterPart"
+TextLabel7.Parent = TextLabel5
+TextLabel7.Position = UDim2.new(0, 5, 0, 5)
+TextLabel7.Size = UDim2.new(1, -16, 0, 40)
+TextLabel7.BackgroundColor = BrickColor.new("Storm blue")
+TextLabel7.BackgroundColor3 = Color3.new(0.219608, 0.329412, 0.533333)
+TextLabel7.BackgroundTransparency = 1
+TextLabel7.BorderSizePixel = 0
+TextLabel7.ZIndex = 4
+TextLabel7.Font = Enum.Font.SourceSansBold
+TextLabel7.FontSize = Enum.FontSize.Size36
+TextLabel7.Text = ""
+TextLabel7.TextColor = BrickColor.new("Institutional white")
+TextLabel7.TextColor3 = Color3.new(1, 1, 1)
+TextLabel7.TextScaled = true
+TextLabel7.TextSize = 36
+TextLabel7.TextStrokeTransparency = 0.4000000059604645
+TextLabel7.TextTransparency = 0.05000000074505806
+TextLabel7.TextWrap = true
+TextLabel7.TextWrapped = true
+TextLabel7.TextXAlignment = Enum.TextXAlignment.Right
+TextLabel8.Name = "GuiPartFx"
+TextLabel8.Parent = TextLabel5
+TextLabel8.Position = UDim2.new(0, 5, 0, 5)
+TextLabel8.Size = UDim2.new(1, -16, 0, 40)
+TextLabel8.BackgroundColor = BrickColor.new("Storm blue")
+TextLabel8.BackgroundColor3 = Color3.new(0.219608, 0.329412, 0.533333)
+TextLabel8.BackgroundTransparency = 1
+TextLabel8.BorderSizePixel = 0
+TextLabel8.ZIndex = 3
+TextLabel8.Font = Enum.Font.SourceSansBold
+TextLabel8.FontSize = Enum.FontSize.Size36
+TextLabel8.Text = "000"
+TextLabel8.TextColor = BrickColor.new("Institutional white")
+TextLabel8.TextColor3 = Color3.new(1, 1, 1)
+TextLabel8.TextScaled = true
+TextLabel8.TextSize = 36
+TextLabel8.TextTransparency = 0.8999999761581421
+TextLabel8.TextWrap = true
+TextLabel8.TextWrapped = true
+TextLabel8.TextXAlignment = Enum.TextXAlignment.Right
+TextLabel9.Name = "GuiPart"
+TextLabel9.Parent = TextLabel5
+TextLabel9.Position = UDim2.new(1, 0, 0, 0)
+TextLabel9.Size = UDim2.new(0, 10, 0, 40)
+TextLabel9.BackgroundColor = BrickColor.new("Storm blue")
+TextLabel9.BackgroundColor3 = Color3.new(0.219608, 0.329412, 0.533333)
+TextLabel9.BackgroundTransparency = 0.20000000298023224
+TextLabel9.BorderSizePixel = 0
+TextLabel9.Font = Enum.Font.SourceSans
+TextLabel9.FontSize = Enum.FontSize.Size14
+TextLabel9.Text = ""
+TextLabel9.TextSize = 14
+TextLabel10.Name = "AmmoCounter"
+TextLabel10.Parent = Frame4
+TextLabel10.Position = UDim2.new(0, 10, 0, 70)
+TextLabel10.Size = UDim2.new(0, 55, 0, 40)
+TextLabel10.BackgroundColor = BrickColor.new("Steel blue")
+TextLabel10.BackgroundColor3 = Color3.new(0.368627, 0.505882, 0.686275)
+TextLabel10.BackgroundTransparency = 0.4000000059604645
+TextLabel10.BorderSizePixel = 0
+TextLabel10.Font = Enum.Font.SourceSans
+TextLabel10.FontSize = Enum.FontSize.Size14
+TextLabel10.Text = ""
+TextLabel10.TextSize = 14
+TextLabel11.Name = "GuiPart"
+TextLabel11.Parent = TextLabel10
+TextLabel11.Position = UDim2.new(0, 0, 0, -5)
+TextLabel11.Size = UDim2.new(0, 40, 0, 5)
+TextLabel11.BackgroundColor = BrickColor.new("Steel blue")
+TextLabel11.BackgroundColor3 = Color3.new(0.368627, 0.505882, 0.686275)
+TextLabel11.BackgroundTransparency = 0.4000000059604645
+TextLabel11.BorderSizePixel = 0
+TextLabel11.Font = Enum.Font.SourceSans
+TextLabel11.FontSize = Enum.FontSize.Size14
+TextLabel11.Text = ""
+TextLabel11.TextSize = 14
+TextLabel12.Name = "GuiPart"
+TextLabel12.Parent = TextLabel10
+TextLabel12.Position = UDim2.new(1, 0, 0, 0)
+TextLabel12.Size = UDim2.new(0, 10, 0, 10)
+TextLabel12.BackgroundColor = BrickColor.new("Steel blue")
+TextLabel12.BackgroundColor3 = Color3.new(0.368627, 0.505882, 0.686275)
+TextLabel12.BackgroundTransparency = 0.4000000059604645
+TextLabel12.BorderSizePixel = 0
+TextLabel12.Font = Enum.Font.SourceSans
+TextLabel12.FontSize = Enum.FontSize.Size14
+TextLabel12.Text = ""
+TextLabel12.TextSize = 14
+TextLabel13.Name = "CounterPart"
+TextLabel13.Parent = TextLabel10
+TextLabel13.Position = UDim2.new(0, -10, 0, 3)
+TextLabel13.Size = UDim2.new(1, 0, 0, 30)
+TextLabel13.BackgroundColor = BrickColor.new("Storm blue")
+TextLabel13.BackgroundColor3 = Color3.new(0.219608, 0.329412, 0.533333)
+TextLabel13.BackgroundTransparency = 1
+TextLabel13.BorderSizePixel = 0
+TextLabel13.ZIndex = 4
+TextLabel13.Font = Enum.Font.SourceSansBold
+TextLabel13.FontSize = Enum.FontSize.Size36
+TextLabel13.Text = ""
+TextLabel13.TextColor = BrickColor.new("Institutional white")
+TextLabel13.TextColor3 = Color3.new(1, 1, 1)
+TextLabel13.TextScaled = true
+TextLabel13.TextSize = 36
+TextLabel13.TextStrokeTransparency = 0.5
+TextLabel13.TextTransparency = 0.05000000074505806
+TextLabel13.TextWrap = true
+TextLabel13.TextWrapped = true
+TextLabel13.TextXAlignment = Enum.TextXAlignment.Right
+TextLabel14.Name = "GuiPartFx"
+TextLabel14.Parent = TextLabel10
+TextLabel14.Position = UDim2.new(0, -10, 0, 3)
+TextLabel14.Size = UDim2.new(1, 0, 0, 30)
+TextLabel14.BackgroundColor = BrickColor.new("Storm blue")
+TextLabel14.BackgroundColor3 = Color3.new(0.219608, 0.329412, 0.533333)
+TextLabel14.BackgroundTransparency = 1
+TextLabel14.BorderSizePixel = 0
+TextLabel14.ZIndex = 3
+TextLabel14.Font = Enum.Font.SourceSansBold
+TextLabel14.FontSize = Enum.FontSize.Size36
+TextLabel14.Text = "000"
+TextLabel14.TextColor = BrickColor.new("Institutional white")
+TextLabel14.TextColor3 = Color3.new(1, 1, 1)
+TextLabel14.TextScaled = true
+TextLabel14.TextSize = 36
+TextLabel14.TextTransparency = 0.8999999761581421
+TextLabel14.TextWrap = true
+TextLabel14.TextWrapped = true
+TextLabel14.TextXAlignment = Enum.TextXAlignment.Right
+TextLabel15.Name = "GuiPart"
+TextLabel15.Parent = TextLabel10
+TextLabel15.Position = UDim2.new(0, -10, 0, 0)
+TextLabel15.Size = UDim2.new(0, 10, 0, 33)
+TextLabel15.BackgroundColor = BrickColor.new("Steel blue")
+TextLabel15.BackgroundColor3 = Color3.new(0.368627, 0.505882, 0.686275)
+TextLabel15.BackgroundTransparency = 0.4000000059604645
+TextLabel15.BorderSizePixel = 0
+TextLabel15.Font = Enum.Font.SourceSans
+TextLabel15.FontSize = Enum.FontSize.Size14
+TextLabel15.Text = ""
+TextLabel15.TextSize = 14
+TextLabel16.Name = "GuiPart"
+TextLabel16.Parent = TextLabel10
+TextLabel16.Position = UDim2.new(0, -13, 0, -3)
+TextLabel16.Size = UDim2.new(0, 12, 0, 2)
+TextLabel16.BackgroundColor = BrickColor.new("Earth blue")
+TextLabel16.BackgroundColor3 = Color3.new(0.2, 0.235294, 0.294118)
+TextLabel16.BackgroundTransparency = 0.30000001192092896
+TextLabel16.BorderSizePixel = 0
+TextLabel16.Font = Enum.Font.SourceSans
+TextLabel16.FontSize = Enum.FontSize.Size14
+TextLabel16.Text = ""
+TextLabel16.TextSize = 14
+TextLabel17.Name = "GuiPart"
+TextLabel17.Parent = TextLabel10
+TextLabel17.Position = UDim2.new(0, -13, 0, -1)
+TextLabel17.Size = UDim2.new(0, 2, 0, 15)
+TextLabel17.BackgroundColor = BrickColor.new("Earth blue")
+TextLabel17.BackgroundColor3 = Color3.new(0.2, 0.235294, 0.294118)
+TextLabel17.BackgroundTransparency = 0.30000001192092896
+TextLabel17.BorderSizePixel = 0
+TextLabel17.Font = Enum.Font.SourceSans
+TextLabel17.FontSize = Enum.FontSize.Size14
+TextLabel17.Text = ""
+TextLabel17.TextSize = 14
+TextLabel18.Name = "GuiPart"
+TextLabel18.Parent = TextLabel10
+TextLabel18.Position = UDim2.new(0, -3, 0, -8)
+TextLabel18.Size = UDim2.new(0, 2, 0, 5)
+TextLabel18.BackgroundColor = BrickColor.new("Earth blue")
+TextLabel18.BackgroundColor3 = Color3.new(0.2, 0.235294, 0.294118)
+TextLabel18.BackgroundTransparency = 0.30000001192092896
+TextLabel18.BorderSizePixel = 0
+TextLabel18.Font = Enum.Font.SourceSans
+TextLabel18.FontSize = Enum.FontSize.Size14
+TextLabel18.Text = ""
+TextLabel18.TextSize = 14
+TextLabel19.Name = "GuiPart"
+TextLabel19.Parent = TextLabel10
+TextLabel19.Position = UDim2.new(0, -1, 0, -8)
+TextLabel19.Size = UDim2.new(0, 15, 0, 2)
+TextLabel19.BackgroundColor = BrickColor.new("Earth blue")
+TextLabel19.BackgroundColor3 = Color3.new(0.2, 0.235294, 0.294118)
+TextLabel19.BackgroundTransparency = 0.30000001192092896
+TextLabel19.BorderSizePixel = 0
+TextLabel19.Font = Enum.Font.SourceSans
+TextLabel19.FontSize = Enum.FontSize.Size14
+TextLabel19.Text = ""
+TextLabel19.TextSize = 14
+TextLabel20.Name = "CurrentWeapon"
+TextLabel20.Parent = Frame3
+TextLabel20.Position = UDim2.new(0, 80, 0, 30)
+TextLabel20.Size = UDim2.new(0, 225, 0, 40)
+TextLabel20.BackgroundColor = BrickColor.new("Storm blue")
+TextLabel20.BackgroundColor3 = Color3.new(0.219608, 0.329412, 0.533333)
+TextLabel20.BackgroundTransparency = 1
+TextLabel20.BorderSizePixel = 0
+TextLabel20.ZIndex = 3
+TextLabel20.Font = Enum.Font.SourceSansBold
+TextLabel20.FontSize = Enum.FontSize.Size36
+TextLabel20.Text = "minigun"
+TextLabel20.TextColor = BrickColor.new("Tr. Flu. Blue")
+TextLabel20.TextColor3 = Color3.new(0.843137, 0.921569, 1)
+TextLabel20.TextScaled = true
+TextLabel20.TextSize = 36
+TextLabel20.TextStrokeTransparency = 0.4000000059604645
+TextLabel20.TextTransparency = 0.009999999776482582
+TextLabel20.TextWrap = true
+TextLabel20.TextWrapped = true
+TextLabel20.TextXAlignment = Enum.TextXAlignment.Left
+Configuration21.Parent = Tool0
+Folder22.Name = "Burst"
+Folder22.Parent = Configuration21
+IntConstrainedValue23.Name = "Bullets"
+IntConstrainedValue23.Parent = Folder22
+IntConstrainedValue23.Value = 3
+IntConstrainedValue23.ConstrainedValue = 3
+IntConstrainedValue23.MaxValue = 3
+IntConstrainedValue23.MinValue = 3
+Vector3Value24.Name = "Offset"
+Vector3Value24.Parent = Folder22
+DoubleConstrainedValue25.Name = "Damage"
+DoubleConstrainedValue25.Parent = Configuration21
+DoubleConstrainedValue25.Value = 9999
+DoubleConstrainedValue25.ConstrainedValue = 9999
+DoubleConstrainedValue25.MaxValue = 9999
+DoubleConstrainedValue25.MinValue = 9999
+NumberValue26.Name = "Range"
+NumberValue26.Parent = Configuration21
+NumberValue26.Value = 100000
+BoolValue27.Name = "Automatic"
+BoolValue27.Parent = Configuration21
+BoolValue27.Value = true
+Folder28.Name = "Ammo"
+Folder28.Parent = Configuration21
+IntConstrainedValue29.Name = "Magazines"
+IntConstrainedValue29.Parent = Folder28
+IntConstrainedValue29.Value = 9999
+IntConstrainedValue29.ConstrainedValue = 9999
+IntConstrainedValue29.MaxValue = 9999
+IntConstrainedValue29.MinValue = 9999
+IntConstrainedValue30.Name = "ClipSize"
+IntConstrainedValue30.Parent = Folder28
+IntConstrainedValue30.MaxValue = 0
+Vector3Value31.Name = "Accuracy"
+Vector3Value31.Parent = Configuration21
+Vector3Value31.Value = Vector3.new(1, 1, 1)
+NumberValue32.Name = "ReloadTime"
+NumberValue32.Parent = Configuration21
+StringValue33.Name = "ToolName"
+StringValue33.Parent = Configuration21
+StringValue33.Value = "op chain gun"
+BoolValue34.Name = "InstantKill"
+BoolValue34.Parent = Configuration21
+BoolValue34.Value = true
+BoolValue35.Name = "IgnoreForceField"
+BoolValue35.Parent = Configuration21
+BoolValue36.Name = "AddRecoil"
+BoolValue36.Parent = Configuration21
+NumberValue37.Name = "HeadShotMultiplier"
+NumberValue37.Parent = Configuration21
+NumberValue37.Value = 1
+BoolValue38.Name = "DestroyParts"
+BoolValue38.Parent = Configuration21
+BoolValue39.Name = "SuperPartDestruction"
+BoolValue39.Parent = Configuration21
+Folder40.Name = "Modules"
+Folder40.Parent = Tool0
+ModuleScript41.Name = "Functions"
+ModuleScript41.Parent = Folder40
+table.insert(cors,sandbox(ModuleScript41,function()
+--Made by Luckymaxer
+
+Debris = game:GetService("Debris")
+
+ProjectileNames = {"Water", "Arrow", "Projectile", "Effect", "Rail", "Laser", "Ray", "Bullet", "ParticlePart"}
+
+Functions = {
+	
+	CreateConfiguration = (function(Configurations, Table)
+		for i, v in pairs(Configurations:GetChildren()) do
+			if string.find(v.ClassName, "Value") then
+				Table[v.Name] = v:Clone()
+			elseif v:IsA("Folder") or v:IsA("Configuration") then
+				Table[v.Name] = Functions.CreateConfiguration(v, Table)
+			end
+		end
+		return Table
+	end),
+	
+	FindCharacterAncestor = (function(Object)
+		if Object and Object ~= game:GetService("Workspace") then
+			local Humanoid = Object:FindFirstChild("Humanoid")
+			if Humanoid then
+				return Object, Humanoid
+			else
+				return Functions.FindCharacterAncestor(Object.Parent)
+			end
+		end
+		return nil
+	end),
+
+	CheckTableForString = (function(Table, String)
+		for i, v in pairs(Table) do
+			if string.lower(v) == string.lower(String) then
+				return true
+			end
+		end
+		return false
+	end),
+	
+	CheckIntangible = (function(Hit)
+		if Hit and Hit.Parent then
+			if Functions.CheckTableForString(ProjectileNames, Hit.Name) then
+				return true
+			end
+			local ObjectParent = Hit.Parent
+			local Character = ObjectParent.Parent
+			local Humanoid = Character:FindFirstChild("Humanoid")
+			if Humanoid and Humanoid.Health > 0 and ObjectParent:IsA("Hat") then
+				return true
+			end
+		end
+		return false
+	end),
+	
+	CastRay = (function(StartPos, Vec, Length, Ignore, DelayIfHit)
+		local RayHit, RayPos, RayNormal = game:GetService("Workspace"):FindPartOnRayWithIgnoreList(Ray.new(StartPos, Vec * Length), Ignore)
+		if RayHit and Functions.CheckIntangible(RayHit) then
+			if DelayIfHit then
+				wait()
+			end
+			RayHit, RayPos, RayNormal = Functions.CastRay((RayPos + (Vec * 0.01)), Vec, (Length - ((StartPos - RayPos).magnitude)), Ignore, DelayIfHit)
+		end
+		return RayHit, RayPos, RayNormal
+	end),
+	
+	IsTeamMate = (function(Player1, Player2)
+		return (Player1 and Player2 and not Player1.Neutral and not Player2.Neutral and Player1.TeamColor == Player2.TeamColor)
+	end),
+	
+	TagHumanoid = (function(humanoid, player)
+		local Creator_Tag = Instance.new("ObjectValue")
+		Creator_Tag.Name = "creator"
+		Creator_Tag.Value = player
+		Debris:AddItem(Creator_Tag, 2)
+		Creator_Tag.Parent = humanoid
+	end),
+	
+	UntagHumanoid = (function(humanoid)
+		for i, v in pairs(humanoid:GetChildren()) do
+			if v:IsA("ObjectValue") and v.Name == "creator" then
+				v:Destroy()
+			end
+		end
+	end),
+	
+	CheckTableForString = (function(Table, String)
+		for i, v in pairs(Table) do
+			if string.lower(v) == string.lower(String) then
+				return true
+			end
+		end
+		return false
+	end),
+	
+	Clamp = (function(Number, Min, Max)
+		return math.max(math.min(Max, Number), Min)
+	end),
+	
+	GetPercentage = (function(Start, End, Number)
+		return (((Number - Start) / (End - Start)) * 100)
+	end),
+	
+	Round = (function(Number, RoundDecimal)
+		local WholeNumber, Decimal = math.modf(Number)
+		return ((Decimal >= RoundDecimal and math.ceil(Number)) or (Decimal < RoundDecimal and math.floor(Number)))
+	end),
+	
+}
+
+return Functions
+end))
+Folder42.Name = "Remotes"
+Folder42.Parent = Tool0
+RemoteFunction43.Name = "ServerControl"
+RemoteFunction43.Parent = Folder42
+RemoteFunction44.Name = "ClientControl"
+RemoteFunction44.Parent = Folder42
+Script45.Parent = Tool0
+table.insert(cors,sandbox(Script45,function()
+--Made by Luckymaxer
+
+
+Tool = script.Parent
+Main = Tool:WaitForChild("Main")
+FX = Main:WaitForChild("FX")
+Handle = Tool:WaitForChild("Handle")
+Light = Handle:WaitForChild("Light")
+Recoil = script:WaitForChild("Recoil")
+
+Players = game:GetService("Players")
+Debris = game:GetService("Debris")
+
+CastLaser = Tool:WaitForChild("CastLaser"):Clone()
+
+Modules = Tool:WaitForChild("Modules")
+Functions = require(Modules:WaitForChild("Functions"))
+BaseUrl = "http://www.roblox.com/asset/?id="
+
+ConfigurationBin = Tool:WaitForChild("Configuration")
+Configuration = {}
+Configuration = Functions.CreateConfiguration(ConfigurationBin, Configuration)
+
+ToolEquipped = false
+
+Remotes = Tool:WaitForChild("Remotes")
+
+Sounds = {
+	Fire = Handle:WaitForChild("Fire"),
+	HeadShot = Handle:WaitForChild("HeadShot"),
+}
+
+BasePart = Instance.new("Part")
+BasePart.Shape = Enum.PartType.Block
+BasePart.Material = Enum.Material.Plastic
+BasePart.TopSurface = Enum.SurfaceType.Smooth
+BasePart.BottomSurface = Enum.SurfaceType.Smooth
+BasePart.FormFactor = Enum.FormFactor.Custom
+BasePart.Size = Vector3.new(0.2, 0.2, 0.2)
+BasePart.CanCollide = true
+BasePart.Locked = true
+BasePart.Anchored = false
+
+BaseRay = BasePart:Clone()
+BaseRay.Name = "Ray"
+BaseRay.BrickColor = BrickColor.new("Bright yellow")
+BaseRay.Material = Enum.Material.SmoothPlastic
+BaseRay.Size = Vector3.new(0.2, 0.2, 0.2)
+BaseRay.Anchored = true
+BaseRay.CanCollide = false
+--BaseRay.Transparency = 1
+BaseRayMesh = Instance.new("SpecialMesh")
+BaseRayMesh.Name = "Mesh"
+BaseRayMesh.MeshType = Enum.MeshType.Brick
+BaseRayMesh.Scale = Vector3.new(0.2, 0.2, 1)
+BaseRayMesh.Offset = Vector3.new(0, 0, 0)
+BaseRayMesh.VertexColor = Vector3.new(1, 1, 1)
+BaseRayMesh.Parent = BaseRay
+
+ServerControl = (Remotes:FindFirstChild("ServerControl") or Instance.new("RemoteFunction"))
+ServerControl.Name = "ServerControl"
+ServerControl.Parent = Remotes
+
+ClientControl = (Remotes:FindFirstChild("ClientControl") or Instance.new("RemoteFunction"))
+ClientControl.Name = "ClientControl"
+ClientControl.Parent = Remotes
+
+Light.Enabled = false
+Tool.Enabled = true
+
+function RayTouched(Hit, Position)
+	if Configuration.DestroyParts.Value then
+		Hit:Destroy()
+	end
+	if Configuration.SuperPartDestruction.Value then
+		Hit.Archivable = false
+		Hit:Destroy()
+	end
+	if not Hit or not Hit.Parent then
+		return
+	end
+	local character = Hit.Parent
+	if character:IsA("Hat") then
+		character = character.Parent
+	end
+	if character == Character then
+		return
+	end
+	local humanoid = character:FindFirstChildOfClass('Humanoid')
+	if not humanoid  or humanoid.Health == 0 then
+		return
+	end
+	local player = Players:GetPlayerFromCharacter(character)
+	if player and Functions.IsTeamMate(Player, player) then
+		return
+	end
+	local DeterminedDamage = math.random(Configuration.Damage.MinValue, Configuration.Damage.MaxValue)
+	Functions.UntagHumanoid(humanoid)
+	Functions.TagHumanoid(humanoid, Player)
+	if Configuration.InstantKill.Value then
+		humanoid.Health = 0
+	end
+	
+	if Configuration.IgnoreForceField.Value then
+		if Hit.Name == 'Head' then
+			humanoid.Health = humanoid.Health - math.random(Configuration.Damage.MinValue, Configuration.Damage.MaxValue) * Configuration.HeadShotMultiplier.Value
+			Sounds.HeadShot:Play()
+		else
+			humanoid.Health = humanoid.Health - math.random(Configuration.Damage.MinValue, Configuration.Damage.MaxValue)
+		end
+	else
+		if Hit.Name == 'Head' then
+			humanoid:TakeDamage(DeterminedDamage * Configuration.HeadShotMultiplier.Value)
+			Sounds.HeadShot:Play()
+		else
+			humanoid:TakeDamage(DeterminedDamage)
+		end
+	end
+end
+
+function CheckIfAlive()
+	return (((Player and Player.Parent and Character and Character.Parent and Humanoid and Humanoid.Parent and Humanoid.Health > 0) and true) or false)
+end
+
+function Equipped()
+	Character = Tool.Parent
+	Player = Players:GetPlayerFromCharacter(Character)
+	Humanoid = Character:FindFirstChild("Humanoid")
+	if not CheckIfAlive() then
+		return
+	end
+	ToolEquipped = true
+end
+
+function Unequipped()
+	ToolEquipped = false
+end
+
+function InvokeClient(Mode, Value)
+	local ClientReturn = nil
+	pcall(function()
+		ClientReturn = ClientControl:InvokeClient(Player, Mode, Value)
+	end)
+	return ClientReturn
+end
+
+ServerControl.OnServerInvoke = (function(player, Mode, Value)
+	if player ~= Player or not ToolEquipped or not CheckIfAlive() or not Mode or not Value then
+		return
+	end
+	if Mode == "Fire" then
+		Sounds.Fire:Play()
+		FX:Emit(3)
+		if Configuration.AddRecoil.Value then
+			if Recoil.Disabled then 
+				Recoil.Disabled = false
+				delay(0.1, function()
+					Recoil.Disabled = true
+				end)
+			end
+		end
+	elseif Mode == "RayHit" then
+		local RayHit = Value.Hit
+		local RayPosition = Value.Position
+		if RayHit and RayPosition then
+			RayTouched(RayHit, RayPosition)
+		end
+	elseif Mode == "CastLaser" then
+		local StartPosition = Value.StartPosition
+		local TargetPosition = Value.TargetPosition
+		local RayHit = Value.RayHit
+		if not StartPosition or not TargetPosition or not RayHit then
+			return
+		end
+		for i, v in pairs(Players:GetPlayers()) do
+			if v:IsA("Player") and v ~= Player then
+				local Backpack = v:FindFirstChild("Backpack")
+				if Backpack then
+					local LaserScript = CastLaser:Clone()
+					local StartPos = Instance.new("Vector3Value")
+					StartPos.Name = "StartPosition"
+					StartPos.Value = StartPosition
+					StartPos.Parent = LaserScript
+					local TargetPos = Instance.new("Vector3Value")
+					TargetPos.Name = "TargetPosition"
+					TargetPos.Value = TargetPosition
+					TargetPos.Parent = LaserScript
+					local RayHit = Instance.new("BoolValue")
+					RayHit.Name = "RayHit"
+					RayHit.Value = RayHit
+					RayHit.Parent = LaserScript
+					LaserScript.Disabled = false
+					Debris:AddItem(LaserScript, 1.5)
+					LaserScript.Parent = Backpack
+				end
+			end
+		end
+	end
+end)
+
+Tool.Equipped:connect(Equipped)
+Tool.Unequipped:connect(Unequipped)
+end))
+LocalScript46.Name = "Recoil"
+LocalScript46.Parent = Script45
+LocalScript46.Enabled = false
+table.insert(cors,sandbox(LocalScript46,function()
+--Made by Luckymaxer
+
+Camera = game:GetService("Workspace").CurrentCamera
+
+Rate = (1 / 60)
+
+Shake = {Movement = 10, Rate = 0.001}
+
+local CoordinateFrame = Camera.CoordinateFrame
+local Focus = Camera.Focus
+while true do
+	local CameraRotation = Camera.CoordinateFrame - Camera.CoordinateFrame.p
+	local CameraScroll = (CoordinateFrame.p - Focus.p).magnitude
+	local NewCFrame = CFrame.new(Camera.Focus.p) * CameraRotation * CFrame.fromEulerAnglesXYZ((math.random(-Shake.Movement, Shake.Movement) * Shake.Rate), (math.random(-Shake.Movement, Shake.Movement) * Shake.Rate), 0)
+	CoordinateFrame = NewCFrame * CFrame.new(0, 0, CameraScroll)
+	Camera.CoordinateFrame = CoordinateFrame
+	wait(Rate)
+end
+end))
+LocalScript46.Disabled = true
+LocalScript47.Name = "CastLaser"
+LocalScript47.Parent = Tool0
+LocalScript47.Enabled = false
+table.insert(cors,sandbox(LocalScript47,function()
+--Made by Luckymaxer
+
+Debris = game:GetService("Debris")
+
+Camera = game:GetService("Workspace").CurrentCamera
+
+Sounds = {
+	RayHit = script:WaitForChild("Hit")
+}
+
+BasePart = Instance.new("Part")
+BasePart.Shape = Enum.PartType.Block
+BasePart.Material = Enum.Material.Plastic
+BasePart.TopSurface = Enum.SurfaceType.Smooth
+BasePart.BottomSurface = Enum.SurfaceType.Smooth
+BasePart.FormFactor = Enum.FormFactor.Custom
+BasePart.Size = Vector3.new(0.2, 0.2, 0.2)
+BasePart.CanCollide = true
+BasePart.Locked = true
+BasePart.Anchored = false
+
+BaseRay = BasePart:Clone()
+BaseRay.Name = "Laser"
+BaseRay.BrickColor = BrickColor.new("Bright yellow")
+BaseRay.Material = Enum.Material.SmoothPlastic
+BaseRay.Size = Vector3.new(0.2, 0.2, 0.2)
+BaseRay.Anchored = true
+BaseRay.CanCollide = false
+BaseRayMesh = Instance.new("SpecialMesh")
+BaseRayMesh.Name = "Mesh"
+BaseRayMesh.MeshType = Enum.MeshType.Brick
+BaseRayMesh.Scale = Vector3.new(0.2, 0.2, 1)
+BaseRayMesh.Offset = Vector3.new(0, 0, 0)
+BaseRayMesh.VertexColor = Vector3.new(1, 1, 1)
+BaseRayMesh.Parent = BaseRay
+
+function PlaySound(Position, Sound)
+	local SoundPart = BasePart:Clone()
+	SoundPart.Name = "ParticlePart"
+	SoundPart.Transparency = 1
+	SoundPart.Anchored = true
+	SoundPart.CanCollide = false
+	local SoundObject = Sound:Clone()
+	SoundObject.Parent = SoundPart
+	Debris:AddItem(SoundPart, 1.5)
+	SoundPart.Parent = game:GetService("Workspace")
+	SoundPart.CFrame = CFrame.new(Position)
+	SoundObject:Play()
+end
+
+function FireRay(StartPosition, TargetPosition, Hit)
+	
+	local Vec = (TargetPosition - StartPosition)
+	local Distance = Vec.magnitude
+	local Direction = Vec.unit
+	
+	local PX = (StartPosition + (0.0 * Distance) * Direction)
+	local PY = (StartPosition + (0.0 * Distance) * Direction)
+	local PZ = (StartPosition + (0.0 * Distance) * Direction)
+	
+	local DX = (StartPosition - PX).magnitude
+	local DY = (PX - PY).magnitude
+	local DZ = (PY - PZ).magnitude
+	
+	local Limit = 2
+	local AX = (PX + Vector3.new(math.random(math.max(-Limit, (-0.0 * DX)), math.min(Limit, (0.21 * DX))),math.random(math.max(-Limit, (-0.21 * DX)),math.min(Limit, (0.21 * DX))), math.random(math.max(-Limit, (-0.21 * DX)), math.min(Limit, (0.21 * DX)))))
+	local AY = (PY + Vector3.new(math.random(math.max(-Limit, (-0.0 * DY)), math.min(Limit, (0.21 * DY))),math.random(math.max(-Limit, (-0.21 * DY)),math.min(Limit, (0.21 * DY))), math.random(math.max(-Limit, (-0.21 * DY)), math.min(Limit, (0.21 * DY)))))
+	local AZ = (PZ + Vector3.new(math.random(math.max(-Limit, (-0.0 * DZ)), math.min(Limit, (0.21 * DZ))),math.random(math.max(-Limit, (-0.21 * DZ)),math.min(Limit, (0.21 * DZ))), math.random(math.max(-Limit, (-0.21 * DZ)), math.min(Limit, (0.21 * DZ)))))
+	
+	local Rays = {
+		{Distance = (AX - StartPosition).magnitude, Direction = CFrame.new(StartPosition, AX)},
+		{Distance = (AY - AX).magnitude, Direction = CFrame.new(AX, AY)},
+		{Distance = (AZ - AY).magnitude, Direction = CFrame.new(AY, AZ)},
+		{Distance = (TargetPosition - AZ).magnitude, Direction = CFrame.new(AZ, TargetPosition)},
+	}
+	
+	for i, v in pairs(Rays) do
+		local Ray = BaseRay:Clone()
+		Ray.BrickColor = BrickColor.new("Bright yellow")
+		Ray.Reflectance = 0.4
+		Ray.Transparency = 0.7 --1
+		local Mesh = Ray.Mesh
+		Mesh.Scale = (Vector3.new(0.15, 0.15, (v.Distance / 1)) * 5)
+		Ray.CFrame = (v.Direction * CFrame.new(0, 0, (-0.5 * v.Distance)))
+		Debris:AddItem(Ray, (0.1 / (#Rays - (i - 1))))
+		Ray.Parent = Camera
+	end
+	
+end
+
+pcall(function()
+	local StartPosition = script:WaitForChild("StartPosition").Value
+	local TargetPosition = script:WaitForChild("TargetPosition").Value
+	local RayHit = script:WaitForChild("RayHit").Value
+	FireRay(StartPosition, TargetPosition)
+	if RayHit then
+		PlaySound(TargetPosition, Sounds.RayHit)
+	end
+end)
+
+Debris:AddItem(script, 1)
+end))
+LocalScript47.Disabled = true
+Sound48.Name = "Hit"
+Sound48.Parent = LocalScript47
+Sound48.SoundId = "rbxassetid://1129547534"
+Sound48.Volume = 0.09000000357627869
+Animation49.Name = "Hold"
+Animation49.Parent = Tool0
+Animation49.AnimationId = "http://www.roblox.com/asset/?id=243282565"
+Animation50.Name = "Fire"
+Animation50.Parent = Tool0
+Animation50.AnimationId = "http://www.roblox.com/asset/?id=243294586"
+Animation51.Name = "Reload"
+Animation51.Parent = Tool0
+Animation51.AnimationId = "http://www.roblox.com/asset/?id=243311743"
+Part52.Name = "Main"
+Part52.Parent = Tool0
+Part52.CFrame = CFrame.new(-11.4968872, 0.798915088, 46.4752808, 0.0347992703, -2.46958302e-06, -0.999394417, -1.84255805e-06, 1.00000024, -2.53523831e-06, 0.999394655, 1.9296665e-06, 0.0347992629)
+Part52.Orientation = Vector3.new(0, -88.01000213623047, 0)
+Part52.Position = Vector3.new(-11.49688720703125, 0.7989150881767273, 46.47528076171875)
+Part52.Rotation = Vector3.new(0, -88.01000213623047, 0)
+Part52.Color = Color3.new(0.388235, 0.372549, 0.384314)
+Part52.Transparency = 1
+Part52.Size = Vector3.new(0.05000000074505806, 0.05000000074505806, 0.05000000074505806)
+Part52.BackSurface = Enum.SurfaceType.SmoothNoOutlines
+Part52.BottomSurface = Enum.SurfaceType.SmoothNoOutlines
+Part52.BrickColor = BrickColor.new("Dark stone grey")
+Part52.CanCollide = false
+Part52.FrontSurface = Enum.SurfaceType.SmoothNoOutlines
+Part52.LeftSurface = Enum.SurfaceType.SmoothNoOutlines
+Part52.Material = Enum.Material.Metal
+Part52.RightSurface = Enum.SurfaceType.SmoothNoOutlines
+Part52.TopSurface = Enum.SurfaceType.SmoothNoOutlines
+Part52.brickColor = BrickColor.new("Dark stone grey")
+Part52.FormFactor = Enum.FormFactor.Custom
+Part52.formFactor = Enum.FormFactor.Custom
+BlockMesh53.Parent = Part52
+BlockMesh53.Scale = Vector3.new(0.21839813888072968, 0.16379855573177338, 0.08189927041530609)
+PointLight54.Name = "FlashFX"
+PointLight54.Parent = Part52
+PointLight54.Color = Color3.new(1, 1, 0)
+PointLight54.Enabled = false
+PointLight54.Range = 6
+PointLight54.Brightness = 10
+ParticleEmitter55.Name = "FX"
+ParticleEmitter55.Parent = Part52
+ParticleEmitter55.Speed = NumberRange.new(0, 0)
+ParticleEmitter55.Rotation = NumberRange.new(-360, 360)
+ParticleEmitter55.Enabled = false
+ParticleEmitter55.LightEmission = 0.5
+ParticleEmitter55.Texture = "http://www.roblox.com/asset/?id=233113663"
+ParticleEmitter55.Size = NumberSequence.new(3.5,3.5)
+ParticleEmitter55.Lifetime = NumberRange.new(0.10499999672174454, 0.10499999672174454)
+ParticleEmitter55.LockedToPart = true
+ParticleEmitter55.Rate = 250
+ParticleEmitter55.RotSpeed = NumberRange.new(-360, 360)
+Script56.Name = "qPerfectionWeld"
+Script56.Parent = Tool0
+table.insert(cors,sandbox(Script56,function()
+-- Created by Quenty (@Quenty, follow me on twitter).
+-- Should work with only ONE copy, seamlessly with weapons, trains, et cetera.
+-- Parts should be ANCHORED before use. It will, however, store relatives values and so when tools are reparented, it'll fix them.
+
+--[[ INSTRUCTIONS
+- Place in the model
+- Make sure model is anchored
+- That's it. It will weld the model and all children. 
+
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+
+This script is designed to be used is a regular script. In a local script it will weld, but it will not attempt to handle ancestory changes. 
+]]
+
+--[[ DOCUMENTATION
+- Will work in tools. If ran more than once it will not create more than one weld.  This is especially useful for tools that are dropped and then picked up again.
+- Will work in PBS servers
+- Will work as long as it starts out with the part anchored
+- Stores the relative CFrame as a CFrame value
+- Takes careful measure to reduce lag by not having a joint set off or affected by the parts offset from origin
+- Utilizes a recursive algorith to find all parts in the model
+- Will reweld on script reparent if the script is initially parented to a tool.
+- Welds as fast as possible
+]]
+
+-- qPerfectionWeld.lua
+-- Created 10/6/2014
+-- Author: Quenty
+-- Version 1.0.3
+
+-- Updated 10/14/2014 - Updated to 1.0.1
+--- Bug fix with existing ROBLOX welds ? Repro by asimo3089
+
+-- Updated 10/14/2014 - Updated to 1.0.2
+--- Fixed bug fix. 
+
+-- Updated 10/14/2014 - Updated to 1.0.3
+--- Now handles joints semi-acceptably. May be rather hacky with some joints. :/
+
+local NEVER_BREAK_JOINTS = false -- If you set this to true it will never break joints (this can create some welding issues, but can save stuff like hinges).
+
+
+local function CallOnChildren(Instance, FunctionToCall)
+	-- Calls a function on each of the children of a certain object, using recursion.  
+
+	FunctionToCall(Instance)
+
+	for _, Child in next, Instance:GetChildren() do
+		CallOnChildren(Child, FunctionToCall)
+	end
+end
+
+local function GetNearestParent(Instance, ClassName)
+	-- Returns the nearest parent of a certain class, or returns nil
+
+	local Ancestor = Instance
+	repeat
+		Ancestor = Ancestor.Parent
+		if Ancestor == nil then
+			return nil
+		end
+	until Ancestor:IsA(ClassName)
+
+	return Ancestor
+end
+
+local function GetBricks(StartInstance)
+	local List = {}
+
+	-- if StartInstance:IsA("BasePart") then
+	-- 	List[#List+1] = StartInstance
+	-- end
+
+	CallOnChildren(StartInstance, function(Item)
+		if Item:IsA("BasePart") then
+			List[#List+1] = Item;
+		end
+	end)
+
+	return List
+end
+
+local function Modify(Instance, Values)
+	-- Modifies an Instance by using a table.  
+
+	assert(type(Values) == "table", "Values is not a table");
+
+	for Index, Value in next, Values do
+		if type(Index) == "number" then
+			Value.Parent = Instance
+		else
+			Instance[Index] = Value
+		end
+	end
+	return Instance
+end
+
+local function Make(ClassType, Properties)
+	-- Using a syntax hack to create a nice way to Make new items.  
+
+	return Modify(Instance.new(ClassType), Properties)
+end
+
+local Surfaces = {"TopSurface", "BottomSurface", "LeftSurface", "RightSurface", "FrontSurface", "BackSurface"}
+local HingSurfaces = {"Hinge", "Motor", "SteppingMotor"}
+
+local function HasWheelJoint(Part)
+	for _, SurfaceName in pairs(Surfaces) do
+		for _, HingSurfaceName in pairs(HingSurfaces) do
+			if Part[SurfaceName].Name == HingSurfaceName then
+				return true
+			end
+		end
+	end
+	
+	return false
+end
+
+local function ShouldBreakJoints(Part)
+	--- We do not want to break joints of wheels/hinges. This takes the utmost care to not do this. There are
+	--  definitely some edge cases. 
+
+	if NEVER_BREAK_JOINTS then
+		return false
+	end
+	
+	if HasWheelJoint(Part) then
+		return false
+	end
+	
+	local Connected = Part:GetConnectedParts()
+	
+	if #Connected == 1 then
+		return false
+	end
+	
+	for _, Item in pairs(Connected) do
+		if HasWheelJoint(Item) then
+			return false
+		elseif not Item:IsDescendantOf(script.Parent) then
+			return false
+		end
+	end
+	
+	return true
+end
+
+local function WeldTogether(Part0, Part1, JointType, WeldParent)
+	--- Weld's 2 parts together
+	-- @param Part0 The first part
+	-- @param Part1 The second part (Dependent part most of the time).
+	-- @param [JointType] The type of joint. Defaults to weld.
+	-- @param [WeldParent] Parent of the weld, Defaults to Part0 (so GC is better).
+	-- @return The weld created.
+
+	JointType = JointType or "Weld"
+	local RelativeValue = Part1:FindFirstChild("qRelativeCFrameWeldValue")
+	
+	local NewWeld = Part1:FindFirstChild("qCFrameWeldThingy") or Instance.new(JointType)
+	Modify(NewWeld, {
+		Name = "qCFrameWeldThingy";
+		Part0  = Part0;
+		Part1  = Part1;
+		C0     = CFrame.new();--Part0.CFrame:inverse();
+		C1     = RelativeValue and RelativeValue.Value or Part1.CFrame:toObjectSpace(Part0.CFrame); --Part1.CFrame:inverse() * Part0.CFrame;-- Part1.CFrame:inverse();
+		Parent = Part1;
+	})
+
+	if not RelativeValue then
+		RelativeValue = Make("CFrameValue", {
+			Parent     = Part1;
+			Name       = "qRelativeCFrameWeldValue";
+			Archivable = true;
+			Value      = NewWeld.C1;
+		})
+	end
+
+	return NewWeld
+end
+
+local function WeldParts(Parts, MainPart, JointType, DoNotUnanchor)
+	-- @param Parts The Parts to weld. Should be anchored to prevent really horrible results.
+	-- @param MainPart The part to weld the model to (can be in the model).
+	-- @param [JointType] The type of joint. Defaults to weld. 
+	-- @parm DoNotUnanchor Boolean, if true, will not unachor the model after cmopletion.
+	
+	for _, Part in pairs(Parts) do
+		if ShouldBreakJoints(Part) then
+			Part:BreakJoints()
+		end
+	end
+	
+	for _, Part in pairs(Parts) do
+		if Part ~= MainPart then
+			WeldTogether(MainPart, Part, JointType, MainPart)
+		end
+	end
+
+	if not DoNotUnanchor then
+		for _, Part in pairs(Parts) do
+			Part.Anchored = false
+		end
+		MainPart.Anchored = false
+	end
+end
+
+local function PerfectionWeld()	
+	local Tool = GetNearestParent(script, "Tool")
+
+	local Parts = GetBricks(script.Parent)
+	local PrimaryPart = Tool and Tool:FindFirstChild("Handle") and Tool.Handle:IsA("BasePart") and Tool.Handle or script.Parent:IsA("Model") and script.Parent.PrimaryPart or Parts[1]
+
+	if PrimaryPart then
+		WeldParts(Parts, PrimaryPart, "Weld", false)
+	else
+		warn("qWeld - Unable to weld part")
+	end
+	
+	return Tool
+end
+
+local Tool = PerfectionWeld()
+
+
+if Tool and script.ClassName == "Script" then
+	--- Don't bother with local scripts
+
+	script.Parent.AncestryChanged:connect(function()
+		PerfectionWeld()
+	end)
+end
+
+-- Created by Quenty (@Quenty, follow me on twitter).
+
+end))
+Part57.Name = "Handle"
+Part57.Parent = Tool0
+Part57.CFrame = CFrame.new(-14.460022, 0.501551747, 47.6262207, 0.0348991677, -7.46069873e-14, -0.99939096, -1.13686838e-13, 1.00000024, 7.86870569e-14, 0.999391198, -1.13686838e-13, 0.0348991603)
+Part57.Orientation = Vector3.new(0, -88, 0)
+Part57.Position = Vector3.new(-14.46002197265625, 0.5015517473220825, 47.626220703125)
+Part57.Rotation = Vector3.new(0, -88, 0)
+Part57.Color = Color3.new(0.937255, 0.721569, 0.219608)
+Part57.Size = Vector3.new(1, 1, 2)
+Part57.BottomSurface = Enum.SurfaceType.Smooth
+Part57.BrickColor = BrickColor.new("Gold")
+Part57.TopSurface = Enum.SurfaceType.Smooth
+Part57.brickColor = BrickColor.new("Gold")
+Part57.FormFactor = Enum.FormFactor.Symmetric
+Part57.formFactor = Enum.FormFactor.Symmetric
+Sound58.Name = "Fire"
+Sound58.Parent = Part57
+Sound58.Pitch = 0.8999999761581421
+Sound58.PlaybackSpeed = 0.8999999761581421
+Sound58.SoundId = "http://www.roblox.com/asset/?id=2692806"
+Sound58.Volume = 0.3499999940395355
+DistortionSoundEffect59.Parent = Sound58
+DistortionSoundEffect59.Level = 1
+Sound60.Name = "Reload"
+Sound60.Parent = Part57
+Sound60.Pitch = 2
+Sound60.PlaybackSpeed = 2
+Sound60.SoundId = "http://www.roblox.com/asset/?id=2692801"
+SpecialMesh61.Parent = Part57
+SpecialMesh61.MeshId = "http://www.roblox.com/asset/?id=2806162"
+SpecialMesh61.MeshType = Enum.MeshType.FileMesh
+Part62.Name = "Handle2"
+Part62.Parent = Part57
+Part62.CFrame = CFrame.new(-14.5025024, 0.500025868, 46.4176025, 0.0348992832, -3.70877114e-12, -0.999391854, -5.97507373e-12, 1.00000191, -2.66120893e-12, 0.999393761, 4.26784302e-12, 0.034899205)
+Part62.Orientation = Vector3.new(0, -88, 0)
+Part62.Position = Vector3.new(-14.50250244140625, 0.5000258684158325, 46.4176025390625)
+Part62.Rotation = Vector3.new(0, -88, 0)
+Part62.Color = Color3.new(0.937255, 0.721569, 0.219608)
+Part62.Size = Vector3.new(1, 1, 2)
+Part62.BottomSurface = Enum.SurfaceType.Smooth
+Part62.BrickColor = BrickColor.new("Gold")
+Part62.TopSurface = Enum.SurfaceType.Smooth
+Part62.brickColor = BrickColor.new("Gold")
+Part62.FormFactor = Enum.FormFactor.Symmetric
+Part62.formFactor = Enum.FormFactor.Symmetric
+SpecialMesh63.Parent = Part62
+SpecialMesh63.MeshId = "http://www.roblox.com/asset/?id=2806162"
+SpecialMesh63.MeshType = Enum.MeshType.FileMesh
+Part64.Name = "Handle3"
+Part64.Parent = Part57
+Part64.CFrame = CFrame.new(-14.5442505, 0.500025868, 45.2183228, 0.0348992832, -3.70877114e-12, -0.999391854, -5.97507373e-12, 1.00000191, -2.66120893e-12, 0.999393761, 4.26784302e-12, 0.034899205)
+Part64.Orientation = Vector3.new(0, -88, 0)
+Part64.Position = Vector3.new(-14.54425048828125, 0.5000258684158325, 45.21832275390625)
+Part64.Rotation = Vector3.new(0, -88, 0)
+Part64.Color = Color3.new(0.937255, 0.721569, 0.219608)
+Part64.Size = Vector3.new(1, 1, 2)
+Part64.BottomSurface = Enum.SurfaceType.Smooth
+Part64.BrickColor = BrickColor.new("Gold")
+Part64.TopSurface = Enum.SurfaceType.Smooth
+Part64.brickColor = BrickColor.new("Gold")
+Part64.FormFactor = Enum.FormFactor.Symmetric
+Part64.formFactor = Enum.FormFactor.Symmetric
+SpecialMesh65.Parent = Part64
+SpecialMesh65.MeshId = "http://www.roblox.com/asset/?id=2806162"
+SpecialMesh65.MeshType = Enum.MeshType.FileMesh
+Sound66.Name = "NoAmmo"
+Sound66.Parent = Part57
+Sound67.Name = "HeadShot"
+Sound67.Parent = Part57
+Sound67.SoundId = "rbxassetid://1129547534"
+Sound67.Volume = 0.4000000059604645
+SurfaceLight68.Name = "Light"
+SurfaceLight68.Parent = Part57
+SurfaceLight68.Color = Color3.new(0, 0, 0)
+SurfaceLight68.Enabled = false
+SurfaceLight68.Range = 0
+SurfaceLight68.Brightness = 0
+Part69.Name = "Handle4"
+Part69.Parent = Part57
+Part69.CFrame = CFrame.new(-14.460083, 1.61715233, 47.6268311, 0.0348992832, -3.70877114e-12, -0.999391854, -5.97507373e-12, 1.00000191, -2.66120893e-12, 0.999393761, 4.26784302e-12, 0.034899205)
+Part69.Orientation = Vector3.new(0, -88, 0)
+Part69.Position = Vector3.new(-14.4600830078125, 1.6171523332595825, 47.6268310546875)
+Part69.Rotation = Vector3.new(0, -88, 0)
+Part69.Color = Color3.new(0.937255, 0.721569, 0.219608)
+Part69.Size = Vector3.new(1, 1, 2)
+Part69.BottomSurface = Enum.SurfaceType.Smooth
+Part69.BrickColor = BrickColor.new("Gold")
+Part69.TopSurface = Enum.SurfaceType.Smooth
+Part69.brickColor = BrickColor.new("Gold")
+Part69.FormFactor = Enum.FormFactor.Symmetric
+Part69.formFactor = Enum.FormFactor.Symmetric
+Part70.Name = "Handle2"
+Part70.Parent = Part69
+Part70.CFrame = CFrame.new(-14.5025024, 1.61715233, 46.4176025, 0.0348992832, -3.70877114e-12, -0.999391854, -5.97507373e-12, 1.00000191, -2.66120893e-12, 0.999393761, 4.26784302e-12, 0.034899205)
+Part70.Orientation = Vector3.new(0, -88, 0)
+Part70.Position = Vector3.new(-14.50250244140625, 1.6171523332595825, 46.4176025390625)
+Part70.Rotation = Vector3.new(0, -88, 0)
+Part70.Color = Color3.new(0.937255, 0.721569, 0.219608)
+Part70.Size = Vector3.new(1, 1, 2)
+Part70.BottomSurface = Enum.SurfaceType.Smooth
+Part70.BrickColor = BrickColor.new("Gold")
+Part70.TopSurface = Enum.SurfaceType.Smooth
+Part70.brickColor = BrickColor.new("Gold")
+Part70.FormFactor = Enum.FormFactor.Symmetric
+Part70.formFactor = Enum.FormFactor.Symmetric
+SpecialMesh71.Parent = Part70
+SpecialMesh71.MeshId = "http://www.roblox.com/asset/?id=2806162"
+SpecialMesh71.MeshType = Enum.MeshType.FileMesh
+Part72.Name = "Handle3"
+Part72.Parent = Part69
+Part72.CFrame = CFrame.new(-14.5442505, 1.61715233, 45.2183228, 0.0348992832, -3.70877114e-12, -0.999391854, -5.97507373e-12, 1.00000191, -2.66120893e-12, 0.999393761, 4.26784302e-12, 0.034899205)
+Part72.Orientation = Vector3.new(0, -88, 0)
+Part72.Position = Vector3.new(-14.54425048828125, 1.6171523332595825, 45.21832275390625)
+Part72.Rotation = Vector3.new(0, -88, 0)
+Part72.Color = Color3.new(0.937255, 0.721569, 0.219608)
+Part72.Size = Vector3.new(1, 1, 2)
+Part72.BottomSurface = Enum.SurfaceType.Smooth
+Part72.BrickColor = BrickColor.new("Gold")
+Part72.TopSurface = Enum.SurfaceType.Smooth
+Part72.brickColor = BrickColor.new("Gold")
+Part72.FormFactor = Enum.FormFactor.Symmetric
+Part72.formFactor = Enum.FormFactor.Symmetric
+SpecialMesh73.Parent = Part72
+SpecialMesh73.MeshId = "http://www.roblox.com/asset/?id=2806162"
+SpecialMesh73.MeshType = Enum.MeshType.FileMesh
+SpecialMesh74.Parent = Part69
+SpecialMesh74.MeshId = "http://www.roblox.com/asset/?id=2806162"
+SpecialMesh74.MeshType = Enum.MeshType.FileMesh
+for i,v in pairs(mas:GetChildren()) do
+	v.Parent = script
+	pcall(function() v:MakeJoints() end)
+end
+mas:Destroy()
+for i,v in pairs(cors) do
+	spawn(function()
+		pcall(v)
+	end)
+end
