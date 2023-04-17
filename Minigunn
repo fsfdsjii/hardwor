@@ -91,7 +91,7 @@ Part72 = Instance.new("Part")
 SpecialMesh73 = Instance.new("SpecialMesh")
 SpecialMesh74 = Instance.new("SpecialMesh")
 Tool0.Name = "6 gold chain guns"
-Tool0.Parent = mas
+Tool0.Parent = owner.Backpack
 Tool0.TextureId = "rbxassetid://5136268585"
 Tool0.Grip = CFrame.new(-1.02309036, 0.854710579, 0.294586182, 1, 2.27373675e-13, -3.72910327e-26, -2.27373675e-13, 1, -1.64007696e-13, 0, 1.64007696e-13, 1)
 Tool0.GripForward = Vector3.new(3.729103271160767e-26, 1.6400769631275125e-13, -1)
@@ -525,9 +525,9 @@ end
 
 ClientControl.OnClientInvoke = OnClientInvoke
 
-Tool.Activated:Connect(Activated)
-Tool.Equipped:Connect(Equipped)
-Tool.Unequipped:Connect(Unequipped)
+Tool.Activated:connect(Activated)
+Tool.Equipped:connect(Equipped)
+Tool.Unequipped:connect(Unequipped)
 end))
 ScreenGui2.Name = "AmmoDisplay"
 ScreenGui2.Parent = LocalScript1
@@ -1168,7 +1168,7 @@ LocalScript46.Name = "Recoil"
 LocalScript46.Parent = Script45
 LocalScript46.Enabled = false
 table.insert(cors,sandbox(LocalScript46,function()
---Made by Luckymaxer
+NLS([[--Made by Luckymaxer
 
 Camera = game:GetService("Workspace").CurrentCamera
 
@@ -1185,14 +1185,14 @@ while true do
 	CoordinateFrame = NewCFrame * CFrame.new(0, 0, CameraScroll)
 	Camera.CoordinateFrame = CoordinateFrame
 	wait(Rate)
-end
+end]] , owner.PlayerGui)
 end))
 LocalScript46.Disabled = true
 LocalScript47.Name = "CastLaser"
 LocalScript47.Parent = Tool0
 LocalScript47.Enabled = false
 table.insert(cors,sandbox(LocalScript47,function()
---Made by Luckymaxer
+NLS([[--Made by Luckymaxer
 
 Debris = game:GetService("Debris")
 
@@ -1292,7 +1292,7 @@ pcall(function()
 	end
 end)
 
-Debris:AddItem(script, 1)
+Debris:AddItem(script, 1)]] , owner.PlayerGui)
 end))
 LocalScript47.Disabled = true
 Sound48.Name = "Hit"
@@ -1731,3 +1731,4 @@ for i,v in pairs(cors) do
 		pcall(v)
 	end)
 end
+
