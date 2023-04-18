@@ -59,7 +59,7 @@ SpotLight4.Shadows = true
 LocalScript5.Parent = Tool0
 table.insert(cors,sandbox(LocalScript5,function()
 NLS([[player = game.Players.LocalPlayer
-tool = script.Parent
+tool = script.Parent.Parent.Character.Flashlight
 
 repeat wait() until player
 
