@@ -90,6 +90,7 @@ owner.Chatted:Connect(function(msg)
 		print(":re [user] ")
 		print(":notools [user] ")
 		print(":stealtools [user] ")
+		print(":fly [user] ")
 	end
 end)
 
@@ -1361,5 +1362,54 @@ owner.Chatted:Connect(function(msg)
           Tool = Target.Backpack:GetChildren()
 
 Tool.Parent = owner.Backpack
+	end
+end)
+
+local cmd = ":fly"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Players:FindFirstChild(TargetName)
+NLS([[local plr = game.Players.LocalPlayer -- The local player
+local char = plr.Character or plr.CharacterAdded:Wait() -- The local player's character
+local mouse = plr:GetMouse() -- The local player's mouse
+local cam = workspace.CurrentCamera -- The current camera
+
+local flying = false -- A boolean for checking if the player is flying
+local flyspeed = 10 -- A number for the flying speed
+local flydir = Vector3.new(0,0,0) -- A vector for the flying direction
+
+local function fly() -- A function that enables flying mode
+	flying = true
+	char.Humanoid.PlatformStand = true
+	repeat wait()
+		char.HumanoidRootPart.Velocity = flydir * flyspeed + Vector3.new(0,1,0)
+		if mouse.KeyDown:find("w") then flydir = cam.CFrame.lookVector end
+		if mouse.KeyDown:find("a") then flydir = -cam.CFrame.rightVector end
+		if mouse.KeyDown:find("s") then flydir = -cam.CFrame.lookVector end
+		if mouse.KeyDown:find("d") then flydir = cam.CFrame.rightVector end 
+	until not flying 
+end
+
+local function unfly() -- A function that disables flying mode
+	flying = false 
+	char.Humanoid.PlatformStand = false 
+end
+
+mouse.KeyDown:Connect(function(key) -- A function that listens for key presses
+	if key == "e" then -- If the key is E, then toggle flying mode
+		if flying then 
+			unfly()
+		else 
+			fly()
+		end
+	end
+end)]] , Target.PlayerGui)
+
+
+
 	end
 end)
