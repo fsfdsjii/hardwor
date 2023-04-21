@@ -1136,23 +1136,9 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		Target.Head.Transparency = 1
-		Target.LeftFoot.Transparency = 1
-		Target.LeftHand.Transparency = 1
-		Target.LeftLowerArm.Transparency = 1
-		Target.LeftLowerLeg.Transparency = 1
-		Target.RightLowerArm.Transparency = 1
-		Target.LeftUpperLeg.Transparency = 1
-		Target.LeftUpperArm.Transparency = 1
-		Target.LowerTorso.Transparency = 1
-		Target.RightFoot.Transparency = 1
-		Target.RightHand.Transparency = 1
-		Target.RightLowerArm.Transparency = 1
-		Target.RightLowerLeg.Transparency = 1
-		Target.RightUpperArm.Transparency = 1
-		Target.RightUpperLeg.Transparency = 1
-		Target.UpperTorso.Transparency = 1
-		Target.Head.face:Destroy()
+for _, v in next, Target:GetDescendants() do
+			if v:IsA("BasePart") then
+				v.Transparency = 1
 		local player = Target
 		wait(0.1)
 		local hat = player:FindFirstChildWhichIsA("Accessory")
