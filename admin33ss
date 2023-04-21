@@ -1345,14 +1345,13 @@ owner.Chatted:Connect(function(msg)
 		local Target=game.Players:FindFirstChild(TargetName)
 		for _, v in next, Target.Backpack:GetDescendants() do
 			if v:IsA("Tool") then
-				v.Anchored = false
+			v:Destroy()	
 			end
 		end
 		Toolr = Target.Character:FindFirstChildWhichIsA('Tool')
 		Instance.new("Tool" , Target.Backpack)
 
 		Toolr:Destroy()
-		v:Destroy()
 	end
 end)
 
