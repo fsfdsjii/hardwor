@@ -92,6 +92,7 @@ owner.Chatted:Connect(function(msg)
 		print(":stealtools [user] ")
 		print(":fly [user] ")
 		print(":tp [user] ")
+		print(":bring [user] ")
 	end
 end)
 
@@ -1434,3 +1435,22 @@ local seperator = " "
 
 end)
 
+local cmd = ":bring"
+local seperator = " "
+		owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		for _, v in next, Target:GetDescendants() do
+			if v:IsA("BasePart") then
+						v.Position = owner.Character.HumanoidRootPart.Position
+						end
+						end
+					end
+				end)
+			end
+
+
+end)
