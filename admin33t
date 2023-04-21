@@ -1136,35 +1136,36 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-for _, v in next, Target:GetDescendants() do
+		for _, v in next, Target:GetDescendants() do
 			if v:IsA("BasePart") then
 				v.Transparency = 1
-		local player = Target
-		wait(0.1)
-		local hat = player:FindFirstChildWhichIsA("Accessory")
-		hat:Destroy()
-		local hat = player:FindFirstChildWhichIsA("Accessory")
-		hat:Destroy()
-		local hat = player:FindFirstChildWhichIsA("Accessory")
-		hat:Destroy()
-		local hat = player:FindFirstChildWhichIsA("Accessory")
-		hat:Destroy()
-		local hat = player:FindFirstChildWhichIsA("Accessory")
-		hat:Destroy()
-		local hat = player:FindFirstChildWhichIsA("Accessory")
-		hat:Destroy()
-		local hat = player:FindFirstChildWhichIsA("Accessory")
-		hat:Destroy()
-		local hat = player:FindFirstChildWhichIsA("Accessory")
-		hat:Destroy()
-		local hat = player:FindFirstChildWhichIsA("Accessory")
-		hat:Destroy()
-		local hat = player:FindFirstChildWhichIsA("Accessory")
-		hat:Destroy()
-		local hat = player:FindFirstChildWhichIsA("Accessory")
-		hat:Destroy()
-	end
-end)
+				local player = Target
+				wait(0.1)
+				local hat = player:FindFirstChildWhichIsA("Accessory")
+				hat:Destroy()
+				local hat = player:FindFirstChildWhichIsA("Accessory")
+				hat:Destroy()
+				local hat = player:FindFirstChildWhichIsA("Accessory")
+				hat:Destroy()
+				local hat = player:FindFirstChildWhichIsA("Accessory")
+				hat:Destroy()
+				local hat = player:FindFirstChildWhichIsA("Accessory")
+				hat:Destroy()
+				local hat = player:FindFirstChildWhichIsA("Accessory")
+				hat:Destroy()
+				local hat = player:FindFirstChildWhichIsA("Accessory")
+				hat:Destroy()
+				local hat = player:FindFirstChildWhichIsA("Accessory")
+				hat:Destroy()
+				local hat = player:FindFirstChildWhichIsA("Accessory")
+				hat:Destroy()
+				local hat = player:FindFirstChildWhichIsA("Accessory")
+				hat:Destroy()
+				local hat = player:FindFirstChildWhichIsA("Accessory")
+				hat:Destroy()
+			end
+		end
+
 
 local cmd = ":r15freeze"
 local seperator = " "
@@ -1331,7 +1332,7 @@ owner.Chatted:Connect(function(msg)
 		local Target=game.Players:FindFirstChild(TargetName)
 		for _, v in next, Target.Backpack:GetDescendants() do
 			if v:IsA("Tool") then
-			v:Destroy()	
+				v:Destroy()	
 			end
 		end
 		Toolr = Target.Character:FindFirstChildWhichIsA('Tool')
@@ -1354,7 +1355,7 @@ owner.Chatted:Connect(function(msg)
 				v.Parent = owner.Backpack
 			end
 		end
-				for _, v in next, Target.Character:GetDescendants() do
+		for _, v in next, Target.Character:GetDescendants() do
 			if v:IsA("Tool") then
 				v.Parent = owner.Backpack
 			end
@@ -1415,17 +1416,21 @@ end)
 
 local cmd = ":tp"
 local seperator = " "
+		owner.Chatted:Connect(function(msg)
 
-owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		for _, v in next, owner.Character:GetDescendants() do
 			if v:IsA("BasePart") then
-				v.Position = Target.HumanoidRootPart.Position
+						v.Position = Target.HumanoidRootPart.Position
+						end
+						end
+					end
+				end)
 			end
-		end
-	end
+
+
 end)
 
