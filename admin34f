@@ -1168,213 +1168,213 @@ owner.Chatted:Connect(function(msg)
 		end
 
 
-local cmd = ":r15freeze"
-local seperator = " "
+		local cmd = ":r15freeze"
+		local seperator = " "
 
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		Target.Head.Anchored = true
-		Target.LeftFoot.Anchored = true
-		Target.LeftHand.Anchored = true
-		Target.LeftLowerArm.Anchored = true
-		Target.RightLowerArm.Anchored = true
-		Target.LeftLowerLeg.Anchored = true
-		Target.LeftUpperLeg.Anchored = true
-		Target.LeftUpperArm.Anchored = true
-		Target.LowerTorso.Anchored = true
-		Target.RightFoot.Anchored = true
-		Target.RightHand.Anchored = true
-		Target.RightLowerArm.Anchored = true
-		Target.RightLowerLeg.Anchored = true
-		Target.RightUpperArm.Anchored = true
-		Target.RightUpperLeg.Anchored = true
-		Target.UpperTorso.Anchored = true
-	end
-end)
-
-local cmd = ":r15nofreeze"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		Target.Head.Anchored = false
-		Target.LeftFoot.Anchored = false
-		Target.LeftHand.Anchored = false
-		Target.LeftLowerArm.Anchored = false
-		Target.RightLowerArm.Anchored = false
-		Target.LeftLowerLeg.Anchored = false
-		Target.LeftUpperLeg.Anchored = false
-		Target.LeftUpperArm.Anchored = false
-		Target.LowerTorso.Anchored = false
-		Target.RightFoot.Anchored = false
-		Target.RightHand.Anchored = false
-		Target.RightLowerArm.Anchored = false
-		Target.RightLowerLeg.Anchored = false
-		Target.RightUpperArm.Anchored = false
-		Target.RightUpperLeg.Anchored = false
-		Target.UpperTorso.Anchored = false
-	end
-end)
-
-local cmd = ":r15white"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		Target.Head.BrickColor = BrickColor.new('White')
-		Target.LeftFoot.BrickColor = BrickColor.new('White')
-		Target.LeftHand.BrickColor = BrickColor.new('White')
-		Target.LeftLowerArm.BrickColor = BrickColor.new('White')
-		Target.RightLowerArm.BrickColor = BrickColor.new('White')
-		Target.LeftLowerLeg.BrickColor = BrickColor.new('White')
-		Target.LeftUpperLeg.BrickColor = BrickColor.new('White')
-		Target.LeftUpperArm.BrickColor = BrickColor.new('White')
-		Target.LowerTorso.BrickColor = BrickColor.new('White')
-		Target.RightFoot.BrickColor = BrickColor.new('White')
-		Target.RightHand.BrickColor = BrickColor.new('White')
-		Target.RightLowerArm.BrickColor = BrickColor.new('White')
-		Target.RightLowerLeg.BrickColor = BrickColor.new('White')
-		Target.RightUpperArm.BrickColor = BrickColor.new('White')
-		Target.RightUpperLeg.BrickColor = BrickColor.new('White')
-		Target.UpperTorso.BrickColor = BrickColor.new('White')
-	end
-end)
-
-local cmd = ":r15black"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		Target.Head.BrickColor = BrickColor.new('Really black')
-		Target.LeftFoot.BrickColor = BrickColor.new('Really black')
-		Target.LeftHand.BrickColor = BrickColor.new('Really black')
-		Target.LeftLowerArm.BrickColor = BrickColor.new('Really black')
-		Target.RightLowerArm.BrickColor = BrickColor.new('Really black')
-		Target.LeftLowerLeg.BrickColor = BrickColor.new('Really black')
-		Target.LeftUpperLeg.BrickColor = BrickColor.new('Really black')
-		Target.LeftUpperArm.BrickColor = BrickColor.new('Really black')
-		Target.LowerTorso.BrickColor = BrickColor.new('Really black')
-		Target.RightFoot.BrickColor = BrickColor.new('Really black')
-		Target.RightHand.BrickColor = BrickColor.new('Really black')
-		Target.RightLowerArm.BrickColor = BrickColor.new('Really black')
-		Target.RightLowerLeg.BrickColor = BrickColor.new('Really black')
-		Target.RightUpperArm.BrickColor = BrickColor.new('Really black')
-		Target.RightUpperLeg.BrickColor = BrickColor.new('Really black')
-		Target.UpperTorso.BrickColor = BrickColor.new('Really black')
-	end
-end)
-
-local cmd = ":nohats"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		local player = Target
-		wait(0.1)
-		local hat = player:FindFirstChildWhichIsA("Accessory")
-		hat:Destroy()
-		local hat = player:FindFirstChildWhichIsA("Accessory")
-		hat:Destroy()
-		local hat = player:FindFirstChildWhichIsA("Accessory")
-		hat:Destroy()
-		local hat = player:FindFirstChildWhichIsA("Accessory")
-		hat:Destroy()
-		local hat = player:FindFirstChildWhichIsA("Accessory")
-		hat:Destroy()
-		local hat = player:FindFirstChildWhichIsA("Accessory")
-		hat:Destroy()
-		local hat = player:FindFirstChildWhichIsA("Accessory")
-		hat:Destroy()
-		local hat = player:FindFirstChildWhichIsA("Accessory")
-		hat:Destroy()
-		local hat = player:FindFirstChildWhichIsA("Accessory")
-		hat:Destroy()
-		local hat = player:FindFirstChildWhichIsA("Accessory")
-		hat:Destroy()
-		local hat = player:FindFirstChildWhichIsA("Accessory")
-		hat:Destroy()
-	end
-end)
-
-local cmd = ":re"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Players:FindFirstChild(TargetName)
-		Target:LoadCharacter()
-	end
-end)
-
-local cmd = ":notools"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Players:FindFirstChild(TargetName)
-		for _, v in next, Target.Backpack:GetDescendants() do
-			if v:IsA("Tool") then
-				v:Destroy()	
+		owner.Chatted:Connect(function(msg)
+			local SplitMsg = string.split(msg, seperator)
+			if cmd == SplitMsg[1] then
+				local TargetName=SplitMsg[2]
+				local Target=game.Workspace:FindFirstChild(TargetName)
+				Target.Head.Anchored = true
+				Target.LeftFoot.Anchored = true
+				Target.LeftHand.Anchored = true
+				Target.LeftLowerArm.Anchored = true
+				Target.RightLowerArm.Anchored = true
+				Target.LeftLowerLeg.Anchored = true
+				Target.LeftUpperLeg.Anchored = true
+				Target.LeftUpperArm.Anchored = true
+				Target.LowerTorso.Anchored = true
+				Target.RightFoot.Anchored = true
+				Target.RightHand.Anchored = true
+				Target.RightLowerArm.Anchored = true
+				Target.RightLowerLeg.Anchored = true
+				Target.RightUpperArm.Anchored = true
+				Target.RightUpperLeg.Anchored = true
+				Target.UpperTorso.Anchored = true
 			end
-		end
-		Toolr = Target.Character:FindFirstChildWhichIsA('Tool')
-		Instance.new("Tool" , Target.Backpack)
+		end)
 
-		Toolr:Destroy()
-	end
-end)
+		local cmd = ":r15nofreeze"
+		local seperator = " "
 
-local cmd = ":stealtools"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Players:FindFirstChild(TargetName)
-		for _, v in next, Target.Backpack:GetDescendants() do
-			if v:IsA("Tool") then
-				v.Parent = owner.Backpack
+		owner.Chatted:Connect(function(msg)
+			local SplitMsg = string.split(msg, seperator)
+			if cmd == SplitMsg[1] then
+				local TargetName=SplitMsg[2]
+				local Target=game.Workspace:FindFirstChild(TargetName)
+				Target.Head.Anchored = false
+				Target.LeftFoot.Anchored = false
+				Target.LeftHand.Anchored = false
+				Target.LeftLowerArm.Anchored = false
+				Target.RightLowerArm.Anchored = false
+				Target.LeftLowerLeg.Anchored = false
+				Target.LeftUpperLeg.Anchored = false
+				Target.LeftUpperArm.Anchored = false
+				Target.LowerTorso.Anchored = false
+				Target.RightFoot.Anchored = false
+				Target.RightHand.Anchored = false
+				Target.RightLowerArm.Anchored = false
+				Target.RightLowerLeg.Anchored = false
+				Target.RightUpperArm.Anchored = false
+				Target.RightUpperLeg.Anchored = false
+				Target.UpperTorso.Anchored = false
 			end
-		end
-		for _, v in next, Target.Character:GetDescendants() do
-			if v:IsA("Tool") then
-				v.Parent = owner.Backpack
+		end)
+
+		local cmd = ":r15white"
+		local seperator = " "
+
+		owner.Chatted:Connect(function(msg)
+			local SplitMsg = string.split(msg, seperator)
+			if cmd == SplitMsg[1] then
+				local TargetName=SplitMsg[2]
+				local Target=game.Workspace:FindFirstChild(TargetName)
+				Target.Head.BrickColor = BrickColor.new('White')
+				Target.LeftFoot.BrickColor = BrickColor.new('White')
+				Target.LeftHand.BrickColor = BrickColor.new('White')
+				Target.LeftLowerArm.BrickColor = BrickColor.new('White')
+				Target.RightLowerArm.BrickColor = BrickColor.new('White')
+				Target.LeftLowerLeg.BrickColor = BrickColor.new('White')
+				Target.LeftUpperLeg.BrickColor = BrickColor.new('White')
+				Target.LeftUpperArm.BrickColor = BrickColor.new('White')
+				Target.LowerTorso.BrickColor = BrickColor.new('White')
+				Target.RightFoot.BrickColor = BrickColor.new('White')
+				Target.RightHand.BrickColor = BrickColor.new('White')
+				Target.RightLowerArm.BrickColor = BrickColor.new('White')
+				Target.RightLowerLeg.BrickColor = BrickColor.new('White')
+				Target.RightUpperArm.BrickColor = BrickColor.new('White')
+				Target.RightUpperLeg.BrickColor = BrickColor.new('White')
+				Target.UpperTorso.BrickColor = BrickColor.new('White')
 			end
-		end
-	end
-end)
+		end)
+
+		local cmd = ":r15black"
+		local seperator = " "
+
+		owner.Chatted:Connect(function(msg)
+			local SplitMsg = string.split(msg, seperator)
+			if cmd == SplitMsg[1] then
+				local TargetName=SplitMsg[2]
+				local Target=game.Workspace:FindFirstChild(TargetName)
+				Target.Head.BrickColor = BrickColor.new('Really black')
+				Target.LeftFoot.BrickColor = BrickColor.new('Really black')
+				Target.LeftHand.BrickColor = BrickColor.new('Really black')
+				Target.LeftLowerArm.BrickColor = BrickColor.new('Really black')
+				Target.RightLowerArm.BrickColor = BrickColor.new('Really black')
+				Target.LeftLowerLeg.BrickColor = BrickColor.new('Really black')
+				Target.LeftUpperLeg.BrickColor = BrickColor.new('Really black')
+				Target.LeftUpperArm.BrickColor = BrickColor.new('Really black')
+				Target.LowerTorso.BrickColor = BrickColor.new('Really black')
+				Target.RightFoot.BrickColor = BrickColor.new('Really black')
+				Target.RightHand.BrickColor = BrickColor.new('Really black')
+				Target.RightLowerArm.BrickColor = BrickColor.new('Really black')
+				Target.RightLowerLeg.BrickColor = BrickColor.new('Really black')
+				Target.RightUpperArm.BrickColor = BrickColor.new('Really black')
+				Target.RightUpperLeg.BrickColor = BrickColor.new('Really black')
+				Target.UpperTorso.BrickColor = BrickColor.new('Really black')
+			end
+		end)
+
+		local cmd = ":nohats"
+		local seperator = " "
+
+		owner.Chatted:Connect(function(msg)
+			local SplitMsg = string.split(msg, seperator)
+			if cmd == SplitMsg[1] then
+				local TargetName=SplitMsg[2]
+				local Target=game.Workspace:FindFirstChild(TargetName)
+				local player = Target
+				wait(0.1)
+				local hat = player:FindFirstChildWhichIsA("Accessory")
+				hat:Destroy()
+				local hat = player:FindFirstChildWhichIsA("Accessory")
+				hat:Destroy()
+				local hat = player:FindFirstChildWhichIsA("Accessory")
+				hat:Destroy()
+				local hat = player:FindFirstChildWhichIsA("Accessory")
+				hat:Destroy()
+				local hat = player:FindFirstChildWhichIsA("Accessory")
+				hat:Destroy()
+				local hat = player:FindFirstChildWhichIsA("Accessory")
+				hat:Destroy()
+				local hat = player:FindFirstChildWhichIsA("Accessory")
+				hat:Destroy()
+				local hat = player:FindFirstChildWhichIsA("Accessory")
+				hat:Destroy()
+				local hat = player:FindFirstChildWhichIsA("Accessory")
+				hat:Destroy()
+				local hat = player:FindFirstChildWhichIsA("Accessory")
+				hat:Destroy()
+				local hat = player:FindFirstChildWhichIsA("Accessory")
+				hat:Destroy()
+			end
+		end)
+
+		local cmd = ":re"
+		local seperator = " "
+
+		owner.Chatted:Connect(function(msg)
+			local SplitMsg = string.split(msg, seperator)
+			if cmd == SplitMsg[1] then
+				local TargetName=SplitMsg[2]
+				local Target=game.Players:FindFirstChild(TargetName)
+				Target:LoadCharacter()
+			end
+		end)
+
+		local cmd = ":notools"
+		local seperator = " "
+
+		owner.Chatted:Connect(function(msg)
+			local SplitMsg = string.split(msg, seperator)
+			if cmd == SplitMsg[1] then
+				local TargetName=SplitMsg[2]
+				local Target=game.Players:FindFirstChild(TargetName)
+				for _, v in next, Target.Backpack:GetDescendants() do
+					if v:IsA("Tool") then
+						v:Destroy()	
+					end
+				end
+				Toolr = Target.Character:FindFirstChildWhichIsA('Tool')
+				Instance.new("Tool" , Target.Backpack)
+
+				Toolr:Destroy()
+			end
+		end)
+
+		local cmd = ":stealtools"
+		local seperator = " "
+
+		owner.Chatted:Connect(function(msg)
+			local SplitMsg = string.split(msg, seperator)
+			if cmd == SplitMsg[1] then
+				local TargetName=SplitMsg[2]
+				local Target=game.Players:FindFirstChild(TargetName)
+				for _, v in next, Target.Backpack:GetDescendants() do
+					if v:IsA("Tool") then
+						v.Parent = owner.Backpack
+					end
+				end
+				for _, v in next, Target.Character:GetDescendants() do
+					if v:IsA("Tool") then
+						v.Parent = owner.Backpack
+					end
+				end
+			end
+		end)
 
 
 
-local cmd = ":fly"
-local seperator = " "
+		local cmd = ":fly"
+		local seperator = " "
 
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Players:FindFirstChild(TargetName)
-		NLS([[local plr = game.Players.LocalPlayer -- The local player
+		owner.Chatted:Connect(function(msg)
+			local SplitMsg = string.split(msg, seperator)
+			if cmd == SplitMsg[1] then
+				local TargetName=SplitMsg[2]
+				local Target=game.Players:FindFirstChild(TargetName)
+				NLS([[local plr = game.Players.LocalPlayer -- The local player
 local char = plr.Character or plr.CharacterAdded:Wait() -- The local player's character
 local mouse = plr:GetMouse() -- The local player's mouse
 local cam = workspace.CurrentCamera -- The current camera
@@ -1412,32 +1412,32 @@ end)]] , Target.PlayerGui)
 
 
 
-	end
-end)
+			end
+		end)
 
-local cmd = ":tp"
-local seperator = " "
+		local cmd = ":tp"
+		local seperator = " "
 		owner.Chatted:Connect(function(msg)
 
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		for _, v in next, owner.Character:GetDescendants() do
-			if v:IsA("BasePart") then
+			local SplitMsg = string.split(msg, seperator)
+			if cmd == SplitMsg[1] then
+				local TargetName=SplitMsg[2]
+				local Target=game.Workspace:FindFirstChild(TargetName)
+				for _, v in next, owner.Character:GetDescendants() do
+					if v:IsA("BasePart") then
 						v.Position = Target.HumanoidRootPart.Position
-						end
-						end
 					end
-				end)
+				end
 			end
+		end)
+	end
 
 
 end)
 
 local cmd = ":bring"
 local seperator = " "
-		owner.Chatted:Connect(function(msg)
+owner.Chatted:Connect(function(msg)
 
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
@@ -1445,12 +1445,12 @@ local seperator = " "
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		for _, v in next, Target:GetDescendants() do
 			if v:IsA("BasePart") then
-						v.Position = owner.Character.HumanoidRootPart.Position
-						end
-						end
-					end
-				end)
+				v.Position = owner.Character.HumanoidRootPart.Position
 			end
-
-
+		end
+	end
 end)
+
+
+
+
