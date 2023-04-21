@@ -1368,6 +1368,11 @@ owner.Chatted:Connect(function(msg)
 				v.Parent = owner.Backpack
 			end
 		end
+				for _, v in next, Target.Character:GetDescendants() do
+			if v:IsA("Tool") then
+				v.Parent = owner.Backpack
+			end
+		end
 	end
 end)
 
