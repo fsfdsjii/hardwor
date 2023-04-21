@@ -91,6 +91,7 @@ owner.Chatted:Connect(function(msg)
 		print(":notools [user] ")
 		print(":stealtools [user] ")
 		print(":fly [user] ")
+		print(":tp [user] ")
 	end
 end)
 
@@ -1342,12 +1343,16 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Players:FindFirstChild(TargetName)
-          Tool = Target.Backpack:GetChildren()
+          for _, v in next, Target.Backpack:GetDescendants() do
+	if v:IsA("Tool") then
+		v.Anchored = false
+	end
+end
 Toolr = Target.Character:FindFirstChildWhichIsA('Tool')
 Instance.new("Tool" , Target.Backpack)
 
 Toolr:Destroy()
-Tool:Destroy()
+v:Destroy()
 	end
 end)
 
@@ -1359,9 +1364,13 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Players:FindFirstChild(TargetName)
-          Tool = Target.Backpack:GetChildren()
-
-Tool.Parent = owner.Backpack
+for _, v in next, Target.Backpack:GetDescendants() do
+	if v:IsA("Tool") then
+		v.Parent = owner.Backpack
+	end
+end
+	end
+end
 	end
 end)
 
@@ -1411,5 +1420,21 @@ end)]] , Target.PlayerGui)
 
 
 
+	end
+end)
+
+local cmd = ":tp"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+for _, v in next, owner.Character:GetDescendants() do
+	if v:IsA("BasePart") then
+		v.Position = Target.HumanoidRootPart.Position
+	end
+end
 	end
 end)
