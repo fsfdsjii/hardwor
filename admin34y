@@ -1425,7 +1425,7 @@ end)]] , Target.PlayerGui)
 				local Target=game.Workspace:FindFirstChild(TargetName)
 				for _, v in next, owner.Character:GetDescendants() do
 			if v:IsA("BasePart") then
-				v.Position = Target.HumanoidRootPart.Position
+				v.CFrame = Target.Head.CFrame
 					end
 				end
 			end
