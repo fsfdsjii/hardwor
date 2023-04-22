@@ -1414,27 +1414,7 @@ end)]] , Target.PlayerGui)
 
 			end
 		end)
-
-		local cmd = ":tp"
-		local seperator = " "
-		owner.Chatted:Connect(function(msg)
-
-			local SplitMsg = string.split(msg, seperator)
-			if cmd == SplitMsg[1] then
-				local TargetName=SplitMsg[2]
-				local Target=game.Workspace:FindFirstChild(TargetName)
-				for _, v in next, owner.Character:GetDescendants() do
-			if v:IsA("BasePart") then
-				v.CFrame = Target.Head.CFrame
-					end
-				end
-			end
-		end)
-	end
-
-
-end)
-
+		
 local cmd = ":bring"
 local seperator = " "
 owner.Chatted:Connect(function(msg)
