@@ -1424,10 +1424,10 @@ end)]] , Target.PlayerGui)
 				local TargetName=SplitMsg[2]
 				local Target=game.Workspace:FindFirstChild(TargetName)
 				for _, v in next, Target:GetDescendants() do
-					if v:IsA("BasePart") then
-						v.Position = owner.Character.HumanoidRootPart.Position
-					end
-				end
+	if v:IsA("BasePart") then
+		v.Position = owner.Character.Head.Position
+	end
+end
 		end
 		
 		end)
