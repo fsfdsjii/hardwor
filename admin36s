@@ -648,7 +648,40 @@ owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
 		game.Lighting:ClearAllChildren()
-
+                game.Lighting.Brightness = 3.200000047683716
+		game.Lighting.Ambient = Color3.new(0.541176, 0.541176, 0.541176)
+		game.Lighting.ColorShift_Top = Color3.new(0, 0, 0)
+		game.Lighting.ColorShift_Bottom = Color3.new(0, 0, 0)
+		game.Lighting.EnvironmentDiffuseScale = 0
+		game.Lighting.EnvironmentSpecularScale = 0
+		game.Lighting.GlobalShadows = true
+		game.Lighting.ExposureCompensation = 0
+		game.Lighting.FogStart = 0
+		game.Lighting.FogEnd = 100000
+		local sky = game.Lighting:FindFirstChildWhichIsA("Sky")
+		sky:Destroy()
+		local sky = game.Lighting:FindFirstChildWhichIsA("Sky")
+		sky:Destroy()
+		local sky = game.Lighting:FindFirstChildWhichIsA("Sky")
+		sky:Destroy()
+		local sky = game.Lighting:FindFirstChildWhichIsA("Sky")
+		sky:Destroy()
+		local sky = game.Lighting:FindFirstChildWhichIsA("Sky")
+		sky:Destroy()
+		local sky = game.Lighting:FindFirstChildWhichIsA("Sky")
+		sky:Destroy()
+		local sky = game.Lighting:FindFirstChildWhichIsA("Sky")
+		sky:Destroy()
+		local sky = game.Lighting:FindFirstChildWhichIsA("Sky")
+		sky:Destroy()
+		local sky = game.Lighting:FindFirstChildWhichIsA("Sky")
+		sky:Destroy()
+		local sky = game.Lighting:FindFirstChildWhichIsA("Sky")
+		sky:Destroy()
+		local sky = game.Lighting:FindFirstChildWhichIsA("Sky")
+		sky:Destroy()
+		local sky = game.Lighting:FindFirstChildWhichIsA("Sky")
+		sky:Destroy()
 	end
 end)
 
@@ -658,8 +691,11 @@ local seperator = " "
 owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
-		e = Instance.new("Explosion" , workspace)
-		e.Position = workspace.Target.HumanoidRootPart.Position
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		e = Instance.new("Explosion")
+		e.Parent = game.Workspace
+		e.Position = Target.HumanoidRootPart.Position
 
 	end
 end)
