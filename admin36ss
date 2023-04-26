@@ -1509,7 +1509,7 @@ Target:LoadCharacter()
 				local TargetName=SplitMsg[2]
 				local Target=game.Players:FindFirstChild(TargetName)
 Target.CharacterAppearanceId = Target.UserId
-Target.CanLoadCharacterAppearence = true
+Target.CanLoadCharacterAppearance = true
 Target:LoadCharacter()
 			end
 		end)
@@ -1522,7 +1522,7 @@ Target:LoadCharacter()
 			if cmd == SplitMsg[1] then
 				local TargetName=SplitMsg[2]
 				local Target=game.Players:FindFirstChild(TargetName)
-Target.CanLoadCharacterAppearence = false
+Target.CanLoadCharacterAppearance = false
 Target:LoadCharacter()
 			end
 		end)
