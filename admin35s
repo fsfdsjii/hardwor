@@ -95,6 +95,7 @@ owner.Chatted:Connect(function(msg)
 		print(":bring [user] ")
 		print(":noob [user] ")
 		print(":voidpurple [user] ")
+		print(":normalcharacter [user] ")
 	end
 end)
 
@@ -1458,6 +1459,19 @@ Target:LoadCharacter()
 				local TargetName=SplitMsg[2]
 				local Target=game.Players:FindFirstChild(TargetName)
 Target.CharacterAppearanceId = 199260543
+Target:LoadCharacter()
+			end
+		end)
+
+				local cmd = ":normalcharacter"
+		local seperator = " "
+
+		owner.Chatted:Connect(function(msg)
+			local SplitMsg = string.split(msg, seperator)
+			if cmd == SplitMsg[1] then
+				local TargetName=SplitMsg[2]
+				local Target=game.Players:FindFirstChild(TargetName)
+Target.CharacterAppearanceId = Target.UserId
 Target:LoadCharacter()
 			end
 		end)
