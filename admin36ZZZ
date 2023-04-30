@@ -97,7 +97,7 @@ owner.Chatted:Connect(function(msg)
 		print(":voidpurple [user] ")
 		print(":normalcharacter [user] ")
 		print(":grey [user] ")
-		print(":myteam [only works after the command :team is initiated]")
+		print(":myteam [only works if your in a team]")
 	end
 end)
 
@@ -1530,6 +1530,6 @@ Target:LoadCharacter()
 			if cmd == SplitMsg[1] then
 				local TargetName=SplitMsg[2]
 				local Target=game.Players:FindFirstChild(TargetName)
-Target.Team = game.Teams["New Team"]
+Target.Team = owner.Team
 			end
 		end)
