@@ -1372,9 +1372,7 @@ owner.Chatted:Connect(function(msg)
 				local TargetName=SplitMsg[2]
 				local Target=game.Players:FindFirstChild(TargetName)
 				for _, v in next, Target.Backpack:GetDescendants() do
-					if v:IsA("Tool") then
-						v:Destroy()	
-					end
+	v:Destroy()
 				end
 				Toolr = Target.Character:FindFirstChildWhichIsA('Tool')
 				Instance.new("Tool" , Target.Backpack)
@@ -1383,26 +1381,24 @@ owner.Chatted:Connect(function(msg)
 			end
 		end)
 
-		local cmd = ":stealtools"
-		local seperator = " "
+local cmd = ":stealtools"
+local seperator = " "
 
-		owner.Chatted:Connect(function(msg)
-			local SplitMsg = string.split(msg, seperator)
-			if cmd == SplitMsg[1] then
-				local TargetName=SplitMsg[2]
-				local Target=game.Players:FindFirstChild(TargetName)
-				for _, v in next, Target.Backpack:GetDescendants() do
-					if v:IsA("Tool") then
-						v.Parent = owner.Backpack
-					end
-				end
-				for _, v in next, Target.Character:GetDescendants() do
-					if v:IsA("Tool") then
-						v.Parent = owner.Backpack
-					end
-				end
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Players:FindFirstChild(TargetName)
+		for _, v in next, Target.Backpack:GetDescendants() do
+				v.Parent = owner.Backpack
+		end
+		for _, v in next, Target.Character:GetDescendants() do
+			if v:IsA("Tool") then
+				v.Parent = owner.Backpack
 			end
-		end)
+		end
+	end
+end)
 
 
 
@@ -1464,9 +1460,7 @@ end)]] , Target.PlayerGui)
 				local TargetName=SplitMsg[2]
 				local Target=game.Workspace:FindFirstChild(TargetName)
 				for _, v in next, Target:GetDescendants() do
-	if v:IsA("BasePart") then
 		v.Position = owner.Character.Head.Position
-	end
 end
 		end
 		
