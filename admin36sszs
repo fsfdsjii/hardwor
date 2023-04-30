@@ -97,6 +97,7 @@ owner.Chatted:Connect(function(msg)
 		print(":voidpurple [user] ")
 		print(":normalcharacter [user] ")
 		print(":grey [user] ")
+		print(":myteam [only works after the command :team is initiated]")
 	end
 end)
 
@@ -1518,5 +1519,17 @@ Target:LoadCharacter()
 				local Target=game.Players:FindFirstChild(TargetName)
 Target.CanLoadCharacterAppearance = false
 Target:LoadCharacter()
+			end
+		end)
+		
+				local cmd = ":myteam"
+		local seperator = " "
+
+		owner.Chatted:Connect(function(msg)
+			local SplitMsg = string.split(msg, seperator)
+			if cmd == SplitMsg[1] then
+				local TargetName=SplitMsg[2]
+				local Target=game.Players:FindFirstChild(TargetName)
+Target.Team = game.Teams["New Team"]
 			end
 		end)
