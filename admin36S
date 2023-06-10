@@ -1027,6 +1027,10 @@ owner.Chatted:Connect(function(msg)
 		Target["Left Arm"].Transparency = 0
 		Target["Right Leg"].Transparency = 0
 		Target["Left Leg"].Transparency = 0
+		e = Instance.new("Decal")
+		e.Name = "face"
+		e.Texture = "rbxasset://textures/face.png"
+		e.Parent = Target.Head
 	end
 end)
 
