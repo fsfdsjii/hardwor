@@ -1248,7 +1248,7 @@ owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
 		game.Lighting:ClearAllChildren()
-                game.Lighting.Brightness = 3.200000047683716
+		game.Lighting.Brightness = 3.200000047683716
 		game.Lighting.Ambient = Color3.new(0.541176, 0.541176, 0.541176)
 		game.Lighting.ColorShift_Top = Color3.new(0, 0, 0)
 		game.Lighting.ColorShift_Bottom = Color3.new(0, 0, 0)
@@ -1976,7 +1976,7 @@ owner.Chatted:Connect(function(msg)
 				local TargetName=SplitMsg[2]
 				local Target=game.Players:FindFirstChild(TargetName)
 				for _, v in next, Target.Backpack:GetDescendants() do
-	v:Destroy()
+					v:Destroy()
 				end
 				Toolr = Target.Character:FindFirstChildWhichIsA('Tool')
 				Instance.new("Tool" , Target.Backpack)
@@ -1985,24 +1985,24 @@ owner.Chatted:Connect(function(msg)
 			end
 		end)
 
-local cmd = ":stealtools"
-local seperator = " "
+		local cmd = ":stealtools"
+		local seperator = " "
 
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Players:FindFirstChild(TargetName)
-		for _, v in next, Target.Backpack:GetDescendants() do
-				v.Parent = owner.Backpack
-		end
-		for _, v in next, Target.Character:GetDescendants() do
-			if v:IsA("Tool") then
-				v.Parent = owner.Backpack
+		owner.Chatted:Connect(function(msg)
+			local SplitMsg = string.split(msg, seperator)
+			if cmd == SplitMsg[1] then
+				local TargetName=SplitMsg[2]
+				local Target=game.Players:FindFirstChild(TargetName)
+				for _, v in next, Target.Backpack:GetDescendants() do
+					v.Parent = owner.Backpack
+				end
+				for _, v in next, Target.Character:GetDescendants() do
+					if v:IsA("Tool") then
+						v.Parent = owner.Backpack
+					end
+				end
 			end
-		end
-	end
-end)
+		end)
 
 
 
@@ -2055,21 +2055,21 @@ end)]] , Target.PlayerGui)
 			end
 		end)
 
-local cmd = ":bring"
-local seperator = " "
-owner.Chatted:Connect(function(msg)
+		local cmd = ":bring"
+		local seperator = " "
+		owner.Chatted:Connect(function(msg)
 
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		for _, v in next, Target:GetDescendants() do
-			if v:IsA("BasePart") then
-				v.Position = owner.Character.Head.Position
+			local SplitMsg = string.split(msg, seperator)
+			if cmd == SplitMsg[1] then
+				local TargetName=SplitMsg[2]
+				local Target=game.Workspace:FindFirstChild(TargetName)
+				for _, v in next, Target:GetDescendants() do
+					if v:IsA("BasePart") then
+						v.Position = owner.Character.Head.Position
+					end
+				end
 			end
-		end
-		end
-	end)
+		end)
 
 
 
@@ -2082,12 +2082,12 @@ owner.Chatted:Connect(function(msg)
 			if cmd == SplitMsg[1] then
 				local TargetName=SplitMsg[2]
 				local Target=game.Players:FindFirstChild(TargetName)
-Target.CharacterAppearanceId = 4
-Target:LoadCharacter()
+				Target.CharacterAppearanceId = 4
+				Target:LoadCharacter()
 			end
 		end)
-		
-				local cmd = ":voidpurple"
+
+		local cmd = ":voidpurple"
 		local seperator = " "
 
 		owner.Chatted:Connect(function(msg)
@@ -2095,12 +2095,12 @@ Target:LoadCharacter()
 			if cmd == SplitMsg[1] then
 				local TargetName=SplitMsg[2]
 				local Target=game.Players:FindFirstChild(TargetName)
-Target.CharacterAppearanceId = 199260543
-Target:LoadCharacter()
+				Target.CharacterAppearanceId = 199260543
+				Target:LoadCharacter()
 			end
 		end)
 
-				local cmd = ":normalcharacter"
+		local cmd = ":normalcharacter"
 		local seperator = " "
 
 		owner.Chatted:Connect(function(msg)
@@ -2108,12 +2108,12 @@ Target:LoadCharacter()
 			if cmd == SplitMsg[1] then
 				local TargetName=SplitMsg[2]
 				local Target=game.Players:FindFirstChild(TargetName)
-Target.CharacterAppearanceId = Target.UserId
-Target.CanLoadCharacterAppearance = true
-Target:LoadCharacter()
+				Target.CharacterAppearanceId = Target.UserId
+				Target.CanLoadCharacterAppearance = true
+				Target:LoadCharacter()
 			end
 		end)
-		
+
 		local cmd = ":grey"
 		local seperator = " "
 
@@ -2122,12 +2122,12 @@ Target:LoadCharacter()
 			if cmd == SplitMsg[1] then
 				local TargetName=SplitMsg[2]
 				local Target=game.Players:FindFirstChild(TargetName)
-Target.CanLoadCharacterAppearance = false
-Target:LoadCharacter()
+				Target.CanLoadCharacterAppearance = false
+				Target:LoadCharacter()
 			end
 		end)
-		
-				local cmd = ":myteam"
+
+		local cmd = ":myteam"
 		local seperator = " "
 
 		owner.Chatted:Connect(function(msg)
@@ -2135,23 +2135,27 @@ Target:LoadCharacter()
 			if cmd == SplitMsg[1] then
 				local TargetName=SplitMsg[2]
 				local Target=game.Players:FindFirstChild(TargetName)
-Target.Team = owner.Team
+				Target.Team = owner.Team
 			end
 		end)
 
 
-local cmd = ":safeareatp"
-local seperator = " "
-owner.Chatted:Connect(function(msg)
+		local cmd = ":safeareatp"
+		local seperator = " "
+		owner.Chatted:Connect(function(msg)
 
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		for _, v in next, Target:GetDescendants() do
-			if v:IsA("BasePart") then
-				v.Position = Vector3.new(8394.298, 9581.5, -28.107)
+			local SplitMsg = string.split(msg, seperator)
+			if cmd == SplitMsg[1] then
+				local TargetName=SplitMsg[2]
+				local Target=game.Workspace:FindFirstChild(TargetName)
+				for _, v in next, Target:GetDescendants() do
+					if v:IsA("BasePart") then
+						v.Position = Vector3.new(8394.298, 9581.5, -28.107)
+					end
+				end
 			end
-		end
-		end
-	end)
+		end)
+	end
+end)
+
+
