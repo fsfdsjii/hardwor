@@ -1810,6 +1810,8 @@ owner.Chatted:Connect(function(msg)
 				hat:Destroy()
 			end
 		end
+	end
+end)
 
 
 		local cmd = ":r15freeze"
@@ -2155,7 +2157,7 @@ end)]] , Target.PlayerGui)
 				end
 			end
 		end)
-	end
-end)
+
+
 
 
