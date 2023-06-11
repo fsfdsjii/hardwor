@@ -1,0 +1,663 @@
+-- Converted using Mokiros's Model to Script Version 3
+-- Converted string size: 892 characters
+
+local ScriptFunctions = {
+function(script,require)
+local Tool = script.Parent
+local Airstrike = require(script.Airstrike)
+
+local COOL_DOWN = .0000000001
+
+local LastStrike = 0
+
+local OnMouseClickEvent = Instance.new("RemoteEvent")
+OnMouseClickEvent.Name = "OnMouseClick"
+OnMouseClickEvent.OnServerEvent:connect(function(player, location)
+	if tick() - LastStrike > COOL_DOWN then
+		LastStrike = tick()
+		Airstrike:Spawn(player, location)
+	end
+end)
+OnMouseClickEvent.Parent = Tool
+end,
+function(script,require)
+--Created by StarWars
+local Airstrike = {}
+
+local Jet = require(script.Jet)
+
+function Airstrike:Spawn(player, location)
+	local LocationPart = Instance.new("Part")
+	LocationPart.Name = "Effect"
+	LocationPart.Anchored = true
+	LocationPart.CanCollide = false
+	LocationPart.Size = Vector3.new(0, 0, 0)
+	LocationPart.BrickColor = BrickColor.new("Lime green")
+	LocationPart.CFrame = CFrame.new(location) * CFrame.Angles(math.pi/2, 0, 0)
+	local Mesh = Instance.new("SpecialMesh")
+	Mesh.MeshId = "rbxassetid://3270017"
+	Mesh.Scale = Vector3.new(40, 40, 1)
+	Mesh.Parent = LocationPart
+	
+	game:GetService("Debris"):AddItem(LocationPart, 5)
+	LocationPart.Parent = workspace
+	spawn(function()
+		while LocationPart and LocationPart.Transparency < 1 do
+			LocationPart.Transparency = LocationPart.Transparency + 0.025
+			wait(0.15)
+		end
+		
+		if LocationPart then
+			LocationPart:Destroy()
+		end
+	end)
+	
+	local NewJet = Jet.new(player, location)
+	NewJet:Fly()
+end
+
+return Airstrike
+end,
+function(script,require)
+--Created by StarWars
+local Bomb = require(script.Bomb)
+
+local Jet = {}
+Jet.__index = Jet
+
+local JET_HEIGHT = 200
+local JET_DISTANCE = 2000
+local JET_SPEED = 300
+local JET_DROP_RANGE = 550
+
+local GRAVITY = workspace.Gravity
+local WAIT_TIME = 1/60
+
+local function CreateJet(player, location)
+	local Model = Instance.new("Model")
+	Model.Name = "F22 Bombing Jet"
+	local Part = Instance.new("Part")
+	Part.Locked = true
+	Part.Name = "Torso"
+	Part.Transparency = 0
+	Part.CanCollide = true
+	Part.TopSurface = Enum.SurfaceType.Smooth
+	Part.BottomSurface = Enum.SurfaceType.Smooth
+	Part.Size = Vector3.new(20, 5, 20)
+	Part.CFrame = CFrame.new(location + Vector3.new(0, JET_HEIGHT, 0)) * CFrame.Angles(0, math.pi*2*math.random(), 0) * CFrame.new(0, 0, JET_DISTANCE)
+	Part.Parent = Model
+	
+	local Mesh = Instance.new("SpecialMesh")
+	Mesh.MeshId = "rbxassetid://88775328"
+	Mesh.TextureId = "rbxassetid://88775716"
+	Mesh.Scale = Vector3.new(10, 10, 10)
+	Mesh.Parent = Part
+	
+	local Smoke = Instance.new("Smoke")
+	Smoke.RiseVelocity = 20
+	Smoke.Parent = Part
+	
+	local HeadPart = Instance.new("Part")
+	HeadPart.Locked = true
+	HeadPart.Name = "Head"
+	HeadPart.Transparency = 1
+	HeadPart.Size = Vector3.new(0, 0, 0)
+	HeadPart.Parent = Model
+	
+	local BodyForce = Instance.new("BodyForce")
+	BodyForce.Force = Vector3.new(0, (Part:GetMass() + HeadPart:GetMass())*GRAVITY, 0)
+	BodyForce.Parent = Part
+	
+	local Weld = Instance.new("Weld")
+	Weld.Name = "Neck"
+	Weld.Part0 = Part
+	Weld.Part1 = HeadPart
+	Weld.Parent = Part
+	
+	local Humanoid = Instance.new("Humanoid")
+	Humanoid.MaxHealth = 5
+	Humanoid.Health = 5
+	Humanoid.WalkSpeed = 0
+	Humanoid.Sit = true
+	Humanoid.Parent = Model
+	
+	local JetSound = Instance.new("Sound")
+	JetSound.Name = "JetScream"
+	JetSound.SoundId = "rbxassetid://88862455"
+	JetSound.Volume = 0.6
+	game:GetService("Debris"):AddItem(JetSound, 10)
+	JetSound.Parent = workspace
+	delay(2, function()
+		JetSound:Play()
+	end)
+	
+	local Velocity = ((location + Vector3.new(0, JET_HEIGHT, 0)) - Part.Position).Unit*JET_SPEED
+	Part.Velocity = Velocity
+	HeadPart.Velocity = Velocity	
+
+	Model.Parent = workspace
+	
+	return Model
+end
+
+local function CreateExplosion(jet)
+	local Explosion = Instance.new("Explosion")
+	Explosion.Position = jet.Model.Torso.Position
+	Explosion.BlastPressure = 0
+	Explosion.BlastRadius = 15
+	Explosion.ExplosionType = Enum.ExplosionType.CratersAndDebris
+	Explosion.Parent = workspace
+	
+	local Fire = Instance.new("Fire")
+	Fire.Size = 100
+	Fire.Heat = 100
+	Fire.Parent = jet.Model.Torso
+	
+	if jet.Model.Head then
+		jet.Model.Head:Destroy()
+	end
+	
+	jet.Model.Torso.Velocity = jet.Model.Torso.Velocity + Vector3.new((math.random()-.5)*50,(math.random()-.5)*50,(math.random()-.5)*50)
+	wait(3)
+	if jet.Model.Torso then
+		jet.Model.Torso.Transparency = 1
+		jet.Model.Torso.Velocity = jet.Model.Torso.Velocity + Vector3.new((math.random()-.5)*50,(math.random()-.5)*50,(math.random()-.5)*50)
+	end
+	wait(3)
+end
+
+function Jet.new(player, location)
+	local self = {}
+	setmetatable(self, Jet)
+	
+	self.Model = CreateJet(player, location)	
+	delay(20, function()
+		self.Alive = false
+		self.Model:Destroy()
+	end)
+	self.Creator = player
+	self.TargetLocation = location
+	self.Alive = true
+	self.Bombs = 3
+	
+	self.Model.Humanoid.HealthChanged:connect(function(health)
+		if self.Alive then
+			if self.Model.Humanoid then
+				if self.Model.Humanoid.Health <= 0 then
+					self.Alive = false
+					if self.Model.Torso then
+						self.Model.Humanoid:Destroy()
+						CreateExplosion(self.Model.Torso.Position)
+					end
+					self.Model:Destroy()
+				end
+			else
+				self.Alive = false
+				self.Model:Destroy()
+			end
+		end
+	end)
+	
+	return self
+end
+
+function Jet:Fly()
+	spawn(function()
+		while self.Alive do
+			if self.Model.Torso then
+				if self.Bombs > 0 then
+					if (self.Model.Torso.Position - self.TargetLocation).Magnitude < JET_DROP_RANGE then
+						self.Bombs = self.Bombs - 1
+						Bomb.new(self)
+					end
+				end
+			end
+			wait(.25)
+		end
+	end)
+	while self.Alive do
+		if self.Model.Torso then
+			if self.Bombs > 0 then
+				self.Model.Torso.Velocity = ((self.TargetLocation + Vector3.new(0, JET_HEIGHT, 0)) - self.Model.Torso.Position).Unit * self.Model.Torso.Velocity.Magnitude
+			else
+				self.Model.Torso.Velocity = self.Model.Torso.Velocity + Vector3.new(0, 10, 0)
+			end
+			self.Model.Torso.CFrame = CFrame.new(self.Model.Torso.Position, self.Model.Torso.Position + self.Model.Torso.Velocity)
+		end
+		wait(WAIT_TIME)
+	end
+end
+
+return Jet
+end,
+function(script,require)
+local Bomb = {}
+Bomb.__index = Bomb
+
+local BLAST_RADIUS = 19
+local BLAST_PRESSURE = 2*10^6
+
+local CreatorValue = Instance.new("ObjectValue")
+CreatorValue.Name = "creator"
+
+local function CreateBomb(jet)
+	local BombPart = Instance.new("Part")
+	BombPart.Name = "Effect"
+	BombPart.Size = Vector3.new(3, 3, 10) * 0.5
+	BombPart.CanCollide = false
+	BombPart.CFrame = jet.Model.Torso.CFrame
+	BombPart.Velocity = jet.Model.Torso.Velocity
+	
+	local Mesh = Instance.new("SpecialMesh")
+	Mesh.MeshId = "rbxassetid://88782666"
+	Mesh.TextureId = "rbxassetid://88782631"
+	Mesh.Scale = Vector3.new(6, 6, 6)
+	Mesh.Parent = BombPart
+	
+	local Sound = Instance.new("Sound")
+	Sound.SoundId = "rbxasset://sounds/collide.wav"
+	Sound.Volume = 1
+	Sound.Pitch = 0.75
+	Sound.Parent = BombPart
+	
+	game:GetService("Debris"):AddItem(BombPart, 10)
+	BombPart.Parent = workspace	
+	
+	return BombPart
+end
+
+local function Explode(bomb)
+	if not bomb.Exploded then
+		bomb.Exploded = true
+		bomb.Model.Anchored = true
+		bomb.Model.Transparency = 1
+		local Sound = bomb.Model:FindFirstChild("Sound")
+		if Sound then
+			Sound:Play()
+		end
+		
+		local Explosion = Instance.new("Explosion")
+		Explosion.Position = bomb.Model.Position
+		Explosion.BlastPressure = BLAST_PRESSURE
+		Explosion.BlastRadius = BLAST_RADIUS
+		Explosion.ExplosionType = Enum.ExplosionType.CratersAndDebris
+		Explosion.Hit:connect(function(hit)
+			if bomb.Creator and (hit.Name == "Head" or hit.Name == "HumanoidRootPart") then
+				local Humanoid = hit.Parent:FindFirstChild("Humanoid")
+				if Humanoid then
+					for _, v in ipairs(Humanoid:GetChildren()) do
+						if v.Name == "creator" then
+							v:Destroy()
+						end
+					end
+					local NewCreator = CreatorValue:Clone()
+					NewCreator.Value = bomb.Creator
+					NewCreator.Parent = Humanoid
+				end
+			end
+		end)
+		Explosion.Parent = workspace
+		wait(0.5)
+		if bomb.Model and bomb.Model.Parent ~= nil then
+			bomb.Model:Destroy()
+		end
+	end
+end
+
+function Bomb.new(jet)
+	local self = {}
+	setmetatable(self, Bomb)
+	
+	self.Model = CreateBomb(jet)
+	self.Creator = jet.Creator
+	self.Exploded = false
+	
+	self.Model.Touched:connect(function(hit)
+		if hit and hit.Parent then
+			if hit.Name ~= "Effect" and hit.Parent.Name ~= "F22 Bombing Jet" then
+				Explode(self)
+			end
+		end
+	end)
+	
+	return self
+end
+
+return Bomb
+end,
+function(script,require)
+--Rescripted by StarWars
+local Player = game.Players.LocalPlayer
+
+local COOL_DOWN = .0000000001
+local TALKING_GRIP = CFrame.new(0.121005774, -1.07626426, 1.151003, -0.571957648, 0.032301072, -0.819646955, 0.0999610648, 0.994521916, -0.0305611696, 0.814169705, -0.0994124785, -0.572053254)
+local HOLDING_GRIP = CFrame.new(-0.329237193, -0.576264262, 0.157275885, -0.29237175, 0, -0.956304729, 0.0999610648, 0.994521916, -0.0305611696, 0.951066017, -0.104528464, -0.290770113)
+
+local Tool = script.Parent
+local OnMouseClickEvent = Tool:WaitForChild("OnMouseClick")
+
+local LastStrike = 0
+
+function OnEquipped(mouse)
+	if tick() - COOL_DOWN < LastStrike then
+		mouse.Icon="rbxasset://textures\\GunWaitCursor.png"
+		wait(LastStrike-(tick()-COOL_DOWN))
+		mouse.Icon="rbxasset://textures\\GunCursor.png"
+	else
+		mouse.Icon="rbxasset://textures\\GunCursor.png"
+	end	
+	mouse.Button1Down:connect(function()
+		if tick() - LastStrike > COOL_DOWN and mouse.Target and mouse.Hit then
+			local Location = mouse.Hit.p
+			local Character = Tool.Parent
+			if Character then
+				local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
+				local Humanoid = Character:FindFirstChild("Humanoid")
+				if HumanoidRootPart and Humanoid and Humanoid.Health > 0 then
+					LastStrike = tick()
+					mouse.Icon = "rbxasset://textures\\GunWaitCursor.png"
+					Tool.Grip = TALKING_GRIP
+					local Sound = Tool.Handle:FindFirstChild("Sound")
+					if Sound then
+						Sound:Play()
+					end
+					OnMouseClickEvent:FireServer(Location)
+					wait(5)
+					Sound = Tool.Handle:FindFirstChild("Sound")
+					if Sound then
+						Sound:Stop()
+					end
+					Tool.Grip = HOLDING_GRIP
+					wait(COOL_DOWN - 5)
+					mouse.Icon = "rbxasset://textures\\GunCursor.png"
+				end
+			end
+		end
+	end)
+end
+
+Tool.Equipped:connect(OnEquipped)
+end
+}
+local ScriptIndex = 0
+local Scripts,ModuleScripts,ModuleCache = {},{},{}
+local _require = require
+function require(obj,...)
+	local index = ModuleScripts[obj]
+	if not index then
+		local a,b = pcall(_require,obj,...)
+		return not a and error(b,2) or b
+	end
+	
+	local res = ModuleCache[index]
+	if res then return res end
+	res = ScriptFunctions[index](obj,require)
+	if res==nil then error("Module code did not return exactly one value",2) end
+	ModuleCache[index] = res
+	return res
+end
+local function Script(obj,ismodule)
+	ScriptIndex = ScriptIndex + 1
+	local t = ismodule and ModuleScripts or Scripts
+	t[obj] = ScriptIndex
+end
+
+function RunScripts()
+	for script,index in pairs(Scripts) do
+		coroutine.wrap(ScriptFunctions[index])(script,require)
+	end
+end
+
+
+local function Decode(str)
+	local StringLength = #str
+	
+	-- Base64 decoding
+	do
+		local decoder = {}
+		for b64code, char in pairs(('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='):split('')) do
+			decoder[char:byte()] = b64code-1
+		end
+		local n = StringLength
+		local t,k = table.create(math.floor(n/4)+1),1
+		local padding = str:sub(-2) == '==' and 2 or str:sub(-1) == '=' and 1 or 0
+		for i = 1, padding > 0 and n-4 or n, 4 do
+			local a, b, c, d = str:byte(i,i+3)
+			local v = decoder[a]*0x40000 + decoder[b]*0x1000 + decoder[c]*0x40 + decoder[d]
+			t[k] = string.char(bit32.extract(v,16,8),bit32.extract(v,8,8),bit32.extract(v,0,8))
+			k = k + 1
+		end
+		if padding == 1 then
+			local a, b, c = str:byte(n-3,n-1)
+			local v = decoder[a]*0x40000 + decoder[b]*0x1000 + decoder[c]*0x40
+			t[k] = string.char(bit32.extract(v,16,8),bit32.extract(v,8,8))
+		elseif padding == 2 then
+			local a, b = str:byte(n-3,n-2)
+			local v = decoder[a]*0x40000 + decoder[b]*0x1000
+			t[k] = string.char(bit32.extract(v,16,8))
+		end
+		str = table.concat(t)
+	end
+	
+	local Position = 1
+	local function Parse(fmt)
+		local Values = {string.unpack(fmt,str,Position)}
+		Position = table.remove(Values)
+		return table.unpack(Values)
+	end
+	
+	local Settings = Parse('B')
+	local Flags = Parse('B')
+	Flags = {
+		--[[ValueIndexByteLength]] bit32.extract(Flags,6,2)+1,
+		--[[InstanceIndexByteLength]] bit32.extract(Flags,4,2)+1,
+		--[[ConnectionsIndexByteLength]] bit32.extract(Flags,2,2)+1,
+		--[[MaxPropertiesLengthByteLength]] bit32.extract(Flags,0,2)+1,
+		--[[Use Double instead of Float]] bit32.band(Settings,0b1) > 0
+	}
+	
+	local ValueFMT = ('I'..Flags[1])
+	local InstanceFMT = ('I'..Flags[2])
+	local ConnectionFMT = ('I'..Flags[3])
+	local PropertyLengthFMT = ('I'..Flags[4])
+	
+	local ValuesLength = Parse(ValueFMT)
+	local Values = table.create(ValuesLength)
+	local CFrameIndexes = {}
+	
+	local ValueDecoders = {
+		--!!Start
+		[1] = function(Modifier)
+			return Parse('s'..Modifier)
+		end,
+		--!!Split
+		[2] = function(Modifier)
+			return Modifier ~= 0
+		end,
+		--!!Split
+		[3] = function()
+			return Parse('d')
+		end,
+		--!!Split
+		[4] = function(_,Index)
+			table.insert(CFrameIndexes,{Index,Parse(('I'..Flags[1]):rep(3))})
+		end,
+		--!!Split
+		[5] = {CFrame.new,Flags[5] and 'dddddddddddd' or 'ffffffffffff'},
+		--!!Split
+		[6] = {Color3.fromRGB,'BBB'},
+		--!!Split
+		[7] = {BrickColor.new,'I2'},
+		--!!Split
+		[8] = function(Modifier)
+			local len = Parse('I'..Modifier)
+			local kpts = table.create(len)
+			for i = 1,len do
+				kpts[i] = ColorSequenceKeypoint.new(Parse('f'),Color3.fromRGB(Parse('BBB')))
+			end
+			return ColorSequence.new(kpts)
+		end,
+		--!!Split
+		[9] = function(Modifier)
+			local len = Parse('I'..Modifier)
+			local kpts = table.create(len)
+			for i = 1,len do
+				kpts[i] = NumberSequenceKeypoint.new(Parse(Flags[5] and 'ddd' or 'fff'))
+			end
+			return NumberSequence.new(kpts)
+		end,
+		--!!Split
+		[10] = {Vector3.new,Flags[5] and 'ddd' or 'fff'},
+		--!!Split
+		[11] = {Vector2.new,Flags[5] and 'dd' or 'ff'},
+		--!!Split
+		[12] = {UDim2.new,Flags[5] and 'di2di2' or 'fi2fi2'},
+		--!!Split
+		[13] = {Rect.new,Flags[5] and 'dddd' or 'ffff'},
+		--!!Split
+		[14] = function()
+			local flags = Parse('B')
+			local ids = {"Top","Bottom","Left","Right","Front","Back"}
+			local t = {}
+			for i = 0,5 do
+				if bit32.extract(flags,i,1)==1 then
+					table.insert(t,Enum.NormalId[ids[i+1]])
+				end
+			end
+			return Axes.new(unpack(t))
+		end,
+		--!!Split
+		[15] = function()
+			local flags = Parse('B')
+			local ids = {"Top","Bottom","Left","Right","Front","Back"}
+			local t = {}
+			for i = 0,5 do
+				if bit32.extract(flags,i,1)==1 then
+					table.insert(t,Enum.NormalId[ids[i+1]])
+				end
+			end
+			return Faces.new(unpack(t))
+		end,
+		--!!Split
+		[16] = {PhysicalProperties.new,Flags[5] and 'ddddd' or 'fffff'},
+		--!!Split
+		[17] = {NumberRange.new,Flags[5] and 'dd' or 'ff'},
+		--!!Split
+		[18] = {UDim.new,Flags[5] and 'di2' or 'fi2'},
+		--!!Split
+		[19] = function()
+			return Ray.new(Vector3.new(Parse(Flags[5] and 'ddd' or 'fff')),Vector3.new(Parse(Flags[5] and 'ddd' or 'fff')))
+		end
+		--!!End
+	}
+	
+	for i = 1,ValuesLength do
+		local TypeAndModifier = Parse('B')
+		local Type = bit32.band(TypeAndModifier,0b11111)
+		local Modifier = (TypeAndModifier - Type) / 0b100000
+		local Decoder = ValueDecoders[Type]
+		if type(Decoder)=='function' then
+			Values[i] = Decoder(Modifier,i)
+		else
+			Values[i] = Decoder[1](Parse(Decoder[2]))
+		end
+	end
+	
+	for i,t in pairs(CFrameIndexes) do
+		Values[t[1]] = CFrame.fromMatrix(Values[t[2]],Values[t[3]],Values[t[4]])
+	end
+	
+	local InstancesLength = Parse(InstanceFMT)
+	local Instances = {}
+	local NoParent = {}
+	
+	for i = 1,InstancesLength do
+		local ClassName = Values[Parse(ValueFMT)]
+		local obj
+		local MeshPartMesh,MeshPartScale
+		if ClassName == "UnionOperation" then
+			obj = DecodeUnion(Values,Flags,Parse)
+			obj.UsePartColor = true
+		elseif ClassName:find("Script") then
+			obj = Instance.new("Folder")
+			Script(obj,ClassName=='ModuleScript')
+		elseif ClassName == "MeshPart" then
+			obj = Instance.new("Part")
+			MeshPartMesh = Instance.new("SpecialMesh")
+			MeshPartMesh.MeshType = Enum.MeshType.FileMesh
+			MeshPartMesh.Parent = obj
+		else
+			obj = Instance.new(ClassName)
+		end
+		local Parent = Instances[Parse(InstanceFMT)]
+		local PropertiesLength = Parse(PropertyLengthFMT)
+		local AttributesLength = Parse(PropertyLengthFMT)
+		Instances[i] = obj
+		for i = 1,PropertiesLength do
+			local Prop,Value = Values[Parse(ValueFMT)],Values[Parse(ValueFMT)]
+			
+			-- ok this looks awful
+			if MeshPartMesh then
+				if Prop == "MeshId" then
+					MeshPartMesh.MeshId = Value
+					continue
+				elseif Prop == "TextureID" then
+					MeshPartMesh.TextureId = Value
+					continue
+				elseif Prop == "Size" then
+					if not MeshPartScale then
+						MeshPartScale = Value
+					else
+						MeshPartMesh.Scale = Value / MeshPartScale
+					end
+				elseif Prop == "MeshSize" then
+					if not MeshPartScale then
+						MeshPartScale = Value
+						MeshPartMesh.Scale = obj.Size / Value
+					else
+						MeshPartMesh.Scale = MeshPartScale / Value
+					end
+					continue
+				end
+			end
+			
+			obj[Prop] = Value
+		end
+		if MeshPartMesh then
+			if MeshPartMesh.MeshId=='' then
+				if MeshPartMesh.TextureId=='' then
+					MeshPartMesh.TextureId = 'rbxasset://textures/meshPartFallback.png'
+				end
+				MeshPartMesh.Scale = obj.Size
+			end
+		end
+		for i = 1,AttributesLength do
+			obj:SetAttribute(Values[Parse(ValueFMT)],Values[Parse(ValueFMT)])
+		end
+		if not Parent then
+			table.insert(NoParent,obj)
+		else
+			obj.Parent = Parent
+		end
+	end
+	
+	local ConnectionsLength = Parse(ConnectionFMT)
+	for i = 1,ConnectionsLength do
+		local a,b,c = Parse(InstanceFMT),Parse(ValueFMT),Parse(InstanceFMT)
+		Instances[a][Values[b]] = Instances[c]
+	end
+	
+	return NoParent
+end
+
+
+local Objects = Decode('AAAxIQRUb29sIQROYW1lIQ1TUEFNQUlSU1RSSUtFIQpXb3JsZFBpdm90BC0uLyEEUGFydCEGSGFuZGxlIQZDRnJhbWUEDy4vIQZMb2NrZWQiIQtPcmllbnRhdGlvbgoAAMBAAACSwgAAAAAhCFBvc2l0aW9uCoZZiUKTEpU/mF5BwyELUmVmbGVjdGFuY2UDAAAAYGZm'
+..'1j8hCFJvdGF0aW9uCvYonkEAAJDCPQqXQSEEU2l6ZQrNzEw/MzMTQM3MzD4hC1NwZWNpYWxNZXNoIQZNZXNoSWQhKGh0dHA6Ly93d3cucm9ibG94LmNvbS9hc3NldC8/aWQ9ODg3NDI3MDchCVRleHR1cmVJZCEoaHR0cDovL3d3dy5yb2Jsb3guY29tL2Fzc2V0Lz9p'
+..'ZD04ODc0Mjk2OSEITWVzaFR5cGUDAAAAAAAAFEAhBVNvdW5kIQdTb3VuZElkIShodHRwOi8vd3d3LnJvYmxveC5jb20vYXNzZXQvP2lkPTg4ODU4ODE1IQZWb2x1bWUDAAAAAAAA8D8hCkF0dGFjaG1lbnQhE1JpZ2h0R3JpcEF0dGFjaG1lbnQEJjAxCjdUlkD87R9D'
+..'7GDbvwrNzMy+AAAAvwAAAAAhBlNjcmlwdCEMTW9kdWxlU2NyaXB0IQlBaXJzdHJpa2UhA0pldCEEQm9tYiELTG9jYWxTY3JpcHQKhlkJQ2ztasCYXsHDCsCxlT4AAAAAY9B0PwpjuMy9/Zh+P2tb+jwKrI9wv0ow9LzQcq6+CtdpgzWeBn8/tH6yvQkGAAgAAgcICQoL'
+..'DA0ODxAREhMUFRYBAwAXGBkaGxwdAQIAHh8gISIBBAACIwgkDCUOJicAAAAoBQEAAikoBgEAAiooBwEAAissAAAAAA==')
+for _,obj in pairs(Objects) do
+	obj.Parent = script or workspace
+end
+
+RunScripts()
