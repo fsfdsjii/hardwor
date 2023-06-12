@@ -1,0 +1,3020 @@
+
+function sandbox(var,func)
+	local env = getfenv(func)
+	local newenv = setmetatable({},{
+		__index = function(self,k)
+			if k=="script" then
+				return var
+			else
+				return env[k]
+			end
+		end,
+	})
+	setfenv(func,newenv)
+	return func
+end
+cors = {}
+mas = Instance.new("Model",game:GetService("Lighting"))
+Model0 = Instance.new("Model")
+Model1 = Instance.new("Model")
+Part2 = Instance.new("Part")
+Part3 = Instance.new("Part")
+WedgePart4 = Instance.new("WedgePart")
+Part5 = Instance.new("Part")
+Part6 = Instance.new("Part")
+Part7 = Instance.new("Part")
+WedgePart8 = Instance.new("WedgePart")
+WedgePart9 = Instance.new("WedgePart")
+WedgePart10 = Instance.new("WedgePart")
+WedgePart11 = Instance.new("WedgePart")
+WedgePart12 = Instance.new("WedgePart")
+WedgePart13 = Instance.new("WedgePart")
+Part14 = Instance.new("Part")
+Part15 = Instance.new("Part")
+Part16 = Instance.new("Part")
+WedgePart17 = Instance.new("WedgePart")
+Model18 = Instance.new("Model")
+Model19 = Instance.new("Model")
+Part20 = Instance.new("Part")
+CylinderMesh21 = Instance.new("CylinderMesh")
+Snap22 = Instance.new("Snap")
+Part23 = Instance.new("Part")
+CylinderMesh24 = Instance.new("CylinderMesh")
+Part25 = Instance.new("Part")
+CylinderMesh26 = Instance.new("CylinderMesh")
+Snap27 = Instance.new("Snap")
+Part28 = Instance.new("Part")
+CylinderMesh29 = Instance.new("CylinderMesh")
+Snap30 = Instance.new("Snap")
+Part31 = Instance.new("Part")
+CylinderMesh32 = Instance.new("CylinderMesh")
+Snap33 = Instance.new("Snap")
+Part34 = Instance.new("Part")
+SpecialMesh35 = Instance.new("SpecialMesh")
+Part36 = Instance.new("Part")
+CylinderMesh37 = Instance.new("CylinderMesh")
+Part38 = Instance.new("Part")
+SpecialMesh39 = Instance.new("SpecialMesh")
+Part40 = Instance.new("Part")
+BlockMesh41 = Instance.new("BlockMesh")
+Part42 = Instance.new("Part")
+CylinderMesh43 = Instance.new("CylinderMesh")
+Part44 = Instance.new("Part")
+SpecialMesh45 = Instance.new("SpecialMesh")
+Part46 = Instance.new("Part")
+SpecialMesh47 = Instance.new("SpecialMesh")
+Model48 = Instance.new("Model")
+Part49 = Instance.new("Part")
+CylinderMesh50 = Instance.new("CylinderMesh")
+Part51 = Instance.new("Part")
+CylinderMesh52 = Instance.new("CylinderMesh")
+Part53 = Instance.new("Part")
+CylinderMesh54 = Instance.new("CylinderMesh")
+Part55 = Instance.new("Part")
+CylinderMesh56 = Instance.new("CylinderMesh")
+Part57 = Instance.new("Part")
+CylinderMesh58 = Instance.new("CylinderMesh")
+Part59 = Instance.new("Part")
+SpecialMesh60 = Instance.new("SpecialMesh")
+Part61 = Instance.new("Part")
+CylinderMesh62 = Instance.new("CylinderMesh")
+Part63 = Instance.new("Part")
+SpecialMesh64 = Instance.new("SpecialMesh")
+Part65 = Instance.new("Part")
+BlockMesh66 = Instance.new("BlockMesh")
+Snap67 = Instance.new("Snap")
+Snap68 = Instance.new("Snap")
+Snap69 = Instance.new("Snap")
+Snap70 = Instance.new("Snap")
+Part71 = Instance.new("Part")
+CylinderMesh72 = Instance.new("CylinderMesh")
+Part73 = Instance.new("Part")
+SpecialMesh74 = Instance.new("SpecialMesh")
+Part75 = Instance.new("Part")
+SpecialMesh76 = Instance.new("SpecialMesh")
+Model77 = Instance.new("Model")
+Part78 = Instance.new("Part")
+CylinderMesh79 = Instance.new("CylinderMesh")
+Snap80 = Instance.new("Snap")
+Part81 = Instance.new("Part")
+CylinderMesh82 = Instance.new("CylinderMesh")
+Part83 = Instance.new("Part")
+CylinderMesh84 = Instance.new("CylinderMesh")
+Snap85 = Instance.new("Snap")
+Part86 = Instance.new("Part")
+CylinderMesh87 = Instance.new("CylinderMesh")
+Snap88 = Instance.new("Snap")
+Part89 = Instance.new("Part")
+CylinderMesh90 = Instance.new("CylinderMesh")
+Part91 = Instance.new("Part")
+SpecialMesh92 = Instance.new("SpecialMesh")
+Part93 = Instance.new("Part")
+CylinderMesh94 = Instance.new("CylinderMesh")
+Part95 = Instance.new("Part")
+SpecialMesh96 = Instance.new("SpecialMesh")
+Part97 = Instance.new("Part")
+BlockMesh98 = Instance.new("BlockMesh")
+Snap99 = Instance.new("Snap")
+Part100 = Instance.new("Part")
+CylinderMesh101 = Instance.new("CylinderMesh")
+Part102 = Instance.new("Part")
+SpecialMesh103 = Instance.new("SpecialMesh")
+Part104 = Instance.new("Part")
+SpecialMesh105 = Instance.new("SpecialMesh")
+Model106 = Instance.new("Model")
+Part107 = Instance.new("Part")
+CylinderMesh108 = Instance.new("CylinderMesh")
+Snap109 = Instance.new("Snap")
+Part110 = Instance.new("Part")
+CylinderMesh111 = Instance.new("CylinderMesh")
+Part112 = Instance.new("Part")
+CylinderMesh113 = Instance.new("CylinderMesh")
+Snap114 = Instance.new("Snap")
+Part115 = Instance.new("Part")
+CylinderMesh116 = Instance.new("CylinderMesh")
+Snap117 = Instance.new("Snap")
+Part118 = Instance.new("Part")
+CylinderMesh119 = Instance.new("CylinderMesh")
+Snap120 = Instance.new("Snap")
+Part121 = Instance.new("Part")
+SpecialMesh122 = Instance.new("SpecialMesh")
+Part123 = Instance.new("Part")
+CylinderMesh124 = Instance.new("CylinderMesh")
+Part125 = Instance.new("Part")
+SpecialMesh126 = Instance.new("SpecialMesh")
+Part127 = Instance.new("Part")
+BlockMesh128 = Instance.new("BlockMesh")
+Part129 = Instance.new("Part")
+CylinderMesh130 = Instance.new("CylinderMesh")
+Part131 = Instance.new("Part")
+SpecialMesh132 = Instance.new("SpecialMesh")
+Part133 = Instance.new("Part")
+SpecialMesh134 = Instance.new("SpecialMesh")
+Model135 = Instance.new("Model")
+Part136 = Instance.new("Part")
+Part137 = Instance.new("Part")
+Part138 = Instance.new("Part")
+CylinderMesh139 = Instance.new("CylinderMesh")
+Part140 = Instance.new("Part")
+Part141 = Instance.new("Part")
+CylinderMesh142 = Instance.new("CylinderMesh")
+Part143 = Instance.new("Part")
+CylinderMesh144 = Instance.new("CylinderMesh")
+Part145 = Instance.new("Part")
+Part146 = Instance.new("Part")
+CylinderMesh147 = Instance.new("CylinderMesh")
+Part148 = Instance.new("Part")
+CylinderMesh149 = Instance.new("CylinderMesh")
+Part150 = Instance.new("Part")
+Part151 = Instance.new("Part")
+Part152 = Instance.new("Part")
+Part153 = Instance.new("Part")
+CylinderMesh154 = Instance.new("CylinderMesh")
+Part155 = Instance.new("Part")
+CylinderMesh156 = Instance.new("CylinderMesh")
+Part157 = Instance.new("Part")
+CylinderMesh158 = Instance.new("CylinderMesh")
+Part159 = Instance.new("Part")
+CylinderMesh160 = Instance.new("CylinderMesh")
+Part161 = Instance.new("Part")
+Part162 = Instance.new("Part")
+Part163 = Instance.new("Part")
+CylinderMesh164 = Instance.new("CylinderMesh")
+Part165 = Instance.new("Part")
+CylinderMesh166 = Instance.new("CylinderMesh")
+Part167 = Instance.new("Part")
+Part168 = Instance.new("Part")
+Part169 = Instance.new("Part")
+Part170 = Instance.new("Part")
+Part171 = Instance.new("Part")
+Part172 = Instance.new("Part")
+Part173 = Instance.new("Part")
+Part174 = Instance.new("Part")
+Part175 = Instance.new("Part")
+Part176 = Instance.new("Part")
+CylinderMesh177 = Instance.new("CylinderMesh")
+Part178 = Instance.new("Part")
+Part179 = Instance.new("Part")
+Part180 = Instance.new("Part")
+Part181 = Instance.new("Part")
+Part182 = Instance.new("Part")
+CylinderMesh183 = Instance.new("CylinderMesh")
+Part184 = Instance.new("Part")
+CylinderMesh185 = Instance.new("CylinderMesh")
+Part186 = Instance.new("Part")
+CylinderMesh187 = Instance.new("CylinderMesh")
+Part188 = Instance.new("Part")
+Part189 = Instance.new("Part")
+CylinderMesh190 = Instance.new("CylinderMesh")
+Part191 = Instance.new("Part")
+Model192 = Instance.new("Model")
+Part193 = Instance.new("Part")
+CylinderMesh194 = Instance.new("CylinderMesh")
+Part195 = Instance.new("Part")
+CylinderMesh196 = Instance.new("CylinderMesh")
+Part197 = Instance.new("Part")
+CylinderMesh198 = Instance.new("CylinderMesh")
+Part199 = Instance.new("Part")
+CylinderMesh200 = Instance.new("CylinderMesh")
+Part201 = Instance.new("Part")
+CylinderMesh202 = Instance.new("CylinderMesh")
+Part203 = Instance.new("Part")
+CylinderMesh204 = Instance.new("CylinderMesh")
+Part205 = Instance.new("Part")
+CylinderMesh206 = Instance.new("CylinderMesh")
+Part207 = Instance.new("Part")
+CylinderMesh208 = Instance.new("CylinderMesh")
+Part209 = Instance.new("Part")
+CylinderMesh210 = Instance.new("CylinderMesh")
+Part211 = Instance.new("Part")
+CylinderMesh212 = Instance.new("CylinderMesh")
+Part213 = Instance.new("Part")
+CylinderMesh214 = Instance.new("CylinderMesh")
+Part215 = Instance.new("Part")
+CylinderMesh216 = Instance.new("CylinderMesh")
+Part217 = Instance.new("Part")
+CylinderMesh218 = Instance.new("CylinderMesh")
+Part219 = Instance.new("Part")
+CylinderMesh220 = Instance.new("CylinderMesh")
+Part221 = Instance.new("Part")
+CylinderMesh222 = Instance.new("CylinderMesh")
+Part223 = Instance.new("Part")
+CylinderMesh224 = Instance.new("CylinderMesh")
+Part225 = Instance.new("Part")
+CylinderMesh226 = Instance.new("CylinderMesh")
+Part227 = Instance.new("Part")
+CylinderMesh228 = Instance.new("CylinderMesh")
+Part229 = Instance.new("Part")
+CylinderMesh230 = Instance.new("CylinderMesh")
+Part231 = Instance.new("Part")
+CylinderMesh232 = Instance.new("CylinderMesh")
+Part233 = Instance.new("Part")
+CylinderMesh234 = Instance.new("CylinderMesh")
+Part235 = Instance.new("Part")
+CylinderMesh236 = Instance.new("CylinderMesh")
+Part237 = Instance.new("Part")
+CylinderMesh238 = Instance.new("CylinderMesh")
+Part239 = Instance.new("Part")
+CylinderMesh240 = Instance.new("CylinderMesh")
+Model241 = Instance.new("Model")
+Part242 = Instance.new("Part")
+CylinderMesh243 = Instance.new("CylinderMesh")
+Part244 = Instance.new("Part")
+SpecialMesh245 = Instance.new("SpecialMesh")
+SpotLight246 = Instance.new("SpotLight")
+Part247 = Instance.new("Part")
+CylinderMesh248 = Instance.new("CylinderMesh")
+Part249 = Instance.new("Part")
+SpecialMesh250 = Instance.new("SpecialMesh")
+SpotLight251 = Instance.new("SpotLight")
+Part252 = Instance.new("Part")
+CylinderMesh253 = Instance.new("CylinderMesh")
+Part254 = Instance.new("Part")
+SpecialMesh255 = Instance.new("SpecialMesh")
+SpotLight256 = Instance.new("SpotLight")
+Part257 = Instance.new("Part")
+SpecialMesh258 = Instance.new("SpecialMesh")
+SpotLight259 = Instance.new("SpotLight")
+Part260 = Instance.new("Part")
+CylinderMesh261 = Instance.new("CylinderMesh")
+Model262 = Instance.new("Model")
+Part263 = Instance.new("Part")
+CylinderMesh264 = Instance.new("CylinderMesh")
+Part265 = Instance.new("Part")
+SpecialMesh266 = Instance.new("SpecialMesh")
+UnionOperation267 = Instance.new("UnionOperation")
+Script268 = Instance.new("Script")
+Sky269 = Instance.new("Sky")
+Sound270 = Instance.new("Sound")
+Script271 = Instance.new("Script")
+Script272 = Instance.new("Script")
+Model0.Name = "Supernova Atomic Bomb"
+Model0.Parent = mas
+Model1.Name = "Tail"
+Model1.Parent = Model0
+Part2.Parent = Model1
+Part2.CFrame = CFrame.new(-97.8506927, 4.00000668, -43.2082901, 1, 0, 0, 0, -0.707105815, -0.707107842, 0, 0.707107842, -0.707105815)
+Part2.Orientation = Vector3.new(45, 180, 180)
+Part2.Position = Vector3.new(-97.85069274902344, 4.000006675720215, -43.208290100097656)
+Part2.Rotation = Vector3.new(135, 0, 0)
+Part2.Color = Color3.new(0, 1, 1)
+Part2.Size = Vector3.new(4.400000095367432, 0.20000000298023224, 10.600000381469727)
+Part2.BottomSurface = Enum.SurfaceType.Smooth
+Part2.BrickColor = BrickColor.new("Toothpaste")
+Part2.Material = Enum.Material.Metal
+Part2.TopSurface = Enum.SurfaceType.Smooth
+Part2.brickColor = BrickColor.new("Toothpaste")
+Part2.FormFactor = Enum.FormFactor.Symmetric
+Part2.formFactor = Enum.FormFactor.Symmetric
+Part3.Parent = Model1
+Part3.CFrame = CFrame.new(-97.850708, 3.99999857, -47.0087051, 1, 0, 0, 0, -1, 0, 0, 0, -1)
+Part3.Orientation = Vector3.new(0, 180, 180)
+Part3.Position = Vector3.new(-97.8507080078125, 3.9999985694885254, -47.008705139160156)
+Part3.Rotation = Vector3.new(-180, 0, 0)
+Part3.Color = Color3.new(0, 1, 1)
+Part3.Size = Vector3.new(4.400000095367432, 7.400000095367432, 0.20000000298023224)
+Part3.BottomSurface = Enum.SurfaceType.Smooth
+Part3.BrickColor = BrickColor.new("Toothpaste")
+Part3.Material = Enum.Material.Metal
+Part3.TopSurface = Enum.SurfaceType.Smooth
+Part3.brickColor = BrickColor.new("Toothpaste")
+Part3.FormFactor = Enum.FormFactor.Symmetric
+Part3.formFactor = Enum.FormFactor.Symmetric
+WedgePart4.Parent = Model1
+WedgePart4.CFrame = CFrame.new(-101.550537, 4.00000668, -45.8085098, 0, 0, 1, -1, 0, 0, 0, -1, 0)
+WedgePart4.Orientation = Vector3.new(0, 90, -90)
+WedgePart4.Position = Vector3.new(-101.550537109375, 4.000006675720215, -45.808509826660156)
+WedgePart4.Rotation = Vector3.new(-90, 90, 0)
+WedgePart4.Color = Color3.new(0, 1, 1)
+WedgePart4.Size = Vector3.new(0.20000000298023224, 2.1999998092651367, 3)
+WedgePart4.BrickColor = BrickColor.new("Toothpaste")
+WedgePart4.Material = Enum.Material.Metal
+WedgePart4.brickColor = BrickColor.new("Toothpaste")
+WedgePart4.FormFactor = Enum.FormFactor.Symmetric
+WedgePart4.formFactor = Enum.FormFactor.Symmetric
+Part5.Parent = Model1
+Part5.CFrame = CFrame.new(-97.8506927, 7.80000162, -43.2082901, 1, 0, 0, 0, -1, 0, 0, 0, -1)
+Part5.Orientation = Vector3.new(0, 180, 180)
+Part5.Position = Vector3.new(-97.85069274902344, 7.800001621246338, -43.208290100097656)
+Part5.Rotation = Vector3.new(-180, 0, 0)
+Part5.Color = Color3.new(0, 1, 1)
+Part5.Size = Vector3.new(4.400000095367432, 0.20000000298023224, 7.800000190734863)
+Part5.BottomSurface = Enum.SurfaceType.Smooth
+Part5.BrickColor = BrickColor.new("Toothpaste")
+Part5.Material = Enum.Material.Metal
+Part5.TopSurface = Enum.SurfaceType.Smooth
+Part5.brickColor = BrickColor.new("Toothpaste")
+Part5.FormFactor = Enum.FormFactor.Symmetric
+Part5.formFactor = Enum.FormFactor.Symmetric
+Part6.Parent = Model1
+Part6.CFrame = CFrame.new(-97.8506927, 4.00000668, -43.2082901, 1, 0, 0, 0, 0.707107842, -0.707105815, 0, 0.707105815, 0.707107842)
+Part6.Orientation = Vector3.new(45, 0, 0)
+Part6.Position = Vector3.new(-97.85069274902344, 4.000006675720215, -43.208290100097656)
+Part6.Rotation = Vector3.new(45, 0, 0)
+Part6.Color = Color3.new(0, 1, 1)
+Part6.Size = Vector3.new(4.400000095367432, 0.20000000298023224, 10.600000381469727)
+Part6.BottomSurface = Enum.SurfaceType.Smooth
+Part6.BrickColor = BrickColor.new("Toothpaste")
+Part6.Material = Enum.Material.Metal
+Part6.TopSurface = Enum.SurfaceType.Smooth
+Part6.brickColor = BrickColor.new("Toothpaste")
+Part6.FormFactor = Enum.FormFactor.Symmetric
+Part6.formFactor = Enum.FormFactor.Symmetric
+Part7.Parent = Model1
+Part7.CFrame = CFrame.new(-97.8506927, 4.00000668, -43.2082901, 1, 0, 0, 0, 0, -1, 0, 1, 0)
+Part7.Orientation = Vector3.new(90, 0, 0)
+Part7.Position = Vector3.new(-97.85069274902344, 4.000006675720215, -43.208290100097656)
+Part7.Rotation = Vector3.new(90, 0, 0)
+Part7.Color = Color3.new(0, 1, 1)
+Part7.Size = Vector3.new(4.400000095367432, 0.20000000298023224, 7.400000095367432)
+Part7.BottomSurface = Enum.SurfaceType.Smooth
+Part7.BrickColor = BrickColor.new("Toothpaste")
+Part7.Material = Enum.Material.Metal
+Part7.TopSurface = Enum.SurfaceType.Smooth
+Part7.brickColor = BrickColor.new("Toothpaste")
+Part7.FormFactor = Enum.FormFactor.Symmetric
+Part7.formFactor = Enum.FormFactor.Symmetric
+WedgePart8.Parent = Model1
+WedgePart8.CFrame = CFrame.new(-101.550522, 2.16154361, -41.3697891, 0, 0, 1, 0.707107842, -0.707105815, 0, 0.707105815, 0.707107842, 0)
+WedgePart8.Orientation = Vector3.new(0, 90, 135)
+WedgePart8.Position = Vector3.new(-101.55052185058594, 2.161543607711792, -41.369789123535156)
+WedgePart8.Rotation = Vector3.new(135, 90, 0)
+WedgePart8.Color = Color3.new(0, 1, 1)
+WedgePart8.Size = Vector3.new(0.20000000298023224, 2.1999998092651367, 3)
+WedgePart8.BrickColor = BrickColor.new("Toothpaste")
+WedgePart8.Material = Enum.Material.Metal
+WedgePart8.brickColor = BrickColor.new("Toothpaste")
+WedgePart8.FormFactor = Enum.FormFactor.Symmetric
+WedgePart8.formFactor = Enum.FormFactor.Symmetric
+WedgePart9.Parent = Model1
+WedgePart9.CFrame = CFrame.new(-101.550537, 5.83845377, -45.0459366, 0, 0, 1, -0.707107842, 0.707105815, 0, -0.707105815, -0.707107842, 0)
+WedgePart9.Orientation = Vector3.new(0, 90, -45)
+WedgePart9.Position = Vector3.new(-101.550537109375, 5.838453769683838, -45.045936584472656)
+WedgePart9.Rotation = Vector3.new(-45, 90, 0)
+WedgePart9.Color = Color3.new(0, 1, 1)
+WedgePart9.Size = Vector3.new(0.20000000298023224, 2.1999998092651367, 3)
+WedgePart9.BrickColor = BrickColor.new("Toothpaste")
+WedgePart9.Material = Enum.Material.Metal
+WedgePart9.brickColor = BrickColor.new("Toothpaste")
+WedgePart9.FormFactor = Enum.FormFactor.Symmetric
+WedgePart9.formFactor = Enum.FormFactor.Symmetric
+WedgePart10.Parent = Model1
+WedgePart10.CFrame = CFrame.new(-101.550537, 6.59997416, -43.2082901, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+WedgePart10.Orientation = Vector3.new(0, 90, 0)
+WedgePart10.Position = Vector3.new(-101.550537109375, 6.599974155426025, -43.208290100097656)
+WedgePart10.Rotation = Vector3.new(0, 90, 0)
+WedgePart10.Color = Color3.new(0, 1, 1)
+WedgePart10.Size = Vector3.new(0.20000000298023224, 2.1999998092651367, 3)
+WedgePart10.BrickColor = BrickColor.new("Toothpaste")
+WedgePart10.Material = Enum.Material.Metal
+WedgePart10.brickColor = BrickColor.new("Toothpaste")
+WedgePart10.FormFactor = Enum.FormFactor.Symmetric
+WedgePart10.formFactor = Enum.FormFactor.Symmetric
+WedgePart11.Parent = Model1
+WedgePart11.CFrame = CFrame.new(-101.550522, 1.40001512, -43.2082901, 0, 0, 1, 0, -1, 0, 1, 0, -0)
+WedgePart11.Orientation = Vector3.new(0, 90, 180)
+WedgePart11.Position = Vector3.new(-101.55052185058594, 1.400015115737915, -43.208290100097656)
+WedgePart11.Rotation = Vector3.new(180, 90, 0)
+WedgePart11.Color = Color3.new(0, 1, 1)
+WedgePart11.Size = Vector3.new(0.20000000298023224, 2.1999998092651367, 3)
+WedgePart11.BrickColor = BrickColor.new("Toothpaste")
+WedgePart11.Material = Enum.Material.Metal
+WedgePart11.brickColor = BrickColor.new("Toothpaste")
+WedgePart11.FormFactor = Enum.FormFactor.Symmetric
+WedgePart11.formFactor = Enum.FormFactor.Symmetric
+WedgePart12.Parent = Model1
+WedgePart12.CFrame = CFrame.new(-101.550522, 5.83845377, -41.3697891, 0, 0, 1, 0.707105815, 0.707107842, 0, -0.707107842, 0.707105815, 0)
+WedgePart12.Orientation = Vector3.new(0, 90, 45)
+WedgePart12.Position = Vector3.new(-101.55052185058594, 5.838453769683838, -41.369789123535156)
+WedgePart12.Rotation = Vector3.new(45, 90, 0)
+WedgePart12.Color = Color3.new(0, 1, 1)
+WedgePart12.Size = Vector3.new(0.20000000298023224, 2.1999998092651367, 3)
+WedgePart12.BrickColor = BrickColor.new("Toothpaste")
+WedgePart12.Material = Enum.Material.Metal
+WedgePart12.brickColor = BrickColor.new("Toothpaste")
+WedgePart12.FormFactor = Enum.FormFactor.Symmetric
+WedgePart12.formFactor = Enum.FormFactor.Symmetric
+WedgePart13.Parent = Model1
+WedgePart13.CFrame = CFrame.new(-101.550552, 2.16155124, -45.0459366, 0, 0, 1, -0.707105815, -0.707107842, 0, 0.707107842, -0.707105815, 0)
+WedgePart13.Orientation = Vector3.new(0, 90, -135)
+WedgePart13.Position = Vector3.new(-101.55055236816406, 2.1615512371063232, -45.045936584472656)
+WedgePart13.Rotation = Vector3.new(-135, 90, 0)
+WedgePart13.Color = Color3.new(0, 1, 1)
+WedgePart13.Size = Vector3.new(0.20000000298023224, 2.1999998092651367, 3)
+WedgePart13.BrickColor = BrickColor.new("Toothpaste")
+WedgePart13.Material = Enum.Material.Metal
+WedgePart13.brickColor = BrickColor.new("Toothpaste")
+WedgePart13.FormFactor = Enum.FormFactor.Symmetric
+WedgePart13.formFactor = Enum.FormFactor.Symmetric
+Part14.Parent = Model1
+Part14.CFrame = CFrame.new(-97.850647, 4.00000668, -39.4093399, 1, 0, 0, 0, -1, 0, 0, 0, -1)
+Part14.Orientation = Vector3.new(0, 180, 180)
+Part14.Position = Vector3.new(-97.85064697265625, 4.000006675720215, -39.409339904785156)
+Part14.Rotation = Vector3.new(-180, 0, 0)
+Part14.Color = Color3.new(0, 1, 1)
+Part14.Size = Vector3.new(4.400000095367432, 7.400000095367432, 0.20000000298023224)
+Part14.BottomSurface = Enum.SurfaceType.Smooth
+Part14.BrickColor = BrickColor.new("Toothpaste")
+Part14.Material = Enum.Material.Metal
+Part14.TopSurface = Enum.SurfaceType.Smooth
+Part14.brickColor = BrickColor.new("Toothpaste")
+Part14.FormFactor = Enum.FormFactor.Symmetric
+Part14.formFactor = Enum.FormFactor.Symmetric
+Part15.Parent = Model1
+Part15.CFrame = CFrame.new(-97.8506927, 4.00000668, -43.2082901, 1, 0, 0, 0, -1, 0, 0, 0, -1)
+Part15.Orientation = Vector3.new(0, 180, 180)
+Part15.Position = Vector3.new(-97.85069274902344, 4.000006675720215, -43.208290100097656)
+Part15.Rotation = Vector3.new(-180, 0, 0)
+Part15.Color = Color3.new(0, 1, 1)
+Part15.Size = Vector3.new(4.400000095367432, 0.20000000298023224, 7.400000095367432)
+Part15.BottomSurface = Enum.SurfaceType.Smooth
+Part15.BrickColor = BrickColor.new("Toothpaste")
+Part15.Material = Enum.Material.Metal
+Part15.TopSurface = Enum.SurfaceType.Smooth
+Part15.brickColor = BrickColor.new("Toothpaste")
+Part15.FormFactor = Enum.FormFactor.Symmetric
+Part15.formFactor = Enum.FormFactor.Symmetric
+Part16.Parent = Model1
+Part16.CFrame = CFrame.new(-97.8507004, 0.200018197, -43.2082901, 1, 0, 0, 0, -1, 0, 0, 0, -1)
+Part16.Orientation = Vector3.new(0, 180, 180)
+Part16.Position = Vector3.new(-97.85070037841797, 0.20001819729804993, -43.208290100097656)
+Part16.Rotation = Vector3.new(-180, 0, 0)
+Part16.Color = Color3.new(0, 1, 1)
+Part16.Size = Vector3.new(4.400000095367432, 0.20000000298023224, 7.800000190734863)
+Part16.BottomSurface = Enum.SurfaceType.Smooth
+Part16.BrickColor = BrickColor.new("Toothpaste")
+Part16.Material = Enum.Material.Metal
+Part16.TopSurface = Enum.SurfaceType.Smooth
+Part16.brickColor = BrickColor.new("Toothpaste")
+Part16.FormFactor = Enum.FormFactor.Symmetric
+Part16.formFactor = Enum.FormFactor.Symmetric
+WedgePart17.Parent = Model1
+WedgePart17.CFrame = CFrame.new(-101.550537, 3.99999857, -40.6088028, 0, 0, 1, 1, 0, 0, 0, 1, 0)
+WedgePart17.Orientation = Vector3.new(0, 90, 90)
+WedgePart17.Position = Vector3.new(-101.550537109375, 3.9999985694885254, -40.608802795410156)
+WedgePart17.Rotation = Vector3.new(90, 90, 0)
+WedgePart17.Color = Color3.new(0, 1, 1)
+WedgePart17.Size = Vector3.new(0.20000000298023224, 2.1999998092651367, 3)
+WedgePart17.BrickColor = BrickColor.new("Toothpaste")
+WedgePart17.Material = Enum.Material.Metal
+WedgePart17.brickColor = BrickColor.new("Toothpaste")
+WedgePart17.FormFactor = Enum.FormFactor.Symmetric
+WedgePart17.formFactor = Enum.FormFactor.Symmetric
+Model18.Name = "Parts"
+Model18.Parent = Model0
+Model19.Parent = Model18
+Part20.Parent = Model19
+Part20.CFrame = CFrame.new(-109.765388, 0.86960113, -40.1521416, 0.992697358, -0.120633155, -3.68082533e-06, -0.0853030384, -0.701942027, -0.707107723, 0.085298039, 0.701943994, -0.707106352)
+Part20.Orientation = Vector3.new(45, -180, -173.07000732421875)
+Part20.Position = Vector3.new(-109.76538848876953, 0.8696011304855347, -40.15214157104492)
+Part20.Rotation = Vector3.new(135, 0, 6.929999828338623)
+Part20.Color = Color3.new(0, 1, 0)
+Part20.Size = Vector3.new(0.20000000298023224, 0.8206923007965088, 0.20000000298023224)
+Part20.BrickColor = BrickColor.new("Lime green")
+Part20.CanCollide = false
+Part20.Material = Enum.Material.Neon
+Part20.brickColor = BrickColor.new("Lime green")
+Part20.FormFactor = Enum.FormFactor.Custom
+Part20.formFactor = Enum.FormFactor.Custom
+CylinderMesh21.Parent = Part20
+CylinderMesh21.Scale = Vector3.new(0.586208701133728, 1, 0.9999961853027344)
+Snap22.Parent = Part20
+Snap22.C0 = CFrame.new(0, -0.41034615, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Snap22.C1 = CFrame.new(-0.17591095, 0.175521851, 0.000350952148, 1.00000012, 0, -1.11758709e-08, 1.11758709e-08, 2.98023224e-08, -1.00000012, 0, 1.00000024, -2.98023224e-08)
+Snap22.Part0 = Part20
+Snap22.Part1 = Part40
+Snap22.part1 = Part40
+Part23.Parent = Model19
+Part23.CFrame = CFrame.new(-109.98571, 1.30611277, -40.5892715, -0.120636031, 3.59523566e-09, 0.992696881, -0.701941192, -0.707108378, -0.0853023753, 0.701944172, -0.707105339, 0.0853027478)
+Part23.Orientation = Vector3.new(4.889999866485596, 85.08999633789062, -135.2100067138672)
+Part23.Position = Vector3.new(-109.98571014404297, 1.3061127662658691, -40.589271545410156)
+Part23.Rotation = Vector3.new(45, 83.06999969482422, -180)
+Part23.Color = Color3.new(0, 1, 0)
+Part23.Size = Vector3.new(0.3517252206802368, 0.20000000298023224, 0.5999977588653564)
+Part23.BrickColor = BrickColor.new("Lime green")
+Part23.CanCollide = false
+Part23.Material = Enum.Material.Neon
+Part23.brickColor = BrickColor.new("Lime green")
+Part23.FormFactor = Enum.FormFactor.Custom
+Part23.formFactor = Enum.FormFactor.Custom
+CylinderMesh24.Parent = Part23
+Part25.Parent = Model19
+Part25.CFrame = CFrame.new(-109.416328, 0.839619398, -40.1228409, 0.992697358, -0.120633155, -3.68082533e-06, -0.0853030384, -0.701942027, -0.707107723, 0.085298039, 0.701943994, -0.707106352)
+Part25.Orientation = Vector3.new(45, -180, -173.07000732421875)
+Part25.Position = Vector3.new(-109.41632843017578, 0.8396193981170654, -40.122840881347656)
+Part25.Rotation = Vector3.new(135, 0, 6.929999828338623)
+Part25.Color = Color3.new(0, 1, 0)
+Part25.Size = Vector3.new(0.20000000298023224, 0.8206923007965088, 0.20000000298023224)
+Part25.BrickColor = BrickColor.new("Lime green")
+Part25.CanCollide = false
+Part25.Material = Enum.Material.Neon
+Part25.brickColor = BrickColor.new("Lime green")
+Part25.FormFactor = Enum.FormFactor.Custom
+Part25.formFactor = Enum.FormFactor.Custom
+CylinderMesh26.Parent = Part25
+CylinderMesh26.Scale = Vector3.new(0.586208701133728, 1, 0.9999961853027344)
+Snap27.Parent = Part25
+Snap27.C0 = CFrame.new(0, -0.41034615, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Snap27.C1 = CFrame.new(0.17565918, 0.17502594, 0.000831604004, 1.00000012, 0, -1.11758709e-08, 1.11758709e-08, 2.98023224e-08, -1.00000012, 0, 1.00000024, -2.98023224e-08)
+Snap27.Part0 = Part25
+Snap27.Part1 = Part40
+Snap27.part1 = Part40
+Part28.Parent = Model19
+Part28.CFrame = CFrame.new(-109.162231, 0.943069458, -40.2263565, 0.992697358, -0.120633155, -3.68082533e-06, -0.0853030384, -0.701942027, -0.707107723, 0.085298039, 0.701943994, -0.707106352)
+Part28.Orientation = Vector3.new(45, -180, -173.07000732421875)
+Part28.Position = Vector3.new(-109.1622314453125, 0.9430694580078125, -40.226356506347656)
+Part28.Rotation = Vector3.new(135, 0, 6.929999828338623)
+Part28.Color = Color3.new(0, 1, 0)
+Part28.Size = Vector3.new(0.20000000298023224, 0.4689670503139496, 0.20000000298023224)
+Part28.BrickColor = BrickColor.new("Lime green")
+Part28.CanCollide = false
+Part28.Material = Enum.Material.Neon
+Part28.brickColor = BrickColor.new("Lime green")
+Part28.FormFactor = Enum.FormFactor.Custom
+Part28.formFactor = Enum.FormFactor.Custom
+CylinderMesh29.Parent = Part28
+CylinderMesh29.Scale = Vector3.new(0.586208701133728, 1, 0.9999961853027344)
+Snap30.Parent = Part28
+Snap30.C0 = CFrame.new(0, -0.234483525, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Snap30.C1 = CFrame.new(0.410247803, 0.174957275, 0.000877380371, 1.00000012, 0, -1.11758709e-08, 1.11758709e-08, 2.98023224e-08, -1.00000012, 0, 1.00000024, -2.98023224e-08)
+Snap30.Part0 = Part28
+Snap30.Part1 = Part40
+Snap30.part1 = Part40
+Part31.Parent = Model19
+Part31.CFrame = CFrame.new(-109.976982, 1.01303875, -40.2949638, 0.992697358, -0.120633155, -3.68082533e-06, -0.0853030384, -0.701942027, -0.707107723, 0.085298039, 0.701943994, -0.707106352)
+Part31.Orientation = Vector3.new(45, -180, -173.07000732421875)
+Part31.Position = Vector3.new(-109.97698211669922, 1.0130387544631958, -40.29496383666992)
+Part31.Rotation = Vector3.new(135, 0, 6.929999828338623)
+Part31.Color = Color3.new(0, 1, 0)
+Part31.Size = Vector3.new(0.20000000298023224, 0.4689670503139496, 0.20000000298023224)
+Part31.BrickColor = BrickColor.new("Lime green")
+Part31.CanCollide = false
+Part31.Material = Enum.Material.Neon
+Part31.brickColor = BrickColor.new("Lime green")
+Part31.FormFactor = Enum.FormFactor.Custom
+Part31.formFactor = Enum.FormFactor.Custom
+CylinderMesh32.Parent = Part31
+CylinderMesh32.Scale = Vector3.new(0.586208701133728, 1, 0.9999961853027344)
+Snap33.Parent = Part31
+Snap33.C0 = CFrame.new(0, -0.234483525, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Snap33.C1 = CFrame.new(-0.410377502, 0.175971985, -8.39233398e-05, 1.00000012, 0, -1.11758709e-08, 1.11758709e-08, 2.98023224e-08, -1.00000012, 0, 1.00000024, -2.98023224e-08)
+Snap33.Part0 = Part31
+Snap33.Part1 = Part40
+Snap33.part1 = Part40
+Part34.Parent = Model19
+Part34.CFrame = CFrame.new(-110.005257, 0.848463297, -40.131752, 0, -0.120634958, 0.992697001, 0.707107842, -0.701941788, -0.0853016824, 0.707105815, 0.701943755, 0.0853019208)
+Part34.Orientation = Vector3.new(4.889999866485596, 85.08999633789062, 134.7899932861328)
+Part34.Position = Vector3.new(-110.00525665283203, 0.8484632968902588, -40.131752014160156)
+Part34.Rotation = Vector3.new(45, 83.06999969482422, 90)
+Part34.Color = Color3.new(0, 1, 0)
+Part34.Size = Vector3.new(0.20000000298023224, 0.20000000298023224, 0.20000000298023224)
+Part34.BottomSurface = Enum.SurfaceType.Smooth
+Part34.BrickColor = BrickColor.new("Lime green")
+Part34.CanCollide = false
+Part34.Material = Enum.Material.Neon
+Part34.TopSurface = Enum.SurfaceType.Smooth
+Part34.brickColor = BrickColor.new("Lime green")
+Part34.FormFactor = Enum.FormFactor.Custom
+Part34.formFactor = Enum.FormFactor.Custom
+SpecialMesh35.Parent = Part34
+SpecialMesh35.Scale = Vector3.new(0.6000000238418579, 0.6000000238418579, 0.6000000238418579)
+SpecialMesh35.MeshType = Enum.MeshType.Sphere
+Part36.Parent = Model19
+Part36.CFrame = CFrame.new(-109.640259, 0.566572428, -39.8492813, -0.120636031, -0.992696822, -4.46132253e-06, -0.701941192, 0.0853055492, -0.707107842, 0.701944172, -0.0852995515, -0.707105696)
+Part36.Orientation = Vector3.new(45, -180, -83.06999969482422)
+Part36.Position = Vector3.new(-109.6402587890625, 0.5665724277496338, -39.849281311035156)
+Part36.Rotation = Vector3.new(135, 0, 96.93000030517578)
+Part36.Color = Color3.new(0, 1, 0)
+Part36.Size = Vector3.new(0.20000000298023224, 0.3517252802848816, 0.20000000298023224)
+Part36.BrickColor = BrickColor.new("Lime green")
+Part36.CanCollide = false
+Part36.Material = Enum.Material.Neon
+Part36.brickColor = BrickColor.new("Lime green")
+Part36.FormFactor = Enum.FormFactor.Custom
+Part36.formFactor = Enum.FormFactor.Custom
+CylinderMesh37.Parent = Part36
+CylinderMesh37.Scale = Vector3.new(0.586208701133728, 1, 0.9999961853027344)
+Part38.Parent = Model19
+Part38.CFrame = CFrame.new(-109.190422, 0.778455973, -40.0607071, 0, -0.120634958, 0.992697001, 0.707107842, -0.701941788, -0.0853016824, 0.707105815, 0.701943755, 0.0853019208)
+Part38.Orientation = Vector3.new(4.889999866485596, 85.08999633789062, 134.7899932861328)
+Part38.Position = Vector3.new(-109.19042205810547, 0.7784559726715088, -40.060707092285156)
+Part38.Rotation = Vector3.new(45, 83.06999969482422, 90)
+Part38.Color = Color3.new(0, 1, 0)
+Part38.Size = Vector3.new(0.20000000298023224, 0.20000000298023224, 0.20000000298023224)
+Part38.BottomSurface = Enum.SurfaceType.Smooth
+Part38.BrickColor = BrickColor.new("Lime green")
+Part38.CanCollide = false
+Part38.Material = Enum.Material.Neon
+Part38.TopSurface = Enum.SurfaceType.Smooth
+Part38.brickColor = BrickColor.new("Lime green")
+Part38.FormFactor = Enum.FormFactor.Custom
+Part38.formFactor = Enum.FormFactor.Custom
+SpecialMesh39.Parent = Part38
+SpecialMesh39.Scale = Vector3.new(0.6000000238418579, 0.6000000238418579, 0.6000000238418579)
+SpecialMesh39.MeshType = Enum.MeshType.Sphere
+Part40.Parent = Model19
+Part40.CFrame = CFrame.new(-109.520088, 1.26608896, -40.5481339, 0.992697239, -0.120633148, -3.67722919e-06, -0.0853030235, -0.701941967, -0.707107544, 0.0852980241, 0.701943934, -0.707106173)
+Part40.Orientation = Vector3.new(45, -180, -173.07000732421875)
+Part40.Position = Vector3.new(-109.52008819580078, 1.2660889625549316, -40.548133850097656)
+Part40.Rotation = Vector3.new(135, 0, 6.929999828338623)
+Part40.Color = Color3.new(0, 1, 0)
+Part40.Size = Vector3.new(0.9379341006278992, 0.3517252802848816, 0.20000000298023224)
+Part40.BrickColor = BrickColor.new("Lime green")
+Part40.CanCollide = false
+Part40.Material = Enum.Material.Neon
+Part40.brickColor = BrickColor.new("Lime green")
+Part40.FormFactor = Enum.FormFactor.Custom
+Part40.formFactor = Enum.FormFactor.Custom
+BlockMesh41.Parent = Part40
+BlockMesh41.Scale = Vector3.new(1, 1, 0.9999961853027344)
+Part42.Parent = Model19
+Part42.CFrame = CFrame.new(-109.05468, 1.22608805, -40.5085831, -0.120636031, 3.59523566e-09, 0.992696881, -0.701941192, -0.707108378, -0.0853023753, 0.701944172, -0.707105339, 0.0853027478)
+Part42.Orientation = Vector3.new(4.889999866485596, 85.08999633789062, -135.2100067138672)
+Part42.Position = Vector3.new(-109.05467987060547, 1.226088047027588, -40.508583068847656)
+Part42.Rotation = Vector3.new(45, 83.06999969482422, -180)
+Part42.Color = Color3.new(0, 1, 0)
+Part42.Size = Vector3.new(0.3517252206802368, 0.20000000298023224, 0.5999977588653564)
+Part42.BrickColor = BrickColor.new("Lime green")
+Part42.CanCollide = false
+Part42.Material = Enum.Material.Neon
+Part42.brickColor = BrickColor.new("Lime green")
+Part42.FormFactor = Enum.FormFactor.Custom
+Part42.formFactor = Enum.FormFactor.Custom
+CylinderMesh43.Parent = Part42
+Part44.Parent = Model19
+Part44.CFrame = CFrame.new(-109.814804, 0.581571817, -39.864418, 0, -0.120634958, 0.992697001, 0.707107842, -0.701941788, -0.0853016824, 0.707105815, 0.701943755, 0.0853019208)
+Part44.Orientation = Vector3.new(4.889999866485596, 85.08999633789062, 134.7899932861328)
+Part44.Position = Vector3.new(-109.81480407714844, 0.5815718173980713, -39.864418029785156)
+Part44.Rotation = Vector3.new(45, 83.06999969482422, 90)
+Part44.Color = Color3.new(0, 1, 0)
+Part44.Size = Vector3.new(0.20000000298023224, 0.20000000298023224, 0.20000000298023224)
+Part44.BottomSurface = Enum.SurfaceType.Smooth
+Part44.BrickColor = BrickColor.new("Lime green")
+Part44.CanCollide = false
+Part44.Material = Enum.Material.Neon
+Part44.TopSurface = Enum.SurfaceType.Smooth
+Part44.brickColor = BrickColor.new("Lime green")
+Part44.FormFactor = Enum.FormFactor.Custom
+Part44.formFactor = Enum.FormFactor.Custom
+SpecialMesh45.Parent = Part44
+SpecialMesh45.Scale = Vector3.new(0.6000000238418579, 0.6000000238418579, 0.6000000238418579)
+SpecialMesh45.MeshType = Enum.MeshType.Sphere
+Part46.Parent = Model19
+Part46.CFrame = CFrame.new(-109.465698, 0.551557779, -39.834877, 0, -0.120634958, 0.992697001, 0.707107842, -0.701941788, -0.0853016824, 0.707105815, 0.701943755, 0.0853019208)
+Part46.Orientation = Vector3.new(4.889999866485596, 85.08999633789062, 134.7899932861328)
+Part46.Position = Vector3.new(-109.4656982421875, 0.5515577793121338, -39.834877014160156)
+Part46.Rotation = Vector3.new(45, 83.06999969482422, 90)
+Part46.Color = Color3.new(0, 1, 0)
+Part46.Size = Vector3.new(0.20000000298023224, 0.20000000298023224, 0.20000000298023224)
+Part46.BottomSurface = Enum.SurfaceType.Smooth
+Part46.BrickColor = BrickColor.new("Lime green")
+Part46.CanCollide = false
+Part46.Material = Enum.Material.Neon
+Part46.TopSurface = Enum.SurfaceType.Smooth
+Part46.brickColor = BrickColor.new("Lime green")
+Part46.FormFactor = Enum.FormFactor.Custom
+Part46.formFactor = Enum.FormFactor.Custom
+SpecialMesh47.Parent = Part46
+SpecialMesh47.Scale = Vector3.new(0.6000000238418579, 0.6000000238418579, 0.6000000238418579)
+SpecialMesh47.MeshType = Enum.MeshType.Sphere
+Model48.Parent = Model18
+Part49.Parent = Model48
+Part49.CFrame = CFrame.new(-109.76545, 0.869601965, -46.2649307, 0.992696762, -0.120638035, -2.88943374e-06, -0.0853019804, -0.70194304, 0.70710665, -0.0853059739, -0.701942086, -0.707107127)
+Part49.Orientation = Vector3.new(-45, -180, -173.07000732421875)
+Part49.Position = Vector3.new(-109.76544952392578, 0.8696019649505615, -46.264930725097656)
+Part49.Rotation = Vector3.new(-135, 0, 6.929999828338623)
+Part49.Color = Color3.new(0, 1, 0)
+Part49.Size = Vector3.new(0.20000000298023224, 0.8206923007965088, 0.20000000298023224)
+Part49.BrickColor = BrickColor.new("Lime green")
+Part49.CanCollide = false
+Part49.Material = Enum.Material.Neon
+Part49.brickColor = BrickColor.new("Lime green")
+Part49.FormFactor = Enum.FormFactor.Custom
+Part49.formFactor = Enum.FormFactor.Custom
+CylinderMesh50.Parent = Part49
+CylinderMesh50.Scale = Vector3.new(0.586208701133728, 1, 0.9999961853027344)
+Part51.Parent = Model48
+Part51.CFrame = CFrame.new(-109.985664, 1.30612803, -45.8276749, -0.120632, 3.59511287e-09, 0.992697299, -0.701943994, 0.707105815, -0.0852998272, -0.701942027, -0.707107842, -0.0852995813)
+Part51.Orientation = Vector3.new(4.889999866485596, 94.91000366210938, -44.790000915527344)
+Part51.Position = Vector3.new(-109.98566436767578, 1.3061280250549316, -45.827674865722656)
+Part51.Rotation = Vector3.new(135, 83.06999969482422, -180)
+Part51.Color = Color3.new(0, 1, 0)
+Part51.Size = Vector3.new(0.3517252206802368, 0.20000000298023224, 0.5999977588653564)
+Part51.BrickColor = BrickColor.new("Lime green")
+Part51.CanCollide = false
+Part51.Material = Enum.Material.Neon
+Part51.brickColor = BrickColor.new("Lime green")
+Part51.FormFactor = Enum.FormFactor.Custom
+Part51.formFactor = Enum.FormFactor.Custom
+CylinderMesh52.Parent = Part51
+Part53.Parent = Model48
+Part53.CFrame = CFrame.new(-109.416382, 0.839618742, -46.2947235, 0.992696762, -0.120638035, -2.88943374e-06, -0.0853019804, -0.70194304, 0.70710665, -0.0853059739, -0.701942086, -0.707107127)
+Part53.Orientation = Vector3.new(-45, -180, -173.07000732421875)
+Part53.Position = Vector3.new(-109.4163818359375, 0.8396187424659729, -46.29472351074219)
+Part53.Rotation = Vector3.new(-135, 0, 6.929999828338623)
+Part53.Color = Color3.new(0, 1, 0)
+Part53.Size = Vector3.new(0.20000000298023224, 0.8206923007965088, 0.20000000298023224)
+Part53.BrickColor = BrickColor.new("Lime green")
+Part53.CanCollide = false
+Part53.Material = Enum.Material.Neon
+Part53.brickColor = BrickColor.new("Lime green")
+Part53.FormFactor = Enum.FormFactor.Custom
+Part53.formFactor = Enum.FormFactor.Custom
+CylinderMesh54.Parent = Part53
+CylinderMesh54.Scale = Vector3.new(0.586208701133728, 1, 0.9999961853027344)
+Part55.Parent = Model48
+Part55.CFrame = CFrame.new(-109.162292, 0.943060338, -46.1913261, 0.992696762, -0.120638035, -2.88943374e-06, -0.0853019804, -0.70194304, 0.70710665, -0.0853059739, -0.701942086, -0.707107127)
+Part55.Orientation = Vector3.new(-45, -180, -173.07000732421875)
+Part55.Position = Vector3.new(-109.16229248046875, 0.9430603384971619, -46.19132614135742)
+Part55.Rotation = Vector3.new(-135, 0, 6.929999828338623)
+Part55.Color = Color3.new(0, 1, 0)
+Part55.Size = Vector3.new(0.20000000298023224, 0.4689670503139496, 0.20000000298023224)
+Part55.BrickColor = BrickColor.new("Lime green")
+Part55.CanCollide = false
+Part55.Material = Enum.Material.Neon
+Part55.brickColor = BrickColor.new("Lime green")
+Part55.FormFactor = Enum.FormFactor.Custom
+Part55.formFactor = Enum.FormFactor.Custom
+CylinderMesh56.Parent = Part55
+CylinderMesh56.Scale = Vector3.new(0.586208701133728, 1, 0.9999961853027344)
+Part57.Parent = Model48
+Part57.CFrame = CFrame.new(-109.97699, 1.01306951, -46.1205254, 0.992696762, -0.120638035, -2.88943374e-06, -0.0853019804, -0.70194304, 0.70710665, -0.0853059739, -0.701942086, -0.707107127)
+Part57.Orientation = Vector3.new(-45, -180, -173.07000732421875)
+Part57.Position = Vector3.new(-109.97698974609375, 1.0130695104599, -46.12052536010742)
+Part57.Rotation = Vector3.new(-135, 0, 6.929999828338623)
+Part57.Color = Color3.new(0, 1, 0)
+Part57.Size = Vector3.new(0.20000000298023224, 0.4689670503139496, 0.20000000298023224)
+Part57.BrickColor = BrickColor.new("Lime green")
+Part57.CanCollide = false
+Part57.Material = Enum.Material.Neon
+Part57.brickColor = BrickColor.new("Lime green")
+Part57.FormFactor = Enum.FormFactor.Custom
+Part57.formFactor = Enum.FormFactor.Custom
+CylinderMesh58.Parent = Part57
+CylinderMesh58.Scale = Vector3.new(0.586208701133728, 1, 0.9999961853027344)
+Part59.Parent = Model48
+Part59.CFrame = CFrame.new(-110.005302, 0.848463297, -46.2854385, 0, -0.120634958, 0.992696941, -0.707106829, -0.701942742, -0.0853018016, 0.707106829, -0.701942742, -0.0853018016)
+Part59.Orientation = Vector3.new(4.889999866485596, 94.91000366210938, -134.7899932861328)
+Part59.Position = Vector3.new(-110.00530242919922, 0.8484632968902588, -46.285438537597656)
+Part59.Rotation = Vector3.new(135, 83.06999969482422, 90)
+Part59.Color = Color3.new(0, 1, 0)
+Part59.Size = Vector3.new(0.20000000298023224, 0.20000000298023224, 0.20000000298023224)
+Part59.BottomSurface = Enum.SurfaceType.Smooth
+Part59.BrickColor = BrickColor.new("Lime green")
+Part59.CanCollide = false
+Part59.Material = Enum.Material.Neon
+Part59.TopSurface = Enum.SurfaceType.Smooth
+Part59.brickColor = BrickColor.new("Lime green")
+Part59.FormFactor = Enum.FormFactor.Custom
+Part59.formFactor = Enum.FormFactor.Custom
+SpecialMesh60.Parent = Part59
+SpecialMesh60.Scale = Vector3.new(0.6000000238418579, 0.6000000238418579, 0.6000000238418579)
+SpecialMesh60.MeshType = Enum.MeshType.Sphere
+Part61.Parent = Model48
+Part61.CFrame = CFrame.new(-109.64032, 0.566564798, -46.567421, -0.120632, -0.992697299, -4.37493691e-06, -0.701943994, 0.0852967054, 0.707106173, -0.701942027, 0.0853027031, -0.707107365)
+Part61.Orientation = Vector3.new(-45, -180, -83.06999969482422)
+Part61.Position = Vector3.new(-109.64031982421875, 0.5665647983551025, -46.567420959472656)
+Part61.Rotation = Vector3.new(-135, 0, 96.93000030517578)
+Part61.Color = Color3.new(0, 1, 0)
+Part61.Size = Vector3.new(0.20000000298023224, 0.3517252802848816, 0.20000000298023224)
+Part61.BrickColor = BrickColor.new("Lime green")
+Part61.CanCollide = false
+Part61.Material = Enum.Material.Neon
+Part61.brickColor = BrickColor.new("Lime green")
+Part61.FormFactor = Enum.FormFactor.Custom
+Part61.formFactor = Enum.FormFactor.Custom
+CylinderMesh62.Parent = Part61
+CylinderMesh62.Scale = Vector3.new(0.586208701133728, 1, 0.9999961853027344)
+Part63.Parent = Model48
+Part63.CFrame = CFrame.new(-109.190491, 0.778455973, -46.355751, 0, -0.120634958, 0.992696941, -0.707106829, -0.701942742, -0.0853018016, 0.707106829, -0.701942742, -0.0853018016)
+Part63.Orientation = Vector3.new(4.889999866485596, 94.91000366210938, -134.7899932861328)
+Part63.Position = Vector3.new(-109.19049072265625, 0.7784559726715088, -46.355751037597656)
+Part63.Rotation = Vector3.new(135, 83.06999969482422, 90)
+Part63.Color = Color3.new(0, 1, 0)
+Part63.Size = Vector3.new(0.20000000298023224, 0.20000000298023224, 0.20000000298023224)
+Part63.BottomSurface = Enum.SurfaceType.Smooth
+Part63.BrickColor = BrickColor.new("Lime green")
+Part63.CanCollide = false
+Part63.Material = Enum.Material.Neon
+Part63.TopSurface = Enum.SurfaceType.Smooth
+Part63.brickColor = BrickColor.new("Lime green")
+Part63.FormFactor = Enum.FormFactor.Custom
+Part63.formFactor = Enum.FormFactor.Custom
+SpecialMesh64.Parent = Part63
+SpecialMesh64.Scale = Vector3.new(0.6000000238418579, 0.6000000238418579, 0.6000000238418579)
+SpecialMesh64.MeshType = Enum.MeshType.Sphere
+Part65.Parent = Model48
+Part65.CFrame = CFrame.new(-109.520096, 1.26612711, -45.867836, 0.992696643, -0.12063802, -2.88583806e-06, -0.0853019729, -0.70194298, 0.70710659, -0.0853059664, -0.701942027, -0.707107067)
+Part65.Orientation = Vector3.new(-45, -180, -173.07000732421875)
+Part65.Position = Vector3.new(-109.52009582519531, 1.266127109527588, -45.867835998535156)
+Part65.Rotation = Vector3.new(-135, 0, 6.929999828338623)
+Part65.Color = Color3.new(0, 1, 0)
+Part65.Size = Vector3.new(0.9379341006278992, 0.3517252802848816, 0.20000000298023224)
+Part65.BrickColor = BrickColor.new("Lime green")
+Part65.CanCollide = false
+Part65.Material = Enum.Material.Neon
+Part65.brickColor = BrickColor.new("Lime green")
+Part65.FormFactor = Enum.FormFactor.Custom
+Part65.formFactor = Enum.FormFactor.Custom
+BlockMesh66.Parent = Part65
+BlockMesh66.Scale = Vector3.new(1, 1, 0.9999961853027344)
+Snap67.Parent = Part65
+Snap67.C0 = CFrame.new(0, 0.17586264, 0, -1, -0, -0, 0, 0, 1, 0, 1, 0)
+Snap67.C1 = CFrame.new(0.175861359, -0.410812378, -0.00040435791, -1.00000012, 0, 3.7252903e-09, -3.7252903e-09, 2.98023224e-08, 1.00000012, 0, 1.00000012, 2.98023224e-08)
+Snap67.Part0 = Part65
+Snap67.Part1 = Part49
+Snap67.part1 = Part49
+Snap68.Parent = Part65
+Snap68.C0 = CFrame.new(0, 0.17586264, 0, -1, -0, -0, 0, 0, 1, 0, 1, 0)
+Snap68.C1 = CFrame.new(-0.175750732, -0.41065979, -0.000267028809, -1.00000012, 0, 3.7252903e-09, -3.7252903e-09, 2.98023224e-08, 1.00000012, 0, 1.00000012, 2.98023224e-08)
+Snap68.Part0 = Part65
+Snap68.Part1 = Part53
+Snap68.part1 = Part53
+Snap69.Parent = Part65
+Snap69.C0 = CFrame.new(0, 0.17586264, 0, -1, -0, -0, 0, 0, 1, 0, 1, 0)
+Snap69.C1 = CFrame.new(-0.41034317, -0.234817505, -0.000297546387, -1.00000012, 0, 3.7252903e-09, -3.7252903e-09, 2.98023224e-08, 1.00000012, 0, 1.00000012, 2.98023224e-08)
+Snap69.Part0 = Part65
+Snap69.Part1 = Part55
+Snap69.part1 = Part55
+Snap70.Parent = Part65
+Snap70.C0 = CFrame.new(0, 0.17586264, 0, -1, -0, -0, 0, 0, 1, 0, 1, 0)
+Snap70.C1 = CFrame.new(0.410411835, -0.234260559, 0.000259399414, -1.00000012, 0, 3.7252903e-09, -3.7252903e-09, 2.98023224e-08, 1.00000012, 0, 1.00000012, 2.98023224e-08)
+Snap70.Part0 = Part65
+Snap70.Part1 = Part57
+Snap70.part1 = Part57
+Part71.Parent = Model48
+Part71.CFrame = CFrame.new(-109.054695, 1.22611856, -45.9078751, -0.120632, 3.59511287e-09, 0.992697299, -0.701943994, 0.707105815, -0.0852998272, -0.701942027, -0.707107842, -0.0852995813)
+Part71.Orientation = Vector3.new(4.889999866485596, 94.91000366210938, -44.790000915527344)
+Part71.Position = Vector3.new(-109.05469512939453, 1.226118564605713, -45.907875061035156)
+Part71.Rotation = Vector3.new(135, 83.06999969482422, -180)
+Part71.Color = Color3.new(0, 1, 0)
+Part71.Size = Vector3.new(0.3517252206802368, 0.20000000298023224, 0.5999977588653564)
+Part71.BrickColor = BrickColor.new("Lime green")
+Part71.CanCollide = false
+Part71.Material = Enum.Material.Neon
+Part71.brickColor = BrickColor.new("Lime green")
+Part71.FormFactor = Enum.FormFactor.Custom
+Part71.formFactor = Enum.FormFactor.Custom
+CylinderMesh72.Parent = Part71
+Part73.Parent = Model48
+Part73.CFrame = CFrame.new(-109.814896, 0.581587076, -46.5526505, 0, -0.120634958, 0.992696941, -0.707106829, -0.701942742, -0.0853018016, 0.707106829, -0.701942742, -0.0853018016)
+Part73.Orientation = Vector3.new(4.889999866485596, 94.91000366210938, -134.7899932861328)
+Part73.Position = Vector3.new(-109.81489562988281, 0.5815870761871338, -46.552650451660156)
+Part73.Rotation = Vector3.new(135, 83.06999969482422, 90)
+Part73.Color = Color3.new(0, 1, 0)
+Part73.Size = Vector3.new(0.20000000298023224, 0.20000000298023224, 0.20000000298023224)
+Part73.BottomSurface = Enum.SurfaceType.Smooth
+Part73.BrickColor = BrickColor.new("Lime green")
+Part73.CanCollide = false
+Part73.Material = Enum.Material.Neon
+Part73.TopSurface = Enum.SurfaceType.Smooth
+Part73.brickColor = BrickColor.new("Lime green")
+Part73.FormFactor = Enum.FormFactor.Custom
+Part73.formFactor = Enum.FormFactor.Custom
+SpecialMesh74.Parent = Part73
+SpecialMesh74.Scale = Vector3.new(0.6000000238418579, 0.6000000238418579, 0.6000000238418579)
+SpecialMesh74.MeshType = Enum.MeshType.Sphere
+Part75.Parent = Model48
+Part75.CFrame = CFrame.new(-109.465775, 0.551557779, -46.5821915, 0, -0.120634958, 0.992696941, -0.707106829, -0.701942742, -0.0853018016, 0.707106829, -0.701942742, -0.0853018016)
+Part75.Orientation = Vector3.new(4.889999866485596, 94.91000366210938, -134.7899932861328)
+Part75.Position = Vector3.new(-109.46577453613281, 0.5515577793121338, -46.582191467285156)
+Part75.Rotation = Vector3.new(135, 83.06999969482422, 90)
+Part75.Color = Color3.new(0, 1, 0)
+Part75.Size = Vector3.new(0.20000000298023224, 0.20000000298023224, 0.20000000298023224)
+Part75.BottomSurface = Enum.SurfaceType.Smooth
+Part75.BrickColor = BrickColor.new("Lime green")
+Part75.CanCollide = false
+Part75.Material = Enum.Material.Neon
+Part75.TopSurface = Enum.SurfaceType.Smooth
+Part75.brickColor = BrickColor.new("Lime green")
+Part75.FormFactor = Enum.FormFactor.Custom
+Part75.formFactor = Enum.FormFactor.Custom
+SpecialMesh76.Parent = Part75
+SpecialMesh76.Scale = Vector3.new(0.6000000238418579, 0.6000000238418579, 0.6000000238418579)
+SpecialMesh76.MeshType = Enum.MeshType.Sphere
+Model77.Parent = Model18
+Part78.Parent = Model77
+Part78.CFrame = CFrame.new(-109.765434, 6.95599651, -46.2388115, 0.992696643, -0.120637342, 3.4207294e-06, 0.0853009671, 0.701942146, 0.707107842, -0.0853059664, -0.701943099, 0.707106233)
+Part78.Orientation = Vector3.new(-45, 0, 6.929999828338623)
+Part78.Position = Vector3.new(-109.76543426513672, 6.955996513366699, -46.23881149291992)
+Part78.Rotation = Vector3.new(-45, 0, 6.929999828338623)
+Part78.Color = Color3.new(0, 1, 0)
+Part78.Size = Vector3.new(0.20000000298023224, 0.8206923007965088, 0.20000000298023224)
+Part78.BrickColor = BrickColor.new("Lime green")
+Part78.CanCollide = false
+Part78.Material = Enum.Material.Neon
+Part78.brickColor = BrickColor.new("Lime green")
+Part78.FormFactor = Enum.FormFactor.Custom
+Part78.formFactor = Enum.FormFactor.Custom
+CylinderMesh79.Parent = Part78
+CylinderMesh79.Scale = Vector3.new(0.586208701133728, 1, 0.9999961853027344)
+Snap80.Parent = Part78
+Snap80.C0 = CFrame.new(0, -0.41034615, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Snap80.C1 = CFrame.new(-0.175884247, 0.176116943, -0.000274658203, 1, 0, 0, 0, 2.98023224e-08, -1.00000012, 0, 1.00000024, -2.98023224e-08)
+Snap80.Part0 = Part78
+Snap80.Part1 = Part97
+Snap80.part1 = Part97
+Part81.Parent = Model77
+Part81.CFrame = CFrame.new(-109.985641, 6.51952982, -45.8016739, -0.120633967, 0, 0.99269712, 0.701942801, 0.707106829, 0.0853011012, -0.701942801, 0.707106829, -0.0853011012)
+Part81.Orientation = Vector3.new(-4.889999866485596, 94.91000366210938, 44.790000915527344)
+Part81.Position = Vector3.new(-109.98564147949219, 6.519529819488525, -45.801673889160156)
+Part81.Rotation = Vector3.new(-135, 83.06999969482422, -180)
+Part81.Color = Color3.new(0, 1, 0)
+Part81.Size = Vector3.new(0.3517252206802368, 0.20000000298023224, 0.5999977588653564)
+Part81.BrickColor = BrickColor.new("Lime green")
+Part81.CanCollide = false
+Part81.Material = Enum.Material.Neon
+Part81.brickColor = BrickColor.new("Lime green")
+Part81.FormFactor = Enum.FormFactor.Custom
+Part81.formFactor = Enum.FormFactor.Custom
+CylinderMesh82.Parent = Part81
+Part83.Parent = Model77
+Part83.CFrame = CFrame.new(-109.416382, 6.98604441, -46.2688408, 0.992696643, -0.120637342, 3.4207294e-06, 0.0853009671, 0.701942146, 0.707107842, -0.0853059664, -0.701943099, 0.707106233)
+Part83.Orientation = Vector3.new(-45, 0, 6.929999828338623)
+Part83.Position = Vector3.new(-109.4163818359375, 6.986044406890869, -46.26884078979492)
+Part83.Rotation = Vector3.new(-45, 0, 6.929999828338623)
+Part83.Color = Color3.new(0, 1, 0)
+Part83.Size = Vector3.new(0.20000000298023224, 0.8206923007965088, 0.20000000298023224)
+Part83.BrickColor = BrickColor.new("Lime green")
+Part83.CanCollide = false
+Part83.Material = Enum.Material.Neon
+Part83.brickColor = BrickColor.new("Lime green")
+Part83.FormFactor = Enum.FormFactor.Custom
+Part83.formFactor = Enum.FormFactor.Custom
+CylinderMesh84.Parent = Part83
+CylinderMesh84.Scale = Vector3.new(0.586208701133728, 1, 0.9999961853027344)
+Snap85.Parent = Part83
+Snap85.C0 = CFrame.new(0, -0.41034615, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Snap85.C1 = CFrame.new(0.175743103, 0.176177979, -0.000259399414, 1, 0, 0, 0, 2.98023224e-08, -1.00000012, 0, 1.00000024, -2.98023224e-08)
+Snap85.Part0 = Part83
+Snap85.Part1 = Part97
+Snap85.part1 = Part97
+Part86.Parent = Model77
+Part86.CFrame = CFrame.new(-109.1623, 6.88257122, -46.1653252, 0.992696643, -0.120637342, 3.4207294e-06, 0.0853009671, 0.701942146, 0.707107842, -0.0853059664, -0.701943099, 0.707106233)
+Part86.Orientation = Vector3.new(-45, 0, 6.929999828338623)
+Part86.Position = Vector3.new(-109.16230010986328, 6.882571220397949, -46.16532516479492)
+Part86.Rotation = Vector3.new(-45, 0, 6.929999828338623)
+Part86.Color = Color3.new(0, 1, 0)
+Part86.Size = Vector3.new(0.20000000298023224, 0.4689670503139496, 0.20000000298023224)
+Part86.BrickColor = BrickColor.new("Lime green")
+Part86.CanCollide = false
+Part86.Material = Enum.Material.Neon
+Part86.brickColor = BrickColor.new("Lime green")
+Part86.FormFactor = Enum.FormFactor.Custom
+Part86.formFactor = Enum.FormFactor.Custom
+CylinderMesh87.Parent = Part86
+CylinderMesh87.Scale = Vector3.new(0.586208701133728, 1, 0.9999961853027344)
+Snap88.Parent = Part86
+Snap88.C0 = CFrame.new(0, -0.234483525, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Snap88.C1 = CFrame.new(0.410316467, 0.176094055, -0.000228881836, 1, 0, 0, 0, 2.98023224e-08, -1.00000012, 0, 1.00000024, -2.98023224e-08)
+Snap88.Part0 = Part86
+Snap88.Part1 = Part97
+Snap88.part1 = Part97
+Part89.Parent = Model77
+Part89.CFrame = CFrame.new(-109.976974, 6.81257629, -46.0957451, 0.992696643, -0.120637342, 3.4207294e-06, 0.0853009671, 0.701942146, 0.707107842, -0.0853059664, -0.701943099, 0.707106233)
+Part89.Orientation = Vector3.new(-45, 0, 6.929999828338623)
+Part89.Position = Vector3.new(-109.97697448730469, 6.8125762939453125, -46.09574508666992)
+Part89.Rotation = Vector3.new(-45, 0, 6.929999828338623)
+Part89.Color = Color3.new(0, 1, 0)
+Part89.Size = Vector3.new(0.20000000298023224, 0.4689670503139496, 0.20000000298023224)
+Part89.BrickColor = BrickColor.new("Lime green")
+Part89.CanCollide = false
+Part89.Material = Enum.Material.Neon
+Part89.brickColor = BrickColor.new("Lime green")
+Part89.FormFactor = Enum.FormFactor.Custom
+Part89.formFactor = Enum.FormFactor.Custom
+CylinderMesh90.Parent = Part89
+CylinderMesh90.Scale = Vector3.new(0.586208701133728, 1, 0.9999961853027344)
+Part91.Parent = Model77
+Part91.CFrame = CFrame.new(-110.005318, 6.97715616, -46.2598038, 0, -0.120633967, 0.99269712, -0.707107842, 0.701941848, 0.0853009745, -0.707105815, -0.701943815, -0.0853012204)
+Part91.Orientation = Vector3.new(-4.889999866485596, 94.91000366210938, -45.209999084472656)
+Part91.Position = Vector3.new(-110.00531768798828, 6.977156162261963, -46.259803771972656)
+Part91.Rotation = Vector3.new(-135, 83.06999969482422, 90)
+Part91.Color = Color3.new(0, 1, 0)
+Part91.Size = Vector3.new(0.20000000298023224, 0.20000000298023224, 0.20000000298023224)
+Part91.BottomSurface = Enum.SurfaceType.Smooth
+Part91.BrickColor = BrickColor.new("Lime green")
+Part91.CanCollide = false
+Part91.Material = Enum.Material.Neon
+Part91.TopSurface = Enum.SurfaceType.Smooth
+Part91.brickColor = BrickColor.new("Lime green")
+Part91.FormFactor = Enum.FormFactor.Custom
+Part91.formFactor = Enum.FormFactor.Custom
+SpecialMesh92.Parent = Part91
+SpecialMesh92.Scale = Vector3.new(0.6000000238418579, 0.6000000238418579, 0.6000000238418579)
+SpecialMesh92.MeshType = Enum.MeshType.Sphere
+Part93.Parent = Model77
+Part93.CFrame = CFrame.new(-109.64032, 7.25904703, -46.5423965, -0.120633967, -0.99269712, 2.80807603e-06, 0.701942801, -0.0852991045, 0.707107127, -0.701942801, 0.0853031054, 0.70710659)
+Part93.Orientation = Vector3.new(-45, 0, 96.93000030517578)
+Part93.Position = Vector3.new(-109.64031982421875, 7.259047031402588, -46.542396545410156)
+Part93.Rotation = Vector3.new(-45, 0, 96.93000030517578)
+Part93.Color = Color3.new(0, 1, 0)
+Part93.Size = Vector3.new(0.20000000298023224, 0.3517252802848816, 0.20000000298023224)
+Part93.BrickColor = BrickColor.new("Lime green")
+Part93.CanCollide = false
+Part93.Material = Enum.Material.Neon
+Part93.brickColor = BrickColor.new("Lime green")
+Part93.FormFactor = Enum.FormFactor.Custom
+Part93.formFactor = Enum.FormFactor.Custom
+CylinderMesh94.Parent = Part93
+CylinderMesh94.Scale = Vector3.new(0.586208701133728, 1, 0.9999961853027344)
+Part95.Parent = Model77
+Part95.CFrame = CFrame.new(-109.190475, 7.0471406, -46.3302383, 0, -0.120633967, 0.99269712, -0.707107842, 0.701941848, 0.0853009745, -0.707105815, -0.701943815, -0.0853012204)
+Part95.Orientation = Vector3.new(-4.889999866485596, 94.91000366210938, -45.209999084472656)
+Part95.Position = Vector3.new(-109.19047546386719, 7.047140598297119, -46.330238342285156)
+Part95.Rotation = Vector3.new(-135, 83.06999969482422, 90)
+Part95.Color = Color3.new(0, 1, 0)
+Part95.Size = Vector3.new(0.20000000298023224, 0.20000000298023224, 0.20000000298023224)
+Part95.BottomSurface = Enum.SurfaceType.Smooth
+Part95.BrickColor = BrickColor.new("Lime green")
+Part95.CanCollide = false
+Part95.Material = Enum.Material.Neon
+Part95.TopSurface = Enum.SurfaceType.Smooth
+Part95.brickColor = BrickColor.new("Lime green")
+Part95.FormFactor = Enum.FormFactor.Custom
+Part95.formFactor = Enum.FormFactor.Custom
+SpecialMesh96.Parent = Part95
+SpecialMesh96.Scale = Vector3.new(0.6000000238418579, 0.6000000238418579, 0.6000000238418579)
+SpecialMesh96.MeshType = Enum.MeshType.Sphere
+Part97.Parent = Model77
+Part97.CFrame = CFrame.new(-109.520088, 6.55953074, -45.8419571, 0.992696643, -0.120637327, 3.42432372e-06, 0.0853009671, 0.701942086, 0.707107663, -0.0853059664, -0.70194304, 0.707106054)
+Part97.Orientation = Vector3.new(-45, 0, 6.929999828338623)
+Part97.Position = Vector3.new(-109.52008819580078, 6.559530735015869, -45.841957092285156)
+Part97.Rotation = Vector3.new(-45, 0, 6.929999828338623)
+Part97.Color = Color3.new(0, 1, 0)
+Part97.Size = Vector3.new(0.9379341006278992, 0.3517252802848816, 0.20000000298023224)
+Part97.BrickColor = BrickColor.new("Lime green")
+Part97.CanCollide = false
+Part97.Material = Enum.Material.Neon
+Part97.brickColor = BrickColor.new("Lime green")
+Part97.FormFactor = Enum.FormFactor.Custom
+Part97.formFactor = Enum.FormFactor.Custom
+BlockMesh98.Parent = Part97
+BlockMesh98.Scale = Vector3.new(1, 1, 0.9999961853027344)
+Snap99.Parent = Part97
+Snap99.C0 = CFrame.new(0, 0.17586264, 0, -1, -0, -0, 0, 0, 1, 0, 1, 0)
+Snap99.C1 = CFrame.new(0.410316467, -0.235023499, 0.000526428223, -1, 0, 0, 0, 2.98023224e-08, 1.00000012, 0, 1.00000024, 2.98023224e-08)
+Snap99.Part0 = Part97
+Snap99.Part1 = Part89
+Snap99.part1 = Part89
+Part100.Parent = Model77
+Part100.CFrame = CFrame.new(-109.05468, 6.59952402, -45.8828506, -0.120633967, 0, 0.99269712, 0.701942801, 0.707106829, 0.0853011012, -0.701942801, 0.707106829, -0.0853011012)
+Part100.Orientation = Vector3.new(-4.889999866485596, 94.91000366210938, 44.790000915527344)
+Part100.Position = Vector3.new(-109.05467987060547, 6.599524021148682, -45.882850646972656)
+Part100.Rotation = Vector3.new(-135, 83.06999969482422, -180)
+Part100.Color = Color3.new(0, 1, 0)
+Part100.Size = Vector3.new(0.3517252206802368, 0.20000000298023224, 0.5999977588653564)
+Part100.BrickColor = BrickColor.new("Lime green")
+Part100.CanCollide = false
+Part100.Material = Enum.Material.Neon
+Part100.brickColor = BrickColor.new("Lime green")
+Part100.FormFactor = Enum.FormFactor.Custom
+Part100.formFactor = Enum.FormFactor.Custom
+CylinderMesh101.Parent = Part100
+Part102.Parent = Model77
+Part102.CFrame = CFrame.new(-109.81488, 7.24404001, -46.5270157, 0, -0.120633967, 0.99269712, -0.707107842, 0.701941848, 0.0853009745, -0.707105815, -0.701943815, -0.0853012204)
+Part102.Orientation = Vector3.new(-4.889999866485596, 94.91000366210938, -45.209999084472656)
+Part102.Position = Vector3.new(-109.81488037109375, 7.244040012359619, -46.527015686035156)
+Part102.Rotation = Vector3.new(-135, 83.06999969482422, 90)
+Part102.Color = Color3.new(0, 1, 0)
+Part102.Size = Vector3.new(0.20000000298023224, 0.20000000298023224, 0.20000000298023224)
+Part102.BottomSurface = Enum.SurfaceType.Smooth
+Part102.BrickColor = BrickColor.new("Lime green")
+Part102.CanCollide = false
+Part102.Material = Enum.Material.Neon
+Part102.TopSurface = Enum.SurfaceType.Smooth
+Part102.brickColor = BrickColor.new("Lime green")
+Part102.FormFactor = Enum.FormFactor.Custom
+Part102.formFactor = Enum.FormFactor.Custom
+SpecialMesh103.Parent = Part102
+SpecialMesh103.Scale = Vector3.new(0.6000000238418579, 0.6000000238418579, 0.6000000238418579)
+SpecialMesh103.MeshType = Enum.MeshType.Sphere
+Part104.Parent = Model77
+Part104.CFrame = CFrame.new(-109.465759, 7.27405405, -46.5569229, 0, -0.120633967, 0.99269712, -0.707107842, 0.701941848, 0.0853009745, -0.707105815, -0.701943815, -0.0853012204)
+Part104.Orientation = Vector3.new(-4.889999866485596, 94.91000366210938, -45.209999084472656)
+Part104.Position = Vector3.new(-109.46575927734375, 7.274054050445557, -46.556922912597656)
+Part104.Rotation = Vector3.new(-135, 83.06999969482422, 90)
+Part104.Color = Color3.new(0, 1, 0)
+Part104.Size = Vector3.new(0.20000000298023224, 0.20000000298023224, 0.20000000298023224)
+Part104.BottomSurface = Enum.SurfaceType.Smooth
+Part104.BrickColor = BrickColor.new("Lime green")
+Part104.CanCollide = false
+Part104.Material = Enum.Material.Neon
+Part104.TopSurface = Enum.SurfaceType.Smooth
+Part104.brickColor = BrickColor.new("Lime green")
+Part104.FormFactor = Enum.FormFactor.Custom
+Part104.formFactor = Enum.FormFactor.Custom
+SpecialMesh105.Parent = Part104
+SpecialMesh105.Scale = Vector3.new(0.6000000238418579, 0.6000000238418579, 0.6000000238418579)
+SpecialMesh105.MeshType = Enum.MeshType.Sphere
+Model106.Parent = Model18
+Part107.Parent = Model106
+Part107.CFrame = CFrame.new(-109.765388, 6.95601082, -40.1781387, 0.992697597, -0.120631061, 2.6327275e-06, 0.0853010416, 0.701944113, -0.707105637, 0.0852970332, 0.701942027, 0.707107902)
+Part107.Orientation = Vector3.new(45, 0, 6.929999828338623)
+Part107.Position = Vector3.new(-109.76538848876953, 6.956010818481445, -40.178138732910156)
+Part107.Rotation = Vector3.new(45, 0, 6.929999828338623)
+Part107.Color = Color3.new(0, 1, 0)
+Part107.Size = Vector3.new(0.20000000298023224, 0.8206923007965088, 0.20000000298023224)
+Part107.BrickColor = BrickColor.new("Lime green")
+Part107.CanCollide = false
+Part107.Material = Enum.Material.Neon
+Part107.brickColor = BrickColor.new("Lime green")
+Part107.FormFactor = Enum.FormFactor.Custom
+Part107.formFactor = Enum.FormFactor.Custom
+CylinderMesh108.Parent = Part107
+CylinderMesh108.Scale = Vector3.new(0.586208701133728, 1, 0.9999961853027344)
+Snap109.Parent = Part107
+Snap109.C0 = CFrame.new(0, -0.41034615, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Snap109.C1 = CFrame.new(-0.175880432, 0.175773621, -8.39233398e-05, 1.00000012, -7.4505806e-09, 7.4505806e-09, -7.4505806e-09, -5.96046448e-08, -1, -7.4505806e-09, 1, 5.96046448e-08)
+Snap109.Part0 = Part107
+Snap109.Part1 = Part127
+Snap109.part1 = Part127
+Part110.Parent = Model106
+Part110.CFrame = CFrame.new(-109.985718, 6.51953745, -40.6138077, -0.120633967, 3.59517149e-09, 0.99269712, 0.701943815, -0.707105815, 0.0853012204, 0.701941848, 0.707107842, 0.0853009745)
+Part110.Orientation = Vector3.new(-4.889999866485596, 85.08999633789062, 135.2100067138672)
+Part110.Position = Vector3.new(-109.9857177734375, 6.519537448883057, -40.613807678222656)
+Part110.Rotation = Vector3.new(-45, 83.06999969482422, -180)
+Part110.Color = Color3.new(0, 1, 0)
+Part110.Size = Vector3.new(0.3517252206802368, 0.20000000298023224, 0.5999977588653564)
+Part110.BrickColor = BrickColor.new("Lime green")
+Part110.CanCollide = false
+Part110.Material = Enum.Material.Neon
+Part110.brickColor = BrickColor.new("Lime green")
+Part110.FormFactor = Enum.FormFactor.Custom
+Part110.formFactor = Enum.FormFactor.Custom
+CylinderMesh111.Parent = Part110
+Part112.Parent = Model106
+Part112.CFrame = CFrame.new(-109.416313, 6.98603487, -40.1476212, 0.992697597, -0.120631061, 2.6327275e-06, 0.0853010416, 0.701944113, -0.707105637, 0.0852970332, 0.701942027, 0.707107902)
+Part112.Orientation = Vector3.new(45, 0, 6.929999828338623)
+Part112.Position = Vector3.new(-109.41631317138672, 6.986034870147705, -40.147621154785156)
+Part112.Rotation = Vector3.new(45, 0, 6.929999828338623)
+Part112.Color = Color3.new(0, 1, 0)
+Part112.Size = Vector3.new(0.20000000298023224, 0.8206923007965088, 0.20000000298023224)
+Part112.BrickColor = BrickColor.new("Lime green")
+Part112.CanCollide = false
+Part112.Material = Enum.Material.Neon
+Part112.brickColor = BrickColor.new("Lime green")
+Part112.FormFactor = Enum.FormFactor.Custom
+Part112.formFactor = Enum.FormFactor.Custom
+CylinderMesh113.Parent = Part112
+CylinderMesh113.Scale = Vector3.new(0.586208701133728, 1, 0.9999961853027344)
+Snap114.Parent = Part112
+Snap114.C0 = CFrame.new(0, -0.41034615, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Snap114.C1 = CFrame.new(0.175807953, 0.17616272, 0.000267028809, 1.00000012, -7.4505806e-09, 7.4505806e-09, -7.4505806e-09, -5.96046448e-08, -1, -7.4505806e-09, 1, 5.96046448e-08)
+Snap114.Part0 = Part112
+Snap114.Part1 = Part127
+Snap114.part1 = Part127
+Part115.Parent = Model106
+Part115.CFrame = CFrame.new(-109.162247, 6.88258934, -40.2519951, 0.992697597, -0.120631061, 2.6327275e-06, 0.0853010416, 0.701944113, -0.707105637, 0.0852970332, 0.701942027, 0.707107902)
+Part115.Orientation = Vector3.new(45, 0, 6.929999828338623)
+Part115.Position = Vector3.new(-109.16224670410156, 6.882589340209961, -40.25199508666992)
+Part115.Rotation = Vector3.new(45, 0, 6.929999828338623)
+Part115.Color = Color3.new(0, 1, 0)
+Part115.Size = Vector3.new(0.20000000298023224, 0.4689670503139496, 0.20000000298023224)
+Part115.BrickColor = BrickColor.new("Lime green")
+Part115.CanCollide = false
+Part115.Material = Enum.Material.Neon
+Part115.brickColor = BrickColor.new("Lime green")
+Part115.FormFactor = Enum.FormFactor.Custom
+Part115.formFactor = Enum.FormFactor.Custom
+CylinderMesh116.Parent = Part115
+CylinderMesh116.Scale = Vector3.new(0.586208701133728, 1, 0.9999961853027344)
+Snap117.Parent = Part115
+Snap117.C0 = CFrame.new(0, -0.234483525, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Snap117.C1 = CFrame.new(0.410297394, 0.175498962, -0.000389099121, 1.00000012, -7.4505806e-09, 7.4505806e-09, -7.4505806e-09, -5.96046448e-08, -1, -7.4505806e-09, 1, 5.96046448e-08)
+Snap117.Part0 = Part115
+Snap117.Part1 = Part127
+Snap117.part1 = Part127
+Part118.Parent = Model106
+Part118.CFrame = CFrame.new(-109.976974, 6.81258345, -40.3213387, 0.992697597, -0.120631061, 2.6327275e-06, 0.0853010416, 0.701944113, -0.707105637, 0.0852970332, 0.701942027, 0.707107902)
+Part118.Orientation = Vector3.new(45, 0, 6.929999828338623)
+Part118.Position = Vector3.new(-109.97697448730469, 6.8125834465026855, -40.32133865356445)
+Part118.Rotation = Vector3.new(45, 0, 6.929999828338623)
+Part118.Color = Color3.new(0, 1, 0)
+Part118.Size = Vector3.new(0.20000000298023224, 0.4689670503139496, 0.20000000298023224)
+Part118.BrickColor = BrickColor.new("Lime green")
+Part118.CanCollide = false
+Part118.Material = Enum.Material.Neon
+Part118.brickColor = BrickColor.new("Lime green")
+Part118.FormFactor = Enum.FormFactor.Custom
+Part118.formFactor = Enum.FormFactor.Custom
+CylinderMesh119.Parent = Part118
+CylinderMesh119.Scale = Vector3.new(0.586208701133728, 1, 0.9999961853027344)
+Snap120.Parent = Part118
+Snap120.C0 = CFrame.new(0, -0.234483525, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Snap120.C1 = CFrame.new(-0.410369873, 0.175964355, 7.62939453e-05, 1.00000012, -7.4505806e-09, 7.4505806e-09, -7.4505806e-09, -5.96046448e-08, -1, -7.4505806e-09, 1, 5.96046448e-08)
+Snap120.Part0 = Part118
+Snap120.Part1 = Part127
+Snap120.part1 = Part127
+Part121.Parent = Model106
+Part121.CFrame = CFrame.new(-110.005264, 6.97715616, -40.1568985, 0, -0.120637998, 0.992696643, 0.707105815, 0.701943517, 0.085304074, -0.707107842, 0.70194149, 0.0853038356)
+Part121.Orientation = Vector3.new(-4.889999866485596, 85.08999633789062, 45.209999084472656)
+Part121.Position = Vector3.new(-110.00526428222656, 6.977156162261963, -40.156898498535156)
+Part121.Rotation = Vector3.new(-45, 83.06999969482422, 90)
+Part121.Color = Color3.new(0, 1, 0)
+Part121.Size = Vector3.new(0.20000000298023224, 0.20000000298023224, 0.20000000298023224)
+Part121.BottomSurface = Enum.SurfaceType.Smooth
+Part121.BrickColor = BrickColor.new("Lime green")
+Part121.CanCollide = false
+Part121.Material = Enum.Material.Neon
+Part121.TopSurface = Enum.SurfaceType.Smooth
+Part121.brickColor = BrickColor.new("Lime green")
+Part121.FormFactor = Enum.FormFactor.Custom
+Part121.formFactor = Enum.FormFactor.Custom
+SpecialMesh122.Parent = Part121
+SpecialMesh122.Scale = Vector3.new(0.6000000238418579, 0.6000000238418579, 0.6000000238418579)
+SpecialMesh122.MeshType = Enum.MeshType.Sphere
+Part123.Parent = Model106
+Part123.CFrame = CFrame.new(-109.640251, 7.25903177, -39.8751602, -0.120636031, -0.992696881, 6.21072729e-07, 0.701943159, -0.0853030607, -0.707106352, 0.701942205, -0.0853020623, 0.707107365)
+Part123.Orientation = Vector3.new(45, 0, 96.93000030517578)
+Part123.Position = Vector3.new(-109.64025115966797, 7.259031772613525, -39.875160217285156)
+Part123.Rotation = Vector3.new(45, 0, 96.93000030517578)
+Part123.Color = Color3.new(0, 1, 0)
+Part123.Size = Vector3.new(0.20000000298023224, 0.3517252802848816, 0.20000000298023224)
+Part123.BrickColor = BrickColor.new("Lime green")
+Part123.CanCollide = false
+Part123.Material = Enum.Material.Neon
+Part123.brickColor = BrickColor.new("Lime green")
+Part123.FormFactor = Enum.FormFactor.Custom
+Part123.formFactor = Enum.FormFactor.Custom
+CylinderMesh124.Parent = Part123
+CylinderMesh124.Scale = Vector3.new(0.586208701133728, 1, 0.9999961853027344)
+Part125.Parent = Model106
+Part125.CFrame = CFrame.new(-109.190414, 7.04713297, -40.0878067, 0, -0.120637998, 0.992696643, 0.707105815, 0.701943517, 0.085304074, -0.707107842, 0.70194149, 0.0853038356)
+Part125.Orientation = Vector3.new(-4.889999866485596, 85.08999633789062, 45.209999084472656)
+Part125.Position = Vector3.new(-109.19041442871094, 7.047132968902588, -40.087806701660156)
+Part125.Rotation = Vector3.new(-45, 83.06999969482422, 90)
+Part125.Color = Color3.new(0, 1, 0)
+Part125.Size = Vector3.new(0.20000000298023224, 0.20000000298023224, 0.20000000298023224)
+Part125.BottomSurface = Enum.SurfaceType.Smooth
+Part125.BrickColor = BrickColor.new("Lime green")
+Part125.CanCollide = false
+Part125.Material = Enum.Material.Neon
+Part125.TopSurface = Enum.SurfaceType.Smooth
+Part125.brickColor = BrickColor.new("Lime green")
+Part125.FormFactor = Enum.FormFactor.Custom
+Part125.formFactor = Enum.FormFactor.Custom
+SpecialMesh126.Parent = Part125
+SpecialMesh126.Scale = Vector3.new(0.6000000238418579, 0.6000000238418579, 0.6000000238418579)
+SpecialMesh126.MeshType = Enum.MeshType.Sphere
+Part127.Parent = Model106
+Part127.CFrame = CFrame.new(-109.520088, 6.55953074, -40.574501, 0.992697477, -0.120631054, 2.6329335e-06, 0.0853010342, 0.701944053, -0.707105577, 0.0852970406, 0.701942086, 0.707107961)
+Part127.Orientation = Vector3.new(45, 0, 6.929999828338623)
+Part127.Position = Vector3.new(-109.52008819580078, 6.559530735015869, -40.574501037597656)
+Part127.Rotation = Vector3.new(45, 0, 6.929999828338623)
+Part127.Color = Color3.new(0, 1, 0)
+Part127.Size = Vector3.new(0.9379341006278992, 0.3517252802848816, 0.20000000298023224)
+Part127.BrickColor = BrickColor.new("Lime green")
+Part127.CanCollide = false
+Part127.Material = Enum.Material.Neon
+Part127.brickColor = BrickColor.new("Lime green")
+Part127.FormFactor = Enum.FormFactor.Custom
+Part127.formFactor = Enum.FormFactor.Custom
+BlockMesh128.Parent = Part127
+BlockMesh128.Scale = Vector3.new(1, 1, 0.9999961853027344)
+Part129.Parent = Model106
+Part129.CFrame = CFrame.new(-109.05468, 6.59952402, -40.5342178, -0.120633967, 3.59517149e-09, 0.99269712, 0.701943815, -0.707105815, 0.0853012204, 0.701941848, 0.707107842, 0.0853009745)
+Part129.Orientation = Vector3.new(-4.889999866485596, 85.08999633789062, 135.2100067138672)
+Part129.Position = Vector3.new(-109.05467987060547, 6.599524021148682, -40.534217834472656)
+Part129.Rotation = Vector3.new(-45, 83.06999969482422, -180)
+Part129.Color = Color3.new(0, 1, 0)
+Part129.Size = Vector3.new(0.3517252206802368, 0.20000000298023224, 0.5999977588653564)
+Part129.BrickColor = BrickColor.new("Lime green")
+Part129.CanCollide = false
+Part129.Material = Enum.Material.Neon
+Part129.brickColor = BrickColor.new("Lime green")
+Part129.FormFactor = Enum.FormFactor.Custom
+Part129.formFactor = Enum.FormFactor.Custom
+CylinderMesh130.Parent = Part129
+Part131.Parent = Model106
+Part131.CFrame = CFrame.new(-109.814819, 7.24405527, -39.8901749, 0, -0.120637998, 0.992696643, 0.707105815, 0.701943517, 0.085304074, -0.707107842, 0.70194149, 0.0853038356)
+Part131.Orientation = Vector3.new(-4.889999866485596, 85.08999633789062, 45.209999084472656)
+Part131.Position = Vector3.new(-109.8148193359375, 7.244055271148682, -39.890174865722656)
+Part131.Rotation = Vector3.new(-45, 83.06999969482422, 90)
+Part131.Color = Color3.new(0, 1, 0)
+Part131.Size = Vector3.new(0.20000000298023224, 0.20000000298023224, 0.20000000298023224)
+Part131.BottomSurface = Enum.SurfaceType.Smooth
+Part131.BrickColor = BrickColor.new("Lime green")
+Part131.CanCollide = false
+Part131.Material = Enum.Material.Neon
+Part131.TopSurface = Enum.SurfaceType.Smooth
+Part131.brickColor = BrickColor.new("Lime green")
+Part131.FormFactor = Enum.FormFactor.Custom
+Part131.formFactor = Enum.FormFactor.Custom
+SpecialMesh132.Parent = Part131
+SpecialMesh132.Scale = Vector3.new(0.6000000238418579, 0.6000000238418579, 0.6000000238418579)
+SpecialMesh132.MeshType = Enum.MeshType.Sphere
+Part133.Parent = Model106
+Part133.CFrame = CFrame.new(-109.465698, 7.27407694, -39.8596573, 0, -0.120637998, 0.992696643, 0.707105815, 0.701943517, 0.085304074, -0.707107842, 0.70194149, 0.0853038356)
+Part133.Orientation = Vector3.new(-4.889999866485596, 85.08999633789062, 45.209999084472656)
+Part133.Position = Vector3.new(-109.4656982421875, 7.27407693862915, -39.859657287597656)
+Part133.Rotation = Vector3.new(-45, 83.06999969482422, 90)
+Part133.Color = Color3.new(0, 1, 0)
+Part133.Size = Vector3.new(0.20000000298023224, 0.20000000298023224, 0.20000000298023224)
+Part133.BottomSurface = Enum.SurfaceType.Smooth
+Part133.BrickColor = BrickColor.new("Lime green")
+Part133.CanCollide = false
+Part133.Material = Enum.Material.Neon
+Part133.TopSurface = Enum.SurfaceType.Smooth
+Part133.brickColor = BrickColor.new("Lime green")
+Part133.FormFactor = Enum.FormFactor.Custom
+Part133.formFactor = Enum.FormFactor.Custom
+SpecialMesh134.Parent = Part133
+SpecialMesh134.Scale = Vector3.new(0.6000000238418579, 0.6000000238418579, 0.6000000238418579)
+SpecialMesh134.MeshType = Enum.MeshType.Sphere
+Model135.Name = "Paint"
+Model135.Parent = Model0
+Part136.Parent = Model135
+Part136.CFrame = CFrame.new(-107.350662, 7.37671518, -41.5062637, -1, 0, 0, 0, -0.891798317, -0.452433139, 0, -0.452433139, 0.891798317)
+Part136.Orientation = Vector3.new(26.899999618530273, 0, 180)
+Part136.Position = Vector3.new(-107.35066223144531, 7.376715183258057, -41.506263732910156)
+Part136.Rotation = Vector3.new(26.899999618530273, 0, -180)
+Part136.Color = Color3.new(0, 1, 0)
+Part136.Size = Vector3.new(0.5999998450279236, 0.20000000298023224, 1.1999998092651367)
+Part136.BottomSurface = Enum.SurfaceType.Smooth
+Part136.BrickColor = BrickColor.new("Lime green")
+Part136.Material = Enum.Material.Neon
+Part136.TopSurface = Enum.SurfaceType.Smooth
+Part136.brickColor = BrickColor.new("Lime green")
+Part136.FormFactor = Enum.FormFactor.Symmetric
+Part136.formFactor = Enum.FormFactor.Symmetric
+Part137.Parent = Model135
+Part137.CFrame = CFrame.new(-107.350647, 0.227155954, -42.29496, 1, 0, 0, 0, 0.999520659, 0.0309609883, 0, -0.0309609883, 0.999520659)
+Part137.Orientation = Vector3.new(-1.7699999809265137, 0, 0)
+Part137.Position = Vector3.new(-107.35064697265625, 0.22715595364570618, -42.294960021972656)
+Part137.Rotation = Vector3.new(-1.7699999809265137, 0, 0)
+Part137.Color = Color3.new(0, 1, 0)
+Part137.Size = Vector3.new(0.5999998450279236, 0.20000000298023224, 0.5999997854232788)
+Part137.BottomSurface = Enum.SurfaceType.Smooth
+Part137.BrickColor = BrickColor.new("Lime green")
+Part137.Material = Enum.Material.Neon
+Part137.TopSurface = Enum.SurfaceType.Smooth
+Part137.brickColor = BrickColor.new("Lime green")
+Part137.FormFactor = Enum.FormFactor.Symmetric
+Part137.formFactor = Enum.FormFactor.Symmetric
+Part138.Parent = Model135
+Part138.CFrame = CFrame.new(-107.650681, 0.100027338, -43.2082901, 1, 0, 0, 0, -1, 0, 0, 0, -1)
+Part138.Orientation = Vector3.new(0, 180, 180)
+Part138.Position = Vector3.new(-107.65068054199219, 0.10002733767032623, -43.208290100097656)
+Part138.Rotation = Vector3.new(-180, 0, 0)
+Part138.Color = Color3.new(0, 1, 0)
+Part138.Size = Vector3.new(1.3999998569488525, 0.20000000298023224, 1.3999998569488525)
+Part138.BottomSurface = Enum.SurfaceType.Smooth
+Part138.BrickColor = BrickColor.new("Lime green")
+Part138.Material = Enum.Material.Neon
+Part138.TopSurface = Enum.SurfaceType.Smooth
+Part138.brickColor = BrickColor.new("Lime green")
+Part138.FormFactor = Enum.FormFactor.Symmetric
+Part138.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh139.Parent = Part138
+Part140.Parent = Model135
+Part140.CFrame = CFrame.new(-107.350647, 0.4978773, -41.5062637, 1, 0, 0, 0, 0.891796887, 0.452435941, 0, -0.452435941, 0.891796887)
+Part140.Orientation = Vector3.new(-26.899999618530273, 0, 0)
+Part140.Position = Vector3.new(-107.35064697265625, 0.497877299785614, -41.506263732910156)
+Part140.Rotation = Vector3.new(-26.899999618530273, 0, 0)
+Part140.Color = Color3.new(0, 1, 0)
+Part140.Size = Vector3.new(0.5999998450279236, 0.20000000298023224, 1.1999998092651367)
+Part140.BottomSurface = Enum.SurfaceType.Smooth
+Part140.BrickColor = BrickColor.new("Lime green")
+Part140.Material = Enum.Material.Neon
+Part140.TopSurface = Enum.SurfaceType.Smooth
+Part140.brickColor = BrickColor.new("Lime green")
+Part140.FormFactor = Enum.FormFactor.Symmetric
+Part140.formFactor = Enum.FormFactor.Symmetric
+Part141.Parent = Model135
+Part141.CFrame = CFrame.new(-107.650696, 6.66382456, -40.489418, 1, 0, 0, 0, -0.707107842, 0.707105815, 0, -0.707105815, -0.707107842)
+Part141.Orientation = Vector3.new(-45, 180, 180)
+Part141.Position = Vector3.new(-107.65069580078125, 6.663824558258057, -40.489418029785156)
+Part141.Rotation = Vector3.new(-135, 0, 0)
+Part141.Color = Color3.new(0, 1, 0)
+Part141.Size = Vector3.new(1.3999998569488525, 0.20000000298023224, 1.3999998569488525)
+Part141.BottomSurface = Enum.SurfaceType.Smooth
+Part141.BrickColor = BrickColor.new("Lime green")
+Part141.Material = Enum.Material.Neon
+Part141.TopSurface = Enum.SurfaceType.Smooth
+Part141.brickColor = BrickColor.new("Lime green")
+Part141.FormFactor = Enum.FormFactor.Symmetric
+Part141.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh142.Parent = Part141
+Part143.Parent = Model135
+Part143.CFrame = CFrame.new(-107.050598, 6.66381693, -40.489418, 1, 0, 0, 0, -0.707107842, 0.707105815, 0, -0.707105815, -0.707107842)
+Part143.Orientation = Vector3.new(-45, 180, 180)
+Part143.Position = Vector3.new(-107.05059814453125, 6.663816928863525, -40.489418029785156)
+Part143.Rotation = Vector3.new(-135, 0, 0)
+Part143.Color = Color3.new(0, 1, 0)
+Part143.Size = Vector3.new(1.3999998569488525, 0.20000000298023224, 1.3999998569488525)
+Part143.BottomSurface = Enum.SurfaceType.Smooth
+Part143.BrickColor = BrickColor.new("Lime green")
+Part143.Material = Enum.Material.Neon
+Part143.TopSurface = Enum.SurfaceType.Smooth
+Part143.brickColor = BrickColor.new("Lime green")
+Part143.FormFactor = Enum.FormFactor.Symmetric
+Part143.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh144.Parent = Part143
+Part145.Parent = Model135
+Part145.CFrame = CFrame.new(-107.350647, 6.66383982, -40.489418, 1, 0, 0, 0, -0.707107842, 0.707105815, 0, -0.707105815, -0.707107842)
+Part145.Orientation = Vector3.new(-45, 180, 180)
+Part145.Position = Vector3.new(-107.35064697265625, 6.663839817047119, -40.489418029785156)
+Part145.Rotation = Vector3.new(-135, 0, 0)
+Part145.Color = Color3.new(0, 1, 0)
+Part145.Size = Vector3.new(0.5999998450279236, 0.20000000298023224, 1.3999998569488525)
+Part145.BottomSurface = Enum.SurfaceType.Smooth
+Part145.BrickColor = BrickColor.new("Lime green")
+Part145.Material = Enum.Material.Neon
+Part145.TopSurface = Enum.SurfaceType.Smooth
+Part145.brickColor = BrickColor.new("Lime green")
+Part145.FormFactor = Enum.FormFactor.Symmetric
+Part145.formFactor = Enum.FormFactor.Symmetric
+Part146.Parent = Model135
+Part146.CFrame = CFrame.new(-107.650688, 1.22617197, -45.9276505, 1, 0, 0, 0, -0.707107842, 0.707105815, 0, -0.707105815, -0.707107842)
+Part146.Orientation = Vector3.new(-45, 180, 180)
+Part146.Position = Vector3.new(-107.65068817138672, 1.2261719703674316, -45.927650451660156)
+Part146.Rotation = Vector3.new(-135, 0, 0)
+Part146.Color = Color3.new(0, 1, 0)
+Part146.Size = Vector3.new(1.3999998569488525, 0.20000000298023224, 1.3999998569488525)
+Part146.BottomSurface = Enum.SurfaceType.Smooth
+Part146.BrickColor = BrickColor.new("Lime green")
+Part146.Material = Enum.Material.Neon
+Part146.TopSurface = Enum.SurfaceType.Smooth
+Part146.brickColor = BrickColor.new("Lime green")
+Part146.FormFactor = Enum.FormFactor.Symmetric
+Part146.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh147.Parent = Part146
+Part148.Parent = Model135
+Part148.CFrame = CFrame.new(-107.050583, 1.2261796, -45.9276505, 1, 0, 0, 0, -0.707107842, 0.707105815, 0, -0.707105815, -0.707107842)
+Part148.Orientation = Vector3.new(-45, 180, 180)
+Part148.Position = Vector3.new(-107.05058288574219, 1.226179599761963, -45.927650451660156)
+Part148.Rotation = Vector3.new(-135, 0, 0)
+Part148.Color = Color3.new(0, 1, 0)
+Part148.Size = Vector3.new(1.3999998569488525, 0.20000000298023224, 1.3999998569488525)
+Part148.BottomSurface = Enum.SurfaceType.Smooth
+Part148.BrickColor = BrickColor.new("Lime green")
+Part148.Material = Enum.Material.Neon
+Part148.TopSurface = Enum.SurfaceType.Smooth
+Part148.brickColor = BrickColor.new("Lime green")
+Part148.FormFactor = Enum.FormFactor.Symmetric
+Part148.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh149.Parent = Part148
+Part150.Parent = Model135
+Part150.CFrame = CFrame.new(-107.350662, 0.191862375, -44.1676407, -1, 0, 0, 0, 0.996585786, 0.082563974, 0, 0.082563974, -0.996585786)
+Part150.Orientation = Vector3.new(-4.739999771118164, 180, 0)
+Part150.Position = Vector3.new(-107.35066223144531, 0.19186237454414368, -44.167640686035156)
+Part150.Rotation = Vector3.new(-175.25999450683594, 0, -180)
+Part150.Color = Color3.new(0, 1, 0)
+Part150.Size = Vector3.new(0.5999998450279236, 0.20000000298023224, 0.5999997854232788)
+Part150.BottomSurface = Enum.SurfaceType.Smooth
+Part150.BrickColor = BrickColor.new("Lime green")
+Part150.Material = Enum.Material.Neon
+Part150.TopSurface = Enum.SurfaceType.Smooth
+Part150.brickColor = BrickColor.new("Lime green")
+Part150.FormFactor = Enum.FormFactor.Symmetric
+Part150.formFactor = Enum.FormFactor.Symmetric
+Part151.Parent = Model135
+Part151.CFrame = CFrame.new(-107.350655, 0.50303483, -44.9422989, -1, 0, 0, 0, 0.867228091, 0.497911096, 0, 0.497911066, -0.86722815)
+Part151.Orientation = Vector3.new(-29.860000610351562, 180, 0)
+Part151.Position = Vector3.new(-107.35065460205078, 0.5030348300933838, -44.942298889160156)
+Part151.Rotation = Vector3.new(-150.13999938964844, 0, -180)
+Part151.Color = Color3.new(0, 1, 0)
+Part151.Size = Vector3.new(0.5999998450279236, 0.20000000298023224, 1.1999998092651367)
+Part151.BottomSurface = Enum.SurfaceType.Smooth
+Part151.BrickColor = BrickColor.new("Lime green")
+Part151.Material = Enum.Material.Neon
+Part151.TopSurface = Enum.SurfaceType.Smooth
+Part151.brickColor = BrickColor.new("Lime green")
+Part151.FormFactor = Enum.FormFactor.Symmetric
+Part151.formFactor = Enum.FormFactor.Symmetric
+Part152.Parent = Model135
+Part152.CFrame = CFrame.new(-107.350571, 3.94502091, -39.3631973, 1, 0, -0, 0, 0, 1, 0, -1, 0)
+Part152.Orientation = Vector3.new(-90, 0, 0)
+Part152.Position = Vector3.new(-107.35057067871094, 3.945020914077759, -39.363197326660156)
+Part152.Rotation = Vector3.new(-90, 0, 0)
+Part152.Color = Color3.new(0, 1, 0)
+Part152.Size = Vector3.new(0.5999998450279236, 0.20000000298023224, 1.3999998569488525)
+Part152.BottomSurface = Enum.SurfaceType.Smooth
+Part152.BrickColor = BrickColor.new("Lime green")
+Part152.Material = Enum.Material.Neon
+Part152.TopSurface = Enum.SurfaceType.Smooth
+Part152.brickColor = BrickColor.new("Lime green")
+Part152.FormFactor = Enum.FormFactor.Symmetric
+Part152.formFactor = Enum.FormFactor.Symmetric
+Part153.Parent = Model135
+Part153.CFrame = CFrame.new(-107.050537, 3.94501328, -39.3631973, 1, 0, -0, 0, 0, 1, 0, -1, 0)
+Part153.Orientation = Vector3.new(-90, 0, 0)
+Part153.Position = Vector3.new(-107.050537109375, 3.9450132846832275, -39.363197326660156)
+Part153.Rotation = Vector3.new(-90, 0, 0)
+Part153.Color = Color3.new(0, 1, 0)
+Part153.Size = Vector3.new(1.3999998569488525, 0.20000000298023224, 1.3999998569488525)
+Part153.BottomSurface = Enum.SurfaceType.Smooth
+Part153.BrickColor = BrickColor.new("Lime green")
+Part153.Material = Enum.Material.Neon
+Part153.TopSurface = Enum.SurfaceType.Smooth
+Part153.brickColor = BrickColor.new("Lime green")
+Part153.FormFactor = Enum.FormFactor.Symmetric
+Part153.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh154.Parent = Part153
+Part155.Parent = Model135
+Part155.CFrame = CFrame.new(-107.650635, 3.94502091, -39.3631973, 1, 0, -0, 0, 0, 1, 0, -1, 0)
+Part155.Orientation = Vector3.new(-90, 0, 0)
+Part155.Position = Vector3.new(-107.650634765625, 3.945020914077759, -39.363197326660156)
+Part155.Rotation = Vector3.new(-90, 0, 0)
+Part155.Color = Color3.new(0, 1, 0)
+Part155.Size = Vector3.new(1.3999998569488525, 0.20000000298023224, 1.3999998569488525)
+Part155.BottomSurface = Enum.SurfaceType.Smooth
+Part155.BrickColor = BrickColor.new("Lime green")
+Part155.Material = Enum.Material.Neon
+Part155.TopSurface = Enum.SurfaceType.Smooth
+Part155.brickColor = BrickColor.new("Lime green")
+Part155.FormFactor = Enum.FormFactor.Symmetric
+Part155.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh156.Parent = Part155
+Part157.Parent = Model135
+Part157.CFrame = CFrame.new(-107.050476, 3.94502091, -47.0535049, 1, 0, -0, 0, 0, 1, 0, -1, 0)
+Part157.Orientation = Vector3.new(-90, 0, 0)
+Part157.Position = Vector3.new(-107.05047607421875, 3.945020914077759, -47.053504943847656)
+Part157.Rotation = Vector3.new(-90, 0, 0)
+Part157.Color = Color3.new(0, 1, 0)
+Part157.Size = Vector3.new(1.3999998569488525, 0.20000000298023224, 1.3999998569488525)
+Part157.BottomSurface = Enum.SurfaceType.Smooth
+Part157.BrickColor = BrickColor.new("Lime green")
+Part157.Material = Enum.Material.Neon
+Part157.TopSurface = Enum.SurfaceType.Smooth
+Part157.brickColor = BrickColor.new("Lime green")
+Part157.FormFactor = Enum.FormFactor.Symmetric
+Part157.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh158.Parent = Part157
+Part159.Parent = Model135
+Part159.CFrame = CFrame.new(-107.650703, 3.94502091, -47.0535049, 1, 0, -0, 0, 0, 1, 0, -1, 0)
+Part159.Orientation = Vector3.new(-90, 0, 0)
+Part159.Position = Vector3.new(-107.65070343017578, 3.945020914077759, -47.053504943847656)
+Part159.Rotation = Vector3.new(-90, 0, 0)
+Part159.Color = Color3.new(0, 1, 0)
+Part159.Size = Vector3.new(1.3999998569488525, 0.20000000298023224, 1.3999998569488525)
+Part159.BottomSurface = Enum.SurfaceType.Smooth
+Part159.BrickColor = BrickColor.new("Lime green")
+Part159.Material = Enum.Material.Neon
+Part159.TopSurface = Enum.SurfaceType.Smooth
+Part159.brickColor = BrickColor.new("Lime green")
+Part159.FormFactor = Enum.FormFactor.Symmetric
+Part159.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh160.Parent = Part159
+Part161.Parent = Model135
+Part161.CFrame = CFrame.new(-107.350647, 3.94502091, -47.0535049, 1, 0, -0, 0, 0, 1, 0, -1, 0)
+Part161.Orientation = Vector3.new(-90, 0, 0)
+Part161.Position = Vector3.new(-107.35064697265625, 3.945020914077759, -47.053504943847656)
+Part161.Rotation = Vector3.new(-90, 0, 0)
+Part161.Color = Color3.new(0, 1, 0)
+Part161.Size = Vector3.new(0.5999998450279236, 0.20000000298023224, 1.3999998569488525)
+Part161.BottomSurface = Enum.SurfaceType.Smooth
+Part161.BrickColor = BrickColor.new("Lime green")
+Part161.Material = Enum.Material.Neon
+Part161.TopSurface = Enum.SurfaceType.Smooth
+Part161.brickColor = BrickColor.new("Lime green")
+Part161.FormFactor = Enum.FormFactor.Symmetric
+Part161.formFactor = Enum.FormFactor.Symmetric
+Part162.Parent = Model135
+Part162.CFrame = CFrame.new(-107.350647, 1.2261796, -45.9276505, 1, 0, 0, 0, -0.707107842, 0.707105815, 0, -0.707105815, -0.707107842)
+Part162.Orientation = Vector3.new(-45, 180, 180)
+Part162.Position = Vector3.new(-107.35064697265625, 1.226179599761963, -45.927650451660156)
+Part162.Rotation = Vector3.new(-135, 0, 0)
+Part162.Color = Color3.new(0, 1, 0)
+Part162.Size = Vector3.new(0.5999998450279236, 0.20000000298023224, 1.3999998569488525)
+Part162.BottomSurface = Enum.SurfaceType.Smooth
+Part162.BrickColor = BrickColor.new("Lime green")
+Part162.Material = Enum.Material.Neon
+Part162.TopSurface = Enum.SurfaceType.Smooth
+Part162.brickColor = BrickColor.new("Lime green")
+Part162.FormFactor = Enum.FormFactor.Symmetric
+Part162.formFactor = Enum.FormFactor.Symmetric
+Part163.Parent = Model135
+Part163.CFrame = CFrame.new(-107.650696, 7.78996897, -43.2082901, 1, 0, 0, 0, -1, 0, 0, 0, -1)
+Part163.Orientation = Vector3.new(0, 180, 180)
+Part163.Position = Vector3.new(-107.65069580078125, 7.789968967437744, -43.208290100097656)
+Part163.Rotation = Vector3.new(-180, 0, 0)
+Part163.Color = Color3.new(0, 1, 0)
+Part163.Size = Vector3.new(1.3999998569488525, 0.20000000298023224, 1.3999998569488525)
+Part163.BottomSurface = Enum.SurfaceType.Smooth
+Part163.BrickColor = BrickColor.new("Lime green")
+Part163.Material = Enum.Material.Neon
+Part163.TopSurface = Enum.SurfaceType.Smooth
+Part163.brickColor = BrickColor.new("Lime green")
+Part163.FormFactor = Enum.FormFactor.Symmetric
+Part163.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh164.Parent = Part163
+Part165.Parent = Model135
+Part165.CFrame = CFrame.new(-107.050598, 7.78999949, -43.2082901, 1, 0, 0, 0, -1, 0, 0, 0, -1)
+Part165.Orientation = Vector3.new(0, 180, 180)
+Part165.Position = Vector3.new(-107.05059814453125, 7.789999485015869, -43.208290100097656)
+Part165.Rotation = Vector3.new(-180, 0, 0)
+Part165.Color = Color3.new(0, 1, 0)
+Part165.Size = Vector3.new(1.3999998569488525, 0.20000000298023224, 1.3999998569488525)
+Part165.BottomSurface = Enum.SurfaceType.Smooth
+Part165.BrickColor = BrickColor.new("Lime green")
+Part165.Material = Enum.Material.Neon
+Part165.TopSurface = Enum.SurfaceType.Smooth
+Part165.brickColor = BrickColor.new("Lime green")
+Part165.FormFactor = Enum.FormFactor.Symmetric
+Part165.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh166.Parent = Part165
+Part167.Parent = Model135
+Part167.CFrame = CFrame.new(-107.350647, 7.78998423, -43.2082901, 1, 0, 0, 0, -1, 0, 0, 0, -1)
+Part167.Orientation = Vector3.new(0, 180, 180)
+Part167.Position = Vector3.new(-107.35064697265625, 7.789984226226807, -43.208290100097656)
+Part167.Rotation = Vector3.new(-180, 0, 0)
+Part167.Color = Color3.new(0, 1, 0)
+Part167.Size = Vector3.new(0.5999998450279236, 0.20000000298023224, 1.3999998569488525)
+Part167.BottomSurface = Enum.SurfaceType.Smooth
+Part167.BrickColor = BrickColor.new("Lime green")
+Part167.Material = Enum.Material.Neon
+Part167.TopSurface = Enum.SurfaceType.Smooth
+Part167.brickColor = BrickColor.new("Lime green")
+Part167.FormFactor = Enum.FormFactor.Symmetric
+Part167.formFactor = Enum.FormFactor.Symmetric
+Part168.Parent = Model135
+Part168.CFrame = CFrame.new(-107.350601, 4.90810251, -39.4672012, 1, 0, 0, 0, -0.0825649723, 0.996585667, 0, -0.996585667, -0.0825649723)
+Part168.Orientation = Vector3.new(-85.26000213623047, 180, 180)
+Part168.Position = Vector3.new(-107.35060119628906, 4.908102512359619, -39.467201232910156)
+Part168.Rotation = Vector3.new(-94.73999786376953, 0, 0)
+Part168.Color = Color3.new(0, 1, 0)
+Part168.Size = Vector3.new(0.5999998450279236, 0.20000000298023224, 0.5999997854232788)
+Part168.BottomSurface = Enum.SurfaceType.Smooth
+Part168.BrickColor = BrickColor.new("Lime green")
+Part168.Material = Enum.Material.Neon
+Part168.TopSurface = Enum.SurfaceType.Smooth
+Part168.brickColor = BrickColor.new("Lime green")
+Part168.FormFactor = Enum.FormFactor.Symmetric
+Part168.formFactor = Enum.FormFactor.Symmetric
+Part169.Parent = Model135
+Part169.CFrame = CFrame.new(-107.350586, 5.68311167, -39.7782364, 1, 0, 0, 0, -0.497911811, 0.867227674, 0, -0.867227674, -0.497911811)
+Part169.Orientation = Vector3.new(-60.13999938964844, 180, 180)
+Part169.Position = Vector3.new(-107.3505859375, 5.683111667633057, -39.778236389160156)
+Part169.Rotation = Vector3.new(-119.86000061035156, 0, 0)
+Part169.Color = Color3.new(0, 1, 0)
+Part169.Size = Vector3.new(0.5999998450279236, 0.20000000298023224, 1.1999998092651367)
+Part169.BottomSurface = Enum.SurfaceType.Smooth
+Part169.BrickColor = BrickColor.new("Lime green")
+Part169.Material = Enum.Material.Neon
+Part169.TopSurface = Enum.SurfaceType.Smooth
+Part169.brickColor = BrickColor.new("Lime green")
+Part169.FormFactor = Enum.FormFactor.Symmetric
+Part169.formFactor = Enum.FormFactor.Symmetric
+Part170.Parent = Model135
+Part170.CFrame = CFrame.new(-107.350586, 3.03696322, -39.5019913, -1, 0, 0, 0, 0.0309589896, -0.999520659, 0, -0.999520659, -0.0309589896)
+Part170.Orientation = Vector3.new(88.2300033569336, 180, 0)
+Part170.Position = Vector3.new(-107.3505859375, 3.0369632244110107, -39.501991271972656)
+Part170.Rotation = Vector3.new(91.7699966430664, 0, -180)
+Part170.Color = Color3.new(0, 1, 0)
+Part170.Size = Vector3.new(0.5999998450279236, 0.20000000298023224, 0.5999997854232788)
+Part170.BottomSurface = Enum.SurfaceType.Smooth
+Part170.BrickColor = BrickColor.new("Lime green")
+Part170.Material = Enum.Material.Neon
+Part170.TopSurface = Enum.SurfaceType.Smooth
+Part170.brickColor = BrickColor.new("Lime green")
+Part170.FormFactor = Enum.FormFactor.Symmetric
+Part170.formFactor = Enum.FormFactor.Symmetric
+Part171.Parent = Model135
+Part171.CFrame = CFrame.new(-107.350647, 2.24684787, -46.6509171, 1, 0, 0, 0, 0.452433944, -0.8917979, 0, 0.8917979, 0.452433944)
+Part171.Orientation = Vector3.new(63.099998474121094, 0, 0)
+Part171.Position = Vector3.new(-107.35064697265625, 2.2468478679656982, -46.650917053222656)
+Part171.Rotation = Vector3.new(63.099998474121094, 0, 0)
+Part171.Color = Color3.new(0, 1, 0)
+Part171.Size = Vector3.new(0.5999998450279236, 0.20000000298023224, 1.1999998092651367)
+Part171.BottomSurface = Enum.SurfaceType.Smooth
+Part171.BrickColor = BrickColor.new("Lime green")
+Part171.Material = Enum.Material.Neon
+Part171.TopSurface = Enum.SurfaceType.Smooth
+Part171.brickColor = BrickColor.new("Lime green")
+Part171.FormFactor = Enum.FormFactor.Symmetric
+Part171.formFactor = Enum.FormFactor.Symmetric
+Part172.Parent = Model135
+Part172.CFrame = CFrame.new(-107.350594, 2.24684787, -39.7728653, -1, 0, 0, 0, 0.452433944, -0.8917979, 0, -0.8917979, -0.452433944)
+Part172.Orientation = Vector3.new(63.099998474121094, 180, 0)
+Part172.Position = Vector3.new(-107.35059356689453, 2.2468478679656982, -39.772865295410156)
+Part172.Rotation = Vector3.new(116.9000015258789, 0, -180)
+Part172.Color = Color3.new(0, 1, 0)
+Part172.Size = Vector3.new(0.5999998450279236, 0.20000000298023224, 1.1999998092651367)
+Part172.BottomSurface = Enum.SurfaceType.Smooth
+Part172.BrickColor = BrickColor.new("Lime green")
+Part172.Material = Enum.Material.Neon
+Part172.TopSurface = Enum.SurfaceType.Smooth
+Part172.brickColor = BrickColor.new("Lime green")
+Part172.FormFactor = Enum.FormFactor.Symmetric
+Part172.formFactor = Enum.FormFactor.Symmetric
+Part173.Parent = Model135
+Part173.CFrame = CFrame.new(-107.350647, 3.03700137, -46.9222794, 1, 0, 0, 0, 0.0309549924, -0.999520779, 0, 0.999520779, 0.0309549924)
+Part173.Orientation = Vector3.new(88.2300033569336, 0, 0)
+Part173.Position = Vector3.new(-107.35064697265625, 3.037001371383667, -46.922279357910156)
+Part173.Rotation = Vector3.new(88.2300033569336, 0, 0)
+Part173.Color = Color3.new(0, 1, 0)
+Part173.Size = Vector3.new(0.5999998450279236, 0.20000000298023224, 0.5999997854232788)
+Part173.BottomSurface = Enum.SurfaceType.Smooth
+Part173.BrickColor = BrickColor.new("Lime green")
+Part173.Material = Enum.Material.Neon
+Part173.TopSurface = Enum.SurfaceType.Smooth
+Part173.brickColor = BrickColor.new("Lime green")
+Part173.FormFactor = Enum.FormFactor.Symmetric
+Part173.formFactor = Enum.FormFactor.Symmetric
+Part174.Parent = Model135
+Part174.CFrame = CFrame.new(-107.350647, 4.90809488, -46.958168, -1, 0, 0, 0, -0.0825680345, 0.996585488, 0, 0.996585488, 0.0825680345)
+Part174.Orientation = Vector3.new(-85.26000213623047, 0, 180)
+Part174.Position = Vector3.new(-107.35064697265625, 4.908094882965088, -46.958168029785156)
+Part174.Rotation = Vector3.new(-85.26000213623047, 0, -180)
+Part174.Color = Color3.new(0, 1, 0)
+Part174.Size = Vector3.new(0.5999998450279236, 0.20000000298023224, 0.5999997854232788)
+Part174.BottomSurface = Enum.SurfaceType.Smooth
+Part174.BrickColor = BrickColor.new("Lime green")
+Part174.Material = Enum.Material.Neon
+Part174.TopSurface = Enum.SurfaceType.Smooth
+Part174.brickColor = BrickColor.new("Lime green")
+Part174.FormFactor = Enum.FormFactor.Symmetric
+Part174.formFactor = Enum.FormFactor.Symmetric
+Part175.Parent = Model135
+Part175.CFrame = CFrame.new(-107.350647, 5.68311167, -46.6470108, -1, 0, 0, 0, -0.497911811, 0.867227674, 0, 0.867227674, 0.497911811)
+Part175.Orientation = Vector3.new(-60.13999938964844, 0, 180)
+Part175.Position = Vector3.new(-107.35064697265625, 5.683111667633057, -46.647010803222656)
+Part175.Rotation = Vector3.new(-60.13999938964844, 0, -180)
+Part175.Color = Color3.new(0, 1, 0)
+Part175.Size = Vector3.new(0.5999998450279236, 0.20000000298023224, 1.1999998092651367)
+Part175.BottomSurface = Enum.SurfaceType.Smooth
+Part175.BrickColor = BrickColor.new("Lime green")
+Part175.Material = Enum.Material.Neon
+Part175.TopSurface = Enum.SurfaceType.Smooth
+Part175.brickColor = BrickColor.new("Lime green")
+Part175.FormFactor = Enum.FormFactor.Symmetric
+Part175.formFactor = Enum.FormFactor.Symmetric
+Part176.Parent = Model135
+Part176.CFrame = CFrame.new(-107.050591, 0.100034967, -43.2082901, 1, 0, 0, 0, -1, 0, 0, 0, -1)
+Part176.Orientation = Vector3.new(0, 180, 180)
+Part176.Position = Vector3.new(-107.05059051513672, 0.10003496706485748, -43.208290100097656)
+Part176.Rotation = Vector3.new(-180, 0, 0)
+Part176.Color = Color3.new(0, 1, 0)
+Part176.Size = Vector3.new(1.3999998569488525, 0.20000000298023224, 1.3999998569488525)
+Part176.BottomSurface = Enum.SurfaceType.Smooth
+Part176.BrickColor = BrickColor.new("Lime green")
+Part176.Material = Enum.Material.Neon
+Part176.TopSurface = Enum.SurfaceType.Smooth
+Part176.brickColor = BrickColor.new("Lime green")
+Part176.FormFactor = Enum.FormFactor.Symmetric
+Part176.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh177.Parent = Part176
+Part178.Parent = Model135
+Part178.CFrame = CFrame.new(-107.350655, 7.37159586, -44.9422989, 1, 0, 0, 0, -0.867225885, -0.49791494, 0, 0.49791494, -0.867225885)
+Part178.Orientation = Vector3.new(29.860000610351562, 180, 180)
+Part178.Position = Vector3.new(-107.35065460205078, 7.371595859527588, -44.942298889160156)
+Part178.Rotation = Vector3.new(150.13999938964844, 0, 0)
+Part178.Color = Color3.new(0, 1, 0)
+Part178.Size = Vector3.new(0.5999998450279236, 0.20000000298023224, 1.1999998092651367)
+Part178.BottomSurface = Enum.SurfaceType.Smooth
+Part178.BrickColor = BrickColor.new("Lime green")
+Part178.Material = Enum.Material.Neon
+Part178.TopSurface = Enum.SurfaceType.Smooth
+Part178.brickColor = BrickColor.new("Lime green")
+Part178.FormFactor = Enum.FormFactor.Symmetric
+Part178.formFactor = Enum.FormFactor.Symmetric
+Part179.Parent = Model135
+Part179.CFrame = CFrame.new(-107.350647, 7.68275309, -44.1676407, 1, 0, 0, 0, -0.996585369, -0.0825690329, 0, 0.0825690329, -0.996585369)
+Part179.Orientation = Vector3.new(4.739999771118164, 180, 180)
+Part179.Position = Vector3.new(-107.35064697265625, 7.682753086090088, -44.167640686035156)
+Part179.Rotation = Vector3.new(175.25999450683594, 0, 0)
+Part179.Color = Color3.new(0, 1, 0)
+Part179.Size = Vector3.new(0.5999998450279236, 0.20000000298023224, 0.5999997854232788)
+Part179.BottomSurface = Enum.SurfaceType.Smooth
+Part179.BrickColor = BrickColor.new("Lime green")
+Part179.Material = Enum.Material.Neon
+Part179.TopSurface = Enum.SurfaceType.Smooth
+Part179.brickColor = BrickColor.new("Lime green")
+Part179.FormFactor = Enum.FormFactor.Symmetric
+Part179.formFactor = Enum.FormFactor.Symmetric
+Part180.Parent = Model135
+Part180.CFrame = CFrame.new(-107.350639, 7.64742136, -42.29496, -1, 0, 0, 0, -0.999520779, -0.0309559926, 0, -0.0309559926, 0.999520779)
+Part180.Orientation = Vector3.new(1.7699999809265137, 0, 180)
+Part180.Position = Vector3.new(-107.35063934326172, 7.647421360015869, -42.294960021972656)
+Part180.Rotation = Vector3.new(1.7699999809265137, 0, -180)
+Part180.Color = Color3.new(0, 1, 0)
+Part180.Size = Vector3.new(0.5999998450279236, 0.20000000298023224, 0.5999997854232788)
+Part180.BottomSurface = Enum.SurfaceType.Smooth
+Part180.BrickColor = BrickColor.new("Lime green")
+Part180.Material = Enum.Material.Neon
+Part180.TopSurface = Enum.SurfaceType.Smooth
+Part180.brickColor = BrickColor.new("Lime green")
+Part180.FormFactor = Enum.FormFactor.Symmetric
+Part180.formFactor = Enum.FormFactor.Symmetric
+Part181.Parent = Model135
+Part181.CFrame = CFrame.new(-107.350639, 0.100012079, -43.2082901, 1, 0, 0, 0, -1, 0, 0, 0, -1)
+Part181.Orientation = Vector3.new(0, 180, 180)
+Part181.Position = Vector3.new(-107.35063934326172, 0.10001207888126373, -43.208290100097656)
+Part181.Rotation = Vector3.new(-180, 0, 0)
+Part181.Color = Color3.new(0, 1, 0)
+Part181.Size = Vector3.new(0.5999998450279236, 0.20000000298023224, 1.3999998569488525)
+Part181.BottomSurface = Enum.SurfaceType.Smooth
+Part181.BrickColor = BrickColor.new("Lime green")
+Part181.Material = Enum.Material.Neon
+Part181.TopSurface = Enum.SurfaceType.Smooth
+Part181.brickColor = BrickColor.new("Lime green")
+Part181.FormFactor = Enum.FormFactor.Symmetric
+Part181.formFactor = Enum.FormFactor.Symmetric
+Part182.Parent = Model135
+Part182.CFrame = CFrame.new(-107.650688, 1.22617197, -40.489418, 1, 0, 0, 0, 0.707106829, 0.707106829, 0, -0.707106829, 0.707106829)
+Part182.Orientation = Vector3.new(-45, 0, 0)
+Part182.Position = Vector3.new(-107.65068817138672, 1.2261719703674316, -40.489418029785156)
+Part182.Rotation = Vector3.new(-45, 0, 0)
+Part182.Color = Color3.new(0, 1, 0)
+Part182.Size = Vector3.new(1.3999998569488525, 0.20000000298023224, 1.3999998569488525)
+Part182.BottomSurface = Enum.SurfaceType.Smooth
+Part182.BrickColor = BrickColor.new("Lime green")
+Part182.Material = Enum.Material.Neon
+Part182.TopSurface = Enum.SurfaceType.Smooth
+Part182.brickColor = BrickColor.new("Lime green")
+Part182.FormFactor = Enum.FormFactor.Symmetric
+Part182.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh183.Parent = Part182
+Part184.Parent = Model135
+Part184.CFrame = CFrame.new(-107.050583, 1.2261796, -40.489418, 1, 0, 0, 0, 0.707106829, 0.707106829, 0, -0.707106829, 0.707106829)
+Part184.Orientation = Vector3.new(-45, 0, 0)
+Part184.Position = Vector3.new(-107.05058288574219, 1.226179599761963, -40.489418029785156)
+Part184.Rotation = Vector3.new(-45, 0, 0)
+Part184.Color = Color3.new(0, 1, 0)
+Part184.Size = Vector3.new(1.3999998569488525, 0.20000000298023224, 1.3999998569488525)
+Part184.BottomSurface = Enum.SurfaceType.Smooth
+Part184.BrickColor = BrickColor.new("Lime green")
+Part184.Material = Enum.Material.Neon
+Part184.TopSurface = Enum.SurfaceType.Smooth
+Part184.brickColor = BrickColor.new("Lime green")
+Part184.FormFactor = Enum.FormFactor.Symmetric
+Part184.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh185.Parent = Part184
+Part186.Parent = Model135
+Part186.CFrame = CFrame.new(-107.050606, 6.66383219, -45.9276505, 1, 0, 0, 0, 0.707106829, 0.707106829, 0, -0.707106829, 0.707106829)
+Part186.Orientation = Vector3.new(-45, 0, 0)
+Part186.Position = Vector3.new(-107.05060577392578, 6.663832187652588, -45.927650451660156)
+Part186.Rotation = Vector3.new(-45, 0, 0)
+Part186.Color = Color3.new(0, 1, 0)
+Part186.Size = Vector3.new(1.3999998569488525, 0.20000000298023224, 1.3999998569488525)
+Part186.BottomSurface = Enum.SurfaceType.Smooth
+Part186.BrickColor = BrickColor.new("Lime green")
+Part186.Material = Enum.Material.Neon
+Part186.TopSurface = Enum.SurfaceType.Smooth
+Part186.brickColor = BrickColor.new("Lime green")
+Part186.FormFactor = Enum.FormFactor.Symmetric
+Part186.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh187.Parent = Part186
+Part188.Parent = Model135
+Part188.CFrame = CFrame.new(-107.350647, 1.2261796, -40.489418, 1, 0, 0, 0, 0.707106829, 0.707106829, 0, -0.707106829, 0.707106829)
+Part188.Orientation = Vector3.new(-45, 0, 0)
+Part188.Position = Vector3.new(-107.35064697265625, 1.226179599761963, -40.489418029785156)
+Part188.Rotation = Vector3.new(-45, 0, 0)
+Part188.Color = Color3.new(0, 1, 0)
+Part188.Size = Vector3.new(0.5999998450279236, 0.20000000298023224, 1.3999998569488525)
+Part188.BottomSurface = Enum.SurfaceType.Smooth
+Part188.BrickColor = BrickColor.new("Lime green")
+Part188.Material = Enum.Material.Neon
+Part188.TopSurface = Enum.SurfaceType.Smooth
+Part188.brickColor = BrickColor.new("Lime green")
+Part188.FormFactor = Enum.FormFactor.Symmetric
+Part188.formFactor = Enum.FormFactor.Symmetric
+Part189.Parent = Model135
+Part189.CFrame = CFrame.new(-107.650696, 6.66382456, -45.9276505, 1, 0, 0, 0, 0.707106829, 0.707106829, 0, -0.707106829, 0.707106829)
+Part189.Orientation = Vector3.new(-45, 0, 0)
+Part189.Position = Vector3.new(-107.65069580078125, 6.663824558258057, -45.927650451660156)
+Part189.Rotation = Vector3.new(-45, 0, 0)
+Part189.Color = Color3.new(0, 1, 0)
+Part189.Size = Vector3.new(1.3999998569488525, 0.20000000298023224, 1.3999998569488525)
+Part189.BottomSurface = Enum.SurfaceType.Smooth
+Part189.BrickColor = BrickColor.new("Lime green")
+Part189.Material = Enum.Material.Neon
+Part189.TopSurface = Enum.SurfaceType.Smooth
+Part189.brickColor = BrickColor.new("Lime green")
+Part189.FormFactor = Enum.FormFactor.Symmetric
+Part189.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh190.Parent = Part189
+Part191.Parent = Model135
+Part191.CFrame = CFrame.new(-107.350647, 6.66383982, -45.9276505, 1, 0, 0, 0, 0.707106829, 0.707106829, 0, -0.707106829, 0.707106829)
+Part191.Orientation = Vector3.new(-45, 0, 0)
+Part191.Position = Vector3.new(-107.35064697265625, 6.663839817047119, -45.927650451660156)
+Part191.Rotation = Vector3.new(-45, 0, 0)
+Part191.Color = Color3.new(0, 1, 0)
+Part191.Size = Vector3.new(0.5999998450279236, 0.20000000298023224, 1.3999998569488525)
+Part191.BottomSurface = Enum.SurfaceType.Smooth
+Part191.BrickColor = BrickColor.new("Lime green")
+Part191.Material = Enum.Material.Neon
+Part191.TopSurface = Enum.SurfaceType.Smooth
+Part191.brickColor = BrickColor.new("Lime green")
+Part191.FormFactor = Enum.FormFactor.Symmetric
+Part191.formFactor = Enum.FormFactor.Symmetric
+Model192.Name = "Screws"
+Model192.Parent = Model0
+Part193.Parent = Model192
+Part193.CFrame = CFrame.new(-113.03466, 3.32758212, -40.9770889, 1, 0, 0, 0, -0.258818984, -0.965925872, 0, 0.965925872, -0.258818984)
+Part193.Orientation = Vector3.new(75, 180, 180)
+Part193.Position = Vector3.new(-113.03466033935547, 3.3275821208953857, -40.977088928222656)
+Part193.Rotation = Vector3.new(105, 0, 0)
+Part193.Color = Color3.new(1, 1, 0)
+Part193.Size = Vector3.new(0.20000000298023224, 0.6000000238418579, 0.20000000298023224)
+Part193.BrickColor = BrickColor.new("New Yeller")
+Part193.Material = Enum.Material.Neon
+Part193.brickColor = BrickColor.new("New Yeller")
+Part193.FormFactor = Enum.FormFactor.Symmetric
+Part193.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh194.Parent = Part193
+CylinderMesh194.Scale = Vector3.new(0.5, 0.5, 0.5)
+Part195.Parent = Model192
+Part195.CFrame = CFrame.new(-113.034683, 3.28355289, -40.8130264, 1, 0, 0, 0, -0.258818984, -0.965925872, 0, 0.965925872, -0.258818984)
+Part195.Orientation = Vector3.new(75, 180, 180)
+Part195.Position = Vector3.new(-113.03468322753906, 3.283552885055542, -40.813026428222656)
+Part195.Rotation = Vector3.new(105, 0, 0)
+Part195.Color = Color3.new(1, 1, 0)
+Part195.Size = Vector3.new(0.6000000238418579, 0.20000000298023224, 0.6000000238418579)
+Part195.BrickColor = BrickColor.new("New Yeller")
+Part195.Material = Enum.Material.Neon
+Part195.brickColor = BrickColor.new("New Yeller")
+Part195.FormFactor = Enum.FormFactor.Symmetric
+Part195.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh196.Parent = Part195
+CylinderMesh196.Scale = Vector3.new(0.30000001192092896, 0.30000001192092896, 0.30000001192092896)
+Part197.Parent = Model192
+Part197.CFrame = CFrame.new(-113.034653, 3.28357577, -45.5845108, 1, 0, 0, 0, -0.258818984, 0.965925872, 0, -0.965925872, -0.258818984)
+Part197.Orientation = Vector3.new(-75, 180, 180)
+Part197.Position = Vector3.new(-113.03465270996094, 3.2835757732391357, -45.584510803222656)
+Part197.Rotation = Vector3.new(-105, 0, 0)
+Part197.Color = Color3.new(1, 1, 0)
+Part197.Size = Vector3.new(0.6000000238418579, 0.20000000298023224, 0.6000000238418579)
+Part197.BrickColor = BrickColor.new("New Yeller")
+Part197.Material = Enum.Material.Neon
+Part197.brickColor = BrickColor.new("New Yeller")
+Part197.FormFactor = Enum.FormFactor.Symmetric
+Part197.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh198.Parent = Part197
+CylinderMesh198.Scale = Vector3.new(0.30000001192092896, 0.30000001192092896, 0.30000001192092896)
+Part199.Parent = Model192
+Part199.CFrame = CFrame.new(-113.034683, 3.3275516, -45.4195938, 1, 0, 0, 0, -0.258818984, 0.965925872, 0, -0.965925872, -0.258818984)
+Part199.Orientation = Vector3.new(-75, 180, 180)
+Part199.Position = Vector3.new(-113.03468322753906, 3.3275516033172607, -45.419593811035156)
+Part199.Rotation = Vector3.new(-105, 0, 0)
+Part199.Color = Color3.new(1, 1, 0)
+Part199.Size = Vector3.new(0.20000000298023224, 0.6000000238418579, 0.20000000298023224)
+Part199.BrickColor = BrickColor.new("New Yeller")
+Part199.Material = Enum.Material.Neon
+Part199.brickColor = BrickColor.new("New Yeller")
+Part199.FormFactor = Enum.FormFactor.Symmetric
+Part199.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh200.Parent = Part199
+CylinderMesh200.Scale = Vector3.new(0.5, 0.5, 0.5)
+Part201.Parent = Model192
+Part201.CFrame = CFrame.new(-113.034668, 4.51813364, -40.9770889, 1, 0, 0, 0, 0.258818984, -0.965925872, 0, 0.965925872, 0.258818984)
+Part201.Orientation = Vector3.new(75, 0, 0)
+Part201.Position = Vector3.new(-113.03466796875, 4.518133640289307, -40.977088928222656)
+Part201.Rotation = Vector3.new(75, 0, 0)
+Part201.Color = Color3.new(1, 1, 0)
+Part201.Size = Vector3.new(0.20000000298023224, 0.6000000238418579, 0.20000000298023224)
+Part201.BrickColor = BrickColor.new("New Yeller")
+Part201.Material = Enum.Material.Neon
+Part201.brickColor = BrickColor.new("New Yeller")
+Part201.FormFactor = Enum.FormFactor.Symmetric
+Part201.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh202.Parent = Part201
+CylinderMesh202.Scale = Vector3.new(0.5, 0.5, 0.5)
+Part203.Parent = Model192
+Part203.CFrame = CFrame.new(-113.034668, 4.56210947, -40.8130264, 1, 0, 0, 0, 0.258818984, -0.965925872, 0, 0.965925872, 0.258818984)
+Part203.Orientation = Vector3.new(75, 0, 0)
+Part203.Position = Vector3.new(-113.03466796875, 4.562109470367432, -40.813026428222656)
+Part203.Rotation = Vector3.new(75, 0, 0)
+Part203.Color = Color3.new(1, 1, 0)
+Part203.Size = Vector3.new(0.6000000238418579, 0.20000000298023224, 0.6000000238418579)
+Part203.BrickColor = BrickColor.new("New Yeller")
+Part203.Material = Enum.Material.Neon
+Part203.brickColor = BrickColor.new("New Yeller")
+Part203.FormFactor = Enum.FormFactor.Symmetric
+Part203.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh204.Parent = Part203
+CylinderMesh204.Scale = Vector3.new(0.30000001192092896, 0.30000001192092896, 0.30000001192092896)
+Part205.Parent = Model192
+Part205.CFrame = CFrame.new(-113.034668, 2.17625308, -41.4527969, 1, 0, 0, 0, -0.707105815, -0.707107842, 0, 0.707107842, -0.707105815)
+Part205.Orientation = Vector3.new(45, 180, 180)
+Part205.Position = Vector3.new(-113.03466796875, 2.176253080368042, -41.452796936035156)
+Part205.Rotation = Vector3.new(135, 0, 0)
+Part205.Color = Color3.new(1, 1, 0)
+Part205.Size = Vector3.new(0.6000000238418579, 0.20000000298023224, 0.6000000238418579)
+Part205.BrickColor = BrickColor.new("New Yeller")
+Part205.Material = Enum.Material.Neon
+Part205.brickColor = BrickColor.new("New Yeller")
+Part205.FormFactor = Enum.FormFactor.Symmetric
+Part205.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh206.Parent = Part205
+CylinderMesh206.Scale = Vector3.new(0.30000001192092896, 0.30000001192092896, 0.30000001192092896)
+Part207.Parent = Model192
+Part207.CFrame = CFrame.new(-113.034668, 2.29649234, -41.5720596, 1, 0, 0, 0, -0.707105815, -0.707107842, 0, 0.707107842, -0.707105815)
+Part207.Orientation = Vector3.new(45, 180, 180)
+Part207.Position = Vector3.new(-113.03466796875, 2.296492338180542, -41.572059631347656)
+Part207.Rotation = Vector3.new(135, 0, 0)
+Part207.Color = Color3.new(1, 1, 0)
+Part207.Size = Vector3.new(0.20000000298023224, 0.6000000238418579, 0.20000000298023224)
+Part207.BrickColor = BrickColor.new("New Yeller")
+Part207.Material = Enum.Material.Neon
+Part207.brickColor = BrickColor.new("New Yeller")
+Part207.FormFactor = Enum.FormFactor.Symmetric
+Part207.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh208.Parent = Part207
+CylinderMesh208.Scale = Vector3.new(0.5, 0.5, 0.5)
+Part209.Parent = Model192
+Part209.CFrame = CFrame.new(-113.034683, 5.6694169, -44.9449844, 1, 0, 0, 0, 0.707105815, 0.707107842, 0, -0.707107842, 0.707105815)
+Part209.Orientation = Vector3.new(-45, 0, 0)
+Part209.Position = Vector3.new(-113.03468322753906, 5.669416904449463, -44.944984436035156)
+Part209.Rotation = Vector3.new(-45, 0, 0)
+Part209.Color = Color3.new(1, 1, 0)
+Part209.Size = Vector3.new(0.6000000238418579, 0.20000000298023224, 0.6000000238418579)
+Part209.BrickColor = BrickColor.new("New Yeller")
+Part209.Material = Enum.Material.Neon
+Part209.brickColor = BrickColor.new("New Yeller")
+Part209.FormFactor = Enum.FormFactor.Symmetric
+Part209.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh210.Parent = Part209
+CylinderMesh210.Scale = Vector3.new(0.30000001192092896, 0.30000001192092896, 0.30000001192092896)
+Part211.Parent = Model192
+Part211.CFrame = CFrame.new(-113.034683, 5.54920053, -44.8248672, 1, 0, 0, 0, 0.707105815, 0.707107842, 0, -0.707107842, 0.707105815)
+Part211.Orientation = Vector3.new(-45, 0, 0)
+Part211.Position = Vector3.new(-113.03468322753906, 5.549200534820557, -44.824867248535156)
+Part211.Rotation = Vector3.new(-45, 0, 0)
+Part211.Color = Color3.new(1, 1, 0)
+Part211.Size = Vector3.new(0.20000000298023224, 0.6000000238418579, 0.20000000298023224)
+Part211.BrickColor = BrickColor.new("New Yeller")
+Part211.Material = Enum.Material.Neon
+Part211.brickColor = BrickColor.new("New Yeller")
+Part211.FormFactor = Enum.FormFactor.Symmetric
+Part211.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh212.Parent = Part211
+CylinderMesh212.Scale = Vector3.new(0.5, 0.5, 0.5)
+Part213.Parent = Model192
+Part213.CFrame = CFrame.new(-113.03466, 1.53699327, -42.5594864, 1, 0, 0, 0, -0.965925097, -0.258822024, 0, 0.258822024, -0.965925097)
+Part213.Orientation = Vector3.new(15, 180, 180)
+Part213.Position = Vector3.new(-113.03466033935547, 1.5369932651519775, -42.559486389160156)
+Part213.Rotation = Vector3.new(165, 0, 0)
+Part213.Color = Color3.new(1, 1, 0)
+Part213.Size = Vector3.new(0.6000000238418579, 0.20000000298023224, 0.6000000238418579)
+Part213.BrickColor = BrickColor.new("New Yeller")
+Part213.Material = Enum.Material.Neon
+Part213.brickColor = BrickColor.new("New Yeller")
+Part213.FormFactor = Enum.FormFactor.Symmetric
+Part213.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh214.Parent = Part213
+CylinderMesh214.Scale = Vector3.new(0.30000001192092896, 0.30000001192092896, 0.30000001192092896)
+Part215.Parent = Model192
+Part215.CFrame = CFrame.new(-113.03466, 1.70119309, -42.6034317, 1, 0, 0, 0, -0.965925097, -0.258822024, 0, 0.258822024, -0.965925097)
+Part215.Orientation = Vector3.new(15, 180, 180)
+Part215.Position = Vector3.new(-113.03466033935547, 1.70119309425354, -42.603431701660156)
+Part215.Rotation = Vector3.new(165, 0, 0)
+Part215.Color = Color3.new(1, 1, 0)
+Part215.Size = Vector3.new(0.20000000298023224, 0.6000000238418579, 0.20000000298023224)
+Part215.BrickColor = BrickColor.new("New Yeller")
+Part215.Material = Enum.Material.Neon
+Part215.brickColor = BrickColor.new("New Yeller")
+Part215.FormFactor = Enum.FormFactor.Symmetric
+Part215.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh216.Parent = Part215
+CylinderMesh216.Scale = Vector3.new(0.5, 0.5, 0.5)
+Part217.Parent = Model192
+Part217.CFrame = CFrame.new(-113.034668, 6.30867624, -43.8380508, 1, 0, 0, 0, 0.965925097, 0.258822024, 0, -0.258822024, 0.965925097)
+Part217.Orientation = Vector3.new(-15, 0, 0)
+Part217.Position = Vector3.new(-113.03466796875, 6.308676242828369, -43.838050842285156)
+Part217.Rotation = Vector3.new(-15, 0, 0)
+Part217.Color = Color3.new(1, 1, 0)
+Part217.Size = Vector3.new(0.6000000238418579, 0.20000000298023224, 0.6000000238418579)
+Part217.BrickColor = BrickColor.new("New Yeller")
+Part217.Material = Enum.Material.Neon
+Part217.brickColor = BrickColor.new("New Yeller")
+Part217.FormFactor = Enum.FormFactor.Symmetric
+Part217.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh218.Parent = Part217
+CylinderMesh218.Scale = Vector3.new(0.30000001192092896, 0.30000001192092896, 0.30000001192092896)
+Part219.Parent = Model192
+Part219.CFrame = CFrame.new(-113.034683, 6.1444993, -43.7944717, 1, 0, 0, 0, 0.965925097, 0.258822024, 0, -0.258822024, 0.965925097)
+Part219.Orientation = Vector3.new(-15, 0, 0)
+Part219.Position = Vector3.new(-113.03468322753906, 6.1444993019104, -43.794471740722656)
+Part219.Rotation = Vector3.new(-15, 0, 0)
+Part219.Color = Color3.new(1, 1, 0)
+Part219.Size = Vector3.new(0.20000000298023224, 0.6000000238418579, 0.20000000298023224)
+Part219.BrickColor = BrickColor.new("New Yeller")
+Part219.Material = Enum.Material.Neon
+Part219.brickColor = BrickColor.new("New Yeller")
+Part219.FormFactor = Enum.FormFactor.Symmetric
+Part219.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh220.Parent = Part219
+CylinderMesh220.Scale = Vector3.new(0.5, 0.5, 0.5)
+Part221.Parent = Model192
+Part221.CFrame = CFrame.new(-113.034683, 2.1762836, -44.9449844, 1, 0, 0, 0, -0.707107842, 0.707105815, 0, -0.707105815, -0.707107842)
+Part221.Orientation = Vector3.new(-45, 180, 180)
+Part221.Position = Vector3.new(-113.03468322753906, 2.176283597946167, -44.944984436035156)
+Part221.Rotation = Vector3.new(-135, 0, 0)
+Part221.Color = Color3.new(1, 1, 0)
+Part221.Size = Vector3.new(0.6000000238418579, 0.20000000298023224, 0.6000000238418579)
+Part221.BrickColor = BrickColor.new("New Yeller")
+Part221.Material = Enum.Material.Neon
+Part221.brickColor = BrickColor.new("New Yeller")
+Part221.FormFactor = Enum.FormFactor.Symmetric
+Part221.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh222.Parent = Part221
+CylinderMesh222.Scale = Vector3.new(0.30000001192092896, 0.30000001192092896, 0.30000001192092896)
+Part223.Parent = Model192
+Part223.CFrame = CFrame.new(-113.034683, 2.29649234, -44.8248672, 1, 0, 0, 0, -0.707107842, 0.707105815, 0, -0.707105815, -0.707107842)
+Part223.Orientation = Vector3.new(-45, 180, 180)
+Part223.Position = Vector3.new(-113.03468322753906, 2.296492338180542, -44.824867248535156)
+Part223.Rotation = Vector3.new(-135, 0, 0)
+Part223.Color = Color3.new(1, 1, 0)
+Part223.Size = Vector3.new(0.20000000298023224, 0.6000000238418579, 0.20000000298023224)
+Part223.BrickColor = BrickColor.new("New Yeller")
+Part223.Material = Enum.Material.Neon
+Part223.brickColor = BrickColor.new("New Yeller")
+Part223.FormFactor = Enum.FormFactor.Symmetric
+Part223.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh224.Parent = Part223
+CylinderMesh224.Scale = Vector3.new(0.5, 0.5, 0.5)
+Part225.Parent = Model192
+Part225.CFrame = CFrame.new(-113.034668, 5.54920816, -41.5720596, 1, 0, 0, 0, 0.707107842, -0.707105815, 0, 0.707105815, 0.707107842)
+Part225.Orientation = Vector3.new(45, 0, 0)
+Part225.Position = Vector3.new(-113.03466796875, 5.549208164215088, -41.572059631347656)
+Part225.Rotation = Vector3.new(45, 0, 0)
+Part225.Color = Color3.new(1, 1, 0)
+Part225.Size = Vector3.new(0.20000000298023224, 0.6000000238418579, 0.20000000298023224)
+Part225.BrickColor = BrickColor.new("New Yeller")
+Part225.Material = Enum.Material.Neon
+Part225.brickColor = BrickColor.new("New Yeller")
+Part225.FormFactor = Enum.FormFactor.Symmetric
+Part225.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh226.Parent = Part225
+CylinderMesh226.Scale = Vector3.new(0.5, 0.5, 0.5)
+Part227.Parent = Model192
+Part227.CFrame = CFrame.new(-113.034668, 5.66938639, -41.4527969, 1, 0, 0, 0, 0.707107842, -0.707105815, 0, 0.707105815, 0.707107842)
+Part227.Orientation = Vector3.new(45, 0, 0)
+Part227.Position = Vector3.new(-113.03466796875, 5.669386386871338, -41.452796936035156)
+Part227.Rotation = Vector3.new(45, 0, 0)
+Part227.Color = Color3.new(1, 1, 0)
+Part227.Size = Vector3.new(0.6000000238418579, 0.20000000298023224, 0.6000000238418579)
+Part227.BrickColor = BrickColor.new("New Yeller")
+Part227.Material = Enum.Material.Neon
+Part227.brickColor = BrickColor.new("New Yeller")
+Part227.FormFactor = Enum.FormFactor.Symmetric
+Part227.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh228.Parent = Part227
+CylinderMesh228.Scale = Vector3.new(0.30000001192092896, 0.30000001192092896, 0.30000001192092896)
+Part229.Parent = Model192
+Part229.CFrame = CFrame.new(-113.034683, 1.53700852, -43.8380508, 1, 0, 0, 0, -0.965926647, 0.258815914, 0, -0.258815914, -0.965926647)
+Part229.Orientation = Vector3.new(-15, 180, 180)
+Part229.Position = Vector3.new(-113.03468322753906, 1.53700852394104, -43.838050842285156)
+Part229.Rotation = Vector3.new(-165, 0, 0)
+Part229.Color = Color3.new(1, 1, 0)
+Part229.Size = Vector3.new(0.6000000238418579, 0.20000000298023224, 0.6000000238418579)
+Part229.BrickColor = BrickColor.new("New Yeller")
+Part229.Material = Enum.Material.Neon
+Part229.brickColor = BrickColor.new("New Yeller")
+Part229.FormFactor = Enum.FormFactor.Symmetric
+Part229.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh230.Parent = Part229
+CylinderMesh230.Scale = Vector3.new(0.30000001192092896, 0.30000001192092896, 0.30000001192092896)
+Part231.Parent = Model192
+Part231.CFrame = CFrame.new(-113.034683, 1.70118546, -43.7944717, 1, 0, 0, 0, -0.965926647, 0.258815914, 0, -0.258815914, -0.965926647)
+Part231.Orientation = Vector3.new(-15, 180, 180)
+Part231.Position = Vector3.new(-113.03468322753906, 1.7011854648590088, -43.794471740722656)
+Part231.Rotation = Vector3.new(-165, 0, 0)
+Part231.Color = Color3.new(1, 1, 0)
+Part231.Size = Vector3.new(0.20000000298023224, 0.6000000238418579, 0.20000000298023224)
+Part231.BrickColor = BrickColor.new("New Yeller")
+Part231.Material = Enum.Material.Neon
+Part231.brickColor = BrickColor.new("New Yeller")
+Part231.FormFactor = Enum.FormFactor.Symmetric
+Part231.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh232.Parent = Part231
+CylinderMesh232.Scale = Vector3.new(0.5, 0.5, 0.5)
+Part233.Parent = Model192
+Part233.CFrame = CFrame.new(-113.034668, 6.14447641, -42.6034317, 1, 0, 0, 0, 0.965926349, -0.258817077, 0, 0.258817077, 0.965926349)
+Part233.Orientation = Vector3.new(15, 0, 0)
+Part233.Position = Vector3.new(-113.03466796875, 6.144476413726807, -42.603431701660156)
+Part233.Rotation = Vector3.new(15, 0, 0)
+Part233.Color = Color3.new(1, 1, 0)
+Part233.Size = Vector3.new(0.20000000298023224, 0.6000000238418579, 0.20000000298023224)
+Part233.BrickColor = BrickColor.new("New Yeller")
+Part233.Material = Enum.Material.Neon
+Part233.brickColor = BrickColor.new("New Yeller")
+Part233.FormFactor = Enum.FormFactor.Symmetric
+Part233.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh234.Parent = Part233
+CylinderMesh234.Scale = Vector3.new(0.5, 0.5, 0.5)
+Part235.Parent = Model192
+Part235.CFrame = CFrame.new(-113.03466, 6.30866098, -42.5594864, 1, 0, 0, 0, 0.965926349, -0.258817077, 0, 0.258817077, 0.965926349)
+Part235.Orientation = Vector3.new(15, 0, 0)
+Part235.Position = Vector3.new(-113.03466033935547, 6.308660984039307, -42.559486389160156)
+Part235.Rotation = Vector3.new(15, 0, 0)
+Part235.Color = Color3.new(1, 1, 0)
+Part235.Size = Vector3.new(0.6000000238418579, 0.20000000298023224, 0.6000000238418579)
+Part235.BrickColor = BrickColor.new("New Yeller")
+Part235.Material = Enum.Material.Neon
+Part235.brickColor = BrickColor.new("New Yeller")
+Part235.FormFactor = Enum.FormFactor.Symmetric
+Part235.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh236.Parent = Part235
+CylinderMesh236.Scale = Vector3.new(0.30000001192092896, 0.30000001192092896, 0.30000001192092896)
+Part237.Parent = Model192
+Part237.CFrame = CFrame.new(-113.034668, 4.56210947, -45.5845108, 1, 0, 0, 0, 0.258818984, 0.965925872, 0, -0.965925872, 0.258818984)
+Part237.Orientation = Vector3.new(-75, 0, 0)
+Part237.Position = Vector3.new(-113.03466796875, 4.562109470367432, -45.584510803222656)
+Part237.Rotation = Vector3.new(-75, 0, 0)
+Part237.Color = Color3.new(1, 1, 0)
+Part237.Size = Vector3.new(0.6000000238418579, 0.20000000298023224, 0.6000000238418579)
+Part237.BrickColor = BrickColor.new("New Yeller")
+Part237.Material = Enum.Material.Neon
+Part237.brickColor = BrickColor.new("New Yeller")
+Part237.FormFactor = Enum.FormFactor.Symmetric
+Part237.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh238.Parent = Part237
+CylinderMesh238.Scale = Vector3.new(0.30000001192092896, 0.30000001192092896, 0.30000001192092896)
+Part239.Parent = Model192
+Part239.CFrame = CFrame.new(-113.034683, 4.5181489, -45.4195938, 1, 0, 0, 0, 0.258818984, 0.965925872, 0, -0.965925872, 0.258818984)
+Part239.Orientation = Vector3.new(-75, 0, 0)
+Part239.Position = Vector3.new(-113.03468322753906, 4.518148899078369, -45.419593811035156)
+Part239.Rotation = Vector3.new(-75, 0, 0)
+Part239.Color = Color3.new(1, 1, 0)
+Part239.Size = Vector3.new(0.20000000298023224, 0.6000000238418579, 0.20000000298023224)
+Part239.BrickColor = BrickColor.new("New Yeller")
+Part239.Material = Enum.Material.Neon
+Part239.brickColor = BrickColor.new("New Yeller")
+Part239.FormFactor = Enum.FormFactor.Symmetric
+Part239.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh240.Parent = Part239
+CylinderMesh240.Scale = Vector3.new(0.5, 0.5, 0.5)
+Model241.Name = "Lamps"
+Model241.Parent = Model0
+Part242.Parent = Model241
+Part242.CFrame = CFrame.new(-112.650513, 3.94001603, -40.4084854, 0, -1, 0, 0, 0, -1, 1, 0, 0)
+Part242.Orientation = Vector3.new(90, -90, 0)
+Part242.Position = Vector3.new(-112.6505126953125, 3.940016031265259, -40.408485412597656)
+Part242.Rotation = Vector3.new(90, 0, 90)
+Part242.Color = Color3.new(0, 1, 1)
+Part242.Size = Vector3.new(0.5999998450279236, 1.600000023841858, 0.5999999642372131)
+Part242.BrickColor = BrickColor.new("Toothpaste")
+Part242.Material = Enum.Material.Metal
+Part242.brickColor = BrickColor.new("Toothpaste")
+Part242.FormFactor = Enum.FormFactor.Symmetric
+Part242.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh243.Parent = Part242
+Part244.Parent = Model241
+Part244.CFrame = CFrame.new(-113.440544, 3.94002366, -40.4084854, 0, 0, 1, 1, 0, 0, 0, 1, 0)
+Part244.Orientation = Vector3.new(0, 90, 90)
+Part244.Position = Vector3.new(-113.44054412841797, 3.94002366065979, -40.408485412597656)
+Part244.Rotation = Vector3.new(90, 90, 0)
+Part244.Color = Color3.new(0, 1, 1)
+Part244.Size = Vector3.new(0.6000000238418579, 0.6000000238418579, 0.6000000238418579)
+Part244.BottomSurface = Enum.SurfaceType.Smooth
+Part244.BrickColor = BrickColor.new("Toothpaste")
+Part244.Material = Enum.Material.Neon
+Part244.TopSurface = Enum.SurfaceType.Smooth
+Part244.brickColor = BrickColor.new("Toothpaste")
+Part244.FormFactor = Enum.FormFactor.Custom
+Part244.formFactor = Enum.FormFactor.Custom
+SpecialMesh245.Parent = Part244
+SpecialMesh245.MeshType = Enum.MeshType.Sphere
+SpotLight246.Parent = Part244
+Part247.Parent = Model241
+Part247.CFrame = CFrame.new(-112.650528, 3.9400084, -46.0085831, 0, -1, 0, 0, 0, -1, 1, 0, 0)
+Part247.Orientation = Vector3.new(90, -90, 0)
+Part247.Position = Vector3.new(-112.65052795410156, 3.9400084018707275, -46.008583068847656)
+Part247.Rotation = Vector3.new(90, 0, 90)
+Part247.Color = Color3.new(0, 1, 1)
+Part247.Size = Vector3.new(0.5999998450279236, 1.600000023841858, 0.5999999642372131)
+Part247.BrickColor = BrickColor.new("Toothpaste")
+Part247.Material = Enum.Material.Metal
+Part247.brickColor = BrickColor.new("Toothpaste")
+Part247.FormFactor = Enum.FormFactor.Symmetric
+Part247.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh248.Parent = Part247
+Part249.Parent = Model241
+Part249.CFrame = CFrame.new(-113.440552, 3.94001603, -46.0085831, 0, 0, 1, 1, 0, 0, 0, 1, 0)
+Part249.Orientation = Vector3.new(0, 90, 90)
+Part249.Position = Vector3.new(-113.4405517578125, 3.940016031265259, -46.008583068847656)
+Part249.Rotation = Vector3.new(90, 90, 0)
+Part249.Color = Color3.new(0, 1, 1)
+Part249.Size = Vector3.new(0.6000000238418579, 0.6000000238418579, 0.6000000238418579)
+Part249.BottomSurface = Enum.SurfaceType.Smooth
+Part249.BrickColor = BrickColor.new("Toothpaste")
+Part249.Material = Enum.Material.Neon
+Part249.TopSurface = Enum.SurfaceType.Smooth
+Part249.brickColor = BrickColor.new("Toothpaste")
+Part249.FormFactor = Enum.FormFactor.Custom
+Part249.formFactor = Enum.FormFactor.Custom
+SpecialMesh250.Parent = Part249
+SpecialMesh250.MeshType = Enum.MeshType.Sphere
+SpotLight251.Parent = Part249
+Part252.Parent = Model241
+Part252.CFrame = CFrame.new(-112.650513, 6.74000406, -43.2082901, 0, -1, -0, -1, 0, -0, 0, 0, -1)
+Part252.Orientation = Vector3.new(0, -180, -90)
+Part252.Position = Vector3.new(-112.6505126953125, 6.740004062652588, -43.208290100097656)
+Part252.Rotation = Vector3.new(180, 0, 90)
+Part252.Color = Color3.new(0, 1, 1)
+Part252.Size = Vector3.new(0.5999998450279236, 1.600000023841858, 0.5999999642372131)
+Part252.BrickColor = BrickColor.new("Toothpaste")
+Part252.Material = Enum.Material.Metal
+Part252.brickColor = BrickColor.new("Toothpaste")
+Part252.FormFactor = Enum.FormFactor.Symmetric
+Part252.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh253.Parent = Part252
+Part254.Parent = Model241
+Part254.CFrame = CFrame.new(-113.440552, 6.73999643, -43.2082901, 0, 0, 1, 0, -1, 0, 1, 0, -0)
+Part254.Orientation = Vector3.new(0, 90, 180)
+Part254.Position = Vector3.new(-113.4405517578125, 6.739996433258057, -43.208290100097656)
+Part254.Rotation = Vector3.new(180, 90, 0)
+Part254.Color = Color3.new(0, 1, 1)
+Part254.Size = Vector3.new(0.6000000238418579, 0.6000000238418579, 0.6000000238418579)
+Part254.BottomSurface = Enum.SurfaceType.Smooth
+Part254.BrickColor = BrickColor.new("Toothpaste")
+Part254.Material = Enum.Material.Neon
+Part254.TopSurface = Enum.SurfaceType.Smooth
+Part254.brickColor = BrickColor.new("Toothpaste")
+Part254.FormFactor = Enum.FormFactor.Custom
+Part254.formFactor = Enum.FormFactor.Custom
+SpecialMesh255.Parent = Part254
+SpecialMesh255.MeshType = Enum.MeshType.Sphere
+SpotLight256.Parent = Part254
+Part257.Parent = Model241
+Part257.CFrame = CFrame.new(-113.440552, 1.1399827, -43.2082901, 0, 0, 1, 0, -1, 0, 1, 0, -0)
+Part257.Orientation = Vector3.new(0, 90, 180)
+Part257.Position = Vector3.new(-113.4405517578125, 1.1399827003479004, -43.208290100097656)
+Part257.Rotation = Vector3.new(180, 90, 0)
+Part257.Color = Color3.new(0, 1, 1)
+Part257.Size = Vector3.new(0.6000000238418579, 0.6000000238418579, 0.6000000238418579)
+Part257.BottomSurface = Enum.SurfaceType.Smooth
+Part257.BrickColor = BrickColor.new("Toothpaste")
+Part257.Material = Enum.Material.Neon
+Part257.TopSurface = Enum.SurfaceType.Smooth
+Part257.brickColor = BrickColor.new("Toothpaste")
+Part257.FormFactor = Enum.FormFactor.Custom
+Part257.formFactor = Enum.FormFactor.Custom
+SpecialMesh258.Parent = Part257
+SpecialMesh258.MeshType = Enum.MeshType.Sphere
+SpotLight259.Parent = Part257
+Part260.Parent = Model241
+Part260.CFrame = CFrame.new(-112.650505, 1.13999796, -43.2082901, 0, -1, -0, -1, 0, -0, 0, 0, -1)
+Part260.Orientation = Vector3.new(0, -180, -90)
+Part260.Position = Vector3.new(-112.65050506591797, 1.139997959136963, -43.208290100097656)
+Part260.Rotation = Vector3.new(180, 0, 90)
+Part260.Color = Color3.new(0, 1, 1)
+Part260.Size = Vector3.new(0.5999998450279236, 1.600000023841858, 0.5999999642372131)
+Part260.BrickColor = BrickColor.new("Toothpaste")
+Part260.Material = Enum.Material.Metal
+Part260.brickColor = BrickColor.new("Toothpaste")
+Part260.FormFactor = Enum.FormFactor.Symmetric
+Part260.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh261.Parent = Part260
+Model262.Name = "Shell"
+Model262.Parent = Model0
+Part263.Parent = Model262
+Part263.CFrame = CFrame.new(-107.350639, 3.94001603, -43.2082901, 0, -1, 0, 0, 0, -1, 1, 0, 0)
+Part263.Orientation = Vector3.new(90, -90, 0)
+Part263.Position = Vector3.new(-107.35063934326172, 3.940016031265259, -43.208290100097656)
+Part263.Rotation = Vector3.new(90, 0, 90)
+Part263.Color = Color3.new(0, 1, 1)
+Part263.Size = Vector3.new(7.800000190734863, 1.8000011444091797, 7.800000190734863)
+Part263.BrickColor = BrickColor.new("Toothpaste")
+Part263.Material = Enum.Material.Metal
+Part263.brickColor = BrickColor.new("Toothpaste")
+Part263.FormFactor = Enum.FormFactor.Symmetric
+Part263.formFactor = Enum.FormFactor.Symmetric
+CylinderMesh264.Parent = Part263
+Part265.Parent = Model262
+Part265.CFrame = CFrame.new(-106.450615, 3.9400084, -43.2082901, 0, 0, 1, 0, -1, 0, 1, 0, -0)
+Part265.Orientation = Vector3.new(0, 90, 180)
+Part265.Position = Vector3.new(-106.45061492919922, 3.9400084018707275, -43.208290100097656)
+Part265.Rotation = Vector3.new(180, 90, 0)
+Part265.Color = Color3.new(0, 1, 1)
+Part265.Size = Vector3.new(7.799999237060547, 7.799997329711914, 14.40000057220459)
+Part265.BottomSurface = Enum.SurfaceType.Smooth
+Part265.BrickColor = BrickColor.new("Toothpaste")
+Part265.Material = Enum.Material.Metal
+Part265.TopSurface = Enum.SurfaceType.Smooth
+Part265.brickColor = BrickColor.new("Toothpaste")
+Part265.FormFactor = Enum.FormFactor.Custom
+Part265.formFactor = Enum.FormFactor.Custom
+SpecialMesh266.Parent = Part265
+SpecialMesh266.MeshType = Enum.MeshType.Sphere
+UnionOperation267.Parent = Model262
+UnionOperation267.CFrame = CFrame.new(-108.250549, 3.94001603, -43.2082901, 0, -1, 0, 0, 0, -1, 1, 0, 0)
+UnionOperation267.Orientation = Vector3.new(90, -90, 0)
+UnionOperation267.Position = Vector3.new(-108.25054931640625, 3.940016031265259, -43.208290100097656)
+UnionOperation267.Rotation = Vector3.new(90, 0, 90)
+UnionOperation267.Color = Color3.new(0, 1, 1)
+UnionOperation267.Size = Vector3.new(7.799999237060547, 12.40000057220459, 7.7999982833862305)
+UnionOperation267.Anchored = true
+UnionOperation267.BrickColor = BrickColor.new("Toothpaste")
+UnionOperation267.Material = Enum.Material.Metal
+UnionOperation267.brickColor = BrickColor.new("Toothpaste")
+UnionOperation267.UsePartColor = true
+Script268.Name = "Atom"
+Script268.Parent = UnionOperation267
+Script268.Enabled = false
+table.insert(cors,sandbox(Script268,function()
+	print("Nuke Em' All")
+
+	local CloudID= "http://www.roblox.com/asset/?id=1095708"
+	local ColorTexture = "http://www.roblox.com/asset/?ID=1361097"
+	local RingID = "http://www.roblox.com/asset/?id=3270017"
+	local SphereID = "http://www.roblox.com/asset/?id=1185246"
+
+	local BasePosition = script.Parent.Position
+
+	local Size = 4500
+
+	local Exp = Instance.new("Model")
+	Exp.Name = "SUPERNOVA ATOMIC EXPLOSION"
+	Exp.Parent = game.Workspace
+
+	local BasePart = Instance.new("Part")
+	BasePart.formFactor = 0
+	BasePart.TopSurface = 0
+	BasePart.BottomSurface = 0
+	BasePart.Anchored = true
+	BasePart.Locked = true
+	BasePart.CanCollide = false
+
+	local BaseMesh = Instance.new("SpecialMesh")
+	BaseMesh.MeshType = "FileMesh"
+
+	local CloudMesh = BaseMesh:clone()
+	CloudMesh.MeshId = CloudID
+	CloudMesh.TextureId = ColorTexture
+	CloudMesh.VertexColor = Vector3.new(0.9,0.6,0)
+
+	local RingMesh = BaseMesh:clone()
+	RingMesh.MeshId = RingID
+
+	local SphereMesh = BaseMesh:clone()
+	SphereMesh.MeshId = SphereID
+
+	local Clouds = {}
+	local ShockWave = {}
+	local Sky = script.Sky
+
+
+	function Effects()
+		script.Explode:Play()
+		delay(0,function() 
+			for i = 5, 1,-0.01 do
+				wait()
+				game.Lighting.Brightness = i
+			end
+		end)
+	end
+
+	function Destruction(Pos,Radius)
+		local function Destroy(Model)
+			for i ,v in ipairs(Model:getChildren()) do
+				if v:isA("BasePart") then
+					if (v.Position-Pos).magnitude < Radius then
+						if v.Anchored == false then
+							v:BreakJoints()
+							v.Velocity = CFrame.new(v.Position,Pos):vectorToWorldSpace(Vector3.new(math.random(-5,5),5,1000))
+							v.Material = "Neon"
+						end	
+					end
+				end
+				if #v:getChildren() > 0 then
+					Destroy(v)
+				end
+			end
+		end
+		Destroy(game.Workspace)
+	end
+	function Explode(Pos)
+
+		local Base = BasePart:clone()
+		Base.Position = Pos
+
+		local Mesh = CloudMesh:clone()
+		Mesh.Parent = Base 
+		Mesh.Scale = Vector3.new(2.5,1,4.5)
+
+		local PoleBase = BasePart:clone()
+		PoleBase.Position = Pos+Vector3.new(0,0.1,0)
+
+		local PoleBaseMesh = CloudMesh:clone()
+		PoleBaseMesh.Scale = Vector3.new(1.25,2,2.5)
+		PoleBaseMesh.Parent = PoleBase
+
+		local Cloud1 = BasePart:clone()
+		Cloud1.Position = Pos+Vector3.new(0,0.75,0)
+
+		local Cloud1Mesh = CloudMesh:clone()
+		Cloud1Mesh.Scale = Vector3.new(0.5,3,1)
+		Cloud1Mesh.Parent = Cloud1
+
+		local Cloud2 = BasePart:clone()
+		Cloud2.Position = Pos+Vector3.new(0,1.25,0)
+
+		local Cloud2Mesh = CloudMesh:clone()
+		Cloud2Mesh.Scale = Vector3.new(0.5,1.5,1)
+		Cloud2Mesh.Parent = Cloud2
+
+		local Cloud3 = BasePart:clone()
+		Cloud3.Position = Pos+Vector3.new(0,1.7,0)
+
+		local Cloud3Mesh = CloudMesh:clone()
+		Cloud3Mesh.Scale = Vector3.new(0.5,1.5,1)
+		Cloud3Mesh.Parent = Cloud3
+
+		local PoleRing = BasePart:clone()
+		PoleRing.Position = Pos+Vector3.new(0,1.3,0)
+		PoleRing.Transparency = 0.2
+		PoleRing.BrickColor = BrickColor.new("Dark stone grey")
+		PoleRing.CFrame = PoleRing.CFrame*CFrame.Angles(math.rad(90),0,0)
+
+		local Mesh = RingMesh:clone()
+		Mesh.Scale = Vector3.new(1.2,1.2,1.2)
+		Mesh.Parent = PoleRing
+
+		local MushCloud = BasePart:clone()
+		MushCloud.Position = Pos+Vector3.new(0,2.3,0)
+
+		local MushMesh = CloudMesh:clone() -- lol
+		MushMesh.Scale = Vector3.new(2.5,1.75,3.5)
+		MushMesh.Parent = MushCloud
+
+		local TopCloud = BasePart:clone()
+		TopCloud.Position = Pos+Vector3.new(0,2.7,0)
+
+		local TopMesh = CloudMesh:clone()
+		TopMesh.Scale = Vector3.new(7.5,1.5,1.5)
+		TopMesh.Parent = TopCloud
+
+		table.insert(Clouds,Base)
+		table.insert(Clouds,TopCloud)
+		table.insert(Clouds,MushCloud)
+		table.insert(Clouds,Cloud1)
+		table.insert(Clouds,Cloud2)
+		table.insert(Clouds,Cloud3)
+		table.insert(Clouds,PoleBase)
+		table.insert(Clouds,PoleRing)
+
+
+		local BigRing = BasePart:clone()
+		BigRing.Position = Pos
+		BigRing.CFrame = BigRing.CFrame*CFrame.Angles(math.rad(90),0,0)
+
+		local BigMesh = RingMesh:clone()
+		BigMesh.Scale = Vector3.new(5,5,1)
+		BigMesh.Parent = BigRing
+
+		local SmallRing = BasePart:clone()
+		SmallRing.Position = Pos
+		SmallRing.BrickColor = BrickColor.new("Toothpaste")
+		SmallRing.CFrame = SmallRing.CFrame*CFrame.Angles(math.rad(90),0,0)
+
+		local SmallMesh = RingMesh:clone()
+		SmallMesh.Scale = Vector3.new(4.6,4.6,1.5)
+		SmallMesh.Parent = SmallRing
+
+		local InnerSphere = BasePart:clone()
+		InnerSphere.Position = Pos
+		InnerSphere.BrickColor = BrickColor.new("Toothpaste")
+		InnerSphere.Transparency = 0.5
+
+		local InnerSphereMesh = SphereMesh:clone()	
+		InnerSphereMesh.Scale = Vector3.new(-6.5,-6.5,-6.5)
+		InnerSphereMesh.Parent = InnerSphere
+
+		local OutterSphere = BasePart:clone()
+		OutterSphere.Position = Pos
+		OutterSphere.BrickColor = BrickColor.new("Toothpaste")
+		OutterSphere.Transparency = 0.5
+
+		local OutterSphereMesh = SphereMesh:clone()
+		OutterSphereMesh.Scale = Vector3.new(6.5,6.5,6.5)
+		OutterSphereMesh.Parent = OutterSphere
+
+		table.insert(ShockWave,BigRing)	
+		table.insert(ShockWave,SmallRing)
+		table.insert(ShockWave,OutterSphere)
+		table.insert(ShockWave,InnerSphere)
+		Sky.Parent = game.Lighting
+		for i , v in ipairs(ShockWave) do
+			v.Parent = Exp
+		end
+		for i , v in ipairs(Clouds) do
+			v.Parent = Exp
+		end
+		Effects()
+		delay(0,function()
+			for resize = Size/2.5, Size*3, 2 do
+				wait()
+				BigRing.Mesh.Scale = Vector3.new(5*resize,5*resize,1*resize)
+				SmallRing.Mesh.Scale = Vector3.new(4.6*resize,4.6*resize,1.5*resize)
+				InnerSphere.Mesh.Scale = Vector3.new(-6.5*resize,-6.5*resize,-6.5*resize)
+				OutterSphere.Mesh.Scale = Vector3.new(6.5*resize,6.5*resize,6.5*resize)
+				Destruction(Pos,3*resize)
+			end
+			for fade = 0, 1, 0.01 do
+				wait()
+				pcall(function()
+					for i ,v in ipairs(ShockWave) do
+						v.Transparency = fade
+					end
+				end)
+			end
+			for i ,v in ipairs(ShockWave) do
+				v:Remove()
+			end
+			done1 = true
+		end)
+		delay(0,function()
+			for resize = Size/5, Size, 1 do
+				wait()
+				pcall(function()
+					Base.Mesh.Scale = Vector3.new(2.5*resize,1*resize,4.5*resize)
+					TopCloud.Mesh.Scale = Vector3.new(0.75*resize,1.5*resize,1.5*resize)
+					MushCloud.Mesh.Scale = Vector3.new(2.5*resize,1.75*resize,3.5*resize)
+					Cloud1.Mesh.Scale = Vector3.new(0.5*resize,3*resize,1*resize)
+					Cloud2.Mesh.Scale = Vector3.new(0.5*resize,1.5*resize,1*resize)
+					Cloud3.Mesh.Scale = Vector3.new(0.5*resize,1.5*resize,1*resize)
+					PoleBase.Mesh.Scale = Vector3.new(1*resize,2*resize,2.5*resize)
+					PoleRing.Mesh.Scale = Vector3.new(1.2*resize,1.2*resize,1.2*resize)
+
+					Base.Position = Pos+Vector3.new(0,0.05*resize,0)
+					TopCloud.Position = Pos+Vector3.new(0,2.7*resize,0)
+					MushCloud.Position = Pos+Vector3.new(0,2.3*resize,0)
+					Cloud1.Position = Pos+Vector3.new(0,0.75*resize,0)
+					Cloud2.Position = Pos+Vector3.new(0,1.25*resize,0)
+					Cloud3.Position = Pos+Vector3.new(0,1.7*resize,0)
+					PoleBase.Position = Pos+Vector3.new(0,0.1*resize,0)
+					PoleRing.Position = Pos+Vector3.new(0,1.3*resize,0)
+				end)
+			end
+			done2 = true
+		end)
+		wait(2)
+		for y = 0.6,0,-0.0025 do
+			wait()
+			for i , v in ipairs(Clouds) do
+				v.Mesh.VertexColor = Vector3.new(0.9,y,0)
+			end
+		end
+		for r = 0.9,0.5,-0.01 do
+			wait()
+			for i , v in ipairs(Clouds) do
+				v.Mesh.VertexColor = Vector3.new(r,0,0)
+			end
+		end
+		for by = 0,0.5,0.005 do
+			wait()
+			for i , v in ipairs(Clouds) do
+				v.Mesh.VertexColor = Vector3.new(0.5,by,by)
+				v.Transparency = by*2
+			end
+			Base.Mesh.Scale = Base.Mesh.Scale+Vector3.new(0.1,0.1,0.1)
+			TopCloud.Mesh.Scale = TopCloud.Mesh.Scale+Vector3.new(0.1,0.1,0.1)
+			MushCloud.Mesh.Scale = MushCloud.Mesh.Scale+Vector3.new(0.1,0.1,0.1)
+			Cloud1.Mesh.Scale = Cloud1.Mesh.Scale+Vector3.new(0.1,0.1,0.1)
+			Cloud2.Mesh.Scale = Cloud2.Mesh.Scale+Vector3.new(0.1,0.1,0.1)
+			Cloud3.Mesh.Scale = Cloud3.Mesh.Scale+Vector3.new(0.1,0.1,0.1)
+			PoleBase.Mesh.Scale = PoleBase.Mesh.Scale+Vector3.new(0.1,0.1,0.1)
+			PoleRing.Mesh.Scale = PoleRing.Mesh.Scale+Vector3.new(0.1,0.1,0.1)
+		end
+		done3 = true
+		while true do wait(1) if done1 and done2 and done3 then break end end
+		Exp:remove()
+		wait(20)
+		Sky:remove()
+	end
+
+
+
+
+	Explode(BasePosition)
+
+	script.Parent:remove()
+
+
+
+
+
+
+
+
+
+end))
+Script268.Disabled = true
+Sky269.Parent = Script268
+Sky269.SkyboxBk = "http://www.roblox.com/asset/?version=1&id=1012890"
+Sky269.SkyboxDn = "http://www.roblox.com/asset/?version=1&id=1012891"
+Sky269.SkyboxFt = "http://www.roblox.com/asset/?version=1&id=1012887"
+Sky269.SkyboxLf = "http://www.roblox.com/asset/?version=1&id=1012889"
+Sky269.SkyboxRt = "http://www.roblox.com/asset/?version=1&id=1012888"
+Sky269.SkyboxUp = "http://www.roblox.com/asset/?version=1&id=1014449"
+Sound270.Name = "Explode"
+Sound270.Parent = Script268
+Sound270.EmitterSize = 0
+Sound270.MinDistance = 0
+Sound270.Pitch = 0.30000001192092896
+Sound270.PlaybackSpeed = 0.30000001192092896
+Sound270.SoundId = "rbxassetid://463177334"
+Sound270.Volume = 0.10000000149011612
+Script271.Name = "Detonate"
+Script271.Parent = UnionOperation267
+table.insert(cors,sandbox(Script271,function()
+	function onTouch(hit)
+		script.Parent.Anchored = true
+		script.Parent.Parent = Workspace
+		script.Parent.Transparency = 1
+		wait()
+		script.Parent.Atom.Disabled = false
+	end
+
+	script.Parent.Touched:connect(onTouch)
+end))
+Script272.Name = "qPerfectionWeld"
+Script272.Parent = Model0
+table.insert(cors,sandbox(Script272,function()
+	-- Created by Quenty (@Quenty, follow me on twitter).
+	-- Should work with only ONE copy, seamlessly with weapons, trains, et cetera.
+	-- Parts should be ANCHORED before use. It will, however, store relatives values and so when tools are reparented, it'll fix them.
+
+--[[ INSTRUCTIONS
+- Place in the model
+- Make sure model is anchored
+- That's it. It will weld the model and all children. 
+
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+
+This script is designed to be used is a regular script. In a local script it will weld, but it will not attempt to handle ancestory changes. 
+]]
+
+--[[ DOCUMENTATION
+- Will work in tools. If ran more than once it will not create more than one weld.  This is especially useful for tools that are dropped and then picked up again.
+- Will work in PBS servers
+- Will work as long as it starts out with the part anchored
+- Stores the relative CFrame as a CFrame value
+- Takes careful measure to reduce lag by not having a joint set off or affected by the parts offset from origin
+- Utilizes a recursive algorith to find all parts in the model
+- Will reweld on script reparent if the script is initially parented to a tool.
+- Welds as fast as possible
+]]
+
+	-- qPerfectionWeld.lua
+	-- Created 10/6/2014
+	-- Author: Quenty
+	-- Version 1.0.3
+
+	-- Updated 10/14/2014 - Updated to 1.0.1
+	--- Bug fix with existing ROBLOX welds ? Repro by asimo3089
+
+	-- Updated 10/14/2014 - Updated to 1.0.2
+	--- Fixed bug fix. 
+
+	-- Updated 10/14/2014 - Updated to 1.0.3
+	--- Now handles joints semi-acceptably. May be rather hacky with some joints. :/
+
+	local NEVER_BREAK_JOINTS = false -- If you set this to true it will never break joints (this can create some welding issues, but can save stuff like hinges).
+
+
+	local function CallOnChildren(Instance, FunctionToCall)
+		-- Calls a function on each of the children of a certain object, using recursion.  
+
+		FunctionToCall(Instance)
+
+		for _, Child in next, Instance:GetChildren() do
+			CallOnChildren(Child, FunctionToCall)
+		end
+	end
+
+	local function GetNearestParent(Instance, ClassName)
+		-- Returns the nearest parent of a certain class, or returns nil
+
+		local Ancestor = Instance
+		repeat
+			Ancestor = Ancestor.Parent
+			if Ancestor == nil then
+				return nil
+			end
+		until Ancestor:IsA(ClassName)
+
+		return Ancestor
+	end
+
+	local function GetBricks(StartInstance)
+		local List = {}
+
+		-- if StartInstance:IsA("BasePart") then
+		-- 	List[#List+1] = StartInstance
+		-- end
+
+		CallOnChildren(StartInstance, function(Item)
+			if Item:IsA("BasePart") then
+				List[#List+1] = Item;
+			end
+		end)
+
+		return List
+	end
+
+	local function Modify(Instance, Values)
+		-- Modifies an Instance by using a table.  
+
+		assert(type(Values) == "table", "Values is not a table");
+
+		for Index, Value in next, Values do
+			if type(Index) == "number" then
+				Value.Parent = Instance
+			else
+				Instance[Index] = Value
+			end
+		end
+		return Instance
+	end
+
+	local function Make(ClassType, Properties)
+		-- Using a syntax hack to create a nice way to Make new items.  
+
+		return Modify(Instance.new(ClassType), Properties)
+	end
+
+	local Surfaces = {"TopSurface", "BottomSurface", "LeftSurface", "RightSurface", "FrontSurface", "BackSurface"}
+	local HingSurfaces = {"Hinge", "Motor", "SteppingMotor"}
+
+	local function HasWheelJoint(Part)
+		for _, SurfaceName in pairs(Surfaces) do
+			for _, HingSurfaceName in pairs(HingSurfaces) do
+				if Part[SurfaceName].Name == HingSurfaceName then
+					return true
+				end
+			end
+		end
+
+		return false
+	end
+
+	local function ShouldBreakJoints(Part)
+		--- We do not want to break joints of wheels/hinges. This takes the utmost care to not do this. There are
+		--  definitely some edge cases. 
+
+		if NEVER_BREAK_JOINTS then
+			return false
+		end
+
+		if HasWheelJoint(Part) then
+			return false
+		end
+
+		local Connected = Part:GetConnectedParts()
+
+		if #Connected == 1 then
+			return false
+		end
+
+		for _, Item in pairs(Connected) do
+			if HasWheelJoint(Item) then
+				return false
+			elseif not Item:IsDescendantOf(script.Parent) then
+				return false
+			end
+		end
+
+		return true
+	end
+
+	local function WeldTogether(Part0, Part1, JointType, WeldParent)
+		--- Weld's 2 parts together
+		-- @param Part0 The first part
+		-- @param Part1 The second part (Dependent part most of the time).
+		-- @param [JointType] The type of joint. Defaults to weld.
+		-- @param [WeldParent] Parent of the weld, Defaults to Part0 (so GC is better).
+		-- @return The weld created.
+
+		JointType = JointType or "Weld"
+		local RelativeValue = Part1:FindFirstChild("qRelativeCFrameWeldValue")
+
+		local NewWeld = Part1:FindFirstChild("qCFrameWeldThingy") or Instance.new(JointType)
+		Modify(NewWeld, {
+			Name = "qCFrameWeldThingy";
+			Part0  = Part0;
+			Part1  = Part1;
+			C0     = CFrame.new();--Part0.CFrame:inverse();
+			C1     = RelativeValue and RelativeValue.Value or Part1.CFrame:toObjectSpace(Part0.CFrame); --Part1.CFrame:inverse() * Part0.CFrame;-- Part1.CFrame:inverse();
+			Parent = Part1;
+		})
+
+		if not RelativeValue then
+			RelativeValue = Make("CFrameValue", {
+				Parent     = Part1;
+				Name       = "qRelativeCFrameWeldValue";
+				Archivable = true;
+				Value      = NewWeld.C1;
+			})
+		end
+
+		return NewWeld
+	end
+
+	local function WeldParts(Parts, MainPart, JointType, DoNotUnanchor)
+		-- @param Parts The Parts to weld. Should be anchored to prevent really horrible results.
+		-- @param MainPart The part to weld the model to (can be in the model).
+		-- @param [JointType] The type of joint. Defaults to weld. 
+		-- @parm DoNotUnanchor Boolean, if true, will not unachor the model after cmopletion.
+
+		for _, Part in pairs(Parts) do
+			if ShouldBreakJoints(Part) then
+				Part:BreakJoints()
+			end
+		end
+
+		for _, Part in pairs(Parts) do
+			if Part ~= MainPart then
+				WeldTogether(MainPart, Part, JointType, MainPart)
+			end
+		end
+
+		if not DoNotUnanchor then
+			for _, Part in pairs(Parts) do
+				Part.Anchored = false
+			end
+			MainPart.Anchored = false
+		end
+	end
+
+	local function PerfectionWeld()	
+		local Tool = GetNearestParent(script, "Tool")
+
+		local Parts = GetBricks(script.Parent)
+		local PrimaryPart = Tool and Tool:FindFirstChild("Handle") and Tool.Handle:IsA("BasePart") and Tool.Handle or script.Parent:IsA("Model") and script.Parent.PrimaryPart or Parts[1]
+
+		if PrimaryPart then
+			WeldParts(Parts, PrimaryPart, "Weld", false)
+		else
+			warn("qWeld - Unable to weld part")
+		end
+
+		return Tool
+	end
+
+	local Tool = PerfectionWeld()
+
+
+	if Tool and script.ClassName == "Script" then
+		--- Don't bother with local scripts
+
+		script.Parent.AncestryChanged:connect(function()
+			PerfectionWeld()
+		end)
+	end
+
+	-- Created by Quenty (@Quenty, follow me on twitter).
+
+end))
+for i,v in pairs(mas:GetChildren()) do
+	v.Parent = script
+	pcall(function() v:MakeJoints() end)
+end
+mas:Destroy()
+for i,v in pairs(cors) do
+	spawn(function()
+		pcall(v)
+	end)
+end
