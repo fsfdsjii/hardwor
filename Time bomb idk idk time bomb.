@@ -1,0 +1,808 @@
+
+function sandbox(var,func)
+	local env = getfenv(func)
+	local newenv = setmetatable({},{
+		__index = function(self,k)
+			if k=="script" then
+				return var
+			else
+				return env[k]
+			end
+		end,
+	})
+	setfenv(func,newenv)
+	return func
+end
+cors = {}
+mas = Instance.new("Model",game:GetService("Lighting"))
+Model0 = Instance.new("Model")
+Humanoid1 = Instance.new("Humanoid")
+Part2 = Instance.new("Part")
+Decal3 = Instance.new("Decal")
+ClickDetector4 = Instance.new("ClickDetector")
+Script5 = Instance.new("Script")
+Part6 = Instance.new("Part")
+Part7 = Instance.new("Part")
+Weld8 = Instance.new("Weld")
+Part9 = Instance.new("Part")
+Weld10 = Instance.new("Weld")
+Weld11 = Instance.new("Weld")
+Part12 = Instance.new("Part")
+Weld13 = Instance.new("Weld")
+Part14 = Instance.new("Part")
+Weld15 = Instance.new("Weld")
+Part16 = Instance.new("Part")
+Weld17 = Instance.new("Weld")
+Part18 = Instance.new("Part")
+Weld19 = Instance.new("Weld")
+Weld20 = Instance.new("Weld")
+Part21 = Instance.new("Part")
+Part22 = Instance.new("Part")
+Weld23 = Instance.new("Weld")
+Weld24 = Instance.new("Weld")
+Weld25 = Instance.new("Weld")
+Weld26 = Instance.new("Weld")
+Part27 = Instance.new("Part")
+Part28 = Instance.new("Part")
+Weld29 = Instance.new("Weld")
+Part30 = Instance.new("Part")
+Weld31 = Instance.new("Weld")
+Weld32 = Instance.new("Weld")
+Part33 = Instance.new("Part")
+Part34 = Instance.new("Part")
+Part35 = Instance.new("Part")
+Weld36 = Instance.new("Weld")
+Part37 = Instance.new("Part")
+Weld38 = Instance.new("Weld")
+Weld39 = Instance.new("Weld")
+Part40 = Instance.new("Part")
+Weld41 = Instance.new("Weld")
+Part42 = Instance.new("Part")
+Weld43 = Instance.new("Weld")
+Part44 = Instance.new("Part")
+Weld45 = Instance.new("Weld")
+Weld46 = Instance.new("Weld")
+Part47 = Instance.new("Part")
+Part48 = Instance.new("Part")
+Part49 = Instance.new("Part")
+Weld50 = Instance.new("Weld")
+Weld51 = Instance.new("Weld")
+Weld52 = Instance.new("Weld")
+Weld53 = Instance.new("Weld")
+Weld54 = Instance.new("Weld")
+Part55 = Instance.new("Part")
+Weld56 = Instance.new("Weld")
+Part57 = Instance.new("Part")
+Part58 = Instance.new("Part")
+Script59 = Instance.new("Script")
+ClickDetector60 = Instance.new("ClickDetector")
+Weld61 = Instance.new("Weld")
+Part62 = Instance.new("Part")
+ClickDetector63 = Instance.new("ClickDetector")
+Script64 = Instance.new("Script")
+Weld65 = Instance.new("Weld")
+Part66 = Instance.new("Part")
+Decal67 = Instance.new("Decal")
+ClickDetector68 = Instance.new("ClickDetector")
+Script69 = Instance.new("Script")
+IntValue70 = Instance.new("IntValue")
+Script71 = Instance.new("Script")
+IntValue72 = Instance.new("IntValue")
+Script73 = Instance.new("Script")
+Script74 = Instance.new("Script")
+Sound75 = Instance.new("Sound")
+Script76 = Instance.new("Script")
+Model0.Name = "10"
+Model0.Parent = mas
+Humanoid1.Parent = Model0
+Humanoid1.Health = 0
+Humanoid1.MaxHealth = 0
+Humanoid1.maxHealth = 0
+Part2.Name = "Button4"
+Part2.Parent = Model0
+Part2.CFrame = CFrame.new(-4.93377686, 3.50001001, 78.9279785, 1, 0, 0, 0, 0, 1, 0, -1, 0)
+Part2.Orientation = Vector3.new(-90, 0, 0)
+Part2.Position = Vector3.new(-4.93377685546875, 3.5000100135803223, 78.927978515625)
+Part2.Rotation = Vector3.new(-90, 0, 0)
+Part2.Color = Color3.new(0.972549, 0.972549, 0.972549)
+Part2.Size = Vector3.new(1, 0.4000000059604645, 1)
+Part2.BottomSurface = Enum.SurfaceType.Weld
+Part2.BrickColor = BrickColor.new("Institutional white")
+Part2.TopSurface = Enum.SurfaceType.Smooth
+Part2.brickColor = BrickColor.new("Institutional white")
+Decal3.Parent = Part2
+Decal3.Texture = "http://www.roblox.com/asset/?id=13890074"
+Decal3.Face = Enum.NormalId.Top
+ClickDetector4.Parent = Part2
+Script5.Parent = Part2
+table.insert(cors,sandbox(Script5,function()
+function onClicked()
+if script.Parent.Parent.Time.Value > 1 then
+script.Parent.Parent.Time.Value = script.Parent.Parent.Time.Value - 1
+end
+end
+ 
+script.Parent.ClickDetector.MouseClick:connect(onClicked)
+end))
+Part6.Parent = Model0
+Part6.CFrame = CFrame.new(-4.43377686, 0.500009894, 82.1279297, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part6.Position = Vector3.new(-4.43377685546875, 0.5000098943710327, 82.1279296875)
+Part6.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+Part6.Size = Vector3.new(4, 1, 6)
+Part6.BottomSurface = Enum.SurfaceType.Weld
+Part6.BrickColor = BrickColor.new("Really black")
+Part6.TopSurface = Enum.SurfaceType.Weld
+Part6.brickColor = BrickColor.new("Really black")
+Part7.Parent = Model0
+Part7.CFrame = CFrame.new(-6.93377686, 0.500009894, 82.1279297, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part7.Position = Vector3.new(-6.93377685546875, 0.5000098943710327, 82.1279296875)
+Part7.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+Part7.Size = Vector3.new(1, 1, 4)
+Part7.BottomSurface = Enum.SurfaceType.Weld
+Part7.BrickColor = BrickColor.new("Really black")
+Part7.RightSurface = Enum.SurfaceType.Weld
+Part7.TopSurface = Enum.SurfaceType.Weld
+Part7.brickColor = BrickColor.new("Really black")
+Weld8.Parent = Part7
+Weld8.C0 = CFrame.new(0.5, 0, 0, 0, 0, 1, 0, 1, 0, -1, -0, -0)
+Weld8.C1 = CFrame.new(-2, 0, 0, 0, 0, 1, 0, 1, 0, -1, 0, 0)
+Weld8.Part0 = Part7
+Weld8.Part1 = Part6
+Weld8.part1 = Part6
+Part9.Parent = Model0
+Part9.CFrame = CFrame.new(-1.93377686, 0.500009894, 82.1279297, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part9.Position = Vector3.new(-1.93377685546875, 0.5000098943710327, 82.1279296875)
+Part9.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+Part9.Size = Vector3.new(1, 1, 4)
+Part9.BottomSurface = Enum.SurfaceType.Weld
+Part9.BrickColor = BrickColor.new("Really black")
+Part9.LeftSurface = Enum.SurfaceType.Weld
+Part9.TopSurface = Enum.SurfaceType.Weld
+Part9.brickColor = BrickColor.new("Really black")
+Weld10.Parent = Part9
+Weld10.C0 = CFrame.new(-0.5, 0, 0, -0, -0, -1, 0, 1, 0, 1, 0, 0)
+Weld10.C1 = CFrame.new(2, 0, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+Weld10.Part0 = Part9
+Weld10.Part1 = Part6
+Weld10.part1 = Part6
+Weld11.Parent = Part9
+Weld11.C0 = CFrame.new(0, 0.5, 0, -1, -0, -0, 0, 0, 1, 0, 1, 0)
+Weld11.C1 = CFrame.new(0, -0.500000119, 0, -1, 0, 0, 0, 0, 1, 0, 1, 0)
+Weld11.Part0 = Part9
+Weld11.Part1 = Part14
+Weld11.part1 = Part14
+Part12.Parent = Model0
+Part12.CFrame = CFrame.new(-6.93377686, 1.50001001, 82.1279297, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part12.Position = Vector3.new(-6.93377685546875, 1.5000100135803223, 82.1279296875)
+Part12.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+Part12.Size = Vector3.new(1, 1, 4)
+Part12.BottomSurface = Enum.SurfaceType.Weld
+Part12.BrickColor = BrickColor.new("Really black")
+Part12.TopSurface = Enum.SurfaceType.Weld
+Part12.brickColor = BrickColor.new("Really black")
+Weld13.Parent = Part12
+Weld13.C0 = CFrame.new(0, -0.5, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Weld13.C1 = CFrame.new(0, 0.500000119, 0, 1, 0, 0, 0, 0, -1, 0, 1, 0)
+Weld13.Part0 = Part12
+Weld13.Part1 = Part7
+Weld13.part1 = Part7
+Part14.Parent = Model0
+Part14.CFrame = CFrame.new(-1.93377686, 1.50001001, 82.1279297, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part14.Position = Vector3.new(-1.93377685546875, 1.5000100135803223, 82.1279296875)
+Part14.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+Part14.Size = Vector3.new(1, 1, 4)
+Part14.BottomSurface = Enum.SurfaceType.Weld
+Part14.BrickColor = BrickColor.new("Really black")
+Part14.TopSurface = Enum.SurfaceType.Weld
+Part14.brickColor = BrickColor.new("Really black")
+Weld15.Parent = Part14
+Weld15.C0 = CFrame.new(0, 0.5, 0, -1, -0, -0, 0, 0, 1, 0, 1, 0)
+Weld15.C1 = CFrame.new(0, -0.5, 0, -1, 0, 0, 0, 0, 1, 0, 1, 0)
+Weld15.Part0 = Part14
+Weld15.Part1 = Part34
+Weld15.part1 = Part34
+Part16.Parent = Model0
+Part16.CFrame = CFrame.new(-4.43377686, 1.50001001, 84.6279297, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part16.Position = Vector3.new(-4.43377685546875, 1.5000100135803223, 84.6279296875)
+Part16.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+Part16.Size = Vector3.new(4, 1, 1)
+Part16.BottomSurface = Enum.SurfaceType.Weld
+Part16.BrickColor = BrickColor.new("Really black")
+Part16.TopSurface = Enum.SurfaceType.Weld
+Part16.brickColor = BrickColor.new("Really black")
+Weld17.Parent = Part16
+Weld17.C0 = CFrame.new(0, -0.5, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Weld17.C1 = CFrame.new(0, 0.500000119, 2.5, 1, 0, 0, 0, 0, -1, 0, 1, 0)
+Weld17.Part0 = Part16
+Weld17.Part1 = Part6
+Weld17.part1 = Part6
+Part18.Parent = Model0
+Part18.CFrame = CFrame.new(-4.43377686, 1.50001001, 79.6279297, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part18.Position = Vector3.new(-4.43377685546875, 1.5000100135803223, 79.6279296875)
+Part18.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+Part18.Size = Vector3.new(4, 1, 1)
+Part18.BottomSurface = Enum.SurfaceType.Weld
+Part18.BrickColor = BrickColor.new("Really black")
+Part18.TopSurface = Enum.SurfaceType.Weld
+Part18.brickColor = BrickColor.new("Really black")
+Weld19.Parent = Part18
+Weld19.C0 = CFrame.new(0, -0.5, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Weld19.C1 = CFrame.new(0, 0.500000119, -2.5, 1, 0, 0, 0, 0, -1, 0, 1, 0)
+Weld19.Part0 = Part18
+Weld19.Part1 = Part6
+Weld19.part1 = Part6
+Weld20.Parent = Part18
+Weld20.C0 = CFrame.new(0, 0.5, 0, -1, -0, -0, 0, 0, 1, 0, 1, 0)
+Weld20.C1 = CFrame.new(0, -0.5, 0, -1, 0, 0, 0, 0, 1, 0, 1, 0)
+Weld20.Part0 = Part18
+Weld20.Part1 = Part21
+Weld20.part1 = Part21
+Part21.Parent = Model0
+Part21.CFrame = CFrame.new(-4.43377686, 2.50001001, 79.6279297, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part21.Position = Vector3.new(-4.43377685546875, 2.5000100135803223, 79.6279296875)
+Part21.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+Part21.Size = Vector3.new(4, 1, 1)
+Part21.BottomSurface = Enum.SurfaceType.Weld
+Part21.BrickColor = BrickColor.new("Really black")
+Part21.TopSurface = Enum.SurfaceType.Weld
+Part21.brickColor = BrickColor.new("Really black")
+Part22.Parent = Model0
+Part22.CFrame = CFrame.new(-4.43377686, 3.50001001, 79.6279297, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part22.Position = Vector3.new(-4.43377685546875, 3.5000100135803223, 79.6279296875)
+Part22.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+Part22.Size = Vector3.new(4, 1, 1)
+Part22.BottomSurface = Enum.SurfaceType.Weld
+Part22.BrickColor = BrickColor.new("Really black")
+Part22.TopSurface = Enum.SurfaceType.Weld
+Part22.brickColor = BrickColor.new("Really black")
+Weld23.Parent = Part22
+Weld23.C0 = CFrame.new(0, 0, -0.5, -1, -0, -0, 0, 1, 0, -0, -0, -1)
+Weld23.C1 = CFrame.new(0.5, -0.199951172, 0, -1, 0, 0, 0, 0, 1, 0, 1, 0)
+Weld23.Part0 = Part22
+Weld23.Part1 = Part2
+Weld23.part1 = Part2
+Weld24.Parent = Part22
+Weld24.C0 = CFrame.new(0, -0.5, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Weld24.C1 = CFrame.new(0, 0.5, 0, 1, 0, 0, 0, 0, -1, 0, 1, 0)
+Weld24.Part0 = Part22
+Weld24.Part1 = Part21
+Weld24.part1 = Part21
+Weld25.Parent = Part22
+Weld25.C0 = CFrame.new(0, 0.5, 0, -1, -0, -0, 0, 0, 1, 0, 1, 0)
+Weld25.C1 = CFrame.new(0, -0.5, 0, -1, 0, 0, 0, 0, 1, 0, 1, 0)
+Weld25.Part0 = Part22
+Weld25.Part1 = Part27
+Weld25.part1 = Part27
+Weld26.Parent = Part22
+Weld26.C0 = CFrame.new(0, 0, -0.5, -1, -0, -0, 0, 1, 0, -0, -0, -1)
+Weld26.C1 = CFrame.new(-0.5, -0.199951172, 0, -1, 0, 0, 0, 0, 1, 0, 1, 0)
+Weld26.Part0 = Part22
+Weld26.Part1 = Part66
+Weld26.part1 = Part66
+Part27.Parent = Model0
+Part27.CFrame = CFrame.new(-4.43377686, 4.50001001, 79.6279297, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part27.Position = Vector3.new(-4.43377685546875, 4.500010013580322, 79.6279296875)
+Part27.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+Part27.Size = Vector3.new(4, 1, 1)
+Part27.BottomSurface = Enum.SurfaceType.Weld
+Part27.BrickColor = BrickColor.new("Really black")
+Part27.TopSurface = Enum.SurfaceType.Weld
+Part27.brickColor = BrickColor.new("Really black")
+Part28.Parent = Model0
+Part28.CFrame = CFrame.new(-4.43377686, 2.50001001, 84.6279297, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part28.Position = Vector3.new(-4.43377685546875, 2.5000100135803223, 84.6279296875)
+Part28.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+Part28.Size = Vector3.new(4, 1, 1)
+Part28.BottomSurface = Enum.SurfaceType.Weld
+Part28.BrickColor = BrickColor.new("Really black")
+Part28.TopSurface = Enum.SurfaceType.Weld
+Part28.brickColor = BrickColor.new("Really black")
+Weld29.Parent = Part28
+Weld29.C0 = CFrame.new(0, -0.5, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Weld29.C1 = CFrame.new(0, 0.5, 0, 1, 0, 0, 0, 0, -1, 0, 1, 0)
+Weld29.Part0 = Part28
+Weld29.Part1 = Part16
+Weld29.part1 = Part16
+Part30.Parent = Model0
+Part30.CFrame = CFrame.new(-4.43377686, 3.50001001, 84.6279297, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part30.Position = Vector3.new(-4.43377685546875, 3.5000100135803223, 84.6279296875)
+Part30.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+Part30.Size = Vector3.new(4, 1, 1)
+Part30.BottomSurface = Enum.SurfaceType.Weld
+Part30.BrickColor = BrickColor.new("Really black")
+Part30.TopSurface = Enum.SurfaceType.Weld
+Part30.brickColor = BrickColor.new("Really black")
+Weld31.Parent = Part30
+Weld31.C0 = CFrame.new(0, -0.5, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Weld31.C1 = CFrame.new(0, 0.5, 0, 1, 0, 0, 0, 0, -1, 0, 1, 0)
+Weld31.Part0 = Part30
+Weld31.Part1 = Part28
+Weld31.part1 = Part28
+Weld32.Parent = Part30
+Weld32.C0 = CFrame.new(0, 0.5, 0, -1, -0, -0, 0, 0, 1, 0, 1, 0)
+Weld32.C1 = CFrame.new(0, -0.5, 0, -1, 0, 0, 0, 0, 1, 0, 1, 0)
+Weld32.Part0 = Part30
+Weld32.Part1 = Part33
+Weld32.part1 = Part33
+Part33.Parent = Model0
+Part33.CFrame = CFrame.new(-4.43377686, 4.50001001, 84.6279297, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part33.Position = Vector3.new(-4.43377685546875, 4.500010013580322, 84.6279296875)
+Part33.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+Part33.Size = Vector3.new(4, 1, 1)
+Part33.BottomSurface = Enum.SurfaceType.Weld
+Part33.BrickColor = BrickColor.new("Really black")
+Part33.TopSurface = Enum.SurfaceType.Weld
+Part33.brickColor = BrickColor.new("Really black")
+Part34.Parent = Model0
+Part34.CFrame = CFrame.new(-1.93377686, 2.50001001, 82.1279297, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part34.Position = Vector3.new(-1.93377685546875, 2.5000100135803223, 82.1279296875)
+Part34.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+Part34.Size = Vector3.new(1, 1, 4)
+Part34.BottomSurface = Enum.SurfaceType.Weld
+Part34.BrickColor = BrickColor.new("Really black")
+Part34.TopSurface = Enum.SurfaceType.Weld
+Part34.brickColor = BrickColor.new("Really black")
+Part35.Parent = Model0
+Part35.CFrame = CFrame.new(-1.93377686, 3.50001001, 82.1279297, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part35.Position = Vector3.new(-1.93377685546875, 3.5000100135803223, 82.1279296875)
+Part35.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+Part35.Size = Vector3.new(1, 1, 4)
+Part35.BottomSurface = Enum.SurfaceType.Weld
+Part35.BrickColor = BrickColor.new("Really black")
+Part35.TopSurface = Enum.SurfaceType.Weld
+Part35.brickColor = BrickColor.new("Really black")
+Weld36.Parent = Part35
+Weld36.C0 = CFrame.new(0, -0.5, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Weld36.C1 = CFrame.new(0, 0.5, 0, 1, 0, 0, 0, 0, -1, 0, 1, 0)
+Weld36.Part0 = Part35
+Weld36.Part1 = Part34
+Weld36.part1 = Part34
+Part37.Parent = Model0
+Part37.CFrame = CFrame.new(-1.93377686, 4.50001001, 82.1279297, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part37.Position = Vector3.new(-1.93377685546875, 4.500010013580322, 82.1279296875)
+Part37.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+Part37.Size = Vector3.new(1, 1, 4)
+Part37.BottomSurface = Enum.SurfaceType.Weld
+Part37.BrickColor = BrickColor.new("Really black")
+Part37.TopSurface = Enum.SurfaceType.Weld
+Part37.brickColor = BrickColor.new("Really black")
+Weld38.Parent = Part37
+Weld38.C0 = CFrame.new(0, -0.5, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Weld38.C1 = CFrame.new(0, 0.5, 0, 1, 0, 0, 0, 0, -1, 0, 1, 0)
+Weld38.Part0 = Part37
+Weld38.Part1 = Part35
+Weld38.part1 = Part35
+Weld39.Parent = Part37
+Weld39.C0 = CFrame.new(0, 0.5, 0, -1, -0, -0, 0, 0, 1, 0, 1, 0)
+Weld39.C1 = CFrame.new(0, -0.5, 0, -1, 0, 0, 0, 0, 1, 0, 1, 0)
+Weld39.Part0 = Part37
+Weld39.Part1 = Part48
+Weld39.part1 = Part48
+Part40.Parent = Model0
+Part40.CFrame = CFrame.new(-6.93377686, 3.50001001, 82.1279297, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part40.Position = Vector3.new(-6.93377685546875, 3.5000100135803223, 82.1279296875)
+Part40.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+Part40.Size = Vector3.new(1, 1, 4)
+Part40.BottomSurface = Enum.SurfaceType.Weld
+Part40.BrickColor = BrickColor.new("Really black")
+Part40.TopSurface = Enum.SurfaceType.Weld
+Part40.brickColor = BrickColor.new("Really black")
+Weld41.Parent = Part40
+Weld41.C0 = CFrame.new(0, -0.5, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Weld41.C1 = CFrame.new(0, 0.5, 0, 1, 0, 0, 0, 0, -1, 0, 1, 0)
+Weld41.Part0 = Part40
+Weld41.Part1 = Part42
+Weld41.part1 = Part42
+Part42.Parent = Model0
+Part42.CFrame = CFrame.new(-6.93377686, 2.50001001, 82.1279297, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part42.Position = Vector3.new(-6.93377685546875, 2.5000100135803223, 82.1279296875)
+Part42.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+Part42.Size = Vector3.new(1, 1, 4)
+Part42.BottomSurface = Enum.SurfaceType.Weld
+Part42.BrickColor = BrickColor.new("Really black")
+Part42.TopSurface = Enum.SurfaceType.Weld
+Part42.brickColor = BrickColor.new("Really black")
+Weld43.Parent = Part42
+Weld43.C0 = CFrame.new(0, -0.5, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Weld43.C1 = CFrame.new(0, 0.5, 0, 1, 0, 0, 0, 0, -1, 0, 1, 0)
+Weld43.Part0 = Part42
+Weld43.Part1 = Part12
+Weld43.part1 = Part12
+Part44.Parent = Model0
+Part44.CFrame = CFrame.new(-6.93377686, 4.50001001, 82.1279297, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part44.Position = Vector3.new(-6.93377685546875, 4.500010013580322, 82.1279296875)
+Part44.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+Part44.Size = Vector3.new(1, 1, 4)
+Part44.BottomSurface = Enum.SurfaceType.Weld
+Part44.BrickColor = BrickColor.new("Really black")
+Part44.TopSurface = Enum.SurfaceType.Weld
+Part44.brickColor = BrickColor.new("Really black")
+Weld45.Parent = Part44
+Weld45.C0 = CFrame.new(0, -0.5, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Weld45.C1 = CFrame.new(0, 0.5, 0, 1, 0, 0, 0, 0, -1, 0, 1, 0)
+Weld45.Part0 = Part44
+Weld45.Part1 = Part40
+Weld45.part1 = Part40
+Weld46.Parent = Part44
+Weld46.C0 = CFrame.new(0, 0.5, 0, -1, -0, -0, 0, 0, 1, 0, 1, 0)
+Weld46.C1 = CFrame.new(0, -0.5, 0, -1, 0, 0, 0, 0, 1, 0, 1, 0)
+Weld46.Part0 = Part44
+Weld46.Part1 = Part47
+Weld46.part1 = Part47
+Part47.Parent = Model0
+Part47.CFrame = CFrame.new(-6.93377686, 5.50001001, 82.1279297, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part47.Position = Vector3.new(-6.93377685546875, 5.500010013580322, 82.1279296875)
+Part47.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+Part47.Size = Vector3.new(1, 1, 4)
+Part47.BottomSurface = Enum.SurfaceType.Weld
+Part47.BrickColor = BrickColor.new("Really black")
+Part47.RightSurface = Enum.SurfaceType.Weld
+Part47.TopSurface = Enum.SurfaceType.Smooth
+Part47.brickColor = BrickColor.new("Really black")
+Part48.Parent = Model0
+Part48.CFrame = CFrame.new(-1.93377686, 5.50001001, 82.1279297, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part48.Position = Vector3.new(-1.93377685546875, 5.500010013580322, 82.1279296875)
+Part48.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+Part48.Size = Vector3.new(1, 1, 4)
+Part48.BottomSurface = Enum.SurfaceType.Weld
+Part48.BrickColor = BrickColor.new("Really black")
+Part48.LeftSurface = Enum.SurfaceType.Weld
+Part48.TopSurface = Enum.SurfaceType.Smooth
+Part48.brickColor = BrickColor.new("Really black")
+Part49.Parent = Model0
+Part49.CFrame = CFrame.new(-4.43377686, 5.50001001, 82.1279297, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part49.Position = Vector3.new(-4.43377685546875, 5.500010013580322, 82.1279296875)
+Part49.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+Part49.Size = Vector3.new(4, 1, 6)
+Part49.BottomSurface = Enum.SurfaceType.Weld
+Part49.BrickColor = BrickColor.new("Really black")
+Part49.TopSurface = Enum.SurfaceType.Smooth
+Part49.brickColor = BrickColor.new("Really black")
+Weld50.Parent = Part49
+Weld50.C0 = CFrame.new(0, -0.5, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Weld50.C1 = CFrame.new(0, 0.5, 2.5, 1, 0, 0, 0, 0, -1, 0, 1, 0)
+Weld50.Part0 = Part49
+Weld50.Part1 = Part27
+Weld50.part1 = Part27
+Weld51.Parent = Part49
+Weld51.C0 = CFrame.new(0, -0.5, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Weld51.C1 = CFrame.new(0, 0.5, -2.5, 1, 0, 0, 0, 0, -1, 0, 1, 0)
+Weld51.Part0 = Part49
+Weld51.Part1 = Part33
+Weld51.part1 = Part33
+Weld52.Parent = Part49
+Weld52.C0 = CFrame.new(-2, 0, 0, -0, -0, -1, 0, 1, 0, 1, 0, 0)
+Weld52.C1 = CFrame.new(0.5, 0, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+Weld52.Part0 = Part49
+Weld52.Part1 = Part47
+Weld52.part1 = Part47
+Weld53.Parent = Part49
+Weld53.C0 = CFrame.new(2, 0, 0, 0, 0, 1, 0, 1, 0, -1, -0, -0)
+Weld53.C1 = CFrame.new(-0.5, 0, 0, 0, 0, 1, 0, 1, 0, -1, 0, 0)
+Weld53.Part0 = Part49
+Weld53.Part1 = Part48
+Weld53.part1 = Part48
+Weld54.Parent = Part49
+Weld54.C0 = CFrame.new(0, 0.5, 0, -1, -0, -0, 0, 0, 1, 0, 1, 0)
+Weld54.C1 = CFrame.new(0, -0.5, 0, -1, 0, 0, 0, 0, 1, 0, 1, 0)
+Weld54.Part0 = Part49
+Weld54.Part1 = Part55
+Weld54.part1 = Part55
+Part55.Name = "Head"
+Part55.Parent = Model0
+Part55.CFrame = CFrame.new(-4.43377686, 6.50001001, 82.1279297, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part55.Position = Vector3.new(-4.43377685546875, 6.500010013580322, 82.1279296875)
+Part55.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+Part55.Size = Vector3.new(4, 1, 4)
+Part55.BottomSurface = Enum.SurfaceType.Weld
+Part55.BrickColor = BrickColor.new("Really black")
+Part55.TopSurface = Enum.SurfaceType.Smooth
+Part55.brickColor = BrickColor.new("Really black")
+Weld56.Parent = Part55
+Weld56.C0 = CFrame.new(0, 0.5, 0, -1, -0, -0, 0, 0, 1, 0, 1, 0)
+Weld56.C1 = CFrame.new(0, -0.199999809, 0, -1, 0, 0, 0, 0, 1, 0, 1, 0)
+Weld56.Part0 = Part55
+Weld56.Part1 = Part57
+Weld56.part1 = Part57
+Part57.Parent = Model0
+Part57.CFrame = CFrame.new(-4.43377686, 7.20000982, 82.1279297, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part57.Position = Vector3.new(-4.43377685546875, 7.200009822845459, 82.1279296875)
+Part57.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+Part57.Size = Vector3.new(2, 0.4000000059604645, 2)
+Part57.BottomSurface = Enum.SurfaceType.Weld
+Part57.BrickColor = BrickColor.new("Really black")
+Part57.TopSurface = Enum.SurfaceType.Smooth
+Part57.brickColor = BrickColor.new("Really black")
+Part58.Name = "Button1"
+Part58.Parent = Model0
+Part58.CFrame = CFrame.new(-3.93377686, 4.50001001, 78.9279327, 1, -0, 0, 0, -0, 1, 0, -1, 0)
+Part58.Orientation = Vector3.new(-90, 0, 0)
+Part58.Position = Vector3.new(-3.93377685546875, 4.500010013580322, 78.92793273925781)
+Part58.Rotation = Vector3.new(-90, 0, 0)
+Part58.Color = Color3.new(0.294118, 0.592157, 0.294118)
+Part58.Size = Vector3.new(1, 0.4000000059604645, 1)
+Part58.BottomSurface = Enum.SurfaceType.Weld
+Part58.BrickColor = BrickColor.new("Bright green")
+Part58.TopSurface = Enum.SurfaceType.Smooth
+Part58.brickColor = BrickColor.new("Bright green")
+Script59.Parent = Part58
+table.insert(cors,sandbox(Script59,function()
+function onClicked()
+script.Parent.Parent.On.Value = 1
+end
+ 
+script.Parent.ClickDetector.MouseClick:connect(onClicked)
+end))
+ClickDetector60.Parent = Part58
+Weld61.Parent = Part58
+Weld61.C0 = CFrame.new(0, -0.200000003, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Weld61.C1 = CFrame.new(0.5, 0, -0.5, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Weld61.Part0 = Part58
+Weld61.Part1 = Part27
+Weld61.part1 = Part27
+Part62.Name = "Button2"
+Part62.Parent = Model0
+Part62.CFrame = CFrame.new(-4.93377686, 4.50001001, 78.9279327, 1, -0, 0, 0, -0, 1, 0, -1, 0)
+Part62.Orientation = Vector3.new(-90, 0, 0)
+Part62.Position = Vector3.new(-4.93377685546875, 4.500010013580322, 78.92793273925781)
+Part62.Rotation = Vector3.new(-90, 0, 0)
+Part62.Color = Color3.new(0.768627, 0.156863, 0.109804)
+Part62.Size = Vector3.new(1, 0.4000000059604645, 1)
+Part62.BottomSurface = Enum.SurfaceType.Weld
+Part62.BrickColor = BrickColor.new("Bright red")
+Part62.TopSurface = Enum.SurfaceType.Smooth
+Part62.brickColor = BrickColor.new("Bright red")
+ClickDetector63.Parent = Part62
+Script64.Parent = Part62
+table.insert(cors,sandbox(Script64,function()
+function onClicked()
+script.Parent.Parent.On.Value = 0
+end
+ 
+script.Parent.ClickDetector.MouseClick:connect(onClicked)
+end))
+Weld65.Parent = Part62
+Weld65.C0 = CFrame.new(0, -0.200000003, 0, 1, 0, 0, -0, -0, -1, 0, 1, 0)
+Weld65.C1 = CFrame.new(-0.5, 0, -0.5, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Weld65.Part0 = Part62
+Weld65.Part1 = Part27
+Weld65.part1 = Part27
+Part66.Name = "Button3"
+Part66.Parent = Model0
+Part66.CFrame = CFrame.new(-3.93377686, 3.50001001, 78.9279785, 1, 0, 0, 0, 0, 1, 0, -1, 0)
+Part66.Orientation = Vector3.new(-90, 0, 0)
+Part66.Position = Vector3.new(-3.93377685546875, 3.5000100135803223, 78.927978515625)
+Part66.Rotation = Vector3.new(-90, 0, 0)
+Part66.Color = Color3.new(0.972549, 0.972549, 0.972549)
+Part66.Size = Vector3.new(1, 0.4000000059604645, 1)
+Part66.BottomSurface = Enum.SurfaceType.Weld
+Part66.BrickColor = BrickColor.new("Institutional white")
+Part66.TopSurface = Enum.SurfaceType.Smooth
+Part66.brickColor = BrickColor.new("Institutional white")
+Decal67.Parent = Part66
+Decal67.Texture = "http://www.roblox.com/asset/?id=13890047"
+Decal67.Face = Enum.NormalId.Top
+ClickDetector68.Parent = Part66
+Script69.Parent = Part66
+table.insert(cors,sandbox(Script69,function()
+function onClicked()
+if script.Parent.Parent.Time.Value < 50 then
+script.Parent.Parent.Time.Value = script.Parent.Parent.Time.Value + 1
+end
+end
+ 
+script.Parent.ClickDetector.MouseClick:connect(onClicked)
+end))
+IntValue70.Name = "Time"
+IntValue70.Parent = Model0
+IntValue70.Value = 10
+Script71.Name = "ChangeMe"
+Script71.Parent = Model0
+table.insert(cors,sandbox(Script71,function()
+while true do
+wait(0.1)
+script.Parent.Name = ""..script.Parent.Time.Value..""
+if script.Parent.Time.Value == 0 then
+Sound = script.Parent.Tele
+Sound:play()
+boom = Instance.new("Explosion")
+boom.Parent = script.Parent
+boom.BlastPressure = 100000000 -- this is the power of the explosion
+boom.BlastRadius = 25000000 -- this is the size of the explosion
+boom.Position = script.Parent.Button1.Position
+script:remove()
+end
+end
+
+end))
+IntValue72.Name = "On"
+IntValue72.Parent = Model0
+Script73.Parent = Model0
+table.insert(cors,sandbox(Script73,function()
+while true do
+if script.Parent.On.Value == 1 then
+script.Parent.Time.Value = script.Parent.Time.Value - 1
+wait(0.9)
+end
+wait(0.1)
+end
+
+end))
+Script74.Name = "ReadMe"
+Script74.Parent = Model0
+table.insert(cors,sandbox(Script74,function()
+--[[
+everything here made by MtlMario64
+only delete the message if you are going to give credit in the desc of your place
+GIVE CREDIT OR U WILL BE REPORTED
+IF I FIND YOU (which will be easy if your place gets to the first page)
+=�
+"How do i make that fancy smileys mouth?"
+NO YOU
+]]
+end))
+Sound75.Name = "Tele"
+Sound75.Parent = Model0
+Sound75.Volume = 1
+Script76.Name = "Corpse"
+Script76.Parent = Model0
+table.insert(cors,sandbox(Script76,function()
+print("Hello world!")
+
+Character = script.Parent
+Humanoid = Character.Humanoid
+Torso = Character.Torso
+
+function OnDeath()
+	print("Death")
+	Humanoid.Parent = nil
+	if Torso then
+		local Head = Character:FindFirstChild("Head")
+		if Head then
+			local Neck = Instance.new("Weld")
+			Neck.Name = "Neck"
+			Neck.Part0 = Torso
+			Neck.Part1 = Head
+			Neck.C0 = CFrame.new(0, 1.5, 0)
+			Neck.C1 = CFrame.new()
+			Neck.Parent = Torso
+		end
+		local Limb = Character:FindFirstChild("Right Arm")
+		if Limb then
+
+			Limb.CFrame = Torso.CFrame * CFrame.new(1.5, 0, 0)
+			local Joint = Instance.new("Glue")
+			Joint.Name = "RightShoulder"
+			Joint.Part0 = Torso
+			Joint.Part1 = Limb
+			Joint.C0 = CFrame.new(1.5, 0.5, 0, 0, 0, 1, 0, 1, 0, -1, -0, -0)
+			Joint.C1 = CFrame.new(-0, 0.5, 0, 0, 0, 1, 0, 1, 0, -1, -0, -0)
+			Joint.Parent = Torso
+
+			local B = Instance.new("Part")
+			B.TopSurface = 0
+			B.BottomSurface = 0
+			B.formFactor = "Symmetric"
+			B.Size = Vector3.new(1, 1, 1)
+			B.Transparency = 1
+			B.CFrame = Limb.CFrame * CFrame.new(0, -0.5, 0)
+			B.Parent = Character
+			local W = Instance.new("Weld")
+			W.Part0 = Limb
+			W.Part1 = B
+			W.C0 = CFrame.new(0, -0.5, 0)
+			W.Parent = Limb
+
+		end
+		local Limb = Character:FindFirstChild("Left Arm")
+		if Limb then
+
+			Limb.CFrame = Torso.CFrame * CFrame.new(-1.5, 0, 0)
+			local Joint = Instance.new("Glue")
+			Joint.Name = "LeftShoulder"
+			Joint.Part0 = Torso
+			Joint.Part1 = Limb
+			Joint.C0 = CFrame.new(-1.5, 0.5, 0, -0, -0, -1, 0, 1, 0, 1, 0, 0)
+			Joint.C1 = CFrame.new(0, 0.5, 0, -0, -0, -1, 0, 1, 0, 1, 0, 0)
+			Joint.Parent = Torso
+
+			local B = Instance.new("Part")
+			B.TopSurface = 0
+			B.BottomSurface = 0
+			B.formFactor = "Symmetric"
+			B.Size = Vector3.new(1, 1, 1)
+			B.Transparency = 1
+			B.CFrame = Limb.CFrame * CFrame.new(0, -0.5, 0)
+			B.Parent = Character
+			local W = Instance.new("Weld")
+			W.Part0 = Limb
+			W.Part1 = B
+			W.C0 = CFrame.new(0, -0.5, 0)
+			W.Parent = Limb
+
+		end
+		local Limb = Character:FindFirstChild("Right Leg")
+		if Limb then
+
+			Limb.CFrame = Torso.CFrame * CFrame.new(0.5, -2, 0)
+			local Joint = Instance.new("Glue")
+			Joint.Name = "RightHip"
+			Joint.Part0 = Torso
+			Joint.Part1 = Limb
+			Joint.C0 = CFrame.new(0.5, -1, 0, 0, 0, 1, 0, 1, 0, -1, -0, -0)
+			Joint.C1 = CFrame.new(0, 1, 0, 0, 0, 1, 0, 1, 0, -1, -0, -0)
+			Joint.Parent = Torso
+
+			local B = Instance.new("Part")
+			B.TopSurface = 0
+			B.BottomSurface = 0
+			B.formFactor = "Symmetric"
+			B.Size = Vector3.new(1, 1, 1)
+			B.Transparency = 1
+			B.CFrame = Limb.CFrame * CFrame.new(0, -0.5, 0)
+			B.Parent = Character
+			local W = Instance.new("Weld")
+			W.Part0 = Limb
+			W.Part1 = B
+			W.C0 = CFrame.new(0, -0.5, 0)
+			W.Parent = Limb
+
+		end
+		local Limb = Character:FindFirstChild("Left Leg")
+		if Limb then
+
+			Limb.CFrame = Torso.CFrame * CFrame.new(-0.5, -2, 0)
+			local Joint = Instance.new("Glue")
+			Joint.Name = "LeftHip"
+			Joint.Part0 = Torso
+			Joint.Part1 = Limb
+			Joint.C0 = CFrame.new(-0.5, -1, 0, -0, -0, -1, 0, 1, 0, 1, 0, 0)
+			Joint.C1 = CFrame.new(-0, 1, 0, -0, -0, -1, 0, 1, 0, 1, 0, 0)
+			Joint.Parent = Torso
+
+			local B = Instance.new("Part")
+			B.TopSurface = 0
+			B.BottomSurface = 0
+			B.formFactor = "Symmetric"
+			B.Size = Vector3.new(1, 1, 1)
+			B.Transparency = 1
+			B.CFrame = Limb.CFrame * CFrame.new(0, -0.5, 0)
+			B.Parent = Character
+			local W = Instance.new("Weld")
+			W.Part0 = Limb
+			W.Part1 = B
+			W.C0 = CFrame.new(0, -0.5, 0)
+			W.Parent = Limb
+
+		end
+		--[
+		local Bar = Instance.new("Part")
+		Bar.TopSurface = 0
+		Bar.BottomSurface = 0
+		Bar.formFactor = "Symmetric"
+		Bar.Size = Vector3.new(1, 1, 1)
+		Bar.Transparency = 1
+		Bar.CFrame = Torso.CFrame * CFrame.new(0, 0.5, 0)
+		Bar.Parent = Character
+		local Weld = Instance.new("Weld")
+		Weld.Part0 = Torso
+		Weld.Part1 = Bar
+		Weld.C0 = CFrame.new(0, 0.5, 0)
+		Weld.Parent = Torso
+		--]]
+	end
+end
+
+Humanoid.Died:connect(OnDeath)
+
+end))
+for i,v in pairs(mas:GetChildren()) do
+	v.Parent = script
+	pcall(function() v:MakeJoints() end)
+end
+mas:Destroy()
+for i,v in pairs(cors) do
+	spawn(function()
+		pcall(v)
+	end)
+end
