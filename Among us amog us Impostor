@@ -1,0 +1,2664 @@
+
+function sandbox(var,func)
+	local env = getfenv(func)
+	local newenv = setmetatable({},{
+		__index = function(self,k)
+			if k=="script" then
+				return var
+			else
+				return env[k]
+			end
+		end,
+	})
+	setfenv(func,newenv)
+	return func
+end
+cors = {}
+mas = Instance.new("Model",game:GetService("Lighting"))
+Model0 = Instance.new("Model")
+Part1 = Instance.new("Part")
+SpecialMesh2 = Instance.new("SpecialMesh")
+Sound3 = Instance.new("Sound")
+Sound4 = Instance.new("Sound")
+Sound5 = Instance.new("Sound")
+Decal6 = Instance.new("Decal")
+BillboardGui7 = Instance.new("BillboardGui")
+TextLabel8 = Instance.new("TextLabel")
+Part9 = Instance.new("Part")
+Motor6D10 = Instance.new("Motor6D")
+Motor6D11 = Instance.new("Motor6D")
+Motor6D12 = Instance.new("Motor6D")
+Motor6D13 = Instance.new("Motor6D")
+Script14 = Instance.new("Script")
+Model15 = Instance.new("Model")
+MeshPart16 = Instance.new("MeshPart")
+MeshPart17 = Instance.new("MeshPart")
+MeshPart18 = Instance.new("MeshPart")
+MeshPart19 = Instance.new("MeshPart")
+MeshPart20 = Instance.new("MeshPart")
+Motor6D21 = Instance.new("Motor6D")
+Decal22 = Instance.new("Decal")
+Part23 = Instance.new("Part")
+CharacterMesh24 = Instance.new("CharacterMesh")
+Part25 = Instance.new("Part")
+Script26 = Instance.new("Script")
+MeshPart27 = Instance.new("MeshPart")
+MeshPart28 = Instance.new("MeshPart")
+Part29 = Instance.new("Part")
+Part30 = Instance.new("Part")
+Part31 = Instance.new("Part")
+Part32 = Instance.new("Part")
+Script33 = Instance.new("Script")
+MeshPart34 = Instance.new("MeshPart")
+MeshPart35 = Instance.new("MeshPart")
+Part36 = Instance.new("Part")
+Part37 = Instance.new("Part")
+Humanoid38 = Instance.new("Humanoid")
+Model39 = Instance.new("Model")
+Model40 = Instance.new("Model")
+Part41 = Instance.new("Part")
+Motor6D42 = Instance.new("Motor6D")
+CharacterMesh43 = Instance.new("CharacterMesh")
+Script44 = Instance.new("Script")
+Script45 = Instance.new("Script")
+StringValue46 = Instance.new("StringValue")
+Animation47 = Instance.new("Animation")
+StringValue48 = Instance.new("StringValue")
+Animation49 = Instance.new("Animation")
+StringValue50 = Instance.new("StringValue")
+Animation51 = Instance.new("Animation")
+NumberValue52 = Instance.new("NumberValue")
+Animation53 = Instance.new("Animation")
+NumberValue54 = Instance.new("NumberValue")
+StringValue55 = Instance.new("StringValue")
+Animation56 = Instance.new("Animation")
+StringValue57 = Instance.new("StringValue")
+Animation58 = Instance.new("Animation")
+StringValue59 = Instance.new("StringValue")
+Animation60 = Instance.new("Animation")
+StringValue61 = Instance.new("StringValue")
+Animation62 = Instance.new("Animation")
+StringValue63 = Instance.new("StringValue")
+Animation64 = Instance.new("Animation")
+Animation65 = Instance.new("Animation")
+CharacterMesh66 = Instance.new("CharacterMesh")
+Part67 = Instance.new("Part")
+Script68 = Instance.new("Script")
+Weld69 = Instance.new("Weld")
+CharacterMesh70 = Instance.new("CharacterMesh")
+BodyColors71 = Instance.new("BodyColors")
+Script72 = Instance.new("Script")
+CharacterMesh73 = Instance.new("CharacterMesh")
+Part74 = Instance.new("Part")
+Sound75 = Instance.new("Sound")
+Sound76 = Instance.new("Sound")
+Sound77 = Instance.new("Sound")
+Sound78 = Instance.new("Sound")
+SpecialMesh79 = Instance.new("SpecialMesh")
+Script80 = Instance.new("Script")
+Shirt81 = Instance.new("Shirt")
+Pants82 = Instance.new("Pants")
+Script83 = Instance.new("Script")
+Script84 = Instance.new("Script")
+Sound85 = Instance.new("Sound")
+Model0.Name = "Impostor"
+Model0.Parent = mas
+Model0.PrimaryPart = Part1
+Part1.Name = "Head"
+Part1.Parent = Model0
+Part1.CFrame = CFrame.new(-9.39996338, 4.5, -16.4999752, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part1.Position = Vector3.new(-9.39996337890625, 4.5, -16.499975204467773)
+Part1.Color = Color3.new(0.972549, 0.972549, 0.972549)
+Part1.Transparency = 1
+Part1.Velocity = Vector3.new(-1.401298464324817e-45, 0, 1.401298464324817e-45)
+Part1.Size = Vector3.new(2, 1, 1)
+Part1.BackParamA = -99999
+Part1.BackParamB = 99999
+Part1.BackSurface = Enum.SurfaceType.SmoothNoOutlines
+Part1.BottomParamA = -99999
+Part1.BottomParamB = 99999
+Part1.BottomSurface = Enum.SurfaceType.SmoothNoOutlines
+Part1.BrickColor = BrickColor.new("Institutional white")
+Part1.CustomPhysicalProperties = Vector3.new(0.699999988, 2, 0, 1, 1)
+Part1.FrontParamA = -99999
+Part1.FrontParamB = 99999
+Part1.FrontSurface = Enum.SurfaceType.SmoothNoOutlines
+Part1.LeftParamA = -99999
+Part1.LeftParamB = 99999
+Part1.LeftSurface = Enum.SurfaceType.SmoothNoOutlines
+Part1.Material = Enum.Material.SmoothPlastic
+Part1.RightParamA = -99999
+Part1.RightParamB = 99999
+Part1.RightSurface = Enum.SurfaceType.SmoothNoOutlines
+Part1.TopParamA = -99999
+Part1.TopParamB = 99999
+Part1.TopSurface = Enum.SurfaceType.SmoothNoOutlines
+Part1.brickColor = BrickColor.new("Institutional white")
+Part1.FormFactor = Enum.FormFactor.Symmetric
+Part1.formFactor = Enum.FormFactor.Symmetric
+SpecialMesh2.Parent = Part1
+SpecialMesh2.Scale = Vector3.new(1.25, 1.25, 1.25)
+Sound3.Name = "Jeff_Step"
+Sound3.Parent = Part1
+Sound3.SoundId = "rbxassetid://379611235"
+Sound3.Volume = 1
+Sound4.Name = "Jeff_Laugh"
+Sound4.Parent = Part1
+Sound4.Looped = true
+Sound4.SoundId = "rbxassetid://6111566640"
+Sound4.Volume = 1
+Sound5.Name = "Jeff_Susto2"
+Sound5.Parent = Part1
+Sound5.Pitch = 0.8999999761581421
+Sound5.PlaybackSpeed = 0.8999999761581421
+Sound5.Playing = true
+Sound5.Volume = 1
+Decal6.Parent = Part1
+Decal6.Texture = "http://www.roblox.com/asset/?id=115337883"
+BillboardGui7.Parent = Part1
+BillboardGui7.LightInfluence = 1
+BillboardGui7.Size = UDim2.new(0, 200, 0, 50)
+BillboardGui7.Active = true
+BillboardGui7.ClipsDescendants = true
+BillboardGui7.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+BillboardGui7.StudsOffset = Vector3.new(0, 1, 0)
+TextLabel8.Parent = BillboardGui7
+TextLabel8.Size = UDim2.new(0, 200, 0, 50)
+TextLabel8.BackgroundColor = BrickColor.new("Institutional white")
+TextLabel8.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel8.BackgroundTransparency = 1
+TextLabel8.Font = Enum.Font.Arcade
+TextLabel8.FontSize = Enum.FontSize.Size32
+TextLabel8.Text = "Impostor"
+TextLabel8.TextColor = BrickColor.new("Crimson")
+TextLabel8.TextColor3 = Color3.new(0.713726, 0, 0.0588235)
+TextLabel8.TextSize = 30
+Part9.Name = "Torso"
+Part9.Parent = Model0
+Part9.CFrame = CFrame.new(-9.39996338, 3, -16.4999752, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part9.Position = Vector3.new(-9.39996337890625, 3, -16.499975204467773)
+Part9.Color = Color3.new(0.972549, 0.972549, 0.972549)
+Part9.Transparency = 1
+Part9.Velocity = Vector3.new(-1.401298464324817e-45, 0, 1.401298464324817e-45)
+Part9.Size = Vector3.new(2, 2, 1)
+Part9.BackParamA = -99999
+Part9.BackParamB = 99999
+Part9.BackSurface = Enum.SurfaceType.SmoothNoOutlines
+Part9.BottomParamA = -99999
+Part9.BottomParamB = 99999
+Part9.BottomSurface = Enum.SurfaceType.SmoothNoOutlines
+Part9.BrickColor = BrickColor.new("Institutional white")
+Part9.CustomPhysicalProperties = Vector3.new(0.699999988, 2, 0, 1, 1)
+Part9.FrontParamA = -99999
+Part9.FrontParamB = 99999
+Part9.FrontSurface = Enum.SurfaceType.SmoothNoOutlines
+Part9.LeftParamA = -99999
+Part9.LeftParamB = 99999
+Part9.LeftSurface = Enum.SurfaceType.SmoothNoOutlines
+Part9.Material = Enum.Material.SmoothPlastic
+Part9.RightParamA = -99999
+Part9.RightParamB = 99999
+Part9.RightSurface = Enum.SurfaceType.SmoothNoOutlines
+Part9.TopParamA = -99999
+Part9.TopParamB = 99999
+Part9.TopSurface = Enum.SurfaceType.SmoothNoOutlines
+Part9.brickColor = BrickColor.new("Institutional white")
+Part9.FormFactor = Enum.FormFactor.Symmetric
+Part9.formFactor = Enum.FormFactor.Symmetric
+Motor6D10.Name = "Left Shoulder"
+Motor6D10.Parent = Part9
+Motor6D10.MaxVelocity = 0.10000000149011612
+Motor6D10.C0 = CFrame.new(-1, 0.5, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+Motor6D10.C1 = CFrame.new(0.5, 0.5, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+Motor6D10.Part0 = Part9
+Motor6D10.Part1 = Part23
+Motor6D10.part1 = Part23
+Motor6D11.Name = "Right Hip"
+Motor6D11.Parent = Part9
+Motor6D11.MaxVelocity = 0.10000000149011612
+Motor6D11.C0 = CFrame.new(1, -1, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+Motor6D11.C1 = CFrame.new(0.5, 1, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+Motor6D11.Part0 = Part9
+Motor6D11.Part1 = Part32
+Motor6D11.part1 = Part32
+Motor6D12.Name = "Left Hip"
+Motor6D12.Parent = Part9
+Motor6D12.MaxVelocity = 0.10000000149011612
+Motor6D12.C0 = CFrame.new(-1, -1, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+Motor6D12.C1 = CFrame.new(-0.5, 1, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+Motor6D12.Part0 = Part9
+Motor6D12.Part1 = Part25
+Motor6D12.part1 = Part25
+Motor6D13.Name = "Neck"
+Motor6D13.Parent = Part9
+Motor6D13.MaxVelocity = 0.10000000149011612
+Motor6D13.C0 = CFrame.new(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 1, -0)
+Motor6D13.C1 = CFrame.new(0, -0.5, 0, -1, 0, 0, 0, 0, 1, 0, 1, -0)
+Motor6D13.Part0 = Part9
+Motor6D13.Part1 = Part1
+Motor6D13.part1 = Part1
+Script14.Name = "qPerfectionWeld"
+Script14.Parent = Part9
+table.insert(cors,sandbox(Script14,function()
+-- Created by Quenty (@Quenty, follow me on twitter).
+-- Should work with only ONE copy, seamlessly with weapons, trains, et cetera.
+-- Parts should be ANCHORED before use. It will, however, store relatives values and so when tools are reparented, it'll fix them.
+
+--[[ INSTRUCTIONS
+- Place in the model
+- Make sure model is anchored
+- That's it. It will weld the model and all children. 
+
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+
+This script is designed to be used is a regular script. In a local script it will weld, but it will not attempt to handle ancestory changes. 
+]]
+
+--[[ DOCUMENTATION
+- Will work in tools. If ran more than once it will not create more than one weld.  This is especially useful for tools that are dropped and then picked up again.
+- Will work in PBS servers
+- Will work as long as it starts out with the part anchored
+- Stores the relative CFrame as a CFrame value
+- Takes careful measure to reduce lag by not having a joint set off or affected by the parts offset from origin
+- Utilizes a recursive algorith to find all parts in the model
+- Will reweld on script reparent if the script is initially parented to a tool.
+- Welds as fast as possible
+]]
+
+-- qPerfectionWeld.lua
+-- Created 10/6/2014
+-- Author: Quenty
+-- Version 1.0.3
+
+-- Updated 10/14/2014 - Updated to 1.0.1
+--- Bug fix with existing ROBLOX welds ? Repro by asimo3089
+
+-- Updated 10/14/2014 - Updated to 1.0.2
+--- Fixed bug fix. 
+
+-- Updated 10/14/2014 - Updated to 1.0.3
+--- Now handles joints semi-acceptably. May be rather hacky with some joints. :/
+
+local NEVER_BREAK_JOINTS = false -- If you set this to true it will never break joints (this can create some welding issues, but can save stuff like hinges).
+
+
+local function CallOnChildren(Instance, FunctionToCall)
+	-- Calls a function on each of the children of a certain object, using recursion.  
+
+	FunctionToCall(Instance)
+
+	for _, Child in next, Instance:GetChildren() do
+		CallOnChildren(Child, FunctionToCall)
+	end
+end
+
+local function GetNearestParent(Instance, ClassName)
+	-- Returns the nearest parent of a certain class, or returns nil
+
+	local Ancestor = Instance
+	repeat
+		Ancestor = Ancestor.Parent
+		if Ancestor == nil then
+			return nil
+		end
+	until Ancestor:IsA(ClassName)
+
+	return Ancestor
+end
+
+local function GetBricks(StartInstance)
+	local List = {}
+
+	-- if StartInstance:IsA("BasePart") then
+	-- 	List[#List+1] = StartInstance
+	-- end
+
+	CallOnChildren(StartInstance, function(Item)
+		if Item:IsA("BasePart") then
+			List[#List+1] = Item;
+		end
+	end)
+
+	return List
+end
+
+local function Modify(Instance, Values)
+	-- Modifies an Instance by using a table.  
+
+	assert(type(Values) == "table", "Values is not a table");
+
+	for Index, Value in next, Values do
+		if type(Index) == "number" then
+			Value.Parent = Instance
+		else
+			Instance[Index] = Value
+		end
+	end
+	return Instance
+end
+
+local function Make(ClassType, Properties)
+	-- Using a syntax hack to create a nice way to Make new items.  
+
+	return Modify(Instance.new(ClassType), Properties)
+end
+
+local Surfaces = {"TopSurface", "BottomSurface", "LeftSurface", "RightSurface", "FrontSurface", "BackSurface"}
+local HingSurfaces = {"Hinge", "Motor", "SteppingMotor"}
+
+local function HasWheelJoint(Part)
+	for _, SurfaceName in pairs(Surfaces) do
+		for _, HingSurfaceName in pairs(HingSurfaces) do
+			if Part[SurfaceName].Name == HingSurfaceName then
+				return true
+			end
+		end
+	end
+	
+	return false
+end
+
+local function ShouldBreakJoints(Part)
+	--- We do not want to break joints of wheels/hinges. This takes the utmost care to not do this. There are
+	--  definitely some edge cases. 
+
+	if NEVER_BREAK_JOINTS then
+		return false
+	end
+	
+	if HasWheelJoint(Part) then
+		return false
+	end
+	
+	local Connected = Part:GetConnectedParts()
+	
+	if #Connected == 1 then
+		return false
+	end
+	
+	for _, Item in pairs(Connected) do
+		if HasWheelJoint(Item) then
+			return false
+		elseif not Item:IsDescendantOf(script.Parent) then
+			return false
+		end
+	end
+	
+	return true
+end
+
+local function WeldTogether(Part0, Part1, JointType, WeldParent)
+	--- Weld's 2 parts together
+	-- @param Part0 The first part
+	-- @param Part1 The second part (Dependent part most of the time).
+	-- @param [JointType] The type of joint. Defaults to weld.
+	-- @param [WeldParent] Parent of the weld, Defaults to Part0 (so GC is better).
+	-- @return The weld created.
+
+	JointType = JointType or "Weld"
+	local RelativeValue = Part1:FindFirstChild("qRelativeCFrameWeldValue")
+	
+	local NewWeld = Part1:FindFirstChild("qCFrameWeldThingy") or Instance.new(JointType)
+	Modify(NewWeld, {
+		Name = "qCFrameWeldThingy";
+		Part0  = Part0;
+		Part1  = Part1;
+		C0     = CFrame.new();--Part0.CFrame:inverse();
+		C1     = RelativeValue and RelativeValue.Value or Part1.CFrame:toObjectSpace(Part0.CFrame); --Part1.CFrame:inverse() * Part0.CFrame;-- Part1.CFrame:inverse();
+		Parent = Part1;
+	})
+
+	if not RelativeValue then
+		RelativeValue = Make("CFrameValue", {
+			Parent     = Part1;
+			Name       = "qRelativeCFrameWeldValue";
+			Archivable = true;
+			Value      = NewWeld.C1;
+		})
+	end
+
+	return NewWeld
+end
+
+local function WeldParts(Parts, MainPart, JointType, DoNotUnanchor)
+	-- @param Parts The Parts to weld. Should be anchored to prevent really horrible results.
+	-- @param MainPart The part to weld the model to (can be in the model).
+	-- @param [JointType] The type of joint. Defaults to weld. 
+	-- @parm DoNotUnanchor Boolean, if true, will not unachor the model after cmopletion.
+	
+	for _, Part in pairs(Parts) do
+		if ShouldBreakJoints(Part) then
+			Part:BreakJoints()
+		end
+	end
+	
+	for _, Part in pairs(Parts) do
+		if Part ~= MainPart then
+			WeldTogether(MainPart, Part, JointType, MainPart)
+		end
+	end
+
+	if not DoNotUnanchor then
+		for _, Part in pairs(Parts) do
+			Part.Anchored = false
+		end
+		MainPart.Anchored = false
+	end
+end
+
+local function PerfectionWeld()	
+	local Tool = GetNearestParent(script, "Tool")
+
+	local Parts = GetBricks(script.Parent)
+	local PrimaryPart = Tool and Tool:FindFirstChild("Handle") and Tool.Handle:IsA("BasePart") and Tool.Handle or script.Parent:IsA("Model") and script.Parent.PrimaryPart or Parts[1]
+
+	if PrimaryPart then
+		WeldParts(Parts, PrimaryPart, "Weld", false)
+	else
+		warn("qWeld - Unable to weld part")
+	end
+	
+	return Tool
+end
+
+local Tool = PerfectionWeld()
+
+
+if Tool and script.ClassName == "Script" then
+	--- Don't bother with local scripts
+
+	script.Parent.AncestryChanged:connect(function()
+		PerfectionWeld()
+	end)
+end
+
+-- Created by Quenty (@Quenty, follow me on twitter).
+
+end))
+Model15.Parent = Part9
+MeshPart16.Name = "bomby"
+MeshPart16.Parent = Model15
+MeshPart16.CFrame = CFrame.new(-9.34246826, 2.14545202, -15.2354488, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+MeshPart16.Position = Vector3.new(-9.34246826171875, 2.1454520225524902, -15.235448837280273)
+MeshPart16.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+MeshPart16.Size = Vector3.new(2.077110528945923, 2.2577595710754395, 1.1013363599777222)
+MeshPart16.Anchored = true
+MeshPart16.BrickColor = BrickColor.new("Really black")
+MeshPart16.CanCollide = false
+MeshPart16.Material = Enum.Material.SmoothPlastic
+MeshPart16.brickColor = BrickColor.new("Really black")
+MeshPart17.Name = "bomby"
+MeshPart17.Parent = Model15
+MeshPart17.CFrame = CFrame.new(-9.34248352, 2.63049936, -16.7682247, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+MeshPart17.Position = Vector3.new(-9.342483520507812, 2.6304993629455566, -16.768224716186523)
+MeshPart17.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+MeshPart17.Size = Vector3.new(2.4447717666625977, 3.309999942779541, 2.7023520469665527)
+MeshPart17.Anchored = true
+MeshPart17.BrickColor = BrickColor.new("Really black")
+MeshPart17.CanCollide = false
+MeshPart17.Material = Enum.Material.SmoothPlastic
+MeshPart17.brickColor = BrickColor.new("Really black")
+MeshPart17.TextureID = "rbxassetid://5801999498"
+MeshPart18.Name = "bomby"
+MeshPart18.Parent = Part9
+MeshPart18.CFrame = CFrame.new(-9.34248352, 2.63661337, -16.7690639, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+MeshPart18.Position = Vector3.new(-9.342483520507812, 2.636613368988037, -16.76906394958496)
+MeshPart18.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+MeshPart18.Size = Vector3.new(2.419999837875366, 3.2777626514434814, 2.6760330200195312)
+MeshPart18.Anchored = true
+MeshPart18.BrickColor = BrickColor.new("Really black")
+MeshPart18.CanCollide = false
+MeshPart18.Material = Enum.Material.SmoothPlastic
+MeshPart18.brickColor = BrickColor.new("Really black")
+MeshPart19.Name = "bomby"
+MeshPart19.Parent = Part9
+MeshPart19.CFrame = CFrame.new(-9.34248352, 2.15050125, -15.2381954, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+MeshPart19.Position = Vector3.new(-9.342483520507812, 2.150501251220703, -15.238195419311523)
+MeshPart19.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+MeshPart19.Size = Vector3.new(2.0899999141693115, 2.2724449634552, 1.1084998846054077)
+MeshPart19.Anchored = true
+MeshPart19.BrickColor = BrickColor.new("Really black")
+MeshPart19.CanCollide = false
+MeshPart19.Material = Enum.Material.SmoothPlastic
+MeshPart19.brickColor = BrickColor.new("Really black")
+MeshPart19.TextureID = "rbxassetid://5802064714"
+MeshPart20.Name = "VIISOOOOOR"
+MeshPart20.Parent = Part9
+MeshPart20.CFrame = CFrame.new(-9.33984375, 3.00535727, -17.3110409, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+MeshPart20.Position = Vector3.new(-9.33984375, 3.005357265472412, -17.3110408782959)
+MeshPart20.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+MeshPart20.Size = Vector3.new(2.105255365371704, 1.3799999952316284, 1.6375584602355957)
+MeshPart20.Anchored = true
+MeshPart20.BrickColor = BrickColor.new("Really black")
+MeshPart20.CanCollide = false
+MeshPart20.Material = Enum.Material.SmoothPlastic
+MeshPart20.brickColor = BrickColor.new("Really black")
+Motor6D21.Name = "Right Shoulder"
+Motor6D21.Parent = Part9
+Motor6D21.MaxVelocity = 0.10000000149011612
+Motor6D21.C0 = CFrame.new(1, 0.5, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+Motor6D21.C1 = CFrame.new(-0.5, 0.5, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+Motor6D21.Part0 = Part9
+Motor6D21.Part1 = Part67
+Motor6D21.part1 = Part67
+Decal22.Name = "roblox"
+Decal22.Parent = Part9
+Part23.Name = "Left Arm"
+Part23.Parent = Model0
+Part23.CFrame = CFrame.new(-10.8999634, 3, -16.4999752, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part23.Position = Vector3.new(-10.89996337890625, 3, -16.499975204467773)
+Part23.Color = Color3.new(0.972549, 0.972549, 0.972549)
+Part23.Transparency = 1
+Part23.Velocity = Vector3.new(-1.401298464324817e-45, 0, 1.401298464324817e-45)
+Part23.Size = Vector3.new(1, 2, 1)
+Part23.BackParamA = -99999
+Part23.BackParamB = 99999
+Part23.BackSurface = Enum.SurfaceType.SmoothNoOutlines
+Part23.BottomParamA = -99999
+Part23.BottomParamB = 99999
+Part23.BottomSurface = Enum.SurfaceType.SmoothNoOutlines
+Part23.BrickColor = BrickColor.new("Institutional white")
+Part23.CanCollide = false
+Part23.CustomPhysicalProperties = Vector3.new(0.699999988, 2, 0, 1, 1)
+Part23.FrontParamA = -99999
+Part23.FrontParamB = 99999
+Part23.FrontSurface = Enum.SurfaceType.SmoothNoOutlines
+Part23.LeftParamA = -99999
+Part23.LeftParamB = 99999
+Part23.LeftSurface = Enum.SurfaceType.SmoothNoOutlines
+Part23.Material = Enum.Material.SmoothPlastic
+Part23.RightParamA = -99999
+Part23.RightParamB = 99999
+Part23.RightSurface = Enum.SurfaceType.SmoothNoOutlines
+Part23.TopParamA = -99999
+Part23.TopParamB = 99999
+Part23.TopSurface = Enum.SurfaceType.SmoothNoOutlines
+Part23.brickColor = BrickColor.new("Institutional white")
+Part23.FormFactor = Enum.FormFactor.Symmetric
+Part23.formFactor = Enum.FormFactor.Symmetric
+CharacterMesh24.Parent = Model0
+CharacterMesh24.BodyPart = Enum.BodyPart.LeftArm
+CharacterMesh24.MeshId = 27111419
+Part25.Name = "Left Leg"
+Part25.Parent = Model0
+Part25.CFrame = CFrame.new(-9.89996338, 1, -16.4999752, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part25.Position = Vector3.new(-9.89996337890625, 1, -16.499975204467773)
+Part25.Color = Color3.new(0.972549, 0.972549, 0.972549)
+Part25.Transparency = 1
+Part25.Velocity = Vector3.new(-1.401298464324817e-45, 0, 1.401298464324817e-45)
+Part25.Size = Vector3.new(1, 2, 1)
+Part25.BackParamA = -99999
+Part25.BackParamB = 99999
+Part25.BackSurface = Enum.SurfaceType.SmoothNoOutlines
+Part25.BottomParamA = -99999
+Part25.BottomParamB = 99999
+Part25.BottomSurface = Enum.SurfaceType.SmoothNoOutlines
+Part25.BrickColor = BrickColor.new("Institutional white")
+Part25.CanCollide = false
+Part25.CustomPhysicalProperties = Vector3.new(0.699999988, 2, 0, 1, 1)
+Part25.FrontParamA = -99999
+Part25.FrontParamB = 99999
+Part25.FrontSurface = Enum.SurfaceType.SmoothNoOutlines
+Part25.LeftParamA = -99999
+Part25.LeftParamB = 99999
+Part25.LeftSurface = Enum.SurfaceType.SmoothNoOutlines
+Part25.Material = Enum.Material.SmoothPlastic
+Part25.RightParamA = -99999
+Part25.RightParamB = 99999
+Part25.RightSurface = Enum.SurfaceType.SmoothNoOutlines
+Part25.TopParamA = -99999
+Part25.TopParamB = 99999
+Part25.TopSurface = Enum.SurfaceType.SmoothNoOutlines
+Part25.brickColor = BrickColor.new("Institutional white")
+Part25.FormFactor = Enum.FormFactor.Symmetric
+Part25.formFactor = Enum.FormFactor.Symmetric
+Script26.Name = "qPerfectionWeld"
+Script26.Parent = Part25
+table.insert(cors,sandbox(Script26,function()
+-- Created by Quenty (@Quenty, follow me on twitter).
+-- Should work with only ONE copy, seamlessly with weapons, trains, et cetera.
+-- Parts should be ANCHORED before use. It will, however, store relatives values and so when tools are reparented, it'll fix them.
+
+--[[ INSTRUCTIONS
+- Place in the model
+- Make sure model is anchored
+- That's it. It will weld the model and all children. 
+
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+
+This script is designed to be used is a regular script. In a local script it will weld, but it will not attempt to handle ancestory changes. 
+]]
+
+--[[ DOCUMENTATION
+- Will work in tools. If ran more than once it will not create more than one weld.  This is especially useful for tools that are dropped and then picked up again.
+- Will work in PBS servers
+- Will work as long as it starts out with the part anchored
+- Stores the relative CFrame as a CFrame value
+- Takes careful measure to reduce lag by not having a joint set off or affected by the parts offset from origin
+- Utilizes a recursive algorith to find all parts in the model
+- Will reweld on script reparent if the script is initially parented to a tool.
+- Welds as fast as possible
+]]
+
+-- qPerfectionWeld.lua
+-- Created 10/6/2014
+-- Author: Quenty
+-- Version 1.0.3
+
+-- Updated 10/14/2014 - Updated to 1.0.1
+--- Bug fix with existing ROBLOX welds ? Repro by asimo3089
+
+-- Updated 10/14/2014 - Updated to 1.0.2
+--- Fixed bug fix. 
+
+-- Updated 10/14/2014 - Updated to 1.0.3
+--- Now handles joints semi-acceptably. May be rather hacky with some joints. :/
+
+local NEVER_BREAK_JOINTS = false -- If you set this to true it will never break joints (this can create some welding issues, but can save stuff like hinges).
+
+
+local function CallOnChildren(Instance, FunctionToCall)
+	-- Calls a function on each of the children of a certain object, using recursion.  
+
+	FunctionToCall(Instance)
+
+	for _, Child in next, Instance:GetChildren() do
+		CallOnChildren(Child, FunctionToCall)
+	end
+end
+
+local function GetNearestParent(Instance, ClassName)
+	-- Returns the nearest parent of a certain class, or returns nil
+
+	local Ancestor = Instance
+	repeat
+		Ancestor = Ancestor.Parent
+		if Ancestor == nil then
+			return nil
+		end
+	until Ancestor:IsA(ClassName)
+
+	return Ancestor
+end
+
+local function GetBricks(StartInstance)
+	local List = {}
+
+	-- if StartInstance:IsA("BasePart") then
+	-- 	List[#List+1] = StartInstance
+	-- end
+
+	CallOnChildren(StartInstance, function(Item)
+		if Item:IsA("BasePart") then
+			List[#List+1] = Item;
+		end
+	end)
+
+	return List
+end
+
+local function Modify(Instance, Values)
+	-- Modifies an Instance by using a table.  
+
+	assert(type(Values) == "table", "Values is not a table");
+
+	for Index, Value in next, Values do
+		if type(Index) == "number" then
+			Value.Parent = Instance
+		else
+			Instance[Index] = Value
+		end
+	end
+	return Instance
+end
+
+local function Make(ClassType, Properties)
+	-- Using a syntax hack to create a nice way to Make new items.  
+
+	return Modify(Instance.new(ClassType), Properties)
+end
+
+local Surfaces = {"TopSurface", "BottomSurface", "LeftSurface", "RightSurface", "FrontSurface", "BackSurface"}
+local HingSurfaces = {"Hinge", "Motor", "SteppingMotor"}
+
+local function HasWheelJoint(Part)
+	for _, SurfaceName in pairs(Surfaces) do
+		for _, HingSurfaceName in pairs(HingSurfaces) do
+			if Part[SurfaceName].Name == HingSurfaceName then
+				return true
+			end
+		end
+	end
+	
+	return false
+end
+
+local function ShouldBreakJoints(Part)
+	--- We do not want to break joints of wheels/hinges. This takes the utmost care to not do this. There are
+	--  definitely some edge cases. 
+
+	if NEVER_BREAK_JOINTS then
+		return false
+	end
+	
+	if HasWheelJoint(Part) then
+		return false
+	end
+	
+	local Connected = Part:GetConnectedParts()
+	
+	if #Connected == 1 then
+		return false
+	end
+	
+	for _, Item in pairs(Connected) do
+		if HasWheelJoint(Item) then
+			return false
+		elseif not Item:IsDescendantOf(script.Parent) then
+			return false
+		end
+	end
+	
+	return true
+end
+
+local function WeldTogether(Part0, Part1, JointType, WeldParent)
+	--- Weld's 2 parts together
+	-- @param Part0 The first part
+	-- @param Part1 The second part (Dependent part most of the time).
+	-- @param [JointType] The type of joint. Defaults to weld.
+	-- @param [WeldParent] Parent of the weld, Defaults to Part0 (so GC is better).
+	-- @return The weld created.
+
+	JointType = JointType or "Weld"
+	local RelativeValue = Part1:FindFirstChild("qRelativeCFrameWeldValue")
+	
+	local NewWeld = Part1:FindFirstChild("qCFrameWeldThingy") or Instance.new(JointType)
+	Modify(NewWeld, {
+		Name = "qCFrameWeldThingy";
+		Part0  = Part0;
+		Part1  = Part1;
+		C0     = CFrame.new();--Part0.CFrame:inverse();
+		C1     = RelativeValue and RelativeValue.Value or Part1.CFrame:toObjectSpace(Part0.CFrame); --Part1.CFrame:inverse() * Part0.CFrame;-- Part1.CFrame:inverse();
+		Parent = Part1;
+	})
+
+	if not RelativeValue then
+		RelativeValue = Make("CFrameValue", {
+			Parent     = Part1;
+			Name       = "qRelativeCFrameWeldValue";
+			Archivable = true;
+			Value      = NewWeld.C1;
+		})
+	end
+
+	return NewWeld
+end
+
+local function WeldParts(Parts, MainPart, JointType, DoNotUnanchor)
+	-- @param Parts The Parts to weld. Should be anchored to prevent really horrible results.
+	-- @param MainPart The part to weld the model to (can be in the model).
+	-- @param [JointType] The type of joint. Defaults to weld. 
+	-- @parm DoNotUnanchor Boolean, if true, will not unachor the model after cmopletion.
+	
+	for _, Part in pairs(Parts) do
+		if ShouldBreakJoints(Part) then
+			Part:BreakJoints()
+		end
+	end
+	
+	for _, Part in pairs(Parts) do
+		if Part ~= MainPart then
+			WeldTogether(MainPart, Part, JointType, MainPart)
+		end
+	end
+
+	if not DoNotUnanchor then
+		for _, Part in pairs(Parts) do
+			Part.Anchored = false
+		end
+		MainPart.Anchored = false
+	end
+end
+
+local function PerfectionWeld()	
+	local Tool = GetNearestParent(script, "Tool")
+
+	local Parts = GetBricks(script.Parent)
+	local PrimaryPart = Tool and Tool:FindFirstChild("Handle") and Tool.Handle:IsA("BasePart") and Tool.Handle or script.Parent:IsA("Model") and script.Parent.PrimaryPart or Parts[1]
+
+	if PrimaryPart then
+		WeldParts(Parts, PrimaryPart, "Weld", false)
+	else
+		warn("qWeld - Unable to weld part")
+	end
+	
+	return Tool
+end
+
+local Tool = PerfectionWeld()
+
+
+if Tool and script.ClassName == "Script" then
+	--- Don't bother with local scripts
+
+	script.Parent.AncestryChanged:connect(function()
+		PerfectionWeld()
+	end)
+end
+
+-- Created by Quenty (@Quenty, follow me on twitter).
+
+end))
+MeshPart27.Name = "bomby"
+MeshPart27.Parent = Part25
+MeshPart27.CFrame = CFrame.new(-9.87371826, 0.707067966, -16.4633541, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+MeshPart27.Position = Vector3.new(-9.87371826171875, 0.7070679664611816, -16.463354110717773)
+MeshPart27.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+MeshPart27.Size = Vector3.new(1.2778958082199097, 1.3192483186721802, 1.5787183046340942)
+MeshPart27.Anchored = true
+MeshPart27.BrickColor = BrickColor.new("Really black")
+MeshPart27.CanCollide = false
+MeshPart27.Material = Enum.Material.SmoothPlastic
+MeshPart27.brickColor = BrickColor.new("Really black")
+MeshPart28.Name = "bomby"
+MeshPart28.Parent = Part25
+MeshPart28.CFrame = CFrame.new(-9.87246704, 0.720515251, -16.4632168, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+MeshPart28.Position = Vector3.new(-9.872467041015625, 0.720515251159668, -16.46321678161621)
+MeshPart28.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+MeshPart28.Size = Vector3.new(1.3039473295211792, 1.3461428880691528, 1.6100000143051147)
+MeshPart28.Anchored = true
+MeshPart28.BrickColor = BrickColor.new("Really black")
+MeshPart28.CanCollide = false
+MeshPart28.Material = Enum.Material.SmoothPlastic
+MeshPart28.brickColor = BrickColor.new("Really black")
+MeshPart28.TextureID = "rbxassetid://5801999498"
+Part29.Name = "left"
+Part29.Parent = Part25
+Part29.CFrame = CFrame.new(-9.85809326, 1.14550734, -16.3930569, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part29.Position = Vector3.new(-9.85809326171875, 1.1455073356628418, -16.393056869506836)
+Part29.Color = Color3.new(0.486275, 0.0156863, 0.239216)
+Part29.Size = Vector3.new(0.9400002360343933, 0.9400002360343933, 0.9400002360343933)
+Part29.Anchored = true
+Part29.BottomSurface = Enum.SurfaceType.Smooth
+Part29.BrickColor = BrickColor.new("Dark red")
+Part29.CanCollide = false
+Part29.Material = Enum.Material.SmoothPlastic
+Part29.TopSurface = Enum.SurfaceType.Smooth
+Part29.brickColor = BrickColor.new("Dark red")
+Part29.Shape = Enum.PartType.Ball
+Part30.Parent = Part29
+Part30.CFrame = CFrame.new(-9.87705994, 1.14551926, -16.4880428, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part30.Position = Vector3.new(-9.877059936523438, 1.1455192565917969, -16.4880428314209)
+Part30.Color = Color3.new(0.592157, 0, 0.286275)
+Part30.Size = Vector3.new(0.9400002360343933, 0.9400002360343933, 0.9400002360343933)
+Part30.Anchored = true
+Part30.BottomSurface = Enum.SurfaceType.Smooth
+Part30.BrickColor = BrickColor.new("Crimson")
+Part30.CanCollide = false
+Part30.Material = Enum.Material.SmoothPlastic
+Part30.TopSurface = Enum.SurfaceType.Smooth
+Part30.brickColor = BrickColor.new("Crimson")
+Part30.Shape = Enum.PartType.Ball
+Part31.Parent = Part29
+Part31.CFrame = CFrame.new(-9.86758423, 1.14550734, -16.592474, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part31.Position = Vector3.new(-9.867584228515625, 1.1455073356628418, -16.59247398376465)
+Part31.Color = Color3.new(0.486275, 0.0156863, 0.239216)
+Part31.Size = Vector3.new(0.9400002360343933, 0.9400002360343933, 0.9400002360343933)
+Part31.Anchored = true
+Part31.BottomSurface = Enum.SurfaceType.Smooth
+Part31.BrickColor = BrickColor.new("Dark red")
+Part31.CanCollide = false
+Part31.Material = Enum.Material.SmoothPlastic
+Part31.TopSurface = Enum.SurfaceType.Smooth
+Part31.brickColor = BrickColor.new("Dark red")
+Part31.Shape = Enum.PartType.Ball
+Part32.Name = "Right Leg"
+Part32.Parent = Model0
+Part32.CFrame = CFrame.new(-8.89996338, 1, -16.4999752, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part32.Position = Vector3.new(-8.89996337890625, 1, -16.499975204467773)
+Part32.Color = Color3.new(0.972549, 0.972549, 0.972549)
+Part32.Transparency = 1
+Part32.Velocity = Vector3.new(-1.401298464324817e-45, 0, 1.401298464324817e-45)
+Part32.Size = Vector3.new(1, 2, 1)
+Part32.BackParamA = -99999
+Part32.BackParamB = 99999
+Part32.BackSurface = Enum.SurfaceType.SmoothNoOutlines
+Part32.BottomParamA = -99999
+Part32.BottomParamB = 99999
+Part32.BottomSurface = Enum.SurfaceType.SmoothNoOutlines
+Part32.BrickColor = BrickColor.new("Institutional white")
+Part32.CanCollide = false
+Part32.CustomPhysicalProperties = Vector3.new(0.699999988, 2, 0, 1, 1)
+Part32.FrontParamA = -99999
+Part32.FrontParamB = 99999
+Part32.FrontSurface = Enum.SurfaceType.SmoothNoOutlines
+Part32.LeftParamA = -99999
+Part32.LeftParamB = 99999
+Part32.LeftSurface = Enum.SurfaceType.SmoothNoOutlines
+Part32.Material = Enum.Material.SmoothPlastic
+Part32.RightParamA = -99999
+Part32.RightParamB = 99999
+Part32.RightSurface = Enum.SurfaceType.SmoothNoOutlines
+Part32.TopParamA = -99999
+Part32.TopParamB = 99999
+Part32.TopSurface = Enum.SurfaceType.SmoothNoOutlines
+Part32.brickColor = BrickColor.new("Institutional white")
+Part32.FormFactor = Enum.FormFactor.Symmetric
+Part32.formFactor = Enum.FormFactor.Symmetric
+Script33.Name = "qPerfectionWeld"
+Script33.Parent = Part32
+table.insert(cors,sandbox(Script33,function()
+-- Created by Quenty (@Quenty, follow me on twitter).
+-- Should work with only ONE copy, seamlessly with weapons, trains, et cetera.
+-- Parts should be ANCHORED before use. It will, however, store relatives values and so when tools are reparented, it'll fix them.
+
+--[[ INSTRUCTIONS
+- Place in the model
+- Make sure model is anchored
+- That's it. It will weld the model and all children. 
+
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+
+This script is designed to be used is a regular script. In a local script it will weld, but it will not attempt to handle ancestory changes. 
+]]
+
+--[[ DOCUMENTATION
+- Will work in tools. If ran more than once it will not create more than one weld.  This is especially useful for tools that are dropped and then picked up again.
+- Will work in PBS servers
+- Will work as long as it starts out with the part anchored
+- Stores the relative CFrame as a CFrame value
+- Takes careful measure to reduce lag by not having a joint set off or affected by the parts offset from origin
+- Utilizes a recursive algorith to find all parts in the model
+- Will reweld on script reparent if the script is initially parented to a tool.
+- Welds as fast as possible
+]]
+
+-- qPerfectionWeld.lua
+-- Created 10/6/2014
+-- Author: Quenty
+-- Version 1.0.3
+
+-- Updated 10/14/2014 - Updated to 1.0.1
+--- Bug fix with existing ROBLOX welds ? Repro by asimo3089
+
+-- Updated 10/14/2014 - Updated to 1.0.2
+--- Fixed bug fix. 
+
+-- Updated 10/14/2014 - Updated to 1.0.3
+--- Now handles joints semi-acceptably. May be rather hacky with some joints. :/
+
+local NEVER_BREAK_JOINTS = false -- If you set this to true it will never break joints (this can create some welding issues, but can save stuff like hinges).
+
+
+local function CallOnChildren(Instance, FunctionToCall)
+	-- Calls a function on each of the children of a certain object, using recursion.  
+
+	FunctionToCall(Instance)
+
+	for _, Child in next, Instance:GetChildren() do
+		CallOnChildren(Child, FunctionToCall)
+	end
+end
+
+local function GetNearestParent(Instance, ClassName)
+	-- Returns the nearest parent of a certain class, or returns nil
+
+	local Ancestor = Instance
+	repeat
+		Ancestor = Ancestor.Parent
+		if Ancestor == nil then
+			return nil
+		end
+	until Ancestor:IsA(ClassName)
+
+	return Ancestor
+end
+
+local function GetBricks(StartInstance)
+	local List = {}
+
+	-- if StartInstance:IsA("BasePart") then
+	-- 	List[#List+1] = StartInstance
+	-- end
+
+	CallOnChildren(StartInstance, function(Item)
+		if Item:IsA("BasePart") then
+			List[#List+1] = Item;
+		end
+	end)
+
+	return List
+end
+
+local function Modify(Instance, Values)
+	-- Modifies an Instance by using a table.  
+
+	assert(type(Values) == "table", "Values is not a table");
+
+	for Index, Value in next, Values do
+		if type(Index) == "number" then
+			Value.Parent = Instance
+		else
+			Instance[Index] = Value
+		end
+	end
+	return Instance
+end
+
+local function Make(ClassType, Properties)
+	-- Using a syntax hack to create a nice way to Make new items.  
+
+	return Modify(Instance.new(ClassType), Properties)
+end
+
+local Surfaces = {"TopSurface", "BottomSurface", "LeftSurface", "RightSurface", "FrontSurface", "BackSurface"}
+local HingSurfaces = {"Hinge", "Motor", "SteppingMotor"}
+
+local function HasWheelJoint(Part)
+	for _, SurfaceName in pairs(Surfaces) do
+		for _, HingSurfaceName in pairs(HingSurfaces) do
+			if Part[SurfaceName].Name == HingSurfaceName then
+				return true
+			end
+		end
+	end
+	
+	return false
+end
+
+local function ShouldBreakJoints(Part)
+	--- We do not want to break joints of wheels/hinges. This takes the utmost care to not do this. There are
+	--  definitely some edge cases. 
+
+	if NEVER_BREAK_JOINTS then
+		return false
+	end
+	
+	if HasWheelJoint(Part) then
+		return false
+	end
+	
+	local Connected = Part:GetConnectedParts()
+	
+	if #Connected == 1 then
+		return false
+	end
+	
+	for _, Item in pairs(Connected) do
+		if HasWheelJoint(Item) then
+			return false
+		elseif not Item:IsDescendantOf(script.Parent) then
+			return false
+		end
+	end
+	
+	return true
+end
+
+local function WeldTogether(Part0, Part1, JointType, WeldParent)
+	--- Weld's 2 parts together
+	-- @param Part0 The first part
+	-- @param Part1 The second part (Dependent part most of the time).
+	-- @param [JointType] The type of joint. Defaults to weld.
+	-- @param [WeldParent] Parent of the weld, Defaults to Part0 (so GC is better).
+	-- @return The weld created.
+
+	JointType = JointType or "Weld"
+	local RelativeValue = Part1:FindFirstChild("qRelativeCFrameWeldValue")
+	
+	local NewWeld = Part1:FindFirstChild("qCFrameWeldThingy") or Instance.new(JointType)
+	Modify(NewWeld, {
+		Name = "qCFrameWeldThingy";
+		Part0  = Part0;
+		Part1  = Part1;
+		C0     = CFrame.new();--Part0.CFrame:inverse();
+		C1     = RelativeValue and RelativeValue.Value or Part1.CFrame:toObjectSpace(Part0.CFrame); --Part1.CFrame:inverse() * Part0.CFrame;-- Part1.CFrame:inverse();
+		Parent = Part1;
+	})
+
+	if not RelativeValue then
+		RelativeValue = Make("CFrameValue", {
+			Parent     = Part1;
+			Name       = "qRelativeCFrameWeldValue";
+			Archivable = true;
+			Value      = NewWeld.C1;
+		})
+	end
+
+	return NewWeld
+end
+
+local function WeldParts(Parts, MainPart, JointType, DoNotUnanchor)
+	-- @param Parts The Parts to weld. Should be anchored to prevent really horrible results.
+	-- @param MainPart The part to weld the model to (can be in the model).
+	-- @param [JointType] The type of joint. Defaults to weld. 
+	-- @parm DoNotUnanchor Boolean, if true, will not unachor the model after cmopletion.
+	
+	for _, Part in pairs(Parts) do
+		if ShouldBreakJoints(Part) then
+			Part:BreakJoints()
+		end
+	end
+	
+	for _, Part in pairs(Parts) do
+		if Part ~= MainPart then
+			WeldTogether(MainPart, Part, JointType, MainPart)
+		end
+	end
+
+	if not DoNotUnanchor then
+		for _, Part in pairs(Parts) do
+			Part.Anchored = false
+		end
+		MainPart.Anchored = false
+	end
+end
+
+local function PerfectionWeld()	
+	local Tool = GetNearestParent(script, "Tool")
+
+	local Parts = GetBricks(script.Parent)
+	local PrimaryPart = Tool and Tool:FindFirstChild("Handle") and Tool.Handle:IsA("BasePart") and Tool.Handle or script.Parent:IsA("Model") and script.Parent.PrimaryPart or Parts[1]
+
+	if PrimaryPart then
+		WeldParts(Parts, PrimaryPart, "Weld", false)
+	else
+		warn("qWeld - Unable to weld part")
+	end
+	
+	return Tool
+end
+
+local Tool = PerfectionWeld()
+
+
+if Tool and script.ClassName == "Script" then
+	--- Don't bother with local scripts
+
+	script.Parent.AncestryChanged:connect(function()
+		PerfectionWeld()
+	end)
+end
+
+-- Created by Quenty (@Quenty, follow me on twitter).
+
+end))
+MeshPart34.Name = "bomby"
+MeshPart34.Parent = Part32
+MeshPart34.CFrame = CFrame.new(-8.81245422, 0.730512142, -16.5381985, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+MeshPart34.Position = Vector3.new(-8.812454223632812, 0.7305121421813965, -16.538198471069336)
+MeshPart34.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+MeshPart34.Size = Vector3.new(1.2846884727478027, 1.3259999752044678, 1.586968183517456)
+MeshPart34.Anchored = true
+MeshPart34.BrickColor = BrickColor.new("Really black")
+MeshPart34.CanCollide = false
+MeshPart34.Material = Enum.Material.SmoothPlastic
+MeshPart34.brickColor = BrickColor.new("Really black")
+MeshPart34.TextureID = "rbxassetid://5801999498"
+MeshPart35.Name = "bomby"
+MeshPart35.Parent = Part32
+MeshPart35.CFrame = CFrame.new(-8.81121826, 0.737137318, -16.5385342, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+MeshPart35.Position = Vector3.new(-8.81121826171875, 0.7371373176574707, -16.53853416442871)
+MeshPart35.Color = Color3.new(0.0666667, 0.0666667, 0.0666667)
+MeshPart35.Size = Vector3.new(1.2780083417892456, 1.3191051483154297, 1.5787162780761719)
+MeshPart35.Anchored = true
+MeshPart35.BrickColor = BrickColor.new("Really black")
+MeshPart35.CanCollide = false
+MeshPart35.Material = Enum.Material.SmoothPlastic
+MeshPart35.brickColor = BrickColor.new("Really black")
+Part36.Name = "right"
+Part36.Parent = Part32
+Part36.CFrame = CFrame.new(-8.79464722, 1.18348122, -16.4310665, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part36.Position = Vector3.new(-8.794647216796875, 1.183481216430664, -16.431066513061523)
+Part36.Color = Color3.new(0.486275, 0.0156863, 0.239216)
+Part36.Size = Vector3.new(0.8640406727790833, 0.8640406727790833, 0.8640406727790833)
+Part36.Anchored = true
+Part36.BottomSurface = Enum.SurfaceType.Smooth
+Part36.BrickColor = BrickColor.new("Dark red")
+Part36.CanCollide = false
+Part36.Material = Enum.Material.SmoothPlastic
+Part36.TopSurface = Enum.SurfaceType.Smooth
+Part36.brickColor = BrickColor.new("Dark red")
+Part36.Shape = Enum.PartType.Ball
+Part37.Parent = Part32
+Part37.CFrame = CFrame.new(-8.79464722, 1.18348122, -16.6589413, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part37.Position = Vector3.new(-8.794647216796875, 1.183481216430664, -16.6589412689209)
+Part37.Color = Color3.new(0.486275, 0.0156863, 0.239216)
+Part37.Size = Vector3.new(0.8640406727790833, 0.8640406727790833, 0.8640406727790833)
+Part37.Anchored = true
+Part37.BottomSurface = Enum.SurfaceType.Smooth
+Part37.BrickColor = BrickColor.new("Dark red")
+Part37.CanCollide = false
+Part37.Material = Enum.Material.SmoothPlastic
+Part37.TopSurface = Enum.SurfaceType.Smooth
+Part37.brickColor = BrickColor.new("Dark red")
+Part37.Shape = Enum.PartType.Ball
+Humanoid38.Parent = Model0
+Humanoid38.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None
+Humanoid38.HealthDisplayDistance = 0
+Humanoid38.JumpPower = 60
+Humanoid38.LeftLeg = Part25
+Humanoid38.MaxSlopeAngle = 89.9000015258789
+Humanoid38.NameDisplayDistance = 0
+Humanoid38.NameOcclusion = Enum.NameOcclusion.EnemyOcclusion
+Humanoid38.RightLeg = Part32
+Humanoid38.Torso = Part41
+Humanoid38.WalkSpeed = 0.5
+Model39.Name = "Status"
+Model39.Parent = Humanoid38
+Model40.Name = "AvalibleSpawns"
+Model40.Parent = Model39
+Part41.Name = "HumanoidRootPart"
+Part41.Parent = Model0
+Part41.CFrame = CFrame.new(-9.39996338, 3, -16.4999752, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part41.Position = Vector3.new(-9.39996337890625, 3, -16.499975204467773)
+Part41.Color = Color3.new(0.905882, 0.905882, 0.92549)
+Part41.Transparency = 1
+Part41.Velocity = Vector3.new(-1.401298464324817e-45, 0, 1.401298464324817e-45)
+Part41.Size = Vector3.new(2, 2, 1)
+Part41.BackParamA = -99999
+Part41.BackParamB = 99999
+Part41.BackSurface = Enum.SurfaceType.SmoothNoOutlines
+Part41.BottomParamA = -99999
+Part41.BottomParamB = 99999
+Part41.BottomSurface = Enum.SurfaceType.SmoothNoOutlines
+Part41.BrickColor = BrickColor.new("Pearl")
+Part41.CanCollide = false
+Part41.CustomPhysicalProperties = Vector3.new(0.699999988, 2, 0, 1, 1)
+Part41.FrontParamA = -99999
+Part41.FrontParamB = 99999
+Part41.FrontSurface = Enum.SurfaceType.SmoothNoOutlines
+Part41.LeftParamA = -99999
+Part41.LeftParamB = 99999
+Part41.LeftSurface = Enum.SurfaceType.SmoothNoOutlines
+Part41.Material = Enum.Material.SmoothPlastic
+Part41.RightParamA = -99999
+Part41.RightParamB = 99999
+Part41.RightSurface = Enum.SurfaceType.SmoothNoOutlines
+Part41.TopParamA = -99999
+Part41.TopParamB = 99999
+Part41.TopSurface = Enum.SurfaceType.SmoothNoOutlines
+Part41.brickColor = BrickColor.new("Pearl")
+Part41.FormFactor = Enum.FormFactor.Symmetric
+Part41.formFactor = Enum.FormFactor.Symmetric
+Motor6D42.Name = "RootJoint"
+Motor6D42.Parent = Part41
+Motor6D42.MaxVelocity = 0.10000000149011612
+Motor6D42.C0 = CFrame.new(0, 0, 0, -1, 0, 0, 0, 0, 1, 0, 1, -0)
+Motor6D42.C1 = CFrame.new(0, 0, 0, -1, 0, 0, 0, 0, 1, 0, 1, -0)
+Motor6D42.Part0 = Part41
+Motor6D42.Part1 = Part9
+Motor6D42.part1 = Part9
+CharacterMesh43.Parent = Model0
+CharacterMesh43.BodyPart = Enum.BodyPart.Torso
+CharacterMesh43.MeshId = 27111894
+Script44.Name = "Health"
+Script44.Parent = Model0
+table.insert(cors,sandbox(Script44,function()
+--Responsible for regening a player's humanoid's health
+
+-- declarations
+local Figure = script.Parent
+local Head = Figure:WaitForChild("Head")
+local Humanoid;
+for _,Child in pairs(Figure:GetChildren())do
+if Child and Child.ClassName=="Humanoid"then
+Humanoid=Child;
+end;
+end;
+local regening = false
+
+-- regeneration
+function regenHealth()
+	if regening then return end
+	regening = true
+	
+	while Humanoid.Health < Humanoid.MaxHealth do
+		local s = wait(1)
+		local health = Humanoid.Health
+		if health~=0 and health < Humanoid.MaxHealth then
+			local newHealthDelta = 0.01 * s * Humanoid.MaxHealth
+			health = health + newHealthDelta
+			Humanoid.Health = math.min(health,Humanoid.MaxHealth)
+		end
+	end
+	
+	if Humanoid.Health > Humanoid.MaxHealth then
+		Humanoid.Health = Humanoid.MaxHealth
+	end
+	
+	regening = false
+end
+
+Humanoid.HealthChanged:connect(regenHealth)
+  
+end))
+Script45.Name = "AnimateSauce"
+Script45.Parent = Model0
+table.insert(cors,sandbox(Script45,function()
+function   waitForChild(parent, childName)
+local child = parent:findFirstChild(childName)
+if child then return child end
+while true do
+child = parent.ChildAdded:wait()
+if child.Name==childName then return child end
+end
+end
+local Figure = script.Parent
+local Torso = waitForChild(Figure, "Torso")
+local RightShoulder = waitForChild(Torso, "Right Shoulder")
+local LeftShoulder = waitForChild(Torso, "Left Shoulder")
+local RightHip = waitForChild(Torso, "Right Hip")
+local LeftHip = waitForChild(Torso, "Left Hip")
+local Neck = waitForChild(Torso, "Neck")
+local Humanoid;
+for _,Child in pairs(Figure:GetChildren())do
+if Child and Child.ClassName=="Humanoid"then
+Humanoid=Child;
+end;
+end;
+local pose = "Standing"
+local currentAnim = ""
+local currentAnimInstance = nil
+local currentAnimTrack = nil
+local currentAnimKeyframeHandler = nil
+local currentAnimSpeed = 1.0
+local animTable = {}
+local animNames = { 
+idle = {
+{ id = "http://www.roblox.com/asset/?id=180435571", weight = 9 },
+{ id = "http://www.roblox.com/asset/?id=180435792", weight = 1 }
+},
+walk = { 
+{ id = "http://www.roblox.com/asset/?id=180426354", weight = 10 } 
+}, 
+run = {
+{ id = "http://www.roblox.com/asset/?id=252557606", weight = 20 } 
+}, 
+jump = {
+{ id = "http://www.roblox.com/asset/?id=125750702", weight = 10 } 
+}, 
+fall = {
+{ id = "http://www.roblox.com/asset/?id=180436148", weight = 10 } 
+}, 
+climb = {
+{ id = "http://www.roblox.com/asset/?id=180436334", weight = 10 } 
+}, 
+sit = {
+{ id = "http://www.roblox.com/asset/?id=178130996", weight = 10 } 
+},
+toolnone = {
+{ id = "http://www.roblox.com/asset/?id=182393478", weight = 10 } 
+},
+toolslash = {
+{ id = "http://www.roblox.com/asset/?id=129967390", weight = 10 } 
+--{ id = "slash.xml", weight = 10 } 
+},
+toollunge = {
+{ id = "http://www.roblox.com/asset/?id=129967478", weight = 10 } 
+},
+wave = {
+{ id = "http://www.roblox.com/asset/?id=128777973", weight = 10 } 
+},
+point = {
+{ id = "http://www.roblox.com/asset/?id=128853357", weight = 10 } 
+},
+dance1 = {
+{ id = "http://www.roblox.com/asset/?id=182435998", weight = 10 }, 
+{ id = "http://www.roblox.com/asset/?id=182491037", weight = 10 }, 
+{ id = "http://www.roblox.com/asset/?id=182491065", weight = 10 } 
+},
+dance2 = {
+{ id = "http://www.roblox.com/asset/?id=182436842", weight = 10 }, 
+{ id = "http://www.roblox.com/asset/?id=182491248", weight = 10 }, 
+{ id = "http://www.roblox.com/asset/?id=182491277", weight = 10 } 
+},
+dance3 = {
+{ id = "http://www.roblox.com/asset/?id=182436935", weight = 10 }, 
+{ id = "http://www.roblox.com/asset/?id=182491368", weight = 10 }, 
+{ id = "http://www.roblox.com/asset/?id=182491423", weight = 10 } 
+},
+laugh = {
+{ id = "http://www.roblox.com/asset/?id=129423131", weight = 10 } 
+},
+cheer = {
+{ id = "http://www.roblox.com/asset/?id=129423030", weight = 10 } 
+},
+}
+local dances = {"dance1", "dance2", "dance3"}
+
+-- Existance in this list signifies that it is an emote, the value indicates if it is a looping emote
+local emoteNames = { wave = false, point = false, dance1 = true, dance2 = true, dance3 = true, laugh = false, cheer = false}
+
+function configureAnimationSet(name, fileList)
+if (animTable[name] ~= nil) then
+for _, connection in pairs(animTable[name].connections) do
+connection:disconnect()
+end
+end
+animTable[name] = {}
+animTable[name].count = 0
+animTable[name].totalWeight = 0
+animTable[name].connections = {}
+
+-- check for config values
+local config = script:FindFirstChild(name)
+if (config ~= nil) then
+--print("Loading anims " .. name)
+table.insert(animTable[name].connections, config.ChildAdded:connect(function(child) configureAnimationSet(name, fileList) end))
+table.insert(animTable[name].connections, config.ChildRemoved:connect(function(child) configureAnimationSet(name, fileList) end))
+local idx = 1
+for _, childPart in pairs(config:GetChildren()) do
+if (childPart:IsA("Animation")) then
+table.insert(animTable[name].connections, childPart.Changed:connect(function(property) configureAnimationSet(name, fileList) end))
+animTable[name][idx] = {}
+animTable[name][idx].anim = childPart
+local weightObject = childPart:FindFirstChild("Weight")
+if (weightObject == nil) then
+animTable[name][idx].weight = 1
+else
+animTable[name][idx].weight = weightObject.Value
+end
+animTable[name].count = animTable[name].count + 1
+animTable[name].totalWeight = animTable[name].totalWeight + animTable[name][idx].weight
+--print(name .. " [" .. idx .. "] " .. animTable[name][idx].anim.AnimationId .. " (" .. animTable[name][idx].weight .. ")")
+idx = idx + 1
+end
+end
+end
+
+-- fallback to defaults
+if (animTable[name].count <= 0) then
+for idx, anim in pairs(fileList) do
+animTable[name][idx] = {}
+animTable[name][idx].anim = Instance.new("Animation")
+animTable[name][idx].anim.Name = name
+animTable[name][idx].anim.AnimationId = anim.id
+animTable[name][idx].weight = anim.weight
+animTable[name].count = animTable[name].count + 1
+animTable[name].totalWeight = animTable[name].totalWeight + anim.weight
+--print(name .. " [" .. idx .. "] " .. anim.id .. " (" .. anim.weight .. ")")
+end
+end
+end
+
+-- Setup animation objects
+function scriptChildModified(child)
+local fileList = animNames[child.Name]
+if (fileList ~= nil) then
+configureAnimationSet(child.Name, fileList)
+end
+end
+
+script.ChildAdded:connect(scriptChildModified)
+script.ChildRemoved:connect(scriptChildModified)
+
+
+for name, fileList in pairs(animNames) do 
+configureAnimationSet(name, fileList)
+end
+
+-- ANIMATION
+
+-- declarations
+local toolAnim = "None"
+local toolAnimTime = 0
+
+local jumpAnimTime = 0
+local jumpAnimDuration = 0.3
+
+local toolTransitionTime = 0.1
+local fallTransitionTime = 0.3
+local jumpMaxLimbVelocity = 0.75
+
+-- functions
+
+function stopAllAnimations()
+local oldAnim = currentAnim
+
+-- return to idle if finishing an emote
+if (emoteNames[oldAnim] ~= nil and emoteNames[oldAnim] == false) then
+oldAnim = "idle"
+end
+
+currentAnim = ""
+currentAnimInstance = nil
+if (currentAnimKeyframeHandler ~= nil) then
+currentAnimKeyframeHandler:disconnect()
+end
+
+if (currentAnimTrack ~= nil) then
+currentAnimTrack:Stop()
+currentAnimTrack:Destroy()
+currentAnimTrack = nil
+end
+return oldAnim
+end
+
+function setAnimationSpeed(speed)
+if speed ~= currentAnimSpeed then
+currentAnimSpeed = speed
+currentAnimTrack:AdjustSpeed(currentAnimSpeed)
+end
+end
+
+function keyFrameReachedFunc(frameName)
+if (frameName == "End") then
+
+local repeatAnim = currentAnim
+-- return to idle if finishing an emote
+if (emoteNames[repeatAnim] ~= nil and emoteNames[repeatAnim] == false) then
+repeatAnim = "idle"
+end
+
+local animSpeed = currentAnimSpeed
+playAnimation(repeatAnim, 0.0, Humanoid)
+setAnimationSpeed(animSpeed)
+end
+end
+
+-- Preload animations
+function playAnimation(animName, transitionTime, humanoid) 
+
+local roll = math.random(1, animTable[animName].totalWeight) 
+local origRoll = roll
+local idx = 1
+while (roll > animTable[animName][idx].weight) do
+roll = roll - animTable[animName][idx].weight
+idx = idx + 1
+end
+--print(animName .. " " .. idx .. " [" .. origRoll .. "]")
+local anim = animTable[animName][idx].anim
+-- switch animation
+if (anim ~= currentAnimInstance) then
+if (currentAnimTrack ~= nil) then
+currentAnimTrack:Stop(transitionTime)
+currentAnimTrack:Destroy()
+end
+currentAnimSpeed = 1.0
+-- load it to the humanoid; get AnimationTrack
+currentAnimTrack = humanoid:LoadAnimation(anim)
+-- play the animation
+currentAnimTrack:Play(transitionTime)
+currentAnim = animName
+currentAnimInstance = anim
+-- set up keyframe name triggers
+if (currentAnimKeyframeHandler ~= nil) then
+currentAnimKeyframeHandler:disconnect()
+end
+currentAnimKeyframeHandler = currentAnimTrack.KeyframeReached:connect(keyFrameReachedFunc)
+end
+end
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+local toolAnimName = ""
+local toolAnimTrack = nil
+local toolAnimInstance = nil
+local currentToolAnimKeyframeHandler = nil
+function toolKeyFrameReachedFunc(frameName)
+if (frameName == "End") then
+--print("Keyframe : ".. frameName)
+playToolAnimation(toolAnimName, 0.0, Humanoid)
+end
+end
+function playToolAnimation(animName, transitionTime, humanoid) 
+local roll = math.random(1, animTable[animName].totalWeight) 
+local origRoll = roll
+local idx = 1
+while (roll > animTable[animName][idx].weight) do
+roll = roll - animTable[animName][idx].weight
+idx = idx + 1
+end
+--print(animName .. " * " .. idx .. " [" .. origRoll .. "]")
+local anim = animTable[animName][idx].anim
+if (toolAnimInstance ~= anim) then
+if (toolAnimTrack ~= nil) then
+toolAnimTrack:Stop()
+toolAnimTrack:Destroy()
+transitionTime = 0
+end
+-- load it to the humanoid; get AnimationTrack
+toolAnimTrack = humanoid:LoadAnimation(anim)
+-- play the animation
+toolAnimTrack:Play(transitionTime)
+toolAnimName = animName
+toolAnimInstance = anim
+currentToolAnimKeyframeHandler = toolAnimTrack.KeyframeReached:connect(toolKeyFrameReachedFunc)
+end
+end
+function stopToolAnimations()
+local oldAnim = toolAnimName
+if (currentToolAnimKeyframeHandler ~= nil) then
+currentToolAnimKeyframeHandler:disconnect()
+end
+toolAnimName = ""
+toolAnimInstance = nil
+if (toolAnimTrack ~= nil) then
+toolAnimTrack:Stop()
+toolAnimTrack:Destroy()
+toolAnimTrack = nil
+end
+return oldAnim
+end
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+function onRunning(speed)
+if speed>0.01 then
+if Figure and Humanoid and Humanoid.WalkSpeed<17 then
+playAnimation("walk", 0.1, Humanoid);
+elseif Figure and Humanoid and Humanoid.WalkSpeed>17 then
+playAnimation("run", 0.1, Humanoid);
+end;
+if currentAnimInstance and currentAnimInstance.AnimationId == "http://www.roblox.com/asset/?id=180426354" then
+setAnimationSpeed(speed / 14.5)
+end
+pose = "Running"
+else
+playAnimation("idle", 0.1, Humanoid)
+pose = "Standing"
+end
+end
+function onDied()
+pose = "Dead"
+end
+function onJumping()
+playAnimation("jump", 0.1, Humanoid)
+jumpAnimTime = jumpAnimDuration
+pose = "Jumping"
+end
+function onClimbing(speed)
+playAnimation("climb", 0.1, Humanoid)
+setAnimationSpeed(speed / 12.0)
+pose = "Climbing"
+end
+function onGettingUp()
+pose = "GettingUp"
+end
+function onFreeFall()
+if (jumpAnimTime <= 0) then
+playAnimation("fall", fallTransitionTime, Humanoid)
+end
+pose = "FreeFall"
+end
+function onFallingDown()
+pose = "FallingDown"
+end
+function onSeated()
+pose = "Seated"
+end
+function onPlatformStanding()
+pose = "PlatformStanding"
+end
+function onSwimming(speed)
+if speed>0 then
+pose = "Running"
+else
+pose = "Standing"
+end
+end
+
+function getTool()
+for _, kid in ipairs(Figure:GetChildren()) do
+if kid.className == "Tool" then return kid end
+end
+return nil
+end
+
+function getToolAnim(tool)
+for _, c in ipairs(tool:GetChildren()) do
+if c.Name == "toolanim" and c.className == "StringValue" then
+return c
+end
+end
+return nil
+end
+
+function animateTool()
+
+if (toolAnim == "None") then
+playToolAnimation("toolnone", toolTransitionTime, Humanoid)
+return
+end
+
+if (toolAnim == "Slash") then
+playToolAnimation("toolslash", 0, Humanoid)
+return
+end
+
+if (toolAnim == "Lunge") then
+playToolAnimation("toollunge", 0, Humanoid)
+return
+end
+end
+
+function moveSit()
+RightShoulder.MaxVelocity = 0.15
+LeftShoulder.MaxVelocity = 0.15
+RightShoulder:SetDesiredAngle(3.14 /2)
+LeftShoulder:SetDesiredAngle(-3.14 /2)
+RightHip:SetDesiredAngle(3.14 /2)
+LeftHip:SetDesiredAngle(-3.14 /2)
+end
+
+local lastTick = 0
+
+function move(time)
+local amplitude = 1
+local frequency = 1
+  local deltaTime = time - lastTick
+  lastTick = time
+
+local climbFudge = 0
+local setAngles = false
+
+  if (jumpAnimTime > 0) then
+  jumpAnimTime = jumpAnimTime - deltaTime
+  end
+
+if (pose == "FreeFall" and jumpAnimTime <= 0) then
+playAnimation("fall", fallTransitionTime, Humanoid)
+elseif (pose == "Seated") then
+playAnimation("sit", 0.5, Humanoid)
+return
+elseif (pose == "Running") then
+if Figure and Humanoid and Humanoid.WalkSpeed<17 then
+playAnimation("walk", 0.1, Humanoid);
+elseif Figure and Humanoid and Humanoid.WalkSpeed>17 then
+playAnimation("run", 0.1, Humanoid);
+end;
+elseif (pose == "Dead" or pose == "GettingUp" or pose == "FallingDown" or pose == "Seated" or pose == "PlatformStanding") then
+stopAllAnimations()
+amplitude = 0.1
+frequency = 1
+setAngles = true
+end
+if (setAngles) then
+local desiredAngle = amplitude * math.sin(time * frequency)
+RightShoulder:SetDesiredAngle(desiredAngle + climbFudge)
+LeftShoulder:SetDesiredAngle(desiredAngle - climbFudge)
+RightHip:SetDesiredAngle(-desiredAngle)
+LeftHip:SetDesiredAngle(-desiredAngle)
+end
+-- Tool Animation handling
+local tool = getTool()
+if tool and tool:FindFirstChild("Handle") then
+local animStringValueObject = getToolAnim(tool)
+if animStringValueObject then
+toolAnim = animStringValueObject.Value
+-- message recieved, delete StringValue
+animStringValueObject.Parent = nil
+toolAnimTime = time + .3
+end
+if time > toolAnimTime then
+toolAnimTime = 0
+toolAnim = "None"
+end
+animateTool()
+else
+stopToolAnimations()
+toolAnim = "None"
+toolAnimInstance = nil
+toolAnimTime = 0
+end
+end
+-- connect events
+Humanoid.Died:connect(onDied)
+Humanoid.Running:connect(onRunning)
+Humanoid.Jumping:connect(onJumping)
+Humanoid.Climbing:connect(onClimbing)
+Humanoid.GettingUp:connect(onGettingUp)
+Humanoid.FreeFalling:connect(onFreeFall)
+Humanoid.FallingDown:connect(onFallingDown)
+Humanoid.Seated:connect(onSeated)
+Humanoid.PlatformStanding:connect(onPlatformStanding)
+Humanoid.Swimming:connect(onSwimming)
+local runService = game:GetService("RunService");
+playAnimation("idle", 0.1, Humanoid)
+pose = "Standing"
+while Wait(0)do
+local _,time=wait(0)
+move(time)
+end
+end))
+StringValue46.Name = "climb"
+StringValue46.Parent = Script45
+Animation47.Name = "ClimbAnim"
+Animation47.Parent = StringValue46
+Animation47.AnimationId = "http://www.roblox.com/asset/?id=180436334"
+StringValue48.Name = "fall"
+StringValue48.Parent = Script45
+Animation49.Name = "FallAnim"
+Animation49.Parent = StringValue48
+Animation49.AnimationId = "http://www.roblox.com/asset/?id=180436148"
+StringValue50.Name = "idle"
+StringValue50.Parent = Script45
+Animation51.Name = "Animation1"
+Animation51.Parent = StringValue50
+Animation51.AnimationId = "http://www.roblox.com/asset/?id=180435571"
+NumberValue52.Name = "Weight"
+NumberValue52.Parent = Animation51
+NumberValue52.Value = 9
+Animation53.Name = "Animation2"
+Animation53.Parent = StringValue50
+Animation53.AnimationId = "http://www.roblox.com/asset/?id=180435792"
+NumberValue54.Name = "Weight"
+NumberValue54.Parent = Animation53
+NumberValue54.Value = 1
+StringValue55.Name = "jump"
+StringValue55.Parent = Script45
+Animation56.Name = "JumpAnim"
+Animation56.Parent = StringValue55
+Animation56.AnimationId = "http://www.roblox.com/asset/?id=125750702"
+StringValue57.Name = "run"
+StringValue57.Parent = Script45
+Animation58.Name = "RunAnim"
+Animation58.Parent = StringValue57
+Animation58.AnimationId = "rbxassetid://6032906760"
+StringValue59.Name = "sit"
+StringValue59.Parent = Script45
+Animation60.Name = "SitAnim"
+Animation60.Parent = StringValue59
+Animation60.AnimationId = "http://www.roblox.com/asset/?id=178130996"
+StringValue61.Name = "toolnone"
+StringValue61.Parent = Script45
+Animation62.Name = "ToolNoneAnim"
+Animation62.Parent = StringValue61
+Animation62.AnimationId = "http://www.roblox.com/asset/?id=182393478"
+StringValue63.Name = "walk"
+StringValue63.Parent = Script45
+Animation64.Name = "WalkAnim"
+Animation64.Parent = StringValue63
+Animation64.AnimationId = "rbxassetid://180426354"
+Animation65.Name = "Swing"
+Animation65.Parent = Model0
+Animation65.AnimationId = "rbxassetid://54584713"
+CharacterMesh66.Parent = Model0
+CharacterMesh66.BodyPart = Enum.BodyPart.RightArm
+CharacterMesh66.MeshId = 27111864
+Part67.Name = "Right Arm"
+Part67.Parent = Model0
+Part67.CFrame = CFrame.new(-7.89996338, 3, -16.4999752, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part67.Position = Vector3.new(-7.89996337890625, 3, -16.499975204467773)
+Part67.Color = Color3.new(0.972549, 0.972549, 0.972549)
+Part67.Transparency = 1
+Part67.Velocity = Vector3.new(-1.401298464324817e-45, 0, 1.401298464324817e-45)
+Part67.Size = Vector3.new(1, 2, 1)
+Part67.BackParamA = -99999
+Part67.BackParamB = 99999
+Part67.BackSurface = Enum.SurfaceType.SmoothNoOutlines
+Part67.BottomParamA = -99999
+Part67.BottomParamB = 99999
+Part67.BottomSurface = Enum.SurfaceType.SmoothNoOutlines
+Part67.BrickColor = BrickColor.new("Institutional white")
+Part67.CanCollide = false
+Part67.CustomPhysicalProperties = Vector3.new(0.699999988, 2, 0, 1, 1)
+Part67.FrontParamA = -99999
+Part67.FrontParamB = 99999
+Part67.FrontSurface = Enum.SurfaceType.SmoothNoOutlines
+Part67.LeftParamA = -99999
+Part67.LeftParamB = 99999
+Part67.LeftSurface = Enum.SurfaceType.SmoothNoOutlines
+Part67.Material = Enum.Material.SmoothPlastic
+Part67.RightParamA = -99999
+Part67.RightParamB = 99999
+Part67.RightSurface = Enum.SurfaceType.SmoothNoOutlines
+Part67.TopParamA = -99999
+Part67.TopParamB = 99999
+Part67.TopSurface = Enum.SurfaceType.SmoothNoOutlines
+Part67.brickColor = BrickColor.new("Institutional white")
+Part67.FormFactor = Enum.FormFactor.Symmetric
+Part67.formFactor = Enum.FormFactor.Symmetric
+Script68.Name = "qPerfectionWeld"
+Script68.Parent = Part67
+table.insert(cors,sandbox(Script68,function()
+-- Created by Quenty (@Quenty, follow me on twitter).
+-- Should work with only ONE copy, seamlessly with weapons, trains, et cetera.
+-- Parts should be ANCHORED before use. It will, however, store relatives values and so when tools are reparented, it'll fix them.
+
+--[[ INSTRUCTIONS
+- Place in the model
+- Make sure model is anchored
+- That's it. It will weld the model and all children. 
+
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+THIS SCRIPT SHOULD BE USED ONLY BY ITSELF. THE MODEL SHOULD BE ANCHORED. 
+
+This script is designed to be used is a regular script. In a local script it will weld, but it will not attempt to handle ancestory changes. 
+]]
+
+--[[ DOCUMENTATION
+- Will work in tools. If ran more than once it will not create more than one weld.  This is especially useful for tools that are dropped and then picked up again.
+- Will work in PBS servers
+- Will work as long as it starts out with the part anchored
+- Stores the relative CFrame as a CFrame value
+- Takes careful measure to reduce lag by not having a joint set off or affected by the parts offset from origin
+- Utilizes a recursive algorith to find all parts in the model
+- Will reweld on script reparent if the script is initially parented to a tool.
+- Welds as fast as possible
+]]
+
+-- qPerfectionWeld.lua
+-- Created 10/6/2014
+-- Author: Quenty
+-- Version 1.0.3
+
+-- Updated 10/14/2014 - Updated to 1.0.1
+--- Bug fix with existing ROBLOX welds ? Repro by asimo3089
+
+-- Updated 10/14/2014 - Updated to 1.0.2
+--- Fixed bug fix. 
+
+-- Updated 10/14/2014 - Updated to 1.0.3
+--- Now handles joints semi-acceptably. May be rather hacky with some joints. :/
+
+local NEVER_BREAK_JOINTS = false -- If you set this to true it will never break joints (this can create some welding issues, but can save stuff like hinges).
+
+
+local function CallOnChildren(Instance, FunctionToCall)
+	-- Calls a function on each of the children of a certain object, using recursion.  
+
+	FunctionToCall(Instance)
+
+	for _, Child in next, Instance:GetChildren() do
+		CallOnChildren(Child, FunctionToCall)
+	end
+end
+
+local function GetNearestParent(Instance, ClassName)
+	-- Returns the nearest parent of a certain class, or returns nil
+
+	local Ancestor = Instance
+	repeat
+		Ancestor = Ancestor.Parent
+		if Ancestor == nil then
+			return nil
+		end
+	until Ancestor:IsA(ClassName)
+
+	return Ancestor
+end
+
+local function GetBricks(StartInstance)
+	local List = {}
+
+	-- if StartInstance:IsA("BasePart") then
+	-- 	List[#List+1] = StartInstance
+	-- end
+
+	CallOnChildren(StartInstance, function(Item)
+		if Item:IsA("BasePart") then
+			List[#List+1] = Item;
+		end
+	end)
+
+	return List
+end
+
+local function Modify(Instance, Values)
+	-- Modifies an Instance by using a table.  
+
+	assert(type(Values) == "table", "Values is not a table");
+
+	for Index, Value in next, Values do
+		if type(Index) == "number" then
+			Value.Parent = Instance
+		else
+			Instance[Index] = Value
+		end
+	end
+	return Instance
+end
+
+local function Make(ClassType, Properties)
+	-- Using a syntax hack to create a nice way to Make new items.  
+
+	return Modify(Instance.new(ClassType), Properties)
+end
+
+local Surfaces = {"TopSurface", "BottomSurface", "LeftSurface", "RightSurface", "FrontSurface", "BackSurface"}
+local HingSurfaces = {"Hinge", "Motor", "SteppingMotor"}
+
+local function HasWheelJoint(Part)
+	for _, SurfaceName in pairs(Surfaces) do
+		for _, HingSurfaceName in pairs(HingSurfaces) do
+			if Part[SurfaceName].Name == HingSurfaceName then
+				return true
+			end
+		end
+	end
+	
+	return false
+end
+
+local function ShouldBreakJoints(Part)
+	--- We do not want to break joints of wheels/hinges. This takes the utmost care to not do this. There are
+	--  definitely some edge cases. 
+
+	if NEVER_BREAK_JOINTS then
+		return false
+	end
+	
+	if HasWheelJoint(Part) then
+		return false
+	end
+	
+	local Connected = Part:GetConnectedParts()
+	
+	if #Connected == 1 then
+		return false
+	end
+	
+	for _, Item in pairs(Connected) do
+		if HasWheelJoint(Item) then
+			return false
+		elseif not Item:IsDescendantOf(script.Parent) then
+			return false
+		end
+	end
+	
+	return true
+end
+
+local function WeldTogether(Part0, Part1, JointType, WeldParent)
+	--- Weld's 2 parts together
+	-- @param Part0 The first part
+	-- @param Part1 The second part (Dependent part most of the time).
+	-- @param [JointType] The type of joint. Defaults to weld.
+	-- @param [WeldParent] Parent of the weld, Defaults to Part0 (so GC is better).
+	-- @return The weld created.
+
+	JointType = JointType or "Weld"
+	local RelativeValue = Part1:FindFirstChild("qRelativeCFrameWeldValue")
+	
+	local NewWeld = Part1:FindFirstChild("qCFrameWeldThingy") or Instance.new(JointType)
+	Modify(NewWeld, {
+		Name = "qCFrameWeldThingy";
+		Part0  = Part0;
+		Part1  = Part1;
+		C0     = CFrame.new();--Part0.CFrame:inverse();
+		C1     = RelativeValue and RelativeValue.Value or Part1.CFrame:toObjectSpace(Part0.CFrame); --Part1.CFrame:inverse() * Part0.CFrame;-- Part1.CFrame:inverse();
+		Parent = Part1;
+	})
+
+	if not RelativeValue then
+		RelativeValue = Make("CFrameValue", {
+			Parent     = Part1;
+			Name       = "qRelativeCFrameWeldValue";
+			Archivable = true;
+			Value      = NewWeld.C1;
+		})
+	end
+
+	return NewWeld
+end
+
+local function WeldParts(Parts, MainPart, JointType, DoNotUnanchor)
+	-- @param Parts The Parts to weld. Should be anchored to prevent really horrible results.
+	-- @param MainPart The part to weld the model to (can be in the model).
+	-- @param [JointType] The type of joint. Defaults to weld. 
+	-- @parm DoNotUnanchor Boolean, if true, will not unachor the model after cmopletion.
+	
+	for _, Part in pairs(Parts) do
+		if ShouldBreakJoints(Part) then
+			Part:BreakJoints()
+		end
+	end
+	
+	for _, Part in pairs(Parts) do
+		if Part ~= MainPart then
+			WeldTogether(MainPart, Part, JointType, MainPart)
+		end
+	end
+
+	if not DoNotUnanchor then
+		for _, Part in pairs(Parts) do
+			Part.Anchored = false
+		end
+		MainPart.Anchored = false
+	end
+end
+
+local function PerfectionWeld()	
+	local Tool = GetNearestParent(script, "Tool")
+
+	local Parts = GetBricks(script.Parent)
+	local PrimaryPart = Tool and Tool:FindFirstChild("Handle") and Tool.Handle:IsA("BasePart") and Tool.Handle or script.Parent:IsA("Model") and script.Parent.PrimaryPart or Parts[1]
+
+	if PrimaryPart then
+		WeldParts(Parts, PrimaryPart, "Weld", false)
+	else
+		warn("qWeld - Unable to weld part")
+	end
+	
+	return Tool
+end
+
+local Tool = PerfectionWeld()
+
+
+if Tool and script.ClassName == "Script" then
+	--- Don't bother with local scripts
+
+	script.Parent.AncestryChanged:connect(function()
+		PerfectionWeld()
+	end)
+end
+
+-- Created by Quenty (@Quenty, follow me on twitter).
+
+end))
+Weld69.Name = "RightGripWeld"
+Weld69.Parent = Part67
+Weld69.C0 = CFrame.new(-1.29999995, 1.16840947, 0.750634551, 1, 3.41111408e-05, -2.64397204e-05, -2.64397204e-05, 0.96840477, 0.249382511, 3.41111408e-05, -0.249382511, 0.96840477)
+Weld69.C1 = CFrame.new(-1.5, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Weld69.Part0 = Part74
+Weld69.Part1 = Part67
+Weld69.part1 = Part67
+CharacterMesh70.Parent = Model0
+CharacterMesh70.BodyPart = Enum.BodyPart.RightLeg
+CharacterMesh70.MeshId = 27111882
+BodyColors71.Parent = Model0
+BodyColors71.HeadColor = BrickColor.new("Institutional white")
+BodyColors71.HeadColor3 = Color3.new(0.972549, 0.972549, 0.972549)
+BodyColors71.LeftArmColor = BrickColor.new("Institutional white")
+BodyColors71.LeftArmColor3 = Color3.new(0.972549, 0.972549, 0.972549)
+BodyColors71.LeftLegColor = BrickColor.new("Institutional white")
+BodyColors71.LeftLegColor3 = Color3.new(0.972549, 0.972549, 0.972549)
+BodyColors71.RightArmColor = BrickColor.new("Institutional white")
+BodyColors71.RightArmColor3 = Color3.new(0.972549, 0.972549, 0.972549)
+BodyColors71.RightLegColor = BrickColor.new("Institutional white")
+BodyColors71.RightLegColor3 = Color3.new(0.972549, 0.972549, 0.972549)
+BodyColors71.TorsoColor = BrickColor.new("Institutional white")
+BodyColors71.TorsoColor3 = Color3.new(0.972549, 0.972549, 0.972549)
+Script72.Name = "Respawn"
+Script72.Parent = Model0
+table.insert(cors,sandbox(Script72,function()
+--[[ By: Brutez, 2/28/2015, 1:34 AM, (UTC-08:00) Pacific Time (US & Canada) ]]--
+local PlayerSpawning=false; --[[ Change this to true if you want the NPC to spawn like a player, and change this to false if you want the NPC to spawn at it's current position. ]]--
+local AdvancedRespawnScript=script;
+repeat Wait(0)until script and script.Parent and script.Parent.ClassName=="Model";
+local JeffTheKiller=AdvancedRespawnScript.Parent;
+if AdvancedRespawnScript and JeffTheKiller and JeffTheKiller:FindFirstChild("Thumbnail")then
+JeffTheKiller:FindFirstChild("Thumbnail"):Destroy();
+end;
+local GameDerbis=Game:GetService("Debris");
+local JeffTheKillerHumanoid;
+for _,Child in pairs(JeffTheKiller:GetChildren())do
+if Child and Child.ClassName=="Humanoid"and Child.Health~=0 then
+JeffTheKillerHumanoid=Child;
+end;
+end;
+local Respawndant=JeffTheKiller:Clone();
+if PlayerSpawning then --[[ LOOK AT LINE: 2. ]]--
+coroutine.resume(coroutine.create(function()
+if JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid:FindFirstChild("Status")and not JeffTheKillerHumanoid:FindFirstChild("Status"):FindFirstChild("AvalibleSpawns")then
+SpawnModel=Instance.new("Model");
+SpawnModel.Parent=JeffTheKillerHumanoid.Status;
+SpawnModel.Name="AvalibleSpawns";
+else
+SpawnModel=JeffTheKillerHumanoid:FindFirstChild("Status"):FindFirstChild("AvalibleSpawns");
+end;
+function FindSpawn(SearchValue)
+local PartsArchivable=SearchValue:GetChildren();
+for AreaSearch=1,#PartsArchivable do
+if PartsArchivable[AreaSearch].className=="SpawnLocation"then
+local PositionValue=Instance.new("Vector3Value",SpawnModel);
+PositionValue.Value=PartsArchivable[AreaSearch].Position;
+PositionValue.Name=PartsArchivable[AreaSearch].Duration;
+end;
+FindSpawn(PartsArchivable[AreaSearch]);
+end;
+end;
+FindSpawn(Game:GetService("Workspace"));
+local SpawnChilden=SpawnModel:GetChildren();
+if#SpawnChilden>0 then
+local SpawnItself=SpawnChilden[math.random(1,#SpawnChilden)];
+local RespawningForceField=Instance.new("ForceField");
+RespawningForceField.Parent=JeffTheKiller;
+RespawningForceField.Name="SpawnForceField";
+GameDerbis:AddItem(RespawningForceField,SpawnItself.Name);
+JeffTheKiller:MoveTo(SpawnItself.Value+Vector3.new(0,3.5,0));
+else
+if JeffTheKiller:FindFirstChild("SpawnForceField")then
+JeffTheKiller:FindFirstChild("SpawnForceField"):Destroy();
+end;
+JeffTheKiller:MoveTo(Vector3.new(0,115,0));
+end;
+end));
+end;
+function Respawn()
+Wait(5);
+Respawndant.Parent=JeffTheKiller.Parent;
+Respawndant:makeJoints();
+Respawndant:FindFirstChild("Head"):MakeJoints();
+Respawndant:FindFirstChild("Torso"):MakeJoints();
+JeffTheKiller:remove();
+end;
+if AdvancedRespawnScript and JeffTheKiller and JeffTheKillerHumanoid then
+JeffTheKillerHumanoid.Died:connect(Respawn);
+end;
+--[[ By: Brutez, 2/28/2015, 1:34 AM, (UTC-08:00) Pacific Time (US & Canada) ]]--
+end))
+CharacterMesh73.Parent = Model0
+CharacterMesh73.BodyPart = Enum.BodyPart.LeftLeg
+CharacterMesh73.MeshId = 27111857
+Part74.Name = "Knife"
+Part74.Parent = Model0
+Part74.CFrame = CFrame.new(-8.09995842, 2.05574608, -17.5183086, 1, -2.64397204e-05, 3.41111408e-05, 3.41111408e-05, 0.96840477, -0.249382511, -2.64397204e-05, 0.249382511, 0.96840477)
+Part74.Orientation = Vector3.new(14.4399995803833, 0, 0)
+Part74.Position = Vector3.new(-8.099958419799805, 2.055746078491211, -17.518308639526367)
+Part74.Rotation = Vector3.new(14.4399995803833, 0, 0)
+Part74.Color = Color3.new(0.905882, 0.905882, 0.92549)
+Part74.Transparency = 1
+Part74.Velocity = Vector3.new(-1.401298464324817e-45, 0, 1.401298464324817e-45)
+Part74.Size = Vector3.new(0.20000000298023224, 0.20000000298023224, 0.20000000298023224)
+Part74.BackParamA = -99999
+Part74.BackParamB = 99999
+Part74.BackSurface = Enum.SurfaceType.SmoothNoOutlines
+Part74.BottomParamA = -99999
+Part74.BottomParamB = 99999
+Part74.BottomSurface = Enum.SurfaceType.SmoothNoOutlines
+Part74.BrickColor = BrickColor.new("Pearl")
+Part74.CanCollide = false
+Part74.CustomPhysicalProperties = Vector3.new(0.699999988, 2, 0, 1, 1)
+Part74.FrontParamA = -99999
+Part74.FrontParamB = 99999
+Part74.FrontSurface = Enum.SurfaceType.SmoothNoOutlines
+Part74.LeftParamA = -99999
+Part74.LeftParamB = 99999
+Part74.LeftSurface = Enum.SurfaceType.SmoothNoOutlines
+Part74.Material = Enum.Material.Metal
+Part74.RightParamA = -99999
+Part74.RightParamB = 99999
+Part74.RightSurface = Enum.SurfaceType.SmoothNoOutlines
+Part74.TopParamA = -99999
+Part74.TopParamB = 99999
+Part74.TopSurface = Enum.SurfaceType.SmoothNoOutlines
+Part74.brickColor = BrickColor.new("Pearl")
+Part74.FormFactor = Enum.FormFactor.Custom
+Part74.formFactor = Enum.FormFactor.Custom
+Sound75.Name = "Hit1"
+Sound75.Parent = Part74
+Sound75.SoundId = "rbxassetid://5700183626"
+Sound75.Volume = 2
+Sound76.Name = "Swing"
+Sound76.Parent = Part74
+Sound76.SoundId = "rbxassetid://5663179979"
+Sound76.Volume = 2
+Sound77.Name = "Hit3"
+Sound77.Parent = Part74
+Sound77.SoundId = "rbxassetid://5700183626"
+Sound77.Volume = 2
+Sound78.Name = "Hit2"
+Sound78.Parent = Part74
+Sound78.SoundId = "rbxassetid://5700183626"
+Sound78.Volume = 2
+SpecialMesh79.Parent = Part74
+SpecialMesh79.MeshId = "http://www.roblox.com/asset/?id=165710339"
+SpecialMesh79.Scale = Vector3.new(0.5, 0.5, 0.5)
+SpecialMesh79.TextureId = "http://www.roblox.com/asset/?id=165710383"
+SpecialMesh79.MeshType = Enum.MeshType.FileMesh
+Script80.Name = "ImpostorMain"
+Script80.Parent = Model0
+table.insert(cors,sandbox(Script80,function()
+--[[ By: Brutez. ]]--
+local JeffTheKillerScript=script;
+repeat wait(0) until JeffTheKillerScript and JeffTheKillerScript.Parent and JeffTheKillerScript.Parent.ClassName=="Model"and JeffTheKillerScript.Parent:FindFirstChild("Head")and JeffTheKillerScript.Parent:FindFirstChild("Torso");
+local JeffTheKiller=JeffTheKillerScript.Parent;
+function raycast(Spos,vec,currentdist)
+local hit2,pos2=game.Workspace:FindPartOnRay(Ray.new(Spos+(vec*.05),vec*currentdist),JeffTheKiller);
+if hit2~=nil and pos2 then
+if hit2.Name=="Handle" and not hit2.CanCollide or string.sub(hit2.Name,1,6)=="Effect"and not hit2.CanCollide then
+local currentdist=currentdist-(pos2-Spos).magnitude;
+return raycast(pos2,vec,currentdist);
+end;
+end;
+return hit2,pos2;
+end;
+function RayCast(Position,Direction,MaxDistance,IgnoreList)
+return game:GetService("Workspace"):FindPartOnRayWithIgnoreList(Ray.new(Position,Direction.unit*(MaxDistance or 999.999)),IgnoreList);
+end;
+--[[if JeffTheKillerScript and JeffTheKiller and JeffTheKiller:FindFirstChild("Thumbnail")then]]--
+--[[JeffTheKiller:FindFirstChild("Thumbnail"):Destroy();]]--
+--[[end;]]--
+local JeffTheKillerHumanoid;
+for _,Child in pairs(JeffTheKiller:GetChildren())do
+if Child and Child.ClassName=="Humanoid"and Child.Health~=0 then
+JeffTheKillerHumanoid=Child;
+end;
+end;
+local AttackDebounce=false;
+local JeffTheKillerKnife=JeffTheKiller:FindFirstChild("Knife");
+local JeffTheKillerHead=JeffTheKiller:FindFirstChild("Head");
+local JeffTheKillerHumanoidRootPart=JeffTheKiller:FindFirstChild("HumanoidRootPart");
+local WalkDebounce=false;
+local Notice=false;
+local JeffLaughDebounce=false;
+local MusicDebounce=false;
+local NoticeDebounce=false;
+local ChosenMusic;
+function FindNearestBae()
+local NoticeDistance=100;
+local TargetMain;
+for _,TargetModel in pairs(Game:GetService("Workspace"):GetChildren())do
+if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Health~=0 and TargetModel.className=="Model"and TargetModel~=JeffTheKiller and TargetModel.Name~=JeffTheKiller.Name and TargetModel:FindFirstChild("Torso")and TargetModel:FindFirstChild("Head")then
+local TargetPart=TargetModel:FindFirstChild("Torso");
+local FoundHumanoid;
+for _,Child in pairs(TargetModel:GetChildren())do
+if Child and Child.ClassName=="Humanoid"and Child.Health~=0 then
+FoundHumanoid=Child;
+end;
+end;
+if TargetModel and TargetPart and FoundHumanoid and FoundHumanoid.Health~=0 and(TargetPart.Position-JeffTheKillerHumanoidRootPart.Position).magnitude<NoticeDistance then
+TargetMain=TargetPart;
+NoticeDistance=(TargetPart.Position-JeffTheKillerHumanoidRootPart.Position).magnitude;
+local hit,pos=raycast(JeffTheKillerHumanoidRootPart.Position,(TargetPart.Position-JeffTheKillerHumanoidRootPart.Position).unit,500)
+if hit and hit.Parent and hit.Parent.ClassName=="Model"and hit.Parent:FindFirstChild("Torso")and hit.Parent:FindFirstChild("Head")then
+if TargetModel and TargetPart and FoundHumanoid and FoundHumanoid.Health~=0 and(TargetPart.Position-JeffTheKillerHumanoidRootPart.Position).magnitude<9 and not AttackDebounce then
+Spawn(function()
+AttackDebounce=true;
+local SwingAnimation=JeffTheKillerHumanoid:LoadAnimation(JeffTheKiller:FindFirstChild("Swing"));
+local SwingChoice=math.random(1,2);
+local HitChoice=math.random(1,3);
+SwingAnimation:Play();
+SwingAnimation:AdjustSpeed(1.5+(math.random()*0.1));
+if JeffTheKillerScript and JeffTheKiller and JeffTheKillerKnife and JeffTheKillerKnife:FindFirstChild("Swing")then
+local SwingSound=JeffTheKillerKnife:FindFirstChild("Swing");
+SwingSound.Pitch=1+(math.random()*0.04);
+SwingSound:Play();
+end;
+Wait(0.3);
+if TargetModel and TargetPart and FoundHumanoid and FoundHumanoid.Health~=0 and(TargetPart.Position-JeffTheKillerHumanoidRootPart.Position).magnitude<8 then
+FoundHumanoid:TakeDamage(40);
+if HitChoice==1 and JeffTheKillerScript and JeffTheKiller and JeffTheKillerKnife and JeffTheKillerKnife:FindFirstChild("Hit1")then
+local HitSound=JeffTheKillerKnife:FindFirstChild("Hit1");
+HitSound.Pitch=1+(math.random()*0.04);
+HitSound:Play();
+elseif HitChoice==2 and JeffTheKillerScript and JeffTheKiller and JeffTheKillerKnife and JeffTheKillerKnife:FindFirstChild("Hit2")then
+local HitSound=JeffTheKillerKnife:FindFirstChild("Hit2");
+HitSound.Pitch=1+(math.random()*0.04);
+HitSound:Play();
+elseif HitChoice==3 and JeffTheKillerScript and JeffTheKiller and JeffTheKillerKnife and JeffTheKillerKnife:FindFirstChild("Hit3")then
+local HitSound=JeffTheKillerKnife:FindFirstChild("Hit3");
+HitSound.Pitch=1+(math.random()*0.04);
+HitSound:Play();
+end;
+end;
+Wait(0.1);
+AttackDebounce=false;
+end);
+end;
+end;
+end;
+end;
+end;
+return TargetMain;
+end;
+while Wait(0)do
+local TargetPoint=JeffTheKillerHumanoid.TargetPoint;
+local Blockage,BlockagePos=RayCast((JeffTheKillerHumanoidRootPart.CFrame+CFrame.new(JeffTheKillerHumanoidRootPart.Position,Vector3.new(TargetPoint.X,JeffTheKillerHumanoidRootPart.Position.Y,TargetPoint.Z)).lookVector*(JeffTheKillerHumanoidRootPart.Size.Z/2)).p,JeffTheKillerHumanoidRootPart.CFrame.lookVector,(JeffTheKillerHumanoidRootPart.Size.Z*2.5),{JeffTheKiller,JeffTheKiller})
+local Jumpable=false;
+if Blockage then
+Jumpable=true;
+if Blockage and Blockage.Parent and Blockage.Parent.ClassName~="Workspace"then
+local BlockageHumanoid;
+for _,Child in pairs(Blockage.Parent:GetChildren())do
+if Child and Child.ClassName=="Humanoid"and Child.Health~=0 then
+BlockageHumanoid=Child;
+end;
+end;
+if Blockage and Blockage:IsA("Terrain")then
+local CellPos=Blockage:WorldToCellPreferSolid((BlockagePos-Vector3.new(0,2,0)));
+local CellMaterial,CellShape,CellOrientation=Blockage:GetCell(CellPos.X,CellPos.Y,CellPos.Z);
+if CellMaterial==Enum.CellMaterial.Water then
+Jumpable=false;
+end;
+elseif BlockageHumanoid or Blockage.ClassName=="TrussPart"or Blockage.ClassName=="WedgePart"or Blockage.Name=="Handle"and Blockage.Parent.ClassName=="Hat"or Blockage.Name=="Handle"and Blockage.Parent.ClassName=="Tool"then
+Jumpable=false;
+end;
+end;
+if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Health~=0 and not JeffTheKillerHumanoid.Sit and Jumpable then
+JeffTheKillerHumanoid.Jump=true;
+end;
+end;
+if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHead and JeffTheKillerHumanoidRootPart and JeffTheKillerHead:FindFirstChild("Jeff_Step")and (JeffTheKillerHumanoidRootPart.Velocity-Vector3.new(0,JeffTheKillerHumanoidRootPart.Velocity.y,0)).magnitude>=5 and not WalkDebounce and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Health~=0 then
+Spawn(function()
+WalkDebounce=true;
+local FiredRay=Ray.new(JeffTheKillerHumanoidRootPart.Position,Vector3.new(0,-4,0));
+local RayTarget,endPoint=Game:GetService("Workspace"):FindPartOnRay(FiredRay,JeffTheKiller);
+if RayTarget then
+local JeffTheKillerHeadFootStepClone=JeffTheKillerHead:FindFirstChild("Jeff_Step"):Clone();
+JeffTheKillerHeadFootStepClone.Parent=JeffTheKillerHead;
+JeffTheKillerHeadFootStepClone:Play();
+JeffTheKillerHeadFootStepClone:Destroy();
+if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Health~=0 and JeffTheKillerHumanoid.WalkSpeed<10 then
+Wait(0.5);
+elseif JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Health~=0 and JeffTheKillerHumanoid.WalkSpeed>10 then
+Wait(0.2);
+end
+end;
+WalkDebounce=false;
+end);
+end;
+local MainTarget=FindNearestBae();
+local FoundHumanoid;
+if MainTarget then
+for _,Child in pairs(MainTarget.Parent:GetChildren())do
+if Child and Child.ClassName=="Humanoid"and Child.Health~=0 then
+FoundHumanoid=Child;
+end;
+end;
+end;
+if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Health~=0 and MainTarget and MainTarget.Parent and FoundHumanoid and FoundHumanoid.Jump then
+JeffTheKillerHumanoid.Jump=true;
+end;
+if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Health~=0 and MainTarget and FoundHumanoid and FoundHumanoid.Health~=0 and(MainTarget.Position-JeffTheKillerHumanoidRootPart.Position).magnitude<25 then
+if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHead and JeffTheKillerHead:FindFirstChild("Jeff_Laugh")and not JeffTheKillerHead:FindFirstChild("Jeff_Laugh").IsPlaying then
+JeffTheKillerHead:FindFirstChild("Jeff_Laugh").Volume=1;
+JeffTheKillerHead:FindFirstChild("Jeff_Laugh"):Play();
+end;
+elseif JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Health~=0 and MainTarget and FoundHumanoid and FoundHumanoid.Health~=0 and(MainTarget.Position-JeffTheKillerHumanoidRootPart.Position).magnitude>25 then
+if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHead and JeffTheKillerHead:FindFirstChild("Jeff_Laugh")and JeffTheKillerHead:FindFirstChild("Jeff_Laugh").IsPlaying then
+if not JeffLaughDebounce then
+Spawn(function()
+JeffLaughDebounce=true;
+repeat Wait(0);if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHead and JeffTheKillerHead:FindFirstChild("Jeff_Laugh")then JeffTheKillerHead:FindFirstChild("Jeff_Laugh").Volume=JeffTheKillerHead:FindFirstChild("Jeff_Laugh").Volume-0.1;else break;end;until JeffTheKillerHead:FindFirstChild("Jeff_Laugh").Volume==0 or JeffTheKillerHead:FindFirstChild("Jeff_Laugh").Volume<0;
+JeffTheKillerHead:FindFirstChild("Jeff_Laugh").Volume=0;
+JeffTheKillerHead:FindFirstChild("Jeff_Laugh"):Stop();
+JeffLaughDebounce=false;
+end);
+end;
+end;
+end;
+if not ChosenMusic and JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Health~=0 and MainTarget and FoundHumanoid and FoundHumanoid.Health~=0 and(MainTarget.Position-JeffTheKillerHumanoidRootPart.Position).magnitude<50 then
+local MusicChoice=math.random(1,2);
+if MusicChoice==1 and JeffTheKillerScript and JeffTheKiller and JeffTheKiller:FindFirstChild("Jeff_Scene_Sound1")then
+ChosenMusic=JeffTheKiller:FindFirstChild("Jeff_Scene_Sound1");
+elseif MusicChoice==2 and JeffTheKillerScript and JeffTheKiller and JeffTheKiller:FindFirstChild("Jeff_Scene_Sound2")then
+ChosenMusic=JeffTheKiller:FindFirstChild("Jeff_Scene_Sound2");
+end;
+if JeffTheKillerScript and JeffTheKiller and ChosenMusic and not ChosenMusic.IsPlaying then
+ChosenMusic.Volume=0.5;
+ChosenMusic:Play();
+end;
+elseif JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Health~=0 and MainTarget and FoundHumanoid and FoundHumanoid.Health~=0 and(MainTarget.Position-JeffTheKillerHumanoidRootPart.Position).magnitude>50 then
+if JeffTheKillerScript and JeffTheKiller and ChosenMusic and ChosenMusic.IsPlaying then
+if not MusicDebounce then
+Spawn(function()
+MusicDebounce=true;
+repeat Wait(0);if JeffTheKillerScript and JeffTheKiller and ChosenMusic then ChosenMusic.Volume=ChosenMusic.Volume-0.01;else break;end;until ChosenMusic.Volume==0 or ChosenMusic.Volume<0;
+if ChosenMusic then
+ChosenMusic.Volume=0;
+ChosenMusic:Stop();
+end;
+ChosenMusic=nil;
+MusicDebounce=false;
+end);
+end;
+end;
+end;
+if not MainTarget and not JeffLaughDebounce then
+Spawn(function()
+JeffLaughDebounce=true;
+repeat Wait(0);if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHead and JeffTheKillerHead:FindFirstChild("Jeff_Laugh")then JeffTheKillerHead:FindFirstChild("Jeff_Laugh").Volume=JeffTheKillerHead:FindFirstChild("Jeff_Laugh").Volume-0.1;else break;end;until JeffTheKillerHead:FindFirstChild("Jeff_Laugh").Volume==0 or JeffTheKillerHead:FindFirstChild("Jeff_Laugh").Volume<0;
+JeffTheKillerHead:FindFirstChild("Jeff_Laugh").Volume=0;
+JeffTheKillerHead:FindFirstChild("Jeff_Laugh"):Stop();
+JeffLaughDebounce=false;
+end);
+end;
+if not MainTarget and not MusicDebounce then
+Spawn(function()
+MusicDebounce=true;
+repeat Wait(0);if JeffTheKillerScript and JeffTheKiller and ChosenMusic then ChosenMusic.Volume=ChosenMusic.Volume-0.01;else break;end;until ChosenMusic.Volume==0 or ChosenMusic.Volume<0;
+if ChosenMusic then
+ChosenMusic.Volume=0;
+ChosenMusic:Stop();
+end;
+ChosenMusic=nil;
+MusicDebounce=false;
+end);
+end;
+if MainTarget then
+Notice=true;
+if Notice and not NoticeDebounce and JeffTheKillerScript and JeffTheKiller and JeffTheKillerHead and JeffTheKillerHead:FindFirstChild("Jeff_Susto2")then
+JeffTheKillerHead:FindFirstChild("Jeff_Susto2"):Play();
+NoticeDebounce=true;
+end
+if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Health~=0 then
+if MainTarget and FoundHumanoid and FoundHumanoid.Health~=0 and(MainTarget.Position-JeffTheKillerHumanoidRootPart.Position).magnitude>5 then
+JeffTheKillerHumanoid.WalkSpeed=10;
+elseif MainTarget and FoundHumanoid and FoundHumanoid.Health~=0 and(MainTarget.Position-JeffTheKillerHumanoidRootPart.Position).magnitude<5 then
+JeffTheKillerHumanoid.WalkSpeed=0.004;
+end;
+JeffTheKillerHumanoid:MoveTo(MainTarget.Position+(MainTarget.Position-JeffTheKillerHumanoidRootPart.Position).unit*2,Game:GetService("Workspace"):FindFirstChild("Terrain"));
+end;
+else
+Notice=false;
+NoticeDebounce=false;
+local RandomWalk=math.random(1,150);
+if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Health~=0 then
+JeffTheKillerHumanoid.WalkSpeed=10;
+if RandomWalk==1 then
+JeffTheKillerHumanoid:MoveTo(Game:GetService("Workspace"):FindFirstChild("Terrain").Position+Vector3.new(math.random(-2048,2048),0,math.random(-2048,2048)),Game:GetService("Workspace"):FindFirstChild("Terrain"));
+end;
+end;
+end;
+if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid then
+JeffTheKillerHumanoid.DisplayDistanceType="None";
+JeffTheKillerHumanoid.HealthDisplayDistance=0;
+JeffTheKillerHumanoid.Name="ColdBloodedKiller";
+JeffTheKillerHumanoid.NameDisplayDistance=0;
+JeffTheKillerHumanoid.NameOcclusion="EnemyOcclusion";
+JeffTheKillerHumanoid.AutoJumpEnabled=true;
+JeffTheKillerHumanoid.AutoRotate=true;
+JeffTheKillerHumanoid.MaxHealth=100;
+JeffTheKillerHumanoid.JumpPower=60;
+JeffTheKillerHumanoid.MaxSlopeAngle=89.9;
+end;
+if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and not JeffTheKillerHumanoid.AutoJumpEnabled then
+JeffTheKillerHumanoid.AutoJumpEnabled=true;
+end;
+if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and not JeffTheKillerHumanoid.AutoRotate then
+JeffTheKillerHumanoid.AutoRotate=true;
+end;
+if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.PlatformStand then
+JeffTheKillerHumanoid.PlatformStand=false;
+end;
+if JeffTheKillerScript and JeffTheKiller and JeffTheKillerHumanoid and JeffTheKillerHumanoid.Sit then
+JeffTheKillerHumanoid.Sit=false;
+end;
+end;
+--[[ By: Brutez. ]]--
+end))
+Shirt81.Name = "Shirt"
+Shirt81.Parent = Model0
+Shirt81.ShirtTemplate = "rbxassetid://588494019"
+Pants82.Name = "Pants"
+Pants82.Parent = Model0
+Pants82.PantsTemplate = "rbxassetid://180409197"
+Script83.Parent = Model0
+table.insert(cors,sandbox(Script83,function()
+local larm = script.Parent:FindFirstChild("HumanoidRootPart")
+local rarm = script.Parent:FindFirstChild("HumanoidRootPart")
+
+function findNearestTorso(pos)
+	local list = game.Workspace:children()
+	local torso = nil
+	local dist = 10000
+	local temp = nil
+	local human = nil
+	local temp2 = nil
+	for x = 1, #list do
+		temp2 = list[x]
+		if (temp2.className == "Model") and (temp2 ~= script.Parent) then
+			temp = temp2:findFirstChild("HumanoidRootPart")
+			human = temp2:findFirstChild("Humanoid")
+			if (temp ~= nil) and (human ~= nil) and (human.Health > 0) then
+				if (temp.Position - pos).magnitude < dist then
+					torso = temp
+					dist = (temp.Position - pos).magnitude
+				end
+			end
+		end
+	end
+	return torso
+end
+
+
+
+
+while true do
+	wait(1)
+	local target = findNearestTorso(script.Parent.HumanoidRootPart.Position)
+	if target ~= nil then
+		script.Parent.Zombie:MoveTo(target.Position, target)
+	end
+
+end
+
+end))
+Script84.Name = "Sound when spawn"
+Script84.Parent = Model0
+table.insert(cors,sandbox(Script84,function()
+script.Sound:Play()
+end))
+Sound85.Parent = Script84
+Sound85.SoundId = "rbxassetid://5676457861"
+for i,v in pairs(mas:GetChildren()) do
+	v.Parent = script
+	pcall(function() v:MakeJoints() end)
+end
+mas:Destroy()
+for i,v in pairs(cors) do
+	spawn(function()
+		pcall(v)
+	end)
+end
