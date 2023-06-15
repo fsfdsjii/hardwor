@@ -147,6 +147,7 @@ owner.Chatted:Connect(function(msg)
 		print(":nofreeze [user] ")
 		print(":fog")
 		print(":nofog")
+task.wait(3)
 		print(":nofloat [user] ")
 		print(":control [user] ")
 		print(":clearlighting")
@@ -180,8 +181,6 @@ owner.Chatted:Connect(function(msg)
 		print(":white [user] ")
 		print(":black [user] ")
 		print(":wobbly [user] ")
-		print(":daytime")
-		print(":nighttime")
 		print(":redteam [only works after the command :team is initiated]")
 		print(":blueteam [only works after the command :team is initiated]")
 		print(":r15invisible [user] ")
@@ -204,6 +203,8 @@ owner.Chatted:Connect(function(msg)
 		print(":myteam [user] [only works if your in a team]")
 		print(":safeareatp [user]")
                 print(":tp [user] [user]")
+                print(":health [user] [number]")
+                print(":time [number]")
 	end
 end)
 
@@ -1240,25 +1241,6 @@ owner.Chatted:Connect(function(msg)
 	end
 end)
 
-local cmd = ":daytime"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		game.Lighting.ClockTime = 12
-	end
-end)
-
-local cmd = ":nighttime"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		game.Lighting.ClockTime = 99
-	end
-end)
 
 local cmd = ":redteam"
 local seperator = " "
@@ -1476,42 +1458,47 @@ end)
 			end
 		end)
 
-		local cmd = ":notools"
-		local seperator = " "
+local cmd = ":notools"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
 
-		owner.Chatted:Connect(function(msg)
-			local SplitMsg = string.split(msg, seperator)
-			if cmd == SplitMsg[1] then
-				local TargetName=SplitMsg[2]
-				local Target=game.Players:FindFirstChild(TargetName)
-				for _, v in next, Target.Backpack:GetDescendants() do
-					v:Destroy()
-				end
-				Toolr = Target.Character:FindFirstChildWhichIsA('Tool')
-				Instance.new("Tool" , Target.Backpack)
-
-				Toolr:Destroy()
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Players:FindFirstChild(TargetName)
+		for _, v in next, Target.Backpack:GetDescendants() do
+			if v:IsA("Tool") then
+				v:Destroy()
 			end
-		end)
-
-		local cmd = ":stealtools"
-		local seperator = " "
-
-		owner.Chatted:Connect(function(msg)
-			local SplitMsg = string.split(msg, seperator)
-			if cmd == SplitMsg[1] then
-				local TargetName=SplitMsg[2]
-				local Target=game.Players:FindFirstChild(TargetName)
-				for _, v in next, Target.Backpack:GetDescendants() do
-					v.Parent = owner.Backpack
-				end
-				for _, v in next, Target.Character:GetDescendants() do
-					if v:IsA("Tool") then
-						v.Parent = owner.Backpack
-					end
+			for _, t in next, Target.Character:GetDescendants() do
+				if t:IsA("Tool")	 then
+				 t:Destroy()
 				end
 			end
-		end)
+		end
+	end
+end)
+
+local cmd = ":stealtools"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Players:FindFirstChild(TargetName)
+		for _, v in next, Target.Backpack:GetDescendants() do
+			if v:IsA("Tool") then
+				v.Parent = owner.Backpack
+			end
+			for _, t in next, Target.Character:GetDescendants() do
+				if t:IsA("Tool")	 then
+				 t.Parent = owner.Backpack
+				end
+			end
+		end
+	end
+end)
 
 
 
@@ -1680,5 +1667,45 @@ owner.Chatted:Connect(function(msg)
 				v.Position = Target2.Head.Position
 			end
 		end
+	end
+end)
+
+local cmd = ":health"
+local seperator = " "
+local number = NumberRange.new(10000)
+
+
+
+
+	
+
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator, number)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local TargetName2=SplitMsg[3]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target.Humanoid.MaxHealth = TargetName2
+		Target.Humanoid.Health = TargetName2
+	end
+end)
+
+local cmd = ":time"
+local seperator = " "
+local number = NumberRange.new(100)
+
+
+
+
+	
+
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, number)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local lighting = game:GetService('Lighting')
+		lighting.ClockTime  = TargetName
 	end
 end)
