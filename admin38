@@ -203,6 +203,7 @@ owner.Chatted:Connect(function(msg)
 		print(":grey [user] ")
 		print(":myteam [user] [only works if your in a team]")
 		print(":safeareatp [user]")
+                print(":tp [user] [user]")
 	end
 end)
 
@@ -1664,6 +1665,20 @@ end)]] , Target.PlayerGui)
 			end
 		end)
 
+local cmd = ":tp"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
 
-
-
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local TargetName2=SplitMsg[3]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		local Target2=game.Workspace:FindFirstChild(TargetName2)
+		for _, v in next, Target:GetDescendants() do
+			if v:IsA("BasePart") then
+				v.Position = Target2.Head.Position
+			end
+		end
+	end
+end)
