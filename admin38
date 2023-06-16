@@ -203,8 +203,6 @@ task.wait(3)
 		print(":myteam [user] [only works if your in a team]")
 		print(":safeareatp [user]")
                 print(":tp [user] [user]")
-                print(":health [user] [number]")
-                print(":time [number]")
 	end
 end)
 
