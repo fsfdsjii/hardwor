@@ -1704,17 +1704,7 @@ wu = Instance.new("Weld")
 wu.Parent = Target.Head
 wu.Part0 = Target.Head
 wu.Part1 = Target["Right Leg"]
-t = Target:FindFirstChildWhichIsA('Accesory')
 
-for _, y in next, t:GetDescendants() do
-	if y:IsA("BasePart") then
-		y.Parent =  e
-                te = Instance.new("Weld")
-                te.Parent = y
-                te.Part0 = y
-                te.Part1 = Target.Handle
-	end
-end
 
 
 for _, v in next, Target:GetDescendants() do
