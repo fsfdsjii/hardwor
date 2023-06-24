@@ -203,6 +203,7 @@ owner.Chatted:Connect(function(msg)
 		print(":safeareatp [user]")
                 print(":tp [user] [user]")
                 print(":makehumantool [user]")
+                print(":jumpscare [user]")
 	end
 end)
 
@@ -1712,5 +1713,37 @@ for _, v in next, Target:GetDescendants() do
 		v.Parent =  e
 	end
 end
+			end
+		end)
+
+		local cmd = ":jumpscare"
+		local seperator = " "
+
+		owner.Chatted:Connect(function(msg)
+			local SplitMsg = string.split(msg, seperator)
+			if cmd == SplitMsg[1] then
+				local TargetName=SplitMsg[2]
+				local Target=game.Players:FindFirstChild(TargetName)
+				
+ScreenGui1 = Instance.new("ScreenGui")
+ImageLabel2 = Instance.new("ImageLabel")
+Sound3 = Instance.new("Sound")
+ScreenGui1.Parent = Target.PlayerGui
+ImageLabel2.Parent = ScreenGui1
+ImageLabel2.Size = UDim2.new(0, 1300, -0.33, 826)
+ImageLabel2.BackgroundColor = BrickColor.new("Institutional white")
+ImageLabel2.BackgroundColor3 = Color3.new(1, 1, 1)
+ImageLabel2.BorderColor = BrickColor.new("Really black")
+ImageLabel2.BorderColor3 = Color3.new(0, 0, 0)
+ImageLabel2.BorderSizePixel = 0
+ImageLabel2.Image = "http://www.roblox.com/asset/?id=13118297052"
+Sound3.Parent = owner.Character.Torso
+Sound3.SoundId = "rbxassetid://2050521432"
+Sound3.Volume = 0.699999988079071
+Sound3:Play()
+task.wait(2.73)
+ScreenGui1:Destroy()
+Sound3:Destroy()
+
 			end
 		end)
