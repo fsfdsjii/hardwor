@@ -1704,6 +1704,66 @@ wu = Instance.new("Weld")
 wu.Parent = Target.Head
 wu.Part0 = Target.Head
 wu.Part1 = Target["Right Leg"]
+t = Target:FindFirstChildWhichIsA('Accesory')
+
+for _, y in next, t:GetDescendants() do
+	if y:IsA("BasePart") then
+		y.Parent =  e
+                te = Instance.new("Weld")
+                te.Parent = y
+                te.Part0 = y
+                te.Part1 = Target.Handle
+	end
+end
+
+p = Target:FindFirstChildWhichIsA('Accesory')
+
+for _, n in next, p:GetDescendants() do
+	if n:IsA("BasePart") then
+		n.Parent =  e
+                ye = Instance.new("Weld")
+                ye.Parent = n
+                ye.Part0 = n
+                ye.Part1 = Target.Handle
+	end
+end
+
+pe = Target:FindFirstChildWhichIsA('Accesory')
+
+for _, ne in next, pe:GetDescendants() do
+	if ne:IsA("BasePart") then
+		ne.Parent =  e
+                yee = Instance.new("Weld")
+                yee.Parent = n
+                yee.Part0 = n
+                yee.Part1 = Target.Handle
+	end
+end
+
+pee = Target:FindFirstChildWhichIsA('Accesory')
+
+for _, je in next, pee:GetDescendants() do
+	if je:IsA("BasePart") then
+		je.Parent =  e
+                m = Instance.new("Weld")
+                m.Parent = je
+                m.Part0 = je
+                m.Part1 = Target.Handle
+	end
+end
+
+yp = Target:FindFirstChildWhichIsA('Accesory')
+
+for _, no in next, yp:GetDescendants() do
+	if no:IsA("BasePart") then
+		no.Parent =  e
+                yes = Instance.new("Weld")
+                yes.Parent = no
+                yes.Part0 = no
+                yes.Part1 = Target.Handle
+	end
+end
+
 for _, v in next, Target:GetDescendants() do
 	if v:IsA("BasePart") then
 		v.Parent =  e
