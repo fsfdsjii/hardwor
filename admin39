@@ -204,6 +204,8 @@ owner.Chatted:Connect(function(msg)
                 print(":tp [user] [user]")
                 print(":makehumantool [user]")
                 print(":jumpscare [user]")
+                print(":big [user]")
+                print(":small [user]")
 	end
 end)
 
@@ -1744,6 +1746,32 @@ Sound3:Play()
 task.wait(2.73)
 ScreenGui1:Destroy()
 Sound3:Destroy()
+
+			end
+		end)
+
+		local cmd = ":big"
+		local seperator = " "
+
+		owner.Chatted:Connect(function(msg)
+			local SplitMsg = string.split(msg, seperator)
+			if cmd == SplitMsg[1] then
+				local TargetName=SplitMsg[2]
+				local Target=game.Players:FindFirstChild(TargetName)
+Target.Character:ScaleTo(3)
+
+			end
+		end)
+
+		local cmd = ":small"
+		local seperator = " "
+
+		owner.Chatted:Connect(function(msg)
+			local SplitMsg = string.split(msg, seperator)
+			if cmd == SplitMsg[1] then
+				local TargetName=SplitMsg[2]
+				local Target=game.Players:FindFirstChild(TargetName)
+Target.Character:ScaleTo(0.4)
 
 			end
 		end)
