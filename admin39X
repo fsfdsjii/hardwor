@@ -1790,6 +1790,7 @@ Target.Character:ScaleTo(0.4)
                         e.Anchored = true
 
 				Target:LoadCharacter()
+task.wait(2)
 for _, v in next, Target.Character:GetDescendants() do
 	if v:IsA("BasePart") then
 		v.Position = e.Position
