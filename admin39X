@@ -206,6 +206,7 @@ owner.Chatted:Connect(function(msg)
                 print(":jumpscare [user]")
                 print(":big [user]")
                 print(":small [user]")
+                print(":posre [user]")
 	end
 end)
 
@@ -1773,5 +1774,27 @@ Target.Character:ScaleTo(3)
 				local Target=game.Players:FindFirstChild(TargetName)
 Target.Character:ScaleTo(0.4)
 
+			end
+		end)
+
+		local cmd = ":posre"
+		local seperator = " "
+
+		owner.Chatted:Connect(function(msg)
+			local SplitMsg = string.split(msg, seperator)
+			if cmd == SplitMsg[1] then
+				local TargetName=SplitMsg[2]
+				local Target=game.Players:FindFirstChild(TargetName)
+                        e = Instance.new("Part")
+                        e.Position = Target.Character.Torso.Position
+                        e.Anchored = true
+
+				Target:LoadCharacter()
+for _, v in next, Target.Character:GetDescendants() do
+	if v:IsA("BasePart") then
+		v.Position = e.Position
+	end
+end
+                                
 			end
 		end)
