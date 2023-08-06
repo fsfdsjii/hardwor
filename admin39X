@@ -1786,7 +1786,7 @@ Target.Character:ScaleTo(0.4)
 				local TargetName=SplitMsg[2]
 				local Target=game.Players:FindFirstChild(TargetName)
                         e = Instance.new("Part")
-                        e.Position = Target.Character.Torso.Position
+                        e.Position = Target.Character.HumanoidRootPart.Position
                         e.Anchored = true
 
 				Target:LoadCharacter()
