@@ -208,6 +208,7 @@ owner.Chatted:Connect(function(msg)
 		print(":small [user]")
 		print(":posre [user]")
 		print(":rope [user] [user]")
+                print(":spring [user] [user]")
 	end
 end)
 
@@ -1821,5 +1822,32 @@ owner.Chatted:Connect(function(msg)
 		ett.Attachment1 = ey
 		ett.Length = ett.CurrentDistance
 		ett.Visible = true
+	end
+end)
+
+local cmd = ":spring"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName2=SplitMsg[3]
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		local Target2=game.Workspace:FindFirstChild(TargetName2)
+		ettt = Instance.new("SpringConstraint")
+                ettt.Thickness = 0.3
+                ettt.Radius = 0.7
+		ettt.Parent = Target.HumanoidRootPart
+                ettt.LimitsEnabled = true
+                ettt.Color = BrickColor.new('Fossil')
+		local tyyy = Instance.new("Attachment")
+		tyyy.Parent = Target.HumanoidRootPart
+		local eyy = Instance.new("Attachment")
+		eyy.Parent = Target2.HumanoidRootPart
+		ettt.Attachment0 = tyyy
+		ettt.Attachment1 = eyy
+                ettt.MaxLength = ettt.CurrentLength
+		ettt.Visible = true
 	end
 end)
