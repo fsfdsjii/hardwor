@@ -1952,7 +1952,7 @@ owner.Chatted:Connect(function(msg)
 	end
 end)
 
-local cmd = ":fall"
+local cmd = ":fallwtr"
 local seperator = " "
 
 owner.Chatted:Connect(function(msg)
@@ -2284,7 +2284,7 @@ Part32.brickColor = BrickColor.new("Burnt Sienna")
 	end
 end)
 
-local cmd = ":nofall"
+local cmd = ":nofallwtr"
 local seperator = " "
 
 owner.Chatted:Connect(function(msg)
