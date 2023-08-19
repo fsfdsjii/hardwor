@@ -209,6 +209,8 @@ owner.Chatted:Connect(function(msg)
 		print(":posre [user]")
 		print(":rope [user] [user]")
                 print(":spring [user] [user]")
+                print(":winter")
+                print(":nowinter")
 	end
 end)
 
@@ -1849,5 +1851,101 @@ owner.Chatted:Connect(function(msg)
 		ettt.Attachment1 = eyy
                 ettt.MaxLength = ettt.CurrentLength
 		ettt.Visible = true
+	end
+end)
+
+local cmd = ":winter"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		
+Model0z = Instance.new("Model")
+Part1x = Instance.new("Part")
+ParticleEmitter2 = Instance.new("ParticleEmitter")
+Script3 = Instance.new("Script")
+Part4 = Instance.new("Part")
+Script5 = Instance.new("Script")
+Decal6 = Instance.new("Decal")
+Decal7 = Instance.new("Decal")
+Decal8 = Instance.new("Decal")
+Decal9 = Instance.new("Decal")
+Decal10 = Instance.new("Decal")
+Decal11 = Instance.new("Decal")
+Model0z.Name = "Winter"
+Model0z.Parent = script
+Part1x.Parent = Model0z
+Part1x.CFrame = CFrame.new(0, 54.5, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part1x.Position = Vector3.new(0, 54.5, 0)
+Part1x.Transparency = 1
+Part1x.Size = Vector3.new(1, 1, 1)
+Part1x.Anchored = true
+Part1x.BottomSurface = Enum.SurfaceType.Smooth
+Part1x.TopSurface = Enum.SurfaceType.Smooth
+Part1x.CanCollide = false
+Part1x.Locked = true
+ParticleEmitter2.Parent = Part1x
+ParticleEmitter2.LightInfluence = 1
+ParticleEmitter2.Texture = "http://www.roblox.com/asset/?id=7535304728"
+ParticleEmitter2.Shape = Enum.ParticleEmitterShape.Disc
+ParticleEmitter2.Acceleration = Vector3.new(0, 0, 0.05000000074505806)
+ParticleEmitter2.EmissionDirection = Enum.NormalId.Bottom
+ParticleEmitter2.Lifetime = NumberRange.new(5, 30)
+ParticleEmitter2.Rate = 120
+ParticleEmitter2.VelocityInheritance = 1
+Script3.Parent = Part1x
+
+	if game.GameId == 4089866817 then
+		ParticleEmitter2.Rate = 300
+Part1x.Size = workspace.Base.Size
+end
+Part1x.Size = workspace.Base.Size
+Part4.Parent = Model0z
+Part4.CFrame = CFrame.new(0, 0.0500000007, 0, 1, -0, 0, 0, 1, 0, -0, 0, 1)
+Part4.Position = Vector3.new(0, 0.05000000074505806, 0)
+Part4.Color = Color3.new(0.972549, 0.972549, 0.972549)
+Part4.Size = Vector3.new(1, 1, 1)
+Part4.Anchored = true
+Part4.BottomSurface = Enum.SurfaceType.Smooth
+Part4.BrickColor = BrickColor.new("Institutional white")
+Part4.Material = Enum.Material.Slate
+Part4.TopSurface = Enum.SurfaceType.Smooth
+Part4.brickColor = BrickColor.new("Institutional white")
+Part4.Locked = true
+Script5.Parent = Part4
+	if  game.GameId == 4089866817 then
+	Part4.Size = Vector3.new(1, 0.1, 1)
+	Part4.Position = Vector3.new(0, -8, 0)
+end
+Part4.Size = workspace.Base.Size
+
+Decal6.Parent = Part4
+Decal6.Texture = "rbxassetid://13161520954"
+Decal6.Face = Enum.NormalId.Top
+Decal7.Parent = Part4
+Decal7.Texture = "rbxassetid://13161520954"
+Decal7.Face = Enum.NormalId.Bottom
+Decal8.Parent = Part4
+Decal8.Texture = "rbxassetid://13161520954"
+Decal9.Parent = Part4
+Decal9.Texture = "rbxassetid://13161520954"
+Decal9.Face = Enum.NormalId.Back
+Decal10.Parent = Part4
+Decal10.Texture = "rbxassetid://13161520954"
+Decal10.Face = Enum.NormalId.Left
+Decal11.Parent = Part4
+Decal11.Texture = "rbxassetid://13161520954"
+Decal11.Face = Enum.NormalId.Right
+
+	end
+end)
+local cmd = ":nowinter"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		
 	end
 end)
