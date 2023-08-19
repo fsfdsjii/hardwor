@@ -1946,6 +1946,6 @@ local seperator = " "
 owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
-		
+		workspace.Winter:Destroy()
 	end
 end)
