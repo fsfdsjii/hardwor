@@ -211,6 +211,8 @@ owner.Chatted:Connect(function(msg)
                 print(":spring [user] [user]")
                 print(":winter")
                 print(":nowinter")
+                print(":fallwtr")
+                print(":nofallwtr")
 	end
 end)
 
@@ -1947,5 +1949,347 @@ owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
 		script.Winter:Destroy()
+	end
+end)
+
+local cmd = ":fall"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		
+Model0 = Instance.new("Model")
+Part1 = Instance.new("Part")
+ParticleEmitter2 = Instance.new("ParticleEmitter")
+Script3 = Instance.new("Script")
+Part4 = Instance.new("Part")
+Script5 = Instance.new("Script")
+Decal6 = Instance.new("Decal")
+Decal7 = Instance.new("Decal")
+Decal8 = Instance.new("Decal")
+Decal9 = Instance.new("Decal")
+Decal10 = Instance.new("Decal")
+Decal11 = Instance.new("Decal")
+Model12 = Instance.new("Model")
+Part13 = Instance.new("Part")
+Part14 = Instance.new("Part")
+Part15 = Instance.new("Part")
+Part16 = Instance.new("Part")
+Part17 = Instance.new("Part")
+Part18 = Instance.new("Part")
+Part19 = Instance.new("Part")
+Part20 = Instance.new("Part")
+Part21 = Instance.new("Part")
+Part22 = Instance.new("Part")
+Part23 = Instance.new("Part")
+Part24 = Instance.new("Part")
+Part25 = Instance.new("Part")
+Part26 = Instance.new("Part")
+Part27 = Instance.new("Part")
+Part28 = Instance.new("Part")
+Part29 = Instance.new("Part")
+Part30 = Instance.new("Part")
+Part31 = Instance.new("Part")
+Part32 = Instance.new("Part")
+Model0.Name = "Fall"
+Model0.Parent = script
+Part1.Parent = Model0
+Part1.CFrame = CFrame.new(0, 54.5, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part1.CanCollide = false
+Part1.Position = Vector3.new(0, 54.5, 0)
+Part1.Transparency = 1
+Part1.Size = Vector3.new(1, 1, 1)
+Part1.Anchored = true
+Part1.BottomSurface = Enum.SurfaceType.Smooth
+Part1.TopSurface = Enum.SurfaceType.Smooth
+ParticleEmitter2.Parent = Part1
+ParticleEmitter2.LightInfluence = 1
+ParticleEmitter2.Texture = "http://www.roblox.com/asset/?id=186168652"
+ParticleEmitter2.Shape = Enum.ParticleEmitterShape.Disc
+ParticleEmitter2.Acceleration = Vector3.new(0, 0, 0.05000000074505806)
+ParticleEmitter2.EmissionDirection = Enum.NormalId.Bottom
+ParticleEmitter2.Lifetime = NumberRange.new(5, 30)
+ParticleEmitter2.Rate = 120
+ParticleEmitter2.VelocityInheritance = 1
+Script3.Parent = Part1
+
+if game.GameId == 4089866817 then
+	ParticleEmitter2.Rate = 300
+	Part1.Size = workspace.Base.Size
+end
+Part1.Size = workspace.Base.Size
+
+Part4.Parent = Model0
+Part4.CFrame = CFrame.new(0, 0.0500000007, 0, 1, -0, 0, 0, 1, 0, -0, 0, 1)
+Part4.Position = Vector3.new(0, 0.05000000074505806, 0)
+Part4.Color = Color3.new(0.972549, 0.972549, 0.972549)
+Part4.Size = Vector3.new(1, 1, 1)
+Part4.Anchored = true
+Part4.BottomSurface = Enum.SurfaceType.Smooth
+Part4.BrickColor = BrickColor.new("Institutional white")
+Part4.Material = Enum.Material.Slate
+Part4.TopSurface = Enum.SurfaceType.Smooth
+Part4.brickColor = BrickColor.new("Institutional white")
+Script5.Parent = Part4
+
+if  game.GameId == 4089866817 then
+	Part4.Size = Vector3.new(1, 0.1, 1)
+	Part4.Position = Vector3.new(0, -8, 0)
+end
+Part4.Size = workspace.Base.Size
+
+
+Decal6.Parent = Part4
+Decal6.Texture = "rbxassetid://7220845250"
+Decal6.Face = Enum.NormalId.Top
+Decal7.Parent = Part4
+Decal7.Texture = "rbxassetid://7220845250"
+Decal7.Face = Enum.NormalId.Bottom
+Decal8.Parent = Part4
+Decal8.Texture = "rbxassetid://7220845250"
+Decal9.Parent = Part4
+Decal9.Texture = "rbxassetid://7220845250"
+Decal9.Face = Enum.NormalId.Back
+Decal10.Parent = Part4
+Decal10.Texture = "rbxassetid://7220845250"
+Decal10.Face = Enum.NormalId.Left
+Decal11.Parent = Part4
+Decal11.Texture = "rbxassetid://7220845250"
+Decal11.Face = Enum.NormalId.Right
+Model12.Name = "Trees"
+Model12.Parent = Model0
+Part13.Parent = Model12
+Part13.CFrame = CFrame.new(20, 4.5, 16, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part13.Position = Vector3.new(20, 4.5, 16)
+Part13.Color = Color3.new(0.415686, 0.223529, 0.0352941)
+Part13.Size = Vector3.new(2, 9, 2)
+Part13.Anchored = true
+Part13.BottomSurface = Enum.SurfaceType.Smooth
+Part13.BrickColor = BrickColor.new("Burnt Sienna")
+Part13.Material = Enum.Material.Wood
+Part13.TopSurface = Enum.SurfaceType.Smooth
+Part13.brickColor = BrickColor.new("Burnt Sienna")
+Part14.Parent = Model12
+Part14.CFrame = CFrame.new(20, 9, 16, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part14.Position = Vector3.new(20, 9, 16)
+Part14.Color = Color3.new(0.835294, 0.45098, 0.239216)
+Part14.Size = Vector3.new(8, 8, 8)
+Part14.Anchored = true
+Part14.BottomSurface = Enum.SurfaceType.Smooth
+Part14.BrickColor = BrickColor.new("Neon orange")
+Part14.TopSurface = Enum.SurfaceType.Smooth
+Part14.brickColor = BrickColor.new("Neon orange")
+Part14.Shape = Enum.PartType.Ball
+Part15.Parent = Model12
+Part15.CFrame = CFrame.new(20, 9, -41, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part15.Position = Vector3.new(20, 9, -41)
+Part15.Color = Color3.new(0.835294, 0.45098, 0.239216)
+Part15.Size = Vector3.new(8, 8, 8)
+Part15.Anchored = true
+Part15.BottomSurface = Enum.SurfaceType.Smooth
+Part15.BrickColor = BrickColor.new("Neon orange")
+Part15.TopSurface = Enum.SurfaceType.Smooth
+Part15.brickColor = BrickColor.new("Neon orange")
+Part15.Shape = Enum.PartType.Ball
+Part16.Parent = Model12
+Part16.CFrame = CFrame.new(20, 4.5, -41, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part16.Position = Vector3.new(20, 4.5, -41)
+Part16.Color = Color3.new(0.415686, 0.223529, 0.0352941)
+Part16.Size = Vector3.new(2, 9, 2)
+Part16.Anchored = true
+Part16.BottomSurface = Enum.SurfaceType.Smooth
+Part16.BrickColor = BrickColor.new("Burnt Sienna")
+Part16.Material = Enum.Material.Wood
+Part16.TopSurface = Enum.SurfaceType.Smooth
+Part16.brickColor = BrickColor.new("Burnt Sienna")
+Part17.Parent = Model12
+Part17.CFrame = CFrame.new(-31, 4.5, -58, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part17.Position = Vector3.new(-31, 4.5, -58)
+Part17.Color = Color3.new(0.415686, 0.223529, 0.0352941)
+Part17.Size = Vector3.new(2, 9, 2)
+Part17.Anchored = true
+Part17.BottomSurface = Enum.SurfaceType.Smooth
+Part17.BrickColor = BrickColor.new("Burnt Sienna")
+Part17.Material = Enum.Material.Wood
+Part17.TopSurface = Enum.SurfaceType.Smooth
+Part17.brickColor = BrickColor.new("Burnt Sienna")
+Part18.Parent = Model12
+Part18.CFrame = CFrame.new(-31, 9, -58, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part18.Position = Vector3.new(-31, 9, -58)
+Part18.Color = Color3.new(0.835294, 0.45098, 0.239216)
+Part18.Size = Vector3.new(8, 8, 8)
+Part18.Anchored = true
+Part18.BottomSurface = Enum.SurfaceType.Smooth
+Part18.BrickColor = BrickColor.new("Neon orange")
+Part18.TopSurface = Enum.SurfaceType.Smooth
+Part18.brickColor = BrickColor.new("Neon orange")
+Part18.Shape = Enum.PartType.Ball
+Part19.Parent = Model12
+Part19.CFrame = CFrame.new(-31, 9, -17, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part19.Position = Vector3.new(-31, 9, -17)
+Part19.Color = Color3.new(0.835294, 0.45098, 0.239216)
+Part19.Size = Vector3.new(8, 8, 8)
+Part19.Anchored = true
+Part19.BottomSurface = Enum.SurfaceType.Smooth
+Part19.BrickColor = BrickColor.new("Neon orange")
+Part19.TopSurface = Enum.SurfaceType.Smooth
+Part19.brickColor = BrickColor.new("Neon orange")
+Part19.Shape = Enum.PartType.Ball
+Part20.Parent = Model12
+Part20.CFrame = CFrame.new(-31, 4.5, -17, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part20.Position = Vector3.new(-31, 4.5, -17)
+Part20.Color = Color3.new(0.415686, 0.223529, 0.0352941)
+Part20.Size = Vector3.new(2, 9, 2)
+Part20.Anchored = true
+Part20.BottomSurface = Enum.SurfaceType.Smooth
+Part20.BrickColor = BrickColor.new("Burnt Sienna")
+Part20.Material = Enum.Material.Wood
+Part20.TopSurface = Enum.SurfaceType.Smooth
+Part20.brickColor = BrickColor.new("Burnt Sienna")
+Part21.Parent = Model12
+Part21.CFrame = CFrame.new(-83, 9, -17, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part21.Position = Vector3.new(-83, 9, -17)
+Part21.Color = Color3.new(0.835294, 0.45098, 0.239216)
+Part21.Size = Vector3.new(8, 8, 8)
+Part21.Anchored = true
+Part21.BottomSurface = Enum.SurfaceType.Smooth
+Part21.BrickColor = BrickColor.new("Neon orange")
+Part21.TopSurface = Enum.SurfaceType.Smooth
+Part21.brickColor = BrickColor.new("Neon orange")
+Part21.Shape = Enum.PartType.Ball
+Part22.Parent = Model12
+Part22.CFrame = CFrame.new(-83, 4.5, -17, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part22.Position = Vector3.new(-83, 4.5, -17)
+Part22.Color = Color3.new(0.415686, 0.223529, 0.0352941)
+Part22.Size = Vector3.new(2, 9, 2)
+Part22.Anchored = true
+Part22.BottomSurface = Enum.SurfaceType.Smooth
+Part22.BrickColor = BrickColor.new("Burnt Sienna")
+Part22.Material = Enum.Material.Wood
+Part22.TopSurface = Enum.SurfaceType.Smooth
+Part22.brickColor = BrickColor.new("Burnt Sienna")
+Part23.Parent = Model12
+Part23.CFrame = CFrame.new(-76, 4.5, 41, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part23.Position = Vector3.new(-76, 4.5, 41)
+Part23.Color = Color3.new(0.415686, 0.223529, 0.0352941)
+Part23.Size = Vector3.new(2, 9, 2)
+Part23.Anchored = true
+Part23.BottomSurface = Enum.SurfaceType.Smooth
+Part23.BrickColor = BrickColor.new("Burnt Sienna")
+Part23.Material = Enum.Material.Wood
+Part23.TopSurface = Enum.SurfaceType.Smooth
+Part23.brickColor = BrickColor.new("Burnt Sienna")
+Part24.Parent = Model12
+Part24.CFrame = CFrame.new(-76, 9, 41, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part24.Position = Vector3.new(-76, 9, 41)
+Part24.Color = Color3.new(0.835294, 0.45098, 0.239216)
+Part24.Size = Vector3.new(8, 8, 8)
+Part24.Anchored = true
+Part24.BottomSurface = Enum.SurfaceType.Smooth
+Part24.BrickColor = BrickColor.new("Neon orange")
+Part24.TopSurface = Enum.SurfaceType.Smooth
+Part24.brickColor = BrickColor.new("Neon orange")
+Part24.Shape = Enum.PartType.Ball
+Part25.Parent = Model12
+Part25.CFrame = CFrame.new(110, 4.5, 41, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part25.Position = Vector3.new(110, 4.5, 41)
+Part25.Color = Color3.new(0.415686, 0.223529, 0.0352941)
+Part25.Size = Vector3.new(2, 9, 2)
+Part25.Anchored = true
+Part25.BottomSurface = Enum.SurfaceType.Smooth
+Part25.BrickColor = BrickColor.new("Burnt Sienna")
+Part25.Material = Enum.Material.Wood
+Part25.TopSurface = Enum.SurfaceType.Smooth
+Part25.brickColor = BrickColor.new("Burnt Sienna")
+Part26.Parent = Model12
+Part26.CFrame = CFrame.new(110, 9, 41, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part26.Position = Vector3.new(110, 9, 41)
+Part26.Color = Color3.new(0.835294, 0.45098, 0.239216)
+Part26.Size = Vector3.new(8, 8, 8)
+Part26.Anchored = true
+Part26.BottomSurface = Enum.SurfaceType.Smooth
+Part26.BrickColor = BrickColor.new("Neon orange")
+Part26.TopSurface = Enum.SurfaceType.Smooth
+Part26.brickColor = BrickColor.new("Neon orange")
+Part26.Shape = Enum.PartType.Ball
+Part27.Parent = Model12
+Part27.CFrame = CFrame.new(110, 9, -59, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part27.Position = Vector3.new(110, 9, -59)
+Part27.Color = Color3.new(0.835294, 0.45098, 0.239216)
+Part27.Size = Vector3.new(8, 8, 8)
+Part27.Anchored = true
+Part27.BottomSurface = Enum.SurfaceType.Smooth
+Part27.BrickColor = BrickColor.new("Neon orange")
+Part27.TopSurface = Enum.SurfaceType.Smooth
+Part27.brickColor = BrickColor.new("Neon orange")
+Part27.Shape = Enum.PartType.Ball
+Part28.Parent = Model12
+Part28.CFrame = CFrame.new(110, 4.5, -59, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part28.Position = Vector3.new(110, 4.5, -59)
+Part28.Color = Color3.new(0.415686, 0.223529, 0.0352941)
+Part28.Size = Vector3.new(2, 9, 2)
+Part28.Anchored = true
+Part28.BottomSurface = Enum.SurfaceType.Smooth
+Part28.BrickColor = BrickColor.new("Burnt Sienna")
+Part28.Material = Enum.Material.Wood
+Part28.TopSurface = Enum.SurfaceType.Smooth
+Part28.brickColor = BrickColor.new("Burnt Sienna")
+Part29.Parent = Model12
+Part29.CFrame = CFrame.new(50, 4.5, -13, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part29.Position = Vector3.new(50, 4.5, -13)
+Part29.Color = Color3.new(0.415686, 0.223529, 0.0352941)
+Part29.Size = Vector3.new(2, 9, 2)
+Part29.Anchored = true
+Part29.BottomSurface = Enum.SurfaceType.Smooth
+Part29.BrickColor = BrickColor.new("Burnt Sienna")
+Part29.Material = Enum.Material.Wood
+Part29.TopSurface = Enum.SurfaceType.Smooth
+Part29.brickColor = BrickColor.new("Burnt Sienna")
+Part30.Parent = Model12
+Part30.CFrame = CFrame.new(50, 9, -13, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part30.Position = Vector3.new(50, 9, -13)
+Part30.Color = Color3.new(0.835294, 0.45098, 0.239216)
+Part30.Size = Vector3.new(8, 8, 8)
+Part30.Anchored = true
+Part30.BottomSurface = Enum.SurfaceType.Smooth
+Part30.BrickColor = BrickColor.new("Neon orange")
+Part30.TopSurface = Enum.SurfaceType.Smooth
+Part30.brickColor = BrickColor.new("Neon orange")
+Part30.Shape = Enum.PartType.Ball
+Part31.Parent = Model12
+Part31.CFrame = CFrame.new(50, 9, -90, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part31.Position = Vector3.new(50, 9, -90)
+Part31.Color = Color3.new(0.835294, 0.45098, 0.239216)
+Part31.Size = Vector3.new(8, 8, 8)
+Part31.Anchored = true
+Part31.BottomSurface = Enum.SurfaceType.Smooth
+Part31.BrickColor = BrickColor.new("Neon orange")
+Part31.TopSurface = Enum.SurfaceType.Smooth
+Part31.brickColor = BrickColor.new("Neon orange")
+Part31.Shape = Enum.PartType.Ball
+Part32.Parent = Model12
+Part32.CFrame = CFrame.new(50, 4.5, -90, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+Part32.Position = Vector3.new(50, 4.5, -90)
+Part32.Color = Color3.new(0.415686, 0.223529, 0.0352941)
+Part32.Size = Vector3.new(2, 9, 2)
+Part32.Anchored = true
+Part32.BottomSurface = Enum.SurfaceType.Smooth
+Part32.BrickColor = BrickColor.new("Burnt Sienna")
+Part32.Material = Enum.Material.Wood
+Part32.TopSurface = Enum.SurfaceType.Smooth
+Part32.brickColor = BrickColor.new("Burnt Sienna")
+
+
+	end
+end)
+
+local cmd = ":nofall"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		script.Fall:Destroy()
 	end
 end)
