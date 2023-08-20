@@ -763,17 +763,18 @@ local seperator = " "
 owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
-		game.Lighting:ClearAllChildren()
-		game.Lighting.Brightness = 3.200000047683716
-		game.Lighting.Ambient = Color3.new(0.541176, 0.541176, 0.541176)
-		game.Lighting.ColorShift_Top = Color3.new(0, 0, 0)
-		game.Lighting.ColorShift_Bottom = Color3.new(0, 0, 0)
-		game.Lighting.EnvironmentDiffuseScale = 0
-		game.Lighting.EnvironmentSpecularScale = 0
-		game.Lighting.GlobalShadows = true
-		game.Lighting.ExposureCompensation = 0
-		game.Lighting.FogStart = 0
-		game.Lighting.FogEnd = 100000
+         Lighting = game:GetService('Lighting')
+		Lighting:ClearAllChildren()
+		Lighting.Brightness = 3.200000047683716
+		Lighting.Ambient = Color3.new(0.541176, 0.541176, 0.541176)
+		Lighting.ColorShift_Top = Color3.new(0, 0, 0)
+		Lighting.ColorShift_Bottom = Color3.new(0, 0, 0)
+		Lighting.EnvironmentDiffuseScale = 0
+		Lighting.EnvironmentSpecularScale = 0
+		Lighting.GlobalShadows = true
+		Lighting.ExposureCompensation = 0
+		Lighting.FogStart = 0
+		Lighting.FogEnd = 100000
 		local sky = game.Lighting:FindFirstChildWhichIsA("Sky")
 		sky:Destroy()
 		local sky = game.Lighting:FindFirstChildWhichIsA("Sky")
