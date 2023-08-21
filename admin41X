@@ -218,6 +218,8 @@ owner.Chatted:Connect(function(msg)
                 print(":clonetool [user]")
                 print(":grabtool [user]")
                 print(":cleargui [user]")
+                print(":store [model]")
+                print(":unstore [model]")
 	end
 end)
 
@@ -2369,5 +2371,34 @@ owner.Chatted:Connect(function(msg)
 		local TargetName=SplitMsg[2]
 		local Target=game.Players:FindFirstChild(TargetName)
 		Target.PlayerGui:ClearAllChildren()
+	end
+end)
+
+local cmd = ":store"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target.Parent = game:GetService('PolicyService')
+	end
+end)
+
+local cmd = ":unstore"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		tyyy = game:GetService('PolicyService'):FindFirstChildWhichIsA('BasePart')
+	if tyyy then 
+		if tyyy.Name == TargetName then
+				tyyy.Parent = workspace
+			end
+		end
 	end
 end)
