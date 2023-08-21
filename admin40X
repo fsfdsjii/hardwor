@@ -2296,7 +2296,7 @@ owner.Chatted:Connect(function(msg)
 	end
 end)
 
-local cmd = ":big"
+local cmd = ":clone"
 local seperator = " "
 
 owner.Chatted:Connect(function(msg)
