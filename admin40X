@@ -2303,7 +2303,7 @@ owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
-		local Target=game.Players:FindFirstChild(TargetName)
+		local Target=game.Workspace:FindFirstChild(TargetName)
 		if Target.Humanoid.RigType == Enum.HumanoidRigType.R6 then
 nm = Target:Clone() nm.Parent = workspace
 elseif Target.Humanoid.RigType == Enum.HumanoidRigType.R15 then
