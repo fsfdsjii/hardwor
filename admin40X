@@ -2307,7 +2307,7 @@ owner.Chatted:Connect(function(msg)
 		if Target.Humanoid.RigType == Enum.HumanoidRigType.R6 then
 nm = Target:Clone() nm.Parent = workspace
 elseif Target.Humanoid.RigType == Enum.HumanoidRigType.R15 then
-print("Character's RigType must be R6."
+print("Character's RigType must be R6.")
 end
 	end
 end)
