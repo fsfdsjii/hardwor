@@ -135,7 +135,6 @@ owner.Chatted:Connect(function(msg)
 		print(":nowalk [user] ")
 		print(":superspeed [user] ")
 		print(":superslow [user] ")
-		print(":myname [user] ")
 		print(":nojump [user] ")
 		print(":superjump [user] ")
 		print(":heavenjump [user] ")
@@ -158,12 +157,11 @@ owner.Chatted:Connect(function(msg)
 		print(":paintbucket [user] [ONLY WORKS ON Void, Los angeles] ")
 		print(":flamethrower [user] [ONLY WORKS ON Void, Los angeles] ")
 		print(":cars [user] [ONLY WORKS ON Void, Los angeles] ")
-		print(":newteam")
+		print(":newteam [string] ")
 		print(":clearteams")
-		print(":newyournameteam")
 		print(":newtool")
 		print(":newspawntool")
-		print(":message")
+		print(":message [string]")
 		print(":nomessage")
 		print(":missile [user] [ONLY WORKS ON Void, Los angeles] ")
 		print(":flingglove [user] [ONLY WORKS ON Void, Los angeles] ")
@@ -220,6 +218,8 @@ owner.Chatted:Connect(function(msg)
                 print(":cleargui [user]")
                 print(":store [model]")
                 print(":unstore [model]")
+                print(":name [string]")
+                print(":hint [string]")
 	end
 end)
 
@@ -581,18 +581,6 @@ owner.Chatted:Connect(function(msg)
 	end
 end)
 
-local cmd = ":myname"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		Target.Humanoid.DisplayName = owner.Character.Humanoid.DisplayName
-	end
-end)
-
 local cmd = ":nojump"
 local seperator = " "
 
@@ -908,16 +896,19 @@ owner.Chatted:Connect(function(msg)
 	end
 end)
 
-local cmd = ":newteam"
+local cmd = ":name"
 local seperator = " "
-
 owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
+
+	local SplitMsg = string.split(msg, seperator, seperator)
 	if cmd == SplitMsg[1] then
+		local TargetName2=SplitMsg[3]
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
 		e = Instance.new("Team" , Teams)
 		Instance.new("Team" , Teams)
 		e.Parent = game.Teams
-		e.Name = "New Team"
+		e.Name = TargetName2
 	end
 end)
 
@@ -931,46 +922,40 @@ owner.Chatted:Connect(function(msg)
 	end
 end)
 
-local cmd = ":newyournameteam"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		e = Instance.new("Team" , Teams)
-		Instance.new("Team" , Teams)
-		e.Parent = game.Teams
-		e.Name = owner.Character.Name
-	end
-end)
-
 local cmd = ":newtool"
 local seperator = " "
-
 owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
+
+	local SplitMsg = string.split(msg, seperator, seperator)
 	if cmd == SplitMsg[1] then
-		f = Instance.new("Part" , workspace)
+		local TargetName2=SplitMsg[3]
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		f = Instance.new("Part")
 		f.Name = "Handle"
 		local e = Instance.new("Tool" , workspace)
-		Instance.new("Tool" , workspace)
-		e.Parent = game.workspace
+		e.Parent = owner.Backpack
 		f.Parent = e
 		f.Size = Vector3.new(1, 1, 1)
+                f.Name = TargetName2
 	end
 end)
 
 local cmd = ":newspawntool"
 local seperator = " "
-
 owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
+
+	local SplitMsg = string.split(msg, seperator, seperator)
 	if cmd == SplitMsg[1] then
-		f = Instance.new("SpawnLocation" , workspace)
+		local TargetName2=SplitMsg[3]
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		f = Instance.new("SpawnLocation")
 		f.Name = "Handle"
 		local e = Instance.new("Tool" , workspace)
 		Instance.new("Tool" , workspace)
 		e.Parent = game.workspace
+                e.Name = TargetName2
 		f.Parent = e
 		f.Size = Vector3.new(1, 1, 1)
 	end
@@ -978,13 +963,16 @@ end)
 
 local cmd = ":message"
 local seperator = " "
-
 owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
+
+	local SplitMsg = string.split(msg, seperator, seperator)
 	if cmd == SplitMsg[1] then
+		local TargetName2=SplitMsg[3]
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
 		e = Instance.new("Message" , workspace)
 		e.Parent = game.workspace
-		e.Text = "New_Message"
+		e.Text = TargetName2
 	end
 end)
 
@@ -2400,5 +2388,33 @@ owner.Chatted:Connect(function(msg)
 				tyyy.Parent = workspace
 			end
 		end
+	end
+end)
+
+local cmd = ":name"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName2=SplitMsg[3]
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+Target.Humanoid.DisplayName = TargetName2
+	end
+end)
+
+local cmd = ":hint"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName2=SplitMsg[3]
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		local yyyyy = Instance.new("Hint")
+		yyyyy.Parent = workspace
+		yyyyy.Text = TargetName2
 	end
 end)
