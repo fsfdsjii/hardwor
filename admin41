@@ -214,6 +214,10 @@ owner.Chatted:Connect(function(msg)
                 print(":fallwtr")
                 print(":nofallwtr")
                 print(":clone [user]")
+                print(":hammertool [user]")
+                print(":clonetool [user]")
+                print(":grabtool [user]")
+                print(":cleargui [user]")
 	end
 end)
 
@@ -2310,5 +2314,60 @@ nm = Target.Character:Clone() nm.Parent = workspace
 elseif Target.Character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
 print("Character's RigType must be R6.")
 end
+	end
+end)
+
+
+local cmd = ":hammertool"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Players:FindFirstChild(TargetName)
+e = Instance.new("HopperBin")
+e.BinType = Enum.BinType.Hammer
+e.Parent = Target.Backpack
+     end
+end)
+
+local cmd = ":clonetool"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Players:FindFirstChild(TargetName)
+e = Instance.new("HopperBin")
+e.BinType = Enum.BinType.Clone
+e.Parent = Target.Backpack
+     end
+end)
+
+local cmd = ":grabtool"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Players:FindFirstChild(TargetName)
+e = Instance.new("HopperBin")
+e.BinType = Enum.BinType.Grab
+e.Parent = Target.Backpack
+     end
+end)
+
+local cmd = ":cleargui"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Players:FindFirstChild(TargetName)
+		Target.PlayerGui:ClearAllChildren()
 	end
 end)
