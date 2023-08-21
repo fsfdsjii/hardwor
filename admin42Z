@@ -2393,9 +2393,10 @@ local cmd = ":hint"
 local seperator = " "
 owner.Chatted:Connect(function(msg)
 
-	local SplitMsg = string.split(msg, seperator)
+	local SplitMsg = string.split(msg, seperator, seperator)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
+                local TargetNames=SplitMsg[3]
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		local yyyyy = Instance.new("Hint")
 		yyyyy.Parent = workspace
