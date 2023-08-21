@@ -2303,10 +2303,10 @@ owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		if Target.Humanoid.RigType == Enum.HumanoidRigType.R6 then
-nm = Target:Clone() nm.Parent = workspace
-elseif Target.Humanoid.RigType == Enum.HumanoidRigType.R15 then
+		local Target=game.Players:FindFirstChild(TargetName)
+		if Target.Character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
+nm = Target.Character:Clone() nm.Parent = workspace
+elseif Target.Character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
 print("Character's RigType must be R6.")
 end
 	end
