@@ -896,7 +896,7 @@ owner.Chatted:Connect(function(msg)
 	end
 end)
 
-local cmd = ":name"
+local cmd = ":newteam"
 local seperator = " "
 owner.Chatted:Connect(function(msg)
 
