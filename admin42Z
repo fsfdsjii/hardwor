@@ -197,7 +197,6 @@ owner.Chatted:Connect(function(msg)
 		print(":voidpurple [user] ")
 		print(":normalcharacter [user] ")
 		print(":grey [user] ")
-		print(":myteam [user] [only works if your in a team]")
 		print(":safeareatp [user]")
 		print(":tp [user] [user]")
 		print(":makehumantool [user]")
@@ -900,7 +899,7 @@ local cmd = ":newteam"
 local seperator = " "
 owner.Chatted:Connect(function(msg)
 
-	local SplitMsg = string.split(msg, seperator, seperator)
+	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
 		local TargetName2=SplitMsg[3]
 		local TargetName=SplitMsg[2]
@@ -926,7 +925,7 @@ local cmd = ":newtool"
 local seperator = " "
 owner.Chatted:Connect(function(msg)
 
-	local SplitMsg = string.split(msg, seperator, seperator)
+	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
 		local TargetName2=SplitMsg[3]
 		local TargetName=SplitMsg[2]
@@ -945,7 +944,7 @@ local cmd = ":newspawntool"
 local seperator = " "
 owner.Chatted:Connect(function(msg)
 
-	local SplitMsg = string.split(msg, seperator, seperator)
+	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
 		local TargetName2=SplitMsg[3]
 		local TargetName=SplitMsg[2]
@@ -964,7 +963,7 @@ local cmd = ":message"
 local seperator = " "
 owner.Chatted:Connect(function(msg)
 
-	local SplitMsg = string.split(msg, seperator, seperator)
+	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
 		local TargetName2=SplitMsg[3]
 		local TargetName=SplitMsg[2]
@@ -1625,19 +1624,6 @@ owner.Chatted:Connect(function(msg)
 		Target:LoadCharacter()
 	end
 end)
-
-local cmd = ":myteam"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Players:FindFirstChild(TargetName)
-		Target.Team = owner.Team
-	end
-end)
-
 
 local cmd = ":safeareatp"
 local seperator = " "
@@ -2394,7 +2380,7 @@ local cmd = ":name"
 local seperator = " "
 owner.Chatted:Connect(function(msg)
 
-	local SplitMsg = string.split(msg, seperator, seperator)
+	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
 		local TargetName2=SplitMsg[3]
 		local TargetName=SplitMsg[2]
@@ -2407,7 +2393,7 @@ local cmd = ":hint"
 local seperator = " "
 owner.Chatted:Connect(function(msg)
 
-	local SplitMsg = string.split(msg, seperator, seperator)
+	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
 		local TargetName2=SplitMsg[3]
 		local TargetName=SplitMsg[2]
