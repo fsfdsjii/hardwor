@@ -2305,6 +2305,7 @@ owner.Chatted:Connect(function(msg)
 		local TargetName=SplitMsg[2]
 		local Target=game.Players:FindFirstChild(TargetName)
 		if Target.Character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
+Target.Character.Archivable = true
 nm = Target.Character:Clone() nm.Parent = workspace
 elseif Target.Character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
 print("Character's RigType must be R6.")
