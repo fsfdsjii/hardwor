@@ -927,16 +927,15 @@ owner.Chatted:Connect(function(msg)
 
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
-		local TargetName2=SplitMsg[3]
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		f = Instance.new("Part")
 		f.Name = "Handle"
 		local e = Instance.new("Tool" , workspace)
 		e.Parent = owner.Backpack
+                e.Name = TargetName
 		f.Parent = e
 		f.Size = Vector3.new(1, 1, 1)
-                f.Name = TargetName2
 	end
 end)
 
@@ -946,14 +945,13 @@ owner.Chatted:Connect(function(msg)
 
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
-		local TargetName2=SplitMsg[3]
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		f = Instance.new("SpawnLocation")
 		f.Name = "Handle"
 		local e = Instance.new("Tool")
 		e.Parent = owner.Backpack
-                e.Name = TargetName2
+                e.Name = TargetName
 		f.Parent = e
 		f.Size = Vector3.new(1, 1, 1)
 	end
