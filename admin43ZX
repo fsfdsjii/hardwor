@@ -129,24 +129,12 @@ owner.Chatted:Connect(function(msg)
 		print(":particle [user] ")
 		print(":noparticle [user] ")
 		print(":kill [user] ")
-		print(":god [user] ")
-		print(":nogravity")
 		print(":sit [user] ")
-		print(":nowalk [user] ")
-		print(":superspeed [user] ")
-		print(":superslow [user] ")
-		print(":nojump [user] ")
-		print(":superjump [user] ")
-		print(":heavenjump [user] ")
-		print(":lowjump [user] ")
-		print(":float [user] ")
-		print(":infinitegravity")
 		print(":nobrkjtsondeath [user] ")
 		print(":freeze [user] ")
 		print(":nofreeze [user] ")
 		print(":fog")
 		print(":nofog")
-		print(":nofloat [user] ")
 		print(":control [user] ")
 		print(":clearlighting")
 		print(":explode [user] ")
@@ -219,6 +207,11 @@ owner.Chatted:Connect(function(msg)
                 print(":unstore [model]")
                 print(":name [string]")
                 print(":hint [string]")
+                print(":health [user] [number]")
+                print(":jumppower [user] [number]")
+                print(":speed [user] [number]")
+                print(":gravity [number]")
+                print(":hipheight [user] [number]")
 	end
 end)
 
@@ -509,29 +502,6 @@ owner.Chatted:Connect(function(msg)
 	end
 end)
 
-local cmd = ":god"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		game.workspace.Target.Humanoid.MaxHealth = math.huge
-		game.workspace.Target.Humanoid.Health = math.huge
-	end
-end)
-
-local cmd = ":nogravity"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		game.workspace.Gravity = 5
-	end
-end)
-
 local cmd = ":sit"
 local seperator = " "
 
@@ -541,103 +511,6 @@ owner.Chatted:Connect(function(msg)
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		Target.Humanoid.Sit = true
-	end
-end)
-
-local cmd = ":nowalk"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		Target.Humanoid.WalkSpeed = 0
-	end
-end)
-
-local cmd = ":superspeed"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		Target.Humanoid.WalkSpeed = 100
-	end
-end)
-
-local cmd = ":superslow"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		Target.Humanoid.WalkSpeed = 5
-	end
-end)
-
-local cmd = ":nojump"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		Target.Humanoid.UseJumpPower = true
-		Target.Humanoid.JumpPower = 0
-	end
-end)
-
-local cmd = ":superjump"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		Target.Humanoid.JumpPower = 150
-	end
-end)
-
-local cmd = ":heavenjump"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		Target.Humanoid.JumpPower = 150
-	end
-end)
-
-local cmd = ":lowjump"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		Target.Humanoid.JumpPower = 25
-	end
-end)
-
-local cmd = ":float"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		Target.Humanoid.HipHeight = 30
 	end
 end)
 
@@ -651,16 +524,6 @@ owner.Chatted:Connect(function(msg)
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		Target.Humanoid.RequiresNeck = false
 		Target.Head:Destroy()
-	end
-end)
-
-local cmd = ":infinitegravity"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		game.workspace.Gravity = 100000000000000000000
 	end
 end)
 
@@ -721,18 +584,6 @@ owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
 		game.Lighting.FogEnd = 100000
-	end
-end)
-
-local cmd = ":nofloat"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		Target.Humanoid.HipHeight = 0
 	end
 end)
 
@@ -2390,13 +2241,78 @@ local cmd = ":hint"
 local seperator = " "
 owner.Chatted:Connect(function(msg)
 
-	local SplitMsg = string.split(msg, seperator, seperator)
+	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
-                local TargetNames=SplitMsg[3]
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		local yyyyy = Instance.new("Hint")
 		yyyyy.Parent = workspace
 		yyyyy.Text = TargetName
+	end
+end)
+
+local cmd = ":health"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName2=SplitMsg[3]
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target.Humanoid.MaxHealth = tonumber(TargetName2)
+		Target.Humanoid.Health = tonumber(TargetName2 )
+	end
+end)
+
+local cmd = ":jumppower"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName2=SplitMsg[3]
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+			owner.Character.Humanoid.UseJumpPower = true
+			Target.Humanoid.JumpPower = tonumber(TargetName2)
+		end
+	end)
+
+local cmd = ":speed"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName2=SplitMsg[3]
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+			Target.Humanoid.WalkSpeed = tonumber(TargetName2)
+		end
+	end)
+
+local cmd = "gravity"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+			workspace.Gravity = tonumber(TargetName)
+		end
+	end)
+
+local cmd = ":hipheight"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName2=SplitMsg[3]
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		Target.Humanoid.HipHeight = tonumber(TargetName2)
 	end
 end)
