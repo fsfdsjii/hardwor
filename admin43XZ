@@ -1324,8 +1324,8 @@ Target.Backpack:ClearAllChildren()
 				end
 			end
 		end
-	end
-end)
+	end)
+
 
 local cmd = ":stealtools"
 local seperator = " "
