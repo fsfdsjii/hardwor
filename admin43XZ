@@ -2292,7 +2292,7 @@ owner.Chatted:Connect(function(msg)
 		end
 	end)
 
-local cmd = "gravity"
+local cmd = ":gravity"
 local seperator = " "
 owner.Chatted:Connect(function(msg)
 
