@@ -1317,10 +1317,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Players:FindFirstChild(TargetName)
-		for _, v in next, Target.Backpack:GetDescendants() do
-			if v:IsA("Tool") then
-				v:Destroy()
-			end
+Target.Backpack:ClearAllChildren()
 			for _, t in next, Target.Character:GetDescendants() do
 				if t:IsA("Tool")	 then
 					t:Destroy()
