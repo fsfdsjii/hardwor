@@ -205,7 +205,7 @@ owner.Chatted:Connect(function(msg)
                 print(":cleargui [user]")
                 print(":store [model]")
                 print(":unstore [model]")
-                print(":name [string]")
+                print(":name [user] [string]")
                 print(":hint [string]")
                 print(":health [user] [number]")
                 print(":jumppower [user] [number]")
@@ -2228,7 +2228,7 @@ local cmd = ":name"
 local seperator = " "
 owner.Chatted:Connect(function(msg)
 
-	local SplitMsg = string.split(msg, seperator)
+	local SplitMsg = string.split(msg, seperator, seperator)
 	if cmd == SplitMsg[1] then
 		local TargetName2=SplitMsg[3]
 		local TargetName=SplitMsg[2]
