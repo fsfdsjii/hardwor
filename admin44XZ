@@ -2339,3 +2339,32 @@ owner.Chatted:Connect(function(msg)
 warn(TargetName)
 	end
 end)
+
+local cmd = ":wildfire"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+Instance.new("Fire" , Target.HumanoidRootPart)
+Target.HumanoidRootPart.Touched:Connect(function(hit)
+if hit.Name ~= "Base" then
+if not hit:IsA('Terrain') then
+					Instance.new("Fire" , hit)
+					hit.Color = Color3.new(0.576471, 0.576471, 0.576471)
+					task.wait(1)
+					hit.Color = Color3.new(0.427451, 0.427451, 0.427451)
+					task.wait(1)
+					hit.Color = Color3.new(0.309804, 0.309804, 0.309804)
+					task.wait(1)
+					hit.Color = Color3.new(0.133333, 0.133333, 0.133333)
+					task.wait(1)
+					hit.Color = Color3.new(0, 0, 0)
+					hit:Destroy()
+                end
+            end
+        end)
+    end
+end)
