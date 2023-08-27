@@ -239,7 +239,7 @@ owner.Chatted:Connect(function(msg)
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		local e = Instance.new("Sparkles" , Target.HumanoidRootPart)
 		Instance.new("Sparkles" , Target.HumanoidRootPart)
-		e.Parent = game.workspace.Target.HumanoidRootPart
+		e.Parent = Target.HumanoidRootPart
 	end
 end)
 
@@ -267,7 +267,7 @@ owner.Chatted:Connect(function(msg)
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		local t = Instance.new("Highlight" , Target)
 		Instance.new("Highlight" , Target)
-		t.Parent = game.workspace.Target
+		t.Parent = Target
 	end
 end)
 
@@ -281,7 +281,7 @@ owner.Chatted:Connect(function(msg)
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		local y = Instance.new("ForceField" , Target)
 		Instance.new("ForceField" , Target)
-		y.Parent = game.workspace.Target
+		y.Parent = Target
 	end
 end)
 
@@ -307,7 +307,7 @@ owner.Chatted:Connect(function(msg)
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		local r = Instance.new("Smoke" , Target.HumanoidRootPart)
 		Instance.new("Smoke" , Target.HumanoidRootPart)
-		r.Parent = game.workspace.Target.HumanoidRootPart
+		r.Parent = Target.HumanoidRootPart
 	end
 end)
 
