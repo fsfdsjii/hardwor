@@ -1,4 +1,4 @@
-owner = game.Players.aldobonavino
+
 
 print("This is owner rank from Hunter's admin say :cmds for commands to choose from")
 local cmd = ":cmds"
