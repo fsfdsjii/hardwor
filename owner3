@@ -1,0 +1,55 @@
+owner = game.Players.aldobonavino
+
+print("This is owner rank from Hunter's admin say :cmds for commands to choose from")
+local cmd = ":cmds"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		print(":shutdown")
+		print(":kick [user]")
+                print(":ban [user]")
+	end
+end)
+
+local cmd = ":shutdown"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+game.Players:ClearAllChildren()
+	end
+end)
+
+local cmd = ":kick"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+                local TargetName2=SplitMsg[3]
+Target:Kick(TargetName2)
+	end
+end)
+
+local cmd = ":ban"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+                local TargetName2=SplitMsg[3]
+Target:Kick(TargetName2)
+while task.wait(0.05) do
+if Target then
+Target:Kick(TargetName2)
+     end
+end
+	end
+end)
