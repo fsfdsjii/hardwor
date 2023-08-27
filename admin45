@@ -163,8 +163,6 @@ owner.Chatted:Connect(function(msg)
 		print(":visible [user] ")
 		print(":mirror [user] ")
 		print(":nomirror [user] ")
-		print(":white [user] ")
-		print(":black [user] ")
 		print(":wobbly [user] ")
 		print(":redteam [only works after the command :team is initiated]")
 		print(":blueteam [only works after the command :team is initiated]")
@@ -172,8 +170,6 @@ owner.Chatted:Connect(function(msg)
 		print(":r15visible [user] ")
 		print(":r15freeze [user] ")
 		print(":r15nofreeze [user] ")
-		print(":r15white [user] ")
-		print(":r15black [user] ")
 		print(":nohats [user] ")
 		print(":re [user] ")
 		print(":notools [user] ")
@@ -214,6 +210,8 @@ owner.Chatted:Connect(function(msg)
                 print(":hipheight [user] [number]")
                 print(":exec [code]")
                 print(":warn [string]")
+                print(":wildfire [user]")
+                print(":brickcolor [user] [brickcolor]")
 	end
 end)
 
@@ -1042,40 +1040,6 @@ owner.Chatted:Connect(function(msg)
 	end
 end)
 
-local cmd = ":white"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		Target.Head.BrickColor = BrickColor.new('White')
-		Target.Torso.BrickColor = BrickColor.new('White')
-		Target["Right Arm"].BrickColor = BrickColor.new('White')
-		Target["Left Arm"].BrickColor = BrickColor.new('White')
-		Target["Right Leg"].BrickColor = BrickColor.new('White')
-		Target["Left Leg"].BrickColor = BrickColor.new('White')
-	end
-end)
-
-local cmd = ":black"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		Target.Head.BrickColor = BrickColor.new('Black')
-		Target.Torso.BrickColor = BrickColor.new('Black')
-		Target["Right Arm"].BrickColor = BrickColor.new('Black')
-		Target["Left Arm"].BrickColor = BrickColor.new('Black')
-		Target["Right Leg"].BrickColor = BrickColor.new('Black')
-		Target["Left Leg"].BrickColor = BrickColor.new('Black')
-	end
-end)
-
 local cmd = ":wobbly"
 local seperator = " "
 
@@ -1206,60 +1170,6 @@ owner.Chatted:Connect(function(msg)
 		Target.RightUpperArm.Anchored = false
 		Target.RightUpperLeg.Anchored = false
 		Target.UpperTorso.Anchored = false
-	end
-end)
-
-local cmd = ":r15white"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		Target.Head.BrickColor = BrickColor.new('White')
-		Target.LeftFoot.BrickColor = BrickColor.new('White')
-		Target.LeftHand.BrickColor = BrickColor.new('White')
-		Target.LeftLowerArm.BrickColor = BrickColor.new('White')
-		Target.RightLowerArm.BrickColor = BrickColor.new('White')
-		Target.LeftLowerLeg.BrickColor = BrickColor.new('White')
-		Target.LeftUpperLeg.BrickColor = BrickColor.new('White')
-		Target.LeftUpperArm.BrickColor = BrickColor.new('White')
-		Target.LowerTorso.BrickColor = BrickColor.new('White')
-		Target.RightFoot.BrickColor = BrickColor.new('White')
-		Target.RightHand.BrickColor = BrickColor.new('White')
-		Target.RightLowerArm.BrickColor = BrickColor.new('White')
-		Target.RightLowerLeg.BrickColor = BrickColor.new('White')
-		Target.RightUpperArm.BrickColor = BrickColor.new('White')
-		Target.RightUpperLeg.BrickColor = BrickColor.new('White')
-		Target.UpperTorso.BrickColor = BrickColor.new('White')
-	end
-end)
-
-local cmd = ":r15black"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		Target.Head.BrickColor = BrickColor.new('Really black')
-		Target.LeftFoot.BrickColor = BrickColor.new('Really black')
-		Target.LeftHand.BrickColor = BrickColor.new('Really black')
-		Target.LeftLowerArm.BrickColor = BrickColor.new('Really black')
-		Target.RightLowerArm.BrickColor = BrickColor.new('Really black')
-		Target.LeftLowerLeg.BrickColor = BrickColor.new('Really black')
-		Target.LeftUpperLeg.BrickColor = BrickColor.new('Really black')
-		Target.LeftUpperArm.BrickColor = BrickColor.new('Really black')
-		Target.LowerTorso.BrickColor = BrickColor.new('Really black')
-		Target.RightFoot.BrickColor = BrickColor.new('Really black')
-		Target.RightHand.BrickColor = BrickColor.new('Really black')
-		Target.RightLowerArm.BrickColor = BrickColor.new('Really black')
-		Target.RightLowerLeg.BrickColor = BrickColor.new('Really black')
-		Target.RightUpperArm.BrickColor = BrickColor.new('Really black')
-		Target.RightUpperLeg.BrickColor = BrickColor.new('Really black')
-		Target.UpperTorso.BrickColor = BrickColor.new('Really black')
 	end
 end)
 
@@ -2367,4 +2277,23 @@ if not hit:IsA('Terrain') then
             end
         end)
     end
+end)
+
+local cmd = ":brickcolor"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+                local TargetName2=SplitMsg[3]
+for _, v in next, Target:GetDescendants() do
+	if v:IsA("BasePart") then
+
+		v.BrickColor = BrickColor.new(TargetName2)
+
+	end
+end
+	end
 end)
