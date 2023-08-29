@@ -211,7 +211,7 @@ owner.Chatted:Connect(function(msg)
                 print(":exec [code]")
                 print(":warn [string]")
                 print(":wildfire [user]")
-                print(":brickcolor [user] [brickcolor]")
+                print(":brickcolor [user] [brickcolor-number-id]")
 	end
 end)
 
@@ -2291,7 +2291,7 @@ owner.Chatted:Connect(function(msg)
 for _, v in next, Target:GetDescendants() do
 	if v:IsA("BasePart") then
 
-		v.BrickColor = BrickColor.new(TargetName2)
+		v.BrickColor = BrickColor.new(tonumber(TargetName2))
 
 	end
 end
