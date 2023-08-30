@@ -217,6 +217,7 @@ owner.Chatted:Connect(function(msg)
                 print(":noaccesories [user]")
                 print(":ice [user]")
                 print(":unice [user]")
+                print(":sound [user] [soundid] [volume] [pitch]")
 	end
 end)
 
@@ -2409,6 +2410,35 @@ owner.Chatted:Connect(function(msg)
 				r = Target.HumanoidRootPart:WaitForChild('Ice')
 				game:GetService('Debris'):AddItem(r, 0)
 			end
+		end
+	end
+end)
+
+local cmd = ":sound"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator, seperator, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		local TargetName2=SplitMsg[3]
+		local TargetName3=SplitMsg[4]
+		local TargetName4=SplitMsg[5]
+		local MarketplaceService = game:GetService('MarketplaceService')
+		local IsSound = MarketplaceService:GetProductInfo(tonumber(TargetName2))
+		if IsSound.AssetId == nil then
+warn("Number Must be a valid Marketplace ID.")
+		end
+		nnn = Instance.new("Sound")
+		nnn.Looped = true
+		nnn.Volume = TargetName3
+		nnn.Pitch = TargetName4
+		nnn.Parent = Target.Head
+		if IsSound.AssetTypeId == 3 then
+			nnn.SoundId = "rbxassetid://"..tostring(TargetName2)
+			nnn:Play()
+			
 		end
 	end
 end)
