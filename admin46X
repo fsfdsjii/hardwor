@@ -2373,24 +2373,24 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-for _, ryyyy in next, Target:GetDescendants() do
-	if ryyyy:IsA("BasePart") then
-ryyyy.Anchored = true
+		for _, ryyyy in next, Target:GetDescendants() do
+			if ryyyy:IsA("BasePart") then
+				ryyyy.Anchored = true
 
-	end
-end
-Part1Z = Instance.new("Part")
-Part1Z.Parent = Target.HumanoidRootPart
-Part1Z.Name = "Ice"
-Part1Z.Position = Target.HumanoidRootPart.Position
-Part1Z.Color = Color3.new(0.705882, 0.823529, 0.894118)
-Part1Z.Transparency = 0.30000001192092896
-Part1Z.Size = Vector3.new(6, 12, 6)
-Part1Z.BottomSurface = Enum.SurfaceType.Smooth
-Part1Z.BrickColor = BrickColor.new("Light blue")
-Part1Z.TopSurface = Enum.SurfaceType.Smooth
-Part1Z.brickColor = BrickColor.new("Light blue")
-Part1Z.Anchored = true
+			end
+		end
+		local Part1Z = Instance.new("Part")
+		Part1Z.Parent = Target.HumanoidRootPart
+		Part1Z.Name = "Ice"
+		Part1Z.Position = Target.HumanoidRootPart.Position
+		Part1Z.Color = Color3.new(0.705882, 0.823529, 0.894118)
+		Part1Z.Transparency = 0.30000001192092896
+		Part1Z.Size = Vector3.new(6, 12, 6)
+		Part1Z.BottomSurface = Enum.SurfaceType.Smooth
+		Part1Z.BrickColor = BrickColor.new("Light blue")
+		Part1Z.TopSurface = Enum.SurfaceType.Smooth
+		Part1Z.brickColor = BrickColor.new("Light blue")
+		Part1Z.Anchored = true
 	end
 end)
 
@@ -2402,11 +2402,12 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-for _, ryyyy in next, Target:GetDescendants() do
-	if ryyyy:IsA("BasePart") then
-ryyyy.Anchored = false
-Target.HumanoidRootPart.Ice:Destroy()
-	end
-end
+		for _, ryyyy in next, Target:GetDescendants() do
+			if ryyyy:IsA("BasePart") then
+				ryyyy.Anchored = false
+				r = Target.HumanoidRootPart:WaitForChild('Ice')
+				game:GetService('Debris'):AddItem(r, 0)
+			end
+		end
 	end
 end)
