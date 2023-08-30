@@ -185,8 +185,6 @@ owner.Chatted:Connect(function(msg)
 		print(":tp [user] [user]")
 		print(":makehumantool [user]")
 		print(":jumpscare [user]")
-		print(":big [user]")
-		print(":small [user]")
 		print(":posre [user]")
 		print(":rope [user] [user]")
                 print(":spring [user] [user]")
@@ -212,6 +210,11 @@ owner.Chatted:Connect(function(msg)
                 print(":warn [string]")
                 print(":wildfire [user]")
                 print(":brickcolor [user] [brickcolor-number-id]")
+                print(":material [user] [material]")
+                print(":transparency [user] [number]")
+                print(":reflectance [user] [number]")
+                print(":size [user] [number]")
+                print(":noaccesories [user]")
 	end
 end)
 
@@ -1495,32 +1498,6 @@ owner.Chatted:Connect(function(msg)
 	end
 end)
 
-local cmd = ":big"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Players:FindFirstChild(TargetName)
-		Target.Character:ScaleTo(3)
-
-	end
-end)
-
-local cmd = ":small"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Players:FindFirstChild(TargetName)
-		Target.Character:ScaleTo(0.4)
-
-	end
-end)
-
 local cmd = ":posre"
 local seperator = " "
 
@@ -2293,6 +2270,120 @@ for _, v in next, Target:GetDescendants() do
 
 		v.BrickColor = BrickColor.new(tonumber(TargetName2))
 
+	end
+end
+	end
+end)
+
+local cmd = ":material"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+                local TargetName2=SplitMsg[3]
+for _, v in next, Target:GetDescendants() do
+	if v:IsA("BasePart") then
+
+		v.Material = tostring(TargetName2)
+
+	end
+end
+	end
+end)
+
+local cmd = ":transparency"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+                local TargetName2=SplitMsg[3]
+for _, v in next, Target:GetDescendants() do
+	if v:IsA("BasePart") then
+if v.Name ~= "HumanoidRootPart" then
+		v.Transparency = tonumber(TargetName2)
+end
+	end
+end
+	end
+end)
+
+local cmd = ":reflectance"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+                local TargetName2=SplitMsg[3]
+for _, v in next, Target:GetDescendants() do
+	if v:IsA("BasePart") then
+if v.Name ~= "HumanoidRootPart" then
+		v.Reflectance = tonumber(TargetName2)
+end
+	end
+end
+	end
+end)
+
+local cmd = ":size"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+                local TargetName2=SplitMsg[3]
+Target:ScaleTo(tonumber(TargetName2))
+
+	end
+end
+
+local cmd = ":noaccesories"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+for _, ryyy in next, Target:GetDescendants() do
+	if ryyy:IsA("Accesory") then
+ryyy:Destroy()
+
+	end
+end
+	end
+end)
+
+local cmd = ":ice"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+for _, ryyyy in next, Target:GetDescendants() do
+	if ryyyy:IsA("BasePart") then
+ryyyy.Anchored = true
+Part1 = Instance.new("Part")
+Part1.Parent = workspace
+Part1.Position = Target.HumanoidRootPart.Position
+Part1.Color = Color3.new(0.705882, 0.823529, 0.894118)
+Part1.Transparency = 0.30000001192092896
+Part1.Size = Vector3.new(6, 12, 6)
+Part1.BottomSurface = Enum.SurfaceType.Smooth
+Part1.BrickColor = BrickColor.new("Light blue")
+Part1.TopSurface = Enum.SurfaceType.Smooth
+Part1.brickColor = BrickColor.new("Light blue")
 	end
 end
 	end
