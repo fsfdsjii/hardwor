@@ -2357,9 +2357,10 @@ owner.Chatted:Connect(function(msg)
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
 for _, ryyy in next, Target:GetDescendants() do
-	if ryyy:IsA("Accesory") then
+	if ryyy:IsA("Accessory") then
 ryyy:Destroy()
-
+elseif ryyy:IsA("Hat") then
+ryyy:Destroy()
 	end
 end
 	end
