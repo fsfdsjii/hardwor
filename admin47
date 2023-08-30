@@ -2432,7 +2432,11 @@ owner.Chatted:Connect(function(msg)
 warn("Number Must be a valid Marketplace ID.")
 		end
 		nnn = Instance.new("Sound")
-		nnn.Looped = TargetName5
+if TargetName5 == "true" then
+		nnn.Looped = true
+elseif TargetName5 == "false" then
+nnn.Looped = false
+end
 		nnn.Volume = TargetName3
 		nnn.Pitch = TargetName4
 		nnn.Parent = Target.Head
