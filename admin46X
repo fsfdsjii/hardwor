@@ -215,6 +215,8 @@ owner.Chatted:Connect(function(msg)
                 print(":reflectance [user] [number]")
                 print(":size [user] [number]")
                 print(":noaccesories [user]")
+                print(":ice [user]")
+                print(":unice [user]")
 	end
 end)
 
@@ -2375,7 +2377,8 @@ for _, ryyyy in next, Target:GetDescendants() do
 	if ryyyy:IsA("BasePart") then
 ryyyy.Anchored = true
 Part1 = Instance.new("Part")
-Part1.Parent = workspace
+Part1.Parent = Target
+Part1.Name = "Ice"
 Part1.Position = Target.HumanoidRootPart.Position
 Part1.Color = Color3.new(0.705882, 0.823529, 0.894118)
 Part1.Transparency = 0.30000001192092896
@@ -2384,6 +2387,24 @@ Part1.BottomSurface = Enum.SurfaceType.Smooth
 Part1.BrickColor = BrickColor.new("Light blue")
 Part1.TopSurface = Enum.SurfaceType.Smooth
 Part1.brickColor = BrickColor.new("Light blue")
+	end
+end
+	end
+end)
+
+local cmd = ":unice"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+for _, ryyyy in next, Target:GetDescendants() do
+	if ryyyy:IsA("BasePart") then
+ryyyy.Anchored = false
+Target.Ice:Destroy()
+
 	end
 end
 	end
