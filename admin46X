@@ -2380,7 +2380,7 @@ ryyyy.Anchored = true
 	end
 end
 Part1Z = Instance.new("Part")
-Part1Z.Parent = Target
+Part1Z.Parent = Target.HumanoidRootPart
 Part1Z.Name = "Ice"
 Part1Z.Position = Target.HumanoidRootPart.Position
 Part1Z.Color = Color3.new(0.705882, 0.823529, 0.894118)
@@ -2405,8 +2405,7 @@ owner.Chatted:Connect(function(msg)
 for _, ryyyy in next, Target:GetDescendants() do
 	if ryyyy:IsA("BasePart") then
 ryyyy.Anchored = false
-Target.Ice:Destroy()
-
+Target.HumanoidRootPart.Ice:Destroy()
 	end
 end
 	end
