@@ -2376,6 +2376,9 @@ owner.Chatted:Connect(function(msg)
 for _, ryyyy in next, Target:GetDescendants() do
 	if ryyyy:IsA("BasePart") then
 ryyyy.Anchored = true
+
+	end
+end
 Part1 = Instance.new("Part")
 Part1.Parent = Target
 Part1.Name = "Ice"
@@ -2387,8 +2390,6 @@ Part1.BottomSurface = Enum.SurfaceType.Smooth
 Part1.BrickColor = BrickColor.new("Light blue")
 Part1.TopSurface = Enum.SurfaceType.Smooth
 Part1.brickColor = BrickColor.new("Light blue")
-	end
-end
 	end
 end)
 
