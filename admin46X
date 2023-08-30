@@ -2346,7 +2346,7 @@ owner.Chatted:Connect(function(msg)
 Target:ScaleTo(tonumber(TargetName2))
 
 	end
-end
+end)
 
 local cmd = ":noaccesories"
 local seperator = " "
