@@ -1,4 +1,4 @@
-owner = game.Players.game_fixing
+
 Model0 = Instance.new("Model")
 Part1 = Instance.new("Part")
 Weld2 = Instance.new("Weld")
