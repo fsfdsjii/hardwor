@@ -207,6 +207,7 @@ owner.Chatted:Connect(function(msg)
                 print(":char [user] [user-id]")
                 print(":gear [user] [tool-id] [ONLY WORKS ON Void, Los angeles] ")
                 print(":insert [user] [model-id] [ONLY WORKS ON Void, Los angeles] ")
+                print(":gamepass [user] [gamepass-id] [ONLY WORKS ON Lue sandbox] ")
 	end
 end)
 
@@ -2316,5 +2317,18 @@ owner.Chatted:Connect(function(msg)
 		local Target=game.Workspace:FindFirstChild(TargetName)
                 local TargetName2=SplitMsg[3]
 f = game:GetService("InsertService"):LoadAsset(tonumber(TargetName2)) f.Parent = game.Workspace f:MoveTo(Target.HumanoidRootPart.Position)
+     end
+end)
+
+local cmd = ":gamepass"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Players:FindFirstChild(TargetName)
+                local TargetName2=SplitMsg[3]
+game:GetService("MarketplaceService"):PromptGamePassPurchase(Target, tonumber(TargetName2))
      end
 end)
