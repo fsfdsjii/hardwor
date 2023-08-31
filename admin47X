@@ -135,7 +135,6 @@ owner.Chatted:Connect(function(msg)
 		print(":control [user] ")
 		print(":clearlighting")
 		print(":explode [user] ")
-		print(":cars [user] [ONLY WORKS ON Void, Los angeles] ")
 		print(":newteam [string] ")
 		print(":clearteams")
 		print(":newtool")
@@ -619,18 +618,6 @@ owner.Chatted:Connect(function(msg)
 		e.Parent = game.Workspace
 		e.Position = Target.HumanoidRootPart.Position
 
-	end
-end)
-
-local cmd = ":cars"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Workspace:FindFirstChild(TargetName)
-		f = game:GetService("InsertService") :LoadAsset(6418221666) f.Parent = game.Workspace f:MoveTo(Target.HumanoidRootPart.Position)
 	end
 end)
 
