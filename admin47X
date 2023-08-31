@@ -2271,7 +2271,7 @@ end)
 
 local cmd = ":char"
 local seperator = " "
-owner.Chatted:Connect(function(msg)https://github.com/fsfdsjii/hardwor/blob/main/admin47X
+owner.Chatted:Connect(function(msg)
 
 	local SplitMsg = string.split(msg, seperator, seperator)
 	if cmd == SplitMsg[1] then
