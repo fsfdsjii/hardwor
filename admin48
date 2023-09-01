@@ -379,35 +379,21 @@ local cmd = ":spin"
 local seperator = " "
 
 owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
+	local SplitMsg = string.split(msg, seperator, seperator)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
-		local UIS = game:GetService("UserInputService")
-		local player = game.Players.LocalPlayer
-		local character = player.Character
-		local hmrp = Target:WaitForChild("HumanoidRootPart")
-		local hum = Target:WaitForChild("Humanoid")
+		local TargetName2=SplitMsg[3]
+		local BodyAngularVelocity = Instance.new("BodyAngularVelocity")
+		BodyAngularVelocity.Parent = Target.HumanoidRootPart
+		BodyAngularVelocity.AngularVelocity = Vector3.new(0,10,0)
+		nnn = Instance.new("BodyVelocity")
+		nnn.Parent = Target.HumanoidRootPart
+		nnn.MaxForce = Vector3.new(1, 1, 1)
+		nnn.Velocity = Vector3.new(tonumber(TargetName2), tonumber(TargetName2), tonumber(TargetName2))
+		Target.Humanoid.PlatformStand = false
 
-		local function spin(input, gpe)
-			if gpe then
-				return
-			end
-			if input.KeyCode == Enum.KeyCode.E then
-				--while wait() do
-				--hmrp.CFrame = hmrp.CFrame * CFrame.Angles(0,.5,0)
-				--hmrp.Orientation = hmrp.Orientation + Vector3.new(90,0,0)
-				hmrp.CFrame = hmrp.CFrame*CFrame.new(0, 0, -3) * CFrame.Angles(90,0,0)
-				local BodyAngularVelocity = Instance.new("BodyAngularVelocity", hmrp)
-				BodyAngularVelocity.AngularVelocity = Vector3.new(0,10,0)
 
-				local BV = Instance.new("BodyVelocity", hmrp)
-				BV.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
-				BV.Velocity = hmrp.CFrame.lookVector * 120
-				hum.PlatformStand = true
-
-			end
-		end
 	end
 end)
 
