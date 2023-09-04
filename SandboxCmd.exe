@@ -10,6 +10,7 @@ owner.Chatted:Connect(function(msg)
 		print("/delete or /del [service] [instance]")
 		print("/name [service] [instance] [name]")
 		print("/clocktime or /time [number]")
+		print("/getdescendants or /getchildren or /children [service]")
 
 	end
 end)
@@ -83,7 +84,7 @@ owner.Chatted:Connect(function(msg)
 		if Target2 then
 			Target2:Destroy()
 		else
-			warn("Child could'nt be found in that service or Child doesnt exist at all or Service does'nt exist")
+			warn("Child couldnt be found in that service or Child doesnt exist at all or Service doesnt exist")
 		end
 
 	end
@@ -109,7 +110,7 @@ owner.Chatted:Connect(function(msg)
 				Humanoid.DisplayName = tostring(TargetName3)
 			end
 		else
-			warn("Child could'nt be found in that service or Child doesnt exist at all or Service does'nt exist")
+			warn("Child couldnt be found in that service or Child doesnt exist at all or Service doesnt exist")
 end
 	end
 end)
@@ -133,5 +134,53 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 game:GetService('Lighting').ClockTime = tonumber(TargetName)
+	end
+end)
+
+local cmd = "/getdescendants"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+                local Target = game:FindFirstChild('TargetName')
+if Target then
+print(Target:GetDescendants())
+else
+warn("Service doesnt exist.")
+              end
+	end
+end)
+
+local cmd = "/getchildren"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+                local Target = game:FindFirstChild('TargetName')
+if Target then
+print(Target:GetDescendants())
+else
+warn("Service doesnt exist.")
+              end
+	end
+end)
+
+local cmd = "/children"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+                local Target = game:FindFirstChild('TargetName')
+if Target then
+print(Target:GetDescendants())
+else
+warn("Service doesnt exist.")
+              end
 	end
 end)
