@@ -7,7 +7,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		print("/clone [service] [instance]")
-		print("/destroy [service] [instance]")
+		print("/delete or /del [service] [instance]")
 		print("/name [service] [instance] [name]")
 
 	end
@@ -50,7 +50,26 @@ owner.Chatted:Connect(function(msg)
 	end
 end)
 
-local cmd = "/destroy"
+local cmd = "/delete"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game:FindFirstChild(TargetName)
+		local TargetName2=SplitMsg[3]
+		local Target2=Target:FindFirstChild(TargetName2)
+		if Target2 then
+			Target2:Destroy()
+		else
+			warn("Child could'nt be found in that service or Child doesnt exist at all or Service does'nt exist")
+		end
+
+	end
+end)
+
+local cmd = "/del"
 local seperator = " "
 
 owner.Chatted:Connect(function(msg)
