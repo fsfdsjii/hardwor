@@ -9,7 +9,7 @@ owner.Chatted:Connect(function(msg)
 		print("/clone [service] [instance]")
 		print("/delete or /del [service] [instance]")
 		print("/name [service] [instance] [name]")
-		print("/clocktime [number]")
+		print("/clocktime or /time [number]")
 
 	end
 end)
@@ -115,6 +115,17 @@ end
 end)
 
 local cmd = "/clocktime"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+game:GetService('Lighting').ClockTime = tonumber(TargetName)
+	end
+end)
+
+local cmd = "/time"
 local seperator = " "
 
 owner.Chatted:Connect(function(msg)
