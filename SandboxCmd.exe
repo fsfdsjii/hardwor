@@ -1,0 +1,95 @@
+print("Welcome to SandboxCmd.exe, Say /cmdhelp for commands, Brought to you by Hunter.")
+local cmd = "/cmdhelp"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		print("/clone [service] [instance]")
+		print("/destroy [service] [instance]")
+		print("/name [service] [instance] [name]")
+
+	end
+end)
+
+local cmd = "/clone"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game:FindFirstChild(TargetName)
+		local TargetName2=SplitMsg[3]
+		local Target2=Target:FindFirstChild(TargetName2)
+		if Target2 then
+			Target2.Archivable = true
+			local r = Target2:Clone()
+			r.Parent = Target2.Parent
+		else
+			warn("Child could'nt be found in that service or Child doesnt exist at all or Service does'nt exist")
+		end
+		if Target2 ~= nil then
+			if Target2:IsA('Model') then
+				for _, v in next, Target2:GetDescendants() do
+					if v:IsA("BasePart") then
+						v.Archivable = true
+						v:Clone()
+					end
+				end
+			 elseif Target2:IsA('Folder') then
+				for _, y in next, Target2:GetDescendants() do
+					if y:IsA("BasePart") then
+						y.Archivable = true
+						y:Clone()
+					end
+				end
+			end
+		end
+	end
+end)
+
+local cmd = "/destroy"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game:FindFirstChild(TargetName)
+		local TargetName2=SplitMsg[3]
+		local Target2=Target:FindFirstChild(TargetName2)
+		if Target2 then
+			Target2:Destroy()
+		else
+			warn("Child could'nt be found in that service or Child doesnt exist at all or Service does'nt exist")
+		end
+
+	end
+end)
+
+local cmd = "/name"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game:FindFirstChild(TargetName)
+		local TargetName2=SplitMsg[3]
+		local Target2=Target:FindFirstChild(TargetName2)
+		local TargetName3=SplitMsg[4]
+		if Target2 then
+		if not Target2:FindFirstChild('Humanoid') then
+			Target2.Name = tostring(TargetName3)
+			end
+			local Humanoid = Target2:FindFirstChildWhichIsA('Humanoid')
+			if Humanoid then
+				Humanoid.DisplayName = tostring(TargetName3)
+			end
+		else
+			warn("Child could'nt be found in that service or Child doesnt exist at all or Service does'nt exist")
+end
+	end
+end)
