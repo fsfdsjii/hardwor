@@ -12,6 +12,8 @@ owner.Chatted:Connect(function(msg)
 		print("/clocktime or /time [number]")
 		print("/getdescendants or /getchildren or /children [service]")
 		print("/teleport or /tele [user] [place-id]")
+		print("/parent [service] [instance] [service] [instance]")
+		print("/parent2service [service] [instance] [service]")
 
 	end
 end)
@@ -145,7 +147,7 @@ owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
-                local Target = game:FindFirstChild(TargetName)
+                local Target = game:GetService(tostring(TargetName))
 if Target then
 for _, v in next, Target:GetDescendants() do
 		print(v)
@@ -163,7 +165,7 @@ owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
-                local Target = game:FindFirstChild(TargetName)
+                local Target = game:GetService(tostring(TargetName))
 if Target then
 for _, v in next, Target:GetDescendants() do
 print(v)
@@ -181,7 +183,7 @@ owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
-                local Target=game:FindFirstChild(TargetName)
+                local Target=game:GetService(tostring(TargetName))
 if Target then
 for _, v in next, Target:GetDescendants() do
 		print(v)
@@ -214,7 +216,56 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Players:FindFirstChild(TargetName)
-		local TargetName2=SplitMsg[3]	
+		local TargetName2=SplitMsg[3]
 		game:GetService('TeleportService'):Teleport(tonumber(TargetName2), Target)
+	end
+end)
+
+local cmd = "/parent"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator, seperator, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game:GetService(tostring(TargetName))
+		local TargetName2=SplitMsg[3]
+		local Target2=Target:FindFirstChild(TargetName2)
+		local TargetName3=SplitMsg[4]
+                local Target3=game:GetService(tostring(TargetName3))
+		local TargetName4=SplitMsg[5]
+                local Target4=Target3:FindFirstChild(TargetName4)
+if Target2 then
+if Target4 then
+Target2.Parent = Target4
+                  end
+             end
+if not Target4 then
+warn("Parent doesnt exist, or instance doesnt exist.")
+elseif not Target2 then
+warn("Parent doesnt exist, or instance doesnt exist.")
+end
+	end
+end)
+
+local cmd = "/parent2service"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game:GetService(tostring(TargetName))
+		local TargetName2=SplitMsg[3]
+		local Target2=Target:FindFirstChild(TargetName2)
+		local TargetName3=SplitMsg[4]
+                local Target3=game:GetService(tostring(TargetName3))
+if Target2 then
+if Target3 then
+Target2.Parent = Target3
+else
+print("Object that was gonna be parented could not be found, or parent could not be found.")
+                  end
+             end
 	end
 end)
