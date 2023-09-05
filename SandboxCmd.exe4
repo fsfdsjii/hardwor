@@ -16,6 +16,7 @@ owner.Chatted:Connect(function(msg)
 		print("/parent2service [service] [instance] [service]")
 		print("/echo [string]")
 		print("/cls")
+		print("/exit")
 
 	end
 end)
@@ -290,5 +291,15 @@ owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg)
 	if cmd == SplitMsg[1] then
 owner.PlayerGui:ClearAllChildren()
+	end
+end)
+
+local cmd = "/exit"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg)
+	if cmd == SplitMsg[1] then
+script:Destroy()
 	end
 end)
