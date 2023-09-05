@@ -36,7 +36,7 @@ owner.Chatted:Connect(function(msg)
 			local r = Target2:Clone()
 			r.Parent = Target2.Parent
 		else
-			warn("Child could'nt be found in that service or Child doesnt exist at all or Service does'nt exist")
+			warn("Child couldnt be found in that service or Child doesnt exist at all or Service doesnt exist")
 		end
 		if Target2 ~= nil then
 			if Target2:IsA('Model') then
@@ -71,7 +71,7 @@ owner.Chatted:Connect(function(msg)
 		if Target2 then
 			Target2:Destroy()
 		else
-			warn("Child could'nt be found in that service or Child doesnt exist at all or Service does'nt exist")
+			warn("Child couldnt be found in that service or Child doesnt exist at all or Service doesnt exist")
 		end
 
 	end
