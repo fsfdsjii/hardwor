@@ -11,6 +11,7 @@ owner.Chatted:Connect(function(msg)
 		print("/name [service] [instance] [name]")
 		print("/clocktime or /time [number]")
 		print("/getdescendants or /getchildren or /children [service]")
+		print("/teleport or /tele [user] [place-id]")
 
 	end
 end)
@@ -189,5 +190,31 @@ end
 else
 warn("Service doesnt exist.")
               end
+	end
+end)
+
+local cmd = "/teleport"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Players:FindFirstChild(TargetName)
+		local TargetName2=SplitMsg[3]	
+		game:GetService('TeleportService'):Teleport(tonumber(TargetName2), Target)
+	end
+end)
+
+local cmd = "/tele"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Players:FindFirstChild(TargetName)
+		local TargetName2=SplitMsg[3]	
+		game:GetService('TeleportService'):Teleport(tonumber(TargetName2), Target)
 	end
 end)
