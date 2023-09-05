@@ -7,6 +7,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		print("/copy [service] [instance]")
+		print("/copytoservice [service] [instance] [service]")
 		print("/delete or /del [service] [instance]")
 		print("/name [service] [instance] [name]")
 		print("/clocktime or /time [number]")
@@ -44,6 +45,7 @@ owner.Chatted:Connect(function(msg)
 					if v:IsA("BasePart") then
 						v.Archivable = true
 						v:Clone()
+                                                v.Parent = Target2
 					end
 				end
 			 elseif Target2:IsA('Folder') then
@@ -51,6 +53,49 @@ owner.Chatted:Connect(function(msg)
 					if y:IsA("BasePart") then
 						y.Archivable = true
 						y:Clone()
+                                                y.Parent = Target2
+					end
+				end
+			end
+		end
+	end
+end)
+
+local cmd = "/copytoservice"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game:FindFirstChild(TargetName)
+		local TargetName2=SplitMsg[3]
+		local Target2=Target:FindFirstChild(TargetName2)
+		local TargetName3=SplitMsg[4]
+		local Target3=game:FindFirstChild(TargetName3)
+		if Target2 then
+			Target2.Archivable = true
+			local r = Target2:Clone()
+			r.Parent = Target3
+		else
+			warn("Child couldnt be found in that service or Child doesnt exist at all or Service doesnt exist")
+		end
+		if Target2 ~= nil then
+			if Target2:IsA('Model') then
+				for _, v in next, Target2:GetDescendants() do
+					if v:IsA("BasePart") then
+						v.Archivable = true
+						v:Clone()
+                                                v.Parent = Target3
+
+					end
+				end
+			 elseif Target2:IsA('Folder') then
+				for _, y in next, Target2:GetDescendants() do
+					if y:IsA("BasePart") then
+						y.Archivable = true
+						y:Clone()
+                                                y.Parent = Target3
 					end
 				end
 			end
