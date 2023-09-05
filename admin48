@@ -208,6 +208,7 @@ owner.Chatted:Connect(function(msg)
                 print(":gear [user] [tool-id] [ONLY WORKS ON Void, Los angeles] ")
                 print(":insert [user] [model-id] [ONLY WORKS ON Void, Los angeles] ")
                 print(":gamepass [user] [gamepass-id] [ONLY WORKS ON Lue sandbox] ")
+                print(":accesory [user] [accesory-id or hair-id] [ONLY WORKS ON Void, Los angeles] ")
 	end
 end)
 
@@ -2317,4 +2318,29 @@ owner.Chatted:Connect(function(msg)
                 local TargetName2=SplitMsg[3]
 game:GetService("MarketplaceService"):PromptGamePassPurchase(Target, tonumber(TargetName2))
      end
+end)
+
+local cmd = ":accesory"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		local TargetName2=SplitMsg[3]
+		local ProductInfo = game:GetService('MarketplaceService'):GetProductInfo(tonumber(TargetName2))
+		local AssetTypes = {41, 42, 43, 44, 45, 46, 47, 57, 58}
+		local f = game:GetService("InsertService"):LoadAsset(tonumber(TargetName2))
+		y = f:FindFirstChildWhichIsA('Accessory')
+		t = y:FindFirstChild("Handle")
+		if y then
+			m = Instance.new("Weld")
+			m.Name = "AccessoryWeld"
+			m.Parent = t
+			m.Part0 = t
+			m.Part1 = Target.Head
+			y.Parent = Target
+		end
+	end
 end)
