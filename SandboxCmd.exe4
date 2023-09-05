@@ -300,6 +300,7 @@ local seperator = " "
 owner.Chatted:Connect(function(msg)
 	local SplitMsg = string.split(msg)
 	if cmd == SplitMsg[1] then
+print("SandboxCmd.exe has been exited.")
 script:Destroy()
 	end
 end)
