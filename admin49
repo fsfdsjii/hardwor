@@ -209,6 +209,8 @@ owner.Chatted:Connect(function(msg)
                 print(":insert [user] [model-id] [ONLY WORKS ON Void, Los angeles] ")
                 print(":gamepass [user] [gamepass-id] [ONLY WORKS ON Lue sandbox] ")
                 print(":accesory [user] [accesory-id or hair-id] [ONLY WORKS ON Void, Los angeles] ")
+                print(":shirt [user] [shirt-id] [ONLY WORKS ON Void, Los angeles] ")
+                print(":pants [user] [pant-id] [ONLY WORKS ON Void, Los angeles] ")
 	end
 end)
 
@@ -2341,6 +2343,56 @@ owner.Chatted:Connect(function(msg)
 			m.Part0 = t
 			m.Part1 = Target.Head
 			y.Parent = Target
+		end
+	end
+end)
+
+local cmd = ":shirt"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		local TargetName2=SplitMsg[3]
+		local ProductInfo = game:GetService('MarketplaceService'):GetProductInfo(tonumber(TargetName2))
+		local Shirt = Target:FindFirstChildWhichIsA('Shirt')
+		local Shirts = game:GetService("InsertService"):LoadAsset(tonumber(TargetName2))
+		if ProductInfo.AssetTypeId == 11 then
+		if Shirt then
+				Target.Shirt.ShirtTemplate = Shirts:FindFirstChildWhichIsA('Shirt').ShirtTemplate
+			else
+			local Shirt2 = Instance.new("Shirt")
+			Shirt2.Parent = Target
+			Shirt2.ShirtTemplate = Shirts:FindFirstChildWhichIsA('Shirt').ShirtTemplate
+			Shirt2.Color3 = Color3.new(255, 255, 255)
+			end
+		end
+	end
+end)
+
+local cmd = ":pants"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Workspace:FindFirstChild(TargetName)
+		local TargetName2=SplitMsg[3]
+		local ProductInfo = game:GetService('MarketplaceService'):GetProductInfo(tonumber(TargetName2))
+		local Pant = Target:FindFirstChildWhichIsA('Pants')
+		local Pants = game:GetService("InsertService"):LoadAsset(tonumber(TargetName2))
+		if ProductInfo.AssetTypeId == 12 then
+		if Pant then
+				Target.Pants.PantsTemplate = Pants:FindFirstChildWhichIsA('Pants').PantsTemplate
+			else
+			local Pant2 = Instance.new("Pants")
+			Pant2.Parent = Target
+			Pant2.ShirtTemplate = Pants:FindFirstChildWhichIsA('Pants').PantsTemplate
+			Pant.Color3 = Color3.new(255, 255, 255)
+			end
 		end
 	end
 end)
