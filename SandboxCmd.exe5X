@@ -18,6 +18,7 @@ owner.Chatted:Connect(function(msg)
 		print("/echo [string]")
 		print("/cls")
 		print("/exit")
+		print("/chatlogs or /logs")
 
 	end
 end)
@@ -347,5 +348,37 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 print("SandboxCmd.exe has been exited.")
 script:Destroy()
+	end
+end)
+
+local cmd = "/chatlogs"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg)
+	if cmd == SplitMsg[1] then
+for _, v in next, game:GetService('Players'):GetDescendants() do
+	if v:IsA("Player") then
+		v.Chatted:Connect(function(logs)
+			print(v.Name..":".."ㅤ"..logs)
+		end)
+	end
+end
+	end
+end)
+
+local cmd = "/logs"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg)
+	if cmd == SplitMsg[1] then
+for _, v in next, game:GetService('Players'):GetDescendants() do
+	if v:IsA("Player") then
+		v.Chatted:Connect(function(logs)
+			print(v.Name..":".."ㅤ"..logs)
+		end)
+	end
+end
 	end
 end)
