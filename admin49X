@@ -211,6 +211,7 @@ owner.Chatted:Connect(function(msg)
                 print(":accesory [user] [accesory-id or hair-id] [ONLY WORKS ON Void, Los angeles] ")
                 print(":shirt [user] [shirt-id] [ONLY WORKS ON Void, Los angeles] ")
                 print(":pants [user] [pant-id] [ONLY WORKS ON Void, Los angeles] ")
+                print(":bubblychat [user] [chat-color]")
 	end
 end)
 
@@ -2395,4 +2396,19 @@ owner.Chatted:Connect(function(msg)
 			end
 		end
 	end
+end)
+
+local cmd = ":bubblychat"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Players:FindFirstChild(TargetName)
+		local TargetName2=SplitMsg[3]
+Target.Chatted:Connect(function(bubble)
+game:GetService("Chat"):Chat(Target.Character, tostring(bubble), Enum.ChatColor[TargetName2])
+end)
+   end
 end)
