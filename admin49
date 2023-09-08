@@ -202,7 +202,7 @@ owner.Chatted:Connect(function(msg)
                 print(":size [user] [number]")
                 print(":noaccesories [user]")
                 print(":ice [user]")
-                print(":unice [user]")
+                print(":thaw [user]")
                 print(":sound [user] [sound-id] [volume] [pitch] [boolean]")
                 print(":char [user] [user-id]")
                 print(":gear [user] [tool-id] [ONLY WORKS ON Void, Los angeles] ")
@@ -2207,7 +2207,7 @@ owner.Chatted:Connect(function(msg)
 	end
 end)
 
-local cmd = ":unice"
+local cmd = ":thaw"
 local seperator = " "
 owner.Chatted:Connect(function(msg)
 
