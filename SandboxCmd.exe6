@@ -382,3 +382,33 @@ for _, v in next, game:GetService('Players'):GetDescendants() do
 end
 	end
 end)
+
+local cmd = "/calculate"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local TargetName2=SplitMsg[3]
+		local TargetName3=SplitMsg[4]
+if TargetName2 == "X" then
+print(tonumber(TargetName) * tonumber(TargetName3))
+elseif TargetName2 == "x" then
+print(tonumber(TargetName) * tonumber(TargetName3))
+elseif TargetName2 == "*" then
+print(tonumber(TargetName) * tonumber(TargetName3))
+elseif TargetName2 == "+" then
+print(tonumber(TargetName) + tonumber(TargetName3))
+elseif TargetName2 == "-" then
+print(tonumber(TargetName) - tonumber(TargetName3))
+elseif TargetName2 == "/" then
+print(tonumber(TargetName) / tonumber(TargetName3))
+elseif TargetName2 == "%" then
+print(tonumber(TargetName) % tonumber(TargetName3))
+elseif TargetName2 == "^" then
+print(tonumber(TargetName) ^ tonumber(TargetName3))
+
+              end
+	end
+end)
