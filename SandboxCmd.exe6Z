@@ -412,3 +412,64 @@ print(tonumber(TargetName) ^ tonumber(TargetName3))
               end
 	end
 end)
+
+local cmd = "/notepad"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Players:FindFirstChild(TargetName)
+
+
+local ScreenGui = Instance.new("ScreenGui")
+local TextBox = Instance.new("TextBox")
+local Frame = Instance.new("Frame")
+local ImageButton = Instance.new("ImageButton")
+
+
+
+ScreenGui.Parent = Target.PlayerGui
+
+TextBox.Parent = ScreenGui
+TextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextBox.BorderSizePixel = 0
+TextBox.Position = UDim2.new(0.134292573, 0, 0.415555567, 0)
+TextBox.Size = UDim2.new(0, 306, 0, 176)
+TextBox.Font = Enum.Font.SourceSans
+TextBox.Text = "Put your text here!"
+TextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextBox.TextSize = 14.000
+TextBox.TextXAlignment = Enum.TextXAlignment.Left
+TextBox.TextYAlignment = Enum.TextYAlignment.Top
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.134292573, 0, 0.360000014, 0)
+Frame.Size = UDim2.new(0, 270, 0, 34)
+
+ImageButton.Parent = ScreenGui
+ImageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageButton.BorderSizePixel = 0
+ImageButton.Position = UDim2.new(0.344999999, 0, 0.360000014, 0)
+ImageButton.Size = UDim2.new(0, 36, 0, 34)
+ImageButton.Image = "http://www.roblox.com/asset/?id=5107150301"
+
+
+
+local function GSSVHG_fake_script() 
+	local script = Instance.new('Script', ImageButton)
+
+	script.Parent.MouseButton1Click:Connect(function()
+		script.Parent.Parent:Destroy()
+	end)
+end
+coroutine.wrap(GSSVHG_fake_script)()
+
+	end
+end)
