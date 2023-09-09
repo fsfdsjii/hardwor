@@ -1,0 +1,493 @@
+print("Welcome to SandboxCmd.exe, Say /cmdhelp for commands, Brought to you by Hunter.")
+local cmd = "/cmdhelp"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		print("/copy [service] [instance]")
+		print("/copytoservice [service] [instance] [service]")
+		print("/delete or /del [service] [instance]")
+		print("/name [service] [instance] [name]")
+		print("/clocktime or /time [number]")
+		print("/getdescendants or /getchildren or /dir [service]")
+		print("/teleport or /tele [user] [place-id]")
+		print("/parent [service] [instance] [service] [instance]")
+		print("/parent2service [service] [instance] [service]")
+		print("/echo [string]")
+		print("/cls")
+		print("/exit")
+		print("/chatlogs or /logs")
+		print("/calculate [number] [mathematical-lua-symbol] [number]")
+		print("/notepad [user]")
+
+	end
+end)
+
+local cmd = "/copy"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game:FindFirstChild(TargetName)
+		local TargetName2=SplitMsg[3]
+		local Target2=Target:FindFirstChild(TargetName2)
+		if Target2 then
+			Target2.Archivable = true
+			local r = Target2:Clone()
+			r.Parent = Target2.Parent
+		else
+			warn("Child couldnt be found in that service or Child doesnt exist at all or Service doesnt exist")
+		end
+		if Target2 ~= nil then
+			if Target2:IsA('Model') then
+				for _, v in next, Target2:GetDescendants() do
+					if v:IsA("BasePart") then
+						v.Archivable = true
+						v:Clone()
+                                                v.Parent = Target2
+					end
+				end
+			 elseif Target2:IsA('Folder') then
+				for _, y in next, Target2:GetDescendants() do
+					if y:IsA("BasePart") then
+						y.Archivable = true
+						y:Clone()
+                                                y.Parent = Target2
+					end
+				end
+			end
+		end
+	end
+end)
+
+local cmd = "/copytoservice"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game:FindFirstChild(TargetName)
+		local TargetName2=SplitMsg[3]
+		local Target2=Target:FindFirstChild(TargetName2)
+		local TargetName3=SplitMsg[4]
+		local Target3=game:FindFirstChild(TargetName3)
+		if Target2 then
+			Target2.Archivable = true
+			local r = Target2:Clone()
+			r.Parent = Target3
+		else
+			warn("Child couldnt be found in that service or Child doesnt exist at all or Service doesnt exist")
+		end
+		if Target2 ~= nil then
+			if Target2:IsA('Model') then
+				for _, v in next, Target2:GetDescendants() do
+					if v:IsA("BasePart") then
+						v.Archivable = true
+						v:Clone()
+                                                v.Parent = Target3
+
+					end
+				end
+			 elseif Target2:IsA('Folder') then
+				for _, y in next, Target2:GetDescendants() do
+					if y:IsA("BasePart") then
+						y.Archivable = true
+						y:Clone()
+                                                y.Parent = Target3
+					end
+				end
+			end
+		end
+	end
+end)
+
+local cmd = "/erase"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game:FindFirstChild(TargetName)
+		local TargetName2=SplitMsg[3]
+		local Target2=Target:FindFirstChild(TargetName2)
+		if Target2 then
+			Target2:Destroy()
+		else
+			warn("Child couldnt be found in that service or Child doesnt exist at all or Service doesnt exist")
+		end
+
+	end
+end)
+
+local cmd = "/del"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game:FindFirstChild(TargetName)
+		local TargetName2=SplitMsg[3]
+		local Target2=Target:FindFirstChild(TargetName2)
+		if Target2 then
+			Target2:Destroy()
+		else
+			warn("Child couldnt be found in that service or Child doesnt exist at all or Service doesnt exist")
+		end
+
+	end
+end)
+
+local cmd = "/name"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game:FindFirstChild(TargetName)
+		local TargetName2=SplitMsg[3]
+		local Target2=Target:FindFirstChild(TargetName2)
+		local TargetName3=SplitMsg[4]
+		if Target2 then
+		if not Target2:FindFirstChild('Humanoid') then
+			Target2.Name = tostring(TargetName3)
+			end
+			local Humanoid = Target2:FindFirstChildWhichIsA('Humanoid')
+			if Humanoid then
+				Humanoid.DisplayName = tostring(TargetName3)
+			end
+		else
+			warn("Child couldnt be found in that service or Child doesnt exist at all or Service doesnt exist")
+end
+	end
+end)
+
+local cmd = "/clocktime"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+game:GetService('Lighting').ClockTime = tonumber(TargetName)
+	end
+end)
+
+local cmd = "/time"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+game:GetService('Lighting').ClockTime = tonumber(TargetName)
+	end
+end)
+
+local cmd = "/getdescendants"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+                local Target = game:GetService(tostring(TargetName))
+if Target then
+for _, v in next, Target:GetDescendants() do
+		print(v)
+end
+else
+warn("Service doesnt exist.")
+              end
+	end
+end)
+
+local cmd = "/getchildren"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+                local Target = game:GetService(tostring(TargetName))
+if Target then
+for _, v in next, Target:GetDescendants() do
+print(v)
+end
+else
+warn("Service doesnt exist.")
+              end
+	end
+end)
+
+local cmd = "/dir"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+                local Target=game:GetService(tostring(TargetName))
+if Target then
+for _, v in next, Target:GetDescendants() do
+		print(v)
+	
+end
+else
+warn("Service doesnt exist.")
+              end
+	end
+end)
+
+local cmd = "/teleport"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Players:FindFirstChild(TargetName)
+		local TargetName2=SplitMsg[3]	
+		game:GetService('TeleportService'):Teleport(tonumber(TargetName2), Target)
+	end
+end)
+
+local cmd = "/tele"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Players:FindFirstChild(TargetName)
+		local TargetName2=SplitMsg[3]
+		game:GetService('TeleportService'):Teleport(tonumber(TargetName2), Target)
+	end
+end)
+
+local cmd = "/parent"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator, seperator, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game:GetService(tostring(TargetName))
+		local TargetName2=SplitMsg[3]
+		local Target2=Target:FindFirstChild(TargetName2)
+		local TargetName3=SplitMsg[4]
+                local Target3=game:GetService(tostring(TargetName3))
+		local TargetName4=SplitMsg[5]
+                local Target4=Target3:FindFirstChild(TargetName4)
+if Target2 then
+if Target4 then
+Target2.Parent = Target4
+                  end
+             end
+if not Target4 then
+warn("Parent doesnt exist, or instance doesnt exist.")
+elseif not Target2 then
+warn("Parent doesnt exist, or instance doesnt exist.")
+end
+	end
+end)
+
+local cmd = "/parent2service"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game:GetService(tostring(TargetName))
+		local TargetName2=SplitMsg[3]
+		local Target2=Target:FindFirstChild(TargetName2)
+		local TargetName3=SplitMsg[4]
+                local Target3=game:GetService(tostring(TargetName3))
+if Target2 then
+if Target3 then
+Target2.Parent = Target3
+else
+print("Object that was gonna be parented could not be found, or parent could not be found.")
+                  end
+             end
+	end
+end)
+
+local cmd = "/echo"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+print(tostring(TargetName))
+	end
+end)
+
+local cmd = "/cls"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg)
+	if cmd == SplitMsg[1] then
+owner.PlayerGui:ClearAllChildren()
+	end
+end)
+
+local cmd = "/exit"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg)
+	if cmd == SplitMsg[1] then
+print("SandboxCmd.exe has been exited.")
+script:Destroy()
+	end
+end)
+
+local cmd = "/chatlogs"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg)
+	if cmd == SplitMsg[1] then
+for _, v in next, game:GetService('Players'):GetDescendants() do
+	if v:IsA("Player") then
+		v.Chatted:Connect(function(logs)
+			print(v.Name..":".."ㅤ"..logs)
+		end)
+	end
+end
+	end
+end)
+
+local cmd = "/logs"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg)
+	if cmd == SplitMsg[1] then
+for _, v in next, game:GetService('Players'):GetDescendants() do
+	if v:IsA("Player") then
+		v.Chatted:Connect(function(logs)
+			print(v.Name..":".."ㅤ"..logs)
+		end)
+	end
+end
+	end
+end)
+
+local cmd = "/calculate"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator, seperator, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local TargetName2=SplitMsg[3]
+		local TargetName3=SplitMsg[4]
+if TargetName2 == "X" then
+print(tonumber(TargetName) * tonumber(TargetName3))
+elseif TargetName2 == "x" then
+print(tonumber(TargetName) * tonumber(TargetName3))
+elseif TargetName2 == "*" then
+print(tonumber(TargetName) * tonumber(TargetName3))
+elseif TargetName2 == "+" then
+print(tonumber(TargetName) + tonumber(TargetName3))
+elseif TargetName2 == "-" then
+print(tonumber(TargetName) - tonumber(TargetName3))
+elseif TargetName2 == "/" then
+print(tonumber(TargetName) / tonumber(TargetName3))
+elseif TargetName2 == "%" then
+print(tonumber(TargetName) % tonumber(TargetName3))
+elseif TargetName2 == "^" then
+print(tonumber(TargetName) ^ tonumber(TargetName3))
+
+              end
+	end
+end)
+
+local cmd = "/notepad"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Players:FindFirstChild(TargetName)
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextBox = Instance.new("TextBox")
+local ImageButton = Instance.new("ImageButton")
+local Frame_2 = Instance.new("Frame")
+local ImageButton_2 = Instance.new("ImageButton")
+ScreenGui.Parent = owner.PlayerGui
+Frame.Parent = ScreenGui
+Frame.Active = true
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Draggable = true
+Frame.Position = UDim2.new(0.134292573, 0, 0.360000014, 0)
+Frame.Selectable = true
+Frame.Size = UDim2.new(0, 270, 0, 34)
+TextBox.Parent = Frame
+TextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextBox.BorderSizePixel = 0
+TextBox.Position = UDim2.new(-0, 0, 0.973999977, 0)
+TextBox.Size = UDim2.new(0, 306, 0, 176)
+TextBox.Font = Enum.Font.SourceSans
+TextBox.Text = ""
+TextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextBox.TextSize = 14.000
+TextBox.TextXAlignment = Enum.TextXAlignment.Left
+TextBox.TextYAlignment = Enum.TextYAlignment.Top
+ImageButton.Parent = Frame
+ImageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageButton.BorderSizePixel = 0
+ImageButton.Position = UDim2.new(0.996851802, 0, 0.00705898507, 0)
+ImageButton.Size = UDim2.new(0, 37, 0, 33)
+ImageButton.Image = "http://www.roblox.com/asset/?id=5107150301"
+ImageButton.ImageColor3 = Color3.fromRGB(0, 0, 0)
+Frame_2.Parent = Frame
+Frame_2.BackgroundColor3 = Color3.fromRGB(236, 236, 236)
+Frame_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame_2.BorderSizePixel = 0
+Frame_2.Position = UDim2.new(-0.00100000005, 0, 0.97299999, 0)
+Frame_2.Size = UDim2.new(0, 306, 0, 2)
+ImageButton_2.Parent = ScreenGui
+ImageButton_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageButton_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageButton_2.BorderSizePixel = 0
+ImageButton_2.Draggable = true
+ImageButton_2.Position = UDim2.new(0.0149880145, 32, 0.475555569, 7)
+ImageButton_2.Size = UDim2.new(0, 100, 0, 100)
+ImageButton_2.Image = "rbxassetid://12644177983"
+local function BFBESA_fake_script() -- ImageButton.Script 
+	local script = Instance.new('Script', ImageButton)
+	script.Parent.MouseButton1Click:Connect(function()
+		script.Parent.Parent.Parent:Destroy()
+	end)
+end
+coroutine.wrap(BFBESA_fake_script)()
+local function JNMOHE_fake_script() -- ImageButton_2.Script 
+	local script = Instance.new('Script', ImageButton_2)
+	script.Parent.MouseButton1Click:Connect(function()
+	script.Parent.Parent.Frame.Visible = not script.Parent.Parent.Frame.Visible
+	end)
+end
+coroutine.wrap(JNMOHE_fake_script)()
+
+	end
+end)
+
