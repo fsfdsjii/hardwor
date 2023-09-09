@@ -470,23 +470,23 @@ ImageButton_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 ImageButton_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
 ImageButton_2.BorderSizePixel = 0
 ImageButton_2.Draggable = true
-ImageButton_2.Position = UDim2.new(0.0149880145, 32, 0.475555569, 7)
-ImageButton_2.Size = UDim2.new(0, 100, 0, 100)
+ImageButton_2.Position = UDim2.new(0.0446642749, 32, 0.562222242, 7)
+ImageButton_2.Size = UDim2.new(0, 67, 0, 61)
 ImageButton_2.Image = "rbxassetid://12644177983"
-local function BFBESA_fake_script() -- ImageButton.Script 
+local function USEO_fake_script() -- ImageButton.Script 
 	local script = Instance.new('Script', ImageButton)
 	script.Parent.MouseButton1Click:Connect(function()
 		script.Parent.Parent.Parent:Destroy()
 	end)
 end
-coroutine.wrap(BFBESA_fake_script)()
-local function JNMOHE_fake_script() -- ImageButton_2.Script 
+coroutine.wrap(USEO_fake_script)()
+local function WXUFAWY_fake_script() -- ImageButton_2.Script 
 	local script = Instance.new('Script', ImageButton_2)
 	script.Parent.MouseButton1Click:Connect(function()
 	script.Parent.Parent.Frame.Visible = not script.Parent.Parent.Frame.Visible
 	end)
 end
-coroutine.wrap(JNMOHE_fake_script)()
+coroutine.wrap(WXUFAWY_fake_script)()
 
 	end
 end)
