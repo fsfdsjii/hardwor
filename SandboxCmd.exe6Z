@@ -19,6 +19,8 @@ owner.Chatted:Connect(function(msg)
 		print("/cls")
 		print("/exit")
 		print("/chatlogs or /logs")
+		print("/calculate [number] [mathematical-lua-symbol] [number]")
+		print("/notepad [user]")
 
 	end
 end)
