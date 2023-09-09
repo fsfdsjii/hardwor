@@ -822,7 +822,7 @@ local function CZLXID_fake_script() -- PaintGui.PaintGuiHandler
 		
 		if canvas.Visible == true and cursor.Visible == true then
 			
-			currentSize += 1
+			currentSize = currentSize + 1
 			
 			brushSettings.SizeBox.Text = currentSize
 	
