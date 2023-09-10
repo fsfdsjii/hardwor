@@ -423,683 +423,218 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Players:FindFirstChild(TargetName)
-script.Parent.MouseButton1Click:Connect(function()  
-
-
-	local ScreenGuis = Instance.new("ScreenGui")
-	local Frames = Instance.new("Frame")
-	local TextBoxs = Instance.new("TextBox")
-	local ImageButtons = Instance.new("ImageButton")
-	local Frame_2s = Instance.new("Frame")
-	local ImageButton_2s = Instance.new("ImageButton")
-	local Settingss = Instance.new("Frame")
-	local TextButtons = Instance.new("TextButton")
-	local ImageButton_3s = Instance.new("ImageButton")
-
-	--Properties:
-
-	ScreenGuis.Parent = Target.PlayerGui
-	ScreenGuis.ResetOnSpawn = false
-	Frames.Parent = ScreenGuis
-	Frames.Active = true
-	Frames.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Frames.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Frames.BorderSizePixel = 0
-	Frames.Draggable = true
-	Frames.Position = UDim2.new(0.134292573, 0, 0.360000014, 0)
-	Frames.Selectable = true
-	Frames.Size = UDim2.new(0, 270, 0, 34)
-	TextBoxs.Parent = Frames
-	TextBoxs.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	TextBoxs.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	TextBoxs.BorderSizePixel = 0
-	TextBoxs.Position = UDim2.new(-0, 0, 0.973999977, 0)
-	TextBoxs.Size = UDim2.new(0, 306, 0, 176)
-	TextBoxs.Font = Enum.Font.SourceSans
-	TextBoxs.Text = ""
-	TextBoxs.TextColor3 = Color3.fromRGB(0, 0, 0)
-	TextBoxs.TextSize = 14.000
-	TextBoxs.TextXAlignment = Enum.TextXAlignment.Left
-	TextBoxs.TextYAlignment = Enum.TextYAlignment.Top
-	ImageButtons.Parent = Frames
-	ImageButtons.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	ImageButtons.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	ImageButtons.BorderSizePixel = 0
-	ImageButtons.Position = UDim2.new(0.996999979, 0, 0.00700000022, 0)
-	ImageButtons.Size = UDim2.new(0, 37, 0, 33)
-	ImageButtons.Image = "http://www.roblox.com/asset/?id=5107150301"
-	ImageButtons.ImageColor3 = Color3.fromRGB(0, 0, 0)
-	Frame_2s.Parent = Frames
-	Frame_2s.BackgroundColor3 = Color3.fromRGB(236, 236, 236)
-	Frame_2s.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Frame_2s.BorderSizePixel = 0
-	Frame_2s.Position = UDim2.new(-0.00100000005, 0, 0.97299999, 0)
-	Frame_2s.Size = UDim2.new(0, 306, 0, 2)
-	ImageButton_2s.Parent = Frames
-	ImageButton_2s.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	ImageButton_2s.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	ImageButton_2s.BorderSizePixel = 0
-	ImageButton_2s.Position = UDim2.new(-0.00300000003, 0, -0.00700000022, 0)
-	ImageButton_2s.Size = UDim2.new(0, 37, 0, 33)
-	ImageButton_2s.Image = "http://www.roblox.com/asset/?id=8092240650"
-	Settingss.Name = "Settings"
-	Settingss.Parent = Frames
-	Settingss.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Settingss.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Settingss.BorderSizePixel = 0
-	Settingss.Position = UDim2.new(-0.00400000019, 0, -4.73000002, 0)
-	Settingss.Size = UDim2.new(0, 111, 0, 161)
-	TextButtons.Parent = Settingss
-	TextButtons.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	TextButtons.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	TextButtons.BorderSizePixel = 0
-	TextButtons.Position = UDim2.new(-0.00100000005, 0, 0.850000024, 0)
-	TextButtons.Size = UDim2.new(0, 109, 0, 18)
-	TextButtons.Font = Enum.Font.SourceSans
-	TextButtons.Text = "New Task..."
-	TextButtons.TextColor3 = Color3.fromRGB(0, 0, 0)
-	TextButtons.TextSize = 14.000
-	ImageButton_3s.Parent = ScreenGuis
-	ImageButton_3s.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	ImageButton_3s.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	ImageButton_3s.BorderSizePixel = 0
-	ImageButton_3s.Draggable = true
-	ImageButton_3s.Position = UDim2.new(0.0446642749, 32, 0.562222242, 7)
-	ImageButton_3s.Size = UDim2.new(0, 67, 0, 61)
-	ImageButton_3s.Image = "rbxassetid://12644177983"
-	local function VRCMLH_fake_script() -- ImageButton.Script 
-		local script = Instance.new('Script', ImageButtons)
-
-		script.Parent.MouseButton1Click:Connect(function()
-			script.Parent.Parent.Parent:Destroy()
-		end)
-	end
-	coroutine.wrap(VRCMLH_fake_script)()
-	local function YZTSYRV_fake_script() -- ImageButton_2.Script 
-		local script = Instance.new('Script', ImageButton_2s)
-
-		script.Parent.MouseButton1Click:Connect(function()
-			script.Parent.Parent.Settings = not script.Parent.Parent.Settings
-		end)
-	end
-	coroutine.wrap(YZTSYRV_fake_script)()
-	local function RZBH_fake_script() -- ImageButton_3.Script 
-		local script = Instance.new('Script', ImageButton_3s)
-
-		script.Parent.MouseButton1Click:Connect(function()
-			script.Parent.Parent.Frame.Visible = not script.Parent.Parent.Frame.Visible
-		end)
-	end
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextBox = Instance.new("TextBox")
+local ImageButton = Instance.new("ImageButton")
+local Frame_2 = Instance.new("Frame")
+local ImageButton_2 = Instance.new("ImageButton")
+local Settings = Instance.new("Frame")
+local TextButton = Instance.new("TextButton")
+local ImageButton_3 = Instance.new("ImageButton")
+ScreenGui.Parent = Target.PlayerGui
+ScreenGui.ResetOnSpawn = false
+Frame.Parent = ScreenGui
+Frame.Active = true
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Draggable = true
+Frame.Position = UDim2.new(0.134292573, 173, 0.360000014, -10)
+Frame.Selectable = true
+Frame.Size = UDim2.new(0, 270, 0, 34)
+TextBox.Parent = Frame
+TextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextBox.BorderSizePixel = 0
+TextBox.Position = UDim2.new(-0, 0, 0.973999977, 0)
+TextBox.Size = UDim2.new(0, 306, 0, 176)
+TextBox.Font = Enum.Font.SourceSans
+TextBox.Text = ""
+TextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextBox.TextSize = 14.000
+TextBox.TextXAlignment = Enum.TextXAlignment.Left
+TextBox.TextYAlignment = Enum.TextYAlignment.Top
+ImageButton.Parent = Frame
+ImageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageButton.BorderSizePixel = 0
+ImageButton.Position = UDim2.new(0.996999979, 0, 0.00700000022, 0)
+ImageButton.Size = UDim2.new(0, 37, 0, 33)
+ImageButton.Image = "http://www.roblox.com/asset/?id=5107150301"
+ImageButton.ImageColor3 = Color3.fromRGB(0, 0, 0)
+Frame_2.Parent = Frame
+Frame_2.BackgroundColor3 = Color3.fromRGB(236, 236, 236)
+Frame_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame_2.BorderSizePixel = 0
+Frame_2.Position = UDim2.new(-0.00100000005, 0, 0.97299999, 0)
+Frame_2.Size = UDim2.new(0, 306, 0, 2)
+ImageButton_2.Parent = Frame
+ImageButton_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageButton_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageButton_2.BorderSizePixel = 0
+ImageButton_2.Position = UDim2.new(-0.00300000003, 0, -0.00700000022, 0)
+ImageButton_2.Size = UDim2.new(0, 37, 0, 33)
+ImageButton_2.Image = "http://www.roblox.com/asset/?id=8092240650"
+Settings.Name = "Settings"
+Settings.Parent = Frame
+Settings.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Settings.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Settings.BorderSizePixel = 0
+Settings.Position = UDim2.new(-0.00400000019, 0, -4.73000002, 0)
+Settings.Size = UDim2.new(0, 111, 0, 161)
+TextButton.Parent = Settings
+TextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.BorderSizePixel = 0
+TextButton.Position = UDim2.new(-0.00100000005, 0, 0.850000024, 0)
+TextButton.Size = UDim2.new(0, 109, 0, 18)
+TextButton.Font = Enum.Font.SourceSans
+TextButton.Text = "New Task..."
+TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextSize = 14.000
+ImageButton_3.Parent = ScreenGui
+ImageButton_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageButton_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageButton_3.BorderSizePixel = 0
+ImageButton_3.Draggable = true
+ImageButton_3.Position = UDim2.new(0.0446642749, 32, 0.562222242, 7)
+ImageButton_3.Size = UDim2.new(0, 67, 0, 61)
+ImageButton_3.Image = "rbxassetid://12644177983"
+local function CART_fake_script() -- ImageButton.Script 
+	local script = Instance.new('Script', ImageButton)
+	script.Parent.MouseButton1Click:Connect(function()
+		script.Parent.Parent.Parent:Destroy()
+	end)
+end
+coroutine.wrap(CART_fake_script)()
+local function NPLBR_fake_script() -- ImageButton_2.Script 
+	local script = Instance.new('Script', ImageButton_2)
+	script.Parent.MouseButton1Click:Connect(function()
+		Settings.Visible = not Settings.Visible
+	end)
 	
-	local function RZBHH_fake_script() -- ImageButton_3.Script 
-		local script = Instance.new('Script', TextButtons)
+end
+coroutine.wrap(NPLBR_fake_script)()
+local function CWEOOY_fake_script() -- TextButton.Script 
+	local script = Instance.new('Script', TextButton)
+	script.Parent.MouseButton1Click:Connect(function()  
+		local ScreenGuis = Instance.new("ScreenGui")
+		local Frames = Instance.new("Frame")
+		local TextBoxs = Instance.new("TextBox")
+		local ImageButtons = Instance.new("ImageButton")
+		local Frame_2s = Instance.new("Frame")
+		local ImageButton_2s = Instance.new("ImageButton")
+		local Settingss = Instance.new("Frame")
+		local TextButtons = Instance.new("TextButton")
+		local ImageButton_3s = Instance.new("ImageButton")
+		ScreenGuis.Parent = script.Parent.Parent.Parent.Parent.Parent
+		ScreenGuis.ResetOnSpawn = false
+		Frames.Parent = ScreenGuis
+		Frames.Active = true
+		Frames.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Frames.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		Frames.BorderSizePixel = 0
+		Frames.Draggable = true
+		Frames.Position = UDim2.new(0.134292573, 173, 0.360000014, -10)
+		Frames.Selectable = true
+		Frames.Size = UDim2.new(0, 270, 0, 34)
+		TextBoxs.Parent = Frames
+		TextBoxs.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TextBoxs.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		TextBoxs.BorderSizePixel = 0
+		TextBoxs.Position = UDim2.new(-0, 0, 0.973999977, 0)
+		TextBoxs.Size = UDim2.new(0, 306, 0, 176)
+		TextBoxs.Font = Enum.Font.SourceSans
+		TextBoxs.Text = ""
+		TextBoxs.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextBoxs.TextSize = 14.000
+		TextBoxs.TextXAlignment = Enum.TextXAlignment.Left
+		TextBoxs.TextYAlignment = Enum.TextYAlignment.Top
+		ImageButtons.Parent = Frames
+		ImageButtons.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		ImageButtons.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		ImageButtons.BorderSizePixel = 0
+		ImageButtons.Position = UDim2.new(0.996999979, 0, 0.00700000022, 0)
+		ImageButtons.Size = UDim2.new(0, 37, 0, 33)
+		ImageButtons.Image = "http://www.roblox.com/asset/?id=5107150301"
+		ImageButtons.ImageColor3 = Color3.fromRGB(0, 0, 0)
+		Frame_2s.Parent = Frames
+		Frame_2s.BackgroundColor3 = Color3.fromRGB(236, 236, 236)
+		Frame_2s.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		Frame_2s.BorderSizePixel = 0
+		Frame_2s.Position = UDim2.new(-0.00100000005, 0, 0.97299999, 0)
+		Frame_2s.Size = UDim2.new(0, 306, 0, 2)
+		ImageButton_2s.Parent = Frames
+		ImageButton_2s.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		ImageButton_2s.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		ImageButton_2s.BorderSizePixel = 0
+		ImageButton_2s.Position = UDim2.new(-0.00300000003, 0, -0.00700000022, 0)
+		ImageButton_2s.Size = UDim2.new(0, 37, 0, 33)
+		ImageButton_2s.Image = "http://www.roblox.com/asset/?id=8092240650"
+		Settingss.Name = "Settings"
+		Settingss.Parent = Frames
+		Settingss.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Settingss.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		Settingss.BorderSizePixel = 0
+		Settingss.Position = UDim2.new(-0.00400000019, 0, -4.73000002, 0)
+		Settingss.Size = UDim2.new(0, 111, 0, 161)
+		TextButtons.Parent = Settingss
+		TextButtons.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TextButtons.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		TextButtons.BorderSizePixel = 0
+		TextButtons.Position = UDim2.new(-0.00100000005, 0, 0.850000024, 0)
+		TextButtons.Size = UDim2.new(0, 109, 0, 18)
+		TextButtons.Font = Enum.Font.SourceSans
+		TextButtons.Text = "New Task..."
+		TextButtons.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextButtons.TextSize = 14.000
+		ImageButton_3s.Parent = ScreenGuis
+		ImageButton_3s.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		ImageButton_3s.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		ImageButton_3s.BorderSizePixel = 0
+		ImageButton_3s.Draggable = true
+		ImageButton_3s.Position = UDim2.new(0.0446642749, 32, 0.562222242, 7)
+		ImageButton_3s.Size = UDim2.new(0, 67, 0, 61)
+		ImageButton_3s.Image = "rbxassetid://12644177983"
+		local function KGAW_fake_script() -- ImageButton.Script 
+			local script = Instance.new('Script', ImageButtons)
+			script.Parent.MouseButton1Click:Connect(function()
+				script.Parent.Parent.Parent:Destroy()
+			end)
+		end
+		coroutine.wrap(KGAW_fake_script)()
+		local function QKKTVMK_fake_script() -- ImageButton_2.Script 
+			local script = Instance.new('Script', ImageButton_2s)
+			script.Parent.MouseButton1Click:Connect(function()
+				Settingss.Visible = not Settingss.Visible
+			end)
+		end
+		coroutine.wrap(QKKTVMK_fake_script)()
+		local function OQNTOM_fake_script() -- TextButton.Script 
+			local script = Instance.new('Script', TextButtons)
+			script.Parent.MouseButton1Click:Connect(function()  
+			end)
+		end
+		coroutine.wrap(OQNTOM_fake_script)()
+		local function ZYBQJVQ_fake_script() -- ImageButton_3.Script 
+			local script = Instance.new('Script', ImageButton_3s)
+			script.Parent.MouseButton1Click:Connect(function()
+				script.Parent.Parent.Frame.Visible = not script.Parent.Parent.Frame.Visible
+			end)
+		end
+		coroutine.wrap(ZYBQJVQ_fake_script)()
+	end)
+end
+coroutine.wrap(CWEOOY_fake_script)()
+local function UAZMZCV_fake_script() -- ImageButton_3.Script 
+	local script = Instance.new('Script', ImageButton_3)
+	script.Parent.MouseButton1Click:Connect(function()
+		script.Parent.Parent.Frame.Visible = not script.Parent.Parent.Frame.Visible
+	end)
+end
+coroutine.wrap(UAZMZCV_fake_script)()
 
-		script.Parent.MouseButton1Click:Connect(function()
-			local ScreenGuis = Instance.new("ScreenGui")
-			local Frames = Instance.new("Frame")
-			local TextBoxs = Instance.new("TextBox")
-			local ImageButtons = Instance.new("ImageButton")
-			local Frame_2s = Instance.new("Frame")
-			local ImageButton_2s = Instance.new("ImageButton")
-			local Settingss = Instance.new("Frame")
-			local TextButtons = Instance.new("TextButton")
-			local ImageButton_3s = Instance.new("ImageButton")
-
-			--Properties:
-
-			ScreenGuis.Parent = Target.PlayerGui
-			ScreenGuis.ResetOnSpawn = false
-			Frames.Parent = ScreenGuis
-			Frames.Active = true
-			Frames.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-			Frames.BorderColor3 = Color3.fromRGB(0, 0, 0)
-			Frames.BorderSizePixel = 0
-			Frames.Draggable = true
-			Frames.Position = UDim2.new(0.134292573, 0, 0.360000014, 0)
-			Frames.Selectable = true
-			Frames.Size = UDim2.new(0, 270, 0, 34)
-			TextBoxs.Parent = Frames
-			TextBoxs.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-			TextBoxs.BorderColor3 = Color3.fromRGB(0, 0, 0)
-			TextBoxs.BorderSizePixel = 0
-			TextBoxs.Position = UDim2.new(-0, 0, 0.973999977, 0)
-			TextBoxs.Size = UDim2.new(0, 306, 0, 176)
-			TextBoxs.Font = Enum.Font.SourceSans
-			TextBoxs.Text = ""
-			TextBoxs.TextColor3 = Color3.fromRGB(0, 0, 0)
-			TextBoxs.TextSize = 14.000
-			TextBoxs.TextXAlignment = Enum.TextXAlignment.Left
-			TextBoxs.TextYAlignment = Enum.TextYAlignment.Top
-			ImageButtons.Parent = Frames
-			ImageButtons.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-			ImageButtons.BorderColor3 = Color3.fromRGB(0, 0, 0)
-			ImageButtons.BorderSizePixel = 0
-			ImageButtons.Position = UDim2.new(0.996999979, 0, 0.00700000022, 0)
-			ImageButtons.Size = UDim2.new(0, 37, 0, 33)
-			ImageButtons.Image = "http://www.roblox.com/asset/?id=5107150301"
-			ImageButtons.ImageColor3 = Color3.fromRGB(0, 0, 0)
-			Frame_2s.Parent = Frames
-			Frame_2s.BackgroundColor3 = Color3.fromRGB(236, 236, 236)
-			Frame_2s.BorderColor3 = Color3.fromRGB(0, 0, 0)
-			Frame_2s.BorderSizePixel = 0
-			Frame_2s.Position = UDim2.new(-0.00100000005, 0, 0.97299999, 0)
-			Frame_2s.Size = UDim2.new(0, 306, 0, 2)
-			ImageButton_2s.Parent = Frames
-			ImageButton_2s.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-			ImageButton_2s.BorderColor3 = Color3.fromRGB(0, 0, 0)
-			ImageButton_2s.BorderSizePixel = 0
-			ImageButton_2s.Position = UDim2.new(-0.00300000003, 0, -0.00700000022, 0)
-			ImageButton_2s.Size = UDim2.new(0, 37, 0, 33)
-			ImageButton_2s.Image = "http://www.roblox.com/asset/?id=8092240650"
-			Settingss.Name = "Settings"
-			Settingss.Parent = Frames
-			Settingss.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-			Settingss.BorderColor3 = Color3.fromRGB(0, 0, 0)
-			Settingss.BorderSizePixel = 0
-			Settingss.Position = UDim2.new(-0.00400000019, 0, -4.73000002, 0)
-			Settingss.Size = UDim2.new(0, 111, 0, 161)
-			TextButtons.Parent = Settingss
-			TextButtons.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-			TextButtons.BorderColor3 = Color3.fromRGB(0, 0, 0)
-			TextButtons.BorderSizePixel = 0
-			TextButtons.Position = UDim2.new(-0.00100000005, 0, 0.850000024, 0)
-			TextButtons.Size = UDim2.new(0, 109, 0, 18)
-			TextButtons.Font = Enum.Font.SourceSans
-			TextButtons.Text = "New Task..."
-			TextButtons.TextColor3 = Color3.fromRGB(0, 0, 0)
-			TextButtons.TextSize = 14.000
-			ImageButton_3s.Parent = ScreenGuis
-			ImageButton_3s.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-			ImageButton_3s.BorderColor3 = Color3.fromRGB(0, 0, 0)
-			ImageButton_3s.BorderSizePixel = 0
-			ImageButton_3s.Draggable = true
-			ImageButton_3s.Position = UDim2.new(0.0446642749, 32, 0.562222242, 7)
-			ImageButton_3s.Size = UDim2.new(0, 67, 0, 61)
-			ImageButton_3s.Image = "rbxassetid://12644177983"
-			local function VRCMLH_fake_script() -- ImageButton.Script 
-				local script = Instance.new('Script', ImageButtons)
-
-				script.Parent.MouseButton1Click:Connect(function()
-					script.Parent.Parent.Parent:Destroy()
-				end)
-			end
-			coroutine.wrap(VRCMLH_fake_script)()
-			local function YZTSYRV_fake_script() -- ImageButton_2.Script 
-				local script = Instance.new('Script', ImageButton_2s)
-
-				script.Parent.MouseButton1Click:Connect(function()
-					script.Parent.Parent.Settings = not script.Parent.Parent.Settings
-				end)
-			end
-			coroutine.wrap(YZTSYRV_fake_script)()
-			local function RZBH_fake_script() -- ImageButton_3.Script 
-				local script = Instance.new('Script', ImageButton_3s)
-
-				script.Parent.MouseButton1Click:Connect(function()
-					script.Parent.Parent.Frame.Visible = not script.Parent.Parent.Frame.Visible
-				end)
-			end
-
-			local function RZBHH_fake_script() -- ImageButton_3.Script 
-				local script = Instance.new('Script', TextButtons)
-
-				script.Parent.MouseButton1Click:Connect(function()
-					local ScreenGuis = Instance.new("ScreenGui")
-					local Frames = Instance.new("Frame")
-					local TextBoxs = Instance.new("TextBox")
-					local ImageButtons = Instance.new("ImageButton")
-					local Frame_2s = Instance.new("Frame")
-					local ImageButton_2s = Instance.new("ImageButton")
-					local Settingss = Instance.new("Frame")
-					local TextButtons = Instance.new("TextButton")
-					local ImageButton_3s = Instance.new("ImageButton")
-
-					--Properties:
-
-					ScreenGuis.Parent = Target.PlayerGui
-					ScreenGuis.ResetOnSpawn = false
-					Frames.Parent = ScreenGuis
-					Frames.Active = true
-					Frames.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-					Frames.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					Frames.BorderSizePixel = 0
-					Frames.Draggable = true
-					Frames.Position = UDim2.new(0.134292573, 0, 0.360000014, 0)
-					Frames.Selectable = true
-					Frames.Size = UDim2.new(0, 270, 0, 34)
-					TextBoxs.Parent = Frames
-					TextBoxs.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-					TextBoxs.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					TextBoxs.BorderSizePixel = 0
-					TextBoxs.Position = UDim2.new(-0, 0, 0.973999977, 0)
-					TextBoxs.Size = UDim2.new(0, 306, 0, 176)
-					TextBoxs.Font = Enum.Font.SourceSans
-					TextBoxs.Text = ""
-					TextBoxs.TextColor3 = Color3.fromRGB(0, 0, 0)
-					TextBoxs.TextSize = 14.000
-					TextBoxs.TextXAlignment = Enum.TextXAlignment.Left
-					TextBoxs.TextYAlignment = Enum.TextYAlignment.Top
-					ImageButtons.Parent = Frames
-					ImageButtons.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-					ImageButtons.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					ImageButtons.BorderSizePixel = 0
-					ImageButtons.Position = UDim2.new(0.996999979, 0, 0.00700000022, 0)
-					ImageButtons.Size = UDim2.new(0, 37, 0, 33)
-					ImageButtons.Image = "http://www.roblox.com/asset/?id=5107150301"
-					ImageButtons.ImageColor3 = Color3.fromRGB(0, 0, 0)
-					Frame_2s.Parent = Frames
-					Frame_2s.BackgroundColor3 = Color3.fromRGB(236, 236, 236)
-					Frame_2s.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					Frame_2s.BorderSizePixel = 0
-					Frame_2s.Position = UDim2.new(-0.00100000005, 0, 0.97299999, 0)
-					Frame_2s.Size = UDim2.new(0, 306, 0, 2)
-					ImageButton_2s.Parent = Frames
-					ImageButton_2s.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-					ImageButton_2s.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					ImageButton_2s.BorderSizePixel = 0
-					ImageButton_2s.Position = UDim2.new(-0.00300000003, 0, -0.00700000022, 0)
-					ImageButton_2s.Size = UDim2.new(0, 37, 0, 33)
-					ImageButton_2s.Image = "http://www.roblox.com/asset/?id=8092240650"
-					Settingss.Name = "Settings"
-					Settingss.Parent = Frames
-					Settingss.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-					Settingss.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					Settingss.BorderSizePixel = 0
-					Settingss.Position = UDim2.new(-0.00400000019, 0, -4.73000002, 0)
-					Settingss.Size = UDim2.new(0, 111, 0, 161)
-					TextButtons.Parent = Settingss
-					TextButtons.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-					TextButtons.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					TextButtons.BorderSizePixel = 0
-					TextButtons.Position = UDim2.new(-0.00100000005, 0, 0.850000024, 0)
-					TextButtons.Size = UDim2.new(0, 109, 0, 18)
-					TextButtons.Font = Enum.Font.SourceSans
-					TextButtons.Text = "New Task..."
-					TextButtons.TextColor3 = Color3.fromRGB(0, 0, 0)
-					TextButtons.TextSize = 14.000
-					ImageButton_3s.Parent = ScreenGuis
-					ImageButton_3s.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-					ImageButton_3s.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					ImageButton_3s.BorderSizePixel = 0
-					ImageButton_3s.Draggable = true
-					ImageButton_3s.Position = UDim2.new(0.0446642749, 32, 0.562222242, 7)
-					ImageButton_3s.Size = UDim2.new(0, 67, 0, 61)
-					ImageButton_3s.Image = "rbxassetid://12644177983"
-					local function VRCMLH_fake_script() -- ImageButton.Script 
-						local script = Instance.new('Script', ImageButtons)
-
-						script.Parent.MouseButton1Click:Connect(function()
-							script.Parent.Parent.Parent:Destroy()
-						end)
-					end
-					coroutine.wrap(VRCMLH_fake_script)()
-					local function YZTSYRV_fake_script() -- ImageButton_2.Script 
-						local script = Instance.new('Script', ImageButton_2s)
-
-						script.Parent.MouseButton1Click:Connect(function()
-							script.Parent.Parent.Settings = not script.Parent.Parent.Settings
-						end)
-					end
-					coroutine.wrap(YZTSYRV_fake_script)()
-					local function RZBH_fake_script() -- ImageButton_3.Script 
-						local script = Instance.new('Script', ImageButton_3s)
-
-						script.Parent.MouseButton1Click:Connect(function()
-							script.Parent.Parent.Frame.Visible = not script.Parent.Parent.Frame.Visible
-						end)
-					end
-
-					local function RZBHH_fake_script() -- ImageButton_3.Script 
-						local script = Instance.new('Script', TextButtons)
-
-						script.Parent.MouseButton1Click:Connect(function()
-							local ScreenGuis = Instance.new("ScreenGui")
-							local Frames = Instance.new("Frame")
-							local TextBoxs = Instance.new("TextBox")
-							local ImageButtons = Instance.new("ImageButton")
-							local Frame_2s = Instance.new("Frame")
-							local ImageButton_2s = Instance.new("ImageButton")
-							local Settingss = Instance.new("Frame")
-							local TextButtons = Instance.new("TextButton")
-							local ImageButton_3s = Instance.new("ImageButton")
-
-							--Properties:
-
-							ScreenGuis.Parent = Target.PlayerGui
-							ScreenGuis.ResetOnSpawn = false
-							Frames.Parent = ScreenGuis
-							Frames.Active = true
-							Frames.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-							Frames.BorderColor3 = Color3.fromRGB(0, 0, 0)
-							Frames.BorderSizePixel = 0
-							Frames.Draggable = true
-							Frames.Position = UDim2.new(0.134292573, 0, 0.360000014, 0)
-							Frames.Selectable = true
-							Frames.Size = UDim2.new(0, 270, 0, 34)
-							TextBoxs.Parent = Frames
-							TextBoxs.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-							TextBoxs.BorderColor3 = Color3.fromRGB(0, 0, 0)
-							TextBoxs.BorderSizePixel = 0
-							TextBoxs.Position = UDim2.new(-0, 0, 0.973999977, 0)
-							TextBoxs.Size = UDim2.new(0, 306, 0, 176)
-							TextBoxs.Font = Enum.Font.SourceSans
-							TextBoxs.Text = ""
-							TextBoxs.TextColor3 = Color3.fromRGB(0, 0, 0)
-							TextBoxs.TextSize = 14.000
-							TextBoxs.TextXAlignment = Enum.TextXAlignment.Left
-							TextBoxs.TextYAlignment = Enum.TextYAlignment.Top
-							ImageButtons.Parent = Frames
-							ImageButtons.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-							ImageButtons.BorderColor3 = Color3.fromRGB(0, 0, 0)
-							ImageButtons.BorderSizePixel = 0
-							ImageButtons.Position = UDim2.new(0.996999979, 0, 0.00700000022, 0)
-							ImageButtons.Size = UDim2.new(0, 37, 0, 33)
-							ImageButtons.Image = "http://www.roblox.com/asset/?id=5107150301"
-							ImageButtons.ImageColor3 = Color3.fromRGB(0, 0, 0)
-							Frame_2s.Parent = Frames
-							Frame_2s.BackgroundColor3 = Color3.fromRGB(236, 236, 236)
-							Frame_2s.BorderColor3 = Color3.fromRGB(0, 0, 0)
-							Frame_2s.BorderSizePixel = 0
-							Frame_2s.Position = UDim2.new(-0.00100000005, 0, 0.97299999, 0)
-							Frame_2s.Size = UDim2.new(0, 306, 0, 2)
-							ImageButton_2s.Parent = Frames
-							ImageButton_2s.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-							ImageButton_2s.BorderColor3 = Color3.fromRGB(0, 0, 0)
-							ImageButton_2s.BorderSizePixel = 0
-							ImageButton_2s.Position = UDim2.new(-0.00300000003, 0, -0.00700000022, 0)
-							ImageButton_2s.Size = UDim2.new(0, 37, 0, 33)
-							ImageButton_2s.Image = "http://www.roblox.com/asset/?id=8092240650"
-							Settingss.Name = "Settings"
-							Settingss.Parent = Frames
-							Settingss.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-							Settingss.BorderColor3 = Color3.fromRGB(0, 0, 0)
-							Settingss.BorderSizePixel = 0
-							Settingss.Position = UDim2.new(-0.00400000019, 0, -4.73000002, 0)
-							Settingss.Size = UDim2.new(0, 111, 0, 161)
-							TextButtons.Parent = Settingss
-							TextButtons.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-							TextButtons.BorderColor3 = Color3.fromRGB(0, 0, 0)
-							TextButtons.BorderSizePixel = 0
-							TextButtons.Position = UDim2.new(-0.00100000005, 0, 0.850000024, 0)
-							TextButtons.Size = UDim2.new(0, 109, 0, 18)
-							TextButtons.Font = Enum.Font.SourceSans
-							TextButtons.Text = "New Task..."
-							TextButtons.TextColor3 = Color3.fromRGB(0, 0, 0)
-							TextButtons.TextSize = 14.000
-							ImageButton_3s.Parent = ScreenGuis
-							ImageButton_3s.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-							ImageButton_3s.BorderColor3 = Color3.fromRGB(0, 0, 0)
-							ImageButton_3s.BorderSizePixel = 0
-							ImageButton_3s.Draggable = true
-							ImageButton_3s.Position = UDim2.new(0.0446642749, 32, 0.562222242, 7)
-							ImageButton_3s.Size = UDim2.new(0, 67, 0, 61)
-							ImageButton_3s.Image = "rbxassetid://12644177983"
-							local function VRCMLH_fake_script() -- ImageButton.Script 
-								local script = Instance.new('Script', ImageButtons)
-
-								script.Parent.MouseButton1Click:Connect(function()
-									script.Parent.Parent.Parent:Destroy()
-								end)
-							end
-							coroutine.wrap(VRCMLH_fake_script)()
-							local function YZTSYRV_fake_script() -- ImageButton_2.Script 
-								local script = Instance.new('Script', ImageButton_2s)
-
-								script.Parent.MouseButton1Click:Connect(function()
-									script.Parent.Parent.Settings = not script.Parent.Parent.Settings
-								end)
-							end
-							coroutine.wrap(YZTSYRV_fake_script)()
-							local function RZBH_fake_script() -- ImageButton_3.Script 
-								local script = Instance.new('Script', ImageButton_3s)
-
-								script.Parent.MouseButton1Click:Connect(function()
-									script.Parent.Parent.Frame.Visible = not script.Parent.Parent.Frame.Visible
-								end)
-							end
-
-							local function RZBHH_fake_script() -- ImageButton_3.Script 
-								local script = Instance.new('Script', TextButtons)
-
-								script.Parent.MouseButton1Click:Connect(function()
-									local ScreenGuis = Instance.new("ScreenGui")
-									local Frames = Instance.new("Frame")
-									local TextBoxs = Instance.new("TextBox")
-									local ImageButtons = Instance.new("ImageButton")
-									local Frame_2s = Instance.new("Frame")
-									local ImageButton_2s = Instance.new("ImageButton")
-									local Settingss = Instance.new("Frame")
-									local TextButtons = Instance.new("TextButton")
-									local ImageButton_3s = Instance.new("ImageButton")
-
-									--Properties:
-
-									ScreenGuis.Parent = Target.PlayerGui
-									ScreenGuis.ResetOnSpawn = false
-									Frames.Parent = ScreenGuis
-									Frames.Active = true
-									Frames.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-									Frames.BorderColor3 = Color3.fromRGB(0, 0, 0)
-									Frames.BorderSizePixel = 0
-									Frames.Draggable = true
-									Frames.Position = UDim2.new(0.134292573, 0, 0.360000014, 0)
-									Frames.Selectable = true
-									Frames.Size = UDim2.new(0, 270, 0, 34)
-									TextBoxs.Parent = Frames
-									TextBoxs.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-									TextBoxs.BorderColor3 = Color3.fromRGB(0, 0, 0)
-									TextBoxs.BorderSizePixel = 0
-									TextBoxs.Position = UDim2.new(-0, 0, 0.973999977, 0)
-									TextBoxs.Size = UDim2.new(0, 306, 0, 176)
-									TextBoxs.Font = Enum.Font.SourceSans
-									TextBoxs.Text = ""
-									TextBoxs.TextColor3 = Color3.fromRGB(0, 0, 0)
-									TextBoxs.TextSize = 14.000
-									TextBoxs.TextXAlignment = Enum.TextXAlignment.Left
-									TextBoxs.TextYAlignment = Enum.TextYAlignment.Top
-									ImageButtons.Parent = Frames
-									ImageButtons.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-									ImageButtons.BorderColor3 = Color3.fromRGB(0, 0, 0)
-									ImageButtons.BorderSizePixel = 0
-									ImageButtons.Position = UDim2.new(0.996999979, 0, 0.00700000022, 0)
-									ImageButtons.Size = UDim2.new(0, 37, 0, 33)
-									ImageButtons.Image = "http://www.roblox.com/asset/?id=5107150301"
-									ImageButtons.ImageColor3 = Color3.fromRGB(0, 0, 0)
-									Frame_2s.Parent = Frames
-									Frame_2s.BackgroundColor3 = Color3.fromRGB(236, 236, 236)
-									Frame_2s.BorderColor3 = Color3.fromRGB(0, 0, 0)
-									Frame_2s.BorderSizePixel = 0
-									Frame_2s.Position = UDim2.new(-0.00100000005, 0, 0.97299999, 0)
-									Frame_2s.Size = UDim2.new(0, 306, 0, 2)
-									ImageButton_2s.Parent = Frames
-									ImageButton_2s.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-									ImageButton_2s.BorderColor3 = Color3.fromRGB(0, 0, 0)
-									ImageButton_2s.BorderSizePixel = 0
-									ImageButton_2s.Position = UDim2.new(-0.00300000003, 0, -0.00700000022, 0)
-									ImageButton_2s.Size = UDim2.new(0, 37, 0, 33)
-									ImageButton_2s.Image = "http://www.roblox.com/asset/?id=8092240650"
-									Settingss.Name = "Settings"
-									Settingss.Parent = Frames
-									Settingss.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-									Settingss.BorderColor3 = Color3.fromRGB(0, 0, 0)
-									Settingss.BorderSizePixel = 0
-									Settingss.Position = UDim2.new(-0.00400000019, 0, -4.73000002, 0)
-									Settingss.Size = UDim2.new(0, 111, 0, 161)
-									TextButtons.Parent = Settingss
-									TextButtons.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-									TextButtons.BorderColor3 = Color3.fromRGB(0, 0, 0)
-									TextButtons.BorderSizePixel = 0
-									TextButtons.Position = UDim2.new(-0.00100000005, 0, 0.850000024, 0)
-									TextButtons.Size = UDim2.new(0, 109, 0, 18)
-									TextButtons.Font = Enum.Font.SourceSans
-									TextButtons.Text = "New Task..."
-									TextButtons.TextColor3 = Color3.fromRGB(0, 0, 0)
-									TextButtons.TextSize = 14.000
-									ImageButton_3s.Parent = ScreenGuis
-									ImageButton_3s.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-									ImageButton_3s.BorderColor3 = Color3.fromRGB(0, 0, 0)
-									ImageButton_3s.BorderSizePixel = 0
-									ImageButton_3s.Draggable = true
-									ImageButton_3s.Position = UDim2.new(0.0446642749, 32, 0.562222242, 7)
-									ImageButton_3s.Size = UDim2.new(0, 67, 0, 61)
-									ImageButton_3s.Image = "rbxassetid://12644177983"
-									local function VRCMLH_fake_script() -- ImageButton.Script 
-										local script = Instance.new('Script', ImageButtons)
-
-										script.Parent.MouseButton1Click:Connect(function()
-											script.Parent.Parent.Parent:Destroy()
-										end)
-									end
-									coroutine.wrap(VRCMLH_fake_script)()
-									local function YZTSYRV_fake_script() -- ImageButton_2.Script 
-										local script = Instance.new('Script', ImageButton_2s)
-
-										script.Parent.MouseButton1Click:Connect(function()
-											script.Parent.Parent.Settings = not script.Parent.Parent.Settings
-										end)
-									end
-									coroutine.wrap(YZTSYRV_fake_script)()
-									local function RZBH_fake_script() -- ImageButton_3.Script 
-										local script = Instance.new('Script', ImageButton_3s)
-
-										script.Parent.MouseButton1Click:Connect(function()
-											script.Parent.Parent.Frame.Visible = not script.Parent.Parent.Frame.Visible
-										end)
-									end
-
-									local function RZBHH_fake_script() -- ImageButton_3.Script 
-										local script = Instance.new('Script', TextButtons)
-
-										script.Parent.MouseButton1Click:Connect(function()
-											local ScreenGuis = Instance.new("ScreenGui")
-											local Frames = Instance.new("Frame")
-											local TextBoxs = Instance.new("TextBox")
-											local ImageButtons = Instance.new("ImageButton")
-											local Frame_2s = Instance.new("Frame")
-											local ImageButton_2s = Instance.new("ImageButton")
-											local Settingss = Instance.new("Frame")
-											local TextButtons = Instance.new("TextButton")
-											local ImageButton_3s = Instance.new("ImageButton")
-
-											--Properties:
-
-											ScreenGuis.Parent = Target.PlayerGui
-											ScreenGuis.ResetOnSpawn = false
-											Frames.Parent = ScreenGuis
-											Frames.Active = true
-											Frames.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-											Frames.BorderColor3 = Color3.fromRGB(0, 0, 0)
-											Frames.BorderSizePixel = 0
-											Frames.Draggable = true
-											Frames.Position = UDim2.new(0.134292573, 0, 0.360000014, 0)
-											Frames.Selectable = true
-											Frames.Size = UDim2.new(0, 270, 0, 34)
-											TextBoxs.Parent = Frames
-											TextBoxs.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-											TextBoxs.BorderColor3 = Color3.fromRGB(0, 0, 0)
-											TextBoxs.BorderSizePixel = 0
-											TextBoxs.Position = UDim2.new(-0, 0, 0.973999977, 0)
-											TextBoxs.Size = UDim2.new(0, 306, 0, 176)
-											TextBoxs.Font = Enum.Font.SourceSans
-											TextBoxs.Text = ""
-											TextBoxs.TextColor3 = Color3.fromRGB(0, 0, 0)
-											TextBoxs.TextSize = 14.000
-											TextBoxs.TextXAlignment = Enum.TextXAlignment.Left
-											TextBoxs.TextYAlignment = Enum.TextYAlignment.Top
-											ImageButtons.Parent = Frames
-											ImageButtons.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-											ImageButtons.BorderColor3 = Color3.fromRGB(0, 0, 0)
-											ImageButtons.BorderSizePixel = 0
-											ImageButtons.Position = UDim2.new(0.996999979, 0, 0.00700000022, 0)
-											ImageButtons.Size = UDim2.new(0, 37, 0, 33)
-											ImageButtons.Image = "http://www.roblox.com/asset/?id=5107150301"
-											ImageButtons.ImageColor3 = Color3.fromRGB(0, 0, 0)
-											Frame_2s.Parent = Frames
-											Frame_2s.BackgroundColor3 = Color3.fromRGB(236, 236, 236)
-											Frame_2s.BorderColor3 = Color3.fromRGB(0, 0, 0)
-											Frame_2s.BorderSizePixel = 0
-											Frame_2s.Position = UDim2.new(-0.00100000005, 0, 0.97299999, 0)
-											Frame_2s.Size = UDim2.new(0, 306, 0, 2)
-											ImageButton_2s.Parent = Frames
-											ImageButton_2s.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-											ImageButton_2s.BorderColor3 = Color3.fromRGB(0, 0, 0)
-											ImageButton_2s.BorderSizePixel = 0
-											ImageButton_2s.Position = UDim2.new(-0.00300000003, 0, -0.00700000022, 0)
-											ImageButton_2s.Size = UDim2.new(0, 37, 0, 33)
-											ImageButton_2s.Image = "http://www.roblox.com/asset/?id=8092240650"
-											Settingss.Name = "Settings"
-											Settingss.Parent = Frames
-											Settingss.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-											Settingss.BorderColor3 = Color3.fromRGB(0, 0, 0)
-											Settingss.BorderSizePixel = 0
-											Settingss.Position = UDim2.new(-0.00400000019, 0, -4.73000002, 0)
-											Settingss.Size = UDim2.new(0, 111, 0, 161)
-											TextButtons.Parent = Settingss
-											TextButtons.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-											TextButtons.BorderColor3 = Color3.fromRGB(0, 0, 0)
-											TextButtons.BorderSizePixel = 0
-											TextButtons.Position = UDim2.new(-0.00100000005, 0, 0.850000024, 0)
-											TextButtons.Size = UDim2.new(0, 109, 0, 18)
-											TextButtons.Font = Enum.Font.SourceSans
-											TextButtons.Text = "New Task..."
-											TextButtons.TextColor3 = Color3.fromRGB(0, 0, 0)
-											TextButtons.TextSize = 14.000
-											ImageButton_3s.Parent = ScreenGuis
-											ImageButton_3s.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-											ImageButton_3s.BorderColor3 = Color3.fromRGB(0, 0, 0)
-											ImageButton_3s.BorderSizePixel = 0
-											ImageButton_3s.Draggable = true
-											ImageButton_3s.Position = UDim2.new(0.0446642749, 32, 0.562222242, 7)
-											ImageButton_3s.Size = UDim2.new(0, 67, 0, 61)
-											ImageButton_3s.Image = "rbxassetid://12644177983"
-											local function VRCMLH_fake_script() -- ImageButton.Script 
-												local script = Instance.new('Script', ImageButtons)
-
-												script.Parent.MouseButton1Click:Connect(function()
-													script.Parent.Parent.Parent:Destroy()
-												end)
-											end
-											coroutine.wrap(VRCMLH_fake_script)()
-											local function YZTSYRV_fake_script() -- ImageButton_2.Script 
-												local script = Instance.new('Script', ImageButton_2s)
-
-												script.Parent.MouseButton1Click:Connect(function()
-													script.Parent.Parent.Settings = not script.Parent.Parent.Settings
-												end)
-											end
-											coroutine.wrap(YZTSYRV_fake_script)()
-											local function RZBH_fake_script() -- ImageButton_3.Script 
-												local script = Instance.new('Script', ImageButton_3s)
-
-												script.Parent.MouseButton1Click:Connect(function()
-													script.Parent.Parent.Frame.Visible = not script.Parent.Parent.Frame.Visible
-												end)
-											end
-
-											local function RZBHH_fake_script() -- ImageButton_3.Script 
-												local script = Instance.new('Script', TextButtons)
-
-												script.Parent.MouseButton1Click:Connect(function()
-													script.Parent.Parent.Frame.Visible = not script.Parent.Parent.Frame.Visible
-												end)
-											end
-											coroutine.wrap(RZBH_fake_script)()
-										end)
-									end
-									coroutine.wrap(RZBH_fake_script)()
-								end)
-							end
-							coroutine.wrap(RZBH_fake_script)()
-						end)
-					end
-					coroutine.wrap(RZBH_fake_script)()
-				end)
-			end
-			coroutine.wrap(RZBH_fake_script)()
-		end)
-	end
-	coroutine.wrap(RZBH_fake_script)()
-end)
 	end
 end)
 
