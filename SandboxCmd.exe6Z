@@ -410,6 +410,13 @@ elseif TargetName2 == "%" then
 print(tonumber(TargetName) % tonumber(TargetName3))
 elseif TargetName2 == "^" then
 print(tonumber(TargetName) ^ tonumber(TargetName3))
+elseif TargetName2 == "+=" then
+print(tonumber(TargetName) += tonumber(TargetName3))
+elseif TargetName2 == "-=" then
+print(tonumber(TargetName) -= tonumber(TargetName3))
+else
+warn("Not valid lua mathematical character.")
+
 
               end
 	end
