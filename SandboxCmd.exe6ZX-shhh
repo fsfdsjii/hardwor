@@ -432,7 +432,7 @@ Press CTRL+J to skip to the next line.
 Use ur keyboard or mobile keyboard to write.
 Press Settings to see more things you can do!
 Press X to delete ur file.
-Press on minimize to close it.]]
+Press on minimize to close it and open it.]]
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local TextBox = Instance.new("TextBox")
