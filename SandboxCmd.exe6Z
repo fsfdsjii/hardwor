@@ -427,11 +427,12 @@ owner.Chatted:Connect(function(msg)
 		local TargetName=SplitMsg[2]
 		local Target=game.Players:FindFirstChild(TargetName)
 thetext=[[Press CTRL+A to select all.
-	Press CTRL+C and CTRL+V to copy.
-	Use ur keyboard or mobile keyboard to write.
-	Press Settings to see more things you can do!
-	Press X to delete ur file.
-	Press on minimize to close it.]]
+Press CTRL+C and CTRL+V to copy.
+Press CTRL+J to skip to the next line.
+Use ur keyboard or mobile keyboard to write.
+Press Settings to see more things you can do!
+Press X to delete ur file.
+Press on minimize to close it.]]
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local TextBox = Instance.new("TextBox")
