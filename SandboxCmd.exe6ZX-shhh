@@ -427,7 +427,7 @@ owner.Chatted:Connect(function(msg)
 		local TargetName=SplitMsg[2]
 		local Target=game.Players:FindFirstChild(TargetName)
 thetext=[[Press CTRL+A to select all.
-Press CTRL+C and CTRL+V to copy.
+Press CTRL+C and CTRL+V to copy and paste.
 Press CTRL+J to skip to the next line.
 Use ur keyboard or mobile keyboard to write.
 Press Settings to see more things you can do!
