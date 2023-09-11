@@ -426,6 +426,12 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Players:FindFirstChild(TargetName)
+thetext=[[Press CTRL+A to select all.
+	Press CTRL+C and CTRL+V to copy.
+	Use ur keyboard or mobile keyboard to write.
+	Press Settings to see more things you can do!
+	Press X to delete ur file.
+	Press on minimize to close it.]]
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local TextBox = Instance.new("TextBox")
@@ -434,8 +440,12 @@ local Frame_2 = Instance.new("Frame")
 local ImageButton_2 = Instance.new("ImageButton")
 local Settings = Instance.new("Frame")
 local TextButton = Instance.new("TextButton")
+local TextButton_2 = Instance.new("TextButton")
+local TextLabel = Instance.new("TextLabel")
 local ImageButton_3 = Instance.new("ImageButton")
 local TextBox_2 = Instance.new("TextBox")
+local Help = Instance.new("TextLabel")
+local TextLabel_2 = Instance.new("TextLabel")
 ScreenGui.Parent = Target.PlayerGui
 ScreenGui.ResetOnSpawn = false
 Frame.Parent = ScreenGui
@@ -487,6 +497,7 @@ Settings.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Settings.BorderSizePixel = 0
 Settings.Position = UDim2.new(-0.00400000019, 0, -4.73000002, 0)
 Settings.Size = UDim2.new(0, 111, 0, 161)
+Settings.Visible = false
 TextButton.Parent = Settings
 TextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -497,6 +508,26 @@ TextButton.Font = Enum.Font.SourceSans
 TextButton.Text = "New Task..."
 TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextButton.TextSize = 14.000
+TextButton_2.Parent = Settings
+TextButton_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_2.BorderSizePixel = 0
+TextButton_2.Position = UDim2.new(-0.00100000005, 0, 0.737999976, 0)
+TextButton_2.Size = UDim2.new(0, 109, 0, 18)
+TextButton_2.Font = Enum.Font.SourceSans
+TextButton_2.Text = "Help..."
+TextButton_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_2.TextSize = 14.000
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0.194000006, 0, 0.300000012, 0)
+TextLabel.Size = UDim2.new(0, 200, 0, 22)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "Notepad"
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextSize = 14.000
 ImageButton_3.Parent = ScreenGui
 ImageButton_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 ImageButton_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -516,85 +547,124 @@ TextBox_2.Text = ""
 TextBox_2.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextBox_2.TextSize = 14.000
 TextBox_2.TextXAlignment = Enum.TextXAlignment.Left
-local function ZPXSJ_fake_script() -- ImageButton.Script 
+Help.Name = "Help"
+Help.Parent = ScreenGui
+Help.Active = true
+Help.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Help.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Help.BorderSizePixel = 0
+Help.Draggable = true
+Help.Position = UDim2.new(0.776000023, 0, 0.388999999, 0)
+Help.Selectable = true
+Help.Size = UDim2.new(0, 180, 0, 178)
+Help.Visible = false
+Help.Font = Enum.Font.SourceSans
+Help.Text = thetext
+Help.TextColor3 = Color3.fromRGB(0, 0, 0)
+Help.TextSize = 14.000
+Help.TextXAlignment = Enum.TextXAlignment.Left
+Help.TextYAlignment = Enum.TextYAlignment.Top
+TextLabel_2.Parent = Help
+TextLabel_2.Active = true
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_2.BorderSizePixel = 0
+TextLabel_2.Position = UDim2.new(0, 0, -0.0561797768, 0)
+TextLabel_2.Size = UDim2.new(0, 180, 0, 10)
+TextLabel_2.Font = Enum.Font.SourceSans
+TextLabel_2.Text = "Help"
+TextLabel_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_2.TextSize = 14.000
+local function DHHZWDV_fake_script() -- ImageButton.Script 
 	local script = Instance.new('Script', ImageButton)
 	script.Parent.MouseButton1Click:Connect(function()
 		script.Parent.Parent.Parent:Destroy()
 	end)
 end
-coroutine.wrap(ZPXSJ_fake_script)()
-local function JGYRWD_fake_script() -- ImageButton_2.Script 
+coroutine.wrap(DHHZWDV_fake_script)()
+local function SJFKWX_fake_script() -- ImageButton_2.Script 
 	local script = Instance.new('Script', ImageButton_2)
 	script.Parent.MouseButton1Click:Connect(function()
 		Settings.Visible = not Settings.Visible
 	end)
 end
-coroutine.wrap(JGYRWD_fake_script)()
-local function AXZZ_fake_script() -- TextButton.Script 
+coroutine.wrap(SJFKWX_fake_script)()
+local function YENVLYG_fake_script() -- TextButton.Script 
 	local script = Instance.new('Script', TextButton)
 	script.Parent.MouseButton1Click:Connect(function()  
-		local ScreenGuiX = Instance.new("ScreenGui")
-		local FrameX = Instance.new("Frame")
-		local TextBoxX = Instance.new("TextBox")
-		local ImageButtonX = Instance.new("ImageButton")
-		local Frame_2X = Instance.new("Frame")
-		local ImageButton_2X = Instance.new("ImageButton")
-		local SettingsX = Instance.new("Frame")
+		local thetext=[[Press CTRL+A to select all.
+	Press CTRL+C and CTRL+V to copy.
+	Use ur keyboard or mobile keyboard to write.
+	Press Settings to see more things you can do!
+	Press X to delete ur file.
+	Press on minimize to close it.]]
+		local ScreenGuis = Instance.new("ScreenGui")
+		local Frames = Instance.new("Frame")
+		local TextBoxs = Instance.new("TextBox")
+		local ImageButtons = Instance.new("ImageButton")
+		local Frame_2s = Instance.new("Frame")
+		local ImageButton_2s = Instance.new("ImageButton")
+		local Settingss = Instance.new("Frame")
 		local TextButtonX = Instance.new("TextButton")
+		local TextButton_2X = Instance.new("TextButton")
+		local TextLabelX = Instance.new("TextLabel")
 		local ImageButton_3X = Instance.new("ImageButton")
-		local TextBox_2X = Instance.new("TextBox")
-		ScreenGuiX.Parent = script.Parent.Parent.Parent.Parent.Parent
-		ScreenGuiX.ResetOnSpawn = false
-		FrameX.Parent = ScreenGuiX
-		FrameX.Active = true
-		FrameX.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		FrameX.BorderColor3 = Color3.fromRGB(0, 0, 0)
-		FrameX.BorderSizePixel = 0
-		FrameX.Draggable = true
-		FrameX.Position = UDim2.new(0.134292573, 173, 0.360000014, -10)
-		FrameX.Selectable = true
-		FrameX.Size = UDim2.new(0, 270, 0, 34)
-		TextBoxX.Parent = FrameX
-		TextBoxX.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		TextBoxX.BorderColor3 = Color3.fromRGB(0, 0, 0)
-		TextBoxX.BorderSizePixel = 0
-		TextBoxX.Position = UDim2.new(-0, 0, 0.973999977, 0)
-		TextBoxX.Size = UDim2.new(0, 306, 0, 176)
-		TextBoxX.Font = Enum.Font.SourceSans
-		TextBoxX.Text = ""
-		TextBoxX.TextColor3 = Color3.fromRGB(0, 0, 0)
-		TextBoxX.TextSize = 14.000
-		TextBoxX.TextXAlignment = Enum.TextXAlignment.Left
-		TextBoxX.TextYAlignment = Enum.TextYAlignment.Top
-		ImageButtonX.Parent = FrameX
-		ImageButtonX.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		ImageButtonX.BorderColor3 = Color3.fromRGB(0, 0, 0)
-		ImageButtonX.BorderSizePixel = 0
-		ImageButtonX.Position = UDim2.new(0.996999979, 0, 0.00700000022, 0)
-		ImageButtonX.Size = UDim2.new(0, 37, 0, 33)
-		ImageButtonX.Image = "http://www.roblox.com/asset/?id=5107150301"
-		ImageButtonX.ImageColor3 = Color3.fromRGB(0, 0, 0)
-		Frame_2X.Parent = FrameX
-		Frame_2X.BackgroundColor3 = Color3.fromRGB(236, 236, 236)
-		Frame_2X.BorderColor3 = Color3.fromRGB(0, 0, 0)
-		Frame_2X.BorderSizePixel = 0
-		Frame_2X.Position = UDim2.new(-0.00100000005, 0, 0.97299999, 0)
-		Frame_2X.Size = UDim2.new(0, 306, 0, 2)
-		ImageButton_2X.Parent = FrameX
-		ImageButton_2X.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		ImageButton_2X.BorderColor3 = Color3.fromRGB(0, 0, 0)
-		ImageButton_2X.BorderSizePixel = 0
-		ImageButton_2X.Position = UDim2.new(-0.00300000003, 0, -0.00700000022, 0)
-		ImageButton_2X.Size = UDim2.new(0, 37, 0, 33)
-		ImageButton_2X.Image = "http://www.roblox.com/asset/?id=8092240650"
-		SettingsX.Name = "Settings"
-		SettingsX.Parent = FrameX
-		SettingsX.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		SettingsX.BorderColor3 = Color3.fromRGB(0, 0, 0)
-		SettingsX.BorderSizePixel = 0
-		SettingsX.Position = UDim2.new(-0.00400000019, 0, -4.73000002, 0)
-		SettingsX.Size = UDim2.new(0, 111, 0, 161)
-		TextButtonX.Parent = SettingsX
+		local TextBox_2s = Instance.new("TextBox")
+		local HelpX = Instance.new("TextLabel")
+		local TextLabel_2S = Instance.new("TextLabel")
+		ScreenGuis.Parent = script.Parent.Parent.Parent.Parent.Parent
+		ScreenGuis.ResetOnSpawn = false
+		Frames.Parent = ScreenGuis
+		Frames.Active = true
+		Frames.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Frames.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		Frames.BorderSizePixel = 0
+		Frames.Draggable = true
+		Frames.Position = UDim2.new(0.134292573, 173, 0.360000014, -10)
+		Frames.Selectable = true
+		Frames.Size = UDim2.new(0, 270, 0, 34)
+		TextBoxs.Parent = Frames
+		TextBoxs.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TextBoxs.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		TextBoxs.BorderSizePixel = 0
+		TextBoxs.Position = UDim2.new(-0, 0, 0.973999977, 0)
+		TextBoxs.Size = UDim2.new(0, 306, 0, 176)
+		TextBoxs.Font = Enum.Font.SourceSans
+		TextBoxs.Text = ""
+		TextBoxs.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextBoxs.TextSize = 14.000
+		TextBoxs.TextXAlignment = Enum.TextXAlignment.Left
+		TextBoxs.TextYAlignment = Enum.TextYAlignment.Top
+		ImageButtons.Parent = Frames
+		ImageButtons.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		ImageButtons.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		ImageButtons.BorderSizePixel = 0
+		ImageButtons.Position = UDim2.new(0.996999979, 0, 0.00700000022, 0)
+		ImageButtons.Size = UDim2.new(0, 37, 0, 33)
+		ImageButtons.Image = "http://www.roblox.com/asset/?id=5107150301"
+		ImageButtons.ImageColor3 = Color3.fromRGB(0, 0, 0)
+		Frame_2s.Parent = Frames
+		Frame_2s.BackgroundColor3 = Color3.fromRGB(236, 236, 236)
+		Frame_2s.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		Frame_2s.BorderSizePixel = 0
+		Frame_2s.Position = UDim2.new(-0.00100000005, 0, 0.97299999, 0)
+		Frame_2s.Size = UDim2.new(0, 306, 0, 2)
+		ImageButton_2s.Parent = Frames
+		ImageButton_2s.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		ImageButton_2s.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		ImageButton_2s.BorderSizePixel = 0
+		ImageButton_2s.Position = UDim2.new(-0.00300000003, 0, -0.00700000022, 0)
+		ImageButton_2s.Size = UDim2.new(0, 37, 0, 33)
+		ImageButton_2s.Image = "http://www.roblox.com/asset/?id=8092240650"
+		Settingss.Name = "Settings"
+		Settingss.Parent = Frames
+		Settingss.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Settingss.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		Settingss.BorderSizePixel = 0
+		Settingss.Position = UDim2.new(-0.00400000019, 0, -4.73000002, 0)
+		Settingss.Size = UDim2.new(0, 111, 0, 161)
+		Settingss.Visible = false
+		TextButtonX.Parent = Settingss
 		TextButtonX.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		TextButtonX.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		TextButtonX.BorderSizePixel = 0
@@ -604,7 +674,27 @@ local function AXZZ_fake_script() -- TextButton.Script
 		TextButtonX.Text = "New Task..."
 		TextButtonX.TextColor3 = Color3.fromRGB(0, 0, 0)
 		TextButtonX.TextSize = 14.000
-		ImageButton_3X.Parent = ScreenGuiX
+		TextButton_2X.Parent = Settingss
+		TextButton_2X.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TextButton_2X.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		TextButton_2X.BorderSizePixel = 0
+		TextButton_2X.Position = UDim2.new(-0.00100000005, 0, 0.737999976, 0)
+		TextButton_2X.Size = UDim2.new(0, 109, 0, 18)
+		TextButton_2X.Font = Enum.Font.SourceSans
+		TextButton_2X.Text = "Help..."
+		TextButton_2X.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextButton_2X.TextSize = 14.000
+		TextLabelX.Parent = Frames
+		TextLabelX.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TextLabelX.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabelX.BorderSizePixel = 0
+		TextLabelX.Position = UDim2.new(0.194000006, 0, 0.300000012, 0)
+		TextLabelX.Size = UDim2.new(0, 200, 0, 22)
+		TextLabelX.Font = Enum.Font.SourceSans
+		TextLabelX.Text = "Notepad"
+		TextLabelX.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabelX.TextSize = 14.000
+		ImageButton_3X.Parent = ScreenGuis
 		ImageButton_3X.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		ImageButton_3X.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		ImageButton_3X.BorderSizePixel = 0
@@ -612,55 +702,96 @@ local function AXZZ_fake_script() -- TextButton.Script
 		ImageButton_3X.Position = UDim2.new(0.0446642749, 32, 0.562222242, 7)
 		ImageButton_3X.Size = UDim2.new(0, 67, 0, 61)
 		ImageButton_3X.Image = "rbxassetid://12644177983"
-		TextBox_2X.Parent = ImageButton_3X
-		TextBox_2X.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		TextBox_2X.BorderColor3 = Color3.fromRGB(0, 0, 0)
-		TextBox_2X.BorderSizePixel = 0
-		TextBox_2X.Position = UDim2.new(-0.582089543, 0, 1, 0)
-		TextBox_2X.Size = UDim2.new(0, 148, 0, 13)
-		TextBox_2X.Font = Enum.Font.SourceSans
-		TextBox_2X.Text = ""
-		TextBox_2X.TextColor3 = Color3.fromRGB(0, 0, 0)
-		TextBox_2X.TextSize = 14.000
-		TextBox_2X.TextXAlignment = Enum.TextXAlignment.Left
-		local function YIIO_fake_script() -- ImageButton.Script 
-			local script = Instance.new('Script', ImageButtonX)
+		TextBox_2s.Parent = ImageButton_3X
+		TextBox_2s.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TextBox_2s.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		TextBox_2s.BorderSizePixel = 0
+		TextBox_2s.Position = UDim2.new(-0.582089543, 0, 1, 0)
+		TextBox_2s.Size = UDim2.new(0, 148, 0, 13)
+		TextBox_2s.Font = Enum.Font.SourceSans
+		TextBox_2s.Text = ""
+		TextBox_2s.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextBox_2s.TextSize = 14.000
+		TextBox_2s.TextXAlignment = Enum.TextXAlignment.Left
+		HelpX.Name = "Help"
+		HelpX.Parent = ScreenGuis
+		HelpX.Active = true
+		HelpX.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		HelpX.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		HelpX.BorderSizePixel = 0
+		HelpX.Draggable = true
+		HelpX.Position = UDim2.new(0.776000023, 0, 0.388999999, 0)
+		HelpX.Selectable = true
+		HelpX.Size = UDim2.new(0, 180, 0, 178)
+		HelpX.Visible = false
+		HelpX.Font = Enum.Font.SourceSans
+		HelpX.Text = thetext
+		HelpX.TextColor3 = Color3.fromRGB(0, 0, 0)
+		HelpX.TextSize = 14.000
+		HelpX.TextXAlignment = Enum.TextXAlignment.Left
+		HelpX.TextYAlignment = Enum.TextYAlignment.Top
+		TextLabel_2S.Parent = HelpX
+		TextLabel_2S.Active = true
+		TextLabel_2S.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TextLabel_2S.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel_2S.BorderSizePixel = 0
+		TextLabel_2S.Position = UDim2.new(0, 0, -0.0561797768, 0)
+		TextLabel_2S.Size = UDim2.new(0, 180, 0, 10)
+		TextLabel_2S.Font = Enum.Font.SourceSans
+		TextLabel_2S.Text = "Help"
+		TextLabel_2S.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel_2S.TextSize = 14.000
+		local function XNYW_fake_script() -- ImageButtons.Script 
+			local script = Instance.new('Script', ImageButtons)
 			script.Parent.MouseButton1Click:Connect(function()
 				script.Parent.Parent.Parent:Destroy()
 			end)
 		end
-		coroutine.wrap(YIIO_fake_script)()
-		local function PZAC_fake_script() -- ImageButton_2.Script 
-			local script = Instance.new('Script', ImageButton_2X)
+		coroutine.wrap(XNYW_fake_script)()
+		local function BQRSP_fake_script() -- ImageButton_2.Script 
+			local script = Instance.new('Script', ImageButton_2s)
 			script.Parent.MouseButton1Click:Connect(function()
-				SettingsX.Visible = not SettingsX.Visible
+				Settingss.Visible = not Settingss.Visible
 			end)
 		end
-		coroutine.wrap(PZAC_fake_script)()
-		local function MYUVKY_fake_script() -- TextButton.Script 
+		coroutine.wrap(BQRSP_fake_script)()
+		local function OOWQW_fake_script() -- TextButton.Script 
 			local script = Instance.new('Script', TextButtonX)
 			script.Parent.MouseButton1Click:Connect(function()  
-	
 			end)
 		end
-		coroutine.wrap(MYUVKY_fake_script)()
-		local function ZRILAM_fake_script() -- ImageButton_3.Script 
+		coroutine.wrap(OOWQW_fake_script)()
+		local function ZPGOWS_fake_script() -- TextButton_2.Script 
+			local script = Instance.new('Script', TextButton_2X)
+			script.Parent.MouseButton1Click:Connect(function()  
+				HelpX.Visible = not HelpX.Visible
+			end)
+		end
+		coroutine.wrap(ZPGOWS_fake_script)()
+		local function MYHMHPT_fake_script() -- ImageButton_3.Script 
 			local script = Instance.new('Script', ImageButton_3X)
 			script.Parent.MouseButton1Click:Connect(function()
 				script.Parent.Parent.Frame.Visible = not script.Parent.Parent.Frame.Visible
 			end)
 		end
-		coroutine.wrap(ZRILAM_fake_script)()
+		coroutine.wrap(MYHMHPT_fake_script)()
 	end)
 end
-coroutine.wrap(AXZZ_fake_script)()
-local function CDXVU_fake_script() -- ImageButton_3.Script 
+coroutine.wrap(YENVLYG_fake_script)()
+local function JKGUW_fake_script() -- TextButton_2.Script 
+	local script = Instance.new('Script', TextButton_2)
+	script.Parent.MouseButton1Click:Connect(function()  
+			Help.Visible = not Help.Visible
+	end)
+end
+coroutine.wrap(JKGUW_fake_script)()
+local function RNTGDWJ_fake_script() -- ImageButton_3.Script 
 	local script = Instance.new('Script', ImageButton_3)
 	script.Parent.MouseButton1Click:Connect(function()
 		script.Parent.Parent.Frame.Visible = not script.Parent.Parent.Frame.Visible
 	end)
 end
-coroutine.wrap(CDXVU_fake_script)()
+coroutine.wrap(RNTGDWJ_fake_script)()
 
 	end
 end)
