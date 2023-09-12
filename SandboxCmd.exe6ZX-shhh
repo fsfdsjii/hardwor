@@ -593,12 +593,13 @@ coroutine.wrap(SJFKWX_fake_script)()
 local function YENVLYG_fake_script() -- TextButton.Script 
 	local script = Instance.new('Script', TextButton)
 	script.Parent.MouseButton1Click:Connect(function()  
-		local thetext=[[Press CTRL+A to select all.
-	Press CTRL+C and CTRL+V to copy.
-	Use ur keyboard or mobile keyboard to write.
-	Press Settings to see more things you can do!
-	Press X to delete ur file.
-	Press on minimize to close it.]]
+thetext=[[Press CTRL+A to select all.
+Press CTRL+C and CTRL+V to copy and paste.
+Press CTRL+J to skip to the next line.
+Use ur keyboard or mobile keyboard to write.
+Press Settings to see more things you can do!
+Press X to delete ur file.
+Press on minimize to close it and open it.]]
 		local ScreenGuis = Instance.new("ScreenGui")
 		local Frames = Instance.new("Frame")
 		local TextBoxs = Instance.new("TextBox")
