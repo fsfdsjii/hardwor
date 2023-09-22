@@ -619,13 +619,11 @@ owner.Chatted:Connect(function(msg)
 
 	local SplitMsg = string.split(msg, seperator)
 	if cmd == SplitMsg[1] then
-		local TargetName2=SplitMsg[3]
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		e = Instance.new("Team" , Teams)
-		Instance.new("Team" , Teams)
-		e.Parent = game.Teams
-		e.Name = tostring(TargetName2)
+		e.Parent = game:GetService('Teams')
+		e.Name = tostring(TargetName)
 	end
 end)
 
