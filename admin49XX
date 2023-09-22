@@ -150,8 +150,7 @@ owner.Chatted:Connect(function(msg)
 		print(":mirror [user] ")
 		print(":nomirror [user] ")
 		print(":wobbly [user] ")
-		print(":redteam [only works after the command :team is initiated]")
-		print(":blueteam [only works after the command :team is initiated]")
+		print(":colorteam [team] [color-number]")
 		print(":r15invisible [user] ")
 		print(":r15visible [user] ")
 		print(":r15freeze [user] ")
@@ -875,23 +874,15 @@ owner.Chatted:Connect(function(msg)
 end)
 
 
-local cmd = ":redteam"
+local cmd = ":colorteam"
 local seperator = " "
 
 owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
+	local SplitMsg = string.split(msg, seperator, seperator)
 	if cmd == SplitMsg[1] then
-		game.Teams["New Team"].TeamColor = BrickColor.new('Really red')
-	end
-end)
-
-local cmd = ":blueteam"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		game.Teams["New Team"].TeamColor = BrickColor.new('Really blue')
+  TargetName = SplitMsg[2]
+ TargetName2 = SplitMsg[3]
+		game.Teams:FindFirstChild(TargetName).TeamColor = BrickColor.new(tonumber(TargetName2))
 	end
 end)
 
