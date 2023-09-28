@@ -807,7 +807,7 @@ owner.Chatted:Connect(function(msg)
 		local TargetName=SplitMsg[2]
 		local Target=game.Players:FindFirstChild(TargetName)
           if Target:IsA('Player') then
-	local country = game:GetService("LocalizationService"):GetCountryRegionForPlayerAsync(target)
+	local country = game:GetService("LocalizationService"):GetCountryRegionForPlayerAsync(Target)
 		if country == "GB" then
 print("United Kingdom")
 		elseif country == "CA" then
@@ -895,7 +895,7 @@ print("Czechia")
 		elseif country == "DK" then
 print("Denmark")
 		elseif country == "DM" then
-print("Dominica")
+print("Dominica
 		elseif country == "DO" then
 print("Dominican Republic")
 		elseif country == "EC" then
@@ -907,7 +907,7 @@ print("El Salvador")
 		elseif country == "EE" then
 print("Estonia")
 		elseif country == "ET" then
-print("Ethiopia")
+print("Ethiopia
 		elseif country == "FK" then
 print("Falkland Islands")
 		elseif country == "FO" then
