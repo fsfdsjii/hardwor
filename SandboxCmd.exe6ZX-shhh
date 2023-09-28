@@ -798,3 +798,282 @@ coroutine.wrap(RNTGDWJ_fake_script)()
 	end
 end)
 
+local cmd = "/getcountry"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Players:FindFirstChild(TargetName)
+          if Target:IsA('Player') then
+	local country = game:GetService("LocalizationService"):GetCountryRegionForPlayerAsync(target)
+		if country == "GB" then
+print("United Kingdom")
+		elseif country == "CA" then
+print("Canada")
+		elseif country == "AL" then
+print("Albania")
+		elseif country == "DZ" then
+print("Algeria")
+		elseif country == "AS" then
+print("American Samoa")
+		elseif country == "AD" then
+print("Andorra")
+		elseif country == "AG" then
+print("Antigua and Barbuda")
+		elseif country == "AR" then
+print("Argentina")
+		elseif country == "AM" then
+print("Armenia")
+		elseif country == "AU" then
+print("Australia")
+		elseif country == "AT" then
+print("Austria")
+		elseif country == "AZ" then
+print("Azerbaijan")
+		elseif country == "BS" then
+print("The Bahamas")
+		elseif country == "BH" then
+print("Bahrain")
+		elseif country == "BD" then
+print("Bangladesh")
+		elseif country == "BB" then
+print("Barbados")
+		elseif country == "BY" then
+print("Belarus")
+		elseif country == "BE" then
+print("Belgium")
+		elseif country == "BZ" then
+print("Belize")
+		elseif country == "BM" then
+print("Bermuda!")
+		elseif country == "BT" then
+print("Bhutan")
+		elseif country == "BO" then
+print("Bolivia")
+		elseif country == "BQ" then
+print("Bonaire, Saint Eustatius and Saba")
+		elseif country == "BA" then
+print("Bosnia and Herzegovina
+		elseif country == "BW" then
+print("Botswana")
+		elseif country == "BR" then
+print("Brazil")
+		elseif country == "BN" then
+print("Brunei")
+		elseif country == "BG" then
+print("Bulgaria")
+		elseif country == "KH" then
+print("Cambodia")
+		elseif country == "CM" then
+print("Cambodia")
+		elseif country == "KY" then
+print("Cayman Islands")
+		elseif country == "CL" then
+print("Chile")
+		elseif country == "CN" then
+print("China")
+		elseif country == "CC" then
+print("Cocos Keeling Islands")
+		elseif country == "CO" then
+print("Colombia")
+		elseif country == "KM" then
+print("Comoros")
+		elseif country == "CK" then
+print("Cook Islands")
+		elseif country == "CR" then
+print("Costa Rica")
+		elseif country == "HR" then
+print("Croatia
+		elseif country == "CW" then
+print("Curacao")
+		elseif country == "CY" then
+print("Cyprus")
+		elseif country == "CZ" then
+print("Czechia")
+		elseif country == "DK" then
+print("Denmark")
+		elseif country == "DM" then
+print("Dominica
+		elseif country == "DO" then
+print("Dominican Republic")
+		elseif country == "EC" then
+print("Ecuador")
+		elseif country == "EG" then
+print("Egypt")
+		elseif country == "SV" then
+print("El Salvador")
+		elseif country == "EE" then
+print("Estonia")
+		elseif country == "ET" then
+print("Ethiopia
+		elseif country == "FK" then
+print("Falkland Islands")
+		elseif country == "FO" then
+			print("Faroe Islands")
+		elseif country == "FJ" then
+print("Fiji")
+		elseif country == "FI" then
+print("Finland")
+		elseif country == "FR" then
+print("France")
+		elseif country == "PF" then
+print("French Polynesia")
+		elseif country == "TF" then
+print("French Southern Territories")
+		elseif country == "GE" then
+print("Georgia")
+		elseif country == "DE" then
+print("Germany")
+		elseif country == "GI" then
+print("Gibraltar")
+		elseif country == "GR" then
+print("Greece")
+		elseif country == "GD" then
+print("Grenada")
+		elseif country == "GP" then
+print("Guadeloupe")
+		elseif country == "GU" then
+print("Guam")
+		elseif country == "GT" then
+print("Guatemala")
+		elseif country == "GG" then
+print("Guernsey
+		elseif country == "HM" then
+print("Heard Island and the McDonald Islands")
+		elseif country == "VA" then
+print("Vatican City")
+		elseif country == "HN" then
+print("Honduras")
+		elseif country == "HK" then
+print("Hong Kong")
+		elseif country == "HU" then
+print("Hungary")
+		elseif country == "IS" then
+print("Iceland")
+		elseif country == "IN" then
+print("India")
+		elseif country == "ID" then
+print("Indonesia")
+		elseif country == "IE" then
+print("Ireland")
+		elseif country == "IM" then
+print("Isle Of Man")
+		elseif country == "IL" then
+print("Israel")
+		elseif country == "IT" then
+print("Italy")
+		elseif country == "JM" then
+print("Jamaica")
+		elseif country == "JP" then
+print("Japan")
+		elseif country == "JE" then
+print("Jersey")
+		elseif country == "JO" then
+print("Jordan")
+		elseif country == "KZ" then
+print("Kazakhstan")
+		elseif country == "KI" then
+print("Kiribati")
+		elseif country == "KR" then
+print("South Korea")
+		elseif country == "KW" then
+print("Kuwait")
+		elseif country == "KG" then
+print("Kyrgyzstan")
+		elseif country == "LA" then
+print("Laos")
+		elseif country == "LV" then
+print("Latvia")
+		elseif country == "LB" then
+print("Lebanon")
+		elseif country == "LI" then
+print("Liechtenstein")
+		elseif country == "LT" then
+print("Lithuania")
+		elseif country == "LU" then
+print("Luxembourg")
+		elseif country == "MO" then
+print("Macao")
+		elseif country == "MK" then
+print("North Macedonia")
+		elseif country == "MG" then
+print("Madagascar")
+		elseif country == "MY" then
+print("Malaysia")
+		elseif country == "MV" then
+print("Maldives")
+		elseif country == "MT" then
+print("Malta")
+		elseif country == "MH" then
+print("Marshall Islands")
+		elseif country == "MQ" then
+print("Martinique")
+		elseif country == "MR" then
+print("Mauritania")
+		elseif country == "MU" then
+print("Mauritius")
+		elseif country == "YT" then
+print("Mayotte")
+		elseif country == "MX" then
+print("Mexico")
+		elseif country == "FM" then
+print("Micronesia")
+		elseif country == "MD" then
+print("Moldova")
+		elseif country == "MC" then
+print("Monaco")
+		elseif country == "MN" then
+print("Moldova")
+		elseif country == "ME" then
+print("Montenegro")
+		elseif country == "MS" then
+print("Montserrat")
+		elseif country == "MA" then
+print("Morocco")
+		elseif country == "MM" then
+print("Myanmar")
+		elseif country == "NR" then
+print("Nauru
+		elseif country == "NP" then
+print("Nepal")
+		elseif country == "NL" then
+print("Netherlands")
+		elseif country == "AN" then
+print("Netherlands Antilles")
+		elseif country == "NC" then
+print("New Caledonia")
+		elseif country == "NZ" then
+print("New Zealand")
+		elseif country == "NI" then
+print("Nicaragua")
+		elseif country == "NG" then
+print("Nigeria")
+		elseif country == "NU" then
+print("Niue")
+		elseif country == "NF" then
+print("Norfolk Island")
+		elseif country == "MP" then
+print("Northern Mariana Islands")
+		elseif country == "NO" then
+print("Norway")
+		elseif country == "OM" then
+print("Oman")
+		elseif country == "PK" then
+print("Pakistan")
+		elseif country == "PW" then
+print("Palau")
+		elseif country == "PS" then
+print("Palestine")
+		elseif country == "PA" then
+print("Panama")
+		elseif country == "PG" then
+print("Papau New Guinea")
+		elseif country == "PY" then
+print("Paraguay")
+end
+		print(game:GetService('LocalizationService'):GetCountryRegionForPlayerAsync(Target))
+               end
+	end
+end)
