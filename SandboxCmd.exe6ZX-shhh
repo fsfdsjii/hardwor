@@ -1072,7 +1072,7 @@ print("Panama")
 print("Papau New Guinea")
 		elseif country == "PY" then
 print("Paraguay")
-                elseif country == "PE then 
+                elseif country == "PE" then 
  print("Peru")
 		elseif country == "PH" then
 print("Philippines")
