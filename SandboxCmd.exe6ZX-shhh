@@ -885,7 +885,7 @@ print("Cook Islands")
 		elseif country == "CR" then
 print("Costa Rica")
 		elseif country == "HR" then
-print("Croatia
+print("Croatia")
 		elseif country == "CW" then
 print("Curacao")
 		elseif country == "CY" then
@@ -939,7 +939,7 @@ print("Guam")
 		elseif country == "GT" then
 print("Guatemala")
 		elseif country == "GG" then
-print("Guernsey
+print("Guernsey")
 		elseif country == "HM" then
 print("Heard Island and the McDonald Islands")
 		elseif country == "VA" then
@@ -1035,7 +1035,7 @@ print("Morocco")
 		elseif country == "MM" then
 print("Myanmar")
 		elseif country == "NR" then
-print("Nauru
+print("Nauru")
 		elseif country == "NP" then
 print("Nepal")
 		elseif country == "NL" then
