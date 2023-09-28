@@ -855,7 +855,7 @@ print("Bolivia")
 		elseif country == "BQ" then
 print("Bonaire, Saint Eustatius and Saba")
 		elseif country == "BA" then
-print("Bosnia and Herzegovina
+print("Bosnia and Herzegovina")
 		elseif country == "BW" then
 print("Botswana")
 		elseif country == "BR" then
