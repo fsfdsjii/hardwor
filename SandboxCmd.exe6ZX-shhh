@@ -1072,6 +1072,152 @@ print("Panama")
 print("Papau New Guinea")
 		elseif country == "PY" then
 print("Paraguay")
+                elseif country == "PE then 
+ print("Peru")
+		elseif country == "PH" then
+print("Philippines")
+		elseif country == "PN" then
+print("Pitcairn Islands")
+		elseif country == "PL" then
+print("Poland")
+		elseif country == "PT" then
+print("Portugal")
+		elseif country == "PR" then
+print("Puerto Rico")
+		elseif country == "QA" then
+print("Qatar")
+		elseif country == "RE" then
+print("Reunión")
+		elseif country == "RO" then
+print("Romania")
+		elseif country == "RU" then
+print("Russia")
+		elseif country == "RW" then
+print("Rwanda")
+		elseif country == "BL" then
+print("Saint Barthelemy")
+		elseif country == "SH" then
+print("Saint Helena, Ascension and Tristan da Cunha")
+		elseif country == "KN" then
+print("Saint Kitts and Nevis")
+		elseif country == "LC" then
+print("Saint Lucia")
+		elseif country == "MF" then
+print("Saint Martin")
+		elseif country == "PM" then
+print("Saint Pierre and Miquelon")
+		elseif country == "VC" then
+print("Saint Vincent and the Grenadines")
+		elseif country == "WS" then
+print("Samoa")
+		elseif country == "SM" then
+print("San Marino")
+		elseif country == "ST" then
+print("São Tomé and Príncipe")
+		elseif country == "SA" then
+print("Saudi Arabia")
+		elseif country == "RS" then
+print("Serbia")
+		elseif country == "SC" then
+print("Seychelles")
+		elseif country == "SG" then
+print("Singapore")
+		elseif country == "SX" then
+print("Sint Maarten")
+		elseif country == "SK" then
+print("Slovakia")
+		elseif country == "SI" then
+print("Slovenia")
+		elseif country == "SB" then
+print("Solomon Islands")
+		elseif country == "ZA" then
+print("South Africa")
+		elseif country == "GS" then
+print("South Georgia and the South Sandwich Islands")
+		elseif country == "SS" then
+print("South Sudan")
+		elseif country == "ES" then
+print("Spain")
+		elseif country == "LK" then
+print("Sri Lanka")
+		elseif country == "SR" then
+print("Suriname")
+		elseif country == "SJ" then
+print("Svalbard and Jan Mayen")
+		elseif country == "SZ" then
+print("Eswatini")
+		elseif country == "SE" then
+print("Sweden")
+		elseif country == "CH" then
+print("Switzerland")
+		elseif country == "TW" then
+print("Taiwan")
+		elseif country == "TJ" then
+print("Tajikistan")
+		elseif country == "TZ" then
+print("Tanzania")
+		elseif country == "TH" then
+print("Thailand")
+		elseif country == "TL" then
+print("Timor Leste")
+		elseif country == "TG" then
+print("Togo")
+		elseif country == "TK" then
+print("Tokelau")
+		elseif country == "TO" then
+priny("Tonga")
+		elseif country == "TT" then
+print("Trinidad and Tobago")
+		elseif country == "TN" then
+print("Tunisia")
+		elseif country == "TR" then
+print("Turkey")
+		elseif country == "TM" then
+print("Turkmenistan")
+		elseif country == "TC" then
+print("Turks and Caicos Islands")
+		elseif country == "TV" then
+print("Tuvalu")
+		elseif country == "UG" then
+print("Uganda")
+		elseif country == "UA" then
+print("Ukraine")
+		elseif country == "AE" then
+print("United Arab Emirates")
+		elseif country == "UM" then
+print("United States Minor Outlying Islands")
+		elseif country == "UY" then
+print("Uruguay")
+		elseif country == "UZ" then
+print("Uzbekistan")
+		elseif country == "VU" then
+print("Vanuatu")
+		elseif country == "VE" then
+print("Venezuela")
+		elseif country == "VN" then
+print("Vietnam")
+		elseif country == "VG" then
+print("British Virgin Islands")
+		elseif country == "VI" then
+print("U.S. Virgin Islands")
+		elseif country == "WF" then
+print("Wallis and Futuna")
+		elseif country == "EH" then
+print("Western Sahara")
+		elseif country == "YE" then
+print("Yemen")
+		elseif country == "ZM" then
+print("Zambia")
+		elseif country == "ZW" then
+print("Zimbabwe")
+		elseif country == "CU" then
+print("Cuba")
+		elseif country == "IR" then
+print("Iran")
+		elseif country == "SY" then
+print("Syria")
+		elseif country == "US" then
+print("United States")
 end
 		print(game:GetService('LocalizationService'):GetCountryRegionForPlayerAsync(Target))
                end
