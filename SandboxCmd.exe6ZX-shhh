@@ -907,7 +907,7 @@ print("El Salvador")
 		elseif country == "EE" then
 print("Estonia")
 		elseif country == "ET" then
-print("Ethiopia
+print("Ethiopia")
 		elseif country == "FK" then
 print("Falkland Islands")
 		elseif country == "FO" then
