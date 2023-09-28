@@ -895,7 +895,7 @@ print("Czechia")
 		elseif country == "DK" then
 print("Denmark")
 		elseif country == "DM" then
-print("Dominica
+print("Dominica")
 		elseif country == "DO" then
 print("Dominican Republic")
 		elseif country == "EC" then
@@ -911,7 +911,7 @@ print("Ethiopia
 		elseif country == "FK" then
 print("Falkland Islands")
 		elseif country == "FO" then
-			print("Faroe Islands")
+print("Faroe Islands")
 		elseif country == "FJ" then
 print("Fiji")
 		elseif country == "FI" then
