@@ -17,7 +17,7 @@ local cmd = ":shutdown"
 local seperator = " "
 
 owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
+	local SplitMsg = string.split(msg
 	if cmd == SplitMsg[1] then
 game.Players:ClearAllChildren()
 	end
@@ -59,11 +59,11 @@ local cmd = ":serverlock"
 local seperator = " "
 
 owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
+	local SplitMsg = string.split(msg)
 	if cmd == SplitMsg[1] then
 game.Players.PlayerAdded:Connect(function(plr)
 if r.Value==1 then 
-plr:Kick()
+plr:Kick("Server has been locked.")
         end
 end)
 	end
@@ -73,7 +73,7 @@ local cmd = ":noserverlock"
 local seperator = " "
 
 owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
+	local SplitMsg = string.split(msg)
 	if cmd == SplitMsg[1] then
         r.Value = 0
 	end
@@ -83,7 +83,7 @@ local cmd = ":enableserverlock"
 local seperator = " "
 
 owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
+	local SplitMsg = string.split(msg)
 	if cmd == SplitMsg[1] then
         r.Value = 1
 	end
