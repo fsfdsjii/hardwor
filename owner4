@@ -5,7 +5,7 @@ local cmd = ":cmds"
 local seperator = " "
 
 owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
+	local SplitMsg = string.split(msg)
 	if cmd == SplitMsg[1] then
 		print(":shutdown")
 		print(":kick [user]")
@@ -17,7 +17,7 @@ local cmd = ":shutdown"
 local seperator = " "
 
 owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg
+	local SplitMsg = string.split(msg)
 	if cmd == SplitMsg[1] then
 game.Players:ClearAllChildren()
 	end
