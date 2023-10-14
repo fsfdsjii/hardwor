@@ -2496,7 +2496,7 @@ Character = Target.Character
 	--Character.HumanoidRootPart.CanCollide = false
 	Character.Head.CanCollide = true
 
-e = Instance.new("BodyVelocity",Character.Torso)
+e = Instance.new("BodyVelocity",Character.HumanoidRootPart)
 e.Velocity = Vector3.new(0, tonumber(TargetName2), 0)
    end
 end)
