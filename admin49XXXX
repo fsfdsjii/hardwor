@@ -213,7 +213,7 @@ owner.Chatted:Connect(function(msg)
                 print(":bubblychat [user] [chat-color]")
                 print(":randomnumber [number] [number]")
                 print(":ragdoll [user]")
-                print(":heaven [user]")
+                print(":heaven [user] [number]")
 	end
 end)
 
@@ -2462,10 +2462,11 @@ local cmd = ":heaven"
 local seperator = " "
 owner.Chatted:Connect(function(msg)
 
-	local SplitMsg = string.split(msg, seperator)
+	local SplitMsg = string.split(msg, seperator, seperator)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Players:FindFirstChild(TargetName)
+                local TargetName2=SplitMsg[3]
 Character = Target.Character
 	Character:FindFirstChildWhichIsA("Humanoid").BreakJointsOnDeath = false
 	Character:FindFirstChildWhichIsA("Humanoid").RequiresNeck = false
@@ -2496,6 +2497,6 @@ Character = Target.Character
 	Character.Head.CanCollide = true
 
 e = Instance.new("BodyVelocity",Character.Torso)
-e.Velocity = Vector3.new(0, 50, 0)
+e.Velocity = Vector3.new(0, tonumber(TargetName2), 0)
    end
 end)
