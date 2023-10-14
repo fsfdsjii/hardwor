@@ -212,6 +212,8 @@ owner.Chatted:Connect(function(msg)
                 print(":pants [user] [pant-id] [ONLY WORKS ON Void, Los angeles] ")
                 print(":bubblychat [user] [chat-color]")
                 print(":randomnumber [number] [number]")
+                print(":ragdoll [user]")
+                print(":heaven [user]")
 	end
 end)
 
@@ -2453,5 +2455,47 @@ Character = Target.Character
 	--Character.HumanoidRootPart.CanCollide = false
 	Character.Head.CanCollide = true
 
+   end
+end)
+
+local cmd = ":heaven"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Players:FindFirstChild(TargetName)
+Character = Target.Character
+	Character:FindFirstChildWhichIsA("Humanoid").BreakJointsOnDeath = false
+	Character:FindFirstChildWhichIsA("Humanoid").RequiresNeck = false
+	Character:FindFirstChildWhichIsA('Humanoid').AutoRotate = false
+	Character:FindFirstChildWhichIsA('Humanoid').PlatformStand = true
+	Character:FindFirstChildWhichIsA('Humanoid').WalkSpeed = 0
+
+	for _, v in pairs(Character:GetDescendants()) do
+		if v:IsA("Motor6D") then
+			local Att0, Att1 = Instance.new("Attachment"), Instance.new("Attachment")
+			Att0.CFrame = v.C0
+			Att1.CFrame = v.C1
+			Att0.Parent = v.Part0
+			Att1.Parent = v.Part1
+			local BSC = Instance.new("BallSocketConstraint")
+			BSC.Attachment0 = Att0
+			BSC.Attachment1 = Att1
+			BSC.Parent = v.Part0
+			BSC.LimitsEnabled = true
+			BSC.TwistLimitsEnabled = true
+
+			v:Destroy()
+		elseif v:IsA('BasePart') then 
+			v.CanCollide = true
+		end
+	end
+	--Character.HumanoidRootPart.CanCollide = false
+	Character.Head.CanCollide = true
+
+e = Instance.new("BodyVelocity",Character.Torso)
+e.Velocity = Vector3.new(0, 50, 0)
    end
 end)
