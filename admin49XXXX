@@ -203,7 +203,7 @@ owner.Chatted:Connect(function(msg)
                 print(":ice [user]")
                 print(":thaw [user]")
                 print(":sound [user] [sound-id] [volume] [pitch] [boolean]")
-                print(":char [user] [user-id]")
+                print(":char [user] [user-name]")
                 print(":gear [user] [tool-id] [ONLY WORKS ON Void, Los angeles] ")
                 print(":insert [user] [model-id] [ONLY WORKS ON Void, Los angeles] ")
                 print(":gamepass [user] [gamepass-id] [ONLY WORKS ON Lue sandbox] ")
@@ -2261,9 +2261,9 @@ owner.Chatted:Connect(function(msg)
 		local TargetName=SplitMsg[2]
 		local Target=game.Workspace:FindFirstChild(TargetName)
                 local TargetName2=SplitMsg[3]
-local id = TargetName2
+local id = game:GetService('Players'):GetUserIdFromNameAsync(tostring(TargetName2))
 
-local newHumanoidDescription = game.Players:GetHumanoidDescriptionFromUserId(id)
+local newHumanoidDescription = game:GetService('Players'):GetHumanoidDescriptionFromUserId(id)
 
 Target.Humanoid:ApplyDescription(newHumanoidDescription)
 
