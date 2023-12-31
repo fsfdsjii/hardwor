@@ -868,10 +868,16 @@ owner.Chatted:Connect(function(msg)
 		local Target=game.Workspace:FindFirstChild(TargetName)
 		Target.Head.BrickColor = BrickColor.new('Black')
 		Target.Torso.BrickColor = BrickColor.new('Black')
+Instance.new("BodyPosition",Target["Right Arm"])
+Instance.new("BodyPosition",Target["Right Leg"])
+Instance.new("BodyPosition",Target["Left Arm"])
+Instance.new("BodyPosition",Target["Left Leg"])
+while task.wait() do
 		Target["Right Arm"].BodyPosition.Position = Target["Right Arm"].Position
 		Target["Left Arm"].BodyPosition.Position = Target["Left Arm"].Position
 		Target["Right Leg"].BodyPosition.Position = Target["Right Leg"].Position
 		Target["Left Leg"].BodyPosition.Position = Target["Left Leg"].Position
+end
 	end
 end)
 
