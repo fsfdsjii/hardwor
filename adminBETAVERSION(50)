@@ -214,6 +214,9 @@ owner.Chatted:Connect(function(msg)
                 print(":randomnumber [number] [number]")
                 print(":ragdoll [user]")
                 print(":heaven [user] [number]")
+                print(":jail [user]")
+                print(":gravity [number]")
+                print(":unjail [user]")
 	end
 end)
 
@@ -2535,7 +2538,8 @@ owner.Chatted:Connect(function(msg)
 		Decal15 = Instance.new("Decal")
 		Part16 = Instance.new("Part")
 		SpawnLocation17 = Instance.new("SpawnLocation")
-		Model0.Parent = script
+		Model0.Parent = Target
+                Model0.Name = "Jail"
 		Part1.Name = "spaceWall"
 		Part1.Parent = Model0
 		Part1.CFrame = CFrame.new(-4.21520996, 0.500015736, -22.1998901, 1, 0, 0, 0, 1, 0, 0, 0, 1)
@@ -2733,4 +2737,30 @@ owner.Chatted:Connect(function(msg)
 		Model0:MoveTo(Target.Character.HumanoidRootPart.Position-Vector3.new(0, 2, 0))
 		Target.RespawnLocation = SpawnLocation17
 	end
+end)
+
+local cmd = ":gravity"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		workspace.Gravity = tonumber(TargetName)
+	end
+end)
+
+local cmd = ":unjail"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=workspace:FindFirstChild(TargetName)
+Jail = Target:FindFirstChild('Jail')
+if Jail then
+Jail:Destroy()
+end
+   end
 end)
