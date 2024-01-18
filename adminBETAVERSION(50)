@@ -2538,7 +2538,7 @@ owner.Chatted:Connect(function(msg)
 		Decal15 = Instance.new("Decal")
 		Part16 = Instance.new("Part")
 		SpawnLocation17 = Instance.new("SpawnLocation")
-		Model0.Parent = Target
+		Model0.Parent = Target.Character
                 Model0.Name = "Jail"
 		Part1.Name = "spaceWall"
 		Part1.Parent = Model0
