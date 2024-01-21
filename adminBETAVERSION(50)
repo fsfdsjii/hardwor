@@ -2734,7 +2734,7 @@ owner.Chatted:Connect(function(msg)
 		SpawnLocation17.CanCollide = false
 		SpawnLocation17.TopSurface = Enum.SurfaceType.Smooth
 		SpawnLocation17.brickColor = BrickColor.new("Really black")
-		Model0:MoveTo(Target.Character.HumanoidRootPart.Position-Vector3.new(0, 2, 0))
+		Model0:MoveTo(Target.Character.HumanoidRootPart.Position-Vector3.new(0, 3, 0))
 		Target.RespawnLocation = SpawnLocation17
 	end
 end)
