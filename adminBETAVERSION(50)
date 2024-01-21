@@ -2519,10 +2519,10 @@ owner.Chatted:Connect(function(msg)
 		local TargetName=SplitMsg[2]
 		local Target=game.Players:FindFirstChild(TargetName)
 folder = Instance.new("Folder",workspace)
-folder.Name = Target.Name
+folder.Name = TargetName
 value = Instance.new("ObjectValue",script)
 value.Value = Target
-value.Name = "ObjectValue"
+value.Name = TargetName
 		Model0 = Instance.new("Model")
 		Part1 = Instance.new("Part")
 		Part2 = Instance.new("Part")
@@ -2761,7 +2761,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=workspace:FindFirstChild(TargetName)
-Jail = script:FindFirstChild('ObjectValue')
+Jail = script:FindFirstChild(tostring(TargetName))
 if Jail then
 Jail:Destroy()
 end
