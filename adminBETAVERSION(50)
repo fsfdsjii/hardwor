@@ -162,8 +162,7 @@ owner.Chatted:Connect(function(msg)
 		print(":fly [user] ")
 		print(":tp [user] ")
 		print(":bring [user] ")
-		print(":noob [user] ")
-		print(":voidpurple [user] ")
+		print(":permchar [user] [number]")
 		print(":normalcharacter [user] ")
 		print(":grey [user] ")
 		print(":safeareatp [user]")
@@ -1146,31 +1145,17 @@ owner.Chatted:Connect(function(msg)
 end)
 
 
-
-
-local cmd = ":noob"
+local cmd = ":permchar"
 local seperator = " "
 
 owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
+	local SplitMsg = string.split(msg, seperator, seperator)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
+		local TargetName2=SplitMsg[3]
 		local Target=game.Players:FindFirstChild(TargetName)
-		Target.CharacterAppearanceId = 4
-		Target:LoadCharacter()
-	end
-end)
-
-local cmd = ":voidpurple"
-local seperator = " "
-
-owner.Chatted:Connect(function(msg)
-	local SplitMsg = string.split(msg, seperator)
-	if cmd == SplitMsg[1] then
-		local TargetName=SplitMsg[2]
-		local Target=game.Players:FindFirstChild(TargetName)
-		Target.CharacterAppearanceId = 199260543
-		Target:LoadCharacter()
+Target.CharacterAppearanceId = tonumber(TargetName2)
+Target:LoadCharacter()
 	end
 end)
 
