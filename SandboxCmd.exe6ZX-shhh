@@ -22,6 +22,8 @@ owner.Chatted:Connect(function(msg)
 		print("/calculate [number] [mathematical-lua-symbol] [number]")
 		print("/notepad [user]")
 		print("/getcountry or /country [user]")
+		print("/breakusr or /breakuser [user] {' ONLY WORKS IN LUA ASSEMBLY '} ")
+		print("/unbreakusr or /unbreakuser [user] {'You will remember that this does not work 100% of the time and may only work a little bit'} ")
 
 	end
 end)
@@ -1648,5 +1650,127 @@ print("United States")
 end
 		print(game:GetService('LocalizationService'):GetCountryRegionForPlayerAsync(Target))
                end
+	end
+end)
+
+local cmd = "/breakusr"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Players:FindFirstChild(TargetName)
+for _,v in next, Target:GetChildren() do
+if v.Name == "DenyBreak" then
+v:Destroy()
+end
+end
+		zzz = game:GetService('RunService').Heartbeat:Connect(function() 
+      pcall(function()
+game:GetService('Debris'):AddItem(Target.SBO, 0) 
+    end) 
+if Target:FindFirstChild('DenyBreak') then
+zzz:Disconnect()
+end
+end)
+		nnn = game:GetService('RunService').Heartbeat:Connect(function() 
+      pcall(function()
+game:GetService('Debris'):AddItem(Target.SBO, 0) 
+    end) 
+if Target:FindFirstChild('DenyBreak') then
+nnn:Disconnect()
+end
+end)
+		mmm = game:GetService('RunService').Heartbeat:Connect(function() 
+      pcall(function()
+game:GetService('Debris'):AddItem(Target.SBR, 0) 
+    end) 
+if Target:FindFirstChild('DenyBreak') then
+mmm:Disconnect()
+end
+end)
+		ttt = game:GetService('RunService').Heartbeat:Connect(function() 
+      pcall(function()
+game:GetService('Debris'):AddItem(Target.SBR, 0) 
+    end) 
+if Target:FindFirstChild('DenyBreak') then
+ttt:Disconnect()
+print("hell")
+end
+end)
+	end
+end)
+
+local cmd = "/unbreakusr"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Players:FindFirstChild(TargetName)
+		Instance.new("IntValue",Target).Name = "DenyBreak"
+	end
+end)
+
+local cmd = "/unbreakuser"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Players:FindFirstChild(TargetName)
+		Instance.new("IntValue",Target).Name = "DenyBreak"
+	end
+end)
+
+local cmd = "/breakuser"
+local seperator = " "
+
+owner.Chatted:Connect(function(msg)
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Players:FindFirstChild(TargetName)
+for _,v in next, Target:GetChildren() do
+if v.Name == "DenyBreak" then
+v:Destroy()
+end
+end
+		zzz = game:GetService('RunService').Heartbeat:Connect(function() 
+      pcall(function()
+game:GetService('Debris'):AddItem(Target.SBO, 0) 
+    end) 
+if Target:FindFirstChild('DenyBreak') then
+zzz:Disconnect()
+end
+end)
+		nnn = game:GetService('RunService').Heartbeat:Connect(function() 
+      pcall(function()
+game:GetService('Debris'):AddItem(Target.SBO, 0) 
+    end) 
+if Target:FindFirstChild('DenyBreak') then
+nnn:Disconnect()
+end
+end)
+		mmm = game:GetService('RunService').Heartbeat:Connect(function() 
+      pcall(function()
+game:GetService('Debris'):AddItem(Target.SBR, 0) 
+    end) 
+if Target:FindFirstChild('DenyBreak') then
+mmm:Disconnect()
+end
+end)
+		ttt = game:GetService('RunService').Heartbeat:Connect(function() 
+      pcall(function()
+game:GetService('Debris'):AddItem(Target.SBR, 0) 
+    end) 
+if Target:FindFirstChild('DenyBreak') then
+ttt:Disconnect()
+print("hell")
+end
+end)
 	end
 end)
