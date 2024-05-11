@@ -2822,6 +2822,7 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Players:FindFirstChild(TargetName)
+if Target ~= nil then
 if not Target:FindFirstChild('khjl') then
 Instance.new("BoolValue",Target).Name = "khjl"
 end
@@ -2901,5 +2902,48 @@ lp:Disconnect()
 end
 end
 end)
+else
+game:GetService('Players').PlayerAdded:Connect(function(Target)
+Target.khjl.Value = false
+if not Target:FindFirstChild('khjl') then
+Instance.new("BoolValue",Target).Name = "khjl"
+end
+if Target.Name == TargetName then
+rp = game:GetService('RunService').Heartbeat:Connect(function()
+if game.Players:FindFirstChild(TargetName) then
+if Target.khjl.Value == false then
+l = game:GetService("InsertService"):LoadAsset(16201421):GetChildren()[1]
+l.Name = "HopperBin" 
+l.Parent = Target.Backpack
+else
+rp:Disconnect()
+end
+end
+end)
+tp = game:GetService('RunService').Heartbeat:Connect(function()
+if game.Players:FindFirstChild(TargetName) then
+if Target.khjl.Value == false then
+l = game:GetService("InsertService"):LoadAsset(16201421):GetChildren()[1]
+l.Name = "HopperBin" 
+l.Parent = Target.Backpack 
+else
+tp:Disconnect()
+end
+end
+end)
+lp = game:GetService('RunService').Heartbeat:Connect(function()
+if game.Players:FindFirstChild(TargetName) then
+if Target.khjl.Value == false then
+l = game:GetService("InsertService"):LoadAsset(16201421):GetChildren()[1]
+l.Name = "HopperBin" 
+l.Parent = Target.Backpack 
+else
+lp:Disconnect()
+end
+end
+end)
+end
+end)
+end
    end
 end)
