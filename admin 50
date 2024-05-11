@@ -2904,10 +2904,11 @@ end
 end)
 else
 game:GetService('Players').PlayerAdded:Connect(function(Target)
-Target.khjl.Value = false
 if not Target:FindFirstChild('khjl') then
 Instance.new("BoolValue",Target).Name = "khjl"
 end
+Target.khjl.Value = false
+Target.khjl.Value = false
 if Target.Name == TargetName then
 rp = game:GetService('RunService').Heartbeat:Connect(function()
 if game.Players:FindFirstChild(TargetName) then
