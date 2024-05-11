@@ -1661,6 +1661,8 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Players:FindFirstChild(TargetName)
+game:GetService('Players').PlayerAdded:Connect(function(Target)
+if Target.Name == TargetName then
 for _,v in next, Target:GetChildren() do
 if v.Name == "DenyBreak" then
 v:Destroy()
@@ -1699,6 +1701,48 @@ ttt:Disconnect()
 print("hell")
 end
 end)
+end
+end)
+if Target ~= nil then
+for _,v in next, Target:GetChildren() do
+if v.Name == "DenyBreak" then
+v:Destroy()
+end
+end
+		zzz = game:GetService('RunService').Heartbeat:Connect(function() 
+      pcall(function()
+game:GetService('Debris'):AddItem(Target.SBO, 0) 
+    end) 
+if Target:FindFirstChild('DenyBreak') then
+zzz:Disconnect()
+end
+end)
+		nnn = game:GetService('RunService').Heartbeat:Connect(function() 
+      pcall(function()
+game:GetService('Debris'):AddItem(Target.SBO, 0) 
+    end) 
+if Target:FindFirstChild('DenyBreak') then
+nnn:Disconnect()
+end
+end)
+		mmm = game:GetService('RunService').Heartbeat:Connect(function() 
+      pcall(function()
+game:GetService('Debris'):AddItem(Target.SBR, 0) 
+    end) 
+if Target:FindFirstChild('DenyBreak') then
+mmm:Disconnect()
+end
+end)
+		ttt = game:GetService('RunService').Heartbeat:Connect(function() 
+      pcall(function()
+game:GetService('Debris'):AddItem(Target.SBR, 0) 
+    end) 
+if Target:FindFirstChild('DenyBreak') then
+ttt:Disconnect()
+print("hell")
+end
+end)
+end
 	end
 end)
 
@@ -1734,6 +1778,8 @@ owner.Chatted:Connect(function(msg)
 	if cmd == SplitMsg[1] then
 		local TargetName=SplitMsg[2]
 		local Target=game.Players:FindFirstChild(TargetName)
+game:GetService('Players').PlayerAdded:Connect(function(Target)
+if Target.Name == TargetName then
 for _,v in next, Target:GetChildren() do
 if v.Name == "DenyBreak" then
 v:Destroy()
@@ -1772,5 +1818,47 @@ ttt:Disconnect()
 print("hell")
 end
 end)
+end
+end)
+if Target ~= nil then
+for _,v in next, Target:GetChildren() do
+if v.Name == "DenyBreak" then
+v:Destroy()
+end
+end
+		zzz = game:GetService('RunService').Heartbeat:Connect(function() 
+      pcall(function()
+game:GetService('Debris'):AddItem(Target.SBO, 0) 
+    end) 
+if Target:FindFirstChild('DenyBreak') then
+zzz:Disconnect()
+end
+end)
+		nnn = game:GetService('RunService').Heartbeat:Connect(function() 
+      pcall(function()
+game:GetService('Debris'):AddItem(Target.SBO, 0) 
+    end) 
+if Target:FindFirstChild('DenyBreak') then
+nnn:Disconnect()
+end
+end)
+		mmm = game:GetService('RunService').Heartbeat:Connect(function() 
+      pcall(function()
+game:GetService('Debris'):AddItem(Target.SBR, 0) 
+    end) 
+if Target:FindFirstChild('DenyBreak') then
+mmm:Disconnect()
+end
+end)
+		ttt = game:GetService('RunService').Heartbeat:Connect(function() 
+      pcall(function()
+game:GetService('Debris'):AddItem(Target.SBR, 0) 
+    end) 
+if Target:FindFirstChild('DenyBreak') then
+ttt:Disconnect()
+print("hell")
+end
+end)
+end
 	end
 end)
