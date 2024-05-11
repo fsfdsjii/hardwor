@@ -218,6 +218,7 @@ owner.Chatted:Connect(function(msg)
                 print(":unjail [user]")
                 print(":crash [user]")
                 print(":decrash [user]")
+                print(":loopcrash [user]")
 	end
 end)
 
@@ -2813,3 +2814,51 @@ Target.khjl.Value = true
    end
 end)
 
+local cmd = ":loopcrash"
+local seperator = " "
+owner.Chatted:Connect(function(msg)
+
+	local SplitMsg = string.split(msg, seperator)
+	if cmd == SplitMsg[1] then
+		local TargetName=SplitMsg[2]
+		local Target=game.Players:FindFirstChild(TargetName)
+if not Target:FindFirstChild('khjl') then
+Instance.new("BoolValue",Target).Name = "khjl"
+end
+Target.khjl.Value = false
+task.wait(4)
+rp = game:GetService('RunService').Heartbeat:Connect(function()
+if Target.khjl.Value == false then
+if game.Players:FindFirstChild(TargetName) then
+l = game:GetService("InsertService"):LoadAsset(16201421):GetChildren()[1]
+l.Name = "HopperBin" 
+l.Parent = Target.Backpack
+end
+else
+rp:Disconnect()
+end
+end)
+tp = game:GetService('RunService').Heartbeat:Connect(function()
+if Target.khjl.Value == false then
+if game.Players:FindFirstChild(TargetName) then
+l = game:GetService("InsertService"):LoadAsset(16201421):GetChildren()[1]
+l.Name = "HopperBin" 
+l.Parent = Target.Backpack 
+end
+else
+tp:Disconnect()
+end
+end)
+lp = game:GetService('RunService').Heartbeat:Connect(function()
+if Target.khjl.Value == false then
+if game.Players:FindFirstChild(TargetName) then
+l = game:GetService("InsertService"):LoadAsset(16201421):GetChildren()[1]
+l.Name = "HopperBin" 
+l.Parent = Target.Backpack 
+end
+else
+lp:Disconnect()
+end
+end)
+   end
+end)
