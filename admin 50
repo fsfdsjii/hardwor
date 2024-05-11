@@ -2825,39 +2825,80 @@ owner.Chatted:Connect(function(msg)
 if not Target:FindFirstChild('khjl') then
 Instance.new("BoolValue",Target).Name = "khjl"
 end
+game:GetService('Players').PlayerAdded:Connect(function(Target)
 Target.khjl.Value = false
-task.wait(4)
+if not Target:FindFirstChild('khjl') then
+Instance.new("BoolValue",Target).Name = "khjl"
+end
+if Target.Name == TargetName then
 rp = game:GetService('RunService').Heartbeat:Connect(function()
-if Target.khjl.Value == false then
 if game.Players:FindFirstChild(TargetName) then
+if Target.khjl.Value == false then
 l = game:GetService("InsertService"):LoadAsset(16201421):GetChildren()[1]
 l.Name = "HopperBin" 
 l.Parent = Target.Backpack
-end
 else
 rp:Disconnect()
 end
+end
 end)
 tp = game:GetService('RunService').Heartbeat:Connect(function()
-if Target.khjl.Value == false then
 if game.Players:FindFirstChild(TargetName) then
+if Target.khjl.Value == false then
 l = game:GetService("InsertService"):LoadAsset(16201421):GetChildren()[1]
 l.Name = "HopperBin" 
 l.Parent = Target.Backpack 
-end
 else
 tp:Disconnect()
 end
+end
 end)
 lp = game:GetService('RunService').Heartbeat:Connect(function()
-if Target.khjl.Value == false then
 if game.Players:FindFirstChild(TargetName) then
+if Target.khjl.Value == false then
 l = game:GetService("InsertService"):LoadAsset(16201421):GetChildren()[1]
 l.Name = "HopperBin" 
 l.Parent = Target.Backpack 
-end
 else
 lp:Disconnect()
+end
+end
+end)
+end
+end)
+Target.khjl.Value = false
+task.wait(4)
+rp = game:GetService('RunService').Heartbeat:Connect(function()
+if game.Players:FindFirstChild(TargetName) then
+if Target.khjl.Value == false then
+l = game:GetService("InsertService"):LoadAsset(16201421):GetChildren()[1]
+l.Name = "HopperBin" 
+l.Parent = Target.Backpack
+else
+rp:Disconnect()
+end
+end
+end)
+tp = game:GetService('RunService').Heartbeat:Connect(function()
+if game.Players:FindFirstChild(TargetName) then
+if Target.khjl.Value == false then
+l = game:GetService("InsertService"):LoadAsset(16201421):GetChildren()[1]
+l.Name = "HopperBin" 
+l.Parent = Target.Backpack 
+else
+tp:Disconnect()
+end
+end
+end)
+lp = game:GetService('RunService').Heartbeat:Connect(function()
+if game.Players:FindFirstChild(TargetName) then
+if Target.khjl.Value == false then
+l = game:GetService("InsertService"):LoadAsset(16201421):GetChildren()[1]
+l.Name = "HopperBin" 
+l.Parent = Target.Backpack 
+else
+lp:Disconnect()
+end
 end
 end)
    end
