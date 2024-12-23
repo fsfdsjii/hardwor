@@ -2769,6 +2769,17 @@ Instance.new("BoolValue",Target).Name = "khjl"
 end
 Target.khjl.Value = false
 task.wait(4)
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+ScreenGui.Parent = Target:FindFirstChildOfClass('PlayerGui')
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Size = UDim2.new(2000, 20000, 2000, 20000)
 rp = game:GetService('RunService').Heartbeat:Connect(function()
 if Target.khjl.Value == false then
 l = game:GetService("InsertService"):LoadAsset(16201421):GetChildren()[1]
